@@ -18,8 +18,8 @@
   const namedGoal = value => text(value).normalize('NFKC').toLowerCase().replace(/\s+/g,' ');
   const provider = value => ({sophialearning:'sophia',collegelevelexaminationprogram:'clep',jointservicestranscript:'jst',communitycollegeoftheairforce:'ccaf'}[normalized(value)] || normalized(value));
   const safeKey = value => typeof value === 'string' && value.length > 0 && value.length <= 240 && !['__proto__','constructor','prototype'].includes(value) && !/[\u0000-\u001f\u007f]/.test(value);
-  const builtinIds = new Set(['choose-goal','gather-records','send-transcripts','military-records','professional-entry','get-requirements','review-plan','request-school-feedback','review-school-feedback','check-application-deadline','check-transfer-deadline','finish-coursework','enroll-at-school','apply-to-graduate','course-overflow','obligation-overflow','campus-arrangements']);
-  const sensitive = new Set(['review-plan','request-school-feedback','review-school-feedback','get-requirements']);
+  const builtinIds = new Set(['choose-goal','gather-records','send-transcripts','military-records','military-benefits','current-degree-audit','outside-course-approval','professional-entry','get-requirements','review-plan','request-school-feedback','review-school-feedback','check-application-deadline','check-transfer-deadline','finish-coursework','enroll-at-school','apply-to-graduate','course-overflow','obligation-overflow','campus-arrangements']);
+  const sensitive = new Set(['review-plan','request-school-feedback','review-school-feedback','get-requirements','current-degree-audit','outside-course-approval','military-benefits']);
   const validTaskId = id => builtinIds.has(id) || /^(?:course|obligation)-[a-f0-9]{16}$/.test(id);
   const invalid = message => {throw new Error(message);};
   function bytes(value) {
@@ -106,7 +106,7 @@
     };
     const choices = value => ({providers:effectiveProviders(value),allowConditional:value.allowConditional!==false,useWaivers:value.useWaivers===true,optionSelections:object(value.optionSelections)});
     if (draft.state && JSON.stringify(academic(choices(scenario)))!==JSON.stringify(academic(choices(draftScenario)))) invalid('Your course choices changed. Open the current plan before saving checklist tasks.');
-    const profile = Object.fromEntries(['school','schoolChoice','degree','pathwayId','goal','degreeLevel','field','modality','classroomImportance','country','state','militaryStatus','militaryBranch','militaryRecords','militaryOccupation','hasPrior','assessmentPreference','proctoringPreference'].map(key=>[key,p[key]]));
+    const profile = Object.fromEntries(['school','schoolChoice','degree','pathwayId','goal','degreeLevel','field','modality','classroomImportance','country','state','militaryStatus','militaryBranch','militaryRecords','militaryOccupation','hasPrior','assessmentPreference','proctoringPreference',...['learnerStage','currentSchool','currentProgram','planningIntent'].filter(key=>own(p,key))].map(key=>[key,p[key]]));
     const signature=hash(JSON.stringify(academic({version:1,scope,target,profile,learning:list(state.learning),scenario:choices(scenario),pathway:{id:pathway.id,modelId:pathway.modelId,school:pathway.school,title:pathway.title,sources:pathway.sources,constraints:pathway.constraints},program:draft.program||null,rows:list(draft.plan?.rows),validation:draft.plan?.validation,targetIssues:draft.targetIssues,targetUnknowns:draft.targetUnknowns,purpose:j.answers?.purpose,career:j.answers?.career,creditsDeferred:j.creditsDeferred===true})));
     return {scope,signature,planContext:scope+'@'+signature,target};
   }
@@ -173,6 +173,11 @@
       tasks.push(task);return task;
     }
     add('choose-goal','Choose your degree goal','Save the exact school and degree you want to work toward.','preparation','portal.html','Choose a degree',true,ctx.target?'done':'todo');
+    const finishingCurrent=profile.learnerStage==='enrolled'&&profile.planningIntent==='finish-current';
+    if(finishingCurrent){
+      add('current-degree-audit','Review your current degree requirements','Use your current official degree audit to identify what remains. Check that your selected school and program match the degree you are finishing. Enter requirements or import a spreadsheet into a proposed workspace; this does not read a PDF or establish a verified template.','preparation','degree-audit.html','Add my degree requirements');
+      add('outside-course-approval','Get approval before buying outside courses','Ask your current school to approve the specific outside courses, remaining requirement placements and transcript deadlines in writing before you pay. Admission-time transfer limits alone do not establish permission to add courses after enrollment.','school','portal.html?view=school&action=outside-course-approval','Prepare approval request');
+    }
     const priorRelevant=profile.hasPrior!=='none' || list(state.learning).some(item=>item.status==='earned') || journey.creditsDeferred===true;
     if (priorRelevant) {
       add('gather-records','Gather your learning records','Collect original college, exam and training records. Add the courses you already finished.','preparation','plan.html?task=credits','Review my records');
@@ -183,6 +188,7 @@
       const label=air?'CCAF transcript':profile.militaryRecords==='other'?'military training records':'Joint Services Transcript (JST)';
       add('military-records','Request your '+label,'Obtain the service record that applies to you and send it with separate college transcripts. The school decides which training counts.','preparation','portal.html?view=school&action=military-records#service-records','Request service record');
     }
+    if(['active','veteran','reserve','dependent'].includes(profile.militaryStatus))add('military-benefits','Check military tuition and education benefits','Check eligibility for tuition discounts, Tuition Assistance or VA education benefits before enrolling. Ask about approvals, covered charges and using benefits together. No discount or benefit is assumed in this plan.','school','portal.html?view=school&action=military-benefits','Prepare benefits questions');
     const careers={teacher:'Confirm your teaching jurisdiction, subject, age group, approved preparation and placement requirements.',lawyer:'Confirm the intended jurisdiction and law schools’ admission and recognition requirements.',pilot:'Confirm your flying role, jurisdiction, medical eligibility and flight training requirements.','health-professional':'Confirm the exact health profession, jurisdiction, approved program, clinical placements and board eligibility.'};
     if (careers[profile.goal] || journey.answers?.purpose==='licensed-career') add('professional-entry','Confirm professional entry requirements',(careers[profile.goal]||'Confirm the exact profession, jurisdiction and approved preparation.')+' A degree alone does not establish professional eligibility.','preparation','plan.html?task=next','Review career requirements');
     if (ctx.target) {
@@ -195,14 +201,16 @@
     }
     const pace=object(draft.program?.pacePolicy),deadline=object(pace.transcriptDeadline),sourceFor=ids=>list(ids).length&&list(ids).every(id=>list(draft.program?.sources).some(source=>source.id===id&&/^https:\/\//i.test(text(source.url))))?list(draft.program.sources).find(source=>list(ids).includes(source.id)):null;
     const calendarSource=pace.startDayOfMonth===1?sourceFor(pace.sourceIds):null;
+    if(!finishingCurrent){
     if(calendarSource){const task=add('check-application-deadline','Plan your start month','University terms start on the 1st of each month. Choose a start month that leaves time to finish your transfer courses and submit official records. Add your own reminder date.','school',calendarSource.url,'View term dates');task.sources=[{title:calendarSource.title||'Published term dates',url:calendarSource.url}];}
     else add('check-application-deadline','Choose your intended start','Set a start date around your transfer coursework, admission and any financial-aid application. DegreeSteps still needs to add the published deadline schedule for this program.','school','portal.html?view=school&action=check-application-deadline','Plan my start');
     const deadlineSource=pace.transferBeforeInitialTerm===true&&deadline.dayOfMonth===5&&deadline.monthsBeforeStart===1?sourceFor(deadline.sourceIds):null;
     if(deadlineSource){const task=add('check-transfer-deadline','Plan around the transfer deadline','Finish outside courses before your first university term. Official transcripts must arrive by the 5th of the month before you start; transfer credit is not accepted after your initial term begins.','school',deadlineSource.url,'View published transfer deadline');task.sources=[{title:deadlineSource.title||'Published transfer deadline',url:deadlineSource.url}];}
     else add('check-transfer-deadline','Schedule your transcript delivery','Leave time for providers to issue official transcripts before your university start. DegreeSteps still needs to source this program’s exact transfer deadline.','school','portal.html?view=school&action=check-transfer-deadline','Plan transcript delivery');
+    }
     for (const course of courses.tasks) {const prior=object(items[course.id]);tasks.push({...course,dueOn:prior.dueOn||'',notes:prior.notes||''});}
     add('finish-coursework','Finish your remaining coursework',draft.plan?'Course completion follows your original course records and the current degree ledger. School acceptance remains a separate check.':'Track completion against your official degree audit and the school’s requirements.','finish','plan.html','Open coursework',Boolean(draft.plan),courses.complete?'done':'todo');
-    add('enroll-at-school','Complete school enrollment','Confirm admission, registration, tuition and aid, then enroll in the required school coursework.','finish','portal.html?view=school&action=enroll-at-school','Prepare enrollment questions');
+    if(!finishingCurrent)add('enroll-at-school','Complete school enrollment','Confirm admission, registration, tuition and aid, then enroll in the required school coursework.','finish','portal.html?view=school&action=enroll-at-school','Prepare enrollment questions');
     if (/residential|campus/i.test(text(draft.pathway?.format)+' '+text(draft.program?.format)) || list(draft.pathway?.modalities).includes('campus')) add('campus-arrangements','Check campus attendance and housing arrangements','Confirm attendance requirements, class locations, housing and transport with your school.','finish','portal.html?view=school&action=campus-arrangements','Prepare campus questions');
     const obligations=list(draft.program?.obligations).filter(item=>text(item?.title));
     for (const obligation of obligations.slice(0,20)) {

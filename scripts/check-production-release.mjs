@@ -6,7 +6,7 @@ import {pathToFileURL} from 'node:url';
 
 export const PRODUCTION_ORIGIN='https://degreesteps.com';
 const PUBLIC_ORIGIN='https://degreesteps.com',MAX_LOCAL_BYTES=16*1024*1024;
-const required=[['/robots.txt','robots.txt'],['/','index.html'],['/brand.css','brand.css'],['/data/credit-sources.json','data/credit-sources.json'],['/data/program-catalog.json','data/program-catalog.json'],['/courses.html','courses.html'],['/courses.js','courses.js'],['/data/course-catalog.json','data/course-catalog.json'],['/sitemap.xml','sitemap.xml']];
+const required=[['/robots.txt','robots.txt'],['/','index.html'],['/brand.css','brand.css'],['/data/credit-sources.json','data/credit-sources.json'],['/data/program-catalog.json','data/program-catalog.json'],['/courses.html','courses.html'],['/courses.js','courses.js'],['/data/course-catalog.json','data/course-catalog.json'],['/portal.html','portal.html'],['/portal.js','portal.js'],['/guide-engine.js','guide-engine.js'],['/sheet-state.js','sheet-state.js'],['/student-checklist.js','student-checklist.js'],['/journey-engine.js','journey-engine.js'],['/school.js','school.js'],['/sitemap.xml','sitemap.xml']];
 const optional=[
  '/blog/maine-90-credit-applied-bachelors-degrees/',
  '/blog/wgu-single-courses-prices-transfer-and-assessments/',
@@ -20,7 +20,11 @@ const optional=[
  '/guides/ace-nccrs-and-accreditation/',
  '/guides/compare-transfer-credit-sources/',
  '/blog/plan-subscriptions-before-paying/',
- '/blog/sophia-study-com-straighterline-which-first/'
+ '/blog/sophia-study-com-straighterline-which-first/',
+ '/guides/transfer-credit-after-enrolling/',
+ '/guides/earn-college-credit-in-high-school/',
+ '/guides/military-credit-jst-ccaf/',
+ '/blog/do-old-college-credits-still-count/'
 ];
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const fail=(code,details={})=>Object.assign(Error(code),{code,...details});
@@ -28,7 +32,7 @@ const pause=ms=>new Promise(accept=>setTimeout(accept,ms));
 
 function publicIndexing(route,headers,body){
  const directives=(headers.get('x-robots-tag')||'').toLowerCase();
- if(route==='/courses.html'){
+ if(['/courses.html','/portal.html'].includes(route)){
   const tokens=directives.split(',').map(value=>value.trim());
   if(!tokens.includes('noindex')||!tokens.includes('nofollow')||!(headers.get('cache-control')||'').toLowerCase().split(',').map(value=>value.trim()).includes('no-store'))throw fail('production-private-page-headers');
   return;

@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 1,
+  "kind": "research-review",
+  "publicationAllowed": false,
+  "findingId": "finding-5f6de6f2bfccaeb822aba66f2f271e648d990be68715df98ed8a73c0e13331ae",
+  "revision": 1,
+  "previousReviewHash": null,
+  "sourceRevisions": [
+    "6f740e4e99ed603a569888868b0aaca195794ef20ee3d2150bfb2c4c3bd6b511"
+  ],
+  "reviewer": "Codex independently verified student-scenario research",
+  "reviewedOn": "2026-11-27",
+  "verifiedOn": "2026-11-27",
+  "announcedOn": null,
+  "effectiveOn": null,
+  "followUpOn": "2026-12-04",
+  "triage": "BOTH",
+  "status": "ready-for-review",
+  "changeKind": "newly-discovered-existing-policy",
+  "summary": "Preserve original coursework and evaluate exact current requirements rather than inferring 60 applicable credits or a restart. Added source-specific business currency guidance, returning/upload-first context, and restored the existing source-bound TESU General Management/HR/Marketing age-review metadata to the runtime guard. Five targeted currency tests passed; no old record was removed or automatically approved.",
+  "evidence": [
+    {
+      "id": "tesu-degree-requirements",
+      "title": "TESU current degree requirements: BS/BSBA course currency",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/degree-policies/degree-requirements/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "The remaining area of study credits must be current",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "tesu-transfer",
+      "title": "TESU current transfer-credit policy: grades, required courses and applicability",
+      "url": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/methods-of-learning-and-earning-credit/transfer-credit/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "minimum grade of C for English composition courses and the area of study for all degrees",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "tesu-residency",
+      "title": "TESU current residency requirements",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/enrollment/residency-requirements",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "This requirement may be waived by paying the",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "tesu-catalog-currency",
+      "title": "TESU current catalog currency",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/degree-policies/catalog-currency",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "allow their enrollment to lapse for more than three years",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "tesu-returning",
+      "title": "TESU returning from time off and readmission",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/degree-policies/returning-from-taking-time-off-and-readmission",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "return after 36 months from their last TESU course",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "wgu-business-management-guideline",
+      "title": "WGU BS Business Management general transfer guideline, Catalog 05-2026",
+      "url": "https://partners.wgu.edu/general-transfer-guideline-bachelor-dynamic?collegeCode=BU&programId=240",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Course/certification must be completed within 5 years of the student's start date.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "wgu-business-partner-guide",
+      "title": "WGU business pathway partner guideline and IT-specific currency scope",
+      "url": "https://partners.wgu.edu/transfer-pathway-agreement?collegeCode=BU&instId=17&programId=240&uniqueId=BSMGT25073",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "All certifications and IT-specific courses must have been completed within the past five years",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "wgu-transfer-general",
+      "title": "WGU current transfer process and grade policy",
+      "url": "https://www.wgu.edu/admissions/transfers/transfer-to-wgu.html",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Must have been awarded a grade of C- or better.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "liberty-undergrad-catalog",
+      "title": "Liberty online undergraduate academic policies: lifetime acceptance with exceptions and residency",
+      "url": "https://catalog.liberty.edu/undergraduate/academic-support/academic-information-policies-online-program/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Liberty offers a lifetime acceptance of credit",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "liberty-undergrad-registrar",
+      "title": "Liberty undergraduate registrar: exact accounting/computing age limits and grades",
+      "url": "https://www.liberty.edu/registrar/transfer-policies/undergraduates/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "All upper-level ACCT courses",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "liberty-transfer-faq",
+      "title": "Liberty online transfer FAQ: accepted electives and degree application",
+      "url": "https://www.liberty.edu/online/transfer-credit-faqs/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "it did not match a specific class currently offered at Liberty",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "liberty-graduate-business-boundary",
+      "title": "Liberty School of Business transfer page: graduate/doctoral scope",
+      "url": "https://www.liberty.edu/registrar/transfer-policies/business/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Age Limit: 10 years for graduate programs unless otherwise stated",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umpi-transfer",
+      "title": "UMPI current transfer-credit policy: accreditation, grades and program applicability",
+      "url": "https://www.umpi.edu/offices/student-records/transfer-credits/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "courses must be successfully completed with a grade of C- or higher",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umpi-faq",
+      "title": "UMPI YourPace FAQ: degree and major residency",
+      "url": "https://www.umpi.edu/yourpace/faqs/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Students must complete at least 30 credit hours through UMPI.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umpi-business",
+      "title": "UMPI current YourPace Business Administration program",
+      "url": "https://www.umpi.edu/yourpace/academic_programs/business-administration/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "To earn your B.A. in Business Administration – Leadership, you need to complete 120 credit hours of coursework.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umass-age",
+      "title": "UMass Global application guide: undergraduate age policy and MyPath grade requirement",
+      "url": "https://www.umassglobal.edu/blog-news/umass-global-application-process-step-step-guide",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "For undergraduate students, there is no time limit to transfer credits.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umass-mypath-faq",
+      "title": "UMass Global admissions FAQ: MyPath B−, competency applicability and Fresh Start forfeiture",
+      "url": "https://www.umassglobal.edu/admissions/admissions-faqs",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Ignored coursework cannot be used to satisfy prerequisite or degree requirements",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umass-bba",
+      "title": "UMass Global current self-paced MyPath BBA: 120 credits, up to 90 transfer",
+      "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "transfer up to 90 credits from previous college coursework",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umass-residency-2025-2026",
+      "title": "UMass Global 2025–2026 competency-based degree catalog: bachelor residency",
+      "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based-degree-requirement/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Minimum of 30 equivalent credits completed in residency",
+      "capturePath": null,
+      "contentHash": null
+    }
+  ],
+  "receiptPaths": [
+    "content/research-intake/evidence/issue63/e461f719c0cb73df9064a3bdf8b967bc6548212a20a78b7eb622a3bee8d7f5e1.json",
+    "content/research-intake/evidence/issue63/ea30d07a358d178a877ea1e3a68e9b1ef71c81898093a12d46470c8099339c03.json",
+    "content/research-intake/evidence/issue63/38feb00d63cba255b098848db979c96290cec57f9ab943855eab6112871b37ee.json",
+    "content/research-intake/evidence/issue63/69a8b40ac81d5eadc7fcd0c33cf9dd4a29fac37769087dd6cbc51e34dc24681d.json",
+    "content/research-intake/evidence/issue63/f3edc4635ff901727fd4940281087d3000df869dee18b6a1fcfbcabf53539ce0.json",
+    "content/research-intake/evidence/issue63/e8a613e54c3712616da99bb018c76ece83d8016dc6ba5a952d53954896f52d5d.json",
+    "content/research-intake/evidence/issue63/95442171115a6eb02a79bc2b3dba1b748653d2f9192e8d522a484d7a5a1660bb.json",
+    "content/research-intake/evidence/issue63/531379e39382a9f803299a6efac14aa516261c2b74ed59079ea97bcc0e851a08.json",
+    "content/research-intake/evidence/issue63/fa3800fc6ca7ae34ce9320b0d6c3b71bcbb77b9a6fb0f3e4893b61547b0b0861.json",
+    "content/research-intake/evidence/issue63/b7bc09a6274bed11f3403d66f2e236c94443ee240fc90f88b61a3fe35d8c2236.json",
+    "content/research-intake/evidence/issue63/35054702c52afca68fecd7f8848a0e4bd51196ac0b9ad21c28ec69d59bdecbce.json",
+    "content/research-intake/evidence/issue63/cbff13fb184bc2bb511290b9b52ac5b4eef50e324934ba68e6e281a1792f7720.json",
+    "content/research-intake/evidence/issue63/27f7c59efd5ca244d81f1c37e6c86c1817de3b37c3a31329de5b2e4112af7364.json",
+    "content/research-intake/evidence/issue63/10634d5f696cf11e2653712608d7b28b8b9fcde2c5313c503828c26403848a41.json",
+    "content/research-intake/evidence/issue63/721fb75d3239c012e4bca2eb1a520cb2e24f6c030c42b1cabd0301e74a54c6e1.json",
+    "content/research-intake/evidence/issue63/15c6adca1118b0295a425ad5255b4b4dce8d1aa9d8cb09811126a9f725c54c06.json",
+    "content/research-intake/evidence/issue63/e6f5365428b3818f702c5f3747c12bf29bcee72710447f958e3ce16bdaaa6363.json",
+    "content/research-intake/evidence/issue63/b6b0eeb57d3e9c5d54eeb4e955b95f4db382e13fc200cfc7e63229d7a3617aa3.json"
+  ],
+  "facts": {
+    "scope": {
+      "institution": null,
+      "program": "Business degree comparisons using original older institutional coursework",
+      "level": "bachelor",
+      "modality": null,
+      "catalog": "Program-specific policies checked 2026-11-27; no universal expiry rule"
+    },
+    "costs": [],
+    "accreditation": [],
+    "transfer": {
+      "overallCap": null,
+      "aceCap": null,
+      "nccrsCap": null,
+      "combinedCplCap": null,
+      "externallyAssessedCap": null,
+      "residency": null,
+      "majorResidency": null,
+      "totalCredits": null
+    },
+    "aceRecommendations": [],
+    "equivalencies": [],
+    "assessments": []
+  },
+  "product": {
+    "status": "review-ready",
+    "paths": [
+      "dist/guide-engine.js",
+      "dist/sheet-state.js",
+      "dist/portal.js",
+      "dist/journey-engine.js",
+      "tesu-finance-currency.test.cjs"
+    ],
+    "notes": "Optional context and targeted guidance reuse existing architecture. Existing target identity, learning, grades, units, course dates, evaluations and costs are preserved. Full build/browser/CI release checks remain separate from this source review."
+  },
+  "release": null,
+  "editorial": {
+    "status": "review-ready",
+    "proposedUrls": [
+      "https://degreesteps.com/blog/do-old-college-credits-still-count/"
+    ],
+    "publishedUrls": [],
+    "existingUrls": [
+      "https://degreesteps.com/blog/do-old-college-credits-still-count/"
+    ],
+    "title": "Do my old college credits still count? Start with the courses you already earned",
+    "metaDescription": "Returning to college after years away? Learn how course age, degree changes, original records, and receiving-school rules affect which old credits can help you finish.",
+    "canonicalUrl": "https://degreesteps.com/blog/do-old-college-credits-still-count/",
+    "internalLinks": [
+      "https://degreesteps.com/import-courses.html",
+      "https://degreesteps.com/courses.html?tab=browse"
+    ],
+    "structuredData": true,
+    "sitemap": true,
+    "studentUsefulness": "Turn this learner situation into a clear next action while preserving academic and financial boundaries.",
+    "novelty": "Verified scenario-specific product flow and substantive new or refreshed resource, not a generic school list.",
+    "searchIntent": "Do my old college credits still count? Start with the courses you already earned",
+    "debtFreeRelevance": "Evaluate useful existing learning and applicable funding before paying for replacement or unapproved courses; no debt-free outcome is promised.",
+    "urgency": "Prevent unnecessary purchases, discarded old credit, mistaken high-school awards or unverified tuition assumptions.",
+    "overlapNotes": "Refresh the existing canonical guide/article and preserve its title and description.",
+    "evidenceIds": [
+      "tesu-degree-requirements",
+      "tesu-transfer",
+      "tesu-residency",
+      "tesu-catalog-currency",
+      "tesu-returning",
+      "wgu-business-management-guideline",
+      "wgu-business-partner-guide",
+      "wgu-transfer-general",
+      "liberty-undergrad-catalog",
+      "liberty-undergrad-registrar",
+      "liberty-transfer-faq",
+      "liberty-graduate-business-boundary",
+      "umpi-transfer",
+      "umpi-faq",
+      "umpi-business",
+      "umass-age",
+      "umass-mypath-faq",
+      "umass-bba",
+      "umass-residency-2025-2026"
+    ],
+    "metrics": null
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "kind": "umass-global-mypath-bba-ledger-research",
+  "version": 1,
+  "reviewedOn": "2026-11-27",
+  "scope": "Research-only primary-source observations and exact retrieval gaps for a student reporting MyPath Business enrollment in 2024. No individual student record or assigned catalog has been inspected.",
+  "academicModelPromotionAllowed": false,
+  "receivingAwardPromotionAllowed": false,
+  "observationKind": "native-web-connector-extraction",
+  "provenanceLimit": "Native JSON receipts preserve connector-returned observations. Their hashes bind retained JSON bytes, not origin HTTP response bytes, an independently fetched PDF, or an institutional approval.",
+  "cohort": {
+    "reportedEnrollmentYear": 2024,
+    "assignedCatalogYear": null,
+    "exactStartTerm": null,
+    "continuity": null,
+    "emphasis": null,
+    "warning": "Calendar-year 2024 enrollment alone does not identify whether the applicable catalog was 2023–24, 2024–25, or a later approved catalog."
+  },
+  "sources": [
+    {
+      "id": "official-2024-2025-full-catalog-located-not-retrieved",
+      "publisher": "University of Massachusetts Global",
+      "url": "https://catalog.umassglobal.edu/pdf/University%20of%20Massachusetts%20Global%202024-2025%20Catalog.pdf",
+      "scope": "2024–25 filename; contents not retrieved",
+      "discovery": "Actual external source link followed to official catalog host. External article is a discovery lead only, not policy evidence.",
+      "retrieval": "Connector click returned JavaScript verification interstitial; direct open returned403; indexed exact URL queries returned no content.",
+      "nativeReceiptPaths": [
+        "ledger-open-06-native.json",
+        "ledger-open-07-native.json",
+        "ledger-search-16-native.json"
+      ],
+      "usableCurriculumEvidence": false
+    },
+    {
+      "id": "official-legacy-cbe-bba-indexed",
+      "publisher": "University of Massachusetts Global",
+      "url": "https://catalog.umassglobal.edu/business-professional-studies/bba-competency-based/bba-competency-based.pdf",
+      "scope": "Indexed legacy catalog extraction; exact publication year not established by PDF extraction in this task. Must not be relabeled2024–25 or2026–27.",
+      "retrieval": "Indexed text excerpts retrieved; directPDFopen403.",
+      "nativeReceiptPaths": [
+        "ledger-search-05-native.json",
+        "ledger-search-09-native.json",
+        "ledger-search-10-native.json",
+        "ledger-search-11-native.json",
+        "ledger-open-01-native.json"
+      ],
+      "observations": {
+        "generalEducationHeaderCompetencies": 17,
+        "businessCoreHeaderCompetencies": 34,
+        "emphasisHeaderCompetencies": "7–9",
+        "emphases": [
+          "General Business",
+          "GIS and Data Analytics",
+          "Information Systems Management",
+          "Supply Chain Management and Logistics",
+          "Management and Organizational Leadership",
+          "Marketing"
+        ],
+        "residencyOnlyCompetencyCodes": [
+          "LBSC 320",
+          "LBSC 321"
+        ],
+        "quantityCaution": "Header counts and extracted course rows are not a complete reconciled credit ledger. The six general-education subdomains visible in the page2 excerpt list16 codes despite the17-competency header; no inferredmissingrow or degreecredit total was created."
+      }
+    },
+    {
+      "id": "official-current-live-bba-self-paced",
+      "publisher": "University of Massachusetts Global",
+      "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+      "scope": "Live marketing page opened2026-11-27; no explicit academic/catalog year for curriculum or tuition.",
+      "nativeReceiptPaths": [
+        "ledger-open-02-native.json",
+        "ledger-search-04-native.json"
+      ],
+      "observations": {
+        "totalCredits": 120,
+        "freeElectiveCredits": 33,
+        "previousCollegeTransferMaximumCredits": 90,
+        "exampleCourses": [
+          {
+            "code": "ACCC 201",
+            "title": "Principles of Accounting I",
+            "credits": 3
+          },
+          {
+            "code": "FINC 305",
+            "title": "Business Finance",
+            "credits": 3
+          },
+          {
+            "code": "MGTC 308",
+            "title": "Legal Environment of Business",
+            "credits": 3
+          },
+          {
+            "code": "ECNC 201",
+            "title": "Principles of Macroeconomics",
+            "credits": 3
+          },
+          {
+            "code": "MGTC 450",
+            "title": "Strategic Management",
+            "credits": 3
+          },
+          {
+            "code": "MGTC 406",
+            "title": "Global Environment of Business",
+            "credits": 3
+          }
+        ],
+        "tuitionMarketingQuote": {
+          "amountUSD": 3500,
+          "label": "6 month access",
+          "academicYear": null,
+          "currentStudentApplicability": null
+        },
+        "courseListExhaustive": false
+      },
+      "limits": "Cannot assign these new C-code examples to an enrolled2024 student's degree audit or infer U-to-C equivalencies from matching titles. Prior3400 quote remains a prior observation; this page supplies no effective tuitionyear."
+    },
+    {
+      "id": "official-foothill-legacy-cbe-transfer-guide",
+      "publisher": "University of Massachusetts Global",
+      "url": "https://www.umassglobal.edu/-/media/documents/transferguides/ca/foothill-college/foothill-college-competency-based-business-administration.pdf",
+      "academicYear": "2023–2024",
+      "revisedOn": "2023-11-21",
+      "nativeReceiptPaths": [
+        "ledger-open-03-native.json"
+      ],
+      "scope": "College-specific transfer guide, explicitly incomplete. Receiving course and equivalent competency columns are explicit, but not a current universal crosswalk.",
+      "observations": {
+        "minimumGrade": "B-",
+        "headers": {
+          "generalEducationCompetencies": 13,
+          "businessCoreCompetencies": 34,
+          "emphasisCompetencies": "9–12"
+        },
+        "emphasisReview": "Transfer coursework within emphasis areas requires academic dean review.",
+        "legacyReceivingColumns": [
+          {
+            "creditHourCourse": "ACCU 201",
+            "equivalentCompetencies": [
+              "ACCC 210",
+              "ACCC 215",
+              "ACCC 220",
+              "ACCC 225",
+              "ACCC 230"
+            ]
+          },
+          {
+            "creditHourCourse": "ACCU 202",
+            "equivalentCompetencies": [
+              "ACCC 235",
+              "ACCC 240"
+            ]
+          },
+          {
+            "creditHourCourse": "FINU 305",
+            "equivalentCompetencies": [
+              "FINC 305"
+            ]
+          },
+          {
+            "creditHourCourse": "ECNU 201",
+            "equivalentCompetencies": [
+              "ECNC 201"
+            ]
+          },
+          {
+            "creditHourCourse": "ECNU 202",
+            "equivalentCompetencies": [
+              "ECNC 202",
+              "ECNC 205"
+            ]
+          },
+          {
+            "creditHourCourse": "MGTU 310",
+            "equivalentCompetencies": [
+              "MGTC 305",
+              "MGTC 310",
+              "MGTC 315"
+            ]
+          },
+          {
+            "creditHourCourse": "MGTU 301",
+            "equivalentCompetencies": [
+              "MGTC 301"
+            ]
+          },
+          {
+            "creditHourCourse": "MKTU 301",
+            "equivalentCompetencies": [
+              "MKTC 301",
+              "MKTC 305"
+            ]
+          }
+        ]
+      },
+      "reuseLimits": "These are historical cells, not approvals for Sophia, a2024 student, new2026 C-codes, or courses after matriculation. No source-credit quantity, eligibility or applicability is inferred from the table."
+    },
+    {
+      "id": "official-norco-legacy-cbe-transfer-guide",
+      "publisher": "University of Massachusetts Global",
+      "url": "https://www.umassglobal.edu/sites/default/files/documents/transferguides/ca/norco-college/norco-college-competency-based-business-administration.pdf",
+      "academicYear": "2022–2023",
+      "revisedOn": "2023-06-16",
+      "nativeReceiptPaths": [
+        "ledger-open-03-native.json"
+      ],
+      "scope": "Independent older college-specific guide corroborates explicit legacy receiving columns; not2024 canonical."
+    },
+    {
+      "id": "official-cuyamaca-legacy-cbe-transfer-guide",
+      "publisher": "University of Massachusetts Global",
+      "url": "https://www.umassglobal.edu/-/media/documents/transferguides/ca/cuyamaca-college/cuyamacacollegecbe-business-administration.pdf",
+      "academicYear": "2023–2024",
+      "revisedOn": "2023-10-03",
+      "nativeReceiptPaths": [
+        "ledger-open-03-native.json"
+      ],
+      "scope": "Independent older college-specific guide corroborates explicit legacy receiving columns; not2024 canonical."
+    },
+    {
+      "id": "sophia-umassglobal-partner-current",
+      "publisher": "Sophia Learning",
+      "url": "https://umassglobal.sophia.org/",
+      "nativeReceiptPaths": [
+        "ledger-open-02-native.json"
+      ],
+      "scope": "Provider-published current partner table, U-code awards only.",
+      "observations": {
+        "advisingBeforeEnrollmentExplicit": true,
+        "exampleUCodeAwards": [
+          {
+            "source": "Financial Accounting",
+            "receivingCourse": "ACCU 201",
+            "credits": 3
+          },
+          {
+            "source": "Managerial Accounting",
+            "receivingCourse": "ACCU 202",
+            "credits": 3
+          },
+          {
+            "source": "Principles of Finance",
+            "receivingCourse": "FINU 305",
+            "credits": 3
+          },
+          {
+            "source": "Business Law",
+            "receivingCourse": "MGTU 310",
+            "credits": 3
+          }
+        ]
+      },
+      "limits": "No MyPath C-code award or universal credit-hour-to-competency conversion is stated. Combining the provider table with an older college guide does not establish a receiving university award."
+    }
+  ],
+  "localContextReadOnly": [
+    {
+      "path": "content/source-captures/0e31632ca4c62f76.txt",
+      "scope": "Existing reviewed2026–27 credit-hour BBA ledger:120total,60major including15GEoverlap,27standaloneGE,33freeelectives; U-codes. This was read as existing local context, not newly retrieved via nativeconnector."
+    },
+    {
+      "path": "content/source-captures/baf4fdde7c7ba931.txt",
+      "scope": "Existing reviewed2026–27 sharedpolicy capture explicitly refers MyPath students to2025–26 CBEpolicies. Parent owns policy applicability research."
+    }
+  ],
+  "blockersToReusableModel": [
+    "Student's actual assigned catalog year/start term, emphasis and any approved catalog change are unknown.",
+    "Exact2023–24/2024–25 canonical BBA CBE requirement ledger and competency credit equivalence totals are not retrieved in this task.",
+    "No current official universal receiving U-to-C crosswalk or exact Sophia-to-MyPath approvals retrieved. Legacy college-specific guides cannot be extended to another provider/cohort.",
+    "Legacy13GE/34core/9–12emphasis, indexed17GE/34core/7–9emphasis, and current120credit/33freeelective C-code marketing represent differing versions; they must remain separate.",
+    "Remaining individual requirements/completed competencies and post-matriculation approval need the student's degree audit and institution's applicable policy; course availability alone cannot answer completion."
+  ],
+  "nextEvidenceNeeded": [
+    "Assigned DegreeWorks catalog year and declared BBA emphasis, with completed/remaining requirements supplied by the student if they want an individualized plan.",
+    "Official2024–25 fullcatalog BBA CBE pages, plus2023–24 if their assignedstartterm requires it; retain underlying primary retrieval when accessible.",
+    "Official receiving equivalency or written course-specific approval naming the student's MyPath competency requirements, exact proposed outside source course and current eligibility."
+  ],
+  "noApplicationFilesChanged": true
+}

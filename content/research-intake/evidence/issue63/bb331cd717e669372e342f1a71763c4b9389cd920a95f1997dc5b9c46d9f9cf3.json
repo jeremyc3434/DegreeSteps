@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 1,
+  "id": "high-school-and-military-student-scenarios-2026-11-27",
+  "checkedOn": "2026-11-27",
+  "publicationAllowed": false,
+  "status": "source-reviewed-research-packet",
+  "scope": "Read-only research and current app audit for high-school head-start learners and military-affiliated business-degree students. No academic awards, fee models or application files changed.",
+  "retrieval": {
+    "kind": "native-web-tool-extractions",
+    "originHttpStatus": null,
+    "note": "Retained tool search/open/find results preserve observed extractions. Index crawl dates and tool retrieval are not origin HTTP response verification. Some primary .mil pages were blocked; those limits are explicit."
+  },
+  "highSchool": [
+    {
+      "id": "asu-hs-access",
+      "url": "https://ulc.asu.edu/help-center/faqs/",
+      "sourceKind": "university",
+      "quote": "There are no age restrictions for Universal Learner Courses.",
+      "facts": [
+        "College-level courses can be accessed before formal ASU admission, including by high-school learners.",
+        "Identity verification remains required. Learners under18 can begin with a birth certificate, but proctored exams require government-issued ID.",
+        "An admitted degree-seeking ASU student cannot use this open-access route; status exceptions are separately scoped.",
+        "High-school/NCAA treatment is the high school's decision. Do not promise simultaneous high-school credit merely from college credit."
+      ],
+      "receiptPaths": [
+        "02-high-school-primary.json"
+      ]
+    },
+    {
+      "id": "asu-homeschool-route",
+      "url": "https://ulc.asu.edu/newsroom/how-homeschool-students-can-do-dual-enrollment-online-with-asu-universal-learner-courses/",
+      "sourceKind": "university",
+      "publishedOn": "2026-11-13",
+      "quote": "with additional parental consent steps for learners under 18",
+      "facts": [
+        "Families may enroll directly; how courses count toward homeschool high-school requirements follows applicable state guidelines.",
+        "College credit is recorded on the ASU transcript after eligible completion and optional purchase; institutional college credit and high-school treatment remain separate.",
+        "The course has $25 enrollment plus optional $400 credit purchase, and the credit-purchase choice lasts one year after finishing.",
+        "The provider describes separate high-school registration and additional parent-consent steps; follow that route instead of assuming an adult registration flow."
+      ],
+      "receiptPaths": [
+        "02-high-school-primary.json",
+        "10-parent-consent-and-current-routes.json"
+      ]
+    },
+    {
+      "id": "sophia-hs-age",
+      "url": "https://www.sophia.org/blog/higher-education/can-you-take-college-classes-in-high-school/",
+      "sourceKind": "provider",
+      "publishedOn": "2025-07-17",
+      "quote": "Sophia allows students as young as 13 to take college courses for future credits.",
+      "facts": [
+        "This is the provider's stated access age, not a destination college's admission rule.",
+        "Sophia ACE-recommended learning is not itself institutional dual enrollment or an automatic high-school graduation credit.",
+        "Its article explicitly distinguishes state/institution age and grade requirements for dual enrollment."
+      ],
+      "uncertainties": [
+        "The current general Terms of Use extraction did not establish a separate minor-consent policy. Do not invent a Sophia parental-consent requirement from a forum post."
+      ],
+      "receiptPaths": [
+        "02-high-school-primary.json"
+      ]
+    },
+    {
+      "id": "florida-dual-enrollment",
+      "url": "https://www.fldoe.org/schools/higher-ed/fl-college-system/dual-enroll-transfer/",
+      "sourceKind": "government",
+      "quote": "Not be scheduled to graduate from high school prior to the completion of the dual enrollment course.",
+      "facts": [
+        "Florida's program includes eligible public/private grade6–12 and home-education learners.",
+        "College readiness and local articulation requirements apply; the public guidance lists3.0 college-credit and2.0 career-credit GPA thresholds.",
+        "Home-education rules have specific statutory exceptions: do not apply a blanket high-school GPA requirement to a homeschool student."
+      ],
+      "receiptPaths": [
+        "08-eligibility-details.json"
+      ]
+    },
+    {
+      "id": "florida-funded-dual-credit",
+      "url": "https://www.flsenate.gov/Laws/Statutes/2026/1007.271",
+      "sourceKind": "government",
+      "quote": "Students who participate in dual enrollment programs are exempt from the payment of registration, tuition, and laboratory fees.",
+      "facts": [
+        "The 2026 Florida statute provides a concrete tuition/registration/lab-fee exemption for eligible dual enrollment and separately addresses free instructional materials.",
+        "This is a state program with eligibility and articulation conditions, not a claim that every Florida teen's self-purchased ASU/Sophia course receives that funding.",
+        "For home education, documented home-education enrollment and a parent/student articulation agreement matter. Transportation may remain a student responsibility."
+      ],
+      "receiptPaths": [
+        "08-eligibility-details.json",
+        "09-wgu-and-florida-detail.json"
+      ]
+    },
+    {
+      "id": "asu-first-year-status",
+      "url": "https://admission.asu.edu/apply/transfer",
+      "sourceKind": "university",
+      "quote": "If you are completing college courses while in high school, you are considered a first-year student and not a transfer student.",
+      "facts": [
+        "ASU defines transfer applicants by12or more transferable credits completed after high school.",
+        "Credit accumulation while in high school and first-year application status can coexist at ASU; do not promise the same rule at every school or guarantee scholarships.",
+        "The app should preserve high-school graduation timing and the target institution's applicant-classification rule, especially for campus-experience students."
+      ],
+      "receiptPaths": [
+        "03-dual-credit-tuition-discovery.json",
+        "10-parent-consent-and-current-routes.json"
+      ]
+    },
+    {
+      "id": "umpi-enrollment-age",
+      "url": "https://www.umpi.edu/yourpace/",
+      "sourceKind": "university",
+      "quote": "students who must be 20 years old at the time of application",
+      "facts": [
+        "YourPace admission age is a separate constraint from taking potentially useful outside courses earlier.",
+        "A high-school user should not receive an unqualified enroll-now YourPace action. A future-start plan needs the timing constraint."
+      ],
+      "evidenceLevel": "official indexed search excerpt; not a fresh open extraction in this packet",
+      "receiptPaths": [
+        "07-program-eligibility-discovery.json"
+      ]
+    }
+  ],
+  "military": [
+    {
+      "id": "military-original-records",
+      "url": "https://www.va.gov/resources/how-do-i-get-college-credits-for-my-military-service/",
+      "sourceKind": "government",
+      "quote": "Each school then decides how many credits they’ll accept.",
+      "facts": [
+        "Army, Navy, Marines and Coast Guard follow the Joint Services Transcript route; Air Force and Space Force follow the Parchment route linked by VA.",
+        "ACE recommendations, original institutional credit and school-awarded degree placements must remain distinct.",
+        "Do not import every JST recommendation as earned degree credit or count overlapping civilian/military records twice."
+      ],
+      "receiptPaths": [
+        "11-va-transcript-route.json"
+      ]
+    },
+    {
+      "id": "liberty-military-undergrad",
+      "url": "https://www.liberty.edu/military/benefits/online-students/tuition-discount/",
+      "sourceKind": "university",
+      "quote": "the tuition rate is $250 per credit hour",
+      "catalogScope": "2026–2027 Academic Year; undergraduate online certificates/associate/bachelor degrees",
+      "facts": [
+        "The page lists active duty, Reserve/National Guard, eligible veterans/retirees, qualifying spouses and current Department of War employees.",
+        "Verification and institution-specific eligibility definitions apply. It excludes residential programs and requires qualifying veteran discharge status.",
+        "Military-child pricing is separately15% off regular full/part-time tuition for eligible new online students; it is not the spouse's $250 rate.",
+        "The page says benefits are not retroactive and the military-child discount cannot be combined with other discounts. Do not assume stacking."
+      ],
+      "rate": {
+        "amount": 250,
+        "currency": "USD",
+        "unit": "semester credit hour",
+        "scope": "eligible online undergraduate programs only",
+        "includes": [],
+        "excludes": [
+          "fees",
+          "books",
+          "outside course costs"
+        ],
+        "eligibilityConfirmedForStudent": false
+      },
+      "receiptPaths": [
+        "04-military-tuition-primary.json"
+      ]
+    },
+    {
+      "id": "tesu-military-undergrad",
+      "url": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/military-veteran/index.php",
+      "sourceKind": "university",
+      "quote": "Military Tuition: $250 per credit",
+      "catalogScope": "Rates approved2026-06-12; effective August2026 term",
+      "facts": [
+        "Non-nursing undergraduate tuition applies to active duty, Air/Army National Guard, Reserve service members, their spouses/dependents, and DoD civil-service employees.",
+        "The page separates non-military/veteran tuition; veteran status alone does not establish this contracted military rate.",
+        "The military Edison Accelerate fee is$3468 if fewer than24 qualifying TESU bachelor's credits are earned (12for associate). Failure to graduate within15months can require another fee.",
+        "Books/materials are extra; graduation audit fee is$98; application$50 is currently waived for military/veteran learners. A per-credit discount alone is not a complete degree cost."
+      ],
+      "rate": {
+        "amount": 250,
+        "currency": "USD",
+        "unit": "credit",
+        "scope": "eligible non-nursing undergraduate military tuition",
+        "includes": [],
+        "excludes": [
+          "Edison Accelerate when applicable",
+          "graduation audit",
+          "books/materials",
+          "outside courses"
+        ],
+        "eligibilityConfirmedForStudent": false
+      },
+      "receiptPaths": [
+        "04-military-tuition-primary.json"
+      ]
+    },
+    {
+      "id": "umass-military-modality-scope",
+      "url": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+      "sourceKind": "university",
+      "quote": "Active-Duty Military — Undergraduate Degree",
+      "catalogScope": "Public page explicitly labeled2025–2026; current2026–2027 rate not established by this page",
+      "facts": [
+        "The course-based active-duty/spouse bachelor's table lists$250per credit.",
+        "A separate MyPath active-duty undergraduate row lists$250per credit up to12credits per24-week billing period; this is not the same unit structure as the course-based spouse rate.",
+        "Do not promise the course-based spouse discount for MyPath, infer all veteran eligibility, or convert this historical table into verified current-year MyPath pricing.",
+        "Current catalog and the student's approved tuition quote must resolve applicable year and modality before automatic price selection."
+      ],
+      "currentRate": null,
+      "historicalRates": [
+        {
+          "amount": 250,
+          "currency": "USD",
+          "unit": "course-based credit",
+          "group": "active duty and spouses"
+        },
+        {
+          "amount": 250,
+          "currency": "USD",
+          "unit": "per MyPath credit up to12per billing period",
+          "group": "active-duty undergraduate only"
+        }
+      ],
+      "receiptPaths": [
+        "04-military-tuition-primary.json",
+        "08-eligibility-details.json"
+      ]
+    },
+    {
+      "id": "wgu-military-part-time",
+      "url": "https://www.wgu.edu/student-experience/military/part-time-options.html",
+      "sourceKind": "university",
+      "quote": "Part-time is only available to service members utilizing Tuition Assistance.",
+      "facts": [
+        "The part-time undergraduate option is6–11competency units; normal student and veteran GI-Bill enrollment are not automatically eligible for this option.",
+        "Tuition is prorated by attempted competency units, while resource/program fees remain full; federal financial aid is not available for this part-time option.",
+        "This is an enrollment/benefit-specific pricing mode, not a universal WGU military$250rate. The extracted pricing table loses program labels, so no business-specific rate is promoted.",
+        "Full-time acceleration may remain a better fit than choosing part-time solely because a military pricing mode exists."
+      ],
+      "currentBusinessRate": null,
+      "receiptPaths": [
+        "08-eligibility-details.json",
+        "09-wgu-and-florida-detail.json",
+        "10-parent-consent-and-current-routes.json"
+      ]
+    },
+    {
+      "id": "clep-dantes-funding",
+      "url": "https://clep.collegeboard.org/clep-military-benefits",
+      "sourceKind": "provider",
+      "quote": "DANTES will only provide funding once for each CLEP exam subject.",
+      "facts": [
+        "Eligibility depends on military/affiliation category; active/Reserve/Guard and limited spouse/civil-service cases are listed.",
+        "First-attempt subject funding, exam administration arrangements and remote proctoring must stay separate from credit acceptance.",
+        "Veterans may use qualifying GI Bill exam benefits; veteran status does not itself mean DANTES funds the attempt.",
+        "Retakes after a funded attempt are self-paid and have a waiting period. No blanket free-exams promise for dependents."
+      ],
+      "receiptPaths": [
+        "06-exam-transcript-primary.json"
+      ]
+    },
+    {
+      "id": "clep-remote-proctor-fee",
+      "url": "https://clep.collegeboard.org/help-center/if-i-am-active-military-service-member-do-i-have-pay-exam-fee-take-clep-exam",
+      "sourceKind": "provider",
+      "quote": "pays your exam fee and remote proctoring fee for the first exam attempt per test title.",
+      "facts": [
+        "The official College Board FAQ confirms fee and remote-proctor funding for the eligible first attempt.",
+        "Eligibility is indicated and checked during exam registration; proctored delivery remains proctored even when the charge is funded."
+      ],
+      "receiptPaths": [
+        "06-exam-transcript-primary.json"
+      ]
+    },
+    {
+      "id": "dsst-dantes-eligibility",
+      "url": "https://www.prometric.com/exams/dantes/",
+      "sourceKind": "provider",
+      "quote": "Personnel not funded by DANTES include the following:",
+      "facts": [
+        "Prometric's eligibility page differentiates actively serving members with required ID from retirees, discharged veterans and many spouse/dependent/civilian categories.",
+        "Coast Guard spouse and other specific exceptions must be evaluated separately; do not apply one blanket family rule across CLEP/DSST.",
+        "Remote DSST uses ProProctor with equipment requirements; Principles of Public Speaking is not available online."
+      ],
+      "receiptPaths": [
+        "06-exam-transcript-primary.json",
+        "08-eligibility-details.json"
+      ]
+    },
+    {
+      "id": "au-abc-discovery",
+      "url": "https://www.airuniversity.af.edu/CCAF/Article-Display/Article/1819887/air-university-associate-to-baccalaureate-cooperative-au-abc/",
+      "sourceKind": "government",
+      "quote": "Guarantees CCAF AAS graduates need no more than 60 semester hours",
+      "facts": [
+        "AU-ABC degree-specific articulation is a useful expansion source for qualifying CCAF graduates.",
+        "Category/program/prerequisite requirements must be checked; do not generalize to every CCAF record, every program at the partner school or all military learners."
+      ],
+      "evidenceLevel": "official indexed discovery only; full page and exact business-program map not reviewed here",
+      "receiptPaths": [
+        "06-exam-transcript-primary.json"
+      ]
+    }
+  ],
+  "appAudit": {
+    "baseline": "56b9ddabd64deb0ad1cebec6ce73b341a71818ac",
+    "existingSupport": [
+      {
+        "path": "dist/guide-engine.js:45",
+        "finding": "Profile includes military status/branch/records/occupation, prior-credit estimate, state, budget and study preferences."
+      },
+      {
+        "path": "dist/journey-engine.js:101",
+        "finding": "Actual service status adds the service-record step; dependents are not assumed to hold a service transcript."
+      },
+      {
+        "path": "dist/portal.js:311",
+        "finding": "Military onboarding distinguishes active, veteran, Reserve/Guard and family member, with appropriate records choices."
+      },
+      {
+        "path": "dist/portal.js:972",
+        "finding": "Existing record task selects CCAF for known Air/Space affiliation and JST otherwise; source links and inventory action exist."
+      },
+      {
+        "path": "dist/cost-assumptions.js:16",
+        "finding": "A personal per-credit tuition quote can already represent a military discount."
+      },
+      {
+        "path": "dist/savings-engine.js:186",
+        "finding": "Published estimates use sticker tuition, acknowledge discounts and explicitly describe TESU standard out-of-state assumptions."
+      },
+      {
+        "path": "content/public-content.json:641",
+        "finding": "Existing military-credit-jst-ccaf guide explains record collection, individual evaluation, overlap and benefit/curriculum separation."
+      }
+    ],
+    "verifiedGaps": [
+      {
+        "id": "hs-profile",
+        "paths": [
+          "dist/guide-engine.js",
+          "dist/journey-engine.js",
+          "dist/portal.js"
+        ],
+        "finding": "No high-school learner stage, age-band, graduation timing or dual-enrollment intent was found; HS-specific degree eligibility and funding cannot currently personalize recommendations."
+      },
+      {
+        "id": "military-family-scope",
+        "paths": [
+          "dist/guide-engine.js:60",
+          "dist/portal.js:313"
+        ],
+        "finding": "One dependent/family category combines spouses and children even though verified institutional tuition rules differ."
+      },
+      {
+        "id": "benefit-linked-costing",
+        "paths": [
+          "dist/savings-engine.js:186",
+          "dist/cost-assumptions.js:16"
+        ],
+        "finding": "Manual personal tuition quote exists, but no eligibility-scoped verified military price selection/total-fee comparison was found in these modules."
+      },
+      {
+        "id": "hs-content",
+        "paths": [
+          "content/public-content.json"
+        ],
+        "finding": "No dedicated HS dual-credit/head-start guide found. The generic before-enrollment article does not supply the state/provider/applicant-status distinctions."
+      },
+      {
+        "id": "closed-dantes-reference",
+        "paths": [
+          "content/public-content.json:military-credit-jst-ccaf"
+        ],
+        "finding": "Existing DANTES Zendesk JST source now redirects to a closed help center. Current accessible VA transcript guidance can replace that reference."
+      },
+      {
+        "id": "age-terms-surface",
+        "paths": [
+          "dist/terms/index.html",
+          "dist/privacy/index.html"
+        ],
+        "finding": "No explicit age/parent/children language found in the rendered terms/privacy text. A HS account flow needs a deliberate product/policy review rather than assuming the existing adult flow already covers it."
+      }
+    ],
+    "proposedAcceptanceCases": [
+      {
+        "case": "Florida HS business-bound learner",
+        "expected": "Offer eligible local dual enrollment before self-funded provider purchases; keep college/HS applicability and destination business requirement separate; state and school agreement determine funding."
+      },
+      {
+        "case": "Homeschool learner using ASU",
+        "expected": "Show provider HS registration/consent and ID steps, transcript-purchase choice, state-defined HS treatment, and receiving school applicability. Do not promise universal dual credit."
+      },
+      {
+        "case": "HS student interested in UMPI",
+        "expected": "Can plan appropriate outside courses; no enroll-now YourPace recommendation before verified minimum application age."
+      },
+      {
+        "case": "Military active-duty business student",
+        "expected": "Collect original JST/CCAF and evaluate usable placements before buying duplicates; compare eligible military tuition including institution fees and funding rules."
+      },
+      {
+        "case": "Veteran vs spouse vs child",
+        "expected": "Do not assign the same discount or DANTES funding to all. Retain separate affiliation and actual verified quote/benefit eligibility."
+      },
+      {
+        "case": "Military WGU part-time",
+        "expected": "TA-dependent part-time option is separate from normal flat-rate full-time acceleration, with full fees and funding restrictions disclosed."
+      }
+    ]
+  },
+  "limitations": [
+    "Read-only research/product audit only; no curricula, eligibility classifiers, price models, content pages or student records were changed.",
+    "Individual tuition and benefits eligibility remains subject to the relevant institution/agency decision; no credential, benefit or credit award is guaranteed.",
+    "UMass Global public pricing in this packet is explicitly older-year; do not assert a current MyPath discount from it.",
+    "WGU extracted table did not retain program labels; no numeric business military price is asserted.",
+    "AU-ABC exact business program maps remain discovery work.",
+    "DANTES .mil and Air University direct pages were blocked; JST FAQ returned502; native failures are retained.",
+    "Source factual summaries are scoped; publication still requires the existing verification/release workflow."
+  ]
+}

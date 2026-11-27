@@ -10,7 +10,7 @@ const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www
 const index='<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n<sitemap><loc>https://degreesteps.com/sitemap-site.xml</loc></sitemap>\n<sitemap><loc>https://degreesteps.com/sitemap-insights.xml</loc></sitemap>\n</sitemapindex>\n';
 async function fixture(t){
  const root=await mkdtemp(join(tmpdir(),'staging-release-'));t.after(()=>rm(root,{recursive:true,force:true}));
- const bodies=new Map([['/robots.txt','User-agent: *\nDisallow: /\n'],['/','<h1>Built release</h1>'],['/brand.css','body { color: black; }'],['/data/credit-sources.json','{"sources":[]}'],['/data/program-catalog.json','{"programs":[]}'],['/courses.html','<h1>Find original courses</h1>'],['/courses.js','document.title="Original course browser";'],['/data/course-catalog.json','{"courses":[]}'],['/sitemap.xml',sitemap]]);
+ const bodies=new Map([['/robots.txt','User-agent: *\nDisallow: /\n'],['/','<h1>Built release</h1>'],['/brand.css','body { color: black; }'],['/data/credit-sources.json','{"sources":[]}'],['/data/program-catalog.json','{"programs":[]}'],['/courses.html','<h1>Find original courses</h1>'],['/courses.js','document.title="Original course browser";'],['/data/course-catalog.json','{"courses":[]}'],['/portal.html','<h1>Student portal</h1>'],['/portal.js','document.title="Student portal";'],['/guide-engine.js','const guideVersion=1;'],['/sheet-state.js','const sheetVersion=1;'],['/student-checklist.js','const checklistVersion=1;'],['/journey-engine.js','const journeyVersion=1;'],['/school.js','const schoolVersion=1;'],['/sitemap.xml',sitemap]]);
  for(const[route,body]of bodies){if(route==='/robots.txt')continue;const file=join(root,route==='/'?'index.html':route);await mkdir(join(file,'..'),{recursive:true});await writeFile(file,body);}
  const calls=[],logs=[];
  const fetchImpl=async(url,options)=>{
@@ -23,9 +23,9 @@ async function fixture(t){
 
 test('staging proof compares built bytes with fixed anonymous GETs and includes present editorial assets',async t=>{
  const f=await fixture(t);
- for(const [route,body]of [['/blog/asu-universal-learner-vs-sophia/','<h1>ASU Universal Learner versus Sophia</h1>'],['/credit-sources/google-certificates/','<h1>A reviewed certificate source</h1>'],['/credit-sources/christian-leaders/','<h1>CLI academic credit requires an eligible transcript route</h1>'],['/credit-sources/asu-ulc/','<h1>ASU credit purchase and eligibility</h1>']]){await mkdir(join(f.root,route),{recursive:true});await writeFile(join(f.root,route,'index.html'),body);f.bodies.set(route,body);}
- const results=await checkStagingRelease(f.options);assert.equal(results.length,13);assert.deepEqual(f.calls,[...f.bodies.keys()]);
- assert(results.every(item=>item.sha256===item.expectedSha256&&item.status===200));assert.equal(f.logs.length,13);
+ for(const [route,body]of [['/blog/asu-universal-learner-vs-sophia/','<h1>ASU Universal Learner versus Sophia</h1>'],['/credit-sources/google-certificates/','<h1>A reviewed certificate source</h1>'],['/credit-sources/christian-leaders/','<h1>CLI academic credit requires an eligible transcript route</h1>'],['/credit-sources/asu-ulc/','<h1>ASU credit purchase and eligibility</h1>'],['/guides/transfer-credit-after-enrolling/','<h1>Outside courses after enrollment</h1>'],['/guides/earn-college-credit-in-high-school/','<h1>College credit in high school</h1>'],['/guides/military-credit-jst-ccaf/','<h1>Military credit and benefits</h1>'],['/blog/do-old-college-credits-still-count/','<h1>Older college credits</h1>']]){await mkdir(join(f.root,route),{recursive:true});await writeFile(join(f.root,route,'index.html'),body);f.bodies.set(route,body);}
+ const results=await checkStagingRelease(f.options);assert.equal(results.length,f.bodies.size);assert.deepEqual(f.calls,[...f.bodies.keys()]);
+ assert(results.every(item=>item.sha256===item.expectedSha256&&item.status===200));assert.equal(f.logs.length,f.bodies.size);
  assert(!JSON.stringify(f.logs).includes('<h1>'));assert(!f.calls.some(path=>path.startsWith('/api/')));
 });
 test('a dynamic sitemap index verifies the fixed static shard without following returned URLs',async t=>{
@@ -45,7 +45,7 @@ test('a stale release retries within the bound and reports only route, status an
 test('a newly propagated release succeeds on a bounded retry',async t=>{
  const f=await fixture(t),fetchImpl=f.options.fetchImpl;let rootCalls=0;
  const result=await checkStagingRelease({...f.options,attempts:2,fetchImpl:async(url,options)=>{if(new URL(url).pathname==='/'&&rootCalls++===0)return new Response('stale',{headers});return fetchImpl(url,options);}});
- assert.equal(rootCalls,2);assert.equal(result.length,9);
+ assert.equal(rootCalls,2);assert.equal(result.length,f.bodies.size);
 });
 test('response bounds grow with a legitimate multi-megabyte built catalog',async t=>{
  const f=await fixture(t),body=JSON.stringify({programs:[],notes:'a'.repeat(4*1024*1024)});
@@ -73,5 +73,5 @@ test('the deadline aborts a stalled request and provider diagnostics are not log
  await assert.rejects(checkStagingRelease({...f.options,fetchImpl:async()=>{throw Error('secret provider diagnostic');}}),{code:'request-failed'});assert(!JSON.stringify(f.logs).includes('secret provider'));
 });
 test('a missing mandatory build artifact fails before any network request',async t=>{
- for(const route of ['/data/program-catalog.json','/courses.html','/courses.js','/data/course-catalog.json']){const f=await fixture(t);await rm(join(f.root,route));await assert.rejects(checkStagingRelease(f.options),{code:'built-asset-unavailable',route});assert.deepEqual(f.calls,[]);}
+ for(const route of ['/data/program-catalog.json','/courses.html','/courses.js','/data/course-catalog.json','/portal.html','/portal.js','/guide-engine.js','/sheet-state.js','/student-checklist.js','/journey-engine.js','/school.js']){const f=await fixture(t);await rm(join(f.root,route));await assert.rejects(checkStagingRelease(f.options),{code:'built-asset-unavailable',route});assert.deepEqual(f.calls,[]);}
 });

@@ -369,7 +369,7 @@
     return Boolean(probe.optimization?.budgetExhausted&&Planner.generate(program,input).validation.academicCountsValid);
   }
   function applyExistingCreditCurrencyReview(program, learning, match) {
-    const scope=({'curriculum-tesu-bsba-accounting':{area:'Accounting',group:'accounting-area',kind:'tesu-accounting-course-currency',prefix:'tesu-accounting-currency-'},'curriculum-tesu-bsba-finance':{area:'Finance',group:'finance-area',kind:'tesu-finance-course-currency',prefix:'tesu-finance-currency-'}})[program?.id];
+    const scope=({'curriculum-tesu-bsba-accounting':{area:'Accounting',group:'accounting-area',kind:'tesu-accounting-course-currency',prefix:'tesu-accounting-currency-'},'curriculum-tesu-bsba-finance':{area:'Finance',group:'finance-area',kind:'tesu-finance-course-currency',prefix:'tesu-finance-currency-'},'curriculum-tesu-bs-general-management':{area:'General Management',group:'business-area',kind:'tesu-business-course-currency',prefix:'tesu-general-management-currency-'},'curriculum-tesu-bsba-human-resources-organizational-management':{area:'Human Resources/Organizational Management',group:'business-area',kind:'tesu-business-course-currency',prefix:'tesu-human-resources-currency-'},'curriculum-tesu-bsba-marketing':{area:'Marketing',group:'business-area',kind:'tesu-business-course-currency',prefix:'tesu-marketing-currency-'}})[program?.id];
     if (!scope || program.school !== 'Thomas Edison State University') return false;
     const requirements = new Map(list(program.requirements).map(row=>[row.id,row])), originals = new Map(list(learning).map(item=>[item.id,item]));
     const pending = list(match.completed).filter(placement=>{
@@ -463,7 +463,7 @@
     input.plannedLearning = collectionMatch.placements;
     const existingCreditReviewPending = program ? applyExistingCreditCurrencyReview(program,state.learning,match) : false;
     const plan = program ? Planner.generate(program, input) : null;
-    if (plan && existingCreditReviewPending) {plan.provisional=true;plan.existingCreditReviewPending=true;plan.validation.warnings.push('Existing TESU '+(program.id==='curriculum-tesu-bsba-finance'?'Finance':'Accounting')+' coursework still needs its application-date course-age review.');}
+    if (plan && existingCreditReviewPending) {plan.provisional=true;plan.existingCreditReviewPending=true;plan.validation.warnings.push('Existing TESU '+(program.id==='curriculum-tesu-bsba-finance'?'Finance':program.id==='curriculum-tesu-bsba-accounting'?'Accounting':'business')+' coursework still needs its application-date course-age review.');}
     const guidance = Guide.buildGuidance(state.profile, pathway, state.learning, asCatalog(catalog), {program, plan});
     if (targetIssues.length) guidance.nextActions.unshift('Review this exact target against your career, degree level and study format before relying on a course plan.');
     else if (targetUnknowns.length) guidance.nextActions.unshift('Confirm the missing program information before relying on its course plan.');

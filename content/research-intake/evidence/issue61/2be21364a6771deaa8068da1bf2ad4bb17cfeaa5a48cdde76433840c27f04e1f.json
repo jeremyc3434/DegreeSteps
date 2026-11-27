@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 1,
+  "kind": "actual-production-release-verification",
+  "publicationAllowed": false,
+  "verifiedOn": "2026-11-27",
+  "environment": "production",
+  "commitSha": "9b29fd79e528d48419e64d8906ac9c377407fcf3",
+  "pullRequestUrl": "https://github.com/jeremyc3434/DegreeSteps/pull/62",
+  "workflowRunUrl": "https://github.com/jeremyc3434/DegreeSteps/actions/runs/46075109831",
+  "workflowJobId": 140760907648,
+  "conclusion": "success",
+  "approval": "The repository owner requested an end-to-end rehearsal through the approved publication process. Codex manually dispatched the existing workflow after exact-head core/browser checks and staging verification. Existing manual target, migration assertion and production configuration gates were retained; no future automatic production deployment was enabled.",
+  "validation": {
+    "coreTestFiles": 411,
+    "failedCoreFiles": 0,
+    "browserJourneys": 30,
+    "browserPageErrors": 0,
+    "browserPrivateWrites": 0,
+    "stagingChecks": 18,
+    "productionChecks": 22,
+    "pendingMigrations": 0
+  },
+  "http": {
+    "origin": "https://degreesteps.com",
+    "methods": [
+      "GET"
+    ],
+    "credentials": "omit",
+    "redirects": "error",
+    "userAgent": "DegreeSteps-Release-Verification/1.0 (+https://degreesteps.com)",
+    "checks": [
+      {
+        "route": "/robots.txt",
+        "status": 200,
+        "sha256": "0f7786ac595a3ba864c18487ac598ac841c062a1610403362bbc9e319e1508bc",
+        "expectedSha256": "0f7786ac595a3ba864c18487ac598ac841c062a1610403362bbc9e319e1508bc",
+        "result": "verified"
+      },
+      {
+        "route": "/",
+        "status": 200,
+        "sha256": "69bc02bf2f55244308ba092a44e6bc6c62b29181b4b17c2c57fd0c7b13309fad",
+        "expectedSha256": "69bc02bf2f55244308ba092a44e6bc6c62b29181b4b17c2c57fd0c7b13309fad",
+        "result": "verified"
+      },
+      {
+        "route": "/brand.css",
+        "status": 200,
+        "sha256": "53fea545076dc27b2bb30f8bf6b167659d5336f69b257216de7f458d14e02e5a",
+        "expectedSha256": "53fea545076dc27b2bb30f8bf6b167659d5336f69b257216de7f458d14e02e5a",
+        "result": "verified"
+      },
+      {
+        "route": "/data/credit-sources.json",
+        "status": 200,
+        "sha256": "6459509a9e3131365d22d8d23e2bd55fa9912c216ecd73b902b35fb0136f1db4",
+        "expectedSha256": "6459509a9e3131365d22d8d23e2bd55fa9912c216ecd73b902b35fb0136f1db4",
+        "result": "verified"
+      },
+      {
+        "route": "/data/program-catalog.json",
+        "status": 200,
+        "sha256": "33cbb4c54ebc223ec970a871ca0e5e2304c72c688c9413a5c140ba81447a048c",
+        "expectedSha256": "33cbb4c54ebc223ec970a871ca0e5e2304c72c688c9413a5c140ba81447a048c",
+        "result": "verified"
+      },
+      {
+        "route": "/courses.html",
+        "status": 200,
+        "sha256": "bd020ebfde1af3b7311c788487a9e9ffd846c81d8d9ae78f04c905d4ac342b4f",
+        "expectedSha256": "bd020ebfde1af3b7311c788487a9e9ffd846c81d8d9ae78f04c905d4ac342b4f",
+        "result": "verified"
+      },
+      {
+        "route": "/courses.js",
+        "status": 200,
+        "sha256": "f350f56b8a980a8755c92216af446127567ed03c757d392a5131a8a50a8e446b",
+        "expectedSha256": "f350f56b8a980a8755c92216af446127567ed03c757d392a5131a8a50a8e446b",
+        "result": "verified"
+      },
+      {
+        "route": "/data/course-catalog.json",
+        "status": 200,
+        "sha256": "86bdc3fccc61e700dfda59e38f893e612edca7e163dc473b1a6b252723e9c7e2",
+        "expectedSha256": "86bdc3fccc61e700dfda59e38f893e612edca7e163dc473b1a6b252723e9c7e2",
+        "result": "verified"
+      },
+      {
+        "route": "/sitemap.xml",
+        "status": 200,
+        "sha256": "cb26d2ad2d90aa9bb3e55fa0e3d02b0400369fcaccadd959be39366dadb8ed5e",
+        "expectedSha256": "cb26d2ad2d90aa9bb3e55fa0e3d02b0400369fcaccadd959be39366dadb8ed5e",
+        "result": "verified"
+      },
+      {
+        "route": "/blog/maine-90-credit-applied-bachelors-degrees/",
+        "status": 200,
+        "sha256": "7a41e311bf476e7f82faf74b84da4b02ad4d9a2295ee813ef754290e9b59bf3e",
+        "expectedSha256": "7a41e311bf476e7f82faf74b84da4b02ad4d9a2295ee813ef754290e9b59bf3e",
+        "result": "verified"
+      },
+      {
+        "route": "/blog/wgu-single-courses-prices-transfer-and-assessments/",
+        "status": 200,
+        "sha256": "e090e2247967c23aff651bdaeca738632cfda62745e904856d906d14dc2867e2",
+        "expectedSha256": "e090e2247967c23aff651bdaeca738632cfda62745e904856d906d14dc2867e2",
+        "result": "verified"
+      },
+      {
+        "route": "/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+        "status": 200,
+        "sha256": "34b4339d2766bcda24e6d3f450e84d5a35fe07fef28138728a4cc6a2c7ed6d00",
+        "expectedSha256": "34b4339d2766bcda24e6d3f450e84d5a35fe07fef28138728a4cc6a2c7ed6d00",
+        "result": "verified"
+      },
+      {
+        "route": "/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+        "status": 200,
+        "sha256": "22147d4dc3102781ee5117c267c5d0a03e2da329c21a86c580ba28fd8ab7aa68",
+        "expectedSha256": "22147d4dc3102781ee5117c267c5d0a03e2da329c21a86c580ba28fd8ab7aa68",
+        "result": "verified"
+      },
+      {
+        "route": "/blog/asu-universal-learner-vs-sophia/",
+        "status": 200,
+        "sha256": "78bc97587a5550be2cda67add75d57d003bf4af3771820863bdfafcd138007d7",
+        "expectedSha256": "78bc97587a5550be2cda67add75d57d003bf4af3771820863bdfafcd138007d7",
+        "result": "verified"
+      },
+      {
+        "route": "/credit-sources/google-certificates/",
+        "status": 200,
+        "sha256": "3df26da889976b6c272b3bcbf38992e22f094c5b43722ff4f369d38b26017f7f",
+        "expectedSha256": "3df26da889976b6c272b3bcbf38992e22f094c5b43722ff4f369d38b26017f7f",
+        "result": "verified"
+      },
+      {
+        "route": "/credit-sources/wgu-single-courses/",
+        "status": 200,
+        "sha256": "91200a00e2d334729bb2ca510b7a58b22a5bda49942f9ebaedab146118af4132",
+        "expectedSha256": "91200a00e2d334729bb2ca510b7a58b22a5bda49942f9ebaedab146118af4132",
+        "result": "verified"
+      },
+      {
+        "route": "/credit-sources/christian-leaders/",
+        "status": 200,
+        "sha256": "f1781a2ac22496f815511a3561be586a14bf7910e1c45b98a8200a8a19229c46",
+        "expectedSha256": "f1781a2ac22496f815511a3561be586a14bf7910e1c45b98a8200a8a19229c46",
+        "result": "verified"
+      },
+      {
+        "route": "/credit-sources/asu-ulc/",
+        "status": 200,
+        "sha256": "bfc5fa6cb6b6bc6512c448cc73fc8bb547c79676bc77b3834cdf8fe787b0836c",
+        "expectedSha256": "bfc5fa6cb6b6bc6512c448cc73fc8bb547c79676bc77b3834cdf8fe787b0836c",
+        "result": "verified"
+      },
+      {
+        "route": "/guides/ace-nccrs-and-accreditation/",
+        "status": 200,
+        "sha256": "6e148658503a72da564a854e8c782927cc55a301e4dbf89f204d2e54de4ff872",
+        "expectedSha256": "6e148658503a72da564a854e8c782927cc55a301e4dbf89f204d2e54de4ff872",
+        "result": "verified"
+      },
+      {
+        "route": "/guides/compare-transfer-credit-sources/",
+        "status": 200,
+        "sha256": "2f1fd87c138f853f611f587b195159f3059dc36aa5675b038a9cb8b127a3a0e4",
+        "expectedSha256": "2f1fd87c138f853f611f587b195159f3059dc36aa5675b038a9cb8b127a3a0e4",
+        "result": "verified"
+      },
+      {
+        "route": "/blog/plan-subscriptions-before-paying/",
+        "status": 200,
+        "sha256": "86d573be65c1e0af7c770479d5bedc1bd62e4d0411da5a657dfeee2d9cb00c52",
+        "expectedSha256": "86d573be65c1e0af7c770479d5bedc1bd62e4d0411da5a657dfeee2d9cb00c52",
+        "result": "verified"
+      },
+      {
+        "route": "/blog/sophia-study-com-straighterline-which-first/",
+        "status": 200,
+        "sha256": "bf9b6e0cde6c84c4b3178575c016d1e89b31acd12aae8274448e5a9298d4753f",
+        "expectedSha256": "bf9b6e0cde6c84c4b3178575c016d1e89b31acd12aae8274448e5a9298d4753f",
+        "result": "verified"
+      }
+    ]
+  },
+  "verifiedUrls": [
+    "https://degreesteps.com/robots.txt",
+    "https://degreesteps.com/",
+    "https://degreesteps.com/brand.css",
+    "https://degreesteps.com/data/credit-sources.json",
+    "https://degreesteps.com/data/program-catalog.json",
+    "https://degreesteps.com/courses.html",
+    "https://degreesteps.com/courses.js",
+    "https://degreesteps.com/data/course-catalog.json",
+    "https://degreesteps.com/sitemap.xml",
+    "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+    "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+    "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+    "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+    "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+    "https://degreesteps.com/credit-sources/google-certificates/",
+    "https://degreesteps.com/credit-sources/wgu-single-courses/",
+    "https://degreesteps.com/credit-sources/christian-leaders/",
+    "https://degreesteps.com/credit-sources/asu-ulc/",
+    "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+    "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+    "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+    "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/"
+  ],
+  "scope": "Actual production workflow/log and exact hosted bytes. Checks read public assets only; this is not a real student authentication, transfer award, financial aid or load-capacity certification."
+}

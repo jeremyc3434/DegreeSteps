@@ -1,0 +1,178 @@
+{
+  "kind": "umass-global-enrolled-business-mypath-research",
+  "version": 2,
+  "reviewedOn": "2026-11-27",
+  "previousReviewPath": "outputs/student-scenarios/umass/enrolled-business-mypath-research-2026-11-27.json",
+  "updateReason": "The exact official2024–25 catalog has now been retrieved successfully as a realPDF. This new review supplements the frozen earlier observations; it does not rewrite failed retrieval history.",
+  "studentScenario": {
+    "school": "University of Massachusetts Global",
+    "reportedProgram": "Business program - mypath",
+    "reportedEnrollmentYear": 2024,
+    "exactStartTerm": null,
+    "assignedCatalogYear": null,
+    "emphasis": null,
+    "continuousEnrollmentEstablished": false,
+    "completedOrRemainingRequirementAuditAvailable": false
+  },
+  "source": {
+    "title": "University of Massachusetts Global2024-2025 Academic Catalog",
+    "url": "https://catalog.umassglobal.edu/pdf/University%20of%20Massachusetts%20Global%202024-2025%20Catalog.pdf",
+    "catalogYear": "2024-2025",
+    "retrievedOn": "2026-11-27",
+    "retrievedAt": null,
+    "httpStatus": 200,
+    "httpContentType": "application/pdf",
+    "transportMetadataSource": "Parentagent publicGET report; independently verified retainedPDFbody hash/bytes and documentmetadata.",
+    "body": {
+      "path": "outputs/student-scenarios/umass/catalog-2024-2025.pdf",
+      "bytes": 7265202,
+      "sha256": "a43b249a19718b5dbafd4c5c61a8aeb780a97a190b5b88a50dddedd103b5e29c"
+    },
+    "fullBinaryCommitAllowed": false
+  },
+  "resolved": [
+    "The2024–25 primary catalog contents and exact legacyMyPath BBA requirements are now available; earlier blocked-source status is superseded for this document only.",
+    "All six BBA paths reconcile to120catalog-equivalent credits from named requirements:48general education +50business core +19emphasis/electives +3student success.",
+    "General Business requires19equivalent elective credits from business disciplines. Five additional named emphases each total19equivalent credits.",
+    "CBE-specific residency and minimum articulated-credit grade are now verified in the2024catalog, without borrowing adjacentcredit-hour degree rules."
+  ],
+  "currentStudentAnswer": {
+    "canCountEligibleAceLearning": "Potentially, following university evaluation and exact competency applicability.",
+    "newSophiaWhileEnrolledPermissionEstablished": false,
+    "blanketPostMatriculationTransferBanEstablished": false,
+    "explanation": "The catalog confirms ACEevaluation, officialdocumentation andB-minus verification for allMyPath articulated credit. It separately restricts dualenrollment in credit-hourprograms/courses without explicitly defining externalinstitution or noncollegeACEprovider scope. Neither a blanketyes nor blanketno for newSophiacourses while enrolled is established.",
+    "recommendedAction": "Ask theMyPath academiccoach/registrar for written confirmation of permission to take the exact proposed courses while enrolled, acceptablegradeproof and exactremaining competency awards before purchasing.",
+    "currentPolicyCaveat": "Degree requirements follow the assignedcatalog; other policies follow the catalog in effect for each enrolledyear. This2024document verifies cohort evidence, not everycurrent2026policy.",
+    "doNotAssume": "Calendar2024 enrollment does not alone identify assignedcatalog, continuity, completedcredits or remainingrequirements."
+  },
+  "verified2024CohortPolicy": {
+    "residency": {
+      "minimumEquivalentCredits": 30,
+      "includes": [
+        "LBSC320",
+        "LBSC321"
+      ],
+      "requiredStudentSuccess": "LBSC100",
+      "allProgramCompetenciesMustBeMastered": true,
+      "physicalPdfPage": 61,
+      "printedCatalogPage": 60,
+      "borrowCreditHourUpperDivisionOrMajorResidencyLimits": false
+    },
+    "transferGrade": {
+      "minimum": "B- or better",
+      "scope": "AllMyPath articulatedcredit",
+      "physicalPdfPage": 35,
+      "printedCatalogPage": 34
+    },
+    "masteryGrade": {
+      "minimum": "B or better/3.00equivalent",
+      "record": "M;noGPAcalculated",
+      "physicalPdfPage": 37,
+      "printedCatalogPage": 36
+    },
+    "ace": {
+      "recommendationsConsidered": true,
+      "numericAceCapVerified": null,
+      "thirtyCreditAceCapEstablished": false,
+      "capExplanation": "Generalcredit-hour OtherCreditOpportunities25%/30-credit limit explicitly excludesACE and namedexams; separateCBE language does not establish a30-creditACEcap. Residency/programlimitations still govern.",
+      "physicalPdfPages": [
+        22,
+        23,
+        36
+      ]
+    },
+    "articulation": {
+      "creditHourEquivalenceRequired": true,
+      "separateCompetencyEvaluationRequired": true,
+      "fullCompetencyOrGeBreadthCoverageRequired": true,
+      "officialDocumentationRequired": true,
+      "physicalPdfPage": 35
+    },
+    "transcript": {
+      "competencyTranscriptUses": "M for mastered competencies",
+      "creditHourConversionAvailableOnRequest": true,
+      "physicalPdfPage": 41,
+      "printedCatalogPage": 40
+    },
+    "studentSpecificTransferApproval": null
+  },
+  "curriculum": {
+    "status": "complete-source-backed2024BBArequirementledger; individualdegreeauditnotyetknown",
+    "baseRequirementTotals": {
+      "studentSuccessCredits": 3,
+      "generalEducationCredits": 48,
+      "generalEducationNamedCompetencies": 16,
+      "businessCoreCredits": 50,
+      "businessCoreNamedCompetencies": 34,
+      "emphasisCredits": 19,
+      "totalEquivalentCredits": 120
+    },
+    "emphases": [
+      "General Business",
+      "GIS and Data Analytics",
+      "Information Systems Management",
+      "Management and Organizational Leadership",
+      "Marketing",
+      "Supply Chain Management and Logistics"
+    ],
+    "sourceDiscrepancies": [
+      "GEheader says13competencies; actual16named rows andcredit descriptions reconcile48credits and120degreestotal. Do not dropnamedrequirements to matchheader.",
+      "ACCC235/240advisory sequencing contradicts itself; do not build a hard prerequisitecycle.",
+      "CSCC408descriptionbody conflictswith its heading/outcome; do not infer topicmapping frombadbody."
+    ],
+    "myPathKitFeasibleFromThisEvidence": true,
+    "outsideCourseReceivingAwardPromotionAllowed": false,
+    "verifiedAcceleratedPublicationReadyEstablished": false,
+    "implementationBoundary": "A cohort-versioned researchkit can use the complete exact-code institutional requirements and sourcedcredit quantities. Keep everyoutsidecourse as held unless exactreceivingaward/eligibility evidence exists; do not createU-to-Cconversion or inherit2026termmodelpolicies.",
+    "requirementEvidencePhysicalPages": [
+      116,
+      117,
+      118,
+      119,
+      120
+    ],
+    "requirementEvidencePrintedPages": [
+      115,
+      116,
+      117,
+      118,
+      119
+    ]
+  },
+  "stillNeeded": [
+    "The student’s actualassignedDegreeWorks catalogyear/startterm, BBAemphasis, completed/remainingcompetencies andresidencyrecord; any interruption or approvedcatalogchange.",
+    "Currentuniversity clarification that newoutsideSophia/ACElearning is permitted for thisalreadyenrolledMyPathstudent, includinggradeverification andsubmissioncutoff.",
+    "Applicable receivingequivalency/approval connecting the exactcurrent sourcecourse/ACEversion to the exact2024MyPathcompetencyblocks; historicalcollege-specificcrosswalks remain candidatebounds only."
+  ],
+  "evidenceArtifacts": {
+    "httpReceipt": {
+      "path": "outputs/student-scenarios/umass/catalog2024-http-receipt.json",
+      "bytes": 1774,
+      "sha256": "db7e78099b2edf3cc6f2a95a7d59889d3711fcaa880b98f8cf893101f891ba55"
+    },
+    "policyExtract": {
+      "path": "outputs/student-scenarios/umass/catalog2024-policy-scoped-extract.json",
+      "bytes": 8413,
+      "sha256": "65aed70b3ff790714ebc50555610ace5de99839c8b7c91c96e84936fbac87fbe"
+    },
+    "requirementLedgerPath": "outputs/student-scenarios/umass/catalog2024-bba-requirement-ledger.json",
+    "earlierSophiaObservationPath": "outputs/student-scenarios/umass/sophia-partner-table-reviewed-2026-11-27.json",
+    "requirementLedger": {
+      "path": "outputs/student-scenarios/umass/catalog2024-bba-requirement-ledger.json",
+      "bytes": 97885,
+      "sha256": "3e1d6ddd0e24ccfb2bd28b91c10ec374e0e8d93eea8e636d7a39d1d2408182e3"
+    }
+  },
+  "oldEvidencePreservation": {
+    "all52PreviousRetainedFilesVerifiedUnchanged": true,
+    "oldManifestPath": "outputs/student-scenarios/umass/receipt-manifest.json"
+  },
+  "changesMade": {
+    "onlyOwnedResearchOutputs": true,
+    "applicationFiles": false,
+    "academicModels": false,
+    "studentRecords": false,
+    "publishedPlanActivation": false,
+    "tuitionCurrentYearInference": false
+  }
+}

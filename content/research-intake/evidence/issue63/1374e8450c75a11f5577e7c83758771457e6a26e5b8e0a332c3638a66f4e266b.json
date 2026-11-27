@@ -1,0 +1,82 @@
+{
+  "kind": "scoped-local-pdf-research-extraction",
+  "version": 1,
+  "reviewedOn": "2026-11-27",
+  "source": {
+    "title": "University of Massachusetts Global 2024-2025 Academic Catalog",
+    "url": "https://catalog.umassglobal.edu/pdf/University%20of%20Massachusetts%20Global%202024-2025%20Catalog.pdf",
+    "retainedPath": "outputs/student-scenarios/umass/catalog-2024-2025.pdf",
+    "sha256": "a43b249a19718b5dbafd4c5c61a8aeb780a97a190b5b88a50dddedd103b5e29c",
+    "bytes": 7265202,
+    "localBytesHashVerified": true,
+    "pdfMetadata": {
+      "author": "CourseLeaf",
+      "pages": 361,
+      "createdUTC": "2024-08-31T04:14:07Z",
+      "modifiedUTC": "2024-08-31T04:35:40Z"
+    },
+    "pageConvention": "1-based physical PDF page is printed catalog page+1 for the scoped pages",
+    "scopedProgramPages": {
+      "printed": [
+        115,
+        116,
+        117,
+        118,
+        119
+      ],
+      "physical": [
+        116,
+        117,
+        118,
+        119,
+        120
+      ]
+    },
+    "scopedDescriptionPages": {
+      "printedStart": 335,
+      "printedEnd": 348,
+      "physicalStart": 336,
+      "physicalEnd": 349
+    }
+  },
+  "proofLimit": "The PDF SHA binds the locally retained official PDF. Text and JSON hashes bind these derived local extracts. The ledger is research evidence, not a student-specific award or activated academic model.",
+  "files": [
+    {
+      "path": "outputs/student-scenarios/umass/catalog2024-bba-competencies-raw.txt",
+      "bytes": 81992,
+      "sha256": "7efcc86417e1eb1a766fbbc5c7364baea37ec8dd76823629b84d3852ed048918"
+    },
+    {
+      "path": "outputs/student-scenarios/umass/catalog2024-bba-degree-requirements-p60-raw.txt",
+      "bytes": 4305,
+      "sha256": "d473e89207ac7f43c3059ffca0987697307701cd840dd6eadecc7fabcfcbac3e"
+    },
+    {
+      "path": "outputs/student-scenarios/umass/catalog2024-bba-extract.py",
+      "bytes": 12375,
+      "sha256": "4d8131a9bff8bc68793c16191781f86f1eede80a261f15b12d068ae823f5da86"
+    },
+    {
+      "path": "outputs/student-scenarios/umass/catalog2024-bba-requirement-ledger.json",
+      "bytes": 97885,
+      "sha256": "3e1d6ddd0e24ccfb2bd28b91c10ec374e0e8d93eea8e636d7a39d1d2408182e3"
+    },
+    {
+      "path": "outputs/student-scenarios/umass/catalog2024-bba-requirements-raw.txt",
+      "bytes": 21085,
+      "sha256": "af1875e45bdc496632a11ed0d3da1085d9ee3dc349b7fbafc4399f98db1de773"
+    }
+  ],
+  "validation": {
+    "status": "pass",
+    "assertions": [
+      "source bytes/hash",
+      "all6emphasis totals120",
+      "16GE/34core exactcounts",
+      "per-coursequantity and page references",
+      "only320/321 explicitnontransferable",
+      "unknown formal prerequisites and contradictoryadvisoryquotespreserved",
+      "GB19opencredits withunknownfixedcount"
+    ]
+  }
+}

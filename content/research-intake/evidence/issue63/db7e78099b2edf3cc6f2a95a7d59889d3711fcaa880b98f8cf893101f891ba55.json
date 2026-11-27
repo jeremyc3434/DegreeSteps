@@ -1,0 +1,34 @@
+{
+  "kind": "retained-public-http-pdf-receipt",
+  "version": 1,
+  "sourceUrl": "https://catalog.umassglobal.edu/pdf/University%20of%20Massachusetts%20Global%202024-2025%20Catalog.pdf",
+  "publisher": "University of Massachusetts Global",
+  "catalogYear": "2024-2025",
+  "retrievedOn": "2026-11-27",
+  "retrievedAt": null,
+  "retrievalMethod": "Ordinary publicGET with transparentDegreeSteps-Research/1.0User-Agent; parentagent reported sanctioned additionalnetwork access. No authentication/cookie bypass reported.",
+  "transportObservation": {
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "userAgent": "DegreeSteps-Research/1.0",
+    "observationSource": "Parentagent retrieval report in this task; no raw response header archive available to this subagent at creation.",
+    "independentlyRepeatedByThisAgent": false
+  },
+  "retainedBody": {
+    "path": "outputs/student-scenarios/umass/catalog-2024-2025.pdf",
+    "bytes": 7265202,
+    "sha256": "a43b249a19718b5dbafd4c5c61a8aeb780a97a190b5b88a50dddedd103b5e29c",
+    "signatureValid": true,
+    "independentlyMeasuredByThisAgent": true
+  },
+  "pdfMetadata": {
+    "title": "University of Massachusetts Global2024-2025",
+    "creator": "CourseLeaf",
+    "physicalPages": 361,
+    "creationDateUTC": "2024-08-31T04:14:07Z",
+    "modificationDateUTC": "2024-08-31T04:35:40Z",
+    "metadataDatesAreRetrievalDates": false
+  },
+  "retentionLimit": "FullPDF retained in localoutputs only. Scoped policy/requirements evidence may be committed separately; do not mirror the entirecatalog toGitHub.",
+  "correctsEarlierObservation": "Earlier native connector opens were blocked. This is a later successful public retrieval; old frozen packets remain unchanged rather than rewriting their retrieval history."
+}

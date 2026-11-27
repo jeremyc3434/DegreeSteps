@@ -90,6 +90,11 @@
         state.scenarios={[legacyProgram]:settings};
       }
     }
+    const learnerContext=['learnerStage','currentSchool','currentProgram','planningIntent'];
+    if(Guide?.normalizeProfile && learnerContext.some(name=>Object.prototype.hasOwnProperty.call(state.profile,name))){
+      const context=Guide.normalizeProfile(state.profile);
+      for(const name of learnerContext)if(Object.prototype.hasOwnProperty.call(context,name))state.profile[name]=context[name];else delete state.profile[name];
+    }
     state.sheet=sheet(state);
     const selected=text(state.selectedPathwayId)||text(state.profile.pathwayId);
     const namedTarget=Boolean((saved?.version===3 || legacy) && (text(state.profile.school)||text(state.profile.schoolChoice)||text(state.profile.degree)));

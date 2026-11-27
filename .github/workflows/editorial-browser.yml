@@ -11,6 +11,30 @@ on:
       - 'dist/courses.css'
       - 'dist/course-library-engine.js'
       - 'dist/sheet-state.js'
+      - 'dist/guide-engine.js'
+      - 'dist/journey-engine.js'
+      - 'dist/portal.js'
+      - 'dist/school.js'
+      - 'dist/school.html'
+      - 'dist/portal.html'
+      - 'dist/portal.css'
+      - 'dist/student-checklist.js'
+      - 'dist/student-checklist-view.js'
+      - 'dist/student-checklist.css'
+      - 'dist/plan.html'
+      - 'dist/sheet.js'
+      - 'dist/sheet.css'
+      - 'dist/import-courses.js'
+      - 'dist/import-courses.html'
+      - 'dist/import-courses.css'
+      - 'dist/program-catalog.js'
+      - 'dist/data/pathways.json'
+      - 'dist/data/program-catalog.json'
+      - 'dist/data/curriculum-registry.json'
+      - 'dist/data/curricula/wgu.json'
+      - 'dist/degree-audit.js'
+      - 'dist/degree-audit.html'
+      - 'dist/degree-audit.css'
       - 'dist/provider-registry.js'
       - 'content/catalog/christian-leaders-course-identities-reviewed-2026-11-27.json'
       - 'scripts/cli-course-catalog.mjs'
@@ -20,6 +44,7 @@ on:
       - 'scripts/provider-research-facts.mjs'
       - 'issue56-public-browser.test.cjs'
       - 'shared-transfer-browser.test.cjs'
+      - 'student-scenarios-browser.test.cjs'
       - 'test-support/offline-site.cjs'
       - 'package.json'
       - 'package-lock.json'
@@ -54,11 +79,14 @@ jobs:
           test -n "$CHROMIUM_PATH"
           node issue56-public-browser.test.cjs
           node shared-transfer-browser.test.cjs
+          node student-scenarios-browser.test.cjs
       - name: Save public screenshots
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: editorial-public-browser
-          path: outputs/issue56/browser
+          path: |
+            outputs/issue56/browser
+            outputs/student-scenarios/browser
           if-no-files-found: ignore
           retention-days: 14

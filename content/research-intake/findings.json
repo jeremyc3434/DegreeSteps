@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "publicationAllowed": false,
   "repository": "jeremyc3434/DegreeSteps",
-  "submissionRevisions": 8,
-  "reviewRevisions": 23,
+  "submissionRevisions": 9,
+  "reviewRevisions": 35,
   "findings": [
     {
       "claim": "South College CBE conflicting 60%/75% policies; California Baptist advertised 100 units and $541/unit; UW Flexible Option reported $2,250/subscription; Memphis/Saylor; National University and RMCAD Sophia partnerships; WGU degree-level ACE restrictions. Verify before publishing.",
@@ -358,7 +358,7 @@
           "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
         }
       ],
-      "reviewHash": "7468bff2970dfb43121d1a41fc9653a63d2d93103238ad3ad48bc474f28763a1",
+      "reviewHash": "73fb38eb00d2fc7697b411f16b558ed6518dc89840cb97047e7b367c8128c790",
       "reviewCurrent": true,
       "requiresReverification": false,
       "review": {
@@ -366,12 +366,14 @@
         "kind": "research-review",
         "publicationAllowed": false,
         "findingId": "finding-25555de90e773e4b3a9c31eb4920503d3218b715aff3777db5dbc5bbc7a6f0d2",
-        "revision": 1,
-        "previousReviewHash": null,
+        "revision": 2,
+        "previousReviewHash": "7468bff2970dfb43121d1a41fc9653a63d2d93103238ad3ad48bc474f28763a1",
         "sourceRevisions": [
-          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+          "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "7d4dacd1df1f822e9aa6c6d7d28bbdb1b053f4fb148691438b6a61d0222c832f"
         ],
-        "reviewer": "DegreeSteps Issue56 primary-source and editorial review",
+        "reviewer": "Codex actual approved production release verification",
         "reviewedOn": "2026-11-27",
         "verifiedOn": "2026-11-27",
         "announcedOn": null,
@@ -380,7 +382,7 @@
         "triage": "BOTH",
         "status": "ready-for-review",
         "changeKind": "newly-discovered-existing-policy",
-        "summary": "Write a purchase-decision article with conditional discount arithmetic, catalog conflict, transcript boundaries and syllabus-specific assessments; hold receiving mappings. Remaining blockers: No independently verified external 10–20-course receiving map; no product receiving equivalencies added. Discounted-offer eligibility and catalog-price reconciliation require checkout or official policy confirmation. Content is prepared for PR review; no production publication or indexing is claimed.",
+        "summary": "Write a purchase-decision article with conditional discount arithmetic, catalog conflict, transcript boundaries and syllabus-specific assessments; hold receiving mappings. Remaining blockers: No independently verified external 10–20-course receiving map; no product receiving equivalencies added. Discounted-offer eligibility and catalog-price reconciliation require checkout or official policy confirmation. Content is prepared for PR review; no production publication or indexing is claimed. Product/editorial publication observed through the approved production run; exact URLs and bytes are retained. Existing unresolved degree mapping or current-policy research is not closed by this release.",
         "evidence": [
           {
             "id": "wgu-discount",
@@ -475,7 +477,7 @@
           "assessments": []
         },
         "product": {
-          "status": "review-ready",
+          "status": "implemented",
           "paths": [
             "dist/data/credit-sources.json",
             "scripts/provider-research-facts.mjs",
@@ -484,11 +486,13 @@
           "notes": "Public WGU Single Courses provider profile explains advertised price versus catalog conflict, automatic standard extension, institutional transcript origin and assessment examples. No 10–20 external receiving map was proven or fabricated; degree-course codes and historical student progress remain unchanged."
         },
         "editorial": {
-          "status": "review-ready",
+          "status": "published",
           "proposedUrls": [
             "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/"
           ],
-          "publishedUrls": [],
+          "publishedUrls": [
+            "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/"
+          ],
           "existingUrls": [],
           "title": "WGU single courses: what the $25 price includes and when costs rise",
           "metaDescription": "Understand WGU’s single-course introductory prices, automatic monthly extensions, transcript rules and course-specific exams and projects before enrolling.",
@@ -511,6 +515,377 @@
           "evidenceIds": [
             "wgu-discount",
             "wgu-catalog-standard-price"
+          ],
+          "metrics": null
+        },
+        "release": {
+          "environment": "production",
+          "commitSha": "9b29fd79e528d48419e64d8906ac9c377407fcf3",
+          "pullRequestUrl": "https://github.com/jeremyc3434/DegreeSteps/pull/62",
+          "workflowRunUrl": "https://github.com/jeremyc3434/DegreeSteps/actions/runs/46075109831",
+          "verifiedOn": "2026-11-27",
+          "approval": "The repository owner requested an end-to-end rehearsal through the approved publication process. Codex manually dispatched the existing workflow after exact-head core/browser checks and staging verification. Existing manual target, migration assertion and production configuration gates were retained; no future automatic production deployment was enabled.",
+          "verifiedUrls": [
+            "https://degreesteps.com/robots.txt",
+            "https://degreesteps.com/",
+            "https://degreesteps.com/brand.css",
+            "https://degreesteps.com/data/credit-sources.json",
+            "https://degreesteps.com/data/program-catalog.json",
+            "https://degreesteps.com/courses.html",
+            "https://degreesteps.com/courses.js",
+            "https://degreesteps.com/data/course-catalog.json",
+            "https://degreesteps.com/sitemap.xml",
+            "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+            "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+            "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+            "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+            "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+            "https://degreesteps.com/credit-sources/google-certificates/",
+            "https://degreesteps.com/credit-sources/wgu-single-courses/",
+            "https://degreesteps.com/credit-sources/christian-leaders/",
+            "https://degreesteps.com/credit-sources/asu-ulc/",
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+            "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/"
+          ],
+          "receiptPaths": [
+            "content/research-intake/evidence/issue61/2be21364a6771deaa8068da1bf2ad4bb17cfeaa5a48cdde76433840c27f04e1f.json"
+          ]
+        }
+      }
+    },
+    {
+      "claim": "Evaluate roughly two years of regionally accredited on-campus credit earned about 25 years ago for a business degree. Preserve original courses/grades/units/dates, compare school- and course-specific currency rules without assuming 60 applicable credits or starting from zero, and improve upload-first guidance and the existing older-credit article. https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/degree-policies/degree-requirements/ https://www.umassglobal.edu/admissions/admissions-faqs",
+      "section": "Returning to college",
+      "kind": "lead",
+      "id": "finding-5f6de6f2bfccaeb822aba66f2f271e648d990be68715df98ed8a73c0e13331ae",
+      "sourceUrls": [
+        "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/degree-policies/degree-requirements/",
+        "https://www.umassglobal.edu/admissions/admissions-faqs"
+      ],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-63",
+          "revision": "6f740e4e99ed603a569888868b0aaca195794ef20ee3d2150bfb2c4c3bd6b511",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/63"
+        }
+      ],
+      "reviewHash": "83eddda632423193f8f736c4cf3fc4fc778731a15ae6309c283956a6f1eaf5e1",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-5f6de6f2bfccaeb822aba66f2f271e648d990be68715df98ed8a73c0e13331ae",
+        "revision": 1,
+        "previousReviewHash": null,
+        "sourceRevisions": [
+          "6f740e4e99ed603a569888868b0aaca195794ef20ee3d2150bfb2c4c3bd6b511"
+        ],
+        "reviewer": "Codex independently verified student-scenario research",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": "2026-11-27",
+        "announcedOn": null,
+        "effectiveOn": null,
+        "followUpOn": "2026-12-04",
+        "triage": "BOTH",
+        "status": "ready-for-review",
+        "changeKind": "newly-discovered-existing-policy",
+        "summary": "Preserve original coursework and evaluate exact current requirements rather than inferring 60 applicable credits or a restart. Added source-specific business currency guidance, returning/upload-first context, and restored the existing source-bound TESU General Management/HR/Marketing age-review metadata to the runtime guard. Five targeted currency tests passed; no old record was removed or automatically approved.",
+        "evidence": [
+          {
+            "id": "tesu-degree-requirements",
+            "title": "TESU current degree requirements: BS/BSBA course currency",
+            "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/degree-policies/degree-requirements/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "The remaining area of study credits must be current",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "tesu-transfer",
+            "title": "TESU current transfer-credit policy: grades, required courses and applicability",
+            "url": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/methods-of-learning-and-earning-credit/transfer-credit/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "minimum grade of C for English composition courses and the area of study for all degrees",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "tesu-residency",
+            "title": "TESU current residency requirements",
+            "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/enrollment/residency-requirements",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "This requirement may be waived by paying the",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "tesu-catalog-currency",
+            "title": "TESU current catalog currency",
+            "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/degree-policies/catalog-currency",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "allow their enrollment to lapse for more than three years",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "tesu-returning",
+            "title": "TESU returning from time off and readmission",
+            "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/degree-policies/returning-from-taking-time-off-and-readmission",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "return after 36 months from their last TESU course",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "wgu-business-management-guideline",
+            "title": "WGU BS Business Management general transfer guideline, Catalog 05-2026",
+            "url": "https://partners.wgu.edu/general-transfer-guideline-bachelor-dynamic?collegeCode=BU&programId=240",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Course/certification must be completed within 5 years of the student's start date.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "wgu-business-partner-guide",
+            "title": "WGU business pathway partner guideline and IT-specific currency scope",
+            "url": "https://partners.wgu.edu/transfer-pathway-agreement?collegeCode=BU&instId=17&programId=240&uniqueId=BSMGT25073",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "All certifications and IT-specific courses must have been completed within the past five years",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "wgu-transfer-general",
+            "title": "WGU current transfer process and grade policy",
+            "url": "https://www.wgu.edu/admissions/transfers/transfer-to-wgu.html",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Must have been awarded a grade of C- or better.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "liberty-undergrad-catalog",
+            "title": "Liberty online undergraduate academic policies: lifetime acceptance with exceptions and residency",
+            "url": "https://catalog.liberty.edu/undergraduate/academic-support/academic-information-policies-online-program/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Liberty offers a lifetime acceptance of credit",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "liberty-undergrad-registrar",
+            "title": "Liberty undergraduate registrar: exact accounting/computing age limits and grades",
+            "url": "https://www.liberty.edu/registrar/transfer-policies/undergraduates/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "All upper-level ACCT courses",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "liberty-transfer-faq",
+            "title": "Liberty online transfer FAQ: accepted electives and degree application",
+            "url": "https://www.liberty.edu/online/transfer-credit-faqs/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "it did not match a specific class currently offered at Liberty",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "liberty-graduate-business-boundary",
+            "title": "Liberty School of Business transfer page: graduate/doctoral scope",
+            "url": "https://www.liberty.edu/registrar/transfer-policies/business/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Age Limit: 10 years for graduate programs unless otherwise stated",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "umpi-transfer",
+            "title": "UMPI current transfer-credit policy: accreditation, grades and program applicability",
+            "url": "https://www.umpi.edu/offices/student-records/transfer-credits/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "courses must be successfully completed with a grade of C- or higher",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "umpi-faq",
+            "title": "UMPI YourPace FAQ: degree and major residency",
+            "url": "https://www.umpi.edu/yourpace/faqs/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Students must complete at least 30 credit hours through UMPI.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "umpi-business",
+            "title": "UMPI current YourPace Business Administration program",
+            "url": "https://www.umpi.edu/yourpace/academic_programs/business-administration/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "To earn your B.A. in Business Administration – Leadership, you need to complete 120 credit hours of coursework.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "umass-age",
+            "title": "UMass Global application guide: undergraduate age policy and MyPath grade requirement",
+            "url": "https://www.umassglobal.edu/blog-news/umass-global-application-process-step-step-guide",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "For undergraduate students, there is no time limit to transfer credits.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "umass-mypath-faq",
+            "title": "UMass Global admissions FAQ: MyPath B−, competency applicability and Fresh Start forfeiture",
+            "url": "https://www.umassglobal.edu/admissions/admissions-faqs",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Ignored coursework cannot be used to satisfy prerequisite or degree requirements",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "umass-bba",
+            "title": "UMass Global current self-paced MyPath BBA: 120 credits, up to 90 transfer",
+            "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "transfer up to 90 credits from previous college coursework",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "umass-residency-2025-2026",
+            "title": "UMass Global 2025–2026 competency-based degree catalog: bachelor residency",
+            "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based-degree-requirement/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Minimum of 30 equivalent credits completed in residency",
+            "capturePath": null,
+            "contentHash": null
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue63/e461f719c0cb73df9064a3bdf8b967bc6548212a20a78b7eb622a3bee8d7f5e1.json",
+          "content/research-intake/evidence/issue63/ea30d07a358d178a877ea1e3a68e9b1ef71c81898093a12d46470c8099339c03.json",
+          "content/research-intake/evidence/issue63/38feb00d63cba255b098848db979c96290cec57f9ab943855eab6112871b37ee.json",
+          "content/research-intake/evidence/issue63/69a8b40ac81d5eadc7fcd0c33cf9dd4a29fac37769087dd6cbc51e34dc24681d.json",
+          "content/research-intake/evidence/issue63/f3edc4635ff901727fd4940281087d3000df869dee18b6a1fcfbcabf53539ce0.json",
+          "content/research-intake/evidence/issue63/e8a613e54c3712616da99bb018c76ece83d8016dc6ba5a952d53954896f52d5d.json",
+          "content/research-intake/evidence/issue63/95442171115a6eb02a79bc2b3dba1b748653d2f9192e8d522a484d7a5a1660bb.json",
+          "content/research-intake/evidence/issue63/531379e39382a9f803299a6efac14aa516261c2b74ed59079ea97bcc0e851a08.json",
+          "content/research-intake/evidence/issue63/fa3800fc6ca7ae34ce9320b0d6c3b71bcbb77b9a6fb0f3e4893b61547b0b0861.json",
+          "content/research-intake/evidence/issue63/b7bc09a6274bed11f3403d66f2e236c94443ee240fc90f88b61a3fe35d8c2236.json",
+          "content/research-intake/evidence/issue63/35054702c52afca68fecd7f8848a0e4bd51196ac0b9ad21c28ec69d59bdecbce.json",
+          "content/research-intake/evidence/issue63/cbff13fb184bc2bb511290b9b52ac5b4eef50e324934ba68e6e281a1792f7720.json",
+          "content/research-intake/evidence/issue63/27f7c59efd5ca244d81f1c37e6c86c1817de3b37c3a31329de5b2e4112af7364.json",
+          "content/research-intake/evidence/issue63/10634d5f696cf11e2653712608d7b28b8b9fcde2c5313c503828c26403848a41.json",
+          "content/research-intake/evidence/issue63/721fb75d3239c012e4bca2eb1a520cb2e24f6c030c42b1cabd0301e74a54c6e1.json",
+          "content/research-intake/evidence/issue63/15c6adca1118b0295a425ad5255b4b4dce8d1aa9d8cb09811126a9f725c54c06.json",
+          "content/research-intake/evidence/issue63/e6f5365428b3818f702c5f3747c12bf29bcee72710447f958e3ce16bdaaa6363.json",
+          "content/research-intake/evidence/issue63/b6b0eeb57d3e9c5d54eeb4e955b95f4db382e13fc200cfc7e63229d7a3617aa3.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": null,
+            "program": "Business degree comparisons using original older institutional coursework",
+            "level": "bachelor",
+            "modality": null,
+            "catalog": "Program-specific policies checked 2026-11-27; no universal expiry rule"
+          },
+          "costs": [],
+          "accreditation": [],
+          "transfer": {
+            "overallCap": null,
+            "aceCap": null,
+            "nccrsCap": null,
+            "combinedCplCap": null,
+            "externallyAssessedCap": null,
+            "residency": null,
+            "majorResidency": null,
+            "totalCredits": null
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": []
+        },
+        "product": {
+          "status": "review-ready",
+          "paths": [
+            "dist/guide-engine.js",
+            "dist/sheet-state.js",
+            "dist/portal.js",
+            "dist/journey-engine.js",
+            "tesu-finance-currency.test.cjs"
+          ],
+          "notes": "Optional context and targeted guidance reuse existing architecture. Existing target identity, learning, grades, units, course dates, evaluations and costs are preserved. Full build/browser/CI release checks remain separate from this source review."
+        },
+        "release": null,
+        "editorial": {
+          "status": "review-ready",
+          "proposedUrls": [
+            "https://degreesteps.com/blog/do-old-college-credits-still-count/"
+          ],
+          "publishedUrls": [],
+          "existingUrls": [
+            "https://degreesteps.com/blog/do-old-college-credits-still-count/"
+          ],
+          "title": "Do my old college credits still count? Start with the courses you already earned",
+          "metaDescription": "Returning to college after years away? Learn how course age, degree changes, original records, and receiving-school rules affect which old credits can help you finish.",
+          "canonicalUrl": "https://degreesteps.com/blog/do-old-college-credits-still-count/",
+          "internalLinks": [
+            "https://degreesteps.com/import-courses.html",
+            "https://degreesteps.com/courses.html?tab=browse"
+          ],
+          "structuredData": true,
+          "sitemap": true,
+          "studentUsefulness": "Turn this learner situation into a clear next action while preserving academic and financial boundaries.",
+          "novelty": "Verified scenario-specific product flow and substantive new or refreshed resource, not a generic school list.",
+          "searchIntent": "Do my old college credits still count? Start with the courses you already earned",
+          "debtFreeRelevance": "Evaluate useful existing learning and applicable funding before paying for replacement or unapproved courses; no debt-free outcome is promised.",
+          "urgency": "Prevent unnecessary purchases, discarded old credit, mistaken high-school awards or unverified tuition assumptions.",
+          "overlapNotes": "Refresh the existing canonical guide/article and preserve its title and description.",
+          "evidenceIds": [
+            "tesu-degree-requirements",
+            "tesu-transfer",
+            "tesu-residency",
+            "tesu-catalog-currency",
+            "tesu-returning",
+            "wgu-business-management-guideline",
+            "wgu-business-partner-guide",
+            "wgu-transfer-general",
+            "liberty-undergrad-catalog",
+            "liberty-undergrad-registrar",
+            "liberty-transfer-faq",
+            "liberty-graduate-business-boundary",
+            "umpi-transfer",
+            "umpi-faq",
+            "umpi-business",
+            "umass-age",
+            "umass-mypath-faq",
+            "umass-bba",
+            "umass-residency-2025-2026"
           ],
           "metrics": null
         }
@@ -541,7 +916,7 @@
           "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
         }
       ],
-      "reviewHash": "fe4231e064c735a98e03bb8158d7aba0bb5aaa9f09ca3b9870c8dd550afc365f",
+      "reviewHash": "780c358adf3e223f56a4eb268bafd8aeb89861818f5eda9f2c8755018316e7ec",
       "reviewCurrent": true,
       "requiresReverification": false,
       "review": {
@@ -549,12 +924,14 @@
         "kind": "research-review",
         "publicationAllowed": false,
         "findingId": "finding-6dea1840f1f9c32ff24988fda551350b31e30c32e2ffe5cade86c90370cd378d",
-        "revision": 2,
-        "previousReviewHash": "0713d0fc8db4da154af33167e1be65d83b71c5502fdf71e7838d57be27d0c045",
+        "revision": 3,
+        "previousReviewHash": "fe4231e064c735a98e03bb8158d7aba0bb5aaa9f09ca3b9870c8dd550afc365f",
         "sourceRevisions": [
-          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+          "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "7d4dacd1df1f822e9aa6c6d7d28bbdb1b053f4fb148691438b6a61d0222c832f"
         ],
-        "reviewer": "DegreeSteps Issue56 scoped source enrichment",
+        "reviewer": "Codex actual approved production release verification",
         "reviewedOn": "2026-11-27",
         "verifiedOn": "2026-11-27",
         "announcedOn": null,
@@ -563,7 +940,7 @@
         "triage": "BOTH",
         "status": "researching",
         "changeKind": "confirmation",
-        "summary": "Current AY 2026–27 undergraduate tuition is 1800 USD per 8-week session. Current FAQ confirms 30 institutional residency,12 major and 9 upper-level major credits. The already documented general combined CPL 30 rule stays separate from the conditional 90/120 outside ceiling; no new policy adoption date or cohort exception was established. The comparison article is prepared for review. Exact business curriculum, receiving placements and course-specific assessments remain blocked; no historical student awards were changed.",
+        "summary": "Current AY 2026–27 undergraduate tuition is 1800 USD per 8-week session. Current FAQ confirms 30 institutional residency,12 major and 9 upper-level major credits. The already documented general combined CPL 30 rule stays separate from the conditional 90/120 outside ceiling; no new policy adoption date or cohort exception was established. The comparison article is prepared for review. Exact business curriculum, receiving placements and course-specific assessments remain blocked; no historical student awards were changed. Product/editorial publication observed through the approved production run; exact URLs and bytes are retained. Existing unresolved degree mapping or current-policy research is not closed by this release.",
         "evidence": [
           {
             "checkedOn": "2026-11-27",
@@ -762,11 +1139,13 @@
           "notes": "Verified tuition/residency can inform comparison content. A complete current YourPace business curriculum and 10–20 source-backed receiving placements are not established by tuition or generic transfer headlines; existing canonical kits and student records remain unchanged."
         },
         "editorial": {
-          "status": "review-ready",
+          "status": "published",
           "proposedUrls": [
             "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/"
           ],
-          "publishedUrls": [],
+          "publishedUrls": [
+            "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/"
+          ],
           "existingUrls": [],
           "title": "UMPI YourPace vs UMass Global MyPath: business-degree costs and transfer",
           "metaDescription": "Compare UMPI’s 2026–27 business tuition with UMass Global’s live 2025–26 MyPath sources, transfer and transcript rules, and unresolved current pricing.",
@@ -792,6 +1171,41 @@
             "umpi-undergrad-session"
           ],
           "metrics": null
+        },
+        "release": {
+          "environment": "production",
+          "commitSha": "9b29fd79e528d48419e64d8906ac9c377407fcf3",
+          "pullRequestUrl": "https://github.com/jeremyc3434/DegreeSteps/pull/62",
+          "workflowRunUrl": "https://github.com/jeremyc3434/DegreeSteps/actions/runs/46075109831",
+          "verifiedOn": "2026-11-27",
+          "approval": "The repository owner requested an end-to-end rehearsal through the approved publication process. Codex manually dispatched the existing workflow after exact-head core/browser checks and staging verification. Existing manual target, migration assertion and production configuration gates were retained; no future automatic production deployment was enabled.",
+          "verifiedUrls": [
+            "https://degreesteps.com/robots.txt",
+            "https://degreesteps.com/",
+            "https://degreesteps.com/brand.css",
+            "https://degreesteps.com/data/credit-sources.json",
+            "https://degreesteps.com/data/program-catalog.json",
+            "https://degreesteps.com/courses.html",
+            "https://degreesteps.com/courses.js",
+            "https://degreesteps.com/data/course-catalog.json",
+            "https://degreesteps.com/sitemap.xml",
+            "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+            "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+            "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+            "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+            "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+            "https://degreesteps.com/credit-sources/google-certificates/",
+            "https://degreesteps.com/credit-sources/wgu-single-courses/",
+            "https://degreesteps.com/credit-sources/christian-leaders/",
+            "https://degreesteps.com/credit-sources/asu-ulc/",
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+            "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/"
+          ],
+          "receiptPaths": [
+            "content/research-intake/evidence/issue61/2be21364a6771deaa8068da1bf2ad4bb17cfeaa5a48cdde76433840c27f04e1f.json"
+          ]
         }
       }
     },
@@ -821,7 +1235,7 @@
           "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
         }
       ],
-      "reviewHash": "a05b4e9ca299524c2a6b9c63b1c6e366f808bfe0a1b12d68534aba998081ce5a",
+      "reviewHash": "755b3969f7db7c8162b43816879ced694c882cccf0c6193542aa950bd699d80f",
       "reviewCurrent": true,
       "requiresReverification": false,
       "review": {
@@ -829,12 +1243,14 @@
         "kind": "research-review",
         "publicationAllowed": false,
         "findingId": "finding-6e496a5e251f3581aadb16cace106375e3b67065fbbd4b80f0e7121f38fab417",
-        "revision": 3,
-        "previousReviewHash": "4080023526f284bd22987521cedceb8000549d0f2f2bf18ed7f828f91c54b777",
+        "revision": 4,
+        "previousReviewHash": "a05b4e9ca299524c2a6b9c63b1c6e366f808bfe0a1b12d68534aba998081ce5a",
         "sourceRevisions": [
-          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+          "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "7d4dacd1df1f822e9aa6c6d7d28bbdb1b053f4fb148691438b6a61d0222c832f"
         ],
-        "reviewer": "DegreeSteps final cross-surface pricing consistency review",
+        "reviewer": "Codex actual approved production release verification",
         "reviewedOn": "2026-11-27",
         "verifiedOn": "2026-11-27",
         "announcedOn": null,
@@ -843,7 +1259,7 @@
         "triage": "BOTH",
         "status": "researching",
         "changeKind": "correction",
-        "summary": "Implemented a concrete public pricing-confidence correction: current MyPath AA/BBA/BSIT amounts are unknown rather than mislabeled 2026–27 prices. Preserve FY 2025–26 $3500/24 weeks and undated $3400/six-month BBA marketing as separate scoped observations. The legacy 2025–26 catalog—not independently verified current 2026–27 policy—describes 30 equivalent residence credits, B− transfer review, mastery/no-GPA transcripts and conversion records. Current numeric caps and MyPath competency equivalencies remain unpromoted. Comparison content and the product metadata correction are ready for review; maps/assessment research remains blocked. School insights and the AI research-reference packet now carry the same scoped price conflict, avoiding the earlier $3,500/six-month conflation. Prior graduate $4,030 quotes keep their original November 3 review dates and unknown academic year; they are not current verified prices.",
+        "summary": "Implemented a concrete public pricing-confidence correction: current MyPath AA/BBA/BSIT amounts are unknown rather than mislabeled 2026–27 prices. Preserve FY 2025–26 $3500/24 weeks and undated $3400/six-month BBA marketing as separate scoped observations. The legacy 2025–26 catalog—not independently verified current 2026–27 policy—describes 30 equivalent residence credits, B− transfer review, mastery/no-GPA transcripts and conversion records. Current numeric caps and MyPath competency equivalencies remain unpromoted. Comparison content and the product metadata correction are ready for review; maps/assessment research remains blocked. School insights and the AI research-reference packet now carry the same scoped price conflict, avoiding the earlier $3,500/six-month conflation. Prior graduate $4,030 quotes keep their original November 3 review dates and unknown academic year; they are not current verified prices. Product/editorial publication observed through the approved production run; exact URLs and bytes are retained. Existing unresolved degree mapping or current-policy research is not closed by this release.",
         "evidence": [
           {
             "checkedOn": "2026-11-27",
@@ -1017,7 +1433,7 @@
           "assessments": []
         },
         "product": {
-          "status": "review-ready",
+          "status": "implemented",
           "paths": [
             "content/research/cbe-schools.json",
             "dist/data/program-catalog.json",
@@ -1030,11 +1446,13 @@
           "notes": "Public MyPath opportunity pricing now leaves current-year amount unknown, preserving the source-dated FY 2025–26 $3500/24-week historical quote and undated BBA $3400/six-month marketing conflict separately. Current consolidated catalog, numeric ACE cap, exact applicable competency map and current proctoring remain blocked. Six credit-hour academic models and historical student data are unchanged. The same correction applies to school summaries and research-reference cautions. Graduate current rates remain unverified, with older quotes preserved separately."
         },
         "editorial": {
-          "status": "review-ready",
+          "status": "published",
           "proposedUrls": [
             "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/"
           ],
-          "publishedUrls": [],
+          "publishedUrls": [
+            "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/"
+          ],
           "existingUrls": [],
           "title": "UMPI YourPace vs UMass Global MyPath: business-degree costs and transfer",
           "metaDescription": "Compare UMPI’s 2026–27 business tuition with UMass Global’s live 2025–26 MyPath sources, transfer and transcript rules, and unresolved current pricing.",
@@ -1060,6 +1478,41 @@
             "umass-accreditation"
           ],
           "metrics": null
+        },
+        "release": {
+          "environment": "production",
+          "commitSha": "9b29fd79e528d48419e64d8906ac9c377407fcf3",
+          "pullRequestUrl": "https://github.com/jeremyc3434/DegreeSteps/pull/62",
+          "workflowRunUrl": "https://github.com/jeremyc3434/DegreeSteps/actions/runs/46075109831",
+          "verifiedOn": "2026-11-27",
+          "approval": "The repository owner requested an end-to-end rehearsal through the approved publication process. Codex manually dispatched the existing workflow after exact-head core/browser checks and staging verification. Existing manual target, migration assertion and production configuration gates were retained; no future automatic production deployment was enabled.",
+          "verifiedUrls": [
+            "https://degreesteps.com/robots.txt",
+            "https://degreesteps.com/",
+            "https://degreesteps.com/brand.css",
+            "https://degreesteps.com/data/credit-sources.json",
+            "https://degreesteps.com/data/program-catalog.json",
+            "https://degreesteps.com/courses.html",
+            "https://degreesteps.com/courses.js",
+            "https://degreesteps.com/data/course-catalog.json",
+            "https://degreesteps.com/sitemap.xml",
+            "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+            "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+            "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+            "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+            "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+            "https://degreesteps.com/credit-sources/google-certificates/",
+            "https://degreesteps.com/credit-sources/wgu-single-courses/",
+            "https://degreesteps.com/credit-sources/christian-leaders/",
+            "https://degreesteps.com/credit-sources/asu-ulc/",
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+            "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/"
+          ],
+          "receiptPaths": [
+            "content/research-intake/evidence/issue61/2be21364a6771deaa8068da1bf2ad4bb17cfeaa5a48cdde76433840c27f04e1f.json"
+          ]
         }
       }
     },
@@ -1341,7 +1794,7 @@
           "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
         }
       ],
-      "reviewHash": "a37179c602009f03e1d58b54b0d69e08f7deeed0776f63447b7f667b5a2900d2",
+      "reviewHash": "a1c7f4951644414c027d193cf62b0a3bf20b005de6a96cc8afdfc4858ef56458",
       "reviewCurrent": true,
       "requiresReverification": false,
       "review": {
@@ -1349,21 +1802,23 @@
         "kind": "research-review",
         "publicationAllowed": false,
         "findingId": "finding-73416f60a5ad8a8b0c1f9216cf2eace2ef777916ccf204afe9b24b15c289e4e0",
-        "revision": 2,
-        "previousReviewHash": "b12fa19aecf9bb0a484c7dcc4427df16bac1ea27f549d6e1440c1e4d6721f246",
+        "revision": 3,
+        "previousReviewHash": "a37179c602009f03e1d58b54b0d69e08f7deeed0776f63447b7f667b5a2900d2",
         "sourceRevisions": [
-          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+          "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "7d4dacd1df1f822e9aa6c6d7d28bbdb1b053f4fb148691438b6a61d0222c832f"
         ],
-        "reviewer": "DegreeSteps Issue56 scoped source enrichment",
+        "reviewer": "Codex actual approved production release verification",
         "reviewedOn": "2026-11-27",
         "verifiedOn": "2026-11-27",
         "announcedOn": "2025-07-14",
         "effectiveOn": null,
         "followUpOn": "2026-12-27",
         "triage": "CONTENT",
-        "status": "ready-for-review",
+        "status": "implemented",
         "changeKind": "newly-discovered-existing-policy",
-        "summary": "Exactly three applied 90-credit degrees were approved in November 2025 and are active Fall 2026: UMA Public Administration, UMFK Business Management and UMPI Psychology. At least 30 credits must be through the conferring campus;60/90 outside capacity is arithmetic, not a promise of 60 ACE credits. Adult-completer and two-year-gap conditions vary by program; UMA has distinct alternatives. Some employers/graduate programs may reject fewer than 120 credits; licensure and graduate admission are not guaranteed. UMA continuation is 121 credits. The article is ready for review; no executable course map or newly eligible degree recommendation is published.",
+        "summary": "Exactly three applied 90-credit degrees were approved in November 2025 and are active Fall 2026: UMA Public Administration, UMFK Business Management and UMPI Psychology. At least 30 credits must be through the conferring campus;60/90 outside capacity is arithmetic, not a promise of 60 ACE credits. Adult-completer and two-year-gap conditions vary by program; UMA has distinct alternatives. Some employers/graduate programs may reject fewer than 120 credits; licensure and graduate admission are not guaranteed. UMA continuation is 121 credits. The article is ready for review; no executable course map or newly eligible degree recommendation is published. Product/editorial publication observed through the approved production run; exact URLs and bytes are retained. Existing unresolved degree mapping or current-policy research is not closed by this release.",
         "evidence": [
           {
             "checkedOn": "2026-11-27",
@@ -1493,11 +1948,13 @@
           "notes": "Content explains verified pilot availability and limitations. No fully mapped 90-credit executable curriculum is promoted; admission, actual degree applicability, graduate-school and licensure decisions remain program/receiving-institution specific."
         },
         "editorial": {
-          "status": "review-ready",
+          "status": "published",
           "proposedUrls": [
             "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/"
           ],
-          "publishedUrls": [],
+          "publishedUrls": [
+            "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/"
+          ],
           "existingUrls": [],
           "title": "Maine’s 90-credit applied bachelor’s degrees: who they fit and what to check",
           "metaDescription": "Compare Maine’s three approved 90-credit applied bachelor’s programs, adult-completer eligibility, transfer limits, costs and graduate-school questions.",
@@ -1520,6 +1977,274 @@
           "evidenceIds": [
             "maine-active-three",
             "maine-residency"
+          ],
+          "metrics": null
+        },
+        "release": {
+          "environment": "production",
+          "commitSha": "9b29fd79e528d48419e64d8906ac9c377407fcf3",
+          "pullRequestUrl": "https://github.com/jeremyc3434/DegreeSteps/pull/62",
+          "workflowRunUrl": "https://github.com/jeremyc3434/DegreeSteps/actions/runs/46075109831",
+          "verifiedOn": "2026-11-27",
+          "approval": "The repository owner requested an end-to-end rehearsal through the approved publication process. Codex manually dispatched the existing workflow after exact-head core/browser checks and staging verification. Existing manual target, migration assertion and production configuration gates were retained; no future automatic production deployment was enabled.",
+          "verifiedUrls": [
+            "https://degreesteps.com/robots.txt",
+            "https://degreesteps.com/",
+            "https://degreesteps.com/brand.css",
+            "https://degreesteps.com/data/credit-sources.json",
+            "https://degreesteps.com/data/program-catalog.json",
+            "https://degreesteps.com/courses.html",
+            "https://degreesteps.com/courses.js",
+            "https://degreesteps.com/data/course-catalog.json",
+            "https://degreesteps.com/sitemap.xml",
+            "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+            "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+            "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+            "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+            "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+            "https://degreesteps.com/credit-sources/google-certificates/",
+            "https://degreesteps.com/credit-sources/wgu-single-courses/",
+            "https://degreesteps.com/credit-sources/christian-leaders/",
+            "https://degreesteps.com/credit-sources/asu-ulc/",
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+            "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/"
+          ],
+          "receiptPaths": [
+            "content/research-intake/evidence/issue61/2be21364a6771deaa8068da1bf2ad4bb17cfeaa5a48cdde76433840c27f04e1f.json"
+          ]
+        }
+      }
+    },
+    {
+      "claim": "Evaluate a business MyPath student enrolled at UMass Global in 2024: distinguish already-earned unsubmitted credit from new outside coursework while enrolled; verify the admission-cohort requirements, residency, minimum grades, credit-hour-to-competency evaluation and permission before any purchase. Explain why MyPath is missing from complete plans and build only source-supported requirements/mappings. https://catalog.umassglobal.edu/pdf/University%20of%20Massachusetts%20Global%202024-2025%20Catalog.pdf https://umassglobal.sophia.org/",
+      "section": "Currently enrolled",
+      "kind": "lead",
+      "id": "finding-89d3a4fc32f6eb50c62bb24cf3a5bb213a3ffa11000ade50148cb6d8244eb6ef",
+      "sourceUrls": [
+        "https://catalog.umassglobal.edu/pdf/University%20of%20Massachusetts%20Global%202024-2025%20Catalog.pdf",
+        "https://umassglobal.sophia.org/"
+      ],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-63",
+          "revision": "6f740e4e99ed603a569888868b0aaca195794ef20ee3d2150bfb2c4c3bd6b511",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/63"
+        }
+      ],
+      "reviewHash": "6ea56375ccac0f9131e45b8729268da4657732b521830c424e189c00f20ae1b7",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-89d3a4fc32f6eb50c62bb24cf3a5bb213a3ffa11000ade50148cb6d8244eb6ef",
+        "revision": 1,
+        "previousReviewHash": null,
+        "sourceRevisions": [
+          "6f740e4e99ed603a569888868b0aaca195794ef20ee3d2150bfb2c4c3bd6b511"
+        ],
+        "reviewer": "Codex independently verified student-scenario research",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": "2026-11-27",
+        "announcedOn": null,
+        "effectiveOn": null,
+        "followUpOn": "2026-12-04",
+        "triage": "BOTH",
+        "status": "researching",
+        "changeKind": "newly-discovered-existing-policy",
+        "summary": "Verified the actual historical PDF and derived six complete 120-equivalent-credit requirement ledgers. New outside coursework while actively enrolled, grade proof and Sophia-to-competency awards remain unresolved individual/university questions. Current Sophia credit-hour awards are not promoted into legacy competency awards. The product supplies a current-degree requirements workspace, practical approval steps and guidance, not a false complete MyPath template.",
+        "evidence": [
+          {
+            "id": "umass2024-dual-enrollment",
+            "title": "UMass Global 2024–25 catalog, printed page 37: Dual Enrollment Policy",
+            "url": "https://catalog.umassglobal.edu/pdf/University%20of%20Massachusetts%20Global%202024-2025%20Catalog.pdf",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Students enrolled in a competency-based program cannot be enrolled in a credit-hour program or take credit hour courses due to financial aid requirements and restrictions.",
+            "capturePath": null,
+            "contentHash": "a43b249a19718b5dbafd4c5c61a8aeb780a97a190b5b88a50dddedd103b5e29c"
+          },
+          {
+            "id": "umass2024-articulated-grade",
+            "title": "UMass Global 2024–25 catalog, printed page 34: Other Credit Opportunities",
+            "url": "https://catalog.umassglobal.edu/pdf/University%20of%20Massachusetts%20Global%202024-2025%20Catalog.pdf",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "University of Massachusetts Global MyPath programs require verification of B- or better for all articulated credit.",
+            "capturePath": null,
+            "contentHash": "a43b249a19718b5dbafd4c5c61a8aeb780a97a190b5b88a50dddedd103b5e29c"
+          },
+          {
+            "id": "umass2024-ace-evaluation",
+            "title": "UMass Global 2024–25 catalog, printed page 35: ACE Evaluated Trainings",
+            "url": "https://catalog.umassglobal.edu/pdf/University%20of%20Massachusetts%20Global%202024-2025%20Catalog.pdf",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "University of Massachusetts Global accepts ACE recommendations for awarding academic credit.",
+            "capturePath": null,
+            "contentHash": "a43b249a19718b5dbafd4c5c61a8aeb780a97a190b5b88a50dddedd103b5e29c"
+          },
+          {
+            "id": "umass2024-other-credit-nonresidency",
+            "title": "UMass Global 2024–25 catalog, printed page 35: Other Credit Opportunities",
+            "url": "https://catalog.umassglobal.edu/pdf/University%20of%20Massachusetts%20Global%202024-2025%20Catalog.pdf",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Note that credit granted through “other credit opportunities” does not count toward University of Massachusetts Global residency requirements.",
+            "capturePath": null,
+            "contentHash": "a43b249a19718b5dbafd4c5c61a8aeb780a97a190b5b88a50dddedd103b5e29c"
+          },
+          {
+            "id": "umass2024-ace-exempt-other-credit-cap",
+            "title": "UMass Global 2024–25 catalog, printed page 22: Other Credit Opportunities continuation",
+            "url": "https://catalog.umassglobal.edu/pdf/University%20of%20Massachusetts%20Global%202024-2025%20Catalog.pdf",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "The Other Credit Opportunities Policy does not apply to the following: Advanced Placement Examinations (AP), College Level Examination Program (CLEP), DANTES Subject Standardized Tests (DSST), International Baccalaureate Examinations (IB), Defense Language Proficiency Examinations (DLAT/DLPT), and ACE evaluated trainings.",
+            "capturePath": null,
+            "contentHash": "a43b249a19718b5dbafd4c5c61a8aeb780a97a190b5b88a50dddedd103b5e29c"
+          },
+          {
+            "id": "umass2024-residency-minimum",
+            "title": "UMass Global 2024–25 catalog, printed page 60: Undergraduate Competency-Based Degree Requirements / Bachelor Degrees",
+            "url": "https://catalog.umassglobal.edu/pdf/University%20of%20Massachusetts%20Global%202024-2025%20Catalog.pdf",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Minimum of 30 equivalent credits completed in residency at University of Massachusetts Global, including LBSC 320 and LBSC 321",
+            "capturePath": null,
+            "contentHash": "a43b249a19718b5dbafd4c5c61a8aeb780a97a190b5b88a50dddedd103b5e29c"
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue63/1374e8450c75a11f5577e7c83758771457e6a26e5b8e0a332c3638a66f4e266b.json",
+          "content/research-intake/evidence/issue63/3e1d6ddd0e24ccfb2bd28b91c10ec374e0e8d93eea8e636d7a39d1d2408182e3.json",
+          "content/research-intake/evidence/issue63/db7e78099b2edf3cc6f2a95a7d59889d3711fcaa880b98f8cf893101f891ba55.json",
+          "content/research-intake/evidence/issue63/65aed70b3ff790714ebc50555610ace5de99839c8b7c91c96e84936fbac87fbe.json",
+          "content/research-intake/evidence/issue63/f785d8a90c7c7af291e66cd9f0da06428de58f56f324c1719ecaf56574eed0ba.json",
+          "content/research-intake/evidence/issue63/cd7fff33436fa280f451a6ca6676a78bf5ead2a8a9426fa0ea5a03c906d4394d.json",
+          "content/research-intake/evidence/issue63/27a2d9f9d067d1f45001255733adfa1194d0da7d70bc2501875ea7c2cdcd9e7a.json",
+          "content/research-intake/evidence/issue63/a24766025eb7496b96bd2b362475e1b5e6899f650abc38e62f7e8a31ffe9190c.json",
+          "content/research-intake/evidence/issue63/a41d31a22539568a3ab86601369f55dd87369ba8bffc5c7e5dab3ef6bae0580d.json",
+          "content/research-intake/evidence/issue63/25748c8e220b49d50e0368468e234cda7b8ca51aecd5b0b38ec44cbdbac8a530.json",
+          "content/research-intake/evidence/issue63/0e7e4e1cb55ddd388d41ff6962c81480137fab66f0c3a5278a7de8c35f52ac9a.json",
+          "content/research-intake/evidence/issue63/8b787569981bf2bb6d53e9cdcb8c459d8b827e5f3e993d3516f6f6a71ab521c6.json",
+          "content/research-intake/evidence/issue63/4ccc523a16fe2cbf90c6f39677812b5da827622f5cecdff60e3cf89c399c7e91.json",
+          "content/research-intake/evidence/issue63/3622a80ff82e129248fcd64166ddd973474eefef8dc091b227082fbb3ba30190.json",
+          "content/research-intake/evidence/issue63/97a24069b1122dbe011906c7f952cf32c683f47aec23c7655de54445ca80f6c1.json",
+          "content/research-intake/evidence/issue63/a0046e21da0a379413ab5a3c4f04a55a9476565a2ca96271d5fbf54a9421167f.json",
+          "content/research-intake/evidence/issue63/d41e2ce8685ca15a92defd3aa3d57b99428136f11af20b49263cff20118a6abc.json",
+          "content/research-intake/evidence/issue63/b242699359a3b352ad58bb7d21ec1ac9730f6f6ec2a84bda85c937410fa60633.json",
+          "content/research-intake/evidence/issue63/31e2963f35ff5013c64964657735c90cd426be168c2e7c39e1de0afb2edfddd1.json",
+          "content/research-intake/evidence/issue63/ceb55391f8b7ceb31f7bae16133b4ca4f124d2ada0f75eace3df6b470700e0a9.json",
+          "content/research-intake/evidence/issue63/c6bb5896a2ba8140275540854937d77ef95a04f7f2b60d681d2a58bc7d7d8294.json",
+          "content/research-intake/evidence/issue63/e0b7f7b4534097ad20862a8206b9595be2f40d8d91b5cb0c1afd405f2c04c76f.json",
+          "content/research-intake/evidence/issue63/3b09e98058e4d603b04755c97aae418788d3e3ad7cec38d3b89c9a567ca8d7ac.json",
+          "content/research-intake/evidence/issue63/6e42dc6ac13c46ed8840b31f7a07bfd72d44909feac370f4637f26fbc03f054f.json",
+          "content/research-intake/evidence/issue63/dc88ed520ad8ab8cfeebaa1767c70d01a3819aee0d86311a2dc8e0936d8933bf.json",
+          "content/research-intake/evidence/issue63/7ebcc34bab13996cb87b76a176a53d2248231de174dedcccaa3afc75cb2a40d0.json",
+          "content/research-intake/evidence/issue63/f8c643d9f665cdaca755a7b80e9d329239d66fb3680d26c1494de5e610724a8c.json",
+          "content/research-intake/evidence/issue63/c959c5150f54fd667ac17cf5b4addccca613dad60755036e9564971c168d9b0c.json",
+          "content/research-intake/evidence/issue63/04ac7ee627f3fc53e2c04c71889538dfed772f841126fda5e3ce01476c5865b7.json",
+          "content/research-intake/evidence/issue63/b086ae10e388a2e66ea6e70483dd0f228f4b2e5a28b69b8f9e83d889ba7b2bcc.json",
+          "content/research-intake/evidence/issue63/9734aeafa934d2c7e1e2f7bf61d500faa548a2e05da669b28dfe16b6234cbce4.json",
+          "content/research-intake/evidence/issue63/cc9b08d58381fa2dcc2c75c6f10667419691875a74108889288554b92f9f37e7.json",
+          "content/research-intake/evidence/issue63/084be4e5bb38090000bc3add2e17711e593b571fd8068a07aad9e90e14ce907b.json",
+          "content/research-intake/evidence/issue63/508850c33aa0938df2312ee41786d32719533376038e1593d2e7a33408c6d977.json",
+          "content/research-intake/evidence/issue63/34f843ea5e6ec76334a52118bf1c01f8ec1d686e14bcbf95da858aa30f5fce48.json",
+          "content/research-intake/evidence/issue63/fe23f4bab23e18d1e164a71cdef55be5ca7704316e49ae16a496d6b78c9dfd30.json",
+          "content/research-intake/evidence/issue63/d1b10869533b05f7d7901a4327db7d2556dae8bc6c7a954a9c3a10f319a25c6d.json",
+          "content/research-intake/evidence/issue63/960e1a9d897689c25701bbf166425527ee6df50e73d048f273b7a72422c57e3d.json",
+          "content/research-intake/evidence/issue63/91cb9f3db3ac1f54c579e6d2bf5960de6ccf75a9ccd1124391d56ef241c6dd24.json",
+          "content/research-intake/evidence/issue63/8423c1ae3d76269bbff0ce9a53604d12e0b2028e8ea6a8f0ce50840b5f66370e.json",
+          "content/research-intake/evidence/issue63/2818d70d292d328409edfc8e7e9d2dd74967043620441f39f2f7d32b5b92efe1.json",
+          "content/research-intake/evidence/issue63/e8ffcf3004b146ed92c7f866fe837a5af3219eaf1b3c6a7a8cade7dc88f52da9.json",
+          "content/research-intake/evidence/issue63/56ef20e71fdbf644ef9c42dd984df10ab368f8809901deea2ad6f26adf524cb5.json",
+          "content/research-intake/evidence/issue63/4849a2e9230cfd9c417b201a91459e46f6c77bfa5fa38f618928b96800031107.json",
+          "content/research-intake/evidence/issue63/15fd94ae91772a36232969da53cafdbb2feb0b6ad03dd26e4e9f20214456f646.json",
+          "content/research-intake/evidence/issue63/43d19afff571d6ef2a0e92ea3c427a1d93e8c09d651c05d909560d90d3ddddb4.json",
+          "content/research-intake/evidence/issue63/828fb8553ffa0d6c3fff55af81e3a4b942e2c3ea75db329086318ac1c502075c.json",
+          "content/research-intake/evidence/issue63/e12ac261f01cf41d0e045e661ca3ad4e6764588bef2cce8a72f963d4e41015b9.json",
+          "content/research-intake/evidence/issue63/7bb77c44d32283408a81e22aadaf6653466cb36d076b9af90d6f6605fae4ebf6.json",
+          "content/research-intake/evidence/issue63/da8c524551d1ca9f7fd032a5d75cc1b5c90faf2a2563a1ef6b407ee707371f3b.json",
+          "content/research-intake/evidence/issue63/d0f6628c64e13ebadad1ed6c63824de3c8159f753d4a578351459eefa2e1dff8.json",
+          "content/research-intake/evidence/issue63/467884e5abd7cb2e9585a8db084b83a72d4e7c77df6c10ee751b75aa425561c8.json",
+          "content/research-intake/evidence/issue63/a108dafc2fe0679b6e0636a1d5f00037a6ae6213d50a6d38785376c34e9719fc.json",
+          "content/research-intake/evidence/issue63/05b461a98c4c8bdc748d2606fff67889238f25d9c406e4ef54f265af65c69fa4.json",
+          "content/research-intake/evidence/issue63/c6e2af91d050c003d0deaf6a34bb3c266fc50884484e3ab934d7c52b05293d62.json",
+          "content/research-intake/evidence/issue63/863bf64db1587442614ef0959fa55f0df9184ab50ae54be263ad6216501daa41.json",
+          "content/research-intake/evidence/issue63/7ce83a0cf29cf50571d13b2b60fcf98c84528840e3086ae91e0158debdac3a49.json",
+          "content/research-intake/evidence/issue63/b1ef2adb24aaee107de882ec7d90285f123af1fa49295a06dd975dff42d0f7ac.json",
+          "content/research-intake/evidence/issue63/c6d28a972a723b8e48ed841340970845b4841781d184149dedd1e9f1ecb4e335.json",
+          "content/research-intake/evidence/issue63/073730f98125f9ca271fc7fe0b571b6e423271370d82ea2adf3b8e8c40a3614a.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": "University of Massachusetts Global",
+            "program": "Legacy MyPath BBA; admission in calendar 2024",
+            "level": "bachelor",
+            "modality": "online competency-based",
+            "catalog": "Official 2024–25 source; the individual assigned catalog and emphasis remain unverified"
+          },
+          "costs": [],
+          "accreditation": [],
+          "transfer": {
+            "overallCap": null,
+            "aceCap": null,
+            "nccrsCap": null,
+            "combinedCplCap": null,
+            "externallyAssessedCap": null,
+            "residency": null,
+            "majorResidency": null,
+            "totalCredits": null
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": []
+        },
+        "product": {
+          "status": "review-ready",
+          "paths": [
+            "dist/guide-engine.js",
+            "dist/sheet-state.js",
+            "dist/portal.js",
+            "dist/student-checklist.js",
+            "dist/school.js"
+          ],
+          "notes": "Optional context and targeted guidance reuse existing architecture. Existing target identity, learning, grades, units, course dates, evaluations and costs are preserved. Full build/browser/CI release checks remain separate from this source review."
+        },
+        "release": null,
+        "editorial": {
+          "status": "review-ready",
+          "proposedUrls": [
+            "https://degreesteps.com/guides/transfer-credit-after-enrolling/"
+          ],
+          "publishedUrls": [],
+          "existingUrls": [],
+          "title": "Already in college? Check outside courses before you pay",
+          "metaDescription": "Find out how to evaluate new transfer courses while already enrolled, keep older credit separate, and ask for approval against your remaining degree requirements.",
+          "canonicalUrl": "https://degreesteps.com/guides/transfer-credit-after-enrolling/",
+          "internalLinks": [
+            "https://degreesteps.com/import-courses.html",
+            "https://degreesteps.com/courses.html?tab=browse"
+          ],
+          "structuredData": true,
+          "sitemap": true,
+          "studentUsefulness": "Turn this learner situation into a clear next action while preserving academic and financial boundaries.",
+          "novelty": "Verified scenario-specific product flow and substantive new or refreshed resource, not a generic school list.",
+          "searchIntent": "Already in college? Check outside courses before you pay",
+          "debtFreeRelevance": "Evaluate useful existing learning and applicable funding before paying for replacement or unapproved courses; no debt-free outcome is promised.",
+          "urgency": "Prevent unnecessary purchases, discarded old credit, mistaken high-school awards or unverified tuition assumptions.",
+          "overlapNotes": "A distinct student decision with a substantive guide and links to existing import/course tools; no duplicated degree template.",
+          "evidenceIds": [
+            "umass2024-dual-enrollment",
+            "umass2024-articulated-grade",
+            "umass2024-ace-evaluation",
+            "umass2024-other-credit-nonresidency",
+            "umass2024-ace-exempt-other-credit-cap",
+            "umass2024-residency-minimum"
           ],
           "metrics": null
         }
@@ -1638,7 +2363,7 @@
           "url": "https://github.com/jeremyc3434/DegreeSteps/issues/61"
         }
       ],
-      "reviewHash": "d4c536eaa4c17bd73f411b42611166a638fdab6329d50e6028bfdd5bf15f4cec",
+      "reviewHash": "8734bda4d6f3d77d2309985cd032e3e15988bc101c8ff0f6d92c73a3a8333165",
       "reviewCurrent": true,
       "requiresReverification": false,
       "review": {
@@ -1646,21 +2371,21 @@
         "kind": "research-review",
         "publicationAllowed": false,
         "findingId": "finding-a7b5e158aad2d2117032374b682166e7d295c1caa1fce347b4b80283d1e6ef65",
-        "revision": 1,
-        "previousReviewHash": null,
+        "revision": 2,
+        "previousReviewHash": "d4c536eaa4c17bd73f411b42611166a638fdab6329d50e6028bfdd5bf15f4cec",
         "sourceRevisions": [
           "758eb76ac994c0bcf367697d865f79fb208fb0945837e427ab872c951a4b2c8b"
         ],
-        "reviewer": "Codex independently verified weekly rehearsal",
+        "reviewer": "Codex actual approved production release verification",
         "reviewedOn": "2026-11-27",
         "verifiedOn": "2026-11-27",
         "announcedOn": null,
         "effectiveOn": null,
         "followUpOn": "2026-12-04",
         "triage": "BOTH",
-        "status": "ready-for-review",
+        "status": "implemented",
         "changeKind": "newly-discovered-existing-policy",
-        "summary": "Verified official ASU Universal Learner and Sophia evidence; improve the ASU source profile and write a substantive original comparison answering transcript choice, actual purchase structure, realistic timing, assessment and receiving-degree applicability. Native connector extractions are retained, not represented as origin HTTP captures. Source conflicts stay explicit; no receiving map, award, degree-readiness or student record changes.",
+        "summary": "Verified official ASU Universal Learner and Sophia evidence; improve the ASU source profile and write a substantive original comparison answering transcript choice, actual purchase structure, realistic timing, assessment and receiving-degree applicability. Native connector extractions are retained, not represented as origin HTTP captures. Source conflicts stay explicit; no receiving map, award, degree-readiness or student record changes. Product/editorial publication observed through the approved production run; exact URLs and bytes are retained. Existing unresolved degree mapping or current-policy research is not closed by this release.",
         "evidence": [
           {
             "id": "asu-pricing",
@@ -1891,20 +2616,56 @@
           ]
         },
         "product": {
-          "status": "review-ready",
+          "status": "implemented",
           "paths": [
             "dist/data/credit-sources.json",
             "dist/credit-sources/asu-ulc/index.html"
           ],
           "notes": "Existing ASU source fields now distinguish enrollment and credit purchase, grade eligibility, transcript timing/cost, pacing, proctoring and receiving applicability. ASU remains catalog-only; no exact transfer awards are added."
         },
-        "release": null,
+        "release": {
+          "environment": "production",
+          "commitSha": "9b29fd79e528d48419e64d8906ac9c377407fcf3",
+          "pullRequestUrl": "https://github.com/jeremyc3434/DegreeSteps/pull/62",
+          "workflowRunUrl": "https://github.com/jeremyc3434/DegreeSteps/actions/runs/46075109831",
+          "verifiedOn": "2026-11-27",
+          "approval": "The repository owner requested an end-to-end rehearsal through the approved publication process. Codex manually dispatched the existing workflow after exact-head core/browser checks and staging verification. Existing manual target, migration assertion and production configuration gates were retained; no future automatic production deployment was enabled.",
+          "verifiedUrls": [
+            "https://degreesteps.com/robots.txt",
+            "https://degreesteps.com/",
+            "https://degreesteps.com/brand.css",
+            "https://degreesteps.com/data/credit-sources.json",
+            "https://degreesteps.com/data/program-catalog.json",
+            "https://degreesteps.com/courses.html",
+            "https://degreesteps.com/courses.js",
+            "https://degreesteps.com/data/course-catalog.json",
+            "https://degreesteps.com/sitemap.xml",
+            "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+            "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+            "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+            "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+            "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+            "https://degreesteps.com/credit-sources/google-certificates/",
+            "https://degreesteps.com/credit-sources/wgu-single-courses/",
+            "https://degreesteps.com/credit-sources/christian-leaders/",
+            "https://degreesteps.com/credit-sources/asu-ulc/",
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+            "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/"
+          ],
+          "receiptPaths": [
+            "content/research-intake/evidence/issue61/2be21364a6771deaa8068da1bf2ad4bb17cfeaa5a48cdde76433840c27f04e1f.json"
+          ]
+        },
         "editorial": {
-          "status": "review-ready",
+          "status": "published",
           "proposedUrls": [
             "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/"
           ],
-          "publishedUrls": [],
+          "publishedUrls": [
+            "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/"
+          ],
           "existingUrls": [
             "https://degreesteps.com/blog/college-wont-accept-sophia-university-credit-options/"
           ],
@@ -1946,6 +2707,202 @@
       }
     },
     {
+      "claim": "Productize college-credit head starts and actual dual enrollment separately: issuing-college transcripts, provider age/consent and ID rules, school approval, state-specific funding and first-year classification. Add a useful sourced guide and high-school starting context without treating a high-school report card as college credit. https://ulc.asu.edu/help-center/faqs/ https://www.fldoe.org/schools/higher-ed/fl-college-system/dual-enroll-transfer/",
+      "section": "High school",
+      "kind": "lead",
+      "id": "finding-bf2d3eafd48ef2d6aaebeeb423e3783df42f98593e6ed92346521b8408fe95a6",
+      "sourceUrls": [
+        "https://ulc.asu.edu/help-center/faqs/",
+        "https://www.fldoe.org/schools/higher-ed/fl-college-system/dual-enroll-transfer/"
+      ],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-63",
+          "revision": "6f740e4e99ed603a569888868b0aaca195794ef20ee3d2150bfb2c4c3bd6b511",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/63"
+        }
+      ],
+      "reviewHash": "b1dba728fbfcb154fc11a9cae3004f8ca0d9d590b252030ab549ea4554ca7f7a",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-bf2d3eafd48ef2d6aaebeeb423e3783df42f98593e6ed92346521b8408fe95a6",
+        "revision": 1,
+        "previousReviewHash": null,
+        "sourceRevisions": [
+          "6f740e4e99ed603a569888868b0aaca195794ef20ee3d2150bfb2c4c3bd6b511"
+        ],
+        "reviewer": "Codex independently verified student-scenario research",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": "2026-11-27",
+        "announcedOn": null,
+        "effectiveOn": null,
+        "followUpOn": "2026-12-04",
+        "triage": "BOTH",
+        "status": "ready-for-review",
+        "changeKind": "newly-discovered-existing-policy",
+        "summary": "Separate university-issued college credit, ACE recommendations and high-school credit. Implemented optional high-school context, issuing-college record guidance, and a substantive sourced six-step guide with scoped ASU/Sophia eligibility, consent/ID, Florida funding and ASU-only first-year classification. No high-school report card is asserted to establish a receiving award.",
+        "evidence": [
+          {
+            "id": "asu-hs-access",
+            "title": "asu-hs-access",
+            "url": "https://ulc.asu.edu/help-center/faqs/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "There are no age restrictions for Universal Learner Courses.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-homeschool-route",
+            "title": "asu-homeschool-route",
+            "url": "https://ulc.asu.edu/newsroom/how-homeschool-students-can-do-dual-enrollment-online-with-asu-universal-learner-courses/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "with additional parental consent steps for learners under 18",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-hs-age",
+            "title": "sophia-hs-age",
+            "url": "https://www.sophia.org/blog/higher-education/can-you-take-college-classes-in-high-school/",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "Sophia allows students as young as 13 to take college courses for future credits.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "florida-dual-enrollment",
+            "title": "florida-dual-enrollment",
+            "url": "https://www.fldoe.org/schools/higher-ed/fl-college-system/dual-enroll-transfer/",
+            "kind": "government",
+            "checkedOn": "2026-11-27",
+            "quote": "Not be scheduled to graduate from high school prior to the completion of the dual enrollment course.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "florida-funded-dual-credit",
+            "title": "florida-funded-dual-credit",
+            "url": "https://www.flsenate.gov/Laws/Statutes/2026/1007.271",
+            "kind": "government",
+            "checkedOn": "2026-11-27",
+            "quote": "Students who participate in dual enrollment programs are exempt from the payment of registration, tuition, and laboratory fees.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-first-year-status",
+            "title": "asu-first-year-status",
+            "url": "https://admission.asu.edu/apply/transfer",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "If you are completing college courses while in high school, you are considered a first-year student and not a transfer student.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "umpi-enrollment-age",
+            "title": "umpi-enrollment-age",
+            "url": "https://www.umpi.edu/yourpace/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "students who must be 20 years old at the time of application",
+            "capturePath": null,
+            "contentHash": null
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue63/3e26aed30792b10e3a6446321a0a49c1ed0e8b88d942e714ca554411ae0314ff.json",
+          "content/research-intake/evidence/issue63/e27d06d03aaae712abcc6fe64ff6ad014972e615ca18d3f6314eba31d233fb06.json",
+          "content/research-intake/evidence/issue63/ffde1e1601e00cdcfdcd9364b77ec179103a54d9f925d22944eec567e2b85994.json",
+          "content/research-intake/evidence/issue63/06bafd7a2337b5575a86d7ac3eeb5f4e2a2fd17f5f977ff33f404356b1cb4ff9.json",
+          "content/research-intake/evidence/issue63/dd1703c34a585888ebc7252c5ae4bdbf92e9f75bf676240060cdd21698923ad5.json",
+          "content/research-intake/evidence/issue63/1c9af7dd1f8b310ca28d7b5c83364d6fcd8b555609126418ff073a0cd51eea62.json",
+          "content/research-intake/evidence/issue63/df860d01b664508ae02fe375c21f150cb4296c2d59a92e7c5921995b9bf3eb40.json",
+          "content/research-intake/evidence/issue63/7c844322cd32043cd8dccbd35602924ce583672d8f1c7bab579eaef1c23f08a5.json",
+          "content/research-intake/evidence/issue63/777223761bb0ff93f80ff9efda7fb1a122b2fad11db53717a39bc142922a5a9c.json",
+          "content/research-intake/evidence/issue63/a14133b0631119869f96dabe3e008849cdc6dbdf6b49f489bb1bd84eb95b70d4.json",
+          "content/research-intake/evidence/issue63/009d72edbc5bc716219a83626395672d01e4cd7acf009db0a4b2e6a64b04a277.json",
+          "content/research-intake/evidence/issue63/97860a124cc4d716bb375c7734fe4201f13bb064a833a2c2ffbacb14ffaf1400.json",
+          "content/research-intake/evidence/issue63/10d3489e2c8b42306c59196e99ce9b5ef06ce482cde9d4ddfd51d04b773fb6e8.json",
+          "content/research-intake/evidence/issue63/bb331cd717e669372e342f1a71763c4b9389cd920a95f1997dc5b9c46d9f9cf3.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": null,
+            "program": "College-credit head starts and formal dual enrollment",
+            "level": "precollege preparation",
+            "modality": null,
+            "catalog": "Provider and state-specific rules checked 2026-11-27"
+          },
+          "costs": [],
+          "accreditation": [],
+          "transfer": {
+            "overallCap": null,
+            "aceCap": null,
+            "nccrsCap": null,
+            "combinedCplCap": null,
+            "externallyAssessedCap": null,
+            "residency": null,
+            "majorResidency": null,
+            "totalCredits": null
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": []
+        },
+        "product": {
+          "status": "review-ready",
+          "paths": [
+            "dist/guide-engine.js",
+            "dist/sheet-state.js",
+            "dist/portal.js"
+          ],
+          "notes": "Optional context and targeted guidance reuse existing architecture. Existing target identity, learning, grades, units, course dates, evaluations and costs are preserved. Full build/browser/CI release checks remain separate from this source review."
+        },
+        "release": null,
+        "editorial": {
+          "status": "review-ready",
+          "proposedUrls": [
+            "https://degreesteps.com/guides/earn-college-credit-in-high-school/"
+          ],
+          "publishedUrls": [],
+          "existingUrls": [],
+          "title": "Earn college credit in high school without wasting courses",
+          "metaDescription": "Compare dual enrollment, ASU Universal Learner and Sophia. Plan around high-school approval, age rules, funding and the college degree you want.",
+          "canonicalUrl": "https://degreesteps.com/guides/earn-college-credit-in-high-school/",
+          "internalLinks": [
+            "https://degreesteps.com/courses.html?tab=browse",
+            "https://degreesteps.com/courses.html?tab=browse"
+          ],
+          "structuredData": true,
+          "sitemap": true,
+          "studentUsefulness": "Turn this learner situation into a clear next action while preserving academic and financial boundaries.",
+          "novelty": "Verified scenario-specific product flow and substantive new or refreshed resource, not a generic school list.",
+          "searchIntent": "Earn college credit in high school without wasting courses",
+          "debtFreeRelevance": "Evaluate useful existing learning and applicable funding before paying for replacement or unapproved courses; no debt-free outcome is promised.",
+          "urgency": "Prevent unnecessary purchases, discarded old credit, mistaken high-school awards or unverified tuition assumptions.",
+          "overlapNotes": "A distinct student decision with a substantive guide and links to existing import/course tools; no duplicated degree template.",
+          "evidenceIds": [
+            "asu-hs-access",
+            "asu-homeschool-route",
+            "sophia-hs-age",
+            "florida-dual-enrollment",
+            "florida-funded-dual-credit",
+            "asu-first-year-status",
+            "umpi-enrollment-age"
+          ],
+          "metrics": null
+        }
+      }
+    },
+    {
       "claim": "Verify Google ACE renewal windows for GOOG-0009, GOOG-0007, GOOG-0008 (reported Nov 30 expiry); preserve valid historical awards. https://www.acenet.edu/National-Guide/",
       "section": "P0",
       "kind": "lead",
@@ -1975,7 +2932,7 @@
           "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
         }
       ],
-      "reviewHash": "b89cdba413c6b71169f98608c3e5346e3961f5f7d5a8e29803bbd620bd35fbae",
+      "reviewHash": "4ea9a37f77a59c8b121771afe9cab4a2d10636cf80c1b8ad84c5c29299dfc336",
       "reviewCurrent": true,
       "requiresReverification": false,
       "review": {
@@ -1983,14 +2940,15 @@
         "kind": "research-review",
         "publicationAllowed": false,
         "findingId": "finding-c4224c6e66e6024360ed98233af8bd1825d7aa9abfe0edbcf7e361e4211d1b46",
-        "revision": 2,
-        "previousReviewHash": "1fb22e9f49127c3f25304e251b9ea0ba1fc50ac76deba30cf6c98372f04c81af",
+        "revision": 3,
+        "previousReviewHash": "b89cdba413c6b71169f98608c3e5346e3961f5f7d5a8e29803bbd620bd35fbae",
         "sourceRevisions": [
+          "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
           "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
           "758eb76ac994c0bcf367697d865f79fb208fb0945837e427ab872c951a4b2c8b",
           "7d4dacd1df1f822e9aa6c6d7d28bbdb1b053f4fb148691438b6a61d0222c832f"
         ],
-        "reviewer": "Codex source-bound duplicate reconciliation",
+        "reviewer": "Codex actual approved production release verification",
         "reviewedOn": "2026-11-27",
         "verifiedOn": "2026-11-27",
         "announcedOn": null,
@@ -1999,7 +2957,7 @@
         "triage": "BOTH",
         "status": "ready-for-review",
         "changeKind": "confirmation",
-        "summary": "Update the existing ACE guide with a named, dated certificate-window case study; no separate expiry-news page. Content is prepared for PR review; no production publication or indexing is claimed. Exact repeated lead from rehearsal issue #61 reconciled to this existing finding and retained same-day primary ACE evidence. No duplicate policy, article, receiving award, source-credit upgrade or historical student change is introduced; no successor after November 30 is asserted.",
+        "summary": "Update the existing ACE guide with a named, dated certificate-window case study; no separate expiry-news page. Content is prepared for PR review; no production publication or indexing is claimed. Exact repeated lead from rehearsal issue #61 reconciled to this existing finding and retained same-day primary ACE evidence. No duplicate policy, article, receiving award, source-credit upgrade or historical student change is introduced; no successor after November 30 is asserted. Product/editorial publication observed through the approved production run; exact URLs and bytes are retained. Existing unresolved degree mapping or current-policy research is not closed by this release.",
         "evidence": [
           {
             "id": "google-current-window",
@@ -2119,7 +3077,7 @@
           "assessments": []
         },
         "product": {
-          "status": "review-ready",
+          "status": "implemented",
           "paths": [
             "dist/data/credit-sources.json",
             "scripts/provider-research-facts.mjs",
@@ -2128,11 +3086,13 @@
           "notes": "Public Google provider information records the three independently observed ACE periods and preserves valid historical awards. No Google receiving maps, source-credit version upgrades, earned awards or historical student data changed. No successor after November 30 was verified; follow up December 1."
         },
         "editorial": {
-          "status": "review-ready",
+          "status": "published",
           "proposedUrls": [
             "https://degreesteps.com/guides/ace-nccrs-and-accreditation/"
           ],
-          "publishedUrls": [],
+          "publishedUrls": [
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/"
+          ],
           "existingUrls": [
             "https://degreesteps.com/guides/ace-nccrs-and-accreditation/"
           ],
@@ -2159,6 +3119,41 @@
             "ace-date-policy"
           ],
           "metrics": null
+        },
+        "release": {
+          "environment": "production",
+          "commitSha": "9b29fd79e528d48419e64d8906ac9c377407fcf3",
+          "pullRequestUrl": "https://github.com/jeremyc3434/DegreeSteps/pull/62",
+          "workflowRunUrl": "https://github.com/jeremyc3434/DegreeSteps/actions/runs/46075109831",
+          "verifiedOn": "2026-11-27",
+          "approval": "The repository owner requested an end-to-end rehearsal through the approved publication process. Codex manually dispatched the existing workflow after exact-head core/browser checks and staging verification. Existing manual target, migration assertion and production configuration gates were retained; no future automatic production deployment was enabled.",
+          "verifiedUrls": [
+            "https://degreesteps.com/robots.txt",
+            "https://degreesteps.com/",
+            "https://degreesteps.com/brand.css",
+            "https://degreesteps.com/data/credit-sources.json",
+            "https://degreesteps.com/data/program-catalog.json",
+            "https://degreesteps.com/courses.html",
+            "https://degreesteps.com/courses.js",
+            "https://degreesteps.com/data/course-catalog.json",
+            "https://degreesteps.com/sitemap.xml",
+            "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+            "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+            "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+            "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+            "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+            "https://degreesteps.com/credit-sources/google-certificates/",
+            "https://degreesteps.com/credit-sources/wgu-single-courses/",
+            "https://degreesteps.com/credit-sources/christian-leaders/",
+            "https://degreesteps.com/credit-sources/asu-ulc/",
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+            "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/"
+          ],
+          "receiptPaths": [
+            "content/research-intake/evidence/issue61/2be21364a6771deaa8068da1bf2ad4bb17cfeaa5a48cdde76433840c27f04e1f.json"
+          ]
         }
       }
     },
@@ -2498,7 +3493,7 @@
           "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
         }
       ],
-      "reviewHash": "638266c887010dd1470795dc8a92527eb2fdbeb9932c1fc19a2ee2088b118db9",
+      "reviewHash": "8b5cc1a75a3571f81ce10c122ec306fc0f318c79b471b197df95ba043195feb1",
       "reviewCurrent": true,
       "requiresReverification": false,
       "review": {
@@ -2506,12 +3501,14 @@
         "kind": "research-review",
         "publicationAllowed": false,
         "findingId": "finding-d45f5a7347db8e46df33859b79d71d3bb7a500c83e01156984c0296eb5d6c0c6",
-        "revision": 2,
-        "previousReviewHash": "63b7c29ee44d7062bb4606ede9ba925d65ecb8f6c7e4bf43dc882e545736afd3",
+        "revision": 3,
+        "previousReviewHash": "638266c887010dd1470795dc8a92527eb2fdbeb9932c1fc19a2ee2088b118db9",
         "sourceRevisions": [
-          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+          "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "7d4dacd1df1f822e9aa6c6d7d28bbdb1b053f4fb148691438b6a61d0222c832f"
         ],
-        "reviewer": "DegreeSteps Issue56 scoped source enrichment",
+        "reviewer": "Codex actual approved production release verification",
         "reviewedOn": "2026-11-27",
         "verifiedOn": "2026-11-27",
         "announcedOn": null,
@@ -2520,7 +3517,7 @@
         "triage": "BOTH",
         "status": "researching",
         "changeKind": "newly-discovered-existing-policy",
-        "summary": "The published Professional Studies independent-model enrollment/reentry closure took effect July 1,2026; this is newly discovered older policy, not a November change. Continuing-eligible 195 monthly/100 ASK/2226 additional-capstone charges are separate from the term-based model. ExcelTrack BSBA uses native 180 quarter credits and 10-week terms;2500 tuition+345 resource fee=2845 per term. A 75% externally assessed ceiling computes to 135 quarter credits, not 135 applicable ACE credits; internalAC assessments may count toward the 45-credit remainder. Article ready; complete applicability, prerequisite/module sequence and assessment maps remain blocked. No historical awards were changed.",
+        "summary": "The published Professional Studies independent-model enrollment/reentry closure took effect July 1,2026; this is newly discovered older policy, not a November change. Continuing-eligible 195 monthly/100 ASK/2226 additional-capstone charges are separate from the term-based model. ExcelTrack BSBA uses native 180 quarter credits and 10-week terms;2500 tuition+345 resource fee=2845 per term. A 75% externally assessed ceiling computes to 135 quarter credits, not 135 applicable ACE credits; internalAC assessments may count toward the 45-credit remainder. Article ready; complete applicability, prerequisite/module sequence and assessment maps remain blocked. No historical awards were changed. Product/editorial publication observed through the approved production run; exact URLs and bytes are retained. Existing unresolved degree mapping or current-policy research is not closed by this release.",
         "evidence": [
           {
             "checkedOn": "2026-11-27",
@@ -2807,11 +3804,13 @@
           "notes": "Editorial comparison documents the preexisting July 1, 2026 independent-model enrollment/reentry closure. Full ExcelTrack/Professional Studies receiving curricula, applicability and grandfathered-student tuition are not changed by a new guide. Retain all existing student history and keep legacy offers out of new-enrollment recommendations."
         },
         "editorial": {
-          "status": "review-ready",
+          "status": "published",
           "proposedUrls": [
             "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/"
           ],
-          "publishedUrls": [],
+          "publishedUrls": [
+            "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/"
+          ],
           "existingUrls": [],
           "title": "Purdue Global subscriptions: ExcelTrack costs and the closed $195 enrollment option",
           "metaDescription": "Compare ExcelTrack BSBA tuition with the legacy Professional Studies monthly model, including resource fees, capstones, transfer units and enrollment restrictions.",
@@ -2834,6 +3833,41 @@
             "purdue-independent-closure"
           ],
           "metrics": null
+        },
+        "release": {
+          "environment": "production",
+          "commitSha": "9b29fd79e528d48419e64d8906ac9c377407fcf3",
+          "pullRequestUrl": "https://github.com/jeremyc3434/DegreeSteps/pull/62",
+          "workflowRunUrl": "https://github.com/jeremyc3434/DegreeSteps/actions/runs/46075109831",
+          "verifiedOn": "2026-11-27",
+          "approval": "The repository owner requested an end-to-end rehearsal through the approved publication process. Codex manually dispatched the existing workflow after exact-head core/browser checks and staging verification. Existing manual target, migration assertion and production configuration gates were retained; no future automatic production deployment was enabled.",
+          "verifiedUrls": [
+            "https://degreesteps.com/robots.txt",
+            "https://degreesteps.com/",
+            "https://degreesteps.com/brand.css",
+            "https://degreesteps.com/data/credit-sources.json",
+            "https://degreesteps.com/data/program-catalog.json",
+            "https://degreesteps.com/courses.html",
+            "https://degreesteps.com/courses.js",
+            "https://degreesteps.com/data/course-catalog.json",
+            "https://degreesteps.com/sitemap.xml",
+            "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+            "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+            "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+            "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+            "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+            "https://degreesteps.com/credit-sources/google-certificates/",
+            "https://degreesteps.com/credit-sources/wgu-single-courses/",
+            "https://degreesteps.com/credit-sources/christian-leaders/",
+            "https://degreesteps.com/credit-sources/asu-ulc/",
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+            "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/"
+          ],
+          "receiptPaths": [
+            "content/research-intake/evidence/issue61/2be21364a6771deaa8068da1bf2ad4bb17cfeaa5a48cdde76433840c27f04e1f.json"
+          ]
         }
       }
     },
@@ -2865,7 +3899,7 @@
           "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
         }
       ],
-      "reviewHash": "566a4cac4b842f02e02e1e379bbd6fc5a44a671834107b01fa4e5494ee1ee50f",
+      "reviewHash": "7dda5d421b8c79266992fac9d1aa94c1092d095890ed048e884bf8e4fc930a61",
       "reviewCurrent": true,
       "requiresReverification": false,
       "review": {
@@ -2873,12 +3907,14 @@
         "kind": "research-review",
         "publicationAllowed": false,
         "findingId": "finding-d4ed8381ef7ecc91f9c29eb76a6c271dce74d63b84d115ece202add2c11dd15d",
-        "revision": 1,
-        "previousReviewHash": null,
+        "revision": 2,
+        "previousReviewHash": "566a4cac4b842f02e02e1e379bbd6fc5a44a671834107b01fa4e5494ee1ee50f",
         "sourceRevisions": [
-          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+          "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "7d4dacd1df1f822e9aa6c6d7d28bbdb1b053f4fb148691438b6a61d0222c832f"
         ],
-        "reviewer": "DegreeSteps Issue56 primary-source and editorial review",
+        "reviewer": "Codex actual approved production release verification",
         "reviewedOn": "2026-11-27",
         "verifiedOn": "2026-11-27",
         "announcedOn": null,
@@ -2887,7 +3923,7 @@
         "triage": "BOTH",
         "status": "ready-for-review",
         "changeKind": "confirmation",
-        "summary": "Update existing provider and subscription articles; no duplicate non-proctored listicle or unsupported ASU proctor-free claim. Content is prepared for PR review; no production publication or indexing is claimed.",
+        "summary": "Update existing provider and subscription articles; no duplicate non-proctored listicle or unsupported ASU proctor-free claim. Content is prepared for PR review; no production publication or indexing is claimed. Product/editorial publication observed through the approved production run; exact URLs and bytes are retained. Existing unresolved degree mapping or current-policy research is not closed by this release.",
         "evidence": [
           {
             "id": "sophia-billing-conflict",
@@ -3214,7 +4250,7 @@
           ]
         },
         "product": {
-          "status": "review-ready",
+          "status": "implemented",
           "paths": [
             "dist/data/credit-sources.json",
             "scripts/provider-research-facts.mjs",
@@ -3223,13 +4259,17 @@
           "notes": "Refresh only independently checked provider source dates and ASU minimum credit posting times 6/4/2 weeks. Preserve existing accurate Study/Saylor/Sophia assessment baselines and $235 Pro planner scope; retain Sophia annual $799/$599 conflict and unknown ASU ENG101/CAP150 proctor-free status. No external course equivalencies promoted."
         },
         "editorial": {
-          "status": "review-ready",
+          "status": "published",
           "proposedUrls": [
             "https://degreesteps.com/guides/compare-transfer-credit-sources/",
             "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/",
             "https://degreesteps.com/blog/plan-subscriptions-before-paying/"
           ],
-          "publishedUrls": [],
+          "publishedUrls": [
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/",
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/"
+          ],
           "existingUrls": [
             "https://degreesteps.com/guides/compare-transfer-credit-sources/",
             "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/",
@@ -3264,6 +4304,294 @@
             "study-id",
             "saylor-faq",
             "asu-price"
+          ],
+          "metrics": null
+        },
+        "release": {
+          "environment": "production",
+          "commitSha": "9b29fd79e528d48419e64d8906ac9c377407fcf3",
+          "pullRequestUrl": "https://github.com/jeremyc3434/DegreeSteps/pull/62",
+          "workflowRunUrl": "https://github.com/jeremyc3434/DegreeSteps/actions/runs/46075109831",
+          "verifiedOn": "2026-11-27",
+          "approval": "The repository owner requested an end-to-end rehearsal through the approved publication process. Codex manually dispatched the existing workflow after exact-head core/browser checks and staging verification. Existing manual target, migration assertion and production configuration gates were retained; no future automatic production deployment was enabled.",
+          "verifiedUrls": [
+            "https://degreesteps.com/robots.txt",
+            "https://degreesteps.com/",
+            "https://degreesteps.com/brand.css",
+            "https://degreesteps.com/data/credit-sources.json",
+            "https://degreesteps.com/data/program-catalog.json",
+            "https://degreesteps.com/courses.html",
+            "https://degreesteps.com/courses.js",
+            "https://degreesteps.com/data/course-catalog.json",
+            "https://degreesteps.com/sitemap.xml",
+            "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+            "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+            "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+            "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+            "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+            "https://degreesteps.com/credit-sources/google-certificates/",
+            "https://degreesteps.com/credit-sources/wgu-single-courses/",
+            "https://degreesteps.com/credit-sources/christian-leaders/",
+            "https://degreesteps.com/credit-sources/asu-ulc/",
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+            "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/"
+          ],
+          "receiptPaths": [
+            "content/research-intake/evidence/issue61/2be21364a6771deaa8068da1bf2ad4bb17cfeaa5a48cdde76433840c27f04e1f.json"
+          ]
+        }
+      }
+    },
+    {
+      "claim": "Improve military and family guidance: JST/CCAF records, eligibility-specific tuition rates and mandatory fees, DANTES-funded first attempts, and separate funding decisions. Do not assume every veteran/dependent receives active-duty tuition or automatically apply discounts to estimates. Replace closed sources and add a benefits task through the existing flow. https://www.va.gov/resources/how-do-i-get-college-credits-for-my-military-service/ https://clep.collegeboard.org/clep-military-benefits",
+      "section": "Military learners",
+      "kind": "lead",
+      "id": "finding-e0b0f605d053cc32da6f553a8fc0a5b8a4a2c244e768d581c0e6532c974fd881",
+      "sourceUrls": [
+        "https://clep.collegeboard.org/clep-military-benefits",
+        "https://www.va.gov/resources/how-do-i-get-college-credits-for-my-military-service/"
+      ],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-63",
+          "revision": "6f740e4e99ed603a569888868b0aaca195794ef20ee3d2150bfb2c4c3bd6b511",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/63"
+        }
+      ],
+      "reviewHash": "af26989aa2043f4fb1eaa66b8caf464c5f4e35716bd215c5979e6dc7469872b7",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-e0b0f605d053cc32da6f553a8fc0a5b8a4a2c244e768d581c0e6532c974fd881",
+        "revision": 1,
+        "previousReviewHash": null,
+        "sourceRevisions": [
+          "6f740e4e99ed603a569888868b0aaca195794ef20ee3d2150bfb2c4c3bd6b511"
+        ],
+        "reviewer": "Codex independently verified student-scenario research",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": "2026-11-27",
+        "announcedOn": null,
+        "effectiveOn": null,
+        "followUpOn": "2026-12-04",
+        "triage": "BOTH",
+        "status": "ready-for-review",
+        "changeKind": "newly-discovered-existing-policy",
+        "summary": "Replaced closed DANTES transcript guidance with current VA/CLEP sources, retained JST/CCAF and original award distinctions, and added a service/family benefits task. Published military-rate guidance is eligibility- and fee-specific; completing a task does not apply a discount, financial aid or academic credit. Older 2025–26 MyPath military pricing remains unasserted as current.",
+        "evidence": [
+          {
+            "id": "military-original-records",
+            "title": "military-original-records",
+            "url": "https://www.va.gov/resources/how-do-i-get-college-credits-for-my-military-service/",
+            "kind": "government",
+            "checkedOn": "2026-11-27",
+            "quote": "Each school then decides how many credits they’ll accept.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "liberty-military-undergrad",
+            "title": "liberty-military-undergrad",
+            "url": "https://www.liberty.edu/military/benefits/online-students/tuition-discount/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "the tuition rate is $250 per credit hour",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "tesu-military-undergrad",
+            "title": "tesu-military-undergrad",
+            "url": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/military-veteran/index.php",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Military Tuition: $250 per credit",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "umass-military-modality-scope",
+            "title": "umass-military-modality-scope",
+            "url": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Active-Duty Military — Undergraduate Degree",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "wgu-military-part-time",
+            "title": "wgu-military-part-time",
+            "url": "https://www.wgu.edu/student-experience/military/part-time-options.html",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Part-time is only available to service members utilizing Tuition Assistance.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "clep-dantes-funding",
+            "title": "clep-dantes-funding",
+            "url": "https://clep.collegeboard.org/clep-military-benefits",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "DANTES will only provide funding once for each CLEP exam subject.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "clep-remote-proctor-fee",
+            "title": "clep-remote-proctor-fee",
+            "url": "https://clep.collegeboard.org/help-center/if-i-am-active-military-service-member-do-i-have-pay-exam-fee-take-clep-exam",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "pays your exam fee and remote proctoring fee for the first exam attempt per test title.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "dsst-dantes-eligibility",
+            "title": "dsst-dantes-eligibility",
+            "url": "https://www.prometric.com/exams/dantes/",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "Personnel not funded by DANTES include the following:",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "au-abc-discovery",
+            "title": "au-abc-discovery",
+            "url": "https://www.airuniversity.af.edu/CCAF/Article-Display/Article/1819887/air-university-associate-to-baccalaureate-cooperative-au-abc/",
+            "kind": "government",
+            "checkedOn": "2026-11-27",
+            "quote": "Guarantees CCAF AAS graduates need no more than 60 semester hours",
+            "capturePath": null,
+            "contentHash": null
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue63/3e26aed30792b10e3a6446321a0a49c1ed0e8b88d942e714ca554411ae0314ff.json",
+          "content/research-intake/evidence/issue63/e27d06d03aaae712abcc6fe64ff6ad014972e615ca18d3f6314eba31d233fb06.json",
+          "content/research-intake/evidence/issue63/ffde1e1601e00cdcfdcd9364b77ec179103a54d9f925d22944eec567e2b85994.json",
+          "content/research-intake/evidence/issue63/06bafd7a2337b5575a86d7ac3eeb5f4e2a2fd17f5f977ff33f404356b1cb4ff9.json",
+          "content/research-intake/evidence/issue63/dd1703c34a585888ebc7252c5ae4bdbf92e9f75bf676240060cdd21698923ad5.json",
+          "content/research-intake/evidence/issue63/1c9af7dd1f8b310ca28d7b5c83364d6fcd8b555609126418ff073a0cd51eea62.json",
+          "content/research-intake/evidence/issue63/df860d01b664508ae02fe375c21f150cb4296c2d59a92e7c5921995b9bf3eb40.json",
+          "content/research-intake/evidence/issue63/7c844322cd32043cd8dccbd35602924ce583672d8f1c7bab579eaef1c23f08a5.json",
+          "content/research-intake/evidence/issue63/777223761bb0ff93f80ff9efda7fb1a122b2fad11db53717a39bc142922a5a9c.json",
+          "content/research-intake/evidence/issue63/a14133b0631119869f96dabe3e008849cdc6dbdf6b49f489bb1bd84eb95b70d4.json",
+          "content/research-intake/evidence/issue63/009d72edbc5bc716219a83626395672d01e4cd7acf009db0a4b2e6a64b04a277.json",
+          "content/research-intake/evidence/issue63/97860a124cc4d716bb375c7734fe4201f13bb064a833a2c2ffbacb14ffaf1400.json",
+          "content/research-intake/evidence/issue63/10d3489e2c8b42306c59196e99ce9b5ef06ce482cde9d4ddfd51d04b773fb6e8.json",
+          "content/research-intake/evidence/issue63/bb331cd717e669372e342f1a71763c4b9389cd920a95f1997dc5b9c46d9f9cf3.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": null,
+            "program": "Service learning and eligibility-specific military undergraduate tuition",
+            "level": "bachelor",
+            "modality": "Rate-specific; Liberty quoted rate is online only",
+            "catalog": "Liberty 2026–27 and TESU August 2026 rate scopes; older UMass quotes not promoted"
+          },
+          "costs": [
+            {
+              "amount": 250,
+              "currency": "USD",
+              "unit": "semester credit hour",
+              "scope": "2026–2027 Academic Year; undergraduate online certificates/associate/bachelor degrees; eligible online undergraduate programs only",
+              "assumptions": "Eligibility must be verified by the university; this tuition quote is not a complete degree cost and is not applied automatically.",
+              "includes": [],
+              "excludes": [
+                "fees",
+                "books",
+                "outside course costs"
+              ],
+              "evidenceIds": [
+                "liberty-military-undergrad"
+              ]
+            },
+            {
+              "amount": 250,
+              "currency": "USD",
+              "unit": "credit",
+              "scope": "Rates approved2026-06-12; effective August2026 term; eligible non-nursing undergraduate military tuition",
+              "assumptions": "Eligibility must be verified by the university; this tuition quote is not a complete degree cost and is not applied automatically.",
+              "includes": [],
+              "excludes": [
+                "Edison Accelerate when applicable",
+                "graduation audit",
+                "books/materials",
+                "outside courses"
+              ],
+              "evidenceIds": [
+                "tesu-military-undergrad"
+              ]
+            }
+          ],
+          "accreditation": [],
+          "transfer": {
+            "overallCap": null,
+            "aceCap": null,
+            "nccrsCap": null,
+            "combinedCplCap": null,
+            "externallyAssessedCap": null,
+            "residency": null,
+            "majorResidency": null,
+            "totalCredits": null
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": []
+        },
+        "product": {
+          "status": "review-ready",
+          "paths": [
+            "dist/student-checklist.js",
+            "dist/portal.js"
+          ],
+          "notes": "Optional context and targeted guidance reuse existing architecture. Existing target identity, learning, grades, units, course dates, evaluations and costs are preserved. Full build/browser/CI release checks remain separate from this source review."
+        },
+        "release": null,
+        "editorial": {
+          "status": "review-ready",
+          "proposedUrls": [
+            "https://degreesteps.com/guides/military-credit-jst-ccaf/"
+          ],
+          "publishedUrls": [],
+          "existingUrls": [
+            "https://degreesteps.com/guides/military-credit-jst-ccaf/"
+          ],
+          "title": "Military college credit: start with JST, CCAF, and the right questions",
+          "metaDescription": "A practical guide for service members and veterans to collect military education records, request evaluation, compare exams, and check program-specific funding.",
+          "canonicalUrl": "https://degreesteps.com/guides/military-credit-jst-ccaf/",
+          "internalLinks": [
+            "https://degreesteps.com/import-courses.html",
+            "https://degreesteps.com/courses.html?tab=browse"
+          ],
+          "structuredData": true,
+          "sitemap": true,
+          "studentUsefulness": "Turn this learner situation into a clear next action while preserving academic and financial boundaries.",
+          "novelty": "Verified scenario-specific product flow and substantive new or refreshed resource, not a generic school list.",
+          "searchIntent": "Military college credit: start with JST, CCAF, and the right questions",
+          "debtFreeRelevance": "Evaluate useful existing learning and applicable funding before paying for replacement or unapproved courses; no debt-free outcome is promised.",
+          "urgency": "Prevent unnecessary purchases, discarded old credit, mistaken high-school awards or unverified tuition assumptions.",
+          "overlapNotes": "Refresh the existing canonical guide/article and preserve its title and description.",
+          "evidenceIds": [
+            "military-original-records",
+            "liberty-military-undergrad",
+            "tesu-military-undergrad",
+            "umass-military-modality-scope",
+            "wgu-military-part-time",
+            "clep-dantes-funding",
+            "clep-remote-proctor-fee",
+            "dsst-dantes-eligibility",
+            "au-abc-discovery"
           ],
           "metrics": null
         }
@@ -3526,5 +4854,5 @@
       }
     }
   ],
-  "revision": "c248790802e46c78cf82849e1782485f5ac6e5f4dc64f8ec34f9925fda2bf457"
+  "revision": "420339491afb9d31fd04600df70279dfbde5b7edf667d19f31152db10a3b2fe1"
 }

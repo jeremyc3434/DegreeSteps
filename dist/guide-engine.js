@@ -72,6 +72,15 @@
       campusTime: choose(p.campusTime, ['any', 'one-year', 'two-years', 'three-plus'], 'any')
     };
     if (result.weeklyHours === 0) result.weeklyHours = null;
+    // Optional student context stays separate from the selected degree. Older
+    // saved profiles gain no new defaults or inferred enrollment status.
+    const learnerStage = choose(p.learnerStage, ['new', 'enrolled', 'returning', 'high-school', 'unsure'], null);
+    if (learnerStage) result.learnerStage = learnerStage;
+    for (const [name, max] of [['currentSchool', 120], ['currentProgram', 160]]) {
+      const value = text(p[name]).replace(/[\u0000-\u001f\u007f]/g, ' ').slice(0, max).trim();
+      if (value) result[name] = value;
+    }
+    if (learnerStage === 'enrolled' && ['finish-current', 'compare', 'unsure'].includes(p.planningIntent)) result.planningIntent = p.planningIntent;
     return result;
   }
 
