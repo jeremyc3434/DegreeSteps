@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "kind": "research-review",
+  "publicationAllowed": false,
+  "findingId": "finding-c4224c6e66e6024360ed98233af8bd1825d7aa9abfe0edbcf7e361e4211d1b46",
+  "revision": 2,
+  "previousReviewHash": "1fb22e9f49127c3f25304e251b9ea0ba1fc50ac76deba30cf6c98372f04c81af",
+  "sourceRevisions": [
+    "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+    "758eb76ac994c0bcf367697d865f79fb208fb0945837e427ab872c951a4b2c8b",
+    "7d4dacd1df1f822e9aa6c6d7d28bbdb1b053f4fb148691438b6a61d0222c832f"
+  ],
+  "reviewer": "Codex source-bound duplicate reconciliation",
+  "reviewedOn": "2026-11-27",
+  "verifiedOn": "2026-11-27",
+  "announcedOn": null,
+  "effectiveOn": null,
+  "followUpOn": "2026-12-01",
+  "triage": "BOTH",
+  "status": "ready-for-review",
+  "changeKind": "confirmation",
+  "summary": "Update the existing ACE guide with a named, dated certificate-window case study; no separate expiry-news page. Content is prepared for PR review; no production publication or indexing is claimed. Exact repeated lead from rehearsal issue #61 reconciled to this existing finding and retained same-day primary ACE evidence. No duplicate policy, article, receiving award, source-credit upgrade or historical student change is introduced; no successor after November 30 is asserted.",
+  "evidence": [
+    {
+      "id": "google-current-window",
+      "title": "ACE Google organization listing",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=3fdb1492-e04f-e911-a97b-000d3a363c81",
+      "quote": "Course ACE ID: GOOG-0009 12/01/2025 to 11/30/2026 Recommended credits: 10",
+      "kind": "provider",
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "ace-date-policy",
+      "title": "ACE completion-date learner guidance",
+      "url": "https://acenationalguide.zendesk.com/hc/en-us/articles/21153004361371-What-if-I-completed-a-learning-experience-outside-of-the-start-and-end-dates-listed",
+      "quote": "If your learning experience was completed after the end date of a recommendation period",
+      "kind": "provider",
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "capturePath": null,
+      "contentHash": null,
+      "checkedOn": "2026-11-27",
+      "id": "ace-goog-0009",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=3fdb1492-e04f-e911-a97b-000d3a363c81",
+      "title": "Google Advanced Data Analytics Professional Certificate current ACE recommendation",
+      "kind": "provider",
+      "quote": "Course ACE ID: GOOG-0009 12/01/2025 to 11/30/2026 Recommended credits: 10 Read More"
+    },
+    {
+      "capturePath": null,
+      "contentHash": null,
+      "checkedOn": "2026-11-27",
+      "id": "ace-goog-0007",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=3fdb1492-e04f-e911-a97b-000d3a363c81",
+      "title": "Google Cybersecurity Professional Certificate current ACE recommendation",
+      "kind": "provider",
+      "quote": "Course ACE ID: GOOG-0007 12/01/2025 to 11/30/2026 Recommended credits: 10 Read More"
+    },
+    {
+      "capturePath": null,
+      "contentHash": null,
+      "checkedOn": "2026-11-27",
+      "id": "ace-goog-0008",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=3fdb1492-e04f-e911-a97b-000d3a363c81",
+      "title": "Google Business Intelligence Professional Certificate current ACE recommendation",
+      "kind": "provider",
+      "quote": "Course ACE ID: GOOG-0008 12/01/2025 to 11/30/2026 Recommended credits: 7 Read More"
+    }
+  ],
+  "receiptPaths": [
+    "content/research-intake/evidence/issue56/provider-captures/google-registry.json",
+    "content/research-intake/evidence/issue56/provider-captures/google-versions.json",
+    "content/research-intake/evidence/issue56/provider-captures/wgu-index-ace-faq.json",
+    "content/research-intake/evidence/issue56/providers.json",
+    "content/research-intake/evidence/issue61/ca814ff6b17c599ec47b3d565b52ed4bb5facf8b89495fbfde58a87aa48c8383.json"
+  ],
+  "facts": {
+    "scope": {
+      "institution": null,
+      "program": "Google professional certificates; exact ACE version-specific recommendations",
+      "level": "undergraduate recommendation",
+      "modality": "online",
+      "catalog": "ACE current v2 records checked 2026-11-27"
+    },
+    "costs": [],
+    "accreditation": [],
+    "transfer": {
+      "overallCap": null,
+      "aceCap": null,
+      "nccrsCap": null,
+      "residency": null,
+      "majorResidency": null,
+      "totalCredits": null
+    },
+    "aceRecommendations": [
+      {
+        "provider": "Google",
+        "aceId": "GOOG-0009",
+        "version": "2",
+        "startsOn": "2025-12-01",
+        "endsOn": "2026-11-30",
+        "sourceCredits": 10,
+        "sourceCreditSystem": "semester",
+        "evidenceIds": [
+          "ace-goog-0009"
+        ]
+      },
+      {
+        "provider": "Google",
+        "aceId": "GOOG-0007",
+        "version": "2",
+        "startsOn": "2025-12-01",
+        "endsOn": "2026-11-30",
+        "sourceCredits": 10,
+        "sourceCreditSystem": "semester",
+        "evidenceIds": [
+          "ace-goog-0007"
+        ]
+      },
+      {
+        "provider": "Google",
+        "aceId": "GOOG-0008",
+        "version": "2",
+        "startsOn": "2025-12-01",
+        "endsOn": "2026-11-30",
+        "sourceCredits": 7,
+        "sourceCreditSystem": "semester",
+        "evidenceIds": [
+          "ace-goog-0008"
+        ]
+      }
+    ],
+    "equivalencies": [],
+    "assessments": []
+  },
+  "product": {
+    "status": "review-ready",
+    "paths": [
+      "dist/data/credit-sources.json",
+      "scripts/provider-research-facts.mjs",
+      "scripts/provider-research-facts.test.mjs"
+    ],
+    "notes": "Public Google provider information records the three independently observed ACE periods and preserves valid historical awards. No Google receiving maps, source-credit version upgrades, earned awards or historical student data changed. No successor after November 30 was verified; follow up December 1."
+  },
+  "editorial": {
+    "status": "review-ready",
+    "proposedUrls": [
+      "https://degreesteps.com/guides/ace-nccrs-and-accreditation/"
+    ],
+    "publishedUrls": [],
+    "existingUrls": [
+      "https://degreesteps.com/guides/ace-nccrs-and-accreditation/"
+    ],
+    "title": "ACE, NCCRS, and accreditation: what students need to check",
+    "metaDescription": "Understand credit recommendations, institutional accreditation, course identifiers, and the school-specific checks that make alternative-credit planning useful.",
+    "canonicalUrl": "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+    "internalLinks": [
+      "https://degreesteps.com/blog/community-transfer-evidence/",
+      "https://degreesteps.com/credit-sources/",
+      "https://degreesteps.com/credit-sources/google-certificates/",
+      "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+      "https://degreesteps.com/guides/how-transfer-credit-works/"
+    ],
+    "structuredData": true,
+    "sitemap": true,
+    "studentUsefulness": "Prevent a planned completion from relying on an unverified future window and protect valid historical awards.",
+    "novelty": "Newly reverified current recommendation versions and upcoming end dates; no renewal or new receiving policy established.",
+    "searchIntent": "Does Google certificate ACE credit expire, and which completion dates qualify?",
+    "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+    "urgency": "Observed windows end November 30; a successor requires a fresh primary-source check.",
+    "overlapNotes": "The ACE/accreditation guide already explains versions and records; a section there answers the narrower current question without duplicating it.",
+    "evidenceIds": [
+      "google-current-window",
+      "ace-date-policy"
+    ],
+    "metrics": null
+  }
+}

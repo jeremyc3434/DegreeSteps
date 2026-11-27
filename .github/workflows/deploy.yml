@@ -174,6 +174,10 @@ jobs:
         if: env.TARGET == 'staging'
         run: node scripts/check-staging-release.mjs
 
+      - name: Verify the deployed production release
+        if: env.TARGET == 'production'
+        run: node scripts/check-production-release.mjs
+
       - name: Summary
         run: |
           {

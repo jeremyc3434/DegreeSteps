@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "kind": "research-submission",
+  "publicationAllowed": false,
+  "source": {
+    "repository": "jeremyc3434/DegreeSteps",
+    "issueNumber": 56,
+    "kind": "issue",
+    "commentId": null,
+    "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56",
+    "author": "jeremyc3434",
+    "createdAt": "2026-11-27T16:52:51Z",
+    "updatedAt": "2026-11-27T19:41:13Z",
+    "intakeLabel": "weekly-research"
+  },
+  "content": {
+    "title": "Weekly research intake — 2026-11-27 — verify and implement",
+    "body": "## Codex implementation handoff\nAudit existing code/data first. Treat every finding below as a research lead requiring independent primary-source verification, not a confirmed policy or authorization to publish. Regionally accredited degree institutions only; >=50% applicable transfer capacity; prioritize affordable asynchronous self-paced, ACE and non-proctored options. Distinguish overall transfer caps from ACE caps and actual degree applicability. Preserve student progress and historical policies. Work on a branch, run tests and open a PR; no automatic production deployment.\n\n## P0\n- [ ] Investigate reported UMPI ACE-to-major restrictions, possible December 28 transition and grandfathering; do not apply rumors retroactively. https://www.umpi.edu/academics/credit-for-prior-learning/ace/ and https://umpi.sophia.org/\n- [ ] Verify Google ACE renewal windows for GOOG-0009, GOOG-0007, GOOG-0008 (reported Nov 30 expiry); preserve valid historical awards. https://www.acenet.edu/National-Guide/\n\n## P1\n- [ ] UMPI YourPace business: reported $1,800/8 weeks, 90/120 transfer; verify current policy and assessment requirements. https://www.umpi.edu/yourpace/tuition/\n- [ ] UMass Global MyPath BBA: reported $3,500/6 months, 90/120 transfer; verify $3,400 vs $3,500 discrepancy, ACE and residency, proctoring; map courses. https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced and https://umassglobal.sophia.org/\n- [ ] Investigate 90-credit applied bachelor's degrees in Maine (UMPI psychology, UMFK business, UMA public administration); verify eligibility, transfer, accreditation and graduate-school implications. https://www.maine.edu/blog/2025/07/14/university-of-maine-system-to-lead-state-in-accelerating-adult-degree-completion-with-new-applied-90-credit-bachelors-programs/\n- [ ] Purdue Global ExcelTrack BSBA: reported $2,845/term incl resource fee, 135/180 quarter credits transfer, traditional capstone. Professional Studies lead: $195/month, $100 assessment, $2,226 capstone. Verify all costs, transfer and assessments. https://www.purdueglobal.edu/tuition-financial-aid/undergraduate-graduate-tuition-and-fees/ and https://catalog.purdueglobal.edu/policy-information/prior-learning/\n- [ ] WGU single courses: reported $25 initial course, $49 bundles, $99 extension subscription; verify transcript, proctoring and 10–20 course destination mappings. https://www.wgu.edu/single-courses.html\n- [ ] Provider baseline leads: Sophia $99/mo, $299/4 months, $799/year; Study.com $95/$235 tiers non-proctored; Saylor $5 proctored exam; ASU $425 posted course, ENG101/CAP150 assignment-focused leads. Verify current costs and course-specific exceptions. https://www.sophia.org/ https://study.com/college/ https://www.saylor.org/credit https://ea.asu.edu/how-it-works/pricing/\n\n## P2 watchlist\n- [ ] South College CBE conflicting 60%/75% policies; California Baptist advertised 100 units and $541/unit; UW Flexible Option reported $2,250/subscription; Memphis/Saylor; National University and RMCAD Sophia partnerships; WGU degree-level ACE restrictions. Verify before publishing.\n- [ ] Explore online-to-residential pathways with 10–20 applicable courses and traditional letter grades.\n\n## Recurring intake\nAdapt existing architecture; create a research inbox/processed/watchlist and documented schema if not already present. Store source URLs, verification and effective dates, costs, accreditation, transfer/residency/ACE caps, course equivalencies, assessment constraints and status. Preserve existing AGENTS.md instructions. Deduplicate and explicitly distinguish new policy changes from newly discovered older information. Report implemented changes, tests, and blockers in PR. This first intake is derived from the Nov 27 research brief; claims have not been independently reverified during this handoff."
+  },
+  "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+  "revision": "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1"
+}

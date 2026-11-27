@@ -23,9 +23,9 @@ async function fixture(t){
 
 test('staging proof compares built bytes with fixed anonymous GETs and includes present editorial assets',async t=>{
  const f=await fixture(t);
- for(const [route,body]of [['/credit-sources/google-certificates/','<h1>A reviewed certificate source</h1>'],['/credit-sources/christian-leaders/','<h1>CLI academic credit requires an eligible transcript route</h1>']]){await mkdir(join(f.root,route),{recursive:true});await writeFile(join(f.root,route,'index.html'),body);f.bodies.set(route,body);}
- const results=await checkStagingRelease(f.options);assert.equal(results.length,11);assert.deepEqual(f.calls,[...f.bodies.keys()]);
- assert(results.every(item=>item.sha256===item.expectedSha256&&item.status===200));assert.equal(f.logs.length,11);
+ for(const [route,body]of [['/blog/asu-universal-learner-vs-sophia/','<h1>ASU Universal Learner versus Sophia</h1>'],['/credit-sources/google-certificates/','<h1>A reviewed certificate source</h1>'],['/credit-sources/christian-leaders/','<h1>CLI academic credit requires an eligible transcript route</h1>'],['/credit-sources/asu-ulc/','<h1>ASU credit purchase and eligibility</h1>']]){await mkdir(join(f.root,route),{recursive:true});await writeFile(join(f.root,route,'index.html'),body);f.bodies.set(route,body);}
+ const results=await checkStagingRelease(f.options);assert.equal(results.length,13);assert.deepEqual(f.calls,[...f.bodies.keys()]);
+ assert(results.every(item=>item.sha256===item.expectedSha256&&item.status===200));assert.equal(f.logs.length,13);
  assert(!JSON.stringify(f.logs).includes('<h1>'));assert(!f.calls.some(path=>path.startsWith('/api/')));
 });
 test('a dynamic sitemap index verifies the fixed static shard without following returned URLs',async t=>{
