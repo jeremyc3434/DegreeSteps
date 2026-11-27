@@ -11,6 +11,7 @@
   <main id="audit-app">
     <div class="audit-intro"><p class="audit-eyebrow">YOUR DEGREE REQUIREMENTS</p><h1>Your degree. Your course list.</h1><p>Add what you know from your degree audit or catalog. Save your progress and finish the details later.</p></div>
     <div id="audit-message" role="alert" hidden></div>
+    <button id="audit-baseline-restore" class="audit-secondary" type="button" aria-controls="audit-import-form" hidden>Restore catalog details</button>
     <p id="audit-directory-status" class="audit-private" role="status" hidden></p>
     <section id="audit-start">
       <details id="audit-baseline" class="audit-card">
@@ -41,7 +42,7 @@
           <details><summary>Catalog year and credit rules (optional)</summary><div class="audit-fields"><label>Catalog year<input name="catalog" maxlength="80" placeholder="For example, 2026–2027"></label><label>Credits required at this university<input name="institutionMinCredits" type="number" min="0" max="500" step="any" placeholder="Leave blank if unsure"></label><label>Upper-level credits required<input name="upperMinCredits" type="number" min="0" max="500" step="any" placeholder="Leave blank if unsure"></label></div><p>Use the rules shown in your degree audit. Unknown rules stay flagged for confirmation.</p></details>
         </div>
         <div class="audit-card">
-          <div class="audit-review-heading"><div><h2>2. Your requirements</h2><p>Enter each course or requirement. Course codes are optional.</p></div><span id="audit-row-count" class="audit-row-count"></span></div>
+          <div class="audit-review-heading"><div><h2>2. Your requirements</h2><p id="audit-code-guidance">Enter each course or requirement. Course codes are optional.</p></div><span id="audit-row-count" class="audit-row-count"></span></div>
           <div id="audit-editor-rows" class="audit-editor-rows" aria-label="Requirement rows"></div>
           <button id="audit-add-row" class="audit-secondary" type="button">+ Add a requirement</button>
           <p class="audit-private">Leave unknown credits blank. For “choose N” groups, enter only the courses you choose; do not add group totals as extra courses.</p>

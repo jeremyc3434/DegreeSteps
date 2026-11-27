@@ -168,8 +168,37 @@ test('a MyPath baseline cannot be relabeled as another level, format, catalog, s
   const first=mount();await first.chooseBaseline('2024-2025','marketing');
   for(const [name,value] of [['level','master'],['modality','campus'],['catalog','2025-2026'],['sourceUrl','https://example.edu/other-degree'],['title','Different business degree'],['programId','unrelated-program']]){
     const ui=mount({state:first.saved,query:new URL(first.location.href,'https://example.test/').search});await ui.settle();
-    await ui.field(name,value);await ui.review();assert.match(ui.ids.get('audit-message').textContent,/no longer matches/);assert.equal(ui.ids.get('audit-review').hidden,true);assert.equal(ui.saved.customCurricula,undefined);assert.equal(ui.saved.selectedPathwayId,'custom-target');
+    await ui.field(name,value);await ui.review();assert.match(ui.ids.get('audit-message').textContent,/no longer match/);assert.equal(ui.ids.get('audit-baseline-restore').hidden,false);assert.equal(ui.ids.get('audit-review').hidden,true);assert.equal(ui.saved.customCurricula,undefined);assert.equal(ui.saved.selectedPathwayId,'custom-target');
   }
+  await first.fail();
+});
+
+test('explicit catalog-detail restoration preserves edited requirements and private work, then saves and resumes normally', async () => {
+  const first=mount();await first.chooseBaseline('2024-2025','marketing');
+  const state=first.saved;state.auditDrafts.drafts[0].csv='Original spreadsheet reference retained with these rows';
+  const ui=mount({state,query:new URL(first.location.href,'https://example.test/').search});await ui.settle();
+  assert.match(ui.ids.get('audit-code-guidance').textContent,/exact course or competency code/);
+  await ui.row(1,'title','My edited requirement title');
+  const rowState=()=>ui.ids.get('audit-editor-rows').children.map(row=>row.fields.map(field=>({name:field.dataset.field,value:field.value,checked:field.checked})));
+  const editedRows=clone(rowState()),csv=ui.ids.get('audit-csv').value,savedBefore=ui.raw;
+  for(const [name,value] of [['school','Accidental school edit'],['title','Accidental degree edit'],['catalog','2025-2026'],['sourceUrl','https://example.edu/incorrect'],['level','master'],['modality','campus'],['creditSystem','quarter']])await ui.field(name,value);
+  await ui.review();assert.equal(ui.ids.get('audit-baseline-restore').hidden,false);assert.equal(ui.raw,savedBefore);
+  await ui.click('audit-baseline-restore');
+  assert.equal(ui.form.elements.school.value,baselineCatalog.school);assert.equal(ui.form.elements.title.value,baselineCatalog.program+' — Marketing');assert.equal(ui.form.elements.catalog.value,'2024-2025');assert.equal(ui.form.elements.level.value,'bachelor');assert.equal(ui.form.elements.modality.value,'online');assert.equal(ui.form.elements.creditSystem.value,'semester');assert.equal(ui.form.elements.sourceUrl.value,baselineCatalog.source.url);
+  assert.deepEqual(rowState(),editedRows);assert.equal(ui.ids.get('audit-csv').value,csv);assert.equal(ui.raw,savedBefore);assert.equal(ui.ids.get('audit-baseline-restore').hidden,true);assert.match(ui.ids.get('audit-save-status').textContent,/Save progress to keep this correction/);
+  await ui.chooseBaseline('2024-2025','general-business');assert.match(ui.ids.get('audit-message').textContent,/Save your current requirements/,'Restoration remains an unsaved edit until Save progress.');assert.equal(ui.raw,savedBefore);
+  await ui.click('audit-save');
+  assert.equal(ui.saved.auditDrafts.drafts[0].rows[1].title,'My edited requirement title');assert.equal(ui.saved.auditDrafts.drafts[0].csv,csv);assert.equal(ui.saved.auditDrafts.drafts[0].metadata.sourceUrl,baselineCatalog.source.url);
+  for(const key of ['profile','selectedPathwayId','learning','sheet','scenarios','whatIf'])assert.deepEqual(ui.saved[key],state[key]);
+  const resumed=mount({state:ui.saved,query:ui.location.search});await resumed.settle();await resumed.review();assert.equal(resumed.ids.get('audit-review').hidden,false);assert.equal(resumed.saved.customCurricula,undefined);
+  const manual=mount();assert.match(manual.ids.get('audit-code-guidance').textContent,/Course codes are optional/);await Promise.all([first.fail(),manual.fail()]);
+});
+
+test('catalog-detail restoration cannot replace an invalid baseline source marker', async () => {
+  const first=mount();await first.chooseBaseline('2024-2025','marketing');const invalid=first.saved;invalid.auditDrafts.drafts[0].metadata.baselineHash='0'.repeat(64);
+  const ui=mount({state:invalid,query:new URL(first.location.href,'https://example.test/').search});await ui.settle();const before=ui.raw;
+  await ui.review();assert.match(ui.ids.get('audit-message').textContent,/source reference does not match/);assert.equal(ui.ids.get('audit-baseline-restore').hidden,true);
+  await ui.click('audit-baseline-restore');assert.match(ui.ids.get('audit-message').textContent,/source reference does not match/);assert.equal(ui.raw,before);assert.equal(ui.writes,0);assert.equal(ui.saved.selectedPathwayId,'custom-target');
   await first.fail();
 });
 

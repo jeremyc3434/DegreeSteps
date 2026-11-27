@@ -10,9 +10,10 @@
   function showError(error) {
     $('audit-message').textContent = error.message || String(error);
     $('audit-message').hidden = false;
+    $('audit-baseline-restore').hidden = error.code !== 'baseline-identity-mismatch';
     $('audit-message').scrollIntoView?.({block:'center', behavior:'smooth'});
   }
-  function clearError() { $('audit-message').hidden = true; $('audit-message').textContent = ''; }
+  function clearError() { $('audit-message').hidden = true; $('audit-message').textContent = ''; $('audit-baseline-restore').hidden = true; }
   function current() {
     let raw;
     try { raw = localStorage.getItem(KEY); }
@@ -49,20 +50,32 @@
     })();
     return baselineRequest;
   }
-  async function baselineFor(meta) {
+  async function baselineReference(meta) {
     if (!meta.baselineId) return null;
     const data = await loadBaselines();
     const emphasis = data.emphases.find(item => item.id === meta.baselineEmphasisId);
-    const expectedProgramId = emphasis ? 'requirements-baseline-umass-global-mypath-bba-'+data.catalogId+'-'+emphasis.id+'-r'+data.revision : '';
-    if (meta.baselineId !== data.id || Number(meta.baselineRevision) !== data.revision || meta.baselineHash !== data.hash || meta.baselineMode !== 'requirements-only' || !emphasis || meta.level !== data.level || meta.modality !== data.modality || meta.programId !== expectedProgramId || meta.title !== data.program+' — '+emphasis.title || String(meta.sourceUrl).split('#')[0] !== data.source.url || normalized(meta.school) !== normalized(data.school) || String(meta.catalog).replace(/[–—]/g,'-') !== data.catalogId || meta.creditSystem !== data.creditSystem || meta.creditUnitLabel !== data.creditUnitLabel || meta.learningFormat !== data.learningFormat) {
-      throw Error('This saved catalog baseline no longer matches its source and catalog. Keep your requirements saved and choose the appropriate baseline again.');
+    if (meta.baselineId !== data.id || Number(meta.baselineRevision) !== data.revision || meta.baselineHash !== data.hash || meta.baselineMode !== 'requirements-only' || !emphasis || meta.creditUnitLabel !== data.creditUnitLabel || meta.learningFormat !== data.learningFormat) {
+      throw Error('This saved baseline source reference does not match the reviewed catalog. Keep your requirements saved and choose the appropriate baseline. Its rows have not been replaced.');
     }
     return {data, emphasis};
   }
+  function baselineIdentity({data, emphasis}) {
+    return {school:data.school, title:data.program+' — '+emphasis.title, programId:'requirements-baseline-umass-global-mypath-bba-'+data.catalogId+'-'+emphasis.id+'-r'+data.revision, level:data.level, modality:data.modality, catalog:data.catalogId, creditSystem:data.creditSystem, sourceUrl:data.source.url};
+  }
+  async function baselineFor(meta) {
+    const reference = await baselineReference(meta);
+    if (!reference) return null;
+    const identity = baselineIdentity(reference);
+    if (Object.entries(identity).some(([field, value]) => field === 'school' ? normalized(meta[field]) !== normalized(value) : field === 'sourceUrl' ? String(meta[field]).split('#')[0] !== value : field === 'catalog' ? String(meta[field]).replace(/[–—]/g,'-') !== value : meta[field] !== value)) {
+      throw Object.assign(Error('These degree details no longer match the selected catalog baseline. Use “Restore catalog details” to keep your requirement rows and restore its school, program and catalog, or choose a different baseline.'), {code:'baseline-identity-mismatch'});
+    }
+    return reference;
+  }
   function baselineSummary(value) {
     const host = $('audit-baseline-context');
-    if (!value) { host.hidden = true; host.innerHTML = ''; return; }
+    if (!value) { host.hidden = true; host.innerHTML = ''; $('audit-code-guidance').textContent = 'Enter each course or requirement. Course codes are optional.'; return; }
     const {data, emphasis} = value;
+    $('audit-code-guidance').textContent = 'Use the exact course or competency code for each included requirement. Unresolved elective pools stay in your draft until you add the actual named courses.';
     host.hidden = false;
     host.innerHTML = '<h2>2024–25 MyPath BBA · '+esc(emphasis.title)+'</h2><p>Starting requirements from the reviewed catalog: <strong>120 '+esc(data.creditUnitLabel)+'</strong>. Credit amounts are not counts of competencies. Check your assigned catalog, emphasis and completed work against your university degree audit.</p><p>This is a requirements workspace. It includes no approved outside-course awards or permission to take new courses while enrolled.</p>'+
       (emphasis.requiresAllocation?'<p class="audit-notice">General Business includes a variable pool of 19 equivalent elective credits. It is not one course or a fixed number of courses. Save this draft while you identify the actual courses with the university. Remove the elective-pool row, then add the actual named courses from your degree audit totaling 19 equivalent credits before building a proposed plan.</p>':'')+
@@ -233,6 +246,19 @@
     } catch (error) { showError(error); }
   });
   $('audit-save').addEventListener('click', saveProgress);
+  $('audit-baseline-restore').addEventListener('click', async () => {
+    if (busy) return;
+    busy = true;
+    try {
+      const reference = await baselineReference(values());
+      if (!reference) throw Error('Choose a catalog baseline before restoring its details. Your requirements have not changed.');
+      fillFields(baselineIdentity(reference));
+      baselineSummary(reference);
+      clearError(); markChanged();
+      $('audit-save-status').textContent = 'Catalog details restored. Your requirement rows are unchanged. Save progress to keep this correction.';
+    } catch (error) { showError(error); }
+    finally { busy = false; }
+  });
   form.addEventListener('submit', event => { event.preventDefault(); return review(); });
   $('audit-baseline-load').addEventListener('click', async () => {
     if (busy) return;
@@ -302,6 +328,7 @@
   renderRows();
   if (params.has('baseline')) $('audit-baseline').open = true;
   if (values().baselineId) baselineFor(values()).then(baselineSummary).catch(showError);
+  else baselineSummary(null);
   const initial = context();
   (async () => {
     try {
