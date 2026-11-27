@@ -1,0 +1,457 @@
+{
+  "kind": "tesu-business-cis-expansion-review",
+  "version": 1,
+  "checkedOn": "2026-11-27",
+  "publicationPromotionAllowed": false,
+  "scope": "New current B.S. Computer Information Systems ledger only; exact degree re-proves shared blocks. Original source dates preserved, current degree formal name retained, no outside-course acceptance invented.",
+  "degree": {
+    "source": {
+      "id": "tesu-bs-computer-information-systems-current-2026-11-27",
+      "title": "B.S. in Computer Information Systems — current exact curriculum",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-computer-information-systems/",
+      "checked": "2026-11-27",
+      "capture": "content/source-captures/933c3904a0a0086e.txt",
+      "sha256": "933c3904a0a0086e9b66178cd5cceac16c8f0664046adab1ac84f29bf28b2190",
+      "sourceContentHash": "933c3904a0a0086e9b66178cd5cceac16c8f0664046adab1ac84f29bf28b2190",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn712view0",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/bf9f82afecc33259b2e784356c0c96bf497ab02c8b2aea8a575f095f60d8db28.json",
+        "sha256": "bf9f82afecc33259b2e784356c0c96bf497ab02c8b2aea8a575f095f60d8db28",
+        "citationRef": "turn712view0",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-computer-information-systems/"
+      },
+      "roles": [
+        "curriculum",
+        "degree-placement",
+        "program-policy"
+      ]
+    }
+  },
+  "spec": {
+    "slug": "bs-computer-information-systems",
+    "shortName": "Computer Information Systems",
+    "title": "B.S. in Computer Information Systems",
+    "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-computer-information-systems/",
+    "capture": "content/source-captures/933c3904a0a0086e.txt",
+    "reviewedOn": "2026-11-27",
+    "requiredCount": 2,
+    "areaCourses": [
+      [
+        "COS-1160",
+        "C Programming"
+      ],
+      [
+        "CIS-3200",
+        "System Analysis and Design I"
+      ],
+      [
+        "COS-2410",
+        "Data Structures"
+      ],
+      [
+        "CIS-3110",
+        "Database Management"
+      ],
+      [
+        "CIS-3010",
+        "Management Information Systems"
+      ],
+      [
+        "CIS-3510",
+        "Software Engineering"
+      ]
+    ],
+    "areaUpperCodes": [
+      "CIS-3200",
+      "CIS-3110",
+      "CIS-3010",
+      "CIS-3510"
+    ],
+    "prerequisites": {
+      "CIS-3510": [
+        "COS-1160"
+      ]
+    },
+    "originalPrerequisiteCodes": {
+      "CIS-3510": [
+        "COS-1160 or COS-2130"
+      ]
+    },
+    "prerequisiteNotes": {
+      "CIS-3510": "The published prerequisite is COS-1160 or COS-2130. This degree independently requires COS-1160, so the baseline uses that already-counted course; it does not require both alternatives."
+    },
+    "advisoryNotes": {
+      "COS-1160": "The catalog advises introductory programming or equivalent experience and requires a student-supplied ANSI C-compatible compiler. These are preparation/software requirements, not additional course credits or a separate formal prerequisite.",
+      "COS-2410": "The catalog advisory says students must know C++ before beginning; basic C++ is not taught in this course. This preparation is not established merely by selecting C Programming, and no unsupported C++ course substitution is inferred.",
+      "CIS-3510": "The catalog strongly encourages introductory programming before this course; its formal COS-1160 or COS-2130 prerequisite remains separately modeled."
+    },
+    "unresolved": [],
+    "areaUpperCredits": 12
+  },
+  "courses": [
+    {
+      "code": "COS-1160",
+      "title": "C Programming",
+      "credits": 3,
+      "formalPrerequisiteText": null,
+      "formalPrerequisiteSectionPresent": false,
+      "advisoryText": [
+        "The catalog advises introductory programming or equivalent experience and requires a student-supplied ANSI C-compatible compiler. These are preparation/software requirements, not additional course credits or a separate formal prerequisite."
+      ],
+      "deliveryMethods": [
+        "Accelerated Courses",
+        "Guided Study",
+        "Online"
+      ],
+      "actualSectionAvailabilityConfirmed": false,
+      "prerequisiteAbsenceScope": "No formal prerequisite section is printed in the complete body when null; advisories and software preparation remain visible separately.",
+      "source": {
+        "id": "tesu-cis-course-cos-1160-20261127",
+        "title": "TESU current COS-1160 C Programming",
+        "kind": "university",
+        "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cos-computer-science/1000/cos-1160",
+        "checked": "2026-11-27",
+        "capture": "content/source-captures/d8677c85fcbc17cf.txt",
+        "sha256": "d8677c85fcbc17cf9d25e783b5c197813d7279a876249eac3d4ab8dbade728eb",
+        "sourceContentHash": "d8677c85fcbc17cf9d25e783b5c197813d7279a876249eac3d4ab8dbade728eb",
+        "captureFormat": "connected-web-rendered-extract",
+        "citationRef": "turn720view0",
+        "toolResponseReceipt": {
+          "path": "content/source-captures/retrievals/fdb806a654ec465e0888d2b956a3320e4b09badce372bcefed098739bd5587f0.json",
+          "sha256": "fdb806a654ec465e0888d2b956a3320e4b09badce372bcefed098739bd5587f0",
+          "citationRef": "turn720view0",
+          "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cos-computer-science/1000/cos-1160"
+        }
+      },
+      "quotes": [
+        {
+          "field": "course",
+          "text": "COS-1160 C Programming"
+        },
+        {
+          "field": "credits",
+          "text": "Credits 3"
+        },
+        {
+          "field": "delivery-options",
+          "text": "Delivery Methods Accelerated Courses Guided Study Online"
+        }
+      ],
+      "extraction": {
+        "scope": "complete-rendered-main-body",
+        "cleaning": "native-main-body-v1",
+        "firstLine": 129,
+        "lastLine": 153,
+        "totalPageLines": 154,
+        "noLineGaps": true
+      }
+    },
+    {
+      "code": "CIS-3200",
+      "title": "System Analysis and Design I",
+      "credits": 3,
+      "formalPrerequisiteText": null,
+      "formalPrerequisiteSectionPresent": false,
+      "advisoryText": [],
+      "deliveryMethods": [
+        "Online"
+      ],
+      "actualSectionAvailabilityConfirmed": false,
+      "prerequisiteAbsenceScope": "No formal prerequisite section is printed in the complete body when null; advisories and software preparation remain visible separately.",
+      "source": {
+        "id": "tesu-cis-course-cis-3200-20261127",
+        "title": "TESU current CIS-3200 System Analysis and Design I",
+        "kind": "university",
+        "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cis-computer-information-systems/3000/cis-3200",
+        "checked": "2026-11-27",
+        "capture": "content/source-captures/bd47f25fdf15faa6.txt",
+        "sha256": "bd47f25fdf15faa64c377cc541fbb95681a018bffe89f50ec9cb94e20e6cbe94",
+        "sourceContentHash": "bd47f25fdf15faa64c377cc541fbb95681a018bffe89f50ec9cb94e20e6cbe94",
+        "captureFormat": "connected-web-rendered-extract",
+        "citationRef": "turn720view1",
+        "toolResponseReceipt": {
+          "path": "content/source-captures/retrievals/fdb806a654ec465e0888d2b956a3320e4b09badce372bcefed098739bd5587f0.json",
+          "sha256": "fdb806a654ec465e0888d2b956a3320e4b09badce372bcefed098739bd5587f0",
+          "citationRef": "turn720view1",
+          "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cis-computer-information-systems/3000/cis-3200"
+        }
+      },
+      "quotes": [
+        {
+          "field": "course",
+          "text": "CIS-3200 System Analysis and Design I"
+        },
+        {
+          "field": "credits",
+          "text": "Credits 3"
+        },
+        {
+          "field": "delivery-options",
+          "text": "Delivery Methods Online"
+        }
+      ],
+      "extraction": {
+        "scope": "complete-rendered-main-body",
+        "cleaning": "native-main-body-v1",
+        "firstLine": 128,
+        "lastLine": 146,
+        "totalPageLines": 147,
+        "noLineGaps": true
+      }
+    },
+    {
+      "code": "COS-2410",
+      "title": "Data Structures",
+      "credits": 3,
+      "formalPrerequisiteText": null,
+      "formalPrerequisiteSectionPresent": false,
+      "advisoryText": [
+        "The catalog advisory says students must know C++ before beginning; basic C++ is not taught in this course. This preparation is not established merely by selecting C Programming, and no unsupported C++ course substitution is inferred."
+      ],
+      "deliveryMethods": [
+        "Accelerated Courses",
+        "Guided Study",
+        "Online"
+      ],
+      "actualSectionAvailabilityConfirmed": false,
+      "prerequisiteAbsenceScope": "No formal prerequisite section is printed in the complete body when null; advisories and software preparation remain visible separately.",
+      "source": {
+        "id": "tesu-cis-course-cos-2410-20261127",
+        "title": "TESU current COS-2410 Data Structures",
+        "kind": "university",
+        "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cos-computer-science/200/cos-2410",
+        "checked": "2026-11-27",
+        "capture": "content/source-captures/dfef6b08054a44b2.txt",
+        "sha256": "dfef6b08054a44b23472d2501c93ea720cbf4401033a679ebb1bd07f7207f449",
+        "sourceContentHash": "dfef6b08054a44b23472d2501c93ea720cbf4401033a679ebb1bd07f7207f449",
+        "captureFormat": "connected-web-rendered-extract",
+        "citationRef": "turn720view2",
+        "toolResponseReceipt": {
+          "path": "content/source-captures/retrievals/fdb806a654ec465e0888d2b956a3320e4b09badce372bcefed098739bd5587f0.json",
+          "sha256": "fdb806a654ec465e0888d2b956a3320e4b09badce372bcefed098739bd5587f0",
+          "citationRef": "turn720view2",
+          "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cos-computer-science/200/cos-2410"
+        }
+      },
+      "quotes": [
+        {
+          "field": "course",
+          "text": "COS-2410 Data Structures"
+        },
+        {
+          "field": "credits",
+          "text": "Credits 3"
+        },
+        {
+          "field": "delivery-options",
+          "text": "Delivery Methods Accelerated Courses Guided Study Online"
+        }
+      ],
+      "extraction": {
+        "scope": "complete-rendered-main-body",
+        "cleaning": "native-main-body-v1",
+        "firstLine": 131,
+        "lastLine": 154,
+        "totalPageLines": 155,
+        "noLineGaps": true
+      }
+    },
+    {
+      "code": "CIS-3110",
+      "title": "Database Management",
+      "credits": 3,
+      "formalPrerequisiteText": null,
+      "formalPrerequisiteSectionPresent": false,
+      "advisoryText": [],
+      "deliveryMethods": [
+        "Online"
+      ],
+      "actualSectionAvailabilityConfirmed": false,
+      "prerequisiteAbsenceScope": "No formal prerequisite section is printed in the complete body when null; advisories and software preparation remain visible separately.",
+      "source": {
+        "id": "tesu-cis-course-cis-3110-20261127",
+        "title": "TESU current CIS-3110 Database Management",
+        "kind": "university",
+        "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cis-computer-information-systems/3000/cis-3110",
+        "checked": "2026-11-27",
+        "capture": "content/source-captures/e517c07e0269eb21.txt",
+        "sha256": "e517c07e0269eb212c01175fc0185d1eca646c19b67df4a82319b1c34a429b99",
+        "sourceContentHash": "e517c07e0269eb212c01175fc0185d1eca646c19b67df4a82319b1c34a429b99",
+        "captureFormat": "connected-web-rendered-extract",
+        "citationRef": "turn720view3",
+        "toolResponseReceipt": {
+          "path": "content/source-captures/retrievals/fdb806a654ec465e0888d2b956a3320e4b09badce372bcefed098739bd5587f0.json",
+          "sha256": "fdb806a654ec465e0888d2b956a3320e4b09badce372bcefed098739bd5587f0",
+          "citationRef": "turn720view3",
+          "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cis-computer-information-systems/3000/cis-3110"
+        }
+      },
+      "quotes": [
+        {
+          "field": "course",
+          "text": "CIS-3110 Database Management"
+        },
+        {
+          "field": "credits",
+          "text": "Credits 3"
+        },
+        {
+          "field": "delivery-options",
+          "text": "Delivery Methods Online"
+        }
+      ],
+      "extraction": {
+        "scope": "complete-rendered-main-body",
+        "cleaning": "native-main-body-v1",
+        "firstLine": 128,
+        "lastLine": 145,
+        "totalPageLines": 146,
+        "noLineGaps": true
+      }
+    },
+    {
+      "code": "CIS-3010",
+      "title": "Management Information Systems",
+      "credits": 3,
+      "formalPrerequisiteText": null,
+      "formalPrerequisiteSectionPresent": false,
+      "advisoryText": [],
+      "deliveryMethods": [
+        "Online"
+      ],
+      "actualSectionAvailabilityConfirmed": false,
+      "prerequisiteAbsenceScope": "No formal prerequisite section is printed in the complete rendered course body; this is not a universal waiver.",
+      "source": {
+        "id": "tesu-business-course-cis-3010-20261126",
+        "title": "TESU current CIS-3010 Management Information Systems",
+        "kind": "university",
+        "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cis-computer-information-systems/3000/cis-3010",
+        "checked": "2026-11-26",
+        "capture": "content/source-captures/e96b04f6b2f07d9b.txt",
+        "sha256": "e96b04f6b2f07d9b4d92bca3310c0a2a9830c77a56a9ca805526521a5fc93c77",
+        "sourceContentHash": "e96b04f6b2f07d9b4d92bca3310c0a2a9830c77a56a9ca805526521a5fc93c77",
+        "captureFormat": "connected-web-rendered-extract",
+        "citationRef": "turn664view1",
+        "toolResponseReceipt": {
+          "path": "content/source-captures/retrievals/c8b1fbc7214b6082a9d5175bf96e3d253205e916dfbd9a06bfba7d42d3559e35.json",
+          "sha256": "c8b1fbc7214b6082a9d5175bf96e3d253205e916dfbd9a06bfba7d42d3559e35",
+          "citationRef": "turn664view1",
+          "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cis-computer-information-systems/3000/cis-3010"
+        }
+      },
+      "quotes": [
+        {
+          "field": "course",
+          "text": "CIS-3010 Management Information Systems"
+        },
+        {
+          "field": "credits",
+          "text": "Credits 3"
+        },
+        {
+          "field": "delivery-options",
+          "text": "Delivery Methods Online"
+        }
+      ],
+      "extraction": {
+        "scope": "complete-rendered-main-body",
+        "cleaning": "native-main-body-v1",
+        "firstLine": 128,
+        "lastLine": 145,
+        "totalPageLines": 146,
+        "noLineGaps": true
+      },
+      "transportScope": {
+        "format": "connected-web-rendered-extract",
+        "originHttpStatus": null,
+        "rawHttpBodyCaptured": false,
+        "nativeCrawlerReported": "today",
+        "completeMainBodyRetained": true,
+        "originalHttpFetchTimeClaimed": false
+      },
+      "retrievalReceipt": null
+    },
+    {
+      "code": "CIS-3510",
+      "title": "Software Engineering",
+      "credits": 3,
+      "formalPrerequisiteText": "COS-1160 or COS-2130",
+      "formalPrerequisiteSectionPresent": true,
+      "advisoryText": [
+        "The catalog strongly encourages introductory programming before this course; its formal COS-1160 or COS-2130 prerequisite remains separately modeled."
+      ],
+      "deliveryMethods": [
+        "Online"
+      ],
+      "actualSectionAvailabilityConfirmed": false,
+      "prerequisiteAbsenceScope": "No formal prerequisite section is printed in the complete body when null; advisories and software preparation remain visible separately.",
+      "source": {
+        "id": "tesu-cis-course-cis-3510-20261127",
+        "title": "TESU current CIS-3510 Software Engineering",
+        "kind": "university",
+        "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cis-computer-information-systems/3000/cis-3510",
+        "checked": "2026-11-27",
+        "capture": "content/source-captures/37c886ec29eb360a.txt",
+        "sha256": "37c886ec29eb360aefdfd5eb04f019261573da717ed1475ff3dd103951d2349d",
+        "sourceContentHash": "37c886ec29eb360aefdfd5eb04f019261573da717ed1475ff3dd103951d2349d",
+        "captureFormat": "connected-web-rendered-extract",
+        "citationRef": "turn726view0",
+        "toolResponseReceipt": {
+          "path": "content/source-captures/retrievals/01100ed8dd6262449490dacd822abaaccd737f8ed77f3be02107e3039d52e7da.json",
+          "sha256": "01100ed8dd6262449490dacd822abaaccd737f8ed77f3be02107e3039d52e7da",
+          "citationRef": "turn726view0",
+          "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cis-computer-information-systems/3000/cis-3510"
+        }
+      },
+      "quotes": [
+        {
+          "field": "course",
+          "text": "CIS-3510 Software Engineering"
+        },
+        {
+          "field": "credits",
+          "text": "Credits 3"
+        },
+        {
+          "field": "delivery-options",
+          "text": "Delivery Methods Online"
+        }
+      ],
+      "extraction": {
+        "scope": "complete-rendered-main-body",
+        "cleaning": "native-main-body-v1",
+        "firstLine": 128,
+        "lastLine": 151,
+        "totalPageLines": 152,
+        "noLineGaps": true
+      }
+    }
+  ],
+  "academicAssertions": {
+    "totalCredits": 120,
+    "generalCredits": 45,
+    "professionalBusinessCredits": 42,
+    "areaCredits": 18,
+    "freeElectiveCredits": 15,
+    "areaUpperCredits": 12,
+    "areaLowerCredits": 6,
+    "sourceRowsNamed": 40,
+    "formalPrerequisiteClosure": "CIS-3510 uses already-required COS-1160; no other current selected area course prints a formal prerequisite section."
+  },
+  "operationsHold": {
+    "proposedDegree": "B.S.B.A. in Operations Management",
+    "degreeUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/operations-management/",
+    "status": "not-authored",
+    "reason": "The current OPM-4200 course retains formal OPM-4110, while the degree requires APS-4020. No university-authoritative alias, waiver or course-equivalence proof was established. Do not infer the replacement or count this as an approved plan.",
+    "retainedCourseSource": "content/source-captures/85758c0e4a020028.txt"
+  },
+  "sharedIntegrationNeeded": [
+    "Add exact manifest entry and canonical source/publication registration without changing previous reviewed dates.",
+    "Scope reviewedOn date to this new entry only.",
+    "Build major upper flags from areaUpperCodes; COS-1160 and COS-2410 must stay lower level.",
+    "Layer existing exact university receiving awards using separately reviewed new-degree applicability; never carry another degree’s placement as automatic proof.",
+    "Run normal factory, public-plan feasibility and saved-course regression gates before counting as ready."
+  ]
+}

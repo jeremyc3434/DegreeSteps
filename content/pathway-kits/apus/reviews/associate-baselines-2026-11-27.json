@@ -1,0 +1,2586 @@
+{
+  "kind": "apus-associate-baseline-source-review",
+  "version": 1,
+  "id": "apus-associate-reviewed-baselines-2026-11-27",
+  "checkedOn": "2026-11-27",
+  "reviewer": "DegreeSteps source review (AI-assisted, user-directed)",
+  "scope": {
+    "school": "American Public University System",
+    "receivingInstitution": "American Public University",
+    "level": "associate",
+    "modality": "online",
+    "creditSystem": "semester",
+    "programs": [
+      "associate-of-arts-in-business-administration-reviewed-2026",
+      "associate-of-arts-in-criminal-justice-reviewed-2026",
+      "associate-of-science-in-cybersecurity-reviewed-2026"
+    ]
+  },
+  "personalAwardsCreated": 0,
+  "summary": "Three full 60-credit APU associate ledgers, each capped at 30 nontraditional credits. Exact receiving awards are independent from reused original provider identities. Named baseline selections do not narrow the published degree to these sole choices.",
+  "finder": {
+    "id": "apus-apu-official-nontraditional-finder-2026-11-27",
+    "title": "APU official non-traditional course equivalencies and effective periods",
+    "url": "https://www.apu.apus.edu/transfer-credit/finder/",
+    "checked": "2026-11-27",
+    "kind": "university",
+    "roles": [
+      "receiving-map",
+      "transfer-equivalency"
+    ],
+    "capture": "content/source-captures/75a937b76f40e35a.txt",
+    "sha256": "75a937b76f40e35a42cecc1b03c176f9535881c38398a4be8ac811594d2aae3b",
+    "scope": {
+      "school": "American Public University",
+      "catalog": "2026-2027",
+      "level": "associate",
+      "modality": "online",
+      "creditSystem": "semester"
+    }
+  },
+  "programs": [
+    {
+      "slug": "associate-of-arts-in-business-administration-reviewed-2026",
+      "modelId": "curriculum-apus-associate-of-arts-in-business-administration-reviewed-2026",
+      "title": "Associate of Arts in Business Administration",
+      "catalog": "2026-2027",
+      "totalCredits": 60,
+      "sources": [
+        {
+          "id": "apus-associate-of-arts-in-business-administration-catalog-2026-11-23",
+          "title": "Associate of Arts in Business Administration catalog page",
+          "url": "https://catalog.apus.edu/apu/academic-programs/associate/associate-art--business-administration/",
+          "checked": "2026-11-23",
+          "capture": "content/source-captures/2e0ce264e1c01804.txt",
+          "sha256": "2e0ce264e1c01804005fd4a2dcadd50ce225185ced23bb89fea14ea2b26818cf"
+        }
+      ],
+      "legacySlug": "associate-of-arts-in-business-administration",
+      "legacyModelId": "curriculum-apus-associate-of-arts-in-business-administration",
+      "legacyProgramPath": "content/pathway-kits/apus/programs/associate-of-arts-in-business-administration.json",
+      "legacyProgramSha256": "7cba08142d9941d7e30ef873477d255392c176b4bd1d86792aaee3b5f7267c16",
+      "legacyRouteIds": [
+        "apus-associate-of-arts-in-business-administration"
+      ],
+      "route": {
+        "id": "apus-associate-of-arts-in-business-administration-reviewed-2026",
+        "title": "Associate of Arts in Business Administration",
+        "school": "American Public University",
+        "schoolId": "apus",
+        "level": "associate",
+        "modalities": [
+          "online"
+        ],
+        "field": "business",
+        "fields": [
+          "business"
+        ],
+        "goals": [
+          "any-degree",
+          "career-growth",
+          "change-career"
+        ],
+        "paceModel": "course-term",
+        "url": "https://catalog.apus.edu/apu/academic-programs/associate/associate-art--business-administration/",
+        "sourceId": "apus-associate-of-arts-in-business-administration-catalog-2026-11-23",
+        "degreeCredits": 60,
+        "creditUnit": "semester",
+        "status": "listed",
+        "checkedOn": "2026-11-27",
+        "supersedesRouteId": "apus-associate-of-arts-in-business-administration"
+      }
+    },
+    {
+      "slug": "associate-of-arts-in-criminal-justice-reviewed-2026",
+      "modelId": "curriculum-apus-associate-of-arts-in-criminal-justice-reviewed-2026",
+      "title": "Associate of Arts in Criminal Justice",
+      "catalog": "2026-2027",
+      "totalCredits": 60,
+      "sources": [
+        {
+          "id": "apus-associate-of-arts-in-criminal-justice-catalog-2026-11-23",
+          "title": "Associate of Arts in Criminal Justice catalog page",
+          "url": "https://catalog.apus.edu/apu/academic-programs/associate/associate-arts-criminal-justice/",
+          "checked": "2026-11-23",
+          "capture": "content/source-captures/767600aaf1968d67.txt",
+          "sha256": "767600aaf1968d67672605c6b0cf3c458fce15128ab08222e13e4f5017ed7416"
+        }
+      ],
+      "legacySlug": "associate-of-arts-in-criminal-justice",
+      "legacyModelId": "curriculum-apus-associate-of-arts-in-criminal-justice",
+      "legacyProgramPath": "content/pathway-kits/apus/programs/associate-of-arts-in-criminal-justice.json",
+      "legacyProgramSha256": "1cb24a39d012c060c87886b284cb5455b426e305bffe8237089a3faa20a145eb",
+      "legacyRouteIds": [
+        "apus-associate-of-arts-in-criminal-justice"
+      ],
+      "route": {
+        "id": "apus-associate-of-arts-in-criminal-justice-reviewed-2026",
+        "title": "Associate of Arts in Criminal Justice",
+        "school": "American Public University",
+        "schoolId": "apus",
+        "level": "associate",
+        "modalities": [
+          "online"
+        ],
+        "field": "criminal-justice",
+        "fields": [
+          "criminal-justice"
+        ],
+        "goals": [
+          "any-degree",
+          "career-growth",
+          "change-career"
+        ],
+        "paceModel": "course-term",
+        "url": "https://catalog.apus.edu/apu/academic-programs/associate/associate-arts-criminal-justice/",
+        "sourceId": "apus-associate-of-arts-in-criminal-justice-catalog-2026-11-23",
+        "degreeCredits": 60,
+        "creditUnit": "semester",
+        "status": "listed",
+        "checkedOn": "2026-11-27",
+        "supersedesRouteId": "apus-associate-of-arts-in-criminal-justice"
+      }
+    },
+    {
+      "slug": "associate-of-science-in-cybersecurity-reviewed-2026",
+      "modelId": "curriculum-apus-associate-of-science-in-cybersecurity-reviewed-2026",
+      "title": "Associate of Science in Cybersecurity",
+      "catalog": "2026-2027",
+      "totalCredits": 60,
+      "sources": [
+        {
+          "id": "apus-associate-of-science-in-cybersecurity-catalog-2026-11-23",
+          "title": "Associate of Science in Cybersecurity catalog page",
+          "url": "https://catalog.apus.edu/apu/academic-programs/associate/associate-science-cybersecurity/",
+          "checked": "2026-11-23",
+          "capture": "content/source-captures/37a8caa3f93693ce.txt",
+          "sha256": "37a8caa3f93693ce3ceac39c58a94472883d878419e509dbafb9db5ddfbf914e"
+        }
+      ],
+      "legacySlug": "associate-of-science-in-cybersecurity",
+      "legacyModelId": "curriculum-apus-associate-of-science-in-cybersecurity",
+      "legacyProgramPath": "content/pathway-kits/apus/programs/associate-of-science-in-cybersecurity.json",
+      "legacyProgramSha256": "56bc09dc21a4380c200090aaed0ea342940c2848591330b8d4f30821ec58005e",
+      "legacyRouteIds": [
+        "apus-associate-of-science-in-cybersecurity"
+      ],
+      "route": {
+        "id": "apus-associate-of-science-in-cybersecurity-reviewed-2026",
+        "title": "Associate of Science in Cybersecurity",
+        "school": "American Public University",
+        "schoolId": "apus",
+        "level": "associate",
+        "modalities": [
+          "online"
+        ],
+        "field": "technology",
+        "fields": [
+          "technology"
+        ],
+        "goals": [
+          "any-degree",
+          "career-growth",
+          "change-career"
+        ],
+        "paceModel": "course-term",
+        "url": "https://catalog.apus.edu/apu/academic-programs/associate/associate-science-cybersecurity/",
+        "sourceId": "apus-associate-of-science-in-cybersecurity-catalog-2026-11-23",
+        "degreeCredits": 60,
+        "creditUnit": "semester",
+        "status": "listed",
+        "checkedOn": "2026-11-27",
+        "supersedesRouteId": "apus-associate-of-science-in-cybersecurity"
+      }
+    }
+  ],
+  "courses": [
+    {
+      "code": "BUSN100",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: BUSN100\nCourse ID: 2887\nCredit Hours: 3\nLevel: Undergraduate\nThis course is designed to acquaint the student with the terminology, organization, and function of the American business system. The course will give the student a broad background about the contemporary American and global business environments as well as considering different business organizations, management principles and strategies. Topics covered include marketing, finance, personnel, customer relations, production and operations, e-business, world trade ventures, internal information systems and decision-making processes.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-busn100-2026-11-27",
+        "title": "APU BUSN100 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=BUSN100",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/8489115783e83665.txt",
+        "sha256": "8489115783e83665a418aff3e2baf8bc733c4235bacacf2f20c7cd44530aa2ca"
+      },
+      "title": "Basics of Business",
+      "creditQuote": "BUSN100 - Basics of Business\nHome >\nCourse Schedule\nCourse Details\nCourse Code: BUSN100\nCourse ID: 2887\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "BIOL181",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: BIOL181\nCourse ID: 5029\nCredit Hours: 3\nLevel: Undergraduate\nThis online human anatomy and physiology course explores the structure and function of the human body, emphasizing homeostasis, integration, and regulation of physiological processes. Students explore cells, tissue types, and major organ systems, including integumentary, skeletal, muscular, nervous, endocrine, cardiovascular, lymphatic, respiratory, digestive, urinary, and reproductive systems, as well as an overview of gestational development and an introduction to patterns of inheritance. Emphasis is placed on anatomical structure, molecular mechanisms, and environmental interactions that influence health and disease. Learners apply scientific concepts and life sciences principles to understand how the body works, developing analytical and research skills essential for success in science and healthcare-related fields.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-biol181-2026-11-27",
+        "title": "APU BIOL181 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=BIOL181",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/275022f205a000c6.txt",
+        "sha256": "275022f205a000c6ce73c85200df41aa29884d255dff0dfbbcca4f044582000c"
+      },
+      "title": "Introduction to Human Anatomy and Physiology",
+      "creditQuote": "BIOL181 - Introduction to Human Anatomy and Physiology\nHome >\nCourse Schedule\nCourse Details\nCourse Code: BIOL181\nCourse ID: 5029\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "ACCT105",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: ACCT105\nCourse ID: 4372\nCredit Hours: 3\nLevel: Undergraduate\nThis course is an overview of accounting concepts used by managers in a business environment intended for non-accounting majors with no accounting background. Topics include accounting concepts, users of accounting information, elements and purpose of financial statements, accrual accounting, internal control and basic financial analysis. Students must have access to Microsoft Word® and Microsoft Excel® software.\nMicrosoft Word® Microsoft Excel® are registered trademarks of Microsoft Corporation.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-acct105-2026-11-27",
+        "title": "APU ACCT105 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=ACCT105",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/5409688aec4a4ad5.txt",
+        "sha256": "5409688aec4a4ad584306c6d462bbaaed7e2438a7bd7262d794dc0b8fd84ff57"
+      },
+      "title": "Accounting for Non Accounting Majors",
+      "creditQuote": "ACCT105 - Accounting for Non Accounting Majors\nHome >\nCourse Schedule\nCourse Details\nCourse Code: ACCT105\nCourse ID: 4372\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "BUSN202",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: BUSN202\nCourse ID: 5407\nCredit Hours: 3\nLevel: Undergraduate\nStudents learn about the fundamentals of various technical applications in the workplace. The course introduces students to hardware, software, cloud computing, collaboration tools, cybersecurity, and other technical matters they will encounter in a business environment. The student will learn how to apply the tools typically used to accomplish routine business tasks and share information.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-busn202-2026-11-27",
+        "title": "APU BUSN202 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=BUSN202",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/d909491a103909c5.txt",
+        "sha256": "d909491a103909c535b6368cdb45044aaeb331619bf12d332d121b38b1c3890f"
+      },
+      "title": "Leading in the Technology Age",
+      "creditQuote": "BUSN202 - Leading in the Technology Age\nHome >\nCourse Schedule\nCourse Details\nCourse Code: BUSN202\nCourse ID: 5407\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "BUSN235",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: BUSN235\nCourse ID: 4962\nCredit Hours: 3\nLevel: Undergraduate\nThis course addresses the fundamentals of personal finance. Students will develop an understanding of the financial world and how it directly affects their life on a day-to-day basis as well as planning for their long term fiscal security. Topics include money management, consumer credit, home financing, insurance, and investing.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-busn235-2026-11-27",
+        "title": "APU BUSN235 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=BUSN235",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/d622ae5a4f7816cb.txt",
+        "sha256": "d622ae5a4f7816cbff0ed26812c2558918d1c5dd6943dc83e34baaeff20c0f19"
+      },
+      "title": "Personal Finance",
+      "creditQuote": "BUSN235 - Personal Finance\nHome >\nCourse Schedule\nCourse Details\nCourse Code: BUSN235\nCourse ID: 4962\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "BUSN250",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: BUSN250\nCourse ID: 4592\nCredit Hours: 3\nLevel: Undergraduate\nThis course is designed to provide a foundational knowledge in analytics, and how it is used in business to strengthen the decision-making process. As technology has changed the landscape of business processes, it has also created a necessity for decision-makers to have the ability to use various tools to create, manipulate, and report data. Students will learn operational statistical theories, software options to work with data, and begin to integrate concepts into objective decision-making.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-busn250-2026-11-27",
+        "title": "APU BUSN250 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=BUSN250",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/ec21bcdf469172f9.txt",
+        "sha256": "ec21bcdf469172f9284dabfee470e23288101c63817543d93b8dac7d27a1bef2"
+      },
+      "title": "Analytics I",
+      "creditQuote": "BUSN250 - Analytics I\nHome >\nCourse Schedule\nCourse Details\nCourse Code: BUSN250\nCourse ID: 4592\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "BUSN299",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: BUSN299\nCourse ID: 4518\nCredit Hours: 3\nLevel: Undergraduate\nThis course is an integrated-based approach to task-based, business problem solving using various technology solutions such as productivity software products, the Internet, and free applications. Students will be challenged to use appropriate technology skill sets, while also learning additional skills working on real world business projects. Students will complete the course with an e-portfolio of their work, which can in turn be used in the job search process.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-busn299-2026-11-27",
+        "title": "APU BUSN299 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=BUSN299",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/e754e2d7348f9144.txt",
+        "sha256": "e754e2d7348f9144db9ef7d2255627d5daa1d551e4177b160545c680033731a3"
+      },
+      "title": "Applied Business Solutions",
+      "creditQuote": "BUSN299 - Applied Business Solutions\nHome >\nCourse Schedule\nCourse Details\nCourse Code: BUSN299\nCourse ID: 4518\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "CHEM180",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: CHEM180\nCourse ID: 5031\nCredit Hours: 3\nLevel: Undergraduate\nThis course introduces students to the principles of basic chemistry; the terminology, methodology, and world view of chemistry; and chemistry’s practical application to everyday living. Topics discussed in the course include acids, bases, atomic structure, chemical equations, chemical reactions, and chemical language and nomenclature.\nOther topics that will be covered in the course include gases, molecular structure, solution chemistry, chemical mathematics, organic chemistry, and biochemistry. Also, students will discuss the process of the scientific method and be required to demonstrate science information literacy skills through the creation of a narrated presentation.\nTopics covered in this course require some comfort with math. This course is time-intensive, so students should ensure they have the time to fully commit to this course if it is used to fulfill the General Education science course requirement.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-chem180-2026-11-27",
+        "title": "APU CHEM180 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=CHEM180",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/b5890d1f9a783a0d.txt",
+        "sha256": "b5890d1f9a783a0d9b47f619aba76e520ecce87a7621764201dfa14b1d559f78"
+      },
+      "title": "Introduction to Chemistry",
+      "creditQuote": "CHEM180 - Introduction to Chemistry\nHome >\nCourse Schedule\nCourse Details\nCourse Code: CHEM180\nCourse ID: 5031\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "CMRJ100",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: CMRJ100\nCourse ID: 2522\nCredit Hours: 3\nLevel: Undergraduate\nThis course is an introduction to the philosophy, history, and constitutional limitations of law enforcement. The course will focus on the function of law enforcement within society, ethics and professionalism, theories of law enforcement, and the legal aspects that impact law enforcement.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-cmrj100-2026-11-27",
+        "title": "APU CMRJ100 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=CMRJ100",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/dcd08687539a659e.txt",
+        "sha256": "dcd08687539a659e477058e9af0258c770f0179754dcd58cf662b7b8c9f6d68e"
+      },
+      "title": "Introduction to Law Enforcement",
+      "creditQuote": "CMRJ100 - Introduction to Law Enforcement\nHome >\nCourse Schedule\nCourse Details\nCourse Code: CMRJ100\nCourse ID: 2522\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "CMRJ101",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: CMRJ101\nCourse ID: 2523\nCredit Hours: 3\nLevel: Undergraduate\nThis course will provide an introduction to the collection, preservation, and basic crime scene investigations. Furthermore this course will also focus on the laws and court decisions relating to the admissibility of evidence as well as the appropriate methods of interrogation and its uses in the criminal justice process.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-cmrj101-2026-11-27",
+        "title": "APU CMRJ101 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=CMRJ101",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/c3a4bd7eb6f828ff.txt",
+        "sha256": "c3a4bd7eb6f828ff5ac3664f1eeb139df919fa0760243ae6fe33ecb4f554ee8a"
+      },
+      "title": "Evidence and Procedures",
+      "creditQuote": "CMRJ101 - Evidence and Procedures\nHome >\nCourse Schedule\nCourse Details\nCourse Code: CMRJ101\nCourse ID: 2523\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "CMRJ206",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: CMRJ206\nCourse ID: 3597\nCredit Hours: 3\nLevel: Undergraduate\nThis course will introduce students to the principles of juvenile delinquency. It will provide a historical overview of juvenile delinquency in America. The course will examine the psychological, social, and environmental theories of juvenile delinquency while also covering the juvenile court system and treatment options for delinquency.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-cmrj206-2026-11-27",
+        "title": "APU CMRJ206 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=CMRJ206",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/0262165021868b2f.txt",
+        "sha256": "0262165021868b2faf4eed5d8ea3f445479774c2f9a96bd0d0c27e46f53712cc"
+      },
+      "title": "Juvenile Delinquency",
+      "creditQuote": "CMRJ206 - Juvenile Delinquency\nHome >\nCourse Schedule\nCourse Details\nCourse Code: CMRJ206\nCourse ID: 3597\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "CMRJ201",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: CMRJ201\nCourse ID: 2533\nCredit Hours: 3\nLevel: Undergraduate\nThe course will provide the student with an overview of the American criminal justice system as an interdisciplinary social science involving aspects of criminology, sociology, law, and political science. This course will also examine the complexity of the American Criminal Justice System through its administrative process.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-cmrj201-2026-11-27",
+        "title": "APU CMRJ201 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=CMRJ201",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/abcb7a0268c28cf1.txt",
+        "sha256": "abcb7a0268c28cf1569e56de827f36180b4abd1b89993ce726192814812e1d8d"
+      },
+      "title": "Criminal Justice Administration",
+      "creditQuote": "CMRJ201 - Criminal Justice Administration\nHome >\nCourse Schedule\nCourse Details\nCourse Code: CMRJ201\nCourse ID: 2533\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "CMRJ295",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: CMRJ295\nCourse ID: 4245\nCredit Hours: 3\nLevel: Undergraduate\nThis course is the final course needed for the completion of the Associate of Arts in Criminal Justice degree. The course is designed to allow the student to review, analyze and integrate the work the student has completed toward a degree in Criminal Justice. The student will complete an approved academic project or paper that demonstrates their grasp of the criminal justice field. This is a culminating course to be taken after all other Associate of Arts in Criminal Justice courses have been satisfactorily completed. Students must have completed at least 49 semester hours in their program.\nThis course is to be taken as the LAST course in the AA in Criminal Justice program.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-cmrj295-2026-11-27",
+        "title": "APU CMRJ295 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=CMRJ295",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/32f7bdcb5764824d.txt",
+        "sha256": "32f7bdcb5764824d1784409cf02cb4302e0e5ee5feeee846e9f01e320b65608d"
+      },
+      "title": "Criminal Justice Sophomore Seminar",
+      "creditQuote": "CMRJ295 - Criminal Justice Sophomore Seminar\nHome >\nCourse Schedule\nCourse Details\nCourse Code: CMRJ295\nCourse ID: 4245\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "COLL112",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: COLL112\nCourse ID: 5451\nCredit Hours: 3\nLevel: Undergraduate\nThis course introduces students to an attitude and approach for college success and relevant connections to their own inner motivations and external career options. Some key elements include values-goal alignment, an orientation to online learning, and strategies for successful adult learning.\nOther elements include planning a pathway from academic studies to a career path, career awareness, networking, engaging support resources, and collaborating with colleagues. Through the learning and activities of this course, students will gain the perspective needed for successful time management and prioritization, critical thinking, applied and collaborative learning, and civic/democratic and global learning. Content within the classroom includes open educational resources that can be easily found online. This course fulfills one general education elective.\nThis course is recommended to be completed first in the student’s degree plan when possible.\nCOLL111, COLL112, COLL113, COLL114, and COLL115 are considered equivalent courses. Students may only take one of these courses for credit.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-coll112-2026-11-27",
+        "title": "APU COLL112 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=COLL112",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/f1c5fb49c6070ddd.txt",
+        "sha256": "f1c5fb49c6070ddd4890259a81a4bd43e20cf2958828197c8e45c3aa203e7f79"
+      },
+      "title": "Planning Your Future with Purpose in Business",
+      "creditQuote": "COLL112 - Planning Your Future with Purpose in Business\nHome >\nCourse Schedule\nCourse Details\nCourse Code: COLL112\nCourse ID: 5451\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "COMM120",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: COMM120\nCourse ID: 5037\nCredit Hours: 3\nLevel: Undergraduate\nInformation and Digital Literacy is designed to provide students with sustainable and usable skills essential to success in both academic and professional settings. Students will learn best practices to locate and evaluate sources, and effectively communicate using digital literacy to become proficient 21st century learners.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-comm120-2026-11-27",
+        "title": "APU COMM120 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=COMM120",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/97273e9a74d8298e.txt",
+        "sha256": "97273e9a74d8298e698670286639cd54ae3affbf4f466854aab07e3e2c88a1dc"
+      },
+      "title": "Information and Digital Literacy",
+      "creditQuote": "COMM120 - Information and Digital Literacy\nHome >\nCourse Schedule\nCourse Details\nCourse Code: COMM120\nCourse ID: 5037\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "COMM200",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: COMM200\nCourse ID: 2891\nCredit Hours: 3\nLevel: Undergraduate\nPublic Speaking introduces students to the field of public speaking, giving them a foundation in the issues relevant to communicating effectively in today’s global, technological, and divergent world. The history and theories of speech, ethics, the audience, developing and delivering a speech, and types of speeches and specialized speech situations will also be covered and practiced. Students enrolling in this course must be able to capture video (required) for their speeches. Video files are created and stored within the classroom for the students’ security.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-comm200-2026-11-27",
+        "title": "APU COMM200 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=COMM200",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/6c0fc871ad08698e.txt",
+        "sha256": "6c0fc871ad08698e32b53d8dbf9a806ea213095f44825cb3316ef8db467ab0e7"
+      },
+      "title": "Public Speaking",
+      "creditQuote": "COMM200 - Public Speaking\nHome >\nCourse Schedule\nCourse Details\nCourse Code: COMM200\nCourse ID: 2891\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "COMM240",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: COMM240\nCourse ID: 2895\nCredit Hours: 3\nLevel: Undergraduate\nThis course develops interpersonal, group, and presentational communication skills that are applicable in personal and professional cross-cultural relationships, and focuses on differences in values, message systems, and communication rules across cultural boundaries and in multicultural settings.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-comm240-2026-11-27",
+        "title": "APU COMM240 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=COMM240",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/2634013ce7e290b4.txt",
+        "sha256": "2634013ce7e290b40c543da82a42d9c06178d288d8b3b1bd35a17094a9beab71"
+      },
+      "title": "Intercultural Communication",
+      "creditQuote": "COMM240 - Intercultural Communication\nHome >\nCourse Schedule\nCourse Details\nCourse Code: COMM240\nCourse ID: 2895\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "ECON101",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: ECON101\nCourse ID: 3725\nCredit Hours: 3\nLevel: Undergraduate\nMicroeconomics is an overview course that covers how households (consumers), firms (producers), and governments interact in competitive and other markets to set prices, and determine what and how much is produced. Key concepts introduced include the role of scarcity and choice, incentives and competition, and the law of supply and demand.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-econ101-2026-11-27",
+        "title": "APU ECON101 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=ECON101",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/96986c9ccdf42307.txt",
+        "sha256": "96986c9ccdf423077a57c416ff668ca3db6c4ab9e41c487702b89a9f49b43978"
+      },
+      "title": "Microeconomics",
+      "creditQuote": "ECON101 - Microeconomics\nHome >\nCourse Schedule\nCourse Details\nCourse Code: ECON101\nCourse ID: 3725\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "ENGL110",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: ENGL110\nCourse ID: 4951\nCredit Hours: 3\nLevel: Undergraduate\nMartin Luther King, Jr, said, “If you can’t fly, then run. If you can’t run, then walk. If you can’t walk, then crawl. But whatever you do, you have to KEEP MOVING.” Making Writing Relevant is a composition course that will definitely keep you moving. It is not merely a required course; it is the type of course you will want to take because it moves you onto the path to success. Over eight-weeks, we will help you learn the most important components of a successful writer-communicator. We will teach you how to research properly, knowing you will need this skill in every course you take here at APUS and also in interactions in your professional and personal life. We will teach you the formatting style you will use in your field. We will provide a supportive community to strengthen and encourage you, and by the end of this nearly-all-you-need-to-know-about-writing course, you will be able to fly.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-engl110-2026-11-27",
+        "title": "APU ENGL110 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=ENGL110",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/430c966f68bd1e56.txt",
+        "sha256": "430c966f68bd1e56ff67357106aa3277176569285a5e10915ee9427906ca3599"
+      },
+      "title": "Making Writing Relevant",
+      "creditQuote": "ENGL110 - Making Writing Relevant\nHome >\nCourse Schedule\nCourse Details\nCourse Code: ENGL110\nCourse ID: 4951\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "ECON102",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: ECON102\nCourse ID: 3726\nCredit Hours: 3\nLevel: Undergraduate\nIntroduction to Macroeconomics is a survey course that builds on the topics covered and skills developed in ECON101 (Microeconomics) in order to present a complete picture of the economy. Macroeconomics shows how consumers and markets fit into the overall or aggregated economy and provides a framework to assess government policies. Key topics covered will include economic cycles (growth and recession), economic indicators and measures, and interest rates and money supply.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-econ102-2026-11-27",
+        "title": "APU ECON102 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=ECON102",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/2f3bfd82df599135.txt",
+        "sha256": "2f3bfd82df59913547dd3e60521966275c59d3e40984f28e567e1cda12462377"
+      },
+      "title": "Macroeconomics",
+      "creditQuote": "ECON102 - Macroeconomics\nHome >\nCourse Schedule\nCourse Details\nCourse Code: ECON102\nCourse ID: 3726\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "EDMG230",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: EDMG230\nCourse ID: 3356\nCredit Hours: 3\nLevel: Undergraduate\nThis course is a study of the theory and practice of incident command, the various methods of incident command, and specific focus on the Incident Command System (ICS) used in crises, disasters, and emergency management response systems. The roles and responsibilities of the ICS system are identified. The different agencies and incidents in which the ICS system is used are discussed. Cases are studied in order to assist students in understanding the management and leadership complexity associated with modern emergencies and disasters. The student will participate in a 2D/3D simulation and take on a new role within an incident command scenario shifting from being an information producer, to an information consumer, and decision-maker. The scenario will feature a terrorist event at a university graduation where students will be required to activate their incident command system, working the scenario to its conclusion using decision-making points throughout.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-edmg230-2026-11-27",
+        "title": "APU EDMG230 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=EDMG230",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/1eb0ede6bd3df46a.txt",
+        "sha256": "1eb0ede6bd3df46ae981225cf6471ec3e755aa52d7c17016f4608b5b7aaa36d5"
+      },
+      "title": "Emergency and Disaster Incident Command",
+      "creditQuote": "EDMG230 - Emergency and Disaster Incident Command\nHome >\nCourse Schedule\nCourse Details\nCourse Code: EDMG230\nCourse ID: 3356\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "ENTD261",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: ENTD261\nCourse ID: 4585\nCredit Hours: 3\nLevel: Undergraduate\nThis course introduces the scripting languages necessary in custom programming for server administration and security purposes. Introductory level programming will be covered using scripting languages such as JavaScript®, VBScript®, Windows Shell Script, Python® and SQL. Previous programming experience is recommended. You must have access to a Windows®-based system to successfully complete the assignments in the course.\nJavaScript® is a registered trademark of Oracle America, Inc.\nVBScript® is a registered trademark of Microsoft Corporation.\nPython® is a registered trademark of the Python Software Foundation.\nWindows® is registered trademark of Microsoft Corporation.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-entd261-2026-11-27",
+        "title": "APU ENTD261 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=ENTD261",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/b3641d45ce1c7804.txt",
+        "sha256": "b3641d45ce1c7804722a39e1fa75beed8c21b2e7f1fb3e0277e944cd19c33686"
+      },
+      "title": "Scripting Languages for the Administrator",
+      "creditQuote": "ENTD261 - Scripting Languages for the Administrator\nHome >\nCourse Schedule\nCourse Details\nCourse Code: ENTD261\nCourse ID: 4585\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "ENGL226",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: ENGL226\nCourse ID: 5227\nCredit Hours: 3\nLevel: Undergraduate\nIn the modern workplace driven by technology, business is about relationships, and the written word connects us. This course teaches us how to build those relationships, efficiently and effectively, through composing common types of business messages. We will focus on writing emails, memos, and letters as well as social media content, presentations, and personal resumes and cover letters. Develop professional communication skills to articulate your ideas and purpose to a variety of different business audiences in clear, concise, correct, coherent, and credible ways. (Pre-requisite: ENGL101 or ENGL110)\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-engl226-2026-11-27",
+        "title": "APU ENGL226 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=ENGL226",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/cf0bb4f0cfd541fb.txt",
+        "sha256": "cf0bb4f0cfd541fb640cdef53583014cb1093a25b4b31f8cb0711316d5f587e5"
+      },
+      "title": "Effective Business Communication",
+      "creditQuote": "ENGL226 - Effective Business Communication\nHome >\nCourse Schedule\nCourse Details\nCourse Code: ENGL226\nCourse ID: 5227\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "FINC201",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: FINC201\nCourse ID: 5513\nCredit Hours: 3\nLevel: Undergraduate\nExplore the key principles of financial management and their impact on both an organizational and global scale. This course covers essential topics such as financial systems, financial markets, financial statements and analysis, and capital budgeting. Students will engage in financial decision-making processes, focusing on return on investment and the effective allocation of financial resources. Proficiency in Microsoft Word® and Microsoft Excel® is required. (Prerequisites: ACCT100 or ACCT105)\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-finc201-2026-11-27",
+        "title": "APU FINC201 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=FINC201",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/0fd30f41a64c51a0.txt",
+        "sha256": "0fd30f41a64c51a0f245cadaab21bb327b90058dd64b68b553d02035b0a5685b"
+      },
+      "title": "Financial Management Principles",
+      "creditQuote": "FINC201 - Financial Management Principles\nHome >\nCourse Schedule\nCourse Details\nCourse Code: FINC201\nCourse ID: 5513\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "EVSP180",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: EVSP180\nCourse ID: 5034\nCredit Hours: 3\nLevel: Undergraduate\nThis course will give students the opportunity to learn and connect with the central issues in environmental science, from ecological to social to economic considerations. The basic concepts of ecology, geography, chemistry, economics, ethics, policy, and many other disciplines will be used to examine the overarching role that humans play in our planetary environmental problems, successes, and solutions. Assignments will allow students to collect and evaluate qualitative and quantitative data regarding the human-environment relationship. Lifestyle examination, ethical considerations, and critical analysis of individual contributions to local and global impacts in regards to environmental sustainability will be emphasized. This is a course primarily for a non-scientist.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-evsp180-2026-11-27",
+        "title": "APU EVSP180 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=EVSP180",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/536e7df3324317e3.txt",
+        "sha256": "536e7df3324317e3e4797b0e3ad7762708a45d85de13a91ff9e77ab9be7cbb41"
+      },
+      "title": "Introduction to Environmental Science",
+      "creditQuote": "EVSP180 - Introduction to Environmental Science\nHome >\nCourse Schedule\nCourse Details\nCourse Code: EVSP180\nCourse ID: 5034\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "HIST101",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: HIST101\nCourse ID: 3038\nCredit Hours: 3\nLevel: Undergraduate\nThis course is a survey of United States history from the earliest European settlements in North America through the end of Reconstruction and emphasizes our nation's political, economic, and social development, the evolution of its institutions, and the causes and consequences of its principal wars.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-hist101-2026-11-27",
+        "title": "APU HIST101 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=HIST101",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/ee46183677711fcd.txt",
+        "sha256": "ee46183677711fcdd0b7e29819569d602352d976a11699a47d856e457596d39a"
+      },
+      "title": "American History to 1877",
+      "creditQuote": "HIST101 - American History to 1877\nHome >\nCourse Schedule\nCourse Details\nCourse Code: HIST101\nCourse ID: 3038\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "ISSC221",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: ISSC221\nCourse ID: 5161\nCredit Hours: 3\nLevel: Undergraduate\nThis course is a study of computer systems, computer organization, computer subsystems, and operating systems. This course examines CPUs, motherboards, basic input/output systems, memory subsystems, bus structures, expansion cards, ports, connectivity, interfaces, data storage subsystems, and multimedia interface devices. This course also evaluates computer monitoring, computer systems management, operating systems, networking, and security. This course covers the CompTIA A+® Certification Essentials curriculum.\nCompTIA A+® is a registered trademark of the Computing Technology Industry Association, Inc.\nSpanish language learners may complete this course in Spanish.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-issc221-2026-11-27",
+        "title": "APU ISSC221 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=ISSC221",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/dd6a650fc28f3cc1.txt",
+        "sha256": "dd6a650fc28f3cc1d33d0947dd2d26c0f5d7fb7035cb9d4cc9188862a8255d97"
+      },
+      "title": "Intermediate Computer Systems",
+      "creditQuote": "ISSC221 - Intermediate Computer Systems\nHome >\nCourse Schedule\nCourse Details\nCourse Code: ISSC221\nCourse ID: 5161\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "HIST102",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: HIST102\nCourse ID: 3039\nCredit Hours: 3\nLevel: Undergraduate\nThis course is a survey of history of the United States from the end of Reconstruction to modern times. Emphasis will be placed on internal expansion, inherent isolationism, America’s road to becoming a world power, and the development of the concept of America as the \"policeman\" of the world.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-hist102-2026-11-27",
+        "title": "APU HIST102 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=HIST102",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/86b0e5dc53c60c68.txt",
+        "sha256": "86b0e5dc53c60c68afab8247282577daa90c27fa86b98b5089a3a84ba39de9af"
+      },
+      "title": "American History since 1877",
+      "creditQuote": "HIST102 - American History since 1877\nHome >\nCourse Schedule\nCourse Details\nCourse Code: HIST102\nCourse ID: 3039\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "ISSC231",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: ISSC231\nCourse ID: 5163\nCredit Hours: 3\nLevel: Undergraduate\nThis course is a study of the evolution, the concepts, and the principles of local, distributed and enterprise networking. This course examines Network design, topologies, architecture, media, interface cards, protocols, problem resolution, communications, administration, operations, and resources. It introduces the student to the concepts of wireless networking, and web-based networks. This course also explores the Open Systems Interconnection (OSI) and the Transmission Control Protocol/ Internet Packet (TCP/IP) reference models. This course also examines internetworking servers, and hardware and operating systems maintenance.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-issc231-2026-11-27",
+        "title": "APU ISSC231 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=ISSC231",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/e35161645f643904.txt",
+        "sha256": "e35161645f643904c8b5aa4254a867583a774f562b660bfb2d4e257fcba3cb81"
+      },
+      "title": "Networking Concepts",
+      "creditQuote": "ISSC231 - Networking Concepts\nHome >\nCourse Schedule\nCourse Details\nCourse Code: ISSC231\nCourse ID: 5163\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "ISSC242",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: ISSC242\nCourse ID: 5164\nCredit Hours: 3\nLevel: Undergraduate\nThis course is a study of the principles and concepts of Network Security from various aspects including but not limited to hardware, software, and other critical elements relating to the CIA Triad. There is an emphasis on standard Operating System (OS) functions and discovering vulnerabilities. Upon completion of this course, students will be able to demonstrate an understating of methodologies and measures necessary to take a preventive stance to address security vulnerabilities. Students will examine the principles, practices, and policies related to hardening and securing Operating Systems. This course focuses on vulnerabilities and related countermeasures of various Windows components\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-issc242-2026-11-27",
+        "title": "APU ISSC242 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=ISSC242",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/9cd9f783933f4370.txt",
+        "sha256": "9cd9f783933f43703be3a55f4b07825e314387ce95a5362a6eef18fd2fdf7319"
+      },
+      "title": "Hardening Operating Systems",
+      "creditQuote": "ISSC242 - Hardening Operating Systems\nHome >\nCourse Schedule\nCourse Details\nCourse Code: ISSC242\nCourse ID: 5164\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "ISSC262",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: ISSC262\nCourse ID: 5165\nCredit Hours: 3\nLevel: Undergraduate\nThis course examines the techniques and technologies for penetration of networks, detection of attacks, and prevention of attacks. This course addresses the techniques, the technologies, and the methodologies used by cyber intruders (hackers) to select a target and launch an attack. Students will gain insight into the motives and desired goals of hackers as well as effective tools and techniques used as countermeasures ensuring data assets remain secure. This course focuses on techniques and technologies to detect such attacks even while the attack is in progress; early detection enables the administrator to track the movements of the hacker and to discover the intent and goals of the hacker. This course assesses the various countermeasures to keep the system out of the “sights” of the hacker and to keep the hacker out of the perimeter of the target network. This course also explores the laws and the legal considerations in prosecuting computer crime.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-issc262-2026-11-27",
+        "title": "APU ISSC262 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=ISSC262",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/ccd94e1677ee6bd4.txt",
+        "sha256": "ccd94e1677ee6bd45e4b659511c2fcb03d86e717f48b697c0c6135c9b747b86c"
+      },
+      "title": "Red and Blue Team Security",
+      "creditQuote": "ISSC262 - Red and Blue Team Security\nHome >\nCourse Schedule\nCourse Details\nCourse Code: ISSC262\nCourse ID: 5165\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "ISSC266",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: ISSC266\nCourse ID: 5166\nCredit Hours: 3\nLevel: Undergraduate\nThis course will provide an extensive overview of the field of cryptography, which includes but not limited to a historical perspective on early systems, building to the number theoretic foundations of modern day cryptosystems. Upon completion of this course students will have the ability to demonstrate a knowledge of how cryptosystems are designed, and to match cryptosystems to the needs of an application. Students will also study basic cryptanalysis and will be presented with real life breaches of common cryptosystems so that they better understand the dangers within cryptosystem design and in the design of systems that rely on cryptography. Students will also gain an understanding of the various methods of encryption and analyze the strength and weaknesses of various techniques to ensure data assets are protected and secure.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-issc266-2026-11-27",
+        "title": "APU ISSC266 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=ISSC266",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/6532526ffaf5d704.txt",
+        "sha256": "6532526ffaf5d704b16f5ee79f5281b281015b96aa1e4862d261fbff1da475e0"
+      },
+      "title": "Cryptography Concepts",
+      "creditQuote": "ISSC266 - Cryptography Concepts\nHome >\nCourse Schedule\nCourse Details\nCourse Code: ISSC266\nCourse ID: 5166\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "ISSC298",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: ISSC298\nCourse ID: 5410\nCredit Hours: 3\nLevel: Undergraduate\nThis Capstone course provides a comprehensive overview of major components of Information Systems Security. The course explores various security-related plans and policies that demonstrate mastery of the program of study and results in a meaningful culmination of the student’s learning; these plans and policies will be used to assess one’s level of mastery of the stated outcomes of the degree requirements. This is a capstone course to be taken after all other Information Systems Security courses have been satisfactorily completed. (Prerequisite: Completion of a minimum of 57 hours towards the degree program)\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-issc298-2026-11-27",
+        "title": "APU ISSC298 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=ISSC298",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/0b8b69257272253d.txt",
+        "sha256": "0b8b69257272253d4adfbfac534a8ee3dbd285e4f92c89cfbb583475e484d615"
+      },
+      "title": "Cybersecurity Capstone Portfolio",
+      "creditQuote": "ISSC298 - Cybersecurity Capstone Portfolio\nHome >\nCourse Schedule\nCourse Details\nCourse Code: ISSC298\nCourse ID: 5410\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "ITCC231",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: ITCC231\nCourse ID: 2626\nCredit Hours: 3\nLevel: Undergraduate\nThis course provides a writing foundation necessary for an IT professional to identify and respond to communication needs within the IT environment, so that the professional can produce clear, concise, and appropriate IT documentation for peers and supervisors, with the ultimate goal of increasing organizational standardization and efficiency.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-itcc231-2026-11-27",
+        "title": "APU ITCC231 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=ITCC231",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/191658a643a2a06a.txt",
+        "sha256": "191658a643a2a06ae0c5e4a8b3e312c879090b1af397a1e0a5fca0f038d4306c"
+      },
+      "title": "Introduction to Information Technology Writing",
+      "creditQuote": "ITCC231 - Introduction to Information Technology Writing\nHome >\nCourse Schedule\nCourse Details\nCourse Code: ITCC231\nCourse ID: 2626\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "ITCC112",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: ITCC112\nCourse ID: 3831\nCredit Hours: 3\nLevel: Undergraduate\nThis course is a study of the concepts and technology trends essential to office productivity applications. Students will explore the principles, practices, features, and functions of the electronic spreadsheet application in the Microsoft Office® Suite. The course will be taught with a mixture of analytical methods and practical exercises. Students will use Microsoft Excel® to create and format spreadsheets; they will also manipulate data and use formulas, charts, workbooks, styles, hyperlinks, themes, functions, conditional logic, graphics, comments, and security features. Students will participate in an engaging learning experience that aligns with Microsoft’s Exam. The course content maps to the Microsoft Office Specialist (MOS): to Microsoft Office Excel Certification. Students may access MS Office 365® Suite via their MyCampus account for FREE in the classroom. Microsoft Office 365 is free to students and faculty.\nMicrosoft Office®, Microsoft Excel® and Microsoft Office 365® is a registered trademark of Microsoft Corporation.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-itcc112-2026-11-27",
+        "title": "APU ITCC112 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=ITCC112",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/9436098603720b48.txt",
+        "sha256": "9436098603720b486e1001314d2f8a72f03c0aaf5b4eacfb3b118872e7891473"
+      },
+      "title": "Advanced Productivity Applications",
+      "creditQuote": "ITCC112 - Advanced Productivity Applications\nHome >\nCourse Schedule\nCourse Details\nCourse Code: ITCC112\nCourse ID: 3831\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "ITMG281",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: ITMG281\nCourse ID: 5169\nCredit Hours: 3\nLevel: Undergraduate\nThis course examines how laws have changed to account for the expanded realm of crimes in the digital age. Students will learn about topics such as online identity theft, sexual harassment, intellectual property rights violations, and plagiarism. In addition, students will learn how stalkers can access the digital data of victims, gain access to highly confidential medical and financial information, and sabotage their victims' reputations. This course examines current literature on topics such as the Health Insurance Portability and Accountability Act (HIPAA), the Family Educational Rights and Privacy Act (FERPA), the Children’s Online Privacy Protection Act (COPPA), the Sarbanes-Oxley Act, and other legislation impacting legal disputes.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-itmg281-2026-11-27",
+        "title": "APU ITMG281 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=ITMG281",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/0fd4807efb9350e4.txt",
+        "sha256": "0fd4807efb9350e4fb42db447fdc376248fe030b1ce6d78506dbed849f9be311"
+      },
+      "title": "Law, Privacy, and Digital Data",
+      "creditQuote": "ITMG281 - Law, Privacy, and Digital Data\nHome >\nCourse Schedule\nCourse Details\nCourse Code: ITMG281\nCourse ID: 5169\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "LSTD204",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: LSTD204\nCourse ID: 2531\nCredit Hours: 3\nLevel: Undergraduate\nThis course is an introduction to the structure of the American court system. Topics include prosecution, right to counsel, pretrial release, grand jury process, and sentencing concepts. The course will assess the U.S Courts System and how it relates to the criminal justice system in America. Students will become familiar with the chronological events from the arrest process to sentencing and appeals. Students will be able to explain concepts of stop and frisk arrest, searches under warrant, and presentation of the case to the magistrate. Assessments of the criminal trial process and phases of pretrial and trial proceedings will be examined.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-lstd204-2026-11-27",
+        "title": "APU LSTD204 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=LSTD204",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/e6dabf2165ac042c.txt",
+        "sha256": "e6dabf2165ac042c09495f4a400e0b74c3e156c7827f50ef8ea1deeebd39e170"
+      },
+      "title": "Introduction to the Courts",
+      "creditQuote": "LSTD204 - Introduction to the Courts\nHome >\nCourse Schedule\nCourse Details\nCourse Code: LSTD204\nCourse ID: 2531\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "MATH110",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: MATH110\nCourse ID: 3282\nCredit Hours: 3\nLevel: Undergraduate\nThis course will encompass the basic concepts involved in graphing points and linear equations and the solution and graphing of inequalities and systems of linear equations. The course will also concentrate on the manipulation and use of exponential expressions and radicals and the solution of quadratic equations and their applications.\nPractical applications will be provided throughout the course. There is careful attention to the presentation of concepts that will become important in the study of analytic geometry, trigonometry, and calculus.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-math110-2026-11-27",
+        "title": "APU MATH110 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=MATH110",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/1fa21c232c282e3a.txt",
+        "sha256": "1fa21c232c282e3a860fc4e3121eb31b3350eda560cd4eb45deb3b8f5db0b7b4"
+      },
+      "title": "College Algebra",
+      "creditQuote": "MATH110 - College Algebra\nHome >\nCourse Schedule\nCourse Details\nCourse Code: MATH110\nCourse ID: 3282\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "MATH302",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: MATH302\nCourse ID: 3291\nCredit Hours: 3\nLevel: Undergraduate\nThis is an interactive course designed to help students achieve a greater understanding of the statistical methods and models available to analyze and solve the wide variety of problems encountered in business, science, medicine, education, the social sciences, and other disciplines. Successful completion of this course will provide students with a working knowledge of the principles of both descriptive and inferential statistics, probability, averages and variations, normal probability distributions, sampling distributions, confidence intervals, statistical hypothesis tests, and correlation and regression analyses. The emphasis of the course will be on the proper use of statistical techniques and their application in real life -- not on mathematical proofs. This course will use Microsoft Excel for some of the work. Students should have a basic familiarity with Excel and have access to this software application. MATH120 is the recommended mathematics general education course for students who will be required to take additional statistics courses such as MATH302 Statistics as part of their program of study. (Prerequisites: MATH110, MATH111, MATH120, or MATH225)\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-math302-2026-11-27",
+        "title": "APU MATH302 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=MATH302",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/533044142203d07f.txt",
+        "sha256": "533044142203d07fa9bd191f65baab8bb698fbb8c1f17ae9a3b819e32d5b2179"
+      },
+      "title": "Statistics",
+      "creditQuote": "MATH302 - Statistics\nHome >\nCourse Schedule\nCourse Details\nCourse Code: MATH302\nCourse ID: 3291\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "MGMT310",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: MGMT310\nCourse ID: 3286\nCredit Hours: 3\nLevel: Undergraduate\nThis course introduces the concepts, theories, and principles of management. Students will have the opportunity to explore the aspects (i.e. planning, organizing, staffing, directing, and controlling) of the management process. Classical and contemporary management theories that operate in today's business will be discussed.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-mgmt310-2026-11-27",
+        "title": "APU MGMT310 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=MGMT310",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/365e23204bc4f34e.txt",
+        "sha256": "365e23204bc4f34e08327b93b8ef594c01c0840bd63ccd24c26ab75de12c89ff"
+      },
+      "title": "Principles and Theory of Management",
+      "creditQuote": "MGMT310 - Principles and Theory of Management\nHome >\nCourse Schedule\nCourse Details\nCourse Code: MGMT310\nCourse ID: 3286\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "MKTG201",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: MKTG201\nCourse ID: 4496\nCredit Hours: 3\nLevel: Undergraduate\nThis course provides a comprehensive overview of marketing activities and functions, introducing students to the scope, terminology, and procedures of marketing. Key topics include the analysis of markets, competition, and consumer behavior, along with the assessment of product, price, distribution, and promotion strategies.\nStudents will explore consumer motivation and the processes behind the diffusion and adoption of new goods and services. Additionally, students will engage with a practical component, reviewing the key elements of a marketing plan, including market segmentation, branding, and integrated marketing communications, to understand how these factors work together in marketing strategy.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-mktg201-2026-11-27",
+        "title": "APU MKTG201 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=MKTG201",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/4468d020f4db9afd.txt",
+        "sha256": "4468d020f4db9afdeb811fdb54483abda30a2a446c93a1252ef944256f8a6ec2"
+      },
+      "title": "Fundamentals of Marketing",
+      "creditQuote": "MKTG201 - Fundamentals of Marketing\nHome >\nCourse Schedule\nCourse Details\nCourse Code: MKTG201\nCourse ID: 4496\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "PHIL101",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: PHIL101\nCourse ID: 3532\nCredit Hours: 3\nLevel: Undergraduate\nThis course is intended to equip the student with a baseline understanding of issues and concepts that compose the Western philosophic enterprise, and to serve as a point of departure for their further studies in Philosophy.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-phil101-2026-11-27",
+        "title": "APU PHIL101 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=PHIL101",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/7241675a1ba1b9e4.txt",
+        "sha256": "7241675a1ba1b9e4a28e27163b685a379e0df04bab0874ca7cf64d3fe020ed18"
+      },
+      "title": "Introduction to Philosophy",
+      "creditQuote": "PHIL101 - Introduction to Philosophy\nHome >\nCourse Schedule\nCourse Details\nCourse Code: PHIL101\nCourse ID: 3532\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "PHIL110",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: PHIL110\nCourse ID: 4952\nCredit Hours: 3\nLevel: Undergraduate\nCritical Thinking introduces skills, concepts, models, and techniques for reading, writing, and thinking critically. Critical thinking is a necessary process for identifying and solving problems in academia and the workplace, as well as interpreting information in the media. Through the use of critical and logical thought processes, students will develop practical, analytical skills that prepare them for the investigative nature of being life-long learners.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-phil110-2026-11-27",
+        "title": "APU PHIL110 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=PHIL110",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/d160fe5f4e623e53.txt",
+        "sha256": "d160fe5f4e623e531996665b5376c9d82b94bd56277dfd4ea91d0ffa1659b74c"
+      },
+      "title": "Critical Thinking",
+      "creditQuote": "PHIL110 - Critical Thinking\nHome >\nCourse Schedule\nCourse Details\nCourse Code: PHIL110\nCourse ID: 4952\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "PSYC101",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: PSYC101\nCourse ID: 3734\nCredit Hours: 3\nLevel: Undergraduate\nThe course introduces students to the art and science of Psychology. Course emphasis is on applying the \"science of human behavior\" to a variety of settings: vocational, personal, academic, and clinical. Course content introduces the history of psychology, major theories of personality and learning, current research and developmental issues. The course has a holistic approach and integrates the biological basis of behavior, social factors, learning and the unique coping styles of the individual to understand human behavior.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-psyc101-2026-11-27",
+        "title": "APU PSYC101 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=PSYC101",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/ed2e07468cd35ae7.txt",
+        "sha256": "ed2e07468cd35ae7b1a226cca384158c7f957d9171488ce65d9fed79ba7abd5a"
+      },
+      "title": "Introduction to Psychology",
+      "creditQuote": "PSYC101 - Introduction to Psychology\nHome >\nCourse Schedule\nCourse Details\nCourse Code: PSYC101\nCourse ID: 3734\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "PHIL200",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: PHIL200\nCourse ID: 3037\nCredit Hours: 3\nLevel: Undergraduate\nThis course will examine the field of ethics and provide the tools for ethical decision-making. Students will analyze texts for meaning, apply theories learned to various areas of moral concern, such as war, euthanasia, divorce, and poverty. The course will also provide an overview of how philosophers have thought about moral problems and some of the solutions they have proposed. Students will develop the ability to think about moral problems in a clear and logically consistent manner.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-phil200-2026-11-27",
+        "title": "APU PHIL200 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=PHIL200",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/2c0282dcd00ef60f.txt",
+        "sha256": "2c0282dcd00ef60fc4ed2733f1f3a1c09db950a42fc06a3e02ed65c624a656bc"
+      },
+      "title": "Introduction to Ethics",
+      "creditQuote": "PHIL200 - Introduction to Ethics\nHome >\nCourse Schedule\nCourse Details\nCourse Code: PHIL200\nCourse ID: 3037\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "SOCI111",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: SOCI111\nCourse ID: 3733\nCredit Hours: 3\nLevel: Undergraduate\nIntroduction to Sociology introduces students to the sociological investigation of human interaction and behavior in society. Students will become familiar with the sociological perspective and develop a ‘sociological imagination’ – the ability to see the general in the particular, the new in the familiar, and to observe the impact social forces have on our lives. The course explores environmental, historical, cultural, and organizational influences on our interpersonal relationships and life-patterns within the context of contemporary society. Students will learn how to use sociological concepts, theory and research to think critically about individuals, groups, institutions, and societies in any given situation.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-soci111-2026-11-27",
+        "title": "APU SOCI111 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=SOCI111",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/0c6e1854232d0c42.txt",
+        "sha256": "0c6e1854232d0c42647576598ca89d08d4ffa3ca1e44923b6a5f00b77f9486db"
+      },
+      "title": "Introduction to Sociology",
+      "creditQuote": "SOCI111 - Introduction to Sociology\nHome >\nCourse Schedule\nCourse Details\nCourse Code: SOCI111\nCourse ID: 3733\nCredit Hours: 3\nLevel: Undergraduate"
+    },
+    {
+      "code": "POLS210",
+      "credits": 3,
+      "creditSystem": "semester",
+      "detailsQuote": "Course Details\nCourse Code: POLS210\nCourse ID: 3729\nCredit Hours: 3\nLevel: Undergraduate\nThis is the first course in a two-course sequence in American Government. The course is designed to convey basic facts about the structure and functioning of the American political system. The philosophical foundation of the U.S. Constitution is explored and the federalist construct is examined. The functions of the three separate branches of government and their roles in policy making are a major focus.\nStudents Log In to Register\nFuture Students: Next Steps\nAcademic Calendar",
+      "source": {
+        "id": "apus-apu-course-pols210-2026-11-27",
+        "title": "APU POLS210 course details, original university credits and registration text",
+        "url": "https://www.apu.apus.edu/course-schedule/details/?c=POLS210",
+        "checked": "2026-11-27",
+        "kind": "university",
+        "roles": [
+          "university-course",
+          "prerequisite"
+        ],
+        "capture": "content/source-captures/3e4909549be41bd4.txt",
+        "sha256": "3e4909549be41bd419d3926d172bf5e633e71f218d88d3d9357e0e6a7cdc3938"
+      },
+      "title": "American Government I",
+      "creditQuote": "POLS210 - American Government I\nHome >\nCourse Schedule\nCourse Details\nCourse Code: POLS210\nCourse ID: 3729\nCredit Hours: 3\nLevel: Undergraduate"
+    }
+  ],
+  "providerIdentities": [
+    {
+      "provider": "Sophia",
+      "code": "SOPH-0015",
+      "reusedFromModelId": "curriculum-liberty-healthcare-administration-bs-online",
+      "sourceIdentityOnly": true,
+      "original": {
+        "title": "English Composition I",
+        "codeAliases": [
+          "ENG1001"
+        ],
+        "aceId": "SOPH-0015",
+        "providerCourseCode": "ENG1001",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false,
+        "sourceCreditStatus": "verified",
+        "sourceCreditBasis": "Exact original Sophia/ACE identity and semester quantity from independently reviewed provider or accreditor records; receiving-school mappings are excluded.",
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "apu-associate-original-27f10cf660ea",
+            "apu-associate-original-0aee535db09c"
+          ]
+        },
+        "identitySourceIds": [
+          "apu-associate-original-27f10cf660ea",
+          "apu-associate-original-0aee535db09c"
+        ],
+        "identityReviewId": "gcu-sophia-review-2026-11-19",
+        "identityCheckedOn": "2026-11-19",
+        "courseVersion": 4,
+        "recommendationStart": "2024-04-01",
+        "recommendationEnd": "2027-03-31",
+        "recommendationPeriodSourceIds": [
+          "apu-associate-original-cd285509ab1a"
+        ],
+        "providerCoursePassingPercent": 70,
+        "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/"
+      },
+      "sources": [
+        {
+          "id": "apu-associate-original-27f10cf660ea",
+          "kind": "ace",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=90281669-d25b-ee11-be6f-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+          "checkedOn": "2026-11-19",
+          "scope": "Exact ACE course ID, version, organization code, 3 semester credits and source division.",
+          "roles": [
+            "provider-identity"
+          ],
+          "provider": "Sophia",
+          "originalSourceId": "wgu-global-sophia--gcu-soph-0015-ace-2026-11-19",
+          "upstreamOriginalSourceId": "gcu-soph-0015-ace-2026-11-19",
+          "copiedFrom": "content/reuse/wgu-sophia-provider-identities.json",
+          "originalReferenceId": "shared-sophia--gcu-soph-0015-ace-2026-11-19"
+        },
+        {
+          "id": "apu-associate-original-0aee535db09c",
+          "kind": "provider",
+          "url": "https://cdn2.sophia.org/spcc_courses/266/syllabus_pdf/1024f60d257da0d5a876eec56516600b.pdf",
+          "checkedOn": "2026-11-19",
+          "locator": "Page 1: organization code, effective month, exact ACE ID, source semester quantity and division.",
+          "roles": [
+            "provider-identity"
+          ],
+          "provider": "Sophia",
+          "originalSourceId": "wgu-global-sophia--gcu-soph-0015-provider-syllabus-2026-11-19",
+          "upstreamOriginalSourceId": "gcu-soph-0015-provider-syllabus-2026-11-19",
+          "copiedFrom": "content/reuse/wgu-sophia-provider-identities.json",
+          "originalReferenceId": "shared-sophia--gcu-soph-0015-provider-syllabus-2026-11-19"
+        },
+        {
+          "id": "apu-associate-original-cd285509ab1a",
+          "kind": "ace",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?k=SOPH-0015",
+          "checkedOn": "2026-11-19",
+          "scope": "ACE indexed course row supplies English Composition I recommendation period.",
+          "roles": [
+            "recommendation-period"
+          ],
+          "provider": "Sophia",
+          "originalSourceId": "wgu-global-sophia--sophia-ace-composition-i-period-2026-11-19",
+          "upstreamOriginalSourceId": "sophia-ace-composition-i-period-2026-11-19",
+          "copiedFrom": "content/reuse/wgu-sophia-provider-identities.json",
+          "originalReferenceId": "shared-sophia--sophia-ace-composition-i-period-2026-11-19"
+        }
+      ],
+      "receivingAwardQuote": "English Composition I\nACE Passing Score: 70% or higher Effective Dates: October 1, 2014 — March 31, 2027\nENGL110 – Making Writing Relevant\n3 SH Undergraduate-Level Credit in General Education Communication or Elective",
+      "receivingAwardEffectiveStart": "2014-10-01",
+      "receivingAwardEffectiveEnd": "2027-03-31"
+    },
+    {
+      "provider": "Sophia",
+      "code": "SOPH-0024",
+      "reusedFromModelId": "curriculum-liberty-history-bs-online",
+      "sourceIdentityOnly": true,
+      "original": {
+        "title": "Public Speaking",
+        "codeAliases": [
+          "COMM1002"
+        ],
+        "aceId": "SOPH-0024",
+        "providerCourseCode": "COMM1002",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false,
+        "sourceCreditStatus": "verified-current-provider-and-ace",
+        "sourceCreditBasis": "Original ACE semester credits and the active provider identity were independently reviewed; receiving awards are separate.",
+        "sourceCreditEvidence": {
+          "status": "reviewed",
+          "sourceIds": [
+            "apu-associate-original-04fb604d96b5",
+            "apu-associate-original-ad3df77be389",
+            "apu-associate-original-1f1526479006"
+          ],
+          "aceVersion": 5,
+          "checkedOn": "2026-11-24"
+        },
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "apu-associate-original-04fb604d96b5",
+            "apu-associate-original-ad3df77be389",
+            "apu-associate-original-1f1526479006"
+          ]
+        },
+        "identitySourceIds": [
+          "apu-associate-original-04fb604d96b5",
+          "apu-associate-original-ad3df77be389",
+          "apu-associate-original-1f1526479006"
+        ],
+        "courseVersion": "5",
+        "recommendationStart": "2026-08-01",
+        "recommendationEnd": "2029-07-31",
+        "recommendationPeriodSourceIds": [
+          "apu-associate-original-04fb604d96b5"
+        ],
+        "providerCoursePassingPercent": 70,
+        "providerCoursePassingSourceIds": [
+          "apu-associate-original-04fb604d96b5"
+        ],
+        "url": "https://www.sophia.org/online-courses/english-and-communication/public-speaking/"
+      },
+      "sources": [
+        {
+          "id": "apu-associate-original-04fb604d96b5",
+          "kind": "ace",
+          "provider": "Sophia",
+          "title": "ACE SOPH-0024 version 5 exact source identity and recommendation period",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=00952ba0-0a23-f111-8341-000d3a3063b4&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+          "checkedOn": "2026-11-24",
+          "retrievedOn": "2026-11-20",
+          "retrieval": "Exact ACE course body independently reviewed from the bound normalized capture; source retrieval time is retained separately from local review date.",
+          "roles": [
+            "provider-identity",
+            "recommendation-period"
+          ],
+          "scope": "Original provider identity, version, lower-division semester quantity, minimum passing score and exact current recommendation period; receiving awards remain separate.",
+          "originalReferenceId": "liberty-core-soph-0024-current-ace-2026-11-24"
+        },
+        {
+          "id": "apu-associate-original-ad3df77be389",
+          "kind": "provider",
+          "provider": "Sophia",
+          "title": "Sophia Public Speaking provider-linked current syllabus",
+          "url": "https://cdn2.sophia.org/spcc_courses/362/syllabus_pdf/2b6d8d5b16810ac0394e4e3882ae9ec0.pdf",
+          "checkedOn": "2026-11-24",
+          "retrievedOn": "2026-11-20",
+          "retrieval": "Existing normalized provider-linked syllabus capture independently reviewed locally; original capture time is retained.",
+          "roles": [
+            "provider-identity"
+          ],
+          "scope": "Exact provider code, ACE ID, original 3 lower-division semester credits and minimum passing score; source effective wording does not infer an ACE end date.",
+          "originalReferenceId": "liberty-core-soph-0024-current-syllabus-2026-11-24"
+        },
+        {
+          "id": "apu-associate-original-1f1526479006",
+          "title": "Sophia WGU business current partnership table and March2026 change notice",
+          "url": "https://wgucollegeofbusiness.sophia.org/",
+          "checked": "2026-11-15",
+          "kind": "provider",
+          "provider": "Sophia",
+          "roles": [
+            "provider-identity",
+            "current-offering"
+          ],
+          "sourceContentHash": "sha256:87fc671a0924d31dad7305692d59cc3d68b61791e692a7fcc11f99c879e224f6",
+          "reviewedFact": "Only exact Sophia ACE identities, original source quantities and active offerings are reused. WGU receiving awards are not inherited.",
+          "originalReferenceId": "wgu-sophia-business-current"
+        }
+      ],
+      "receivingAwardQuote": "Public Speaking\nACE Passing Score: 70% or higher Effective Dates: July 1, 2017 — July 31, 2029\nCOMM200 – Public Speaking 3 SH Undergraduate-Level Credit in General Education Communication or Elective",
+      "receivingAwardEffectiveStart": "2017-07-01",
+      "receivingAwardEffectiveEnd": "2029-07-31"
+    },
+    {
+      "provider": "Sophia",
+      "code": "SOPH-0001",
+      "reusedFromModelId": "curriculum-liberty-history-bs-online",
+      "sourceIdentityOnly": true,
+      "original": {
+        "title": "College Algebra",
+        "codeAliases": [
+          "MATH1001 (formerly CA1001)"
+        ],
+        "aceId": "SOPH-0001",
+        "providerCourseCode": "MATH1001 (formerly CA1001)",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false,
+        "sourceCreditStatus": "verified-current-provider-and-ace",
+        "sourceCreditBasis": "Original ACE semester credits and the active provider identity were independently reviewed; receiving awards are separate.",
+        "sourceCreditEvidence": {
+          "status": "reviewed",
+          "sourceIds": [
+            "apu-associate-original-174678917ca6",
+            "apu-associate-original-1f1526479006"
+          ],
+          "aceVersion": 6,
+          "checkedOn": "2026-11-24"
+        },
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "apu-associate-original-174678917ca6",
+            "apu-associate-original-1f1526479006"
+          ]
+        },
+        "identitySourceIds": [
+          "apu-associate-original-174678917ca6",
+          "apu-associate-original-1f1526479006"
+        ],
+        "courseVersion": "6",
+        "recommendationStart": "2025-05-01",
+        "recommendationEnd": "2028-04-30",
+        "recommendationPeriodSourceIds": [
+          "apu-associate-original-174678917ca6"
+        ],
+        "providerCoursePassingPercent": 70,
+        "providerCoursePassingSourceIds": [
+          "apu-associate-original-174678917ca6"
+        ],
+        "url": "https://www.sophia.org/online-courses/math/college-algebra/"
+      },
+      "sources": [
+        {
+          "id": "apu-associate-original-174678917ca6",
+          "kind": "ace",
+          "provider": "Sophia",
+          "title": "ACE SOPH-0001 version 6 exact source identity and recommendation period",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=f56ec0dc-e1be-ef11-b8e8-000d3a3ad719&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+          "checkedOn": "2026-11-24",
+          "retrievedOn": "2026-11-20",
+          "retrieval": "Exact ACE course body independently reviewed from the bound normalized capture; source retrieval time is retained separately from local review date.",
+          "roles": [
+            "provider-identity",
+            "recommendation-period"
+          ],
+          "scope": "Original provider identity, version, lower-division semester quantity, minimum passing score and exact current recommendation period; receiving awards remain separate.",
+          "originalReferenceId": "liberty-core-soph-0001-current-ace-2026-11-24"
+        },
+        {
+          "id": "apu-associate-original-1f1526479006",
+          "title": "Sophia WGU business current partnership table and March2026 change notice",
+          "url": "https://wgucollegeofbusiness.sophia.org/",
+          "checked": "2026-11-15",
+          "kind": "provider",
+          "provider": "Sophia",
+          "roles": [
+            "provider-identity",
+            "current-offering"
+          ],
+          "sourceContentHash": "sha256:87fc671a0924d31dad7305692d59cc3d68b61791e692a7fcc11f99c879e224f6",
+          "reviewedFact": "Only exact Sophia ACE identities, original source quantities and active offerings are reused. WGU receiving awards are not inherited.",
+          "originalReferenceId": "wgu-sophia-business-current"
+        }
+      ],
+      "receivingAwardQuote": "College Algebra\nACE Passing Score: 70% or higher Effective Dates: March 1, 2013 — April 30, 2028\nMATH110 – College Algebra\n3 SH Undergraduate-Level Credit in General Education Mathematics & Applied Reasoning or Elective",
+      "receivingAwardEffectiveStart": "2013-03-01",
+      "receivingAwardEffectiveEnd": "2028-04-30"
+    },
+    {
+      "provider": "Sophia",
+      "code": "SOPH-0020",
+      "reusedFromModelId": "curriculum-liberty-history-bs-online",
+      "sourceIdentityOnly": true,
+      "original": {
+        "title": "Introduction to Ethics",
+        "codeAliases": [
+          "PHIL1002"
+        ],
+        "aceId": "SOPH-0020",
+        "providerCourseCode": "PHIL1002",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false,
+        "sourceCreditStatus": "verified-current-provider-and-ace",
+        "sourceCreditBasis": "Original ACE semester credits and the active provider identity were independently reviewed; receiving awards are separate.",
+        "sourceCreditEvidence": {
+          "status": "reviewed",
+          "sourceIds": [
+            "apu-associate-original-d06a9d853f12",
+            "apu-associate-original-1f1526479006"
+          ],
+          "aceVersion": 6,
+          "checkedOn": "2026-11-24"
+        },
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "apu-associate-original-d06a9d853f12",
+            "apu-associate-original-1f1526479006"
+          ]
+        },
+        "identitySourceIds": [
+          "apu-associate-original-d06a9d853f12",
+          "apu-associate-original-1f1526479006"
+        ],
+        "courseVersion": "6",
+        "recommendationStart": "2026-06-01",
+        "recommendationEnd": "2029-05-31",
+        "recommendationPeriodSourceIds": [
+          "apu-associate-original-d06a9d853f12"
+        ],
+        "providerCoursePassingPercent": 70,
+        "providerCoursePassingSourceIds": [
+          "apu-associate-original-d06a9d853f12"
+        ],
+        "url": "https://www.sophia.org/online-courses/humanities/introduction-to-ethics/"
+      },
+      "sources": [
+        {
+          "id": "apu-associate-original-d06a9d853f12",
+          "kind": "ace",
+          "provider": "Sophia",
+          "title": "ACE SOPH-0020 version 6 exact source identity and recommendation period",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=f3d1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+          "checkedOn": "2026-11-24",
+          "retrievedOn": "2026-11-24",
+          "retrieval": "Exact ACE course body independently reviewed from the bound normalized capture; source retrieval time is retained separately from local review date.",
+          "roles": [
+            "provider-identity",
+            "recommendation-period"
+          ],
+          "scope": "Original provider identity, version, lower-division semester quantity, minimum passing score and exact current recommendation period; receiving awards remain separate.",
+          "originalReferenceId": "liberty-core-soph-0020-current-ace-2026-11-24"
+        },
+        {
+          "id": "apu-associate-original-1f1526479006",
+          "title": "Sophia WGU business current partnership table and March2026 change notice",
+          "url": "https://wgucollegeofbusiness.sophia.org/",
+          "checked": "2026-11-15",
+          "kind": "provider",
+          "provider": "Sophia",
+          "roles": [
+            "provider-identity",
+            "current-offering"
+          ],
+          "sourceContentHash": "sha256:87fc671a0924d31dad7305692d59cc3d68b61791e692a7fcc11f99c879e224f6",
+          "reviewedFact": "Only exact Sophia ACE identities, original source quantities and active offerings are reused. WGU receiving awards are not inherited.",
+          "originalReferenceId": "wgu-sophia-business-current"
+        }
+      ],
+      "receivingAwardQuote": "Introduction to Ethics\nACE Passing Score: 70% or higher Effective Dates: October 1, 2016 — May 31, 2029\nPHIL200 – Introduction to Ethics 3 SH Undergraduate-Level Credit in General Education Arts & Humanities or Elective",
+      "receivingAwardEffectiveStart": "2016-10-01",
+      "receivingAwardEffectiveEnd": "2029-05-31"
+    },
+    {
+      "provider": "Sophia",
+      "code": "SOPH-0048",
+      "reusedFromModelId": "curriculum-liberty-history-bs-online",
+      "sourceIdentityOnly": true,
+      "original": {
+        "title": "Introduction to Psychology",
+        "codeAliases": [
+          "PSYC1010"
+        ],
+        "aceId": "SOPH-0048",
+        "providerCourseCode": "PSYC1010",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false,
+        "sourceCreditStatus": "verified-current-provider-and-ace",
+        "sourceCreditBasis": "Original ACE semester credits and the active provider identity were independently reviewed; receiving awards are separate.",
+        "sourceCreditEvidence": {
+          "status": "reviewed",
+          "sourceIds": [
+            "apu-associate-original-610a880725ac",
+            "apu-associate-original-37e24dd92030",
+            "apu-associate-original-1f1526479006"
+          ],
+          "aceVersion": 3,
+          "checkedOn": "2026-11-24"
+        },
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "apu-associate-original-610a880725ac",
+            "apu-associate-original-37e24dd92030",
+            "apu-associate-original-1f1526479006"
+          ]
+        },
+        "identitySourceIds": [
+          "apu-associate-original-610a880725ac",
+          "apu-associate-original-37e24dd92030",
+          "apu-associate-original-1f1526479006"
+        ],
+        "courseVersion": "3",
+        "recommendationStart": "2024-05-01",
+        "recommendationEnd": "2027-04-30",
+        "recommendationPeriodSourceIds": [
+          "apu-associate-original-610a880725ac"
+        ],
+        "providerCoursePassingPercent": 70,
+        "providerCoursePassingSourceIds": [
+          "apu-associate-original-610a880725ac"
+        ],
+        "url": "https://www.sophia.org/online-courses/social-science/introduction-to-psychology/"
+      },
+      "sources": [
+        {
+          "id": "apu-associate-original-610a880725ac",
+          "kind": "ace",
+          "provider": "Sophia",
+          "title": "ACE SOPH-0048 version 3 exact source identity and recommendation period",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=e9e9b3b7-bf9a-ee11-be37-00224805f697&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+          "checkedOn": "2026-11-24",
+          "retrievedOn": "2026-11-24",
+          "retrieval": "Exact ACE course body independently reviewed from the bound normalized capture; source retrieval time is retained separately from local review date.",
+          "roles": [
+            "provider-identity",
+            "recommendation-period"
+          ],
+          "scope": "Original provider identity, version, lower-division semester quantity, minimum passing score and exact current recommendation period; receiving awards remain separate.",
+          "originalReferenceId": "liberty-core-soph-0048-current-ace-2026-11-24"
+        },
+        {
+          "id": "apu-associate-original-37e24dd92030",
+          "kind": "provider",
+          "provider": "Sophia",
+          "title": "Sophia Introduction to Psychology provider-linked current syllabus",
+          "url": "https://cdn2.sophia.org/spcc_courses/272/syllabus_pdf/0d546fa22a229e55a0a8919f5db3891e.pdf",
+          "checkedOn": "2026-11-24",
+          "retrievedOn": "2026-11-20",
+          "retrieval": "Existing normalized provider-linked syllabus capture independently reviewed locally; original capture time is retained.",
+          "roles": [
+            "provider-identity"
+          ],
+          "scope": "Exact provider code, ACE ID, original 3 lower-division semester credits and minimum passing score; source effective wording does not infer an ACE end date.",
+          "originalReferenceId": "liberty-core-soph-0048-current-syllabus-2026-11-24"
+        },
+        {
+          "id": "apu-associate-original-1f1526479006",
+          "title": "Sophia WGU business current partnership table and March2026 change notice",
+          "url": "https://wgucollegeofbusiness.sophia.org/",
+          "checked": "2026-11-15",
+          "kind": "provider",
+          "provider": "Sophia",
+          "roles": [
+            "provider-identity",
+            "current-offering"
+          ],
+          "sourceContentHash": "sha256:87fc671a0924d31dad7305692d59cc3d68b61791e692a7fcc11f99c879e224f6",
+          "reviewedFact": "Only exact Sophia ACE identities, original source quantities and active offerings are reused. WGU receiving awards are not inherited.",
+          "originalReferenceId": "wgu-sophia-business-current"
+        }
+      ],
+      "receivingAwardQuote": "Introduction to Psychology\nACE Passing Score: 70% or higher Effective Dates: March 1, 2013 — April 30, 2027\nPSYC101 – Introduction to Psychology\n3 SH Undergraduate-Level Credit in General Education Civics, Political & Social Sciences or Elective",
+      "receivingAwardEffectiveStart": "2013-03-01",
+      "receivingAwardEffectiveEnd": "2027-04-30"
+    },
+    {
+      "provider": "Sophia",
+      "code": "SOPH-0022",
+      "reusedFromModelId": "curriculum-liberty-psychology-bs-residential",
+      "sourceIdentityOnly": true,
+      "original": {
+        "title": "US History I",
+        "codeAliases": [
+          "HIST1001"
+        ],
+        "aceId": "SOPH-0022",
+        "providerCourseCode": "HIST1001",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false,
+        "sourceCreditStatus": "verified-current-provider-and-ace",
+        "sourceCreditBasis": "Current provider offering and independently reviewed ACE National Guide source-credit recommendation.",
+        "sourceCreditEvidence": {
+          "status": "reviewed",
+          "sourceIds": [
+            "apu-associate-original-d6d2152ccf5f",
+            "apu-associate-original-ca9d05eb4ce2",
+            "apu-associate-original-67f2b8ece988",
+            "apu-associate-original-b5878c41a521"
+          ],
+          "aceVersion": 4,
+          "checkedOn": "2026-11-18"
+        },
+        "identitySourceIds": [
+          "apu-associate-original-d6d2152ccf5f",
+          "apu-associate-original-ca9d05eb4ce2",
+          "apu-associate-original-67f2b8ece988",
+          "apu-associate-original-b5878c41a521"
+        ],
+        "courseVersion": "4",
+        "recommendationStart": "2026-07-01",
+        "recommendationEnd": "2029-06-30",
+        "recommendationPeriodSourceIds": [
+          "apu-associate-original-e6f8c08b942c"
+        ],
+        "providerCoursePassingPercent": 70,
+        "providerCoursePassingSourceIds": [
+          "apu-associate-original-67f2b8ece988",
+          "apu-associate-original-e6f8c08b942c",
+          "apu-associate-original-b5878c41a521"
+        ],
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "apu-associate-original-d6d2152ccf5f",
+            "apu-associate-original-ca9d05eb4ce2",
+            "apu-associate-original-67f2b8ece988",
+            "apu-associate-original-b5878c41a521"
+          ]
+        },
+        "url": "https://www.sophia.org/online-courses/social-science/us-history-i/"
+      },
+      "sources": [
+        {
+          "id": "apu-associate-original-d6d2152ccf5f",
+          "kind": "provider",
+          "title": "Sophia current U.S. History I offering",
+          "url": "https://www.sophia.org/online-courses/social-science/us-history-i/",
+          "checkedOn": "2026-11-18",
+          "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+          "sha256": "5c116969ee62014fb283f27509c600e45d81dc8c0d3207ae19efeb180a88eef6",
+          "originalReferenceId": "liberty-business-residential--soph-0022-current-provider-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-ca9d05eb4ce2",
+          "kind": "provider",
+          "title": "Sophia U.S. History I current provider-linked syllabus",
+          "url": "https://cdn2.sophia.org/spcc_courses/353/syllabus_pdf/a5363eefee75728424920a2d26c1acdf.pdf",
+          "checkedOn": "2026-11-18",
+          "sourcePage": 1,
+          "sha256": "dfaa18e7548a2b02c68b9e832c93c1d62eae6cda702877b6a2bcd280616e77fa",
+          "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+          "originalReferenceId": "liberty-business-residential--soph-0022-current-syllabus-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-67f2b8ece988",
+          "kind": "provider",
+          "title": "Sophia current U.S. History I offering",
+          "url": "https://www.sophia.org/online-courses/social-science/us-history-i/",
+          "checkedOn": "2026-11-18",
+          "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+          "sha256": "5c116969ee62014fb283f27509c600e45d81dc8c0d3207ae19efeb180a88eef6",
+          "originalReferenceId": "soph-0022-current-provider-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-b5878c41a521",
+          "kind": "provider",
+          "title": "Sophia U.S. History I current provider-linked syllabus",
+          "url": "https://cdn2.sophia.org/spcc_courses/353/syllabus_pdf/a5363eefee75728424920a2d26c1acdf.pdf",
+          "checkedOn": "2026-11-18",
+          "sourcePage": 1,
+          "sha256": "dfaa18e7548a2b02c68b9e832c93c1d62eae6cda702877b6a2bcd280616e77fa",
+          "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+          "originalReferenceId": "soph-0022-current-syllabus-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-e6f8c08b942c",
+          "kind": "ace",
+          "title": "ACE SOPH-0022 version 4 identity and source credits",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ccd1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+          "checkedOn": "2026-11-18",
+          "retrieval": "Raw ACE course record captured and read: exact ACE ID/version/source semester quantity and matching current recommendation-period dropdown option.",
+          "sha256": "b593d906224722643eb29e3bac70f700aa2e646653f833c3fbadbf3f4aeeb6d8",
+          "originalReferenceId": "soph-0022-current-ace-2026-11-18"
+        }
+      ],
+      "receivingAwardQuote": "US History I\nACE Passing Score: 70% or higher Effective Dates: May 1, 2017 — June 30, 2029\nHIST101 – American History to 1877 3 SH Undergraduate-Level Credit in General Education History or Elective",
+      "receivingAwardEffectiveStart": "2017-05-01",
+      "receivingAwardEffectiveEnd": "2029-06-30"
+    },
+    {
+      "provider": "Sophia",
+      "code": "SOPH-0025",
+      "reusedFromModelId": "curriculum-liberty-psychology-bs-residential",
+      "sourceIdentityOnly": true,
+      "original": {
+        "title": "US History II",
+        "codeAliases": [
+          "HIST1002"
+        ],
+        "aceId": "SOPH-0025",
+        "providerCourseCode": "HIST1002",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false,
+        "sourceCreditStatus": "verified-current-provider-and-ace",
+        "sourceCreditBasis": "Current provider offering and independently reviewed ACE National Guide source-credit recommendation.",
+        "sourceCreditEvidence": {
+          "status": "reviewed",
+          "sourceIds": [
+            "apu-associate-original-8e5eb580119e",
+            "apu-associate-original-f1789f29e736",
+            "apu-associate-original-e42062b91a8b",
+            "apu-associate-original-a1e79f40ce04"
+          ],
+          "aceVersion": 4,
+          "checkedOn": "2026-11-18"
+        },
+        "identitySourceIds": [
+          "apu-associate-original-8e5eb580119e",
+          "apu-associate-original-f1789f29e736",
+          "apu-associate-original-e42062b91a8b",
+          "apu-associate-original-a1e79f40ce04"
+        ],
+        "courseVersion": "4",
+        "recommendationStart": "2026-07-01",
+        "recommendationEnd": "2029-06-30",
+        "recommendationPeriodSourceIds": [
+          "apu-associate-original-75e3e938cd3b"
+        ],
+        "providerCoursePassingPercent": 70,
+        "providerCoursePassingSourceIds": [
+          "apu-associate-original-e42062b91a8b",
+          "apu-associate-original-75e3e938cd3b",
+          "apu-associate-original-a1e79f40ce04"
+        ],
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "apu-associate-original-8e5eb580119e",
+            "apu-associate-original-f1789f29e736",
+            "apu-associate-original-e42062b91a8b",
+            "apu-associate-original-a1e79f40ce04"
+          ]
+        },
+        "url": "https://www.sophia.org/online-courses/social-science/us-history-ii/"
+      },
+      "sources": [
+        {
+          "id": "apu-associate-original-8e5eb580119e",
+          "kind": "provider",
+          "title": "Sophia current U.S. History II offering",
+          "url": "https://www.sophia.org/online-courses/social-science/us-history-ii/",
+          "checkedOn": "2026-11-18",
+          "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+          "sha256": "badf3bcab744adcf56bb559d86434b08058373620ab1d7df997b480881470371",
+          "originalReferenceId": "liberty-business-residential--soph-0025-current-provider-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-f1789f29e736",
+          "kind": "provider",
+          "title": "Sophia U.S. History II current provider-linked syllabus",
+          "url": "https://cdn2.sophia.org/spcc_courses/357/syllabus_pdf/0017b148f4126c90294ecd22a87a56ce.pdf",
+          "checkedOn": "2026-11-18",
+          "sourcePage": 1,
+          "sha256": "16ae443e81b3434f752d6d12bb33519b61fc81acb5e54722c2d8ef0ae415a51f",
+          "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+          "originalReferenceId": "liberty-business-residential--soph-0025-current-syllabus-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-e42062b91a8b",
+          "kind": "provider",
+          "title": "Sophia current U.S. History II offering",
+          "url": "https://www.sophia.org/online-courses/social-science/us-history-ii/",
+          "checkedOn": "2026-11-18",
+          "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+          "sha256": "badf3bcab744adcf56bb559d86434b08058373620ab1d7df997b480881470371",
+          "originalReferenceId": "soph-0025-current-provider-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-a1e79f40ce04",
+          "kind": "provider",
+          "title": "Sophia U.S. History II current provider-linked syllabus",
+          "url": "https://cdn2.sophia.org/spcc_courses/357/syllabus_pdf/0017b148f4126c90294ecd22a87a56ce.pdf",
+          "checkedOn": "2026-11-18",
+          "sourcePage": 1,
+          "sha256": "16ae443e81b3434f752d6d12bb33519b61fc81acb5e54722c2d8ef0ae415a51f",
+          "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+          "originalReferenceId": "soph-0025-current-syllabus-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-75e3e938cd3b",
+          "kind": "ace",
+          "title": "ACE SOPH-0025 version 4 identity and source credits",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ded1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+          "checkedOn": "2026-11-18",
+          "retrieval": "Raw ACE course record captured and read: exact ACE ID/version/source semester quantity and matching current recommendation-period dropdown option.",
+          "sha256": "63820ed80b1ca246436edb9cc966400e2236ab9a4db6e10c92134dee53cbef23",
+          "originalReferenceId": "soph-0025-current-ace-2026-11-18"
+        }
+      ],
+      "receivingAwardQuote": "US History II\nACE Passing Score: 70% or higher Effective Dates: July 1, 2017 — June 30, 2029\nHIST102 – American History since 1877 3 SH Undergraduate-Level Credit in General Education History or Elective",
+      "receivingAwardEffectiveStart": "2017-07-01",
+      "receivingAwardEffectiveEnd": "2029-06-30"
+    },
+    {
+      "provider": "Sophia",
+      "code": "SOPH-0016",
+      "reusedFromModelId": "curriculum-liberty-psychology-bs-residential",
+      "sourceIdentityOnly": true,
+      "original": {
+        "title": "Environmental Science",
+        "codeAliases": [
+          "SCIE1005"
+        ],
+        "aceId": "SOPH-0016",
+        "providerCourseCode": "SCIE1005",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false,
+        "sourceCreditStatus": "verified-current-provider-and-ace",
+        "sourceCreditBasis": "Current provider offering and independently reviewed ACE National Guide source-credit recommendation.",
+        "sourceCreditEvidence": {
+          "status": "reviewed",
+          "sourceIds": [
+            "apu-associate-original-7dddbe31c9cb",
+            "apu-associate-original-47bbfa897781",
+            "apu-associate-original-3393d6164dba",
+            "apu-associate-original-8e8a0b2d8119"
+          ],
+          "aceVersion": 5,
+          "checkedOn": "2026-11-18"
+        },
+        "identitySourceIds": [
+          "apu-associate-original-7dddbe31c9cb",
+          "apu-associate-original-47bbfa897781",
+          "apu-associate-original-3393d6164dba",
+          "apu-associate-original-8e8a0b2d8119"
+        ],
+        "courseVersion": "5",
+        "recommendationStart": "2026-06-01",
+        "recommendationEnd": "2029-05-31",
+        "recommendationPeriodSourceIds": [
+          "apu-associate-original-d4957fb518b7"
+        ],
+        "providerCoursePassingPercent": 70,
+        "providerCoursePassingSourceIds": [
+          "apu-associate-original-3393d6164dba",
+          "apu-associate-original-d4957fb518b7",
+          "apu-associate-original-8e8a0b2d8119"
+        ],
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "apu-associate-original-7dddbe31c9cb",
+            "apu-associate-original-47bbfa897781",
+            "apu-associate-original-3393d6164dba",
+            "apu-associate-original-8e8a0b2d8119"
+          ]
+        },
+        "url": "https://www.sophia.org/online-courses/science/environmental-science/"
+      },
+      "sources": [
+        {
+          "id": "apu-associate-original-7dddbe31c9cb",
+          "kind": "provider",
+          "title": "Sophia current Environmental Science offering",
+          "url": "https://www.sophia.org/online-courses/science/environmental-science/",
+          "checkedOn": "2026-11-18",
+          "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+          "sha256": "d648410a1a1c007c891f7aac6ed58daa5278da63a5de27d6e51f953096ee640a",
+          "originalReferenceId": "liberty-business-residential--soph-0016-current-provider-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-47bbfa897781",
+          "kind": "provider",
+          "title": "Sophia Environmental Science current provider-linked syllabus",
+          "url": "https://cdn2.sophia.org/spcc_courses/341/syllabus_pdf/28fa2c4567b78f16fc7a02da90ee3404.pdf",
+          "checkedOn": "2026-11-18",
+          "sourcePage": 1,
+          "sha256": "f18b513b85a41c342eda6317d01b3d10f53114e4cb06c6862f86196733c88e42",
+          "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+          "originalReferenceId": "liberty-business-residential--soph-0016-current-syllabus-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-3393d6164dba",
+          "kind": "provider",
+          "title": "Sophia current Environmental Science offering",
+          "url": "https://www.sophia.org/online-courses/science/environmental-science/",
+          "checkedOn": "2026-11-18",
+          "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+          "sha256": "d648410a1a1c007c891f7aac6ed58daa5278da63a5de27d6e51f953096ee640a",
+          "originalReferenceId": "soph-0016-current-provider-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-8e8a0b2d8119",
+          "kind": "provider",
+          "title": "Sophia Environmental Science current provider-linked syllabus",
+          "url": "https://cdn2.sophia.org/spcc_courses/341/syllabus_pdf/28fa2c4567b78f16fc7a02da90ee3404.pdf",
+          "checkedOn": "2026-11-18",
+          "sourcePage": 1,
+          "sha256": "f18b513b85a41c342eda6317d01b3d10f53114e4cb06c6862f86196733c88e42",
+          "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+          "originalReferenceId": "soph-0016-current-syllabus-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-d4957fb518b7",
+          "kind": "ace",
+          "title": "ACE SOPH-0016 version 5 identity and source credits",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=04d2f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+          "checkedOn": "2026-11-18",
+          "retrieval": "Raw ACE course record captured and read: exact ACE ID/version/source semester quantity and matching current recommendation-period dropdown option.",
+          "sha256": "04eb93f7c49e5ea219006ec463416feb7c3e5142d057e51519f906f1aab8431f",
+          "originalReferenceId": "soph-0016-current-ace-2026-11-18"
+        }
+      ],
+      "receivingAwardQuote": "Environmental Science\nACE Passing Score: 70% or higher Effective Dates: January 1, 2015 — May 31, 2029\nEVSP180 – Introduction to Environmental Science\n3 SH Undergraduate-Level Credit in General Education Natural Sciences or Elective",
+      "receivingAwardEffectiveStart": "2015-01-01",
+      "receivingAwardEffectiveEnd": "2029-05-31"
+    },
+    {
+      "provider": "Sophia",
+      "code": "SOPH-0065",
+      "reusedFromModelId": "curriculum-liberty-history-bs-online",
+      "sourceIdentityOnly": true,
+      "original": {
+        "title": "Critical Thinking",
+        "codeAliases": [
+          "PHIL1005"
+        ],
+        "aceId": "SOPH-0065",
+        "providerCourseCode": "PHIL1005",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false,
+        "sourceCreditStatus": "verified-current-provider-and-ace",
+        "sourceCreditBasis": "Current provider offering and independently reviewed ACE National Guide source-credit recommendation.",
+        "sourceCreditEvidence": {
+          "status": "reviewed",
+          "sourceIds": [
+            "apu-associate-original-b9225a86fa3c",
+            "apu-associate-original-02a2b8fdcb55",
+            "apu-associate-original-53c3a7cdb808",
+            "apu-associate-original-c9f51753d70e",
+            "apu-associate-original-fee8ea99ea6a",
+            "apu-associate-original-a65dcd2fb366",
+            "apu-associate-original-052d1bfe39b2"
+          ],
+          "aceVersion": 2,
+          "checkedOn": "2026-11-18"
+        },
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "apu-associate-original-b9225a86fa3c",
+            "apu-associate-original-02a2b8fdcb55",
+            "apu-associate-original-53c3a7cdb808",
+            "apu-associate-original-c9f51753d70e",
+            "apu-associate-original-fee8ea99ea6a",
+            "apu-associate-original-a65dcd2fb366",
+            "apu-associate-original-052d1bfe39b2"
+          ]
+        },
+        "identitySourceIds": [
+          "apu-associate-original-b9225a86fa3c",
+          "apu-associate-original-02a2b8fdcb55",
+          "apu-associate-original-53c3a7cdb808",
+          "apu-associate-original-c9f51753d70e",
+          "apu-associate-original-fee8ea99ea6a",
+          "apu-associate-original-a65dcd2fb366",
+          "apu-associate-original-052d1bfe39b2"
+        ],
+        "identityReviewId": "sophia-liberty-baseline-identities-2026-11-18",
+        "identityCheckedOn": "2026-11-18",
+        "courseVersion": "2",
+        "recommendationStart": "2025-10-01",
+        "recommendationEnd": "2028-09-30",
+        "recommendationPeriodSourceIds": [
+          "apu-associate-original-45164447ec72"
+        ],
+        "providerCoursePassingPercent": 70,
+        "providerCoursePassingSourceIds": [
+          "apu-associate-original-53c3a7cdb808",
+          "apu-associate-original-45164447ec72",
+          "apu-associate-original-c9f51753d70e"
+        ],
+        "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/"
+      },
+      "sources": [
+        {
+          "id": "apu-associate-original-b9225a86fa3c",
+          "kind": "provider",
+          "title": "Sophia current Critical Thinking offering",
+          "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+          "checkedOn": "2026-11-18",
+          "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+          "sha256": "e568b55c2bd06b1590bc8f45797a15dcca1e44e5ceffff6a9fe7697bfee6d8cc",
+          "originalReferenceId": "liberty-criminal-justice-online--soph-0065-current-provider-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-02a2b8fdcb55",
+          "kind": "provider",
+          "title": "Sophia Critical Thinking current provider-linked syllabus",
+          "url": "https://cdn2.sophia.org/spcc_courses/304/syllabus_pdf/2f6d8ec75f264abcf395d416b21a5bb0.pdf",
+          "checkedOn": "2026-11-18",
+          "sourcePage": 1,
+          "sha256": "b7cb9b0fa15fcae900ad8e3ee2f157a7812fee6c4bd9f0bc78985358ff9ab2a8",
+          "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+          "originalReferenceId": "liberty-criminal-justice-online--soph-0065-current-syllabus-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-53c3a7cdb808",
+          "kind": "provider",
+          "title": "Sophia current Critical Thinking offering",
+          "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+          "checkedOn": "2026-11-18",
+          "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+          "sha256": "e568b55c2bd06b1590bc8f45797a15dcca1e44e5ceffff6a9fe7697bfee6d8cc",
+          "originalReferenceId": "soph-0065-current-provider-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-c9f51753d70e",
+          "kind": "provider",
+          "title": "Sophia Critical Thinking current provider-linked syllabus",
+          "url": "https://cdn2.sophia.org/spcc_courses/304/syllabus_pdf/2f6d8ec75f264abcf395d416b21a5bb0.pdf",
+          "checkedOn": "2026-11-18",
+          "sourcePage": 1,
+          "sha256": "b7cb9b0fa15fcae900ad8e3ee2f157a7812fee6c4bd9f0bc78985358ff9ab2a8",
+          "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+          "originalReferenceId": "soph-0065-current-syllabus-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-fee8ea99ea6a",
+          "kind": "provider",
+          "title": "Sophia current Critical Thinking offering",
+          "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+          "checkedOn": "2026-11-18",
+          "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+          "sha256": "e568b55c2bd06b1590bc8f45797a15dcca1e44e5ceffff6a9fe7697bfee6d8cc",
+          "roles": [
+            "provider-identity"
+          ],
+          "provider": "Sophia",
+          "originalSourceId": "wgu-global-sophia--soph-0065-current-provider-2026-11-18",
+          "upstreamOriginalSourceId": "apu-associate-original-53c3a7cdb808",
+          "copiedFrom": "content/reuse/wgu-sophia-provider-identities.json",
+          "originalReferenceId": "shared-sophia--soph-0065-current-provider-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-a65dcd2fb366",
+          "kind": "ace",
+          "title": "ACE SOPH-0065 version 2 identity and source credits",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+          "checkedOn": "2026-11-18",
+          "retrieval": "Raw ACE course record captured and read: exact ACE ID/version/source semester quantity and matching current recommendation-period dropdown option.",
+          "sha256": "316c6fd1fbfc0b216e8c2da17faadd025aefa9238ed08cfc39ae1ebd54a0077a",
+          "roles": [
+            "provider-identity",
+            "recommendation-period"
+          ],
+          "provider": "Sophia",
+          "originalSourceId": "wgu-global-sophia--soph-0065-current-ace-2026-11-18",
+          "upstreamOriginalSourceId": "apu-associate-original-45164447ec72",
+          "copiedFrom": "content/reuse/wgu-sophia-provider-identities.json",
+          "originalReferenceId": "shared-sophia--soph-0065-current-ace-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-052d1bfe39b2",
+          "kind": "provider",
+          "title": "Sophia Critical Thinking current provider-linked syllabus",
+          "url": "https://cdn2.sophia.org/spcc_courses/304/syllabus_pdf/2f6d8ec75f264abcf395d416b21a5bb0.pdf",
+          "checkedOn": "2026-11-18",
+          "sourcePage": 1,
+          "sha256": "b7cb9b0fa15fcae900ad8e3ee2f157a7812fee6c4bd9f0bc78985358ff9ab2a8",
+          "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+          "roles": [
+            "provider-identity"
+          ],
+          "provider": "Sophia",
+          "originalSourceId": "wgu-global-sophia--soph-0065-current-syllabus-2026-11-18",
+          "upstreamOriginalSourceId": "apu-associate-original-c9f51753d70e",
+          "copiedFrom": "content/reuse/wgu-sophia-provider-identities.json",
+          "originalReferenceId": "shared-sophia--soph-0065-current-syllabus-2026-11-18"
+        },
+        {
+          "id": "apu-associate-original-45164447ec72",
+          "kind": "ace",
+          "title": "ACE SOPH-0065 version 2 identity and source credits",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+          "checkedOn": "2026-11-18",
+          "retrieval": "Raw ACE course record captured and read: exact ACE ID/version/source semester quantity and matching current recommendation-period dropdown option.",
+          "sha256": "316c6fd1fbfc0b216e8c2da17faadd025aefa9238ed08cfc39ae1ebd54a0077a",
+          "originalReferenceId": "soph-0065-current-ace-2026-11-18"
+        }
+      ],
+      "receivingAwardQuote": "Critical Thinking\nACE Passing Score: 70% or higher Effective Dates: October 1, 2022 — September 30, 2028\nPHIL110 – Critical Thinking\n3 SH Undergraduate-Level Credit in General Education Arts & Humanities or Elective",
+      "receivingAwardEffectiveStart": "2022-10-01",
+      "receivingAwardEffectiveEnd": "2028-09-30"
+    },
+    {
+      "provider": "Sophia",
+      "code": "SOPH-0012",
+      "reusedFromModelId": "curriculum-tesu-bsba-accounting",
+      "sourceIdentityOnly": true,
+      "original": {
+        "title": "Macroeconomics",
+        "codeAliases": [
+          "ECON1001"
+        ],
+        "aceId": "SOPH-0012",
+        "providerCourseCode": "ECON1001",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceCreditStatus": "verified",
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "apu-associate-original-3ac7d439384e"
+          ]
+        },
+        "identitySourceIds": [
+          "apu-associate-original-3ac7d439384e"
+        ],
+        "courseVersion": 5,
+        "recommendationStart": "2025-10-01",
+        "recommendationEnd": "2028-09-30",
+        "recommendationPeriodSourceIds": [
+          "apu-associate-original-3ac7d439384e"
+        ],
+        "providerCoursePassingPercent": 70,
+        "url": "https://www.sophia.org/online-courses/social-science/macroeconomics/"
+      },
+      "sources": [
+        {
+          "id": "apu-associate-original-3ac7d439384e",
+          "title": "ACE National Guide: Sophia Macroeconomics (SOPH-0012) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=28a6a70f-f137-f011-8c4e-6045bd0a807d&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+          "checked": "2026-11-20",
+          "capture": "content/source-captures/e3304555989fc6fb.txt",
+          "kind": "ace",
+          "roles": [
+            "provider-identity",
+            "receiving-institution-submitted-equivalency"
+          ],
+          "provider": "Sophia",
+          "sha256": "e3304555989fc6fb64c3f40d271becf72e427bfa44930fa5f63dff088a46f871",
+          "sourceContentHash": "e3304555989fc6fb64c3f40d271becf72e427bfa44930fa5f63dff088a46f871",
+          "originalReferenceId": "sophia-soph-0012-ace-tesu-equivalency-2026-11-20"
+        }
+      ],
+      "receivingAwardQuote": "Macroeconomics\nACE Passing Score: 70% or higher Effective Dates: April 1, 2014 — September 30, 2028\nECON102 – Macroeconomics or ECON202 – Macroeconomics for Busines\n3 SH Undergraduate-Level Credit in General Education Civics, Political & Social Sciences or Elective",
+      "receivingAwardEffectiveStart": "2014-04-01",
+      "receivingAwardEffectiveEnd": "2028-09-30"
+    },
+    {
+      "provider": "Sophia",
+      "code": "SOPH-0005",
+      "reusedFromModelId": "curriculum-tesu-bsba-accounting",
+      "sourceIdentityOnly": true,
+      "original": {
+        "title": "Introduction to Statistics",
+        "codeAliases": [
+          "STAT1001"
+        ],
+        "aceId": "SOPH-0005",
+        "providerCourseCode": "STAT1001",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceCreditStatus": "verified",
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "apu-associate-original-d80698b93677"
+          ]
+        },
+        "identitySourceIds": [
+          "apu-associate-original-d80698b93677"
+        ],
+        "courseVersion": 5,
+        "recommendationStart": "2024-10-01",
+        "recommendationEnd": "2027-09-30",
+        "recommendationPeriodSourceIds": [
+          "apu-associate-original-d80698b93677"
+        ],
+        "providerCoursePassingPercent": 70,
+        "url": "https://www.sophia.org/online-courses/math/introduction-to-statistics/"
+      },
+      "sources": [
+        {
+          "id": "apu-associate-original-d80698b93677",
+          "title": "ACE National Guide: Sophia Introduction to Statistics (SOPH-0005) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=fb3a799a-b00b-ef11-9f89-6045bd089f77&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+          "checked": "2026-11-20",
+          "capture": "content/source-captures/7d9ddc434bcf5c0f.txt",
+          "kind": "ace",
+          "roles": [
+            "provider-identity",
+            "receiving-institution-submitted-equivalency"
+          ],
+          "provider": "Sophia",
+          "sha256": "7d9ddc434bcf5c0fccdf503fc1b161ffaf4b4af2defef355f7153556b3ed71fc",
+          "sourceContentHash": "7d9ddc434bcf5c0fccdf503fc1b161ffaf4b4af2defef355f7153556b3ed71fc",
+          "originalReferenceId": "sophia-soph-0005-ace-tesu-equivalency-2026-11-20"
+        }
+      ],
+      "receivingAwardQuote": "Introduction to Statistics\nACE Passing Score: 70% or higher Effective Dates: March 1, 2016 — September 30, 2027\nMATH302 – Statistics\n3 SH Undergraduate-Level Credit in Elective",
+      "receivingAwardEffectiveStart": "2016-03-01",
+      "receivingAwardEffectiveEnd": "2027-09-30"
+    },
+    {
+      "provider": "Sophia",
+      "code": "SOPH-0071",
+      "reusedFromModelId": "curriculum-tesu-bsba-accounting",
+      "sourceIdentityOnly": true,
+      "original": {
+        "title": "U.S. Government",
+        "codeAliases": [
+          "HIST1020"
+        ],
+        "aceId": "SOPH-0071",
+        "providerCourseCode": "HIST1020",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceCreditStatus": "verified",
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "apu-associate-original-03b03a2d312e"
+          ]
+        },
+        "identitySourceIds": [
+          "apu-associate-original-03b03a2d312e"
+        ],
+        "courseVersion": 3,
+        "recommendationStart": "2026-08-01",
+        "recommendationEnd": "2029-07-31",
+        "recommendationPeriodSourceIds": [
+          "apu-associate-original-03b03a2d312e"
+        ],
+        "providerCoursePassingPercent": 70
+      },
+      "sources": [
+        {
+          "id": "apu-associate-original-03b03a2d312e",
+          "title": "ACE National Guide: Sophia U.S. Government (SOPH-0071) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=0e952ba0-0a23-f111-8341-000d3a3063b4&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+          "checked": "2026-11-20",
+          "capture": "content/source-captures/6723727f139f4f5a.txt",
+          "kind": "ace",
+          "roles": [
+            "provider-identity",
+            "receiving-institution-submitted-equivalency"
+          ],
+          "provider": "Sophia",
+          "sha256": "6723727f139f4f5ad7f82399b32295daf32583e2e2c593391bad5a452e064793",
+          "sourceContentHash": "6723727f139f4f5ad7f82399b32295daf32583e2e2c593391bad5a452e064793",
+          "originalReferenceId": "sophia-soph-0071-ace-tesu-equivalency-2026-11-20"
+        }
+      ],
+      "receivingAwardQuote": "US Government\nACE Passing Score: 70% or higher Effective Dates: March 1, 2023 — July 31, 2029\nPOLS210 – American Government 3 SH Undergraduate-Level Credit in General Education Civics, Political & Social Sciences or Elective",
+      "receivingAwardEffectiveStart": "2023-03-01",
+      "receivingAwardEffectiveEnd": "2029-07-31"
+    },
+    {
+      "provider": "Sophia",
+      "code": "SOPH-0010",
+      "reusedFromModelId": "curriculum-tesu-bsba-accounting",
+      "sourceIdentityOnly": true,
+      "original": {
+        "title": "Financial Accounting",
+        "codeAliases": [
+          "BUSI1010"
+        ],
+        "aceId": "SOPH-0010",
+        "providerCourseCode": "BUSI1010",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceCreditStatus": "verified",
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "apu-associate-original-f86dcc7a99a6"
+          ]
+        },
+        "identitySourceIds": [
+          "apu-associate-original-f86dcc7a99a6"
+        ],
+        "courseVersion": 5,
+        "recommendationStart": "2025-08-01",
+        "recommendationEnd": "2028-07-31",
+        "recommendationPeriodSourceIds": [
+          "apu-associate-original-f86dcc7a99a6"
+        ],
+        "providerCoursePassingPercent": 70,
+        "url": "https://www.sophia.org/online-courses/business/financial-accounting/"
+      },
+      "sources": [
+        {
+          "id": "apu-associate-original-f86dcc7a99a6",
+          "title": "ACE National Guide: Sophia Financial Accounting (SOPH-0010) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=8d77efdd-a005-f011-bae1-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+          "checked": "2026-11-20",
+          "capture": "content/source-captures/819c56b54828a523.txt",
+          "kind": "ace",
+          "roles": [
+            "provider-identity",
+            "receiving-institution-submitted-equivalency"
+          ],
+          "provider": "Sophia",
+          "sha256": "819c56b54828a52324031b201913ee00191ea61dcbbf4086b2df77a961dd90a2",
+          "sourceContentHash": "819c56b54828a52324031b201913ee00191ea61dcbbf4086b2df77a961dd90a2",
+          "originalReferenceId": "sophia-soph-0010-ace-tesu-equivalency-2026-11-20"
+        }
+      ],
+      "receivingAwardQuote": "Financial Accounting\nACE Passing Score: 70% or higher Effective Dates: August 1, 2022 — July 31, 2028\nACCT100 – Accounting I or ACCT105 – Accounting for Non Accounting Majors\n3 SH Undergraduate-Level Credit in Elective",
+      "receivingAwardEffectiveStart": "2022-08-01",
+      "receivingAwardEffectiveEnd": "2028-07-31"
+    },
+    {
+      "provider": "Sophia",
+      "code": "SOPH-0014",
+      "reusedFromModelId": "curriculum-tesu-bsba-accounting",
+      "sourceIdentityOnly": true,
+      "original": {
+        "title": "Introduction to Business",
+        "codeAliases": [
+          "BUSI1001"
+        ],
+        "aceId": "SOPH-0014",
+        "providerCourseCode": "BUSI1001",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceCreditStatus": "verified",
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "apu-associate-original-30b1c745efd8"
+          ]
+        },
+        "identitySourceIds": [
+          "apu-associate-original-30b1c745efd8"
+        ],
+        "courseVersion": 5,
+        "recommendationStart": "2026-05-01",
+        "recommendationEnd": "2029-04-30",
+        "recommendationPeriodSourceIds": [
+          "apu-associate-original-30b1c745efd8"
+        ],
+        "providerCoursePassingPercent": 70,
+        "url": "https://www.sophia.org/online-courses/business/introduction-to-business/"
+      },
+      "sources": [
+        {
+          "id": "apu-associate-original-30b1c745efd8",
+          "title": "ACE National Guide: Sophia Introduction to Business (SOPH-0014) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=545bf095-6fea-f011-8406-6045bd0a298d&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+          "checked": "2026-11-20",
+          "capture": "content/source-captures/24ca88193edfe781.txt",
+          "kind": "ace",
+          "roles": [
+            "provider-identity",
+            "receiving-institution-submitted-equivalency"
+          ],
+          "provider": "Sophia",
+          "sha256": "24ca88193edfe781a036beb028994f03bfad0c51bf42e760ca6188dfb5bbd037",
+          "sourceContentHash": "24ca88193edfe781a036beb028994f03bfad0c51bf42e760ca6188dfb5bbd037",
+          "originalReferenceId": "sophia-soph-0014-ace-tesu-equivalency-2026-11-20"
+        }
+      ],
+      "receivingAwardQuote": "Introduction to Business\nACE Passing Score: 70% or higher Effective Dates: August 1, 2014 — April 30, 2029\nBUSN100 – Basics of Business\n3 SH Undergraduate-Level Credit in Elective",
+      "receivingAwardEffectiveStart": "2014-08-01",
+      "receivingAwardEffectiveEnd": "2029-04-30"
+    }
+  ],
+  "prerequisites": {
+    "FINC201": {
+      "rule": {
+        "anyOf": [
+          {
+            "type": "course",
+            "code": "ACCT100"
+          },
+          {
+            "type": "course",
+            "code": "ACCT105"
+          }
+        ]
+      },
+      "selectedCodes": [
+        "ACCT105"
+      ],
+      "quote": "(Prerequisites: ACCT100 or ACCT105)"
+    },
+    "MATH302": {
+      "rule": {
+        "anyOf": [
+          {
+            "type": "course",
+            "code": "MATH110"
+          },
+          {
+            "type": "course",
+            "code": "MATH111"
+          },
+          {
+            "type": "course",
+            "code": "MATH120"
+          },
+          {
+            "type": "course",
+            "code": "MATH225"
+          }
+        ]
+      },
+      "selectedCodes": [
+        "MATH110"
+      ],
+      "quote": "(Prerequisites: MATH110, MATH111, MATH120, or MATH225)"
+    },
+    "ENGL226": {
+      "rule": {
+        "anyOf": [
+          {
+            "type": "course",
+            "code": "ENGL101"
+          },
+          {
+            "type": "course",
+            "code": "ENGL110"
+          }
+        ]
+      },
+      "selectedCodes": [
+        "ENGL110"
+      ],
+      "quote": "(Pre-requisite: ENGL101 or ENGL110)"
+    },
+    "CMRJ295": {
+      "minimumCompletedCredits": 49,
+      "selectedCodes": [],
+      "rule": {
+        "type": "last-course-after-all-other-program-courses"
+      },
+      "quote": "This course is to be taken as the LAST course in the AA in Criminal Justice program."
+    },
+    "ISSC298": {
+      "minimumCompletedCredits": 57,
+      "selectedCodes": [],
+      "rule": {
+        "type": "after-all-other-security-courses-and-minimum-credits"
+      },
+      "quote": "(Prerequisite: Completion of a minimum of 57 hours towards the degree program)"
+    }
+  },
+  "pricing": {
+    "source": {
+      "id": "apus-tuition-fees-2026",
+      "title": "American Public University tuition and fees",
+      "url": "https://www.apu.apus.edu/tuition-and-financing/tuition-and-fees/",
+      "checked": "2026-11-23",
+      "kind": "university",
+      "roles": [
+        "pricing"
+      ],
+      "capture": "content/source-captures/ba1f7b98439b89c8.txt",
+      "sha256": "ba1f7b98439b89c8801b5ea9ee22936332e12abb742b5d02a725f6f3d395d468"
+    },
+    "rateEntryId": "apu-reviewed-associates-2026",
+    "sourceTuitionRate": 360,
+    "sourceGraduationFee": 250,
+    "technologyFeePerUndergraduateCourse": 0,
+    "admissionFee": 0,
+    "grantsApplied": false,
+    "sharedRateMetadataProposal": {
+      "id": "apu-reviewed-associates-2026",
+      "modelIds": [
+        "curriculum-apus-associate-of-arts-in-business-administration-reviewed-2026",
+        "curriculum-apus-associate-of-arts-in-criminal-justice-reviewed-2026",
+        "curriculum-apus-associate-of-science-in-cybersecurity-reviewed-2026"
+      ],
+      "school": "American Public University",
+      "catalogs": [
+        "2026-2027"
+      ],
+      "legacyEntryUnchanged": "apus-2026-60"
+    }
+  },
+  "sourceScopeNotes": [
+    "APU is the receiving institution for these three APU catalog programs. The existing apus compatibility key does not extend these receiving awards to AMU, Rasmussen, Hondros or other System schools.",
+    "The institution-published finder awards are scoped independently of original provider/ACE identity and its narrower recommendation period. Source facts reused from existing published plans are original-course evidence only; no other university transfer decision is reused."
+  ]
+}

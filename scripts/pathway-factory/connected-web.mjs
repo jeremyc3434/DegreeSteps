@@ -27,8 +27,13 @@ export function extractConnectedWebBody(receipt,{url,citationRef}){
   assert(/^turn\d+[A-Za-z]+\d+$/.test(citationRef||''),'Retain the native citation reference');
   const blocks=(receipt.response.content||[]).filter(block=>block.type==='text'&&typeof block.text==='string').flatMap(block=>block.text.split(/\n-{20,}\n/));
   const matches=blocks.filter(block=>{
-    const header=block.trimStart().split('\n')[0],headerUrl=header.match(/\((https?:\/\/[^\s;)]+)(?:\s*;[^)]*)?\)\s*$/)?.[1];
-    return headerUrl===url&&block.match(/^【([^】]+)】/m)?.[1]===citationRef;
+    // The native renderer can wrap a page title and its URL onto separate
+    // lines. Join only its header before the first citation: a URL mentioned
+    // in page text or source metadata is never accepted as the page identity.
+    const citation=block.match(/^【([^】]+)】/m);
+    const header=citation?block.slice(0,citation.index).trim().replace(/\s+/g,' '):'';
+    const headerUrl=header.match(/\((https?:\/\/[^\s;)]+)(?:\s*;[^)]*)?\)\s*$/)?.[1];
+    return headerUrl===url&&citation?.[1]===citationRef;
   });
   assert.equal(matches.length,1,'One exact URL/citation-bound native entry is required');
   const block=matches[0],totalPageLines=Number(block.match(/Total lines:\s*(\d+)/)?.[1]);assert(Number.isInteger(totalPageLines)&&totalPageLines>0);

@@ -4,13 +4,40 @@
  */
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs/promises'),path=require('node:path');
+const fsSync=require('node:fs');
 const Catalog=require('./dist/program-catalog.js'),Sheet=require('./dist/sheet-state.js'),Journey=require('./dist/journey-engine.js');
 const {mountOfflineSite}=require('./test-support/offline-site.cjs');
 const registry=require('./dist/data/curriculum-registry.json'),publication=require('./dist/data/publication-index.json'),baselineIndex=require('./dist/data/baseline-index.json');
 const catalog=Catalog.attachPublicationIndex(Catalog.attachRegistry(Catalog.merge(require('./dist/data/pathways.json'),require('./dist/data/program-catalog.json')),registry),publication,registry);
-const ORIGIN='http://127.0.0.1:8133',KEY='degreepath-guide-v3',OUT=process.env.DEGREESTEPS_UNDERGRAD_ARTIFACTS||'/workspace/audits/degreesteps-undergraduate-expansion-2026-11-26/browser';
+function readCohortFixture(requested){
+ assert.equal(typeof requested,'string','--cohort needs one JSON fixture path');
+ assert(requested.endsWith('.json'),'--cohort accepts a JSON fixture only');
+ const allowed=path.resolve(__dirname,'test-support/fixtures'),candidate=path.resolve(__dirname,requested);
+ assert(candidate.startsWith(allowed+path.sep),'--cohort fixture must be inside test-support/fixtures');
+ const real=fsSync.realpathSync(candidate),actualAllowed=fsSync.realpathSync(allowed);
+ assert(real.startsWith(actualAllowed+path.sep),'--cohort fixture symlink must stay inside test-support/fixtures');
+ const stat=fsSync.statSync(real);assert(stat.isFile()&&stat.size>0&&stat.size<=1048576,'--cohort needs a bounded regular fixture file');
+ const packet=JSON.parse(fsSync.readFileSync(real,'utf8'));
+ assert(packet&&typeof packet==='object'&&!Array.isArray(packet),'A cohort fixture must be an object');
+ assert.deepEqual(Object.keys(packet).sort(),['cases','expectedCount','id','kind','version'],'Cohort fixture has only its declared schema fields');
+ assert.equal(packet.kind,'complete-degree-cohort-acceptance');assert.equal(packet.version,1);
+ assert(/^[a-z0-9][a-z0-9-]{0,100}$/.test(packet.id),'A stable cohort identity is required');
+ assert(Number.isInteger(packet.expectedCount)&&packet.expectedCount>0&&packet.expectedCount<=50,'Cohort size must be 1–50');
+ assert(Array.isArray(packet.cases)&&packet.cases.length===packet.expectedCount,'Cohort fixture count must match its manifest');
+ const ids=new Set();for(const item of packet.cases){
+  assert(item&&typeof item==='object'&&!Array.isArray(item),'Cohort cases must be records');
+  assert.deepEqual(Object.keys(item).sort(),['creditSystem','mobile','modelId','outside','total'],'A cohort case has only academic identity, credits, units and viewport selection');
+  assert(typeof item.modelId==='string'&&/^[a-z0-9][a-z0-9-]{0,127}$/.test(item.modelId)&&!ids.has(item.modelId),'Cohort model identities must be unique');ids.add(item.modelId);
+  assert(Number.isFinite(item.total)&&item.total>0&&Number.isFinite(item.outside)&&item.outside>=0&&item.outside<=item.total,'Cohort credit totals must be bounded numbers');
+  assert(['semester','quarter','competency-unit'].includes(item.creditSystem),'Cohort credit units must be explicit');assert.equal(typeof item.mobile,'boolean','Cohort mobile selection must be explicit');
+ }
+ return packet;
+}
+const cohortFlags=process.argv.filter(arg=>arg==='--cohort');assert(cohortFlags.length<=1,'Pass --cohort only once');
+const cohort=cohortFlags.length?readCohortFixture(process.argv[process.argv.indexOf('--cohort')+1]):null;
+const ORIGIN='http://127.0.0.1:8133',KEY='degreepath-guide-v3',OUT=process.env.DEGREESTEPS_UNDERGRAD_ARTIFACTS||(cohort?'/workspace/audits/degreesteps-degree-expansion-2026-11-27/browser':'/workspace/audits/degreesteps-undergraduate-expansion-2026-11-26/browser');
 const clone=value=>JSON.parse(JSON.stringify(value)),modelCache=new Map();
-const cases=[
+const defaultCases=[
  ['curriculum-tesu-ba-english',120,60],
  ['curriculum-tesu-ba-liberal-studies',120,72,true],
  ['curriculum-tesu-ba-psychology',120,69],
@@ -27,11 +54,13 @@ const cases=[
  ['curriculum-tesu-bsba-human-resources-organizational-management',120,66,true],
  ['curriculum-tesu-bs-general-management',120,66,true]
 ].map(([modelId,total,outside,mobile=false])=>({modelId,total,outside,mobile}));
+const cases=cohort?cohort.cases:defaultCases;
 
 function fixture(config){
  const published=publication.plans.find(plan=>plan.modelId===config.modelId&&plan.publicationReady===true);assert(published,config.modelId+' must be publication-ready');
  const route=catalog.pathways.find(route=>route.modelId===config.modelId&&published.routeIds.includes(route.id)&&route.readyTemplate);assert(route,config.modelId+' must be a discoverable ready route');
  const entry=registry.models.find(entry=>entry.id===config.modelId),pack=require('./dist/'+entry.path),model=(pack.models||[pack]).find(model=>model.id===config.modelId);assert(model,config.modelId+' runtime model');
+ if(config.creditSystem)assert.equal(model.creditSystem,config.creditSystem,config.modelId+' exact declared receiving units');
  const baseline=Object.values(baselineIndex.baselines).find(plan=>plan.modelId===model.id&&plan.pathwayId===route.id&&plan.qualityReady);assert(baseline,config.modelId+' needs a ready baseline');
  assert.equal(baseline.summary.totalCredits,config.total,config.modelId+' total');assert.equal(baseline.summary.transferCredits,config.outside,config.modelId+' reviewed outside total');assert.equal(baseline.summary.universityCredits,config.total-config.outside,config.modelId+' university total');
  assert.equal(baseline.rows.length,model.requirements.length,config.modelId+' every requirement has a chosen course');assert.equal(new Set(baseline.rows.map(row=>row.requirementId)).size,baseline.rows.length,config.modelId+' no duplicate requirements');
@@ -47,7 +76,10 @@ function fixture(config){
   }
  }
  assert.equal(total,config.total,config.modelId+' complete receiving ledger');assert.equal(outside,config.outside,config.modelId+' complete published transfer mix');
- if(config.modelId.startsWith('curriculum-tesu-'))assert.equal(baseline.baselineSelection?.selected,'published-only-baseline',config.modelId+' uses its reviewed published-only alternative');
+ // The original TESU fixtures required an explicit alternative to their
+ // conditional default. New editions may already have a published default;
+ // the actual evidence, quantities and source identities are checked above.
+ if(!cohort&&config.modelId.startsWith('curriculum-tesu-'))assert.equal(baseline.baselineSelection?.selected,'published-only-baseline',config.modelId+' uses its reviewed published-only alternative');
  const result={...config,route,model,baseline};modelCache.set(model.id,model);return result;
 }
 const fixtures=cases.map(fixture),originalRoute=catalog.pathways.find(route=>route.modelId==='curriculum-liberty-history-bs-online'&&route.readyTemplate);assert(originalRoute,'A returning student starts with an existing ready plan');
@@ -56,6 +88,7 @@ function seed(){
  let state=Journey.initialize(Sheet.selectPathway(Sheet.initialize(null,null,catalog),originalRoute),null,catalog);
  Object.assign(state.profile,{goal:'any-degree',field:'any',degreeLevel:'bachelor',modality:'online',classroomImportance:'open',priority:'transfer',proctoringPreference:'open',assessmentPreference:'mixed',hasPrior:'later'});
  state.learning=[{id:'qa-original-unmatched-course',provider:'QA Previous College',code:'QA-PRIVATE-901',title:'My previous college course',credits:4,creditSystem:'quarter',status:'saved',evaluations:[]}];
+ if(cohort)state.learning.push({id:'qa-original-saved-semester-course',provider:'QA Previous College',code:'QA-PRIVATE-902',title:'My saved future semester course',credits:3,creditSystem:'semester',status:'saved',evaluations:[]});
  state.sheet.notes={[originalRoute.modelId]:{'qa-private-note':'Keep my advisor note when I change degrees.'}};
  state.journey={...state.journey,completed:true,intakeCompleted:true,profileFlowVersion:1,view:'home',step:'review',answers:{...state.journey.answers,start:'target',purpose:'any-degree',prior:'later',format:{modality:'online',classroomImportance:'open'}}};
  return state;
@@ -68,6 +101,15 @@ function assertAdopted(current,config,original){
  for(const row of config.baseline.rows)assert.equal(selections[row.requirementId],row.optionId,config.modelId+' exact published choice '+row.requirementId);
  const draft=Journey.buildDraft(current,catalog,[config.model]),plan=draft.plan;assert(plan,config.modelId+' opens a course plan');assert.equal(draft.targetReviewNeeded,false,config.modelId+' no preference dead end');assert.equal(plan.readiness,'review-ready',config.modelId+' no research dead end');assert.equal(plan.validation.academicCountsValid,true,config.modelId+' academic counts');assert.equal(plan.validation.policyChecksComplete,true,config.modelId+' policy checks');
  assert.equal(plan.totals.accounted,config.total,config.modelId+' complete receiving total');assert.equal(plan.totals.external,config.outside,config.modelId+' exact reviewed outside total');assert.equal(plan.totals.institutional,config.total-config.outside,config.modelId+' university total');assert.equal(plan.totals.confirmed,0,config.modelId+' source review never grants student credit');assert.equal(plan.totals.reported,0,config.modelId+' collecting a course never reports completion');
+ if(cohort){
+  assert.equal(draft.program.creditSystem,config.creditSystem,config.modelId+' adoption preserves receiving credit units');
+  const estimate=require('./dist/plan-estimate-engine.js').calculate({program:draft.program,plan,rates:require('./dist/data/plan-estimate-rates.json')});
+  assert.equal(estimate.available,true,config.modelId+' needs its reviewed planning estimate: '+JSON.stringify(estimate));
+  assert.equal(estimate.status,'planning-range',config.modelId+' every selected course has a priced baseline');
+  assert.equal(estimate.counts.creditSystem,config.creditSystem,config.modelId+' estimate keeps program credit units');
+  assert.equal(estimate.counts.totalUnits,config.total,config.modelId+' estimate receiving total');assert.equal(estimate.counts.remainingUniversityUnits,config.total-config.outside,config.modelId+' saved original courses do not reduce university balance');
+  assert.equal(estimate.costs.currency,'USD');assert(Number.isFinite(estimate.costs.knownRange.min)&&Number.isFinite(estimate.costs.knownRange.max)&&estimate.costs.knownRange.min>=0&&estimate.costs.knownRange.max>=estimate.costs.knownRange.min,config.modelId+' a finite ordered cost range');
+ }
  for(const row of config.baseline.rows){const actual=plan.rows.find(actual=>actual.requirementId===row.requirementId);assert.equal(actual?.option?.id,row.optionId,config.modelId+' actual chosen option '+row.requirementId);assert.equal(actual.status,'planned',config.modelId+' proposed status '+row.requirementId);}
  return draft;
 }
@@ -75,7 +117,7 @@ function assertAdopted(current,config,original){
 async function run(){
  if(process.argv.includes('--fixtures-only')){
   for(const config of fixtures){const original=seed(),next=Journey.selectRoute(original,config.route,catalog),scenario=Sheet.scenario(next,config.modelId);next.scenarios={...next.scenarios,[config.modelId]:{...scenario,providers:[...new Set([...scenario.providers,...config.baseline.rows.map(row=>row.provider).filter(provider=>provider!=='University')])],optionSelections:Object.fromEntries(config.baseline.rows.map(row=>[row.requirementId,row.optionId]))}};assertAdopted(next,config,original);}
-  console.log('PASS '+fixtures.length+' published fixtures: exact credits, original units, sources, published-only choices and raw Journey readiness.');return;
+  console.log('PASS '+fixtures.length+' published fixtures'+(cohort?' ('+cohort.id+')':'')+': exact credits, original units, sources, published-only choices and raw Journey readiness'+(cohort?', saved-course retention and priced native-unit estimates.':'.'));return;
  }
  const {chromium}=require('playwright'),browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});
  const results=[],pageErrors=[],blockedWrites=[],externalRequests=[];let active,activeConfig;
@@ -104,6 +146,13 @@ async function run(){
     const saved=await active.evaluate(key=>JSON.parse(localStorage.getItem(key)),KEY);assertAdopted(saved,config,original);
     assert.equal(await active.locator('tr.course-plan-row[data-kind="unmapped"],.course-plan-unavailable,.course-plan-pending').count(),0,config.modelId+' no missing-plan screen');
     assert.match(await active.locator('#sheet-footer').innerText(),new RegExp('Degree total: '+config.total+' '));
+    if(cohort){
+     const units=config.creditSystem==='competency-unit'?'competency units':config.creditSystem==='quarter'?'quarter credits':'credits';
+     assert((await active.locator('#sheet-footer').innerText()).includes('Degree total: '+config.total+' '+units),config.modelId+' visible native-unit total');
+     await active.waitForFunction(()=>{const amount=document.querySelector('[data-summary-cost]')?.textContent||'';return /\$[\d,]/.test(amount);},null,{timeout:30000});
+     assert.match(await active.locator('[data-summary-cost-label]').innerText(),/Planning estimate/i,config.modelId+' reviewed estimate is visible');
+     assert.match(await active.locator('[data-summary-cost-basis]').innerText(),/Before aid/i,config.modelId+' estimate retains aid scope');
+    }
     assert.equal(await active.locator('[role="progressbar"][aria-label="Finished degree coursework"]').getAttribute('aria-valuenow'),'0',config.modelId+' saved courses do not appear finished');
     const dimensions=await active.evaluate(()=>({viewport:innerWidth,document:document.documentElement.scrollWidth,body:document.body.scrollWidth}));assert(dimensions.document<=width+1&&dimensions.body<=width+1,config.modelId+' no page overflow at '+width+'px: '+JSON.stringify(dimensions));
     const next=active.locator('[aria-label="Your next action"]:visible a[href],.sheet-glance-next:visible').first();await next.waitFor();const label=(await next.innerText()).trim(),href=await next.getAttribute('href');assert(label&&href,config.modelId+' a named next action');assert.equal(new URL(href,ORIGIN).origin,ORIGIN,config.modelId+' next action stays in the student flow');const box=await next.boundingBox();assert(box&&box.width>50&&box.height>=32,config.modelId+' next action has a usable click target');
@@ -114,18 +163,18 @@ async function run(){
     else await active.locator('main a[href]:visible,main button:visible,main input:visible').first().waitFor();
     assert.equal(await active.locator('#sheet-error:visible,#portal-error:visible,.course-plan-unavailable:visible,.course-plan-pending:visible').count(),0,config.modelId+' next action opens without a blocker');
     const after=await active.evaluate(key=>JSON.parse(localStorage.getItem(key)),KEY);assert.deepEqual(after.learning,original.learning,config.modelId+' next action preserves courses');assert.deepEqual(after.sheet.notes,original.sheet.notes,config.modelId+' next action preserves notes');
-    results.push({modelId:config.modelId,routeId:config.route.id,width,credits:config.total,outside:config.outside,baselineSelection:config.baseline.baselineSelection?.selected||'default',next:{label,href},status:'passed'});console.log('PASS '+config.modelId+' '+width+'px');
+    results.push({modelId:config.modelId,routeId:config.route.id,width,credits:config.total,outside:config.outside,...(config.creditSystem?{creditSystem:config.creditSystem}:{}),baselineSelection:config.baseline.baselineSelection?.selected||'default',next:{label,href},status:'passed'});console.log('PASS '+config.modelId+' '+width+'px');
    }catch(error){
     if(active&&!active.isClosed()){await active.screenshot({path:path.join(OUT,'failure.png'),animations:'disabled'}).catch(()=>{});await fs.writeFile(path.join(OUT,'failure-body.txt'),(await active.locator('body').innerText().catch(()=>'')).slice(0,18000));}
     throw error;
    }finally{await context.close();active=null;}
   }
   assert.equal(results.length,expectedFlows,'All '+fixtures.length+' desktop and '+mobileFlows+' representative mobile flows execute');assert.equal(pageErrors.length,0,'No uncaught page errors: '+JSON.stringify(pageErrors));
-  await fs.writeFile(path.join(OUT,'report.json'),JSON.stringify({syntheticOnly:true,realAccountWrites:0,externalRequestsDelivered:0,localAssetsOnly:true,publicAdoption:'portal.html?usePlan=<routeId>',desktopFlows:fixtures.length,mobileFlows,expectedFlows,registryRevision:publication.registryRevision,asOf:publication.asOf,results,pageErrors,blockedWrites,externalRequests},null,2)+'\n');console.log('PASS '+expectedFlows+' public-adoption browser journeys; no real account writes.');
+  await fs.writeFile(path.join(OUT,'report.json'),JSON.stringify({syntheticOnly:true,realAccountWrites:0,externalRequestsDelivered:0,localAssetsOnly:true,...(cohort?{cohortId:cohort.id}:{}),publicAdoption:'portal.html?usePlan=<routeId>',desktopFlows:fixtures.length,mobileFlows,expectedFlows,registryRevision:publication.registryRevision,asOf:publication.asOf,results,pageErrors,blockedWrites,externalRequests},null,2)+'\n');console.log('PASS '+expectedFlows+' public-adoption browser journeys; no real account writes.');
  }catch(error){
   if(active&&!active.isClosed()){await active.screenshot({path:path.join(OUT,'failure.png'),animations:'disabled'}).catch(()=>{});await fs.writeFile(path.join(OUT,'failure-body.txt'),(await active.locator('body').innerText().catch(()=>'')).slice(0,18000));}
   await fs.writeFile(path.join(OUT,'failure.json'),JSON.stringify({case:activeConfig,message:String(error.message).slice(0,1500),pageErrors,results,blockedWrites},null,2)+'\n');throw error;
  }finally{await browser.close();}
 }
 if(require.main===module)run().catch(error=>{console.error(String(error.stack||error).slice(0,5000));process.exitCode=1;});
-module.exports={fixtures,seed,assertAdopted};
+module.exports={fixtures,seed,assertAdopted,readCohortFixture};

@@ -6,6 +6,19 @@ import {loadTransferCourses,renderTransferCourse,transferPath} from './transfer-
 const dist=resolve(import.meta.dirname,'../dist');
 const courses=await loadTransferCourses(dist);
 
+test('published course URLs survive exact-title variants without changing academic titles or other identities',()=>{
+ for(const [code,numeral]of[['SOPH-0022','I'],['SOPH-0025','II']]){
+  const expected='/transfer/sophia/'+code.toLowerCase()+'-u-s-history-'+numeral.toLowerCase()+'/';
+  for(const title of['U.S. History '+numeral,'US History '+numeral,'United States History '+numeral]){
+   const course={provider:'Sophia',code,title};
+   assert.equal(transferPath(course.provider,course.code,course.title),expected);
+   assert.equal(course.title,title,'Stable URL selection never rewrites source titles');
+  }
+ }
+ assert.equal(transferPath('Study.com','SOPH-0022','US History I'),'/transfer/study-com/soph-0022-us-history-i/','An identical code at a different provider is a different identity');
+ assert.equal(transferPath('Sophia','SOPH-0012','Macroeconomics'),'/transfer/sophia/soph-0012-macroeconomics/','Other published paths retain their current rules');
+});
+
 test('every listed match is an official published receiving-school equivalency with a source',async()=>{
  assert.ok(courses.length>50);
  const index=JSON.parse(await readFile(resolve(dist,'data/plan-library-index.json'),'utf8'));

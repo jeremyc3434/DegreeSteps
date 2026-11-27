@@ -31,22 +31,23 @@ export function assertTESUBusinessCourseBody(spec,code,body){
 
 export async function buildReviewedTESUBusinessProgram(spec,courseIndex){
  const manifest=authoringRoster.find(entry=>entry.slug===spec.slug);assert(manifest,'Only explicitly reviewed current business majors are authored by this stage');
+ const reviewedOn=manifest.authoringReview.reviewedOn;
  const capture=manifest.sourceRefs.degree.capture,meta=await read(capture.replace(/\.txt$/,'.json'));
  assert.equal(meta.url,spec.url,spec.slug+': immutable degree capture is bound to the independently reviewed exact primary URL');
- const degree=await reviewedTESUBusinessSource({id:manifest.sourceRefs.degree.sourceId,title:spec.title+' — current exact curriculum',url:meta.url,checked:TESU_BUSINESS_REVIEW_DATE,capture,kind:'university',roles:['curriculum','degree-placement','program-policy']});
- const {requirements:blocks,modelFields,modelSourceIds,policies}=await createTESUBusinessBlocks({slug:spec.slug,title:spec.title,degreeSource:degree.source,degreeBody:degree.body});
+ const degree=await reviewedTESUBusinessSource(manifest.authoring.degreeSource||{id:manifest.sourceRefs.degree.sourceId,title:spec.title+' — current exact curriculum',url:meta.url,checked:reviewedOn,capture,kind:'university',roles:['curriculum','degree-placement','program-policy']},{reviewedOn});
+ const {requirements:blocks,modelFields,modelSourceIds,policies}=await createTESUBusinessBlocks({slug:spec.slug,title:spec.title,degreeSource:degree.source,degreeBody:degree.body,reviewedOn,areaUpperCredits:spec.areaUpperCredits??18});
  const sources=[degree.source],area=[];
  const priceBinding=buildTESUBusinessTuitionBinding({modelId:'curriculum-tesu-'+spec.slug,catalogIdentity:modelFields.catalogIdentity},await loadTESUBusinessPriceBasis());
  modelFields.tuitionComparison=priceBinding.tuitionComparison;sources.push(...priceBinding.sources);
  for(const [index,[code,title]]of spec.areaCourses.entries()){
   const entry=courseIndex.courses.find(entry=>entry.code===code);assert(entry?.source,code+': retain the individual primary course body before authoring');
   const binding=manifest.authoring.courseBindings.find(binding=>binding.code===code);assert(binding,code+': explicit reviewed course source binding');assert.deepEqual(entry.source,binding.source,code+': exact current primary course page and capture, including published URL aliases');assert.equal(entry.credits,binding.credits,code+': exact original university quantity');
-  const course=await reviewedTESUBusinessSource(entry.source);assertTESUBusinessCourseBody(spec,code,course.body);sources.push(course.source);
+  const course=await reviewedTESUBusinessSource(entry.source,{reviewedOn});assertTESUBusinessCourseBody(spec,code,course.body);sources.push(course.source);
   assert(norm(course.body).includes(norm(code+' '+title)),code+': the retained course body names this exact University course');
   assert.equal(entry.credits,3,code+': reviewed original University quantity');
   assert(Array.isArray(entry.deliveryMethods)&&entry.deliveryMethods.length&&norm(course.body).includes(norm('Delivery Methods '+entry.deliveryMethods.join(' '))),code+': all published delivery methods are bound to the complete primary body');
   const quote=code+' '+title+' 3';assert(norm(degree.body).includes(norm(quote)),code+': degree independently permits this exact three-credit area course');
-  const r={id:codeId(code),code,title,credits:3,category:'major',group:'area-of-study',subgroup:'area-of-study',upper:true,institutionalOnly:false,sourceIds:[degree.source.id,course.source.id],minimumGrade:'C',minimumGradeSourceIds:copy(modelFields.gradePolicy.sourceIds),gradePolicyNote:'C or better in the business area of study.',curriculumBlock:index<spec.requiredCount?'required-area':'selected-area',quotes:[{sourceId:degree.source.id,text:quote}]};
+  const r={id:codeId(code),code,title,credits:3,category:'major',group:'area-of-study',subgroup:'area-of-study',upper:spec.areaUpperCodes?spec.areaUpperCodes.includes(code):true,institutionalOnly:false,sourceIds:[degree.source.id,course.source.id],minimumGrade:'C',minimumGradeSourceIds:copy(modelFields.gradePolicy.sourceIds),gradePolicyNote:'C or better in the business area of study.',curriculumBlock:index<spec.requiredCount?'required-area':'selected-area',quotes:[{sourceId:degree.source.id,text:quote}]};
   if(spec.prerequisites?.[code]?.length){r.prerequisites=spec.prerequisites[code].map(codeId);r.prerequisiteSourceIds=[course.source.id];}
   if(spec.prerequisiteNotes?.[code])r.prerequisiteNotes=spec.prerequisiteNotes[code];
   if(spec.originalPrerequisiteCodes?.[code])r.originalPrerequisiteCodes=copy(spec.originalPrerequisiteCodes[code]);
@@ -63,11 +64,11 @@ export async function buildReviewedTESUBusinessProgram(spec,courseIndex){
  modelFields.existingCreditReview.groups[0].requirementIds=area.map(r=>r.id);
  const freeAt=modelFields.curriculumSections.findIndex(section=>section.parentId==='elective');
  modelFields.curriculumSections.splice(freeAt,0,...[
-  {id:'tesu-'+spec.slug+'-required',title:'Required '+spec.shortName+' Courses',parentId:'major',requirementIds:area.slice(0,spec.requiredCount).map(r=>r.id),sourceId:degree.source.id},
-  {id:'tesu-'+spec.slug+'-selected',title:spec.shortName+' Electives',parentId:'major',requirementIds:area.slice(spec.requiredCount).map(r=>r.id),sourceId:degree.source.id}
+  ...(spec.requiredCount?[{id:'tesu-'+spec.slug+'-required',title:'Required '+spec.shortName+' Courses',parentId:'major',requirementIds:area.slice(0,spec.requiredCount).map(r=>r.id),sourceId:degree.source.id}]:[]),
+  ...(spec.requiredCount<area.length?[{id:'tesu-'+spec.slug+'-selected',title:spec.shortName+' Electives',parentId:'major',requirementIds:area.slice(spec.requiredCount).map(r=>r.id),sourceId:degree.source.id}]:[])
  ]);
  const requirements=[...blocks.filter(r=>!r.freeElective),...area,...blocks.filter(r=>r.freeElective)];
- const program={kind:'pathway-kit-program',version:1,slug:spec.slug,modelId:'curriculum-tesu-'+spec.slug,routeIds:['tesu-'+spec.slug],title:spec.title,level:'bachelor',catalog:TESU_BUSINESS_CATALOG,totalCredits:120,modalities:['online'],review:{status:'reviewed',reviewer:'DegreeSteps source review',reviewedOn:TESU_BUSINESS_REVIEW_DATE,method:'Exact primary degree and individual course bodies; shared curriculum blocks independently re-proven. Outside eligibility and placement are reviewed separately.'},policies,modelFields,modelSourceIds:unique([...modelSourceIds,...sources.map(s=>s.id),...sourceRefs(requirements).map(ref=>ref.id)]),requirements};
+ const program={kind:'pathway-kit-program',version:1,slug:spec.slug,modelId:'curriculum-tesu-'+spec.slug,routeIds:['tesu-'+spec.slug],title:spec.title,level:'bachelor',catalog:TESU_BUSINESS_CATALOG,totalCredits:120,modalities:['online'],review:{status:'reviewed',reviewer:'DegreeSteps source review',reviewedOn,method:'Exact primary degree and individual course bodies; shared curriculum blocks independently re-proven. Outside eligibility and placement are reviewed separately.'},policies,modelFields,modelSourceIds:unique([...modelSourceIds,...sources.map(s=>s.id),...sourceRefs(requirements).map(ref=>ref.id)]),requirements};
  return {program,sources,degree};
 }
 
@@ -89,17 +90,16 @@ export function assertTESUBusinessAcademicParity(actual,expected,knownSourceIds)
  assert(expected.modelSourceIds.every(id=>actual.modelSourceIds.includes(id)),expected.slug+': all primary curriculum and policy sources remain');
  assert(actual.modelSourceIds.every(id=>knownSourceIds.has(id)),expected.slug+': enrichment sources exist in the reviewed source registry');
  assert(expected.modelFields.sourceIds.every(id=>actual.modelFields.sourceIds?.includes(id))&&actual.modelFields.sourceIds.every(id=>knownSourceIds.has(id)),expected.slug+': exact primary model source scope');
- if(actual.modelFields.tuitionComparison){const c=actual.modelFields.tuitionComparison;assert.equal(c.modelId,expected.modelId);assert.deepEqual(c.catalogIdentity,actual.modelFields.catalogIdentity);assert.equal(c.checkedOn,TESU_BUSINESS_REVIEW_DATE);assert(c.pricingSourceIds?.length&&c.pricingSourceIds.every(id=>knownSourceIds.has(id)),expected.slug+': source-bound independent pricing review');}
+ if(actual.modelFields.tuitionComparison){const c=actual.modelFields.tuitionComparison;assert.equal(c.modelId,expected.modelId);assert.deepEqual(c.catalogIdentity,actual.modelFields.catalogIdentity);assert.equal(c.checkedOn,expected.modelFields.catalogIdentity.checkedOn);assert(c.pricingSourceIds?.length&&c.pricingSourceIds.every(id=>knownSourceIds.has(id)),expected.slug+': source-bound independent pricing review');}
 }
 
 export async function authorTESUBusinessPrograms({check=false}={}){
- const courseIndex=await read('content/pathway-kits/tesu/business-course-sources-2026-11-26.json');
- assert.equal(courseIndex.checkedOn,TESU_BUSINESS_REVIEW_DATE);
- const builds=[];for(const entry of authoringRoster)builds.push(await buildReviewedTESUBusinessProgram(entry.authoring.spec,courseIndex));
+ const builds=[];for(const entry of authoringRoster){const packet=await read(entry.authoring.courseSourcePath||'content/pathway-kits/tesu/business-course-sources-2026-11-26.json'),courseIndex=packet.courseIndex||packet;assert.equal(courseIndex.checkedOn,entry.authoringReview.reviewedOn);builds.push(await buildReviewedTESUBusinessProgram(entry.authoring.spec,courseIndex));}
  const school=await read('content/pathway-kits/tesu/school.json');
  for(const build of builds)for(const source of build.sources){const at=school.sources.findIndex(s=>s.id===source.id);if(at<0)school.sources.push(source);else assert.deepEqual(school.sources[at],source,source.id+': immutable primary business source record');}
  for(const {program}of builds){if(!school.programOrder.includes(program.slug))school.programOrder.push(program.slug);const path=authoringRoster.find(entry=>entry.slug===program.slug).outputPath;
-  const publication={path,programs:[program.slug],checkedOn:TESU_BUSINESS_REVIEW_DATE,sources:false,routes:[{id:program.routeIds[0],title:program.title,school:school.name,schoolId:'tesu',level:'bachelor',modalities:['online'],field:'business',fields:['business'],goals:['any-degree','career-growth','change-career'],paceModel:'course-term',url:program.modelFields.catalogIdentity.sourceUrl,sourceId:program.modelFields.catalogIdentity.sourceId,degreeCredits:120,creditUnit:'semester',status:'listed',checkedOn:TESU_BUSINESS_REVIEW_DATE}]};
+  const manifest=authoringRoster.find(entry=>entry.slug===program.slug),reviewedOn=manifest.authoringReview.reviewedOn;
+  const publication={path,programs:[program.slug],checkedOn:reviewedOn,sources:false,routes:[{id:program.routeIds[0],title:program.title,school:school.name,schoolId:'tesu',level:'bachelor',modalities:['online'],...(manifest.discovery||{field:'business',fields:['business']}),goals:['any-degree','career-growth','change-career'],paceModel:'course-term',url:program.modelFields.catalogIdentity.sourceUrl,sourceId:program.modelFields.catalogIdentity.sourceId,degreeCredits:120,creditUnit:'semester',status:'listed',checkedOn:reviewedOn}]};
   const at=school.publish.documents.findIndex(d=>d.path===path);if(at<0)school.publish.documents.push(publication);else assert.deepEqual(school.publish.documents[at],publication,program.slug+': exact canonical publication declaration');
  }
  const kit=await loadKit('content/pathway-kits/tesu'),knownSourceIds=new Set([...school.sources.map(s=>s.id),...sourceIndex(kit).keys()]),writes=[];

@@ -13,7 +13,9 @@
     "ba-psychology",
     "bsba-human-resources-organizational-management",
     "bsba-marketing",
-    "bs-general-management"
+    "bs-general-management",
+    "bs-healthcare-management",
+    "bs-computer-information-systems"
   ],
   "programDefaults": {
     "format": "Online",
@@ -308,6 +310,80 @@
             "creditUnit": "semester",
             "status": "listed",
             "checkedOn": "2026-11-26"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/tesu-healthcare-management.json",
+        "programs": [
+          "bs-healthcare-management"
+        ],
+        "checkedOn": "2026-11-27",
+        "sources": false,
+        "routes": [
+          {
+            "id": "tesu-bs-healthcare-management",
+            "title": "B.S. in Healthcare Management",
+            "school": "Thomas Edison State University",
+            "schoolId": "tesu",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "health",
+            "fields": [
+              "health",
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-healthcare-management/",
+            "sourceId": "tesu-bs-healthcare-management-current-2026-11-27",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-27"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/tesu-computer-information-systems.json",
+        "programs": [
+          "bs-computer-information-systems"
+        ],
+        "checkedOn": "2026-11-27",
+        "sources": false,
+        "routes": [
+          {
+            "id": "tesu-bs-computer-information-systems",
+            "title": "B.S. in Computer Information Systems",
+            "school": "Thomas Edison State University",
+            "schoolId": "tesu",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "technology",
+            "fields": [
+              "technology",
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-computer-information-systems/",
+            "sourceId": "tesu-bs-computer-information-systems-current-2026-11-27",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-27"
           }
         ]
       }
@@ -3150,6 +3226,291 @@
         "sha256": "5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5",
         "citationRef": "turn662view8",
         "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/fin-finance/3000/fin-3340"
+      }
+    },
+    {
+      "id": "tesu-bs-healthcare-management-current-2026-11-27",
+      "title": "B.S. in Healthcare Management — current primary degree curriculum",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-healthcare-management/",
+      "checked": "2026-11-27",
+      "capture": "content/source-captures/fdccee821a974d6d.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "degree-placement",
+        "program-policy"
+      ],
+      "captureFormat": "connected-web-rendered-extract",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/b746a4d4e1950ef92bf363efe65dd53daddc347d97ca8876b77e5468a3ec0073.json",
+        "sha256": "b746a4d4e1950ef92bf363efe65dd53daddc347d97ca8876b77e5468a3ec0073",
+        "citationRef": "turn716view0",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-healthcare-management/"
+      },
+      "sha256": "fdccee821a974d6d555222cd5a5760ce2ec560f24277f991dfffbe87e2fc28c3",
+      "sourceContentHash": "fdccee821a974d6d555222cd5a5760ce2ec560f24277f991dfffbe87e2fc28c3"
+    },
+    {
+      "id": "tesu-healthcare-course-hcm-3070-20261127",
+      "title": "HCM-3070 Principles of Healthcare Management — current primary course and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/hcm-healthcare-management/3000/hcm-3070",
+      "checked": "2026-11-27",
+      "capture": "content/source-captures/964da7b78529914e.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "prerequisite",
+        "course-delivery"
+      ],
+      "captureFormat": "connected-web-rendered-extract",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/2414021157c2dc630eb0bbaffd59611ebfe9322bc78618ccc9ea2db8f99ef0d3.json",
+        "sha256": "2414021157c2dc630eb0bbaffd59611ebfe9322bc78618ccc9ea2db8f99ef0d3",
+        "citationRef": "turn718view0",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/hcm-healthcare-management/3000/hcm-3070"
+      },
+      "sha256": "964da7b78529914e7d9d9dd8c8f9226747d6c1d2bb13dcb64539f16b5eef7d9c",
+      "sourceContentHash": "964da7b78529914e7d9d9dd8c8f9226747d6c1d2bb13dcb64539f16b5eef7d9c"
+    },
+    {
+      "id": "tesu-healthcare-course-hcm-3080-20261127",
+      "title": "HCM-3080 Healthcare Legal and Ethical Considerations — current primary course and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/hcm-healthcare-management/3000/hcm-308",
+      "checked": "2026-11-27",
+      "capture": "content/source-captures/11cf44851f39e334.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "prerequisite",
+        "course-delivery"
+      ],
+      "captureFormat": "connected-web-rendered-extract",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/2414021157c2dc630eb0bbaffd59611ebfe9322bc78618ccc9ea2db8f99ef0d3.json",
+        "sha256": "2414021157c2dc630eb0bbaffd59611ebfe9322bc78618ccc9ea2db8f99ef0d3",
+        "citationRef": "turn718view1",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/hcm-healthcare-management/3000/hcm-308"
+      },
+      "sha256": "11cf44851f39e33431cdbb16132033ee8387aa703c33d2a4f4f4350aa768f082",
+      "sourceContentHash": "11cf44851f39e33431cdbb16132033ee8387aa703c33d2a4f4f4350aa768f082"
+    },
+    {
+      "id": "tesu-healthcare-course-hcm-3530-20261127",
+      "title": "HCM-3530 Comparative Healthcare Systems — current primary course and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/hcm-healthcare-management/3000/hcm-3530",
+      "checked": "2026-11-27",
+      "capture": "content/source-captures/bdfbc952316faaba.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "prerequisite",
+        "course-delivery"
+      ],
+      "captureFormat": "connected-web-rendered-extract",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/bbd6dda067806c597d540228b734422f6f6c461b352033a0f3682874590142ba.json",
+        "sha256": "bbd6dda067806c597d540228b734422f6f6c461b352033a0f3682874590142ba",
+        "citationRef": "turn717view0",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/hcm-healthcare-management/3000/hcm-3530"
+      },
+      "sha256": "bdfbc952316faabae2af7a2328fa9233373818d6a5e70b8091730bc8e691282a",
+      "sourceContentHash": "bdfbc952316faabae2af7a2328fa9233373818d6a5e70b8091730bc8e691282a"
+    },
+    {
+      "id": "tesu-healthcare-course-hcm-4040-20261127",
+      "title": "HCM-4040 Healthcare Quality and Outcomes: Measurement and Management — current primary course and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/hcm-healthcare-management/4000/hcm-4040",
+      "checked": "2026-11-27",
+      "capture": "content/source-captures/3770835b9e524262.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "prerequisite",
+        "course-delivery"
+      ],
+      "captureFormat": "connected-web-rendered-extract",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/bbd6dda067806c597d540228b734422f6f6c461b352033a0f3682874590142ba.json",
+        "sha256": "bbd6dda067806c597d540228b734422f6f6c461b352033a0f3682874590142ba",
+        "citationRef": "turn717view1",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/hcm-healthcare-management/4000/hcm-4040"
+      },
+      "sha256": "3770835b9e524262b250a2755a84d44a512b41dfcc6ecebc5f9381887f92b782",
+      "sourceContentHash": "3770835b9e524262b250a2755a84d44a512b41dfcc6ecebc5f9381887f92b782"
+    },
+    {
+      "id": "tesu-healthcare-course-hcm-4050-20261127",
+      "title": "HCM-4050 The Financing and Economics of Healthcare Delivery — current primary course and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/hcm-healthcare-management/4000/hcm-4050",
+      "checked": "2026-11-27",
+      "capture": "content/source-captures/1e2300be16c27bcd.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "prerequisite",
+        "course-delivery"
+      ],
+      "captureFormat": "connected-web-rendered-extract",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/4c39842360059683002f4307365f78590b340a569edeebc8362a593a4b170939.json",
+        "sha256": "4c39842360059683002f4307365f78590b340a569edeebc8362a593a4b170939",
+        "citationRef": "turn719view0",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/hcm-healthcare-management/4000/hcm-4050"
+      },
+      "sha256": "1e2300be16c27bcdd564d26c8378412ea803d07df2284400c9987d4748adff6d",
+      "sourceContentHash": "1e2300be16c27bcdd564d26c8378412ea803d07df2284400c9987d4748adff6d"
+    },
+    {
+      "id": "tesu-healthcare-course-hcm-4060-20261127",
+      "title": "HCM-4060 Human Resources Management for Healthcare Organizations — current primary course and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/hcm-healthcare-management/4000/hcm-4060",
+      "checked": "2026-11-27",
+      "capture": "content/source-captures/f6c024a267eb122f.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "prerequisite",
+        "course-delivery"
+      ],
+      "captureFormat": "connected-web-rendered-extract",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/4c39842360059683002f4307365f78590b340a569edeebc8362a593a4b170939.json",
+        "sha256": "4c39842360059683002f4307365f78590b340a569edeebc8362a593a4b170939",
+        "citationRef": "turn719view1",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/hcm-healthcare-management/4000/hcm-4060"
+      },
+      "sha256": "f6c024a267eb122fcbd313b7739dac3efe685b695029f8da9f33140dda238e80",
+      "sourceContentHash": "f6c024a267eb122fcbd313b7739dac3efe685b695029f8da9f33140dda238e80"
+    },
+    {
+      "id": "tesu-bs-computer-information-systems-current-2026-11-27",
+      "title": "B.S. in Computer Information Systems — current exact curriculum",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-computer-information-systems/",
+      "checked": "2026-11-27",
+      "capture": "content/source-captures/933c3904a0a0086e.txt",
+      "sha256": "933c3904a0a0086e9b66178cd5cceac16c8f0664046adab1ac84f29bf28b2190",
+      "sourceContentHash": "933c3904a0a0086e9b66178cd5cceac16c8f0664046adab1ac84f29bf28b2190",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn712view0",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/bf9f82afecc33259b2e784356c0c96bf497ab02c8b2aea8a575f095f60d8db28.json",
+        "sha256": "bf9f82afecc33259b2e784356c0c96bf497ab02c8b2aea8a575f095f60d8db28",
+        "citationRef": "turn712view0",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-computer-information-systems/"
+      },
+      "roles": [
+        "curriculum",
+        "degree-placement",
+        "program-policy"
+      ]
+    },
+    {
+      "id": "tesu-cis-course-cos-1160-20261127",
+      "title": "TESU current COS-1160 C Programming",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cos-computer-science/1000/cos-1160",
+      "checked": "2026-11-27",
+      "capture": "content/source-captures/d8677c85fcbc17cf.txt",
+      "sha256": "d8677c85fcbc17cf9d25e783b5c197813d7279a876249eac3d4ab8dbade728eb",
+      "sourceContentHash": "d8677c85fcbc17cf9d25e783b5c197813d7279a876249eac3d4ab8dbade728eb",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn720view0",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/fdb806a654ec465e0888d2b956a3320e4b09badce372bcefed098739bd5587f0.json",
+        "sha256": "fdb806a654ec465e0888d2b956a3320e4b09badce372bcefed098739bd5587f0",
+        "citationRef": "turn720view0",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cos-computer-science/1000/cos-1160"
+      }
+    },
+    {
+      "id": "tesu-cis-course-cis-3200-20261127",
+      "title": "TESU current CIS-3200 System Analysis and Design I",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cis-computer-information-systems/3000/cis-3200",
+      "checked": "2026-11-27",
+      "capture": "content/source-captures/bd47f25fdf15faa6.txt",
+      "sha256": "bd47f25fdf15faa64c377cc541fbb95681a018bffe89f50ec9cb94e20e6cbe94",
+      "sourceContentHash": "bd47f25fdf15faa64c377cc541fbb95681a018bffe89f50ec9cb94e20e6cbe94",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn720view1",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/fdb806a654ec465e0888d2b956a3320e4b09badce372bcefed098739bd5587f0.json",
+        "sha256": "fdb806a654ec465e0888d2b956a3320e4b09badce372bcefed098739bd5587f0",
+        "citationRef": "turn720view1",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cis-computer-information-systems/3000/cis-3200"
+      }
+    },
+    {
+      "id": "tesu-cis-course-cos-2410-20261127",
+      "title": "TESU current COS-2410 Data Structures",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cos-computer-science/200/cos-2410",
+      "checked": "2026-11-27",
+      "capture": "content/source-captures/dfef6b08054a44b2.txt",
+      "sha256": "dfef6b08054a44b23472d2501c93ea720cbf4401033a679ebb1bd07f7207f449",
+      "sourceContentHash": "dfef6b08054a44b23472d2501c93ea720cbf4401033a679ebb1bd07f7207f449",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn720view2",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/fdb806a654ec465e0888d2b956a3320e4b09badce372bcefed098739bd5587f0.json",
+        "sha256": "fdb806a654ec465e0888d2b956a3320e4b09badce372bcefed098739bd5587f0",
+        "citationRef": "turn720view2",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cos-computer-science/200/cos-2410"
+      }
+    },
+    {
+      "id": "tesu-cis-course-cis-3110-20261127",
+      "title": "TESU current CIS-3110 Database Management",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cis-computer-information-systems/3000/cis-3110",
+      "checked": "2026-11-27",
+      "capture": "content/source-captures/e517c07e0269eb21.txt",
+      "sha256": "e517c07e0269eb212c01175fc0185d1eca646c19b67df4a82319b1c34a429b99",
+      "sourceContentHash": "e517c07e0269eb212c01175fc0185d1eca646c19b67df4a82319b1c34a429b99",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn720view3",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/fdb806a654ec465e0888d2b956a3320e4b09badce372bcefed098739bd5587f0.json",
+        "sha256": "fdb806a654ec465e0888d2b956a3320e4b09badce372bcefed098739bd5587f0",
+        "citationRef": "turn720view3",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cis-computer-information-systems/3000/cis-3110"
+      }
+    },
+    {
+      "id": "tesu-business-course-cis-3010-20261126",
+      "title": "TESU current CIS-3010 Management Information Systems",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cis-computer-information-systems/3000/cis-3010",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/e96b04f6b2f07d9b.txt",
+      "sha256": "e96b04f6b2f07d9b4d92bca3310c0a2a9830c77a56a9ca805526521a5fc93c77",
+      "sourceContentHash": "e96b04f6b2f07d9b4d92bca3310c0a2a9830c77a56a9ca805526521a5fc93c77",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn664view1",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/c8b1fbc7214b6082a9d5175bf96e3d253205e916dfbd9a06bfba7d42d3559e35.json",
+        "sha256": "c8b1fbc7214b6082a9d5175bf96e3d253205e916dfbd9a06bfba7d42d3559e35",
+        "citationRef": "turn664view1",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cis-computer-information-systems/3000/cis-3010"
+      }
+    },
+    {
+      "id": "tesu-cis-course-cis-3510-20261127",
+      "title": "TESU current CIS-3510 Software Engineering",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cis-computer-information-systems/3000/cis-3510",
+      "checked": "2026-11-27",
+      "capture": "content/source-captures/37c886ec29eb360a.txt",
+      "sha256": "37c886ec29eb360aefdfd5eb04f019261573da717ed1475ff3dd103951d2349d",
+      "sourceContentHash": "37c886ec29eb360aefdfd5eb04f019261573da717ed1475ff3dd103951d2349d",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn726view0",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/01100ed8dd6262449490dacd822abaaccd737f8ed77f3be02107e3039d52e7da.json",
+        "sha256": "01100ed8dd6262449490dacd822abaaccd737f8ed77f3be02107e3039d52e7da",
+        "citationRef": "turn726view0",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/cis-computer-information-systems/3000/cis-3510"
       }
     }
   ]

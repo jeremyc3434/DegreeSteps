@@ -27,7 +27,14 @@ const interdisciplinaryAAAwards=new Set([
  'liberty-online-baseline-soph-0001-to-math-121',
  'liberty-online-baseline-sdcm-0047-to-cstu-101'
 ]);
-const currentDataAsOf='2026-11-26'; // Evaluation time, not a rewrite of Liberty catalog/source dates.
+const currentDataAsOf='2026-11-27'; // Current reviewed cohort; original Liberty catalog/source dates remain unchanged.
+const cognateDocuments=[
+  'content/curricula/liberty-psychology-criminal-psychology-online.json',
+  'content/curricula/liberty-psychology-developmental-psychology-online.json',
+  'content/curricula/liberty-psychology-christian-counseling-online.json',
+  'content/curricula/liberty-psychology-crisis-counseling-online.json',
+  'content/curricula/liberty-psychology-military-resilience-online.json'
+];
 const registry=await readJSON(resolve(root,'dist/data/curriculum-registry.json'));
 const guards=(await import('./content/pathway-kits/liberty/guards.mjs')).checks,guard=name=>guards.find(check=>check.name===name);
 const outsideOptions=models=>models.reduce((n,m)=>n+m.requirements.reduce((k,r)=>k+r.options.filter(o=>o.provider!=='University').length,0),0);
@@ -50,11 +57,11 @@ test('compile(kit) reproduces every Liberty registry model exactly: 13 models, f
   assert.equal(result.status,0,result.stderr||result.stdout);
 });
 
-test('the Liberty kit is the source of truth: it verifies, passes its guards and publishes its four documents exactly',async()=>{
+test('the Liberty kit verifies, passes its guards and publishes its legacy and new cognate documents exactly',async()=>{
   const result=await verifyKit(kit,{asOf:currentDataAsOf});
   assert.deepEqual(result.errors,[]);
   assert.equal(await runGuards(kit,doc),guards.length);assert.ok(guards.length>=10);
-  assert.deepEqual(documents.map(d=>d.path),[...files.map(name=>'content/curricula/'+name+'.json'),'content/curricula/liberty-pathway-kit.json']);
+  assert.deepEqual(documents.map(d=>d.path),[...files.map(name=>'content/curricula/'+name+'.json'),...cognateDocuments,'content/curricula/liberty-pathway-kit.json']);
   for(const {path,doc:published}of documents){
     assert.equal(published.compiledBy,'pathway-factory',path);
     assert.equal(published.sources,undefined,'each model carries exactly its own sources: '+path);
@@ -91,6 +98,10 @@ test('institution-wide rows are never wider than the data and reuse one award ac
   const rows=kit.equivalencies.equivalencies,wide=rows.filter(row=>row.scope.all);
   const placements=new Map(),rowIndex=new Map(rows.map(row=>[row.id,row])),supersessions=[];
   const reviewedPrograms=['history-bs-online','human-services-bs-online','psychology-addictions-online'];
+  const newCognates=['psychology-criminal-psychology-online','psychology-developmental-psychology-online','psychology-christian-counseling-online','psychology-crisis-counseling-online','psychology-military-resilience-online'];
+  const sharedCodes=new Set(['HIUS 221','ENGL 102','BUSI 302','BUSI 304','BUSI 311','BUSI 419','PSYC 380','PSYC 312','ENGL 101','COMS 101','ETHC 101','BIOL 102','PSYC 101','MATH 121','ARTS 209','PSYC 210','CSTU 101','PSYC 255','PSYC 430','PSYC 365']);
+  const exactCognates=row=>sharedCodes.has(row.receivingCode)?newCognates:row.receivingCode==='HIUS 222'?newCognates.slice(1):['ARTS 201','ARTS 202'].includes(row.receivingCode)?newCognates.slice(2):[];
+
   const campusReviewId='liberty-residential-psychology-baseline-2026-11-25';
   const reviewedCampusSupersessions=[
     ['sophia-soph-0015-to-engl-101-2','engl-101'],
@@ -162,7 +173,7 @@ test('institution-wide rows are never wider than the data and reuse one award ac
         assert.equal(model.reviewedBaselineChoices.optionSelections[req.id],option.id);supersessions.push(key);continue;
       }
       const includesAssociate=interdisciplinaryAAAwards.has(candidate.id);
-      assert.deepEqual(candidate.scope.programs,includesAssociate?[...reviewedPrograms,'interdisciplinary-aa-online']:reviewedPrograms);assert.deepEqual(candidate.scope.levels,includesAssociate?['bachelor','associate']:['bachelor']);assert.deepEqual(candidate.scope.modalities,['online']);assert.deepEqual(candidate.scope.catalogs,['2026–2027']);
+      const originalScope=includesAssociate?[...reviewedPrograms,'interdisciplinary-aa-online']:reviewedPrograms;assert.deepEqual(candidate.scope.programs.filter(slug=>!newCognates.includes(slug)),originalScope,'Every original scope is retained');assert.deepEqual(candidate.scope.programs.filter(slug=>newCognates.includes(slug)),exactCognates(candidate),'Only separately reviewed exact new cognate placements extend the award');assert.deepEqual(candidate.scope.programs,[...originalScope,...exactCognates(candidate)]);assert.deepEqual(candidate.scope.levels,includesAssociate?['bachelor','associate']:['bachelor']);assert.deepEqual(candidate.scope.modalities,['online']);assert.deepEqual(candidate.scope.catalogs,['2026–2027']);
       assert.equal(option.provider,candidate.provider);assert.equal(option.code,candidate.code);assert.equal(option.receivingCode,candidate.receivingCode);assert.equal(option.credits,candidate.credits);
       assert.equal(option.evidence,'published');assert.equal(option.evidenceType,'official-receiving-school-equivalency');assert.equal(option.mappingResearchClosed,true);assert.match(option.receivingMapStatus,/^published-/);
       const stamp=option.baselineAwardReview,packet=packets.get(stamp?.reviewPath),course=packet?.courses.find(course=>(course.code||course.aceId)===option.code),award=guide.awards.find(award=>award.id===stamp?.receivingAwardId);

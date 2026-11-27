@@ -1,6 +1,6 @@
 {
   "schemaRevision": "plan-estimate-rates-v1",
-  "checkedOn": "2026-11-26",
+  "checkedOn": "2026-11-27",
   "scope": "Selected-course planning ranges; known instructional charges before aid. No complete cost-of-attendance or guaranteed completion claim.",
   "exclusions": [
     "Applicable sales tax on course subscriptions.",
@@ -1541,6 +1541,54 @@
       "capture": "content/source-captures/905aab91cfb56d18.txt",
       "sha256": "905aab91cfb56d18371cfdce63811df4844d2ff9826aa625b2737acecfc13b63",
       "sourceContentHash": "sha256:905aab91cfb56d18371cfdce63811df4844d2ff9826aa625b2737acecfc13b63"
+    },
+    {
+      "id": "phoenix-graduate-fees-20261127",
+      "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=472-472&columns=2",
+      "title": "University of Phoenix current graduate fees evidence",
+      "checkedOn": "2026-11-27",
+      "capture": "content/source-captures/1594e96f1ed6b50d.txt",
+      "sha256": "1594e96f1ed6b50d0f66752df6228245e6244d8c96699c912e271f596a88a1ec"
+    },
+    {
+      "id": "phoenix-graduate-mba-page-20261127",
+      "url": "https://www.phoenix.edu/online-business-degrees/mba-competency-based-degree.html",
+      "title": "University of Phoenix current graduate mba page evidence",
+      "checkedOn": "2026-11-27",
+      "capture": "content/source-captures/a12ee12aedf804a8.txt",
+      "sha256": "a12ee12aedf804a8c7971d900da9423ff9a06be4eebf2a2d9b3e9d38eb1915ae"
+    },
+    {
+      "id": "phoenix-graduate-mha-page-20261127",
+      "url": "https://www.phoenix.edu/online-healthcare-degrees/health-administration-competency-based-masters.html",
+      "title": "University of Phoenix current graduate mha page evidence",
+      "checkedOn": "2026-11-27",
+      "capture": "content/source-captures/03311c14920f261b.txt",
+      "sha256": "03311c14920f261b0abf51b9b2d2c91a8b471b25714e701cab1a15de32f1a3ba"
+    },
+    {
+      "id": "phoenix-graduate-mis-page-20261127",
+      "url": "https://www.phoenix.edu/online-information-technology-degrees/information-systems-competency-based-degree.html",
+      "title": "University of Phoenix current graduate mis page evidence",
+      "checkedOn": "2026-11-27",
+      "capture": "content/source-captures/e5db979aa2105478.txt",
+      "sha256": "e5db979aa2105478cdf4cd0c24734e9aed2248c95ec837259ae9a6cb7bda2c49"
+    },
+    {
+      "id": "phoenix-graduate-prices-20261127",
+      "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=468-469&columns=2",
+      "title": "University of Phoenix current graduate prices evidence",
+      "checkedOn": "2026-11-27",
+      "capture": "content/source-captures/79c45fe5c74ecf7f.txt",
+      "sha256": "79c45fe5c74ecf7f0cd206125691ba77881baf8db6ca87418584bb5be3fc731e"
+    },
+    {
+      "id": "phoenix-graduate-psychology-page-20261127",
+      "url": "https://www.phoenix.edu/online-psychology-degrees/psych-masters-competency-based-degree.html",
+      "title": "University of Phoenix current graduate psychology page evidence",
+      "checkedOn": "2026-11-27",
+      "capture": "content/source-captures/8626cc32cd96f2ad.txt",
+      "sha256": "8626cc32cd96f2ad357c2819457e185b67dd2f897cd5bbcccde9aed4cef6c89d"
     }
   ],
   "providers": [
@@ -4387,6 +4435,380 @@
         "The selected academic route retains the standard 15-credit TESU course-residency requirement. Edison Accelerate is a separate paid waiver scenario and is not included.",
         "TESU charges $4,652 for a term of 9–18 eligible credits and $584 per credit below 9. The assumed 9–15 credits per term are a planning scenario; prerequisites, course availability and advisor-approved loads can change the number of billed terms.",
         "Reuses the existing November 25 published price review for these exact current degree identities; no price-source date or amount was refreshed."
+      ]
+    },
+    {
+      "id": "tesu-standard-business-expansion-20261127",
+      "school": "Thomas Edison State University",
+      "modelIds": [
+        "curriculum-tesu-bs-healthcare-management",
+        "curriculum-tesu-bs-computer-information-systems"
+      ],
+      "catalogs": [
+        "Current undergraduate catalog · checked November 18, 2026"
+      ],
+      "creditSystem": "semester",
+      "modality": "online",
+      "degreeUnits": 120,
+      "institutionMinimumUnits": 15,
+      "populationLabel": "Standard out-of-state undergraduate tuition · non-military",
+      "tuition": {
+        "type": "banded-term",
+        "termRate": 4652,
+        "bandMin": 9,
+        "bandMax": 18,
+        "partTimeRate": 584
+      },
+      "feesPerTerm": 0,
+      "oneTimeFees": 148,
+      "feeBreakdown": [
+        {
+          "label": "Application fee",
+          "amount": 50,
+          "frequency": "one-time"
+        },
+        {
+          "label": "Graduation audit fee",
+          "amount": 98,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 3,
+        "max": 15,
+        "defaultMin": 9,
+        "defaultMax": 15
+      },
+      "termLabel": "term",
+      "termMonths": null,
+      "sourceIds": [
+        "tesu-tuition-2026-11-25",
+        "tesu-fees-2026-11-25"
+      ],
+      "missing": [],
+      "notes": [
+        "Uses published standard out-of-state undergraduate tuition, effective August 2026. New Jersey/Pennsylvania resident, military, corporate-partner and alumni discounts or waivers are not applied.",
+        "The tuition scenario uses eligible TESU online, Guided Study, Accelerated or e-Pack courses. TECEP and portfolio assessments are billed separately and are not substituted for those courses.",
+        "The selected academic route retains the standard 15-credit TESU course-residency requirement. Edison Accelerate is a separate paid waiver scenario and is not included.",
+        "TESU charges $4,652 for a term of 9–18 eligible credits and $584 per credit below 9. The assumed 9–15 credits per term are a planning scenario; prerequisites, course availability and advisor-approved loads can change the number of billed terms.",
+        "Reuses the existing November 25 published price review for these exact current degree identities; no price-source date or amount was refreshed."
+      ]
+    },
+    {
+      "id": "apu-reviewed-associates-2026",
+      "modelIds": [
+        "curriculum-apus-associate-of-arts-in-business-administration-reviewed-2026",
+        "curriculum-apus-associate-of-arts-in-criminal-justice-reviewed-2026",
+        "curriculum-apus-associate-of-science-in-cybersecurity-reviewed-2026"
+      ],
+      "school": "American Public University",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 60,
+      "catalogs": [
+        "2026-2027"
+      ],
+      "tuition": {
+        "type": "per-credit",
+        "rate": 360
+      },
+      "feesPerTerm": 0,
+      "oneTimeFees": 250,
+      "feeBreakdown": [
+        {
+          "label": "Graduation fee (associate)",
+          "amount": 250,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 1,
+        "max": 12,
+        "defaultMin": 3,
+        "defaultMax": 6
+      },
+      "termLabel": "8-week session",
+      "termMonths": 2,
+      "sourceIds": [
+        "apus-tuition-fees-2026"
+      ],
+      "missing": [
+        "Uses the $360 standard rate before grants. The 10% Opportunity Grant (applied automatically, $324), Veteran Grant, Everyday Heroes Grant and $250 Preferred Military Rate are not applied.",
+        "Program-specific technology fees (for example ENGR and ELEN courses) and late-registration fees are not included.",
+        "3–6 credits per 8-week session is a planning assumption."
+      ]
+    },
+    {
+      "id": "liberty-online-psychology-cognates-20261127",
+      "modelIds": [
+        "curriculum-liberty-psychology-criminal-psychology-online",
+        "curriculum-liberty-psychology-developmental-psychology-online",
+        "curriculum-liberty-psychology-christian-counseling-online",
+        "curriculum-liberty-psychology-crisis-counseling-online",
+        "curriculum-liberty-psychology-military-resilience-online"
+      ],
+      "school": "Liberty University",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 120,
+      "catalogs": [
+        "2026-2027"
+      ],
+      "tuition": {
+        "type": "threshold-credit",
+        "fullTimeRate": 410,
+        "partTimeRate": 475,
+        "fullTimeMin": 12
+      },
+      "feesPerTerm": 349,
+      "oneTimeFees": 100,
+      "feeBreakdown": [
+        {
+          "label": "Technology fee",
+          "amount": 349,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Degree completion application",
+          "amount": 100,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 1,
+        "max": 18,
+        "defaultMin": 12,
+        "defaultMax": 18
+      },
+      "termLabel": "semester",
+      "termMonths": null,
+      "sourceIds": [
+        "liberty-online-tuition-fees"
+      ],
+      "missing": []
+    },
+    {
+      "id": "phoenix-mba-graduate-2026-2027-reviewed",
+      "modelIds": [
+        "curriculum-phoenix-cb-mba"
+      ],
+      "school": "University of Phoenix",
+      "catalogs": [
+        "2026-2027"
+      ],
+      "creditSystem": "semester",
+      "degreeUnits": 33,
+      "institutionMinimumUnits": 33,
+      "modality": "online",
+      "populationLabel": "Published standard graduate Competency-Based tuition",
+      "tuition": {
+        "type": "per-credit",
+        "rate": 300
+      },
+      "feesPerTerm": 0,
+      "oneTimeFees": 0,
+      "feeBreakdown": [
+        {
+          "label": "Resource fees do not apply to Competency-Based / Direct Assessment",
+          "amount": 0,
+          "frequency": "per-term"
+        },
+        {
+          "label": "No application fee",
+          "amount": 0,
+          "frequency": "one-time"
+        }
+      ],
+      "termLabel": "16-week period",
+      "termMonths": 3.69230769,
+      "pace": {
+        "min": 9,
+        "max": 12,
+        "defaultMin": 9,
+        "defaultMax": 12
+      },
+      "sourceIds": [
+        "phoenix-graduate-mba-page-20261127",
+        "phoenix-graduate-prices-20261127",
+        "phoenix-graduate-fees-20261127"
+      ],
+      "missing": [
+        "Applicable taxes, repeated-course charges and personal living costs are not included."
+      ],
+      "notes": [
+        "The exact university graduate program requires every listed course at Phoenix; no incoming undergraduate or other-program transfer award is priced.",
+        "The published admission degree, GPA, work-experience and state-availability conditions apply before enrollment.",
+        "University scheduling, assessment mastery and the capstone completed-credit prerequisite control the actual course sequence.",
+        "At $300 per credit, the complete 33-credit baseline tuition is $9,900. The program page states no additional fees.",
+        "Nine to twelve credits represent three to four three-credit courses in a sixteen-week period; a final partial course group and capstone eligibility follow the university schedule."
+      ]
+    },
+    {
+      "id": "phoenix-mis-graduate-2026-2027-reviewed",
+      "modelIds": [
+        "curriculum-phoenix-cb-mis"
+      ],
+      "school": "University of Phoenix",
+      "catalogs": [
+        "2026-2027"
+      ],
+      "creditSystem": "semester",
+      "degreeUnits": 36,
+      "institutionMinimumUnits": 36,
+      "modality": "online",
+      "populationLabel": "Published standard graduate Competency-Based tuition",
+      "tuition": {
+        "type": "per-credit",
+        "rate": 300
+      },
+      "feesPerTerm": 0,
+      "oneTimeFees": 0,
+      "feeBreakdown": [
+        {
+          "label": "Resource fees do not apply to Competency-Based / Direct Assessment",
+          "amount": 0,
+          "frequency": "per-term"
+        },
+        {
+          "label": "No application fee",
+          "amount": 0,
+          "frequency": "one-time"
+        }
+      ],
+      "termLabel": "16-week period",
+      "termMonths": 3.69230769,
+      "pace": {
+        "min": 9,
+        "max": 12,
+        "defaultMin": 9,
+        "defaultMax": 12
+      },
+      "sourceIds": [
+        "phoenix-graduate-mis-page-20261127",
+        "phoenix-graduate-prices-20261127",
+        "phoenix-graduate-fees-20261127"
+      ],
+      "missing": [
+        "Applicable taxes, repeated-course charges and personal living costs are not included."
+      ],
+      "notes": [
+        "The exact university graduate program requires every listed course at Phoenix; no incoming undergraduate or other-program transfer award is priced.",
+        "The published admission degree, GPA, work-experience and state-availability conditions apply before enrollment.",
+        "University scheduling, assessment mastery and the capstone completed-credit prerequisite control the actual course sequence.",
+        "At $300 per credit, the complete 36-credit baseline tuition is $10,800. The program page states no additional fees.",
+        "Nine to twelve credits represent three to four three-credit courses in a sixteen-week period; a final partial course group and capstone eligibility follow the university schedule."
+      ]
+    },
+    {
+      "id": "phoenix-mha-graduate-2026-2027-reviewed",
+      "modelIds": [
+        "curriculum-phoenix-cb-mha"
+      ],
+      "school": "University of Phoenix",
+      "catalogs": [
+        "2026-2027"
+      ],
+      "creditSystem": "semester",
+      "degreeUnits": 36,
+      "institutionMinimumUnits": 36,
+      "modality": "online",
+      "populationLabel": "Published standard graduate Competency-Based tuition",
+      "tuition": {
+        "type": "per-credit",
+        "rate": 300
+      },
+      "feesPerTerm": 0,
+      "oneTimeFees": 0,
+      "feeBreakdown": [
+        {
+          "label": "Resource fees do not apply to Competency-Based / Direct Assessment",
+          "amount": 0,
+          "frequency": "per-term"
+        },
+        {
+          "label": "No application fee",
+          "amount": 0,
+          "frequency": "one-time"
+        }
+      ],
+      "termLabel": "16-week period",
+      "termMonths": 3.69230769,
+      "pace": {
+        "min": 9,
+        "max": 12,
+        "defaultMin": 9,
+        "defaultMax": 12
+      },
+      "sourceIds": [
+        "phoenix-graduate-mha-page-20261127",
+        "phoenix-graduate-prices-20261127",
+        "phoenix-graduate-fees-20261127"
+      ],
+      "missing": [
+        "Applicable taxes, repeated-course charges and personal living costs are not included."
+      ],
+      "notes": [
+        "The exact university graduate program requires every listed course at Phoenix; no incoming undergraduate or other-program transfer award is priced.",
+        "The published admission degree, GPA, work-experience and state-availability conditions apply before enrollment.",
+        "University scheduling, assessment mastery and the capstone completed-credit prerequisite control the actual course sequence.",
+        "At $300 per credit, the complete 36-credit baseline tuition is $10,800. The program page states no additional fees.",
+        "Nine to twelve credits represent three to four three-credit courses in a sixteen-week period; a final partial course group and capstone eligibility follow the university schedule."
+      ]
+    },
+    {
+      "id": "phoenix-psychology-graduate-2026-2027-reviewed",
+      "modelIds": [
+        "curriculum-phoenix-da-ms-psychology"
+      ],
+      "school": "University of Phoenix",
+      "catalogs": [
+        "2026-2027"
+      ],
+      "creditSystem": "competency-unit",
+      "degreeUnits": 36,
+      "institutionMinimumUnits": 36,
+      "modality": "online",
+      "populationLabel": "Published standard Direct Assessment graduate tuition; no Title IV aid",
+      "tuition": {
+        "type": "paid-term",
+        "termRate": 2749
+      },
+      "feesPerTerm": 0,
+      "oneTimeFees": 0,
+      "feeBreakdown": [
+        {
+          "label": "Resource fees do not apply to Competency-Based / Direct Assessment",
+          "amount": 0,
+          "frequency": "per-term"
+        },
+        {
+          "label": "No application fee",
+          "amount": 0,
+          "frequency": "one-time"
+        }
+      ],
+      "termLabel": "12-week term",
+      "termMonths": 2.76923077,
+      "pace": {
+        "min": 6,
+        "max": 12,
+        "defaultMin": 6,
+        "defaultMax": 12
+      },
+      "sourceIds": [
+        "phoenix-graduate-psychology-page-20261127",
+        "phoenix-graduate-prices-20261127",
+        "phoenix-graduate-fees-20261127"
+      ],
+      "missing": [
+        "Applicable taxes, repeated-course charges and personal living costs are not included."
+      ],
+      "notes": [
+        "The exact university graduate program requires every listed course at Phoenix; no incoming undergraduate or other-program transfer award is priced.",
+        "The published admission degree, GPA, work-experience and state-availability conditions apply before enrollment.",
+        "University scheduling, assessment mastery and the capstone completed-credit prerequisite control the actual course sequence.",
+        "Only two, three or four three-CU courses are scheduled per term; the maximum is twelve CUs per term and thirty-nine graduate CUs in twelve months. This range is three to six paid terms for the full thirty-six-CU plan.",
+        "This Direct Assessment psychology program does not qualify for Title IV federal financial aid or psychologist licensure."
       ]
     }
   ],

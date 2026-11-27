@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createProgramManifestRegistry,loadProgramManifests,selectProgramManifests,resolveProgramManifest,checkProgramManifestBindings} from './pathway-factory/program-manifest.mjs';
+import {TESU_PLACEMENT_COUNTS,TESU_ADDITIONAL_PLACEMENT_COUNTS} from '../test-support/tesu-placement-inventory.mjs';
 
 const document=JSON.parse(await readFile(new URL('../content/factory-manifests/tesu.json',import.meta.url),'utf8'));
 const clone=structuredClone;
@@ -13,11 +14,14 @@ function candidate(){
 }
 const withEntry=entry=>({...clone(document),programs:[...clone(document.programs),entry]});
 
-test('TESU pilot preserves all eight exact ledgers and distinct legacy General Management',async()=>{
- const loaded=await loadProgramManifests({validateBindings:true});assert.equal(loaded.documents.length,1);assert.equal(loaded.programs.length,8);
- const result=await checkProgramManifestBindings(loaded);assert.deepEqual(result,{programs:8,academicModelsChanged:0,publicationDecisionsMade:0});
+test('TESU pilot preserves eight historical ledgers and independently binds two November27 additions with distinct legacy General Management',async()=>{
+ const loaded=await loadProgramManifests({validateBindings:true});assert.equal(loaded.documents.length,1);
+ const historicalIds=new Set(Object.keys(TESU_PLACEMENT_COUNTS)),additionalIds=new Set(Object.keys(TESU_ADDITIONAL_PLACEMENT_COUNTS)),historical=loaded.programs.filter(entry=>historicalIds.has(entry.modelId)),additions=loaded.programs.filter(entry=>additionalIds.has(entry.modelId));
+ assert.equal(historical.length,8);assert.equal(additions.length,2);assert.deepEqual(loaded.programs.map(entry=>entry.modelId).sort(),[...historicalIds,...additionalIds].sort());
+ for(const entry of historical)assert(entry.authoringReview.reviewedOn<='2026-11-26');for(const entry of additions){assert.equal(entry.authoringReview.reviewedOn,'2026-11-27');assert.equal(entry.sourceRefs.degree.checkedOn,'2026-11-27');}
+ const result=await checkProgramManifestBindings(loaded);assert.deepEqual(result,{programs:historical.length+additions.length,academicModelsChanged:0,publicationDecisionsMade:0});
  assert.equal(selectProgramManifests(loaded,{schoolId:'wgu'}).length,0,'An absent school manifest is outside this pilot, not a failed degree');
- assert.equal(selectProgramManifests(loaded,{stage:'business-major'}).length,2);assert.equal(selectProgramManifests(loaded,{stage:'business-metadata'}).length,3);assert.equal(selectProgramManifests(loaded,{stage:'course-placements'}).length,8);
+ for(const [stage,oldCount,newCount]of [['business-major',2,2],['business-metadata',3,2],['course-placements',8,2]]){const selected=selectProgramManifests(loaded,{stage});assert.equal(selected.filter(entry=>historicalIds.has(entry.modelId)).length,oldCount);assert.equal(selected.filter(entry=>additionalIds.has(entry.modelId)).length,newCount);}
  assert.equal(resolveProgramManifest(loaded,'tesu-general-management'),null,'No automatic legacy migration');assert.equal(resolveProgramManifest(loaded,'tesu-bs-general-management').modelId,'curriculum-tesu-bs-general-management');
  assert.equal(loaded.legacyIdentities[0].path,'dist/data/tesu.json');
 });
@@ -47,7 +51,7 @@ test('cross-school, cross-catalog, traversal and all accidental identity collisi
 
 test('same-school grouped output must be declared, retaining distinct model and route identities',()=>{
  const entry=candidate(),grouped=clone(document);entry.outputPath=grouped.programs[0].outputPath;entry.outputGroup=grouped.programs[0].outputGroup='tesu-reviewed-group';grouped.programs.push(entry);
- const groupedRegistry=createProgramManifestRegistry([grouped]);assert.equal(groupedRegistry.programs.length,9);
+ const groupedRegistry=createProgramManifestRegistry([grouped]);assert.equal(groupedRegistry.programs.length,document.programs.length+1);
  entry.creditSystem='quarter';assert.throws(()=>createProgramManifestRegistry([grouped]),/Output path collision/);
 });
 

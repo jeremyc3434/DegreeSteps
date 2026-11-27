@@ -9,15 +9,23 @@ import Planner from './dist/planner.js';
 import {assessPathwayQuality} from './scripts/pathway-quality.mjs';
 
 const review=await readLibertyCLIReligionReview(),kit=await loadKit(join(kitsRoot,'liberty'));
-const currentDataAsOf='2026-11-26'; // Evaluate current provider evidence without rewriting this older CLI award packet.
+const currentDataAsOf='2026-11-27'; // Evaluate the current kit without rewriting this older CLI award packet.
 const {doc}=compileKit(kit),awardIds=new Set(review.awards.map(award=>award.id));
 const rows=kit.equivalencies.equivalencies.filter(row=>awardIds.has(row.optionId));
 const rowIds=new Set(rows.map(row=>row.id));
 const isReligionOption=option=>awardIds.has(option.id);
+const newCognatePrograms=[
+  'psychology-criminal-psychology-online',
+  'psychology-developmental-psychology-online',
+  'psychology-christian-counseling-online',
+  'psychology-crisis-counseling-online',
+  'psychology-military-resilience-online'
+];
 
-test('six reviewed CLI awards reach exactly 37 matching Factory requirements without replacing existing alternatives',()=>{
+test('six reviewed CLI awards preserve 37 legacy placements and add exactly five cognate theology alternatives',()=>{
   assert.equal(rows.length,6);
-  let placements=0;
+  let legacyPlacements=0;
+  const newPlacements=[];
   for(const program of kit.programs){
     const model=doc.models.find(model=>model.id===program.modelId);
     assert(!list(model.defaultProviders).includes(review.provider),program.slug+' retains its provider defaults');
@@ -26,7 +34,8 @@ test('six reviewed CLI awards reach exactly 37 matching Factory requirements wit
       const options=requirement.options.filter(isReligionOption);
       assert.deepEqual(options.map(option=>option.id),expected.map(award=>award.id),program.slug+'/'+requirement.id);
       if(!options.length)continue;
-      placements+=options.length;
+      if(newCognatePrograms.includes(program.slug))newPlacements.push(...options.map(option=>({program:program.slug,requirement:requirement.id,receivingCode:requirement.code,option:option.id,credits:option.credits})));
+      else legacyPlacements+=options.length;
       assert.deepEqual(requirement.options.slice(-options.length).map(option=>option.id),options.map(option=>option.id),'new alternatives are appended: '+program.slug+'/'+requirement.id);
       for(const option of options){
         assert.equal(option.receivingCode,requirement.code);
@@ -37,7 +46,9 @@ test('six reviewed CLI awards reach exactly 37 matching Factory requirements wit
       }
     }
   }
-  assert.equal(placements,37);
+  assert.equal(legacyPlacements,37,'The original programs retain all 37 reviewed placements.');
+  assert.deepEqual(newPlacements.sort((a,b)=>a.program.localeCompare(b.program)),newCognatePrograms.map(program=>({program,requirement:'theo-104',receivingCode:'THEO 104',option:'liberty-cli-the-101-to-theo-104',credits:4})).sort((a,b)=>a.program.localeCompare(b.program)));
+  assert.equal(legacyPlacements+newPlacements.length,42);
   for(const row of rows){
     assert.equal(row.authored,true);
     assert.equal(row.status,'published');

@@ -1,5 +1,5 @@
 import test from 'node:test';
-import {assertTESUPlacementInventory} from './test-support/tesu-placement-inventory.mjs';
+import {assertTESUExpandedPlacementInventory} from './test-support/tesu-placement-inventory.mjs';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -28,14 +28,13 @@ test('receiving awards preserve independent original quantities, including1to3,3
  assert.equal(additions.awards.length,13);assert.equal(additions.heldAwards.length,1);
  const career=additions.awards.find(a=>a.code==='SOPH-0061'),medical=additions.awards.find(a=>a.code==='SOPH-0094'),calculus=additions.awards.find(a=>a.code==='SOPH-0060');assert.equal(career.sourceCredits,1);assert.equal(career.receivingCredits,3);assert.equal(medical.sourceCredits,3);assert.equal(medical.receivingCredits,1);assert.equal(calculus.sourceCredits,4);assert.equal(calculus.receivingCredits,4);assert.equal(additions.unplacedAwards.length,2);
  const kit=await loadKit(root+'/content/pathway-kits/tesu'),doc=compileKit(kit).doc;let careerPlacements=0;
- for(const m of doc.models)for(const r of m.requirements)for(const o of r.options){if(o.code==='SOPH-0061'&&o.courseEligibilityResolution){careerPlacements++;assert.equal(o.sourceCredits,1);assert.equal(o.credits,3);assert.equal(o.sourceCreditVerification.credits,1);assert.equal(o.courseEligibilityResolution.sourceCredits,1);assert.equal(o.courseEligibilityResolution.credits,3);assert.equal(hasReviewedCourseEligibility(m,r,o,{asOf:'2026-11-26'}),true);}assert(!(['SOPH-0094','SOPH-0060','SOPH-0079'].includes(o.code)&&o.courseEligibilityResolution),'No incompatible three-credit allocation or expired version appears');}
+ for(const m of doc.models)for(const r of m.requirements)for(const o of r.options){if(o.code==='SOPH-0061'&&o.courseEligibilityResolution){careerPlacements++;assert.equal(o.sourceCredits,1);assert.equal(o.credits,3);assert.equal(o.sourceCreditVerification.credits,1);assert.equal(o.courseEligibilityResolution.sourceCredits,1);assert.equal(o.courseEligibilityResolution.credits,3);assert.equal(hasReviewedCourseEligibility(m,r,o,{asOf:m.catalogIdentity.checkedOn}),true);}assert(!(['SOPH-0094','SOPH-0060','SOPH-0079'].includes(o.code)&&o.courseEligibilityResolution),'No incompatible three-credit allocation or expired version appears');}
  assert(careerPlacements>10);
 });
 
-test('all1297 reviewed placements preserve the original996 and pass the independent exact-source and selected-period predicate',async()=>{
- const kit=await loadKit(root+'/content/pathway-kits/tesu'),doc=compileKit(kit).doc;let count=0;
- for(const m of doc.models)for(const r of m.requirements)for(const o of r.options)if(o.courseEligibilityResolution){count++;assert.equal(hasReviewedCourseEligibility(m,r,o,{asOf:'2026-11-26'}),true,m.id+'/'+r.id+'/'+o.code);}
- assert.equal(count,1297);assertTESUPlacementInventory(doc.models);
+test('all1297 historical and202 new placements retain the original996 and pass their own dated source and selected-period predicates',async()=>{
+ const kit=await loadKit(root+'/content/pathway-kits/tesu'),doc=compileKit(kit).doc,cohorts=assertTESUExpandedPlacementInventory(doc.models);
+ for(const [models,asOf,expected]of [[cohorts.historical,'2026-11-26',1297],[cohorts.additions,'2026-11-27',202]]){let count=0;for(const m of models)for(const r of m.requirements)for(const o of r.options)if(o.courseEligibilityResolution){count++;assert.equal(hasReviewedCourseEligibility(m,r,o,{asOf}),true,m.id+'/'+r.id+'/'+o.code);}assert.equal(count,expected);}
 });
 
 test('additional receiving-award authoring is idempotent and check mode does not rewrite any source or claim',async()=>{

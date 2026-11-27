@@ -25,6 +25,20 @@ test('wrong URL, citation, missing line, duplicate line and truncated tail are r
  const noTitle=receipt(bodyLines.map(line=>line.replace('# MKT-4410','MKT-4410')));assert.throws(()=>extractConnectedWebBody(noTitle,{url,citationRef}),/actual page heading/);
 });
 
+test('native title/URL line wrapping preserves exact identity without accepting page-body or metadata URLs',()=>{
+ const original=receipt(),wrapped=structuredClone(original);
+ wrapped.response.content[0].text=wrapped.response.content[0].text.replace('University Course ('+url+')','\n\tUniversity Course\n ('+url+')');
+ assert.deepEqual(extractConnectedWebBody(wrapped,{url,citationRef}),extractConnectedWebBody(original,{url,citationRef}));
+ const bodyOnly=receipt([...bodyLines,'Read more at ('+url+')']);
+ bodyOnly.response.content[0].text=bodyOnly.response.content[0].text.replace('University Course ('+url+')','University Course (https://catalog.example.edu/wrong)');
+ assert.throws(()=>extractConnectedWebBody(bodyOnly,{url,citationRef}),/exact URL\/citation/);
+ const metadataOnly=structuredClone(bodyOnly);
+ metadataOnly.response.content[0].text=metadataOnly.response.content[0].text.replace('Crawled: today;','Crawled: today; Source: open({"ref_id":"'+url+'"});');
+ assert.throws(()=>extractConnectedWebBody(metadataOnly,{url,citationRef}),/exact URL\/citation/);
+ assert.throws(()=>extractConnectedWebBody(wrapped,{url:url+'-different',citationRef}),/exact URL\/citation/);
+ assert.throws(()=>extractConnectedWebBody(wrapped,{url,citationRef:'turn123view1'}),/exact URL\/citation/);
+});
+
 test('unknown native HTTP status cannot be relabeled as an origin response or use an invented retrieval time',async()=>{
  const f=await fixture();try{for(const changes of [{status:200},{originHttpStatus:200},{rawBodyCaptured:true},{captureFormat:'origin-http-body'},{fetchedAt:'2026-11-25T04:35:08Z'}])await assert.rejects(()=>validateConnectedWebCapture({...f.page,...changes},{base:f.base}));const bad=receipt();bad.observedAt='2026-99-26T04:35:08Z';assert.throws(()=>extractConnectedWebBody(bad,{url,citationRef}),/actual native observation time/);}finally{await f.close();}
 });

@@ -13,9 +13,10 @@ import {validateProgramRequirementPacket} from './program-requirements-metadata.
 import Estimate from '../dist/plan-estimate-engine.js';
 import {loadProgramManifests,selectProgramManifests} from './pathway-factory/program-manifest.mjs';
 
-export const TESU_BUSINESS_METADATA_TARGETS=Object.freeze(selectProgramManifests(await loadProgramManifests(),{schoolId:'tesu',stage:'business-metadata'}).map(entry=>Object.freeze({slug:entry.slug,modelId:entry.modelId,routeId:entry.routeIds[0],title:entry.title,degreePath:entry.metadataBasis.degreePath})));
+export const TESU_BUSINESS_METADATA_TARGETS=Object.freeze(selectProgramManifests(await loadProgramManifests(),{schoolId:'tesu',stage:'business-metadata'}).map(entry=>Object.freeze({slug:entry.slug,modelId:entry.modelId,routeId:entry.routeIds[0],title:entry.title,degreePath:entry.metadataBasis.degreePath,reviewedOn:entry.authoringReview.reviewedOn})));
 export const TESU_BUSINESS_CATALOG_LABEL='Current undergraduate catalog · checked November 18, 2026';
 export const TESU_BUSINESS_RATE_ID='tesu-standard-business-expansion-20261126';
+export const TESU_BUSINESS_METADATA_AS_OF=TESU_BUSINESS_METADATA_TARGETS.map(target=>target.reviewedOn).sort().at(-1);
 const read=async path=>JSON.parse(await readFile(resolve(root,path),'utf8')),copy=structuredClone,list=v=>Array.isArray(v)?v:[],hash=v=>createHash('sha256').update(v).digest('hex');
 const normalized=v=>String(v||'').replace(/\s+/g,' ').trim(),wordkey=v=>normalized(v).toLowerCase().replace(/[^a-z0-9]/g,''),date=v=>{try{return typeof v==='string'&&/^20\d{2}-\d{2}-\d{2}$/.test(v)&&new Date(v+'T00:00:00Z').toISOString().slice(0,10)===v;}catch{return false;}};
 const idFor=program=>program.modelId||program.id;
@@ -45,8 +46,9 @@ export function buildTESUBusinessTuitionBinding({modelId,catalogIdentity},basis)
  return{tuitionComparison:{entryId:'tesu-standard',sourceUrl:basis.tuitionSource.url,checkedOn:catalogIdentity.checkedOn,catalogIdentity:copy(catalogIdentity),modelId,pricingSourceCheckedOn:basis.tuitionSource.checkedOn,pricingSourceIds:[basis.tuitionSource.id],reviewScope:'The exact current degree identity is bound to the retained standard undergraduate tuition comparison. The November 25 price-source review and amounts are unchanged; no new price review is claimed.'},sources:[copy(basis.tuitionSource)],modelSourceIds:[basis.tuitionSource.id]};
 }
 
-export function buildTESUBusinessRateProfile(basis){
- assert.equal(basis?.entry?.id,'tesu-standard-out-of-state-2026');return{...copy(basis.entry),id:TESU_BUSINESS_RATE_ID,modelIds:TESU_BUSINESS_METADATA_TARGETS.map(target=>target.modelId),catalogs:[TESU_BUSINESS_CATALOG_LABEL],notes:[...basis.entry.notes,'Reuses the existing November 25 published price review for these exact current degree identities; no price-source date or amount was refreshed.']};
+export function buildTESUBusinessRateProfile(basis,{targets=TESU_BUSINESS_METADATA_TARGETS.filter(target=>target.reviewedOn==='2026-11-26'),rateId=TESU_BUSINESS_RATE_ID}={}){
+ assert(targets.length&&targets.every(target=>'tesu-standard-business-expansion-'+target.reviewedOn.replaceAll('-','')===rateId),'A rate profile binds one explicit review cohort');
+ assert.equal(basis?.entry?.id,'tesu-standard-out-of-state-2026');return{...copy(basis.entry),id:rateId,modelIds:targets.map(target=>target.modelId),catalogs:[TESU_BUSINESS_CATALOG_LABEL],notes:[...basis.entry.notes,'Reuses the existing November 25 published price review for these exact current degree identities; no price-source date or amount was refreshed.']};
 }
 
 async function capturedSource(source,{checkedOn,sidecar=true}={}){
@@ -59,7 +61,7 @@ async function capturedSource(source,{checkedOn,sidecar=true}={}){
  if(source.quote)assert(normalized(body).includes(normalized(source.quote)));return body;
 }
 
-export async function validateTESUBusinessMetadataModel(model,{asOf='2026-11-26'}={}){
+export async function validateTESUBusinessMetadataModel(model,{asOf=TESU_BUSINESS_METADATA_AS_OF}={}){
  const target=targetFor(idFor(model)),identity=model.catalogIdentity;assert(date(asOf));assert.equal(model.school,'Thomas Edison State University');assert.equal(model.level,'bachelor');assert.equal(model.format,'Online');assert.equal(model.creditSystem,'semester');assert.equal(model.totalCredits,120);assert.equal(model.catalogYear??null,null);assert.equal(model.catalog,TESU_BUSINESS_CATALOG_LABEL);assert.equal(wordkey(model.title),wordkey(target.title));
  assert.equal(identity?.kind,'reviewed-current-catalog');assert.equal(identity.label,model.catalog);assert(date(identity.checkedOn)&&identity.checkedOn<=asOf);assert.equal(identity.sourceUrl,new URL(identity.sourceUrl).href);assert.equal(new URL(identity.sourceUrl).hostname,'tesu.smartcatalogiq.com');assert.equal(new URL(identity.sourceUrl).pathname.replace(/^\/en\//,'/').replace(/\/$/,''),target.degreePath);
  const source=list(model.sources).find(source=>source.id===identity.sourceId);assert(source&&source.kind==='university');assert.equal(source.url,identity.sourceUrl);assert.equal(source.checkedOn||source.checked,identity.checkedOn);assert.equal(source.sha256,identity.sourceSha256);assert.equal(source.capture,identity.capture);assert(list(model.sourceIds).includes(source.id));
@@ -67,7 +69,7 @@ export async function validateTESUBusinessMetadataModel(model,{asOf='2026-11-26'
  return{target,source:{...copy(source),checkedOn:identity.checkedOn,quote:'Total Credit Hours: 120'},identity:copy(identity)};
 }
 
-export async function buildTESUBusinessMetadata({models,fitReviews,requirements,rates,asOf='2026-11-26'}){
+export async function buildTESUBusinessMetadata({models,fitReviews,requirements,rates,asOf=TESU_BUSINESS_METADATA_AS_OF}){
  assert.equal(models.length,TESU_BUSINESS_METADATA_TARGETS.length,'All exact manifest models are required before shared metadata is written');assert.equal(new Set(models.map(idFor)).size,TESU_BUSINESS_METADATA_TARGETS.length);validateProgramRequirementPacket(requirements);const basis=await loadTESUBusinessPriceBasis(rates),nextFit=copy(fitReviews),nextRequirements=copy(requirements),nextRates=copy(rates);
  const template=fitReviews.reviews.find(review=>review.id==='tesu-standard-online-undergraduate-scheduled-reviewed-20261126'),context=requirements.reviews.find(review=>review.modelIds.includes('curriculum-tesu-bsba-accounting'));assert(template&&context);assert.equal(template.catalogYear,TESU_BUSINESS_CATALOG_LABEL);assert.equal(template.paceModel,'course-term');assert.equal(template.baselineFormat,'standard-online-coursework');
  for(const source of [template.source,...template.supportingSources])await capturedSource(source,{checkedOn:asOf});
@@ -76,14 +78,17 @@ export async function buildTESUBusinessMetadata({models,fitReviews,requirements,
   const resolution=await validateTESUBusinessMetadataModel(model,{asOf}),{target,source,identity}=resolution;resolutions.push(resolution);
   const expectedBinding=buildTESUBusinessTuitionBinding({modelId:target.modelId,catalogIdentity:identity},basis);assert.deepEqual(model.tuitionComparison,expectedBinding.tuitionComparison,'Canonical model must retain the exact catalog/price-source binding: '+target.modelId);const priceSource=model.sources.find(source=>source.id===basis.tuitionSource.id);assert(priceSource);for(const field of ['url','capture','sha256'])assert.equal(priceSource[field],basis.tuitionSource[field]);assert.equal(priceSource.checkedOn||priceSource.checked,'2026-11-25');
   const existing=nextRequirements.sources.find(candidate=>candidate.id===source.id);if(existing){for(const field of ['id','url','sha256','capture','checkedOn'])assert.equal(existing[field],source[field]);}else nextRequirements.sources.push(source);
-  const reviewId=target.routeId+'-requirements-business-expansion-20261126',review={id:reviewId,modelIds:[target.modelId],catalogIdentity:{kind:identity.kind,label:identity.label,sourceId:identity.sourceId,sourceUrl:identity.sourceUrl,checkedOn:identity.checkedOn,sourceSha256:identity.sourceSha256},modality:'online',programBindings:[{modelId:target.modelId,degreeUrl:source.url}],facts:context.facts.map(fact=>({...copy(fact),id:target.routeId+'-'+fact.type+'-business-expansion-20261126'}))};
+  const suffix=target.reviewedOn.replaceAll('-',''),reviewId=target.routeId+'-requirements-business-expansion-'+suffix,review={id:reviewId,modelIds:[target.modelId],catalogIdentity:{kind:identity.kind,label:identity.label,sourceId:identity.sourceId,sourceUrl:identity.sourceUrl,checkedOn:identity.checkedOn,sourceSha256:identity.sourceSha256},modality:'online',programBindings:[{modelId:target.modelId,degreeUrl:source.url}],facts:context.facts.map(fact=>({...copy(fact),id:target.routeId+'-'+fact.type+'-business-expansion-'+suffix}))};
   const prior=nextRequirements.reviews.findIndex(candidate=>candidate.id===reviewId);if(prior<0)nextRequirements.reviews.push(review);else assert.deepEqual(nextRequirements.reviews[prior],review,'A previously authored contextual binding cannot silently change');
  }
- const fit={...copy(template),id:'tesu-business-expansion-standard-online-scheduled-20261126',modelIds:TESU_BUSINESS_METADATA_TARGETS.map(target=>target.modelId),programBindings:TESU_BUSINESS_METADATA_TARGETS.map(target=>({modelId:target.modelId,degreeUrl:resolutions.find(resolution=>resolution.target.modelId===target.modelId).source.url})),notes:[...template.notes,'Exact e-Pack or alternative-format selections retain their own course-specific evidence; this school-wide standard-online classification does not replace it.']};
- const priorFit=nextFit.reviews.findIndex(review=>review.id===fit.id);if(priorFit<0)nextFit.reviews.push(fit);else assert.deepEqual(nextFit.reviews[priorFit],fit);
- const rate=buildTESUBusinessRateProfile(basis);
- assert(nextRates.entries.filter(entry=>entry.id!==rate.id).every(entry=>!entry.modelIds.some(id=>rate.modelIds.includes(id))),'New exact price bindings cannot overlap another estimate profile');
- const priorRate=nextRates.entries.findIndex(entry=>entry.id===rate.id);if(priorRate<0)nextRates.entries.push(rate);else assert.deepEqual(nextRates.entries[priorRate],rate);
+ for(const reviewedOn of [...new Set(TESU_BUSINESS_METADATA_TARGETS.map(target=>target.reviewedOn))]){
+  const targets=TESU_BUSINESS_METADATA_TARGETS.filter(target=>target.reviewedOn===reviewedOn),suffix=reviewedOn.replaceAll('-','');
+  const fit={...copy(template),id:'tesu-business-expansion-standard-online-scheduled-'+suffix,modelIds:targets.map(target=>target.modelId),programBindings:targets.map(target=>({modelId:target.modelId,degreeUrl:resolutions.find(resolution=>resolution.target.modelId===target.modelId).source.url})),notes:[...template.notes,'Exact e-Pack or alternative-format selections retain their own course-specific evidence; this school-wide standard-online classification does not replace it.']};
+  const priorFit=nextFit.reviews.findIndex(review=>review.id===fit.id);if(priorFit<0)nextFit.reviews.push(fit);else assert.deepEqual(nextFit.reviews[priorFit],fit,'Previously scoped fit facts remain unchanged');
+  const rate=buildTESUBusinessRateProfile(basis,{targets,rateId:'tesu-standard-business-expansion-'+suffix});
+  assert(nextRates.entries.filter(entry=>entry.id!==rate.id).every(entry=>!entry.modelIds.some(id=>rate.modelIds.includes(id))),'New exact price bindings cannot overlap another estimate profile');
+  const priorRate=nextRates.entries.findIndex(entry=>entry.id===rate.id);if(priorRate<0)nextRates.entries.push(rate);else assert.deepEqual(nextRates.entries[priorRate],rate,'Previously scoped price facts remain unchanged');
+ }
  validateProgramRequirementPacket(nextRequirements);Estimate.assertRates(nextRates);
  return{fitReviews:nextFit,requirements:nextRequirements,rates:nextRates,modelIds:TESU_BUSINESS_METADATA_TARGETS.map(target=>target.modelId),publicationDecisionsMade:0,studentCreditAwards:0,priceSourcesRefreshed:0};
 }

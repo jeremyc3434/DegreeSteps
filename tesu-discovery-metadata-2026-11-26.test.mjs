@@ -31,7 +31,9 @@ async function verifyCapture(source){
  const body=await readFile(new URL(source.capture,import.meta.url),'utf8');
  const metadata=await read('./'+source.capture.replace(/\.txt$/,'.json'));
  assert.equal(createHash('sha256').update(body).digest('hex'),source.sha256,source.id+' body hash');
- assert.equal(metadata.sha256,source.sha256);assert.equal(metadata.url,source.url);assert.equal(source.checkedOn,'2026-11-26');assert.equal(source.kind,'university');
+ const binding=packet.reviews.find(review=>review.catalogIdentity?.sourceId===source.id),newEditionIds=['curriculum-tesu-bs-healthcare-management','curriculum-tesu-bs-computer-information-systems'];
+ const newIdentity=binding?.modelIds.length===1&&newEditionIds.includes(binding.modelIds[0]);
+ assert.equal(metadata.sha256,source.sha256);assert.equal(metadata.url,source.url);assert.equal(source.checkedOn,newIdentity?'2026-11-27':'2026-11-26','Only the two new exact degree identities have November27 reviews');assert.equal(source.kind,'university');
  if(originalSourceIds.has(source.id)||source.id==='tesu-standard-online-structure-20261126'){assert.equal(metadata.status,200);assert.equal(metadata.fetchedAt.slice(0,10),'2026-11-26','The original source and standard-online policy reviews keep their exact retrieval dates');}
  else{assert(packet.reviews.some(review=>review.modelIds.some(id=>businessIds.includes(id))&&review.catalogIdentity?.sourceId===source.id),'Only an exact new business-degree identity can extend the source scope');assert(metadata.fetchedAt.slice(0,10)<=source.checkedOn,'A new identity review preserves the actual retained retrieval date');
   if(metadata.captureFormat==='connected-web-rendered-extract'){assert(source.toolResponseReceipt);assert.deepEqual(source.toolResponseReceipt,metadata.toolResponseReceipt);await validateConnectedWebCapture({...metadata,text:body});}else assert.equal(metadata.status,200);
@@ -40,7 +42,7 @@ async function verifyCapture(source){
  return body;
 }
 
-test('five prior TESU identities retain their exact rereview while only the three newly sourced business degrees extend discovery',async()=>{
+test('five prior TESU identities retain their exact rereview while separately sourced business cohorts extend discovery',async()=>{
  validateProgramRequirementPacket(packet);assert.deepEqual(packet.reviews.flatMap(review=>review.modelIds).sort(),[...ids,...businessIds].sort());assert.equal(packet.sources.length,originalSourceIds.size+businessIds.length);for(const id of originalSourceIds)assert(packet.sources.some(source=>source.id===id));
  for(const model of models){
   const identity=model.catalogIdentity,review=packet.reviews.find(review=>review.modelIds.includes(model.id));
@@ -56,7 +58,7 @@ test('five prior TESU identities retain their exact rereview while only the thre
 
 test('every TESU contextual fact is source-backed, compact and scoped to the applicable school policy',async()=>{
  for(const source of packet.sources)await verifyCapture(source);
- const loaded=await loadProgramRequirementReviews();assert.equal(loaded.length,4);assert(loaded.some(value=>value.reviews.some(review=>review.id===packet.reviews[0].id)));
+ const loaded=await loadProgramRequirementReviews();assert.equal(loaded.length,6);assert(loaded.some(value=>value.reviews.length===3&&value.reviews.every(review=>review.modelIds.every(id=>id.startsWith('curriculum-apus-')&&id.endsWith('-reviewed-2026')))),'The new APU annotations stay scoped to the three separately reviewed editions');assert(loaded.some(value=>value.reviews.some(review=>review.id===packet.reviews[0].id)));
  for(const model of models){
   const before=JSON.stringify(model),facts=assembleProgramRequirements(model,[packet]);assert.equal(facts.length,3,model.id);
   assert.deepEqual(new Set(facts.map(fact=>fact.kind)),new Set(['attendance','assessment']));

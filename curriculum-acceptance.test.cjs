@@ -34,6 +34,12 @@ const sourceModelIds=fs.readdirSync(path.join(__dirname,'content/curricula'),{wi
  return (document.models||document.programs||[]).filter(model=>!inactiveStatuses.has(model.status)).map(model=>model.id);
 }).sort();
 const standaloneModelIds=Catalog.modelFiles.map(file=>JSON.parse(fs.readFileSync(path.join(root,file),'utf8')).id).sort();
+const reviewedNov27Cohort=require('./test-support/fixtures/degree-expansion/nov27-complete-degree-cohort.json');
+const legacyAPUAssociateIds=[
+ 'curriculum-apus-associate-of-arts-in-business-administration',
+ 'curriculum-apus-associate-of-arts-in-criminal-justice',
+ 'curriculum-apus-associate-of-science-in-cybersecurity'
+];
 
 test('all active source and standalone curricula load once per file and preserve exact ledgers without personal awards', async () => {
   const {catalog, models} = await ready;
@@ -73,6 +79,9 @@ test('all active source and standalone curricula load once per file and preserve
   // These exact new baselines have separately published research outcomes;
   // their readiness does not grant another model or an unfinished course an award.
   const quality=require('./dist/data/pathway-quality-report.json');
+  assert.equal(reviewedNov27Cohort.cases.length,14);
+  assert.equal(new Set(reviewedNov27Cohort.cases.map(item=>item.modelId)).size,14);
+  for(const item of reviewedNov27Cohort.cases)researchedReady.set(item.modelId,{external:item.outside,institutional:item.total-item.outside});
   const wguBounded=require('./content/pathway-kits/wgu/reviews/current-ledger-residency-2026-11-26.json'),wguMBA=require('./content/pathway-kits/wgu/reviews/mba-family-2026-11-26.json');
   const addedWGU=[...wguBounded.programs.map(program=>program.modelId),'curriculum-wgu-catalog-b2a8a37d4fbedabd','curriculum-wgu-catalog-b83ee97289a0732a','curriculum-wgu-catalog-c4a7efe739d67a5c'];
   assert.equal(addedWGU.length,8);assert.equal(wguMBA.programs.length,3);
@@ -124,6 +133,11 @@ test('all active source and standalone curricula load once per file and preserve
       assert.equal(draft.plan.readiness,'draft','Open research or individual applicability must remain explicit: '+entry.id);
       assert(draft.plan.validation.errors.length>0,entry.id+' needs a concrete reason for its draft status');
     }
+    if(legacyAPUAssociateIds.includes(entry.id)){
+      assert.equal(researchedReady.has(entry.id),false,'A reviewed APU edition cannot silently promote its legacy open-slot model');
+      assert.equal(draft.plan.readiness,'draft',entry.id);
+      assert(draft.plan.validation.errors.length>0,entry.id+' retains its unresolved legacy choices');
+    }
     assert.equal(draft.plan.costs.costComplete, false, entry.id);
     assert.equal(draft.plan.costs.total, null, entry.id);
     assert.equal(JSON.stringify(state), before, 'Build must not mutate saved records: ' + entry.id);
@@ -131,6 +145,48 @@ test('all active source and standalone curricula load once per file and preserve
   }
   assert.deepEqual(observedReady.sort(),[...researchedReady.keys()].sort());
   for (const file of new Set(index.models.map(entry => entry.path))) assert.equal(requests.filter(request => request === file).length, 1, file);
+});
+
+test('the exact November 27 cohort opens complete source-bound baselines without awarding unfinished courses',async()=>{
+  const {catalog,models}=await ready;
+  const quality=require('./dist/data/pathway-quality-report.json'),baselines=require('./dist/data/baseline-index.json');
+  assert.equal(baselines.privateRecordsIncluded,false);
+  assert.equal(reviewedNov27Cohort.expectedCount,14);assert.equal(reviewedNov27Cohort.cases.length,14);
+  for(const item of reviewedNov27Cohort.cases){
+    const route=pick(catalog,item.modelId),state=seed(catalog,route),before=JSON.stringify(state);
+    const draft=Journey.buildDraft(state,catalog,models),program=draft.program,plan=draft.plan;
+    const outcome=quality.programs.find(entry=>entry.modelId===item.modelId);
+    const saved=Object.values(baselines.baselines).filter(entry=>entry.modelId===item.modelId&&entry.pathwayId===route.id);
+    assert.equal(saved.length,1,item.modelId+' has one exact route baseline');
+    const baseline=saved[0],sources=new Map(program.sources.map(source=>[source.id,source]));
+    assert.equal(outcome.publication.ready,true,item.modelId);
+    assert.equal(outcome.research.completeRequirementLedger,true,item.modelId);
+    assert.equal(outcome.research.completeNamedBaseline,true,item.modelId);
+    assert.equal(outcome.execution.awardedCreditsInBaseline,0,item.modelId);
+    assert.deepEqual(outcome.findings.filter(finding=>finding.blocking||finding.category!=='student-task'),[],item.modelId+' has no unresolved research; individual admission and official-record tasks remain explicit');
+    assert.equal(baseline.qualityReady,true,item.modelId);assert.equal(baseline.researchStatus,'research-ready',item.modelId);
+    assert.equal(baseline.validation.academicCountsValid,true,item.modelId);
+    assert.deepEqual([baseline.summary.totalCredits,baseline.summary.transferCredits,baseline.summary.universityCredits],[item.total,item.outside,item.total-item.outside],item.modelId);
+    assert.equal(program.creditSystem,item.creditSystem,item.modelId);
+    assert.equal(baseline.rows.length,program.requirements.length,item.modelId);
+    const ledger=rows=>rows.map(row=>[row.requirementId,row.optionId||row.option?.id,row.credits,row.status]).sort((a,b)=>a[0].localeCompare(b[0]));
+    assert.deepEqual(ledger(plan.rows),ledger(baseline.rows),item.modelId+' opens the whole saved researched baseline');
+    assert.deepEqual([plan.totals.accounted,plan.totals.external,plan.totals.institutional,plan.totals.confirmed,plan.totals.reported],[item.total,item.outside,item.total-item.outside,0,0],item.modelId);
+    for(const requirement of program.requirements){
+      assert(requirement.sourceIds.length>0,item.modelId+' '+requirement.id+' has requirement evidence');
+      for(const id of requirement.sourceIds)assert.match(sources.get(id)?.url||'',/^https:\/\//,item.modelId+' '+id);
+      const row=plan.rows.find(entry=>entry.requirementId===requirement.id),option=row.option;
+      assert.equal(row.status,'planned',item.modelId+' '+requirement.id+' is proposed, not earned');
+      assert.equal(option.evidence,'published',item.modelId+' '+requirement.id);
+      assert(option.sourceIds.length>0,item.modelId+' '+requirement.id+' has selected-course evidence');
+      for(const id of option.sourceIds)assert.match(sources.get(id)?.url||'',/^https:\/\//,item.modelId+' '+id);
+      if(option.provider!=='University'){
+        assert(option.sourceCredits>0,item.modelId+' preserves the original outside quantity');
+        assert(['semester','quarter','competency-unit'].includes(option.sourceCreditSystem),item.modelId+' preserves the original outside unit');
+      }
+    }
+    assert.deepEqual(state.learning,[],item.modelId);assert.equal(JSON.stringify(state),before,item.modelId+' must not write personal learning');
+  }
 });
 
 test('real Liberty Psychology, SNHU Business and WGU Computer Science switch without losing source records, statuses, notes or quotes', async () => {

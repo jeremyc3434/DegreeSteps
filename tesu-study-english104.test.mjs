@@ -13,6 +13,7 @@ const kit=await loadKit(kitsRoot+'/tesu'),{doc}=compileKit(kit);
 const models=[...doc.models,applyTESUProviderReview(applyTESUStudyEnglish104(legacy))];
 const originalModelIds=['tesu-general-management','curriculum-tesu-bsba-accounting','curriculum-tesu-bsba-finance','curriculum-tesu-ba-english','curriculum-tesu-ba-psychology','curriculum-tesu-ba-liberal-studies'];
 const newModelIds=['curriculum-tesu-bs-general-management','curriculum-tesu-bsba-human-resources-organizational-management','curriculum-tesu-bsba-marketing'];
+const additionalModelIds=['curriculum-tesu-bs-computer-information-systems','curriculum-tesu-bs-healthcare-management'];
 
 test('the English104 candidate uses an honestly labeled native provider extraction and independent intact ACE source',async()=>{
  for(const source of studyEnglishReview.sources){const text=await readFile(source.capture,'utf8'),meta=JSON.parse(await readFile(source.capture.replace('.txt','.json'),'utf8'));assert.equal(createHash('sha256').update(text).digest('hex'),meta.sha256);assert.equal(source.url,meta.url);}
@@ -22,15 +23,18 @@ test('the English104 candidate uses an honestly labeled native provider extracti
  assert.equal(studyEnglishReview.publicationPromotionAllowed,false);
 });
 
-test('the original six retain English104 and reuse for the three new degrees remains conditional without changing their canonical data',async()=>{
- assert.equal(models.length,9);assert.deepEqual(models.map(model=>model.id).sort(),[...originalModelIds,...newModelIds].sort());await runGuards(kit,doc);
+test('the original six retain English104 while the three historical and two November27 additions compute conditional candidates without changing canonical data',async()=>{
+ const historicalIds=new Set([...originalModelIds,...newModelIds]),historical=models.filter(model=>historicalIds.has(model.id)),additions=models.filter(model=>additionalModelIds.includes(model.id));
+ assert.equal(historical.length,9);assert.deepEqual(historical.map(model=>model.id).sort(),[...originalModelIds,...newModelIds].sort());assert.equal(additions.length,2);assert.deepEqual(models.map(model=>model.id).sort(),[...historicalIds,...additionalModelIds].sort());
+ const placementReview=JSON.parse(await readFile(kitsRoot+'/tesu/course-placements-review-2026-11-27.json','utf8'));assert.equal(placementReview.checkedOn,'2026-11-27');assert.deepEqual(placementReview.models.map(model=>model.modelId).sort(),[...additionalModelIds].sort());for(const model of additions)assert.equal(model.catalogIdentity.checkedOn,'2026-11-27');
+ await runGuards(kit,doc);
  const entriesFor=model=>model.requirements.flatMap(row=>row.options.filter(o=>o.id===studyEnglishOptionId).map(option=>({row,option})));
  for(const canonical of models){
-  const before=JSON.stringify(canonical),newDegree=newModelIds.includes(canonical.id);
+  const before=JSON.stringify(canonical),newDegree=newModelIds.includes(canonical.id)||additionalModelIds.includes(canonical.id);
   if(newDegree)assert.equal(entriesFor(canonical).length,0,canonical.id+': no additional conditional Study claim was persisted by this release');
   else assert(originalModelIds.includes(canonical.id));
   const model=newDegree?applyTESUStudyEnglish104(canonical):canonical,entries=entriesFor(model);assert.equal(JSON.stringify(canonical),before,'Candidate computation preserves '+canonical.id);assert.equal(entries.length,1,model.id);const {row,option}=entries[0];assert.equal(row.code,'ENC-1010');assert.equal(option.code,'SDCM-0057');assert.deepEqual(option.codeAliases,['English 104']);assert.equal(option.courseVersion,5);assert.equal(option.sourceCredits,3);assert.equal(option.credits,3);assert.equal(option.sourceCreditSystem,'semester');assert.equal(option.creditSystem,'semester');assert.equal(option.sourceUpper,false);assert.equal(option.evidence,'conditional');assert.equal(option.evidenceType,'provider-published');assert.equal(option.mappingResearchClosed,false);assert.equal(option.mappingEvidence.publisher,'Study.com');assert.equal(option.mappingEvidence.individualApproval,false);assert.equal(option.eligibilityReview.providerReviewPending,false);assert.equal(option.eligibilityReview.fullyApproved,true);assert.equal(Object.hasOwn(option.eligibilityReview,'eligibleToStart'),false);assert.ok(option.conditions.some(c=>/TESU-submitted receiving award has not been established/.test(c)));assert.ok(option.sourceIds.every(id=>model.sources.some(s=>s.id===id)));}
- const verification=await verifyKit(kit,{asOf:'2026-11-26'});assert.deepEqual(verification.errors,[]);
+ const verification=await verifyKit(kit,{asOf:'2026-11-27'});assert.deepEqual(verification.errors,[]);
 });
 
 test('English104 matching respects the exact version window, original quantity and grades without inventing a school award',()=>{

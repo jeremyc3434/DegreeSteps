@@ -94,7 +94,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mba"
+            "phoenix-graduate-mba-catalog-20261127"
           ],
           "options": []
         },
@@ -108,7 +108,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mba"
+            "phoenix-graduate-mba-catalog-20261127"
           ],
           "options": []
         },
@@ -122,7 +122,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mba"
+            "phoenix-graduate-mba-catalog-20261127"
           ],
           "options": []
         },
@@ -136,7 +136,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mba"
+            "phoenix-graduate-mba-catalog-20261127"
           ],
           "options": []
         },
@@ -150,7 +150,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mba"
+            "phoenix-graduate-mba-catalog-20261127"
           ],
           "options": []
         },
@@ -164,7 +164,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mba"
+            "phoenix-graduate-mba-catalog-20261127"
           ],
           "options": []
         },
@@ -178,7 +178,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mba"
+            "phoenix-graduate-mba-catalog-20261127"
           ],
           "options": []
         },
@@ -192,7 +192,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mba"
+            "phoenix-graduate-mba-catalog-20261127"
           ],
           "options": []
         },
@@ -206,7 +206,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mba"
+            "phoenix-graduate-mba-catalog-20261127"
           ],
           "options": []
         },
@@ -220,7 +220,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mba"
+            "phoenix-graduate-mba-catalog-20261127"
           ],
           "options": []
         },
@@ -234,23 +234,142 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mba"
+            "phoenix-graduate-mba-catalog-20261127"
           ],
           "options": [],
           "minimumCompletedCredits": 21,
           "conditions": [
             "The catalog requires at least 21 completed credits before this course. There is no fixed first-seven-course dependency."
-          ]
+          ],
+          "prerequisitePolicy": {
+            "status": "reviewed-numeric-completion-minimum",
+            "sourceIds": [
+              "phoenix-graduate-mba-catalog-20261127"
+            ],
+            "checkedOn": "2026-11-27",
+            "minimumCompletedCredits": 21,
+            "creditSystem": "semester"
+          }
         }
       ],
       "sources": [
         {
-          "id": "phoenix-2026-27-phoenix-cb-mba",
-          "title": "University of Phoenix 2026–2027 Online Academic Catalog: Master of Business Administration (Competency Based-CB)",
-          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#page=442",
-          "checked": "2026-11-09",
-          "catalog": "2026–2027, November 1, 2026 updates",
-          "notes": "PDF page numbers in the fragment are one-based; programme and residency policies continue onto the next page."
+          "id": "phoenix-graduate-mba-page-20261127",
+          "title": "University of Phoenix current graduate mba page evidence",
+          "url": "https://www.phoenix.edu/online-business-degrees/mba-competency-based-degree.html",
+          "kind": "university",
+          "roles": [
+            "pricing",
+            "admissions",
+            "pace"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/a12ee12aedf804a8.txt",
+          "sha256": "a12ee12aedf804a8c7971d900da9423ff9a06be4eebf2a2d9b3e9d38eb1915ae",
+          "sourceContentHash": "sha256:a12ee12aedf804a8c7971d900da9423ff9a06be4eebf2a2d9b3e9d38eb1915ae",
+          "originalRetrievedAt": "2026-11-27T06:04:56.970Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          }
+        },
+        {
+          "id": "phoenix-graduate-cover-20261127",
+          "title": "University of Phoenix current graduate cover evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=1-2&columns=2",
+          "kind": "university",
+          "roles": [
+            "policy",
+            "pricing"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/b9b19cdf42e66596.txt",
+          "sha256": "b9b19cdf42e66596fbb4f2b2e20a4fe61750b330cbb3dd46018b9f2642c767ee",
+          "sourceContentHash": "sha256:b9b19cdf42e66596fbb4f2b2e20a4fe61750b330cbb3dd46018b9f2642c767ee",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "1-2",
+          "columns": 2
+        },
+        {
+          "id": "phoenix-graduate-mba-catalog-20261127",
+          "title": "University of Phoenix current graduate mba catalog evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=442-443&columns=2",
+          "kind": "university",
+          "roles": [
+            "curriculum",
+            "policy"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/ee85cb1a59ccffae.txt",
+          "sha256": "ee85cb1a59ccffae1498d1e41367ad940c0de05c3707eefd8de0308ba42ffd93",
+          "sourceContentHash": "sha256:ee85cb1a59ccffae1498d1e41367ad940c0de05c3707eefd8de0308ba42ffd93",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "442-443",
+          "columns": 2
+        },
+        {
+          "id": "phoenix-graduate-prices-20261127",
+          "title": "University of Phoenix current graduate prices evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=468-469&columns=2",
+          "kind": "university",
+          "roles": [
+            "policy",
+            "pricing"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/79c45fe5c74ecf7f.txt",
+          "sha256": "79c45fe5c74ecf7f0cd206125691ba77881baf8db6ca87418584bb5be3fc731e",
+          "sourceContentHash": "sha256:79c45fe5c74ecf7f0cd206125691ba77881baf8db6ca87418584bb5be3fc731e",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "468-469",
+          "columns": 2
+        },
+        {
+          "id": "phoenix-graduate-fees-20261127",
+          "title": "University of Phoenix current graduate fees evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=472-472&columns=2",
+          "kind": "university",
+          "roles": [
+            "policy",
+            "pricing"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/1594e96f1ed6b50d.txt",
+          "sha256": "1594e96f1ed6b50d0f66752df6228245e6244d8c96699c912e271f596a88a1ec",
+          "sourceContentHash": "sha256:1594e96f1ed6b50d0f66752df6228245e6244d8c96699c912e271f596a88a1ec",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "472-472",
+          "columns": 2
         }
       ],
       "curriculumSections": [
@@ -263,7 +382,7 @@
             "orgcb-535",
             "ldrcb-535"
           ],
-          "sourceId": "phoenix-2026-27-phoenix-cb-mba"
+          "sourceId": "phoenix-graduate-mba-catalog-20261127"
         },
         {
           "id": "business-functional-skills",
@@ -275,7 +394,7 @@
             "fincb-571",
             "mktcb-574"
           ],
-          "sourceId": "phoenix-2026-27-phoenix-cb-mba"
+          "sourceId": "phoenix-graduate-mba-catalog-20261127"
         },
         {
           "id": "business-technical-skills",
@@ -285,7 +404,7 @@
             "datcb-565",
             "opscb-574"
           ],
-          "sourceId": "phoenix-2026-27-phoenix-cb-mba"
+          "sourceId": "phoenix-graduate-mba-catalog-20261127"
         },
         {
           "id": "business-strategic-skills",
@@ -295,30 +414,66 @@
             "mgtcb-576",
             "strcb-581"
           ],
-          "sourceId": "phoenix-2026-27-phoenix-cb-mba"
+          "sourceId": "phoenix-graduate-mba-catalog-20261127"
         }
       ],
       "coverage": "complete",
       "completeExecutablePathway": true,
-      "coverageLabel": "Complete required-course ledger from the current university catalog",
+      "coverageLabel": "Complete source-linked graduate CBE course plan; all required coursework at Phoenix, with published admission, pacing and price rules",
       "rulesNotes": [
         "All required courses must be completed within this exact Phoenix competency-based programme. Transfer activities and Phoenix coursework from outside this programme cannot waive required courses.",
-        "Admission, state-of-residence availability, applicable catalog and prior work-experience eligibility must be confirmed before enrollment."
+        "Published admission routes include program-specific degree, GPA and recent work-experience conditions; an undergraduate degree alone does not establish eligibility.",
+        "State-of-residence availability and individual admission are decided by Phoenix. This source-backed plan is not a personal enrollment approval."
       ],
       "unresolved": [
-        "Confirm admission eligibility, catalog applicability and enrollment availability with the university."
+        {
+          "message": "Apply to this exact competency-based program, supply original degree/transcript and work-experience records, and meet its published admission conditions. Phoenix makes the individual admission and state-of-residence availability decision.",
+          "owner": "student",
+          "status": "personal-task",
+          "sourceIds": [
+            "phoenix-graduate-mba-catalog-20261127",
+            "phoenix-graduate-mba-page-20261127"
+          ]
+        },
+        {
+          "message": "Follow the university-assigned course groups and obtain accepted completed credit before the capstone; actual future section and term availability remain personal registration tasks.",
+          "owner": "student",
+          "status": "personal-task",
+          "sourceIds": [
+            "phoenix-graduate-mba-catalog-20261127",
+            "phoenix-graduate-mba-page-20261127"
+          ]
+        }
       ],
       "obligations": [
         {
           "title": "Capstone credit prerequisite",
-          "notes": "At least 21 completed credits are required before STRCB 581.",
+          "notes": "At least 21 completed credits are required before STRCB 581; no fixed first-seven-course dependency is assumed.",
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mba"
+            "phoenix-graduate-mba-catalog-20261127"
+          ]
+        },
+        {
+          "title": "Apply to the correct competency-based program",
+          "notes": "Submit official transcripts, recent work-experience evidence and applicable state/English-proficiency documentation; the university decides eligibility under the published program rules.",
+          "sourceIds": [
+            "phoenix-graduate-mba-catalog-20261127",
+            "phoenix-graduate-mba-page-20261127"
           ]
         }
       ],
-      "policyReview": [],
-      "evidenceCheckedOn": "2026-11-09",
+      "policyReview": [
+        {
+          "field": "upperMinCredits",
+          "status": "resolved",
+          "resolution": "covered-by-complete-named-curriculum",
+          "sourceIds": [
+            "phoenix-graduate-mba-catalog-20261127"
+          ],
+          "message": "The complete named graduate course ledger is enforced; no undergraduate upper-division aggregate is imported."
+        }
+      ],
+      "evidenceCheckedOn": "2026-11-27",
       "pricingNotes": [
         "The programme page lists $300 per credit with no additional fees. This is a per-credit faculty-supported CB programme, not an unlimited subscription.",
         "Courses are scheduled in groups of three to four within 16-week periods; completion within a period depends on mastery and the university's scheduling rules."
@@ -328,11 +483,137 @@
         "amount": 300,
         "period": "credit",
         "currency": "USD",
-        "sourceUrl": "https://www.phoenix.edu/online-business-degrees/mba-competency-based-degree.html"
+        "sourceUrl": "https://www.phoenix.edu/online-business-degrees/mba-competency-based-degree.html",
+        "sourceIds": [
+          "phoenix-graduate-mba-page-20261127",
+          "phoenix-graduate-prices-20261127",
+          "phoenix-graduate-fees-20261127"
+        ],
+        "checkedOn": "2026-11-27",
+        "notes": [
+          "Published current tuition per credit; the program page states no additional fees. Repeats, applicable tax and personal living costs are separate.",
+          "The price is a planning input before aid, not an admission offer or guaranteed total cost."
+        ]
       },
       "pacing": {
         "universityTermWeeks": 16,
-        "maximumCoursesPerTerm": 4
+        "maximumCoursesPerTerm": 4,
+        "sourceIds": [
+          "phoenix-graduate-mba-page-20261127"
+        ]
+      },
+      "sourceIds": [
+        "phoenix-graduate-mba-page-20261127",
+        "phoenix-graduate-cover-20261127",
+        "phoenix-graduate-mba-catalog-20261127",
+        "phoenix-graduate-prices-20261127",
+        "phoenix-graduate-fees-20261127"
+      ],
+      "modalities": [
+        "online"
+      ],
+      "catalogYear": "2026-2027",
+      "paceSourceUrl": "https://www.phoenix.edu/online-business-degrees/mba-competency-based-degree.html",
+      "policySourceIds": [
+        "phoenix-graduate-mba-catalog-20261127"
+      ],
+      "policyEvidence": {
+        "institutionMinCredits": {
+          "value": 33,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "phoenix-graduate-mba-catalog-20261127"
+          ],
+          "basis": "All required courses must be completed in this exact Phoenix competency-based or direct-assessment program; outside transfer and courses from another UOPX program cannot waive the required coursework."
+        },
+        "externalMaxCredits": {
+          "value": 0,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "phoenix-graduate-mba-catalog-20261127"
+          ],
+          "basis": "All required courses must be completed in this exact Phoenix competency-based or direct-assessment program; outside transfer and courses from another UOPX program cannot waive the required coursework."
+        },
+        "alternativeMaxCredits": {
+          "value": 0,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "phoenix-graduate-mba-catalog-20261127"
+          ],
+          "basis": "All required courses must be completed in this exact Phoenix competency-based or direct-assessment program; outside transfer and courses from another UOPX program cannot waive the required coursework."
+        }
+      },
+      "admissionRequirements": [
+        {
+          "message": "Admission requires either an approved business/business-management degree and at least three equivalent full-time years of relevant business administrative, operational, leadership or management experience in the past ten years, or an approved degree in another discipline and at least five such years. The university reviews degree accreditation or foreign equivalency.",
+          "sourceIds": [
+            "phoenix-graduate-mba-catalog-20261127",
+            "phoenix-graduate-mba-page-20261127"
+          ]
+        },
+        {
+          "message": "A 2.5 cumulative GPA on the transcript for the conferred degree is required. Transfer grades from another institution are excluded from this admission GPA.",
+          "sourceIds": [
+            "phoenix-graduate-mba-catalog-20261127",
+            "phoenix-graduate-mba-page-20261127"
+          ]
+        }
+      ],
+      "curriculumReview": {
+        "id": "phoenix-graduate-cbe-primary-review-2026-11-27",
+        "checkedOn": "2026-11-27",
+        "sourceIds": [
+          "phoenix-graduate-mba-catalog-20261127",
+          "phoenix-graduate-cover-20261127"
+        ],
+        "requirementsComplete": true,
+        "outsideAwardsProposed": 0,
+        "waiversAssumed": 0,
+        "programIdentity": "phoenix-cb-mba"
+      },
+      "admissionReview": {
+        "id": "phoenix-graduate-cbe-primary-review-2026-11-27",
+        "checkedOn": "2026-11-27",
+        "sourceIds": [
+          "phoenix-graduate-mba-catalog-20261127",
+          "phoenix-graduate-mba-page-20261127"
+        ],
+        "publishedRulesEstablished": true,
+        "individualAdmissionGranted": false,
+        "allStatesEligible": false,
+        "basis": "Current official program offering and governing catalog requirements are retained. State availability, official transcripts, experience evidence and personal admission remain university decisions."
+      },
+      "pacePolicy": {
+        "sourceIds": [
+          "phoenix-graduate-mba-page-20261127"
+        ],
+        "sessionWeeks": 16,
+        "maximumCoursesPerTerm": 4,
+        "selfPacedWithinTerm": true,
+        "basis": "Faculty-supported competency-based groups of three to four courses within sixteen-week periods; students demonstrate mastery within that university schedule, not an unlimited subscription."
+      },
+      "competencyBased": true,
+      "selfPaced": true,
+      "paceSourceIds": [
+        "phoenix-graduate-mba-page-20261127"
+      ],
+      "paceCheckedOn": "2026-11-27",
+      "assessmentPolicy": {
+        "coursePassingMark": "ME",
+        "maximumAssessmentAttempts": 3,
+        "sourceIds": [
+          "phoenix-graduate-mba-catalog-20261127"
+        ],
+        "notes": "All competencies in each required course must receive Met or better. University progression, engagement, repeat and assessment-attempt rules still apply."
+      },
+      "graduateCBEReview": {
+        "id": "phoenix-graduate-cbe-primary-review-2026-11-27",
+        "checkedOn": "2026-11-27",
+        "requirementsComplete": true,
+        "totalUniversityCredits": 33,
+        "creditSystem": "semester",
+        "individualAdmissionGranted": false,
+        "outsideAwardsCreated": 0
       }
     },
     {
@@ -363,7 +644,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mis"
+            "phoenix-graduate-mis-catalog-20261127"
           ],
           "options": []
         },
@@ -377,7 +658,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mis"
+            "phoenix-graduate-mis-catalog-20261127"
           ],
           "options": []
         },
@@ -391,7 +672,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mis"
+            "phoenix-graduate-mis-catalog-20261127"
           ],
           "options": []
         },
@@ -405,7 +686,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mis"
+            "phoenix-graduate-mis-catalog-20261127"
           ],
           "options": []
         },
@@ -419,7 +700,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mis"
+            "phoenix-graduate-mis-catalog-20261127"
           ],
           "options": []
         },
@@ -433,7 +714,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mis"
+            "phoenix-graduate-mis-catalog-20261127"
           ],
           "options": []
         },
@@ -447,7 +728,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mis"
+            "phoenix-graduate-mis-catalog-20261127"
           ],
           "options": []
         },
@@ -461,7 +742,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mis"
+            "phoenix-graduate-mis-catalog-20261127"
           ],
           "options": []
         },
@@ -475,7 +756,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mis"
+            "phoenix-graduate-mis-catalog-20261127"
           ],
           "options": []
         },
@@ -489,7 +770,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mis"
+            "phoenix-graduate-mis-catalog-20261127"
           ],
           "options": []
         },
@@ -503,7 +784,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mis"
+            "phoenix-graduate-mis-catalog-20261127"
           ],
           "options": []
         },
@@ -517,23 +798,142 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mis"
+            "phoenix-graduate-mis-catalog-20261127"
           ],
           "options": [],
           "minimumCompletedCredits": 21,
           "conditions": [
             "The catalog requires at least 21 completed credits before this course. There is no fixed first-seven-course dependency."
-          ]
+          ],
+          "prerequisitePolicy": {
+            "status": "reviewed-numeric-completion-minimum",
+            "sourceIds": [
+              "phoenix-graduate-mis-catalog-20261127"
+            ],
+            "checkedOn": "2026-11-27",
+            "minimumCompletedCredits": 21,
+            "creditSystem": "semester"
+          }
         }
       ],
       "sources": [
         {
-          "id": "phoenix-2026-27-phoenix-cb-mis",
-          "title": "University of Phoenix 2026–2027 Online Academic Catalog: Master of Information Systems (Competency Based-CB)",
-          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#page=444",
-          "checked": "2026-11-09",
-          "catalog": "2026–2027, November 1, 2026 updates",
-          "notes": "PDF page numbers in the fragment are one-based; programme and residency policies continue onto the next page."
+          "id": "phoenix-graduate-mis-page-20261127",
+          "title": "University of Phoenix current graduate mis page evidence",
+          "url": "https://www.phoenix.edu/online-information-technology-degrees/information-systems-competency-based-degree.html",
+          "kind": "university",
+          "roles": [
+            "pricing",
+            "admissions",
+            "pace"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/e5db979aa2105478.txt",
+          "sha256": "e5db979aa2105478cdf4cd0c24734e9aed2248c95ec837259ae9a6cb7bda2c49",
+          "sourceContentHash": "sha256:e5db979aa2105478cdf4cd0c24734e9aed2248c95ec837259ae9a6cb7bda2c49",
+          "originalRetrievedAt": "2026-11-27T06:04:57.257Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          }
+        },
+        {
+          "id": "phoenix-graduate-cover-20261127",
+          "title": "University of Phoenix current graduate cover evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=1-2&columns=2",
+          "kind": "university",
+          "roles": [
+            "policy",
+            "pricing"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/b9b19cdf42e66596.txt",
+          "sha256": "b9b19cdf42e66596fbb4f2b2e20a4fe61750b330cbb3dd46018b9f2642c767ee",
+          "sourceContentHash": "sha256:b9b19cdf42e66596fbb4f2b2e20a4fe61750b330cbb3dd46018b9f2642c767ee",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "1-2",
+          "columns": 2
+        },
+        {
+          "id": "phoenix-graduate-mis-catalog-20261127",
+          "title": "University of Phoenix current graduate mis catalog evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=444-445&columns=2",
+          "kind": "university",
+          "roles": [
+            "curriculum",
+            "policy"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/520448ce2576aaa2.txt",
+          "sha256": "520448ce2576aaa2c64772269d02982aa1596756e3ae17f4c1284d31ad2c6613",
+          "sourceContentHash": "sha256:520448ce2576aaa2c64772269d02982aa1596756e3ae17f4c1284d31ad2c6613",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "444-445",
+          "columns": 2
+        },
+        {
+          "id": "phoenix-graduate-prices-20261127",
+          "title": "University of Phoenix current graduate prices evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=468-469&columns=2",
+          "kind": "university",
+          "roles": [
+            "policy",
+            "pricing"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/79c45fe5c74ecf7f.txt",
+          "sha256": "79c45fe5c74ecf7f0cd206125691ba77881baf8db6ca87418584bb5be3fc731e",
+          "sourceContentHash": "sha256:79c45fe5c74ecf7f0cd206125691ba77881baf8db6ca87418584bb5be3fc731e",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "468-469",
+          "columns": 2
+        },
+        {
+          "id": "phoenix-graduate-fees-20261127",
+          "title": "University of Phoenix current graduate fees evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=472-472&columns=2",
+          "kind": "university",
+          "roles": [
+            "policy",
+            "pricing"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/1594e96f1ed6b50d.txt",
+          "sha256": "1594e96f1ed6b50d0f66752df6228245e6244d8c96699c912e271f596a88a1ec",
+          "sourceContentHash": "sha256:1594e96f1ed6b50d0f66752df6228245e6244d8c96699c912e271f596a88a1ec",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "472-472",
+          "columns": 2
         }
       ],
       "curriculumSections": [
@@ -547,7 +947,7 @@
             "cmgtcb-556",
             "bsacb-531"
           ],
-          "sourceId": "phoenix-2026-27-phoenix-cb-mis"
+          "sourceId": "phoenix-graduate-mis-catalog-20261127"
         },
         {
           "id": "it-leadership-and-management",
@@ -559,7 +959,7 @@
             "cmgtcb-558",
             "cmgtcb-578"
           ],
-          "sourceId": "phoenix-2026-27-phoenix-cb-mis"
+          "sourceId": "phoenix-graduate-mis-catalog-20261127"
         },
         {
           "id": "it-security-and-integration",
@@ -571,30 +971,66 @@
             "cmgtcb-559",
             "cmgtcb-583"
           ],
-          "sourceId": "phoenix-2026-27-phoenix-cb-mis"
+          "sourceId": "phoenix-graduate-mis-catalog-20261127"
         }
       ],
       "coverage": "complete",
       "completeExecutablePathway": true,
-      "coverageLabel": "Complete required-course ledger from the current university catalog",
+      "coverageLabel": "Complete source-linked graduate CBE course plan; all required coursework at Phoenix, with published admission, pacing and price rules",
       "rulesNotes": [
         "All required courses must be completed within this exact Phoenix competency-based programme. Transfer activities and Phoenix coursework from outside this programme cannot waive required courses.",
-        "Admission, state-of-residence availability, applicable catalog and prior work-experience eligibility must be confirmed before enrollment."
+        "Published admission routes include program-specific degree, GPA and recent work-experience conditions; an undergraduate degree alone does not establish eligibility.",
+        "State-of-residence availability and individual admission are decided by Phoenix. This source-backed plan is not a personal enrollment approval."
       ],
       "unresolved": [
-        "Confirm admission eligibility, catalog applicability and enrollment availability with the university."
+        {
+          "message": "Apply to this exact competency-based program, supply original degree/transcript and work-experience records, and meet its published admission conditions. Phoenix makes the individual admission and state-of-residence availability decision.",
+          "owner": "student",
+          "status": "personal-task",
+          "sourceIds": [
+            "phoenix-graduate-mis-catalog-20261127",
+            "phoenix-graduate-mis-page-20261127"
+          ]
+        },
+        {
+          "message": "Follow the university-assigned course groups and obtain accepted completed credit before the capstone; actual future section and term availability remain personal registration tasks.",
+          "owner": "student",
+          "status": "personal-task",
+          "sourceIds": [
+            "phoenix-graduate-mis-catalog-20261127",
+            "phoenix-graduate-mis-page-20261127"
+          ]
+        }
       ],
       "obligations": [
         {
           "title": "Capstone credit prerequisite",
-          "notes": "At least 21 completed credits are required before CMGTCB 583.",
+          "notes": "At least 21 completed credits are required before CMGTCB 583; no fixed first-seven-course dependency is assumed.",
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mis"
+            "phoenix-graduate-mis-catalog-20261127"
+          ]
+        },
+        {
+          "title": "Apply to the correct competency-based program",
+          "notes": "Submit official transcripts, recent work-experience evidence and applicable state/English-proficiency documentation; the university decides eligibility under the published program rules.",
+          "sourceIds": [
+            "phoenix-graduate-mis-catalog-20261127",
+            "phoenix-graduate-mis-page-20261127"
           ]
         }
       ],
-      "policyReview": [],
-      "evidenceCheckedOn": "2026-11-09",
+      "policyReview": [
+        {
+          "field": "upperMinCredits",
+          "status": "resolved",
+          "resolution": "covered-by-complete-named-curriculum",
+          "sourceIds": [
+            "phoenix-graduate-mis-catalog-20261127"
+          ],
+          "message": "The complete named graduate course ledger is enforced; no undergraduate upper-division aggregate is imported."
+        }
+      ],
+      "evidenceCheckedOn": "2026-11-27",
       "pricingNotes": [
         "The reviewed programme pricing is per credit. Confirm the applicable enrollment quote; this is not an unlimited-course subscription.",
         "University CB scheduling and the 21-credit capstone prerequisite constrain the completion sequence."
@@ -604,11 +1040,137 @@
         "amount": 300,
         "period": "credit",
         "currency": "USD",
-        "sourceUrl": "https://www.phoenix.edu/online-information-technology-degrees/information-systems-competency-based-degree.html"
+        "sourceUrl": "https://www.phoenix.edu/online-information-technology-degrees/information-systems-competency-based-degree.html",
+        "sourceIds": [
+          "phoenix-graduate-mis-page-20261127",
+          "phoenix-graduate-prices-20261127",
+          "phoenix-graduate-fees-20261127"
+        ],
+        "checkedOn": "2026-11-27",
+        "notes": [
+          "Published current tuition per credit; the program page states no additional fees. Repeats, applicable tax and personal living costs are separate.",
+          "The price is a planning input before aid, not an admission offer or guaranteed total cost."
+        ]
       },
       "pacing": {
         "universityTermWeeks": 16,
-        "maximumCoursesPerTerm": 4
+        "maximumCoursesPerTerm": 4,
+        "sourceIds": [
+          "phoenix-graduate-mis-page-20261127"
+        ]
+      },
+      "sourceIds": [
+        "phoenix-graduate-mis-page-20261127",
+        "phoenix-graduate-cover-20261127",
+        "phoenix-graduate-mis-catalog-20261127",
+        "phoenix-graduate-prices-20261127",
+        "phoenix-graduate-fees-20261127"
+      ],
+      "modalities": [
+        "online"
+      ],
+      "catalogYear": "2026-2027",
+      "paceSourceUrl": "https://www.phoenix.edu/online-information-technology-degrees/information-systems-competency-based-degree.html",
+      "policySourceIds": [
+        "phoenix-graduate-mis-catalog-20261127"
+      ],
+      "policyEvidence": {
+        "institutionMinCredits": {
+          "value": 36,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "phoenix-graduate-mis-catalog-20261127"
+          ],
+          "basis": "All required courses must be completed in this exact Phoenix competency-based or direct-assessment program; outside transfer and courses from another UOPX program cannot waive the required coursework."
+        },
+        "externalMaxCredits": {
+          "value": 0,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "phoenix-graduate-mis-catalog-20261127"
+          ],
+          "basis": "All required courses must be completed in this exact Phoenix competency-based or direct-assessment program; outside transfer and courses from another UOPX program cannot waive the required coursework."
+        },
+        "alternativeMaxCredits": {
+          "value": 0,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "phoenix-graduate-mis-catalog-20261127"
+          ],
+          "basis": "All required courses must be completed in this exact Phoenix competency-based or direct-assessment program; outside transfer and courses from another UOPX program cannot waive the required coursework."
+        }
+      },
+      "admissionRequirements": [
+        {
+          "message": "Admission requires either an approved degree in business, computer science, information technology or a related field and at least three equivalent full-time years of IT or relevant administrative, operational, leadership or management experience in the past ten years, or an approved degree in another discipline and at least five such years. Experience must be in an IT or business environment.",
+          "sourceIds": [
+            "phoenix-graduate-mis-catalog-20261127",
+            "phoenix-graduate-mis-page-20261127"
+          ]
+        },
+        {
+          "message": "A 2.5 cumulative GPA on the transcript for the conferred degree is required. Transfer grades from another institution are excluded from this admission GPA.",
+          "sourceIds": [
+            "phoenix-graduate-mis-catalog-20261127",
+            "phoenix-graduate-mis-page-20261127"
+          ]
+        }
+      ],
+      "curriculumReview": {
+        "id": "phoenix-graduate-cbe-primary-review-2026-11-27",
+        "checkedOn": "2026-11-27",
+        "sourceIds": [
+          "phoenix-graduate-mis-catalog-20261127",
+          "phoenix-graduate-cover-20261127"
+        ],
+        "requirementsComplete": true,
+        "outsideAwardsProposed": 0,
+        "waiversAssumed": 0,
+        "programIdentity": "phoenix-cb-mis"
+      },
+      "admissionReview": {
+        "id": "phoenix-graduate-cbe-primary-review-2026-11-27",
+        "checkedOn": "2026-11-27",
+        "sourceIds": [
+          "phoenix-graduate-mis-catalog-20261127",
+          "phoenix-graduate-mis-page-20261127"
+        ],
+        "publishedRulesEstablished": true,
+        "individualAdmissionGranted": false,
+        "allStatesEligible": false,
+        "basis": "Current official program offering and governing catalog requirements are retained. State availability, official transcripts, experience evidence and personal admission remain university decisions."
+      },
+      "pacePolicy": {
+        "sourceIds": [
+          "phoenix-graduate-mis-page-20261127"
+        ],
+        "sessionWeeks": 16,
+        "maximumCoursesPerTerm": 4,
+        "selfPacedWithinTerm": true,
+        "basis": "Faculty-supported competency-based groups of three to four courses within sixteen-week periods; students demonstrate mastery within that university schedule, not an unlimited subscription."
+      },
+      "competencyBased": true,
+      "selfPaced": true,
+      "paceSourceIds": [
+        "phoenix-graduate-mis-page-20261127"
+      ],
+      "paceCheckedOn": "2026-11-27",
+      "assessmentPolicy": {
+        "coursePassingMark": "ME",
+        "maximumAssessmentAttempts": 3,
+        "sourceIds": [
+          "phoenix-graduate-mis-catalog-20261127"
+        ],
+        "notes": "All competencies in each required course must receive Met or better. University progression, engagement, repeat and assessment-attempt rules still apply."
+      },
+      "graduateCBEReview": {
+        "id": "phoenix-graduate-cbe-primary-review-2026-11-27",
+        "checkedOn": "2026-11-27",
+        "requirementsComplete": true,
+        "totalUniversityCredits": 36,
+        "creditSystem": "semester",
+        "individualAdmissionGranted": false,
+        "outsideAwardsCreated": 0
       }
     },
     {
@@ -639,7 +1201,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mha"
+            "phoenix-graduate-mha-catalog-20261127"
           ],
           "options": []
         },
@@ -653,7 +1215,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mha"
+            "phoenix-graduate-mha-catalog-20261127"
           ],
           "options": []
         },
@@ -667,7 +1229,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mha"
+            "phoenix-graduate-mha-catalog-20261127"
           ],
           "options": []
         },
@@ -681,7 +1243,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mha"
+            "phoenix-graduate-mha-catalog-20261127"
           ],
           "options": []
         },
@@ -695,7 +1257,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mha"
+            "phoenix-graduate-mha-catalog-20261127"
           ],
           "options": []
         },
@@ -709,7 +1271,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mha"
+            "phoenix-graduate-mha-catalog-20261127"
           ],
           "options": []
         },
@@ -723,7 +1285,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mha"
+            "phoenix-graduate-mha-catalog-20261127"
           ],
           "options": []
         },
@@ -737,7 +1299,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mha"
+            "phoenix-graduate-mha-catalog-20261127"
           ],
           "options": []
         },
@@ -751,7 +1313,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mha"
+            "phoenix-graduate-mha-catalog-20261127"
           ],
           "options": []
         },
@@ -765,7 +1327,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mha"
+            "phoenix-graduate-mha-catalog-20261127"
           ],
           "options": []
         },
@@ -779,7 +1341,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mha"
+            "phoenix-graduate-mha-catalog-20261127"
           ],
           "options": []
         },
@@ -793,23 +1355,142 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mha"
+            "phoenix-graduate-mha-catalog-20261127"
           ],
           "options": [],
           "minimumCompletedCredits": 21,
           "conditions": [
             "The catalog requires at least 21 completed credits before this course. There is no fixed first-seven-course dependency."
-          ]
+          ],
+          "prerequisitePolicy": {
+            "status": "reviewed-numeric-completion-minimum",
+            "sourceIds": [
+              "phoenix-graduate-mha-catalog-20261127"
+            ],
+            "checkedOn": "2026-11-27",
+            "minimumCompletedCredits": 21,
+            "creditSystem": "semester"
+          }
         }
       ],
       "sources": [
         {
-          "id": "phoenix-2026-27-phoenix-cb-mha",
-          "title": "University of Phoenix 2026–2027 Online Academic Catalog: Master of Health Administration (Competency Based-CB)",
-          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#page=446",
-          "checked": "2026-11-09",
-          "catalog": "2026–2027, November 1, 2026 updates",
-          "notes": "PDF page numbers in the fragment are one-based; programme and residency policies continue onto the next page."
+          "id": "phoenix-graduate-mha-page-20261127",
+          "title": "University of Phoenix current graduate mha page evidence",
+          "url": "https://www.phoenix.edu/online-healthcare-degrees/health-administration-competency-based-masters.html",
+          "kind": "university",
+          "roles": [
+            "pricing",
+            "admissions",
+            "pace"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/03311c14920f261b.txt",
+          "sha256": "03311c14920f261b0abf51b9b2d2c91a8b471b25714e701cab1a15de32f1a3ba",
+          "sourceContentHash": "sha256:03311c14920f261b0abf51b9b2d2c91a8b471b25714e701cab1a15de32f1a3ba",
+          "originalRetrievedAt": "2026-11-27T06:04:57.510Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          }
+        },
+        {
+          "id": "phoenix-graduate-cover-20261127",
+          "title": "University of Phoenix current graduate cover evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=1-2&columns=2",
+          "kind": "university",
+          "roles": [
+            "policy",
+            "pricing"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/b9b19cdf42e66596.txt",
+          "sha256": "b9b19cdf42e66596fbb4f2b2e20a4fe61750b330cbb3dd46018b9f2642c767ee",
+          "sourceContentHash": "sha256:b9b19cdf42e66596fbb4f2b2e20a4fe61750b330cbb3dd46018b9f2642c767ee",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "1-2",
+          "columns": 2
+        },
+        {
+          "id": "phoenix-graduate-mha-catalog-20261127",
+          "title": "University of Phoenix current graduate mha catalog evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=446-447&columns=2",
+          "kind": "university",
+          "roles": [
+            "curriculum",
+            "policy"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/74ce464349be99bc.txt",
+          "sha256": "74ce464349be99bc13c90a2089bf0f0a497f0a21fdad255867624b9272222cce",
+          "sourceContentHash": "sha256:74ce464349be99bc13c90a2089bf0f0a497f0a21fdad255867624b9272222cce",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "446-447",
+          "columns": 2
+        },
+        {
+          "id": "phoenix-graduate-prices-20261127",
+          "title": "University of Phoenix current graduate prices evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=468-469&columns=2",
+          "kind": "university",
+          "roles": [
+            "policy",
+            "pricing"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/79c45fe5c74ecf7f.txt",
+          "sha256": "79c45fe5c74ecf7f0cd206125691ba77881baf8db6ca87418584bb5be3fc731e",
+          "sourceContentHash": "sha256:79c45fe5c74ecf7f0cd206125691ba77881baf8db6ca87418584bb5be3fc731e",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "468-469",
+          "columns": 2
+        },
+        {
+          "id": "phoenix-graduate-fees-20261127",
+          "title": "University of Phoenix current graduate fees evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=472-472&columns=2",
+          "kind": "university",
+          "roles": [
+            "policy",
+            "pricing"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/1594e96f1ed6b50d.txt",
+          "sha256": "1594e96f1ed6b50d0f66752df6228245e6244d8c96699c912e271f596a88a1ec",
+          "sourceContentHash": "sha256:1594e96f1ed6b50d0f66752df6228245e6244d8c96699c912e271f596a88a1ec",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "472-472",
+          "columns": 2
         }
       ],
       "curriculumSections": [
@@ -824,7 +1505,7 @@
             "mhacb-508",
             "mhacb-598"
           ],
-          "sourceId": "phoenix-2026-27-phoenix-cb-mha"
+          "sourceId": "phoenix-graduate-mha-catalog-20261127"
         },
         {
           "id": "health-care-industry-planning",
@@ -835,7 +1516,7 @@
             "mhacb-516",
             "mhacb-520"
           ],
-          "sourceId": "phoenix-2026-27-phoenix-cb-mha"
+          "sourceId": "phoenix-graduate-mha-catalog-20261127"
         },
         {
           "id": "health-care-industry-leadership",
@@ -846,7 +1527,7 @@
             "mhacb-543",
             "mhacb-560"
           ],
-          "sourceId": "phoenix-2026-27-phoenix-cb-mha"
+          "sourceId": "phoenix-graduate-mha-catalog-20261127"
         },
         {
           "id": "health-care-industry-transformation",
@@ -855,30 +1536,66 @@
           "requirementIds": [
             "mhacb-599"
           ],
-          "sourceId": "phoenix-2026-27-phoenix-cb-mha"
+          "sourceId": "phoenix-graduate-mha-catalog-20261127"
         }
       ],
       "coverage": "complete",
       "completeExecutablePathway": true,
-      "coverageLabel": "Complete required-course ledger from the current university catalog",
+      "coverageLabel": "Complete source-linked graduate CBE course plan; all required coursework at Phoenix, with published admission, pacing and price rules",
       "rulesNotes": [
         "All required courses must be completed within this exact Phoenix competency-based programme. Transfer activities and Phoenix coursework from outside this programme cannot waive required courses.",
-        "Admission, state-of-residence availability, applicable catalog and prior work-experience eligibility must be confirmed before enrollment."
+        "Published admission routes include program-specific degree, GPA and recent work-experience conditions; an undergraduate degree alone does not establish eligibility.",
+        "State-of-residence availability and individual admission are decided by Phoenix. This source-backed plan is not a personal enrollment approval."
       ],
       "unresolved": [
-        "Confirm admission eligibility, catalog applicability and enrollment availability with the university."
+        {
+          "message": "Apply to this exact competency-based program, supply original degree/transcript and work-experience records, and meet its published admission conditions. Phoenix makes the individual admission and state-of-residence availability decision.",
+          "owner": "student",
+          "status": "personal-task",
+          "sourceIds": [
+            "phoenix-graduate-mha-catalog-20261127",
+            "phoenix-graduate-mha-page-20261127"
+          ]
+        },
+        {
+          "message": "Follow the university-assigned course groups and obtain accepted completed credit before the capstone; actual future section and term availability remain personal registration tasks.",
+          "owner": "student",
+          "status": "personal-task",
+          "sourceIds": [
+            "phoenix-graduate-mha-catalog-20261127",
+            "phoenix-graduate-mha-page-20261127"
+          ]
+        }
       ],
       "obligations": [
         {
           "title": "Capstone credit prerequisite",
-          "notes": "At least 21 completed credits are required before MHACB 599.",
+          "notes": "At least 21 completed credits are required before MHACB 599; no fixed first-seven-course dependency is assumed.",
           "sourceIds": [
-            "phoenix-2026-27-phoenix-cb-mha"
+            "phoenix-graduate-mha-catalog-20261127"
+          ]
+        },
+        {
+          "title": "Apply to the correct competency-based program",
+          "notes": "Submit official transcripts, recent work-experience evidence and applicable state/English-proficiency documentation; the university decides eligibility under the published program rules.",
+          "sourceIds": [
+            "phoenix-graduate-mha-catalog-20261127",
+            "phoenix-graduate-mha-page-20261127"
           ]
         }
       ],
-      "policyReview": [],
-      "evidenceCheckedOn": "2026-11-09",
+      "policyReview": [
+        {
+          "field": "upperMinCredits",
+          "status": "resolved",
+          "resolution": "covered-by-complete-named-curriculum",
+          "sourceIds": [
+            "phoenix-graduate-mha-catalog-20261127"
+          ],
+          "message": "The complete named graduate course ledger is enforced; no undergraduate upper-division aggregate is imported."
+        }
+      ],
+      "evidenceCheckedOn": "2026-11-27",
       "pricingNotes": [
         "The reviewed programme pricing is per credit. Confirm the applicable enrollment quote; this is not an unlimited-course subscription.",
         "University CB scheduling and the 21-credit capstone prerequisite constrain the completion sequence."
@@ -888,11 +1605,151 @@
         "amount": 300,
         "period": "credit",
         "currency": "USD",
-        "sourceUrl": "https://www.phoenix.edu/online-healthcare-degrees/health-administration-competency-based-masters.html"
+        "sourceUrl": "https://www.phoenix.edu/online-healthcare-degrees/health-administration-competency-based-masters.html",
+        "sourceIds": [
+          "phoenix-graduate-mha-page-20261127",
+          "phoenix-graduate-prices-20261127",
+          "phoenix-graduate-fees-20261127"
+        ],
+        "checkedOn": "2026-11-27",
+        "notes": [
+          "Published current tuition per credit; the program page states no additional fees. Repeats, applicable tax and personal living costs are separate.",
+          "The price is a planning input before aid, not an admission offer or guaranteed total cost."
+        ]
       },
       "pacing": {
         "universityTermWeeks": 16,
-        "maximumCoursesPerTerm": 4
+        "maximumCoursesPerTerm": 4,
+        "sourceIds": [
+          "phoenix-graduate-mha-page-20261127"
+        ]
+      },
+      "sourceIds": [
+        "phoenix-graduate-mha-page-20261127",
+        "phoenix-graduate-cover-20261127",
+        "phoenix-graduate-mha-catalog-20261127",
+        "phoenix-graduate-prices-20261127",
+        "phoenix-graduate-fees-20261127"
+      ],
+      "modalities": [
+        "online"
+      ],
+      "catalogYear": "2026-2027",
+      "paceSourceUrl": "https://www.phoenix.edu/online-healthcare-degrees/health-administration-competency-based-masters.html",
+      "policySourceIds": [
+        "phoenix-graduate-mha-catalog-20261127"
+      ],
+      "policyEvidence": {
+        "institutionMinCredits": {
+          "value": 36,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "phoenix-graduate-mha-catalog-20261127"
+          ],
+          "basis": "All required courses must be completed in this exact Phoenix competency-based or direct-assessment program; outside transfer and courses from another UOPX program cannot waive the required coursework."
+        },
+        "externalMaxCredits": {
+          "value": 0,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "phoenix-graduate-mha-catalog-20261127"
+          ],
+          "basis": "All required courses must be completed in this exact Phoenix competency-based or direct-assessment program; outside transfer and courses from another UOPX program cannot waive the required coursework."
+        },
+        "alternativeMaxCredits": {
+          "value": 0,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "phoenix-graduate-mha-catalog-20261127"
+          ],
+          "basis": "All required courses must be completed in this exact Phoenix competency-based or direct-assessment program; outside transfer and courses from another UOPX program cannot waive the required coursework."
+        }
+      },
+      "admissionRequirements": [
+        {
+          "message": "Have an approved bachelor's degree or higher, or a comparable recognized foreign qualification; the university evaluates degree accreditation and transcript eligibility.",
+          "sourceIds": [
+            "phoenix-graduate-mha-catalog-20261127",
+            "phoenix-graduate-mha-page-20261127"
+          ]
+        },
+        {
+          "message": "Have at least three equivalent full-time years of healthcare leadership or management experience in the past ten years, including oversight or management of staff.",
+          "sourceIds": [
+            "phoenix-graduate-mha-catalog-20261127",
+            "phoenix-graduate-mha-page-20261127"
+          ]
+        },
+        {
+          "message": "Be employed in healthcare or have access to a healthcare environment for course assignments.",
+          "sourceIds": [
+            "phoenix-graduate-mha-catalog-20261127",
+            "phoenix-graduate-mha-page-20261127"
+          ]
+        },
+        {
+          "message": "A 2.5 cumulative GPA on the transcript for the conferred degree is required; transfer grades from other institutions are excluded from this admission GPA.",
+          "sourceIds": [
+            "phoenix-graduate-mha-catalog-20261127",
+            "phoenix-graduate-mha-page-20261127"
+          ]
+        }
+      ],
+      "curriculumReview": {
+        "id": "phoenix-graduate-cbe-primary-review-2026-11-27",
+        "checkedOn": "2026-11-27",
+        "sourceIds": [
+          "phoenix-graduate-mha-catalog-20261127",
+          "phoenix-graduate-cover-20261127"
+        ],
+        "requirementsComplete": true,
+        "outsideAwardsProposed": 0,
+        "waiversAssumed": 0,
+        "programIdentity": "phoenix-cb-mha"
+      },
+      "admissionReview": {
+        "id": "phoenix-graduate-cbe-primary-review-2026-11-27",
+        "checkedOn": "2026-11-27",
+        "sourceIds": [
+          "phoenix-graduate-mha-catalog-20261127",
+          "phoenix-graduate-mha-page-20261127"
+        ],
+        "publishedRulesEstablished": true,
+        "individualAdmissionGranted": false,
+        "allStatesEligible": false,
+        "basis": "Current official program offering and governing catalog requirements are retained. State availability, official transcripts, experience evidence and personal admission remain university decisions."
+      },
+      "pacePolicy": {
+        "sourceIds": [
+          "phoenix-graduate-mha-page-20261127"
+        ],
+        "sessionWeeks": 16,
+        "maximumCoursesPerTerm": 4,
+        "selfPacedWithinTerm": true,
+        "basis": "Faculty-supported competency-based groups of three to four courses within sixteen-week periods; students demonstrate mastery within that university schedule, not an unlimited subscription."
+      },
+      "competencyBased": true,
+      "selfPaced": true,
+      "paceSourceIds": [
+        "phoenix-graduate-mha-page-20261127"
+      ],
+      "paceCheckedOn": "2026-11-27",
+      "assessmentPolicy": {
+        "coursePassingMark": "ME",
+        "maximumAssessmentAttempts": 3,
+        "sourceIds": [
+          "phoenix-graduate-mha-catalog-20261127"
+        ],
+        "notes": "All competencies in each required course must receive Met or better. University progression, engagement, repeat and assessment-attempt rules still apply."
+      },
+      "graduateCBEReview": {
+        "id": "phoenix-graduate-cbe-primary-review-2026-11-27",
+        "checkedOn": "2026-11-27",
+        "requirementsComplete": true,
+        "totalUniversityCredits": 36,
+        "creditSystem": "semester",
+        "individualAdmissionGranted": false,
+        "outsideAwardsCreated": 0
       }
     },
     {
@@ -923,7 +1780,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-da-ms-psychology"
+            "phoenix-graduate-psychology-catalog-20261127"
           ],
           "options": []
         },
@@ -937,7 +1794,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-da-ms-psychology"
+            "phoenix-graduate-psychology-catalog-20261127"
           ],
           "options": []
         },
@@ -951,7 +1808,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-da-ms-psychology"
+            "phoenix-graduate-psychology-catalog-20261127"
           ],
           "options": []
         },
@@ -965,7 +1822,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-da-ms-psychology"
+            "phoenix-graduate-psychology-catalog-20261127"
           ],
           "options": []
         },
@@ -979,7 +1836,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-da-ms-psychology"
+            "phoenix-graduate-psychology-catalog-20261127"
           ],
           "options": []
         },
@@ -993,7 +1850,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-da-ms-psychology"
+            "phoenix-graduate-psychology-catalog-20261127"
           ],
           "options": []
         },
@@ -1007,7 +1864,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-da-ms-psychology"
+            "phoenix-graduate-psychology-catalog-20261127"
           ],
           "options": []
         },
@@ -1021,7 +1878,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-da-ms-psychology"
+            "phoenix-graduate-psychology-catalog-20261127"
           ],
           "options": []
         },
@@ -1035,7 +1892,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-da-ms-psychology"
+            "phoenix-graduate-psychology-catalog-20261127"
           ],
           "options": []
         },
@@ -1049,7 +1906,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-da-ms-psychology"
+            "phoenix-graduate-psychology-catalog-20261127"
           ],
           "options": []
         },
@@ -1063,7 +1920,7 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-da-ms-psychology"
+            "phoenix-graduate-psychology-catalog-20261127"
           ],
           "options": []
         },
@@ -1077,23 +1934,212 @@
           "upper": false,
           "institutionalOnly": true,
           "sourceIds": [
-            "phoenix-2026-27-phoenix-da-ms-psychology"
+            "phoenix-graduate-psychology-catalog-20261127"
           ],
           "options": [],
           "minimumCompletedCredits": 24,
           "conditions": [
             "The catalog requires at least 24 completed CUs before this course. There is no fixed first-seven-course dependency."
-          ]
+          ],
+          "prerequisitePolicy": {
+            "status": "reviewed-numeric-completion-minimum",
+            "sourceIds": [
+              "phoenix-graduate-psychology-catalog-20261127"
+            ],
+            "checkedOn": "2026-11-27",
+            "minimumCompletedCredits": 24,
+            "creditSystem": "competency-unit"
+          }
         }
       ],
       "sources": [
         {
-          "id": "phoenix-2026-27-phoenix-da-ms-psychology",
-          "title": "University of Phoenix 2026–2027 Online Academic Catalog: Master of Science in Psychology (Competency Based-DA)",
-          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#page=465",
-          "checked": "2026-11-09",
-          "catalog": "2026–2027, November 1, 2026 updates",
-          "notes": "PDF page numbers in the fragment are one-based; programme and residency policies continue onto the next page."
+          "id": "phoenix-graduate-psychology-page-20261127",
+          "title": "University of Phoenix current graduate psychology page evidence",
+          "url": "https://www.phoenix.edu/online-psychology-degrees/psych-masters-competency-based-degree.html",
+          "kind": "university",
+          "roles": [
+            "pricing",
+            "admissions",
+            "pace"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/8626cc32cd96f2ad.txt",
+          "sha256": "8626cc32cd96f2ad357c2819457e185b67dd2f897cd5bbcccde9aed4cef6c89d",
+          "sourceContentHash": "sha256:8626cc32cd96f2ad357c2819457e185b67dd2f897cd5bbcccde9aed4cef6c89d",
+          "originalRetrievedAt": "2026-11-27T06:04:57.826Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          }
+        },
+        {
+          "id": "phoenix-graduate-admissions-page-20261127",
+          "title": "University of Phoenix current graduate admissions page evidence",
+          "url": "https://www.phoenix.edu/admissions.html",
+          "kind": "university",
+          "roles": [
+            "pricing",
+            "admissions",
+            "pace"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/8b20ef386e2abb76.txt",
+          "sha256": "8b20ef386e2abb76ce09ddbd1828eab5b17458582c531965372520570de191df",
+          "sourceContentHash": "sha256:8b20ef386e2abb76ce09ddbd1828eab5b17458582c531965372520570de191df",
+          "originalRetrievedAt": "2026-11-27T06:04:58.065Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          }
+        },
+        {
+          "id": "phoenix-graduate-cover-20261127",
+          "title": "University of Phoenix current graduate cover evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=1-2&columns=2",
+          "kind": "university",
+          "roles": [
+            "policy",
+            "pricing"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/b9b19cdf42e66596.txt",
+          "sha256": "b9b19cdf42e66596fbb4f2b2e20a4fe61750b330cbb3dd46018b9f2642c767ee",
+          "sourceContentHash": "sha256:b9b19cdf42e66596fbb4f2b2e20a4fe61750b330cbb3dd46018b9f2642c767ee",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "1-2",
+          "columns": 2
+        },
+        {
+          "id": "phoenix-graduate-psychology-catalog-20261127",
+          "title": "University of Phoenix current graduate psychology catalog evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=465-466&columns=2",
+          "kind": "university",
+          "roles": [
+            "curriculum",
+            "policy"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/1197d87557790fe9.txt",
+          "sha256": "1197d87557790fe9f8fdd83e73dc8845fe30f439adfa744226e04143f735cc31",
+          "sourceContentHash": "sha256:1197d87557790fe9f8fdd83e73dc8845fe30f439adfa744226e04143f735cc31",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "465-466",
+          "columns": 2
+        },
+        {
+          "id": "phoenix-graduate-da-policies-20261127",
+          "title": "University of Phoenix current graduate da policies evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=451-453&columns=2",
+          "kind": "university",
+          "roles": [
+            "policy",
+            "pricing"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/f3ea7fda08970311.txt",
+          "sha256": "f3ea7fda089703116bcfd07700fd4aba9d82ebb6fca548d472f9d5bec2b0e029",
+          "sourceContentHash": "sha256:f3ea7fda089703116bcfd07700fd4aba9d82ebb6fca548d472f9d5bec2b0e029",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "451-453",
+          "columns": 2
+        },
+        {
+          "id": "phoenix-graduate-prices-20261127",
+          "title": "University of Phoenix current graduate prices evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=468-469&columns=2",
+          "kind": "university",
+          "roles": [
+            "policy",
+            "pricing"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/79c45fe5c74ecf7f.txt",
+          "sha256": "79c45fe5c74ecf7f0cd206125691ba77881baf8db6ca87418584bb5be3fc731e",
+          "sourceContentHash": "sha256:79c45fe5c74ecf7f0cd206125691ba77881baf8db6ca87418584bb5be3fc731e",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "468-469",
+          "columns": 2
+        },
+        {
+          "id": "phoenix-graduate-da-annual-20261127",
+          "title": "University of Phoenix current graduate da annual evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=458-458&columns=2",
+          "kind": "university",
+          "roles": [
+            "policy",
+            "pricing"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/0a7479fdd233c960.txt",
+          "sha256": "0a7479fdd233c960d3873767e58960b50482c0bd2cfc4784f672ada21b372e8b",
+          "sourceContentHash": "sha256:0a7479fdd233c960d3873767e58960b50482c0bd2cfc4784f672ada21b372e8b",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "458-458",
+          "columns": 2
+        },
+        {
+          "id": "phoenix-graduate-fees-20261127",
+          "title": "University of Phoenix current graduate fees evidence",
+          "url": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=472-472&columns=2",
+          "kind": "university",
+          "roles": [
+            "policy",
+            "pricing"
+          ],
+          "checked": "2026-11-27",
+          "capture": "content/source-captures/1594e96f1ed6b50d.txt",
+          "sha256": "1594e96f1ed6b50d0f66752df6228245e6244d8c96699c912e271f596a88a1ec",
+          "sourceContentHash": "sha256:1594e96f1ed6b50d0f66752df6228245e6244d8c96699c912e271f596a88a1ec",
+          "originalRetrievedAt": "2026-11-27T06:04:58.988Z",
+          "scope": {
+            "schoolName": "University of Phoenix",
+            "level": "master",
+            "modality": "online",
+            "catalogYear": "2026-2027"
+          },
+          "documentSha256": "55088b6b26730804ecdaf91728a9910829f69a9d845314e4e59fbda3eec2d1d5",
+          "pages": "472-472",
+          "columns": 2
         }
       ],
       "curriculumSections": [
@@ -1115,32 +2161,77 @@
             "psyda-650",
             "psyda-694"
           ],
-          "sourceId": "phoenix-2026-27-phoenix-da-ms-psychology"
+          "sourceId": "phoenix-graduate-psychology-catalog-20261127"
         }
       ],
       "coverage": "complete",
       "completeExecutablePathway": true,
-      "coverageLabel": "Complete required-course ledger from the current university catalog",
+      "coverageLabel": "Complete source-linked graduate CBE course plan; all required coursework at Phoenix, with published admission, pacing and price rules",
       "rulesNotes": [
         "All required courses must be completed within this exact Phoenix competency-based programme. Transfer activities and Phoenix coursework from outside this programme cannot waive required courses.",
-        "Admission, state-of-residence availability, applicable catalog and prior work-experience eligibility must be confirmed before enrollment.",
         "This is an educational psychology degree; it does not prepare students for psychologist licensure or certification.",
-        "The 2026–2027 catalog states that this Direct Assessment programme is not eligible for Title IV financial aid."
+        "The 2026–2027 catalog states that this Direct Assessment programme is not eligible for Title IV financial aid.",
+        "Published admission routes include program-specific degree, GPA and recent work-experience conditions; an undergraduate degree alone does not establish eligibility.",
+        "State-of-residence availability and individual admission are decided by Phoenix. This source-backed plan is not a personal enrollment approval."
       ],
       "unresolved": [
-        "Confirm admission eligibility, catalog applicability and enrollment availability with the university."
+        {
+          "message": "Apply to this exact competency-based program, supply original degree/transcript and work-experience records, and meet its published admission conditions. Phoenix makes the individual admission and state-of-residence availability decision.",
+          "owner": "student",
+          "status": "personal-task",
+          "sourceIds": [
+            "phoenix-graduate-psychology-catalog-20261127",
+            "phoenix-graduate-psychology-page-20261127"
+          ]
+        },
+        {
+          "message": "Follow the university-assigned course groups and obtain accepted completed credit before the capstone; actual future section and term availability remain personal registration tasks.",
+          "owner": "student",
+          "status": "personal-task",
+          "sourceIds": [
+            "phoenix-graduate-psychology-catalog-20261127",
+            "phoenix-graduate-psychology-page-20261127"
+          ]
+        },
+        {
+          "message": "Plan financing without Title IV federal financial aid; this Direct Assessment psychology program is not eligible.",
+          "owner": "student",
+          "status": "personal-task",
+          "sourceIds": [
+            "phoenix-graduate-psychology-catalog-20261127",
+            "phoenix-graduate-psychology-page-20261127"
+          ]
+        }
       ],
       "obligations": [
         {
           "title": "Capstone credit prerequisite",
-          "notes": "At least 24 completed CUs are required before PSYDA 694.",
+          "notes": "At least 24 completed CUs are required before PSYDA 694; no fixed first-seven-course dependency is assumed.",
           "sourceIds": [
-            "phoenix-2026-27-phoenix-da-ms-psychology"
+            "phoenix-graduate-psychology-catalog-20261127"
+          ]
+        },
+        {
+          "title": "Apply to the correct competency-based program",
+          "notes": "Submit official transcripts, recent work-experience evidence and applicable state/English-proficiency documentation; the university decides eligibility under the published program rules.",
+          "sourceIds": [
+            "phoenix-graduate-psychology-catalog-20261127",
+            "phoenix-graduate-psychology-page-20261127"
           ]
         }
       ],
-      "policyReview": [],
-      "evidenceCheckedOn": "2026-11-09",
+      "policyReview": [
+        {
+          "field": "upperMinCredits",
+          "status": "resolved",
+          "resolution": "covered-by-complete-named-curriculum",
+          "sourceIds": [
+            "phoenix-graduate-psychology-catalog-20261127"
+          ],
+          "message": "The complete named graduate course ledger is enforced; no undergraduate upper-division aggregate is imported."
+        }
+      ],
+      "evidenceCheckedOn": "2026-11-27",
       "pricingNotes": [
         "Direct Assessment tuition is a 12-week subscription; the reviewed programme price is $2,749 per term. Confirm the current quote and maximum course load before enrolling.",
         "The 2026–2027 catalog expresses degree requirements as competency units, not semester-hour transfer awards. All required courses must be completed in this exact Direct Assessment programme.",
@@ -1151,12 +2242,168 @@
         "amount": 2749,
         "period": "12 weeks",
         "currency": "USD",
-        "sourceUrl": "https://www.phoenix.edu/online-psychology-degrees/psych-masters-competency-based-degree.html"
+        "sourceUrl": "https://www.phoenix.edu/online-psychology-degrees/psych-masters-competency-based-degree.html",
+        "sourceIds": [
+          "phoenix-graduate-psychology-page-20261127",
+          "phoenix-graduate-prices-20261127",
+          "phoenix-graduate-fees-20261127"
+        ],
+        "checkedOn": "2026-11-27",
+        "notes": [
+          "Published current tuition per 12-week term; the paid term count depends on the 2–4-course schedule and demonstrated mastery.",
+          "The price is a planning input before aid, not an admission offer or guaranteed total cost."
+        ]
       },
       "pacing": {
         "universityTermWeeks": 12,
         "maximumCoursesPerTerm": 4,
-        "maximumUniversityCreditsPer12Months": 39
+        "maximumUniversityCreditsPer12Months": 39,
+        "sourceIds": [
+          "phoenix-graduate-psychology-page-20261127",
+          "phoenix-graduate-da-policies-20261127",
+          "phoenix-graduate-da-annual-20261127"
+        ]
+      },
+      "sourceIds": [
+        "phoenix-graduate-psychology-page-20261127",
+        "phoenix-graduate-admissions-page-20261127",
+        "phoenix-graduate-cover-20261127",
+        "phoenix-graduate-psychology-catalog-20261127",
+        "phoenix-graduate-da-policies-20261127",
+        "phoenix-graduate-prices-20261127",
+        "phoenix-graduate-da-annual-20261127",
+        "phoenix-graduate-fees-20261127"
+      ],
+      "modalities": [
+        "online"
+      ],
+      "catalogYear": "2026-2027",
+      "paceSourceUrl": "https://www.phoenix.edu/online-psychology-degrees/psych-masters-competency-based-degree.html",
+      "policySourceIds": [
+        "phoenix-graduate-psychology-catalog-20261127"
+      ],
+      "policyEvidence": {
+        "institutionMinCredits": {
+          "value": 36,
+          "creditSystem": "competency-unit",
+          "sourceIds": [
+            "phoenix-graduate-psychology-catalog-20261127"
+          ],
+          "basis": "All required courses must be completed in this exact Phoenix competency-based or direct-assessment program; outside transfer and courses from another UOPX program cannot waive the required coursework."
+        },
+        "externalMaxCredits": {
+          "value": 0,
+          "creditSystem": "competency-unit",
+          "sourceIds": [
+            "phoenix-graduate-psychology-catalog-20261127"
+          ],
+          "basis": "All required courses must be completed in this exact Phoenix competency-based or direct-assessment program; outside transfer and courses from another UOPX program cannot waive the required coursework."
+        },
+        "alternativeMaxCredits": {
+          "value": 0,
+          "creditSystem": "competency-unit",
+          "sourceIds": [
+            "phoenix-graduate-psychology-catalog-20261127"
+          ],
+          "basis": "All required courses must be completed in this exact Phoenix competency-based or direct-assessment program; outside transfer and courses from another UOPX program cannot waive the required coursework."
+        }
+      },
+      "admissionRequirements": [
+        {
+          "message": "Have an undergraduate degree or higher and a cumulative GPA of at least 2.5; the university evaluates recognized accreditation, transcripts and any applicable international-admission requirements.",
+          "sourceIds": [
+            "phoenix-graduate-psychology-catalog-20261127",
+            "phoenix-graduate-psychology-page-20261127",
+            "phoenix-graduate-admissions-page-20261127"
+          ]
+        },
+        {
+          "message": "Have at least three equivalent full-time years of work experience within the past ten years.",
+          "sourceIds": [
+            "phoenix-graduate-psychology-catalog-20261127",
+            "phoenix-graduate-psychology-page-20261127",
+            "phoenix-graduate-admissions-page-20261127"
+          ]
+        },
+        {
+          "message": "This educational psychology program does not prepare students for professional psychologist certification or licensure and is not eligible for Title IV federal financial aid.",
+          "sourceIds": [
+            "phoenix-graduate-psychology-catalog-20261127",
+            "phoenix-graduate-psychology-page-20261127",
+            "phoenix-graduate-admissions-page-20261127"
+          ]
+        }
+      ],
+      "curriculumReview": {
+        "id": "phoenix-graduate-cbe-primary-review-2026-11-27",
+        "checkedOn": "2026-11-27",
+        "sourceIds": [
+          "phoenix-graduate-psychology-catalog-20261127",
+          "phoenix-graduate-cover-20261127"
+        ],
+        "requirementsComplete": true,
+        "outsideAwardsProposed": 0,
+        "waiversAssumed": 0,
+        "programIdentity": "phoenix-da-ms-psychology"
+      },
+      "admissionReview": {
+        "id": "phoenix-graduate-cbe-primary-review-2026-11-27",
+        "checkedOn": "2026-11-27",
+        "sourceIds": [
+          "phoenix-graduate-psychology-catalog-20261127",
+          "phoenix-graduate-psychology-page-20261127"
+        ],
+        "publishedRulesEstablished": true,
+        "individualAdmissionGranted": false,
+        "allStatesEligible": false,
+        "basis": "Current official program offering and governing catalog requirements are retained. State availability, official transcripts, experience evidence and personal admission remain university decisions."
+      },
+      "pacePolicy": {
+        "sourceIds": [
+          "phoenix-graduate-psychology-page-20261127",
+          "phoenix-graduate-da-policies-20261127",
+          "phoenix-graduate-da-annual-20261127"
+        ],
+        "sessionWeeks": 12,
+        "maximumCoursesPerTerm": 4,
+        "selfPacedWithinTerm": true,
+        "basis": "Direct Assessment permits two, three or four courses per university-scheduled twelve-week term; mastery may accelerate work within the term, not unlimited course enrollment."
+      },
+      "competencyBased": true,
+      "selfPaced": true,
+      "paceSourceIds": [
+        "phoenix-graduate-psychology-page-20261127",
+        "phoenix-graduate-da-policies-20261127",
+        "phoenix-graduate-da-annual-20261127"
+      ],
+      "paceCheckedOn": "2026-11-27",
+      "financialAid": {
+        "federalAidEligible": false,
+        "sourceUrl": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf#pages=465-466&columns=2",
+        "sourceIds": [
+          "phoenix-graduate-psychology-catalog-20261127",
+          "phoenix-graduate-psychology-page-20261127"
+        ],
+        "checkedOn": "2026-11-27",
+        "notes": "This exact Direct Assessment psychology program is not eligible for Title IV financial aid."
+      },
+      "assessmentPolicy": {
+        "coursePassingMark": "ME",
+        "maximumAssessmentAttempts": 3,
+        "sourceIds": [
+          "phoenix-graduate-psychology-catalog-20261127",
+          "phoenix-graduate-da-policies-20261127"
+        ],
+        "notes": "All competencies in each required course must receive Met or better. University progression, engagement, repeat and assessment-attempt rules still apply."
+      },
+      "graduateCBEReview": {
+        "id": "phoenix-graduate-cbe-primary-review-2026-11-27",
+        "checkedOn": "2026-11-27",
+        "requirementsComplete": true,
+        "totalUniversityCredits": 36,
+        "creditSystem": "competency-unit",
+        "individualAdmissionGranted": false,
+        "outsideAwardsCreated": 0
       }
     },
     {

@@ -10,6 +10,7 @@ import {assertTESUBusinessBlockEvidence,reviewedTESUBusinessSource} from './tesu
 import {loadProgramManifests,selectProgramManifests} from './pathway-factory/program-manifest.mjs';
 
 export const TESU_PLACEMENT_REVIEW='tesu-exact-course-placements-2026-11-26';
+export const TESU_PLACEMENT_ADDITIONS_REVIEW='tesu-exact-course-placements-2026-11-27';
 const CHECKED='2026-11-26',list=v=>Array.isArray(v)?v:[],unique=v=>[...new Set(v)],copy=structuredClone;
 const normalize=v=>String(v||'').replace(/[\u2018\u2019]/g,"'").replace(/\s+/g,' ').trim();
 const placementRoster=selectProgramManifests(await loadProgramManifests(),{schoolId:'tesu',stage:'course-placements'});
@@ -78,9 +79,9 @@ export async function applyTESUCoursePlacements({check=false}={}){
   const spec=SOURCES[program.slug],businessAddition=TESU_ADDITIONAL_BUSINESS_PROGRAMS.includes(program.slug);assert(spec||businessAddition,'Only independently reviewed current program ledgers are in scope');
   let degree;
   if(businessAddition){
-   const identity=program.modelFields.catalogIdentity,source=kit.school.sources.find(s=>s.id===identity?.sourceId);
-   assert(source&&source.capture===identity.capture&&source.url===identity.sourceUrl&&identity.checkedOn===CHECKED,program.slug+' exact primary degree identity');
-   degree=await reviewedTESUBusinessSource(source);assert.equal(degree.source.sha256,identity.sourceSha256,program.slug+' independently bound primary degree body');
+   const identity=program.modelFields.catalogIdentity,source=kit.school.sources.find(s=>s.id===identity?.sourceId),manifest=placementRoster.find(entry=>entry.slug===program.slug);
+   assert(source&&source.capture===identity.capture&&source.url===identity.sourceUrl&&identity.checkedOn===manifest.authoringReview.reviewedOn,program.slug+' exact primary degree identity');
+   degree=await reviewedTESUBusinessSource(source,{reviewedOn:manifest.authoringReview.reviewedOn});assert.equal(degree.source.sha256,identity.sourceSha256,program.slug+' independently bound primary degree body');
   }else{
    const oldSource=kit.school.sources.find(s=>s.id===program.modelSourceIds.find(id=>id==='tesu-'+program.slug.replace(/^ba-|^bsba-/,'')+'-current-2026-11-18'));
    assert(oldSource,program.slug+' current academic source identity');
@@ -88,9 +89,12 @@ export async function applyTESUCoursePlacements({check=false}={}){
   }
   sources.set(degree.source.id,degree);
   const model=compileProgram(kit,program),scope=modelScope(program,model,degree,taxonomyEntry);models.push(scope);
+  const reviewedOn=businessAddition?program.modelFields.catalogIdentity.checkedOn:CHECKED;
+  assert([CHECKED,'2026-11-27'].includes(reviewedOn),'A new placement cohort needs its own explicit review packet');
+  const placementReviewId=reviewedOn===CHECKED?TESU_PLACEMENT_REVIEW:TESU_PLACEMENT_ADDITIONS_REVIEW;
   for(const kind of ['exact-course','elective','general-category',...(program.slug==='ba-liberal-studies'?['liberal-arts-area']:[])]){
    const typed=kind==='liberal-arts-area'||kind==='general-category';
-   const mode={set:{evidence:'published',coursePlacementReviewId:TESU_PLACEMENT_REVIEW,...(kind==='elective'?{placementType:'elective',allocationType:'free-elective'}:kind==='liberal-arts-area'?{placementType:'major-elective',allocationType:'liberal-arts-area'}:kind==='general-category'?{placementType:'general-elective',allocationType:'general-category'}:{})},placementEvidence:{placementType:kind,extraSourceIds:[...(!businessAddition?[degree.source.id]:[]),...(typed?[taxonomyEntry.source.id]:[])],citeInOption:true}};
+   const mode={set:{evidence:'published',coursePlacementReviewId:placementReviewId,...(kind==='elective'?{placementType:'elective',allocationType:'free-elective'}:kind==='liberal-arts-area'?{placementType:'major-elective',allocationType:'liberal-arts-area'}:kind==='general-category'?{placementType:'general-elective',allocationType:'general-category'}:{})},placementEvidence:{placementType:kind,extraSourceIds:[...(!businessAddition?[degree.source.id]:[]),...(typed?[taxonomyEntry.source.id]:[])],citeInOption:true}};
    kit.equivalencies.placementModes[modeId(program,kind)]=mode;
   }
   for(const requirement of program.requirements){
@@ -124,7 +128,14 @@ export async function applyTESUCoursePlacements({check=false}={}){
  for(const {source}of sources.values()){const at=kit.school.sources.findIndex(s=>s.id===source.id);if(at<0)kit.school.sources.push(source);else kit.school.sources[at]=source;}
  const classificationQuotes=[quote(taxonomyEntry.source,'D. Scientific Knowledge',taxonomyEntry.body),quote(taxonomyEntry.source,'BIO-1010: Introductory Biology',taxonomyEntry.body),quote(taxonomyEntry.source,'CIS-1070: Computer Concepts and Applications',taxonomyEntry.body)];
  const packet={kind:'tesu-exact-course-degree-placement-review',version:1,id:TESU_PLACEMENT_REVIEW,checkedOn:CHECKED,schoolName:kit.school.name,scope:'Named institution-submitted Sophia awards applied to exact published requirements, nonduplicating unrestricted electives, reviewed Liberal Studies Option A capacity, or the current Scientific Knowledge category explicitly listing BIO-1010 and CIS-1070. The award, original identity, generic provider approval and individual evaluation remain distinct.',courseEligibilityReviewId:'tesu-exact-course-eligibility-2026-11-26',providerApprovalStatusChanged:false,residencyCreditAwarded:0,sources:[...sources.values()].map(s=>s.source),sourceHashes:Object.fromEntries([...sources.values()].map(s=>[s.source.id,s.source.sha256])),classificationQuotes,models,placements,supersededLegacyPlacements};
- const serialize=v=>JSON.stringify(v,null,2)+'\n',writes=[['content/pathway-kits/tesu/equivalencies.json',kit.equivalencies],['content/pathway-kits/tesu/school.json',kit.school],['content/pathway-kits/tesu/course-placements-review-2026-11-26.json',packet],...kit.programs.map(p=>{const{file,...value}=p;return['content/pathway-kits/tesu/programs/'+p.slug+'.json',value];})];
+ const newModelIds=new Set(placementRoster.filter(entry=>entry.authoringReview.reviewedOn==='2026-11-27').map(entry=>entry.modelId));
+ const packetFor=(id,checkedOn,predicate)=>{
+  const scopedModels=models.filter(model=>predicate(model.modelId)),ids=new Set(scopedModels.map(model=>model.modelId)),degreeIds=new Set(scopedModels.map(model=>model.degreeSourceId));
+  const scopedSources=[...sources.values()].filter(entry=>entry.source.id===taxonomyEntry.source.id||degreeIds.has(entry.source.id)).map(entry=>entry.source);
+  return{...packet,id,checkedOn,sources:scopedSources,sourceHashes:Object.fromEntries(scopedSources.map(source=>[source.id,source.sha256])),models:scopedModels,placements:placements.filter(entry=>ids.has(entry.modelId)),supersededLegacyPlacements:supersededLegacyPlacements.filter(entry=>ids.has(entry.modelId))};
+ };
+ const legacyPacket=packetFor(TESU_PLACEMENT_REVIEW,CHECKED,id=>!newModelIds.has(id)),additionalPacket=packetFor(TESU_PLACEMENT_ADDITIONS_REVIEW,'2026-11-27',id=>newModelIds.has(id));
+ const serialize=v=>JSON.stringify(v,null,2)+'\n',writes=[['content/pathway-kits/tesu/equivalencies.json',kit.equivalencies],['content/pathway-kits/tesu/school.json',kit.school],['content/pathway-kits/tesu/course-placements-review-2026-11-26.json',legacyPacket],...(additionalPacket.models.length?[['content/pathway-kits/tesu/course-placements-review-2026-11-27.json',additionalPacket]]:[]),...kit.programs.map(p=>{const{file,...value}=p;return['content/pathway-kits/tesu/programs/'+p.slug+'.json',value];})];
  for(const[path,value]of writes){const text=serialize(value);if(check)assert.equal(await readFile(resolve(root,path),'utf8'),text,path+' has stale reviewed degree placements');else await writeFile(resolve(root,path),text);}
  return {reviewId:TESU_PLACEMENT_REVIEW,models:models.length,claims:rows.length,placements:placements.length,byModel:models.map(m=>({modelId:m.modelId,placements:placements.filter(p=>p.modelId===m.modelId).length})),providerApprovalStatusChanged:false,residencyCreditAwarded:0,check};
 }

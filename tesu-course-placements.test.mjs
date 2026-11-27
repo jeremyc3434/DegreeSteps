@@ -3,26 +3,35 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {loadKit,root} from './scripts/pathway-factory/lib.mjs';
 import {compileKit,runGuards} from './scripts/pathway-factory/compile.mjs';
-import {applyTESUCoursePlacements,placementKind,TESU_PLACEMENT_REVIEW,copiedTESUPlacementSuperseded} from './scripts/tesu-course-placements.mjs';
+import {applyTESUCoursePlacements,placementKind,TESU_PLACEMENT_REVIEW,TESU_PLACEMENT_ADDITIONS_REVIEW,copiedTESUPlacementSuperseded} from './scripts/tesu-course-placements.mjs';
 import {groundedSource} from './scripts/tesu-course-eligibility.mjs';
 import {reviewedTESUBusinessSource} from './scripts/tesu-business-blocks.mjs';
-import {assertTESUPlacementInventory} from './test-support/tesu-placement-inventory.mjs';
+import {assertTESUExpandedPlacementInventory} from './test-support/tesu-placement-inventory.mjs';
 const packet=JSON.parse(await readFile(root+'/content/pathway-kits/tesu/course-placements-review-2026-11-26.json','utf8'));
 const kit=await loadKit(root+'/content/pathway-kits/tesu'),original=compileKit(kit).doc,copy=structuredClone;
+const cohorts=assertTESUExpandedPlacementInventory(original.models),additionalPacket=cohorts.packet;
 const normalize=v=>String(v).replace(/[\u2018\u2019]/g,"'").replace(/\s+/g,' ').trim();
 
 test('eight degree blocks retain primary source proof while the original996 placements are preserved',async()=>{
- assert.equal(packet.models.length,8);assert.equal(packet.placements.length,1297);assertTESUPlacementInventory(original.models);assert.equal(packet.residencyCreditAwarded,0);assert.equal(packet.providerApprovalStatusChanged,false);
+ assert.equal(packet.models.length,8);assert.equal(packet.placements.length,1297);assert.deepEqual(packet.models.map(model=>model.modelId).sort(),cohorts.historical.map(model=>model.id).sort());assert.equal(packet.residencyCreditAwarded,0);assert.equal(packet.providerApprovalStatusChanged,false);
  const sources=new Map();for(const source of packet.sources){const entry=source.captureFormat==='connected-web-rendered-extract'?await reviewedTESUBusinessSource(source):await groundedSource(source);assert.equal(source.kind,'university');assert.equal(source.checked,'2026-11-26');assert.equal(entry.source.sha256,packet.sourceHashes[source.id]);sources.set(source.id,entry);}
  for(const model of packet.models){assert.equal(model.freeElectiveCredits,model.allocatedFreeCredits+model.fixedElectiveCredits);assert.equal(model.institutionMinCredits,15);assert.equal(model.upperMinCredits,18);assert.equal(model.alternativeMaxCredits,90);for(const q of model.quotes)assert(normalize(sources.get(q.sourceId).body).includes(normalize(q.text)));}
  for(const q of packet.classificationQuotes)assert(normalize(sources.get(q.sourceId).body).includes(normalize(q.text)));
  const finance=packet.models.find(m=>m.modelId==='curriculum-tesu-bsba-finance');assert.equal(finance.allocatedFreeCredits,12);assert.equal(finance.fixedElectiveCredits,3);
 });
 
+test('two November27 ledgers independently prove202 placements with current degree sources and retained taxonomy dates',async()=>{
+ assert.equal(additionalPacket.models.length,2);assert.equal(additionalPacket.placements.length,202);assert.equal(additionalPacket.residencyCreditAwarded,0);assert.equal(additionalPacket.providerApprovalStatusChanged,false);assert.equal(additionalPacket.supersededLegacyPlacements.length,0);
+ const sources=new Map();for(const source of additionalPacket.sources){const entry=source.captureFormat==='connected-web-rendered-extract'?await reviewedTESUBusinessSource(source,{reviewedOn:'2026-11-27'}):await groundedSource(source);assert.equal(source.kind,'university');assert.equal(entry.source.sha256,additionalPacket.sourceHashes[source.id]);assert.equal(source.checked,source.id==='tesu-liberal-taxonomy-placement-2026-11-26'?'2026-11-26':'2026-11-27');sources.set(source.id,entry);}
+ for(const model of additionalPacket.models){assert.equal(model.freeElectiveCredits,15);assert.equal(model.freeElectiveCredits,model.allocatedFreeCredits+model.fixedElectiveCredits);assert.equal(model.institutionMinCredits,15);assert.equal(model.upperMinCredits,18);assert.equal(model.alternativeMaxCredits,90);for(const q of model.quotes)assert(normalize(sources.get(q.sourceId).body).includes(normalize(q.text)));}
+ for(const q of additionalPacket.classificationQuotes)assert(normalize(sources.get(q.sourceId).body).includes(normalize(q.text)));
+ for(const placement of additionalPacket.placements){const model=original.models.find(model=>model.id===placement.modelId),requirement=model.requirements.find(row=>row.id===placement.requirementId),option=requirement.options.find(option=>option.id===placement.optionId);assert(option);assert.equal(option.coursePlacementReviewId,TESU_PLACEMENT_ADDITIONS_REVIEW);assert.equal(option.degreePlacementEvidence.modelId,model.id);assert.equal(option.degreePlacementEvidence.requirementId,requirement.id);assert(option.degreePlacementEvidence.sourceIds.includes(additionalPacket.models.find(scope=>scope.modelId===model.id).degreeSourceId));}
+});
+
 test('reviewed course awards populate exact, free-elective and constrained Liberal Studies slots without promoting UPI or copied candidates',async()=>{
  assert.equal(await runGuards(kit,original),15);const kinds=new Set();let held=0;
  for(const m of original.models)for(const r of m.requirements)for(const o of r.options){
-  if(o.coursePlacementReviewId){assert.equal(o.coursePlacementReviewId,TESU_PLACEMENT_REVIEW);assert.equal(o.evidence,'published');assert.equal(o.courseEligibilityResolution.kind,'institution-submitted-course-award');assert.equal(o.eligibilityReview.providerReviewPending,true);assert.equal(o.eligibilityReview.fullyApproved,false);kinds.add(o.degreePlacementEvidence.placementType);if(r.freeElective)assert.equal(o.receivingCode,o.mappingEvidence.receivingCode);}
+  if(o.coursePlacementReviewId){assert.equal(o.coursePlacementReviewId,cohorts.additions.some(model=>model.id===m.id)?TESU_PLACEMENT_ADDITIONS_REVIEW:TESU_PLACEMENT_REVIEW);assert.equal(o.evidence,'published');assert.equal(o.courseEligibilityResolution.kind,'institution-submitted-course-award');assert.equal(o.eligibilityReview.providerReviewPending,true);assert.equal(o.eligibilityReview.fullyApproved,false);kinds.add(o.degreePlacementEvidence.placementType);if(r.freeElective)assert.equal(o.receivingCode,o.mappingEvidence.receivingCode);}
   if(o.provider==='UPI Study'||o.provider==='Sophia'&&!o.courseEligibilityResolution){held++;assert.equal(o.evidence,'conditional');assert.equal(o.coursePlacementReviewId,undefined);}
  }
  assert.deepEqual([...kinds].sort(),['elective','exact-course','general-category','liberal-arts-area']);assert(held>100);
@@ -46,7 +55,7 @@ test('allocator only offers a separately resolved current university award to el
 });
 
 test('degree-placement authoring is deterministic and check mode makes no changes',async()=>{
- const paths=['content/pathway-kits/tesu/course-placements-review-2026-11-26.json','content/pathway-kits/tesu/equivalencies.json','content/pathway-kits/tesu/school.json',...kit.programs.map(p=>'content/pathway-kits/tesu/programs/'+p.slug+'.json')];const before=await Promise.all(paths.map(p=>readFile(root+'/'+p,'utf8')));const result=await applyTESUCoursePlacements({check:true});assert.equal(result.placements,1297);assert.deepEqual(await Promise.all(paths.map(p=>readFile(root+'/'+p,'utf8'))),before);
+ const paths=['content/pathway-kits/tesu/course-placements-review-2026-11-26.json','content/pathway-kits/tesu/course-placements-review-2026-11-27.json','content/pathway-kits/tesu/equivalencies.json','content/pathway-kits/tesu/school.json',...kit.programs.map(p=>'content/pathway-kits/tesu/programs/'+p.slug+'.json')];const before=await Promise.all(paths.map(p=>readFile(root+'/'+p,'utf8')));const result=await applyTESUCoursePlacements({check:true});assert.equal(result.placements,packet.placements.length+additionalPacket.placements.length);assert.equal(result.models,packet.models.length+additionalPacket.models.length);assert.deepEqual(Object.fromEntries(result.byModel.map(model=>[model.modelId,model.placements])),{...cohorts.historicalCounts,...cohorts.additionalCounts});assert.deepEqual(await Promise.all(paths.map(p=>readFile(root+'/'+p,'utf8'))),before);
 });
 
 test('only20 exact duplicate copied placements are superseded while distinct versions, grades and ineligible scopes stay separate',()=>{

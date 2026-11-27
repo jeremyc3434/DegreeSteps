@@ -1,8 +1,8 @@
 {
   "schemaRevision": "provider-coverage-v1",
-  "revision": "provider-coverage-v1:ee007987fb014136bf0852832fab9f6598df7bd4d66ab397cf650d7a708f3f2b",
-  "registryRevision": "academic-v1:029720a6c322db7339de113b0b1b51f8f4727681edcce85a63dc3d508a9ba34b",
-  "asOf": "2026-11-26",
+  "revision": "provider-coverage-v1:c82ae3ade26d98d505da5f0e586f7e66cac11be8972f17970360aee153dce49c",
+  "registryRevision": "academic-v1:0c3a74f9c8a43a2f161c6bb2449b3bf1646076d01a7e8999fae9c0314868c09e",
+  "asOf": "2026-11-27",
   "privateStudentRecordsIncluded": false,
   "runtimeAiCalls": 0,
   "publicationAllowed": false,
@@ -24,8 +24,8 @@
     "providersWithReceivingClaims": 9,
     "providersWithInstitutionSourceBoundAwards": 6,
     "providersUsedInReadyBaselines": 4,
-    "indexedIdentities": 550,
-    "publicationReadyPlans": 45
+    "indexedIdentities": 551,
+    "publicationReadyPlans": 59
   },
   "providers": [
     {
@@ -168,14 +168,14 @@
         "total": 33
       },
       "placements": {
-        "institutionSourceBound": 37,
+        "institutionSourceBound": 42,
         "providerPublished": 0,
-        "unresolved": 118,
-        "total": 155
+        "unresolved": 153,
+        "total": 195
       },
-      "modelsWithOptions": 20,
+      "modelsWithOptions": 25,
       "modelsEnabledByDefault": 0,
-      "publicationReadyAlternativeModels": 10,
+      "publicationReadyAlternativeModels": 15,
       "publicationReadyBaselineModels": 0,
       "assessment": {
         "knownIndexedIdentities": 0,
@@ -212,12 +212,12 @@
       "placements": {
         "institutionSourceBound": 0,
         "providerPublished": 0,
-        "unresolved": 817,
-        "total": 817
+        "unresolved": 1022,
+        "total": 1022
       },
-      "modelsWithOptions": 26,
+      "modelsWithOptions": 31,
       "modelsEnabledByDefault": 16,
-      "publicationReadyAlternativeModels": 15,
+      "publicationReadyAlternativeModels": 20,
       "publicationReadyBaselineModels": 2,
       "assessment": {
         "knownIndexedIdentities": 36,
@@ -377,12 +377,12 @@
       "placements": {
         "institutionSourceBound": 0,
         "providerPublished": 0,
-        "unresolved": 280,
-        "total": 280
+        "unresolved": 425,
+        "total": 425
       },
-      "modelsWithOptions": 14,
+      "modelsWithOptions": 19,
       "modelsEnabledByDefault": 5,
-      "publicationReadyAlternativeModels": 6,
+      "publicationReadyAlternativeModels": 11,
       "publicationReadyBaselineModels": 0,
       "assessment": {
         "knownIndexedIdentities": 5,
@@ -906,26 +906,26 @@
       "directoryStatus": "not-stated",
       "kind": "alternative-provider",
       "stage": "used-in-ready-baseline",
-      "indexedIdentities": 160,
+      "indexedIdentities": 161,
       "sourceReviewedMappedIdentities": 78,
       "receivingClaims": {
         "institutionSourceBound": 505,
         "providerPublished": 412,
-        "unresolved": 273,
-        "total": 1190
+        "unresolved": 287,
+        "total": 1204
       },
       "placements": {
-        "institutionSourceBound": 1911,
+        "institutionSourceBound": 2173,
         "providerPublished": 2367,
-        "unresolved": 3392,
-        "total": 7670
+        "unresolved": 4039,
+        "total": 8579
       },
-      "modelsWithOptions": 164,
-      "modelsEnabledByDefault": 126,
-      "publicationReadyAlternativeModels": 41,
-      "publicationReadyBaselineModels": 39,
+      "modelsWithOptions": 174,
+      "modelsEnabledByDefault": 131,
+      "publicationReadyAlternativeModels": 51,
+      "publicationReadyBaselineModels": 49,
       "assessment": {
-        "knownIndexedIdentities": 88,
+        "knownIndexedIdentities": 89,
         "unknownIndexedIdentities": 72
       },
       "pricing": {
@@ -955,12 +955,12 @@
       "placements": {
         "institutionSourceBound": 30,
         "providerPublished": 0,
-        "unresolved": 2316,
-        "total": 2346
+        "unresolved": 3052,
+        "total": 3082
       },
-      "modelsWithOptions": 40,
+      "modelsWithOptions": 45,
       "modelsEnabledByDefault": 13,
-      "publicationReadyAlternativeModels": 27,
+      "publicationReadyAlternativeModels": 32,
       "publicationReadyBaselineModels": 0,
       "assessment": {
         "knownIndexedIdentities": 19,
@@ -993,15 +993,15 @@
         "total": 745
       },
       "placements": {
-        "institutionSourceBound": 805,
+        "institutionSourceBound": 1045,
         "providerPublished": 79,
-        "unresolved": 4160,
-        "total": 5044
+        "unresolved": 5401,
+        "total": 6525
       },
-      "modelsWithOptions": 55,
+      "modelsWithOptions": 60,
       "modelsEnabledByDefault": 19,
-      "publicationReadyAlternativeModels": 39,
-      "publicationReadyBaselineModels": 34,
+      "publicationReadyAlternativeModels": 44,
+      "publicationReadyBaselineModels": 39,
       "assessment": {
         "knownIndexedIdentities": 131,
         "unknownIndexedIdentities": 14
@@ -1310,11 +1310,11 @@
   ],
   "inputFingerprints": {
     "directory": "36259a33222e57936987fbbfa23e423bbeac5083f803d69974d898cb57b3eaa4",
-    "courseCatalogs": "1386d6398d2a0a8d79a5676e95a117b49d6f966952203a10daeec80cc79e7a9d",
-    "models": "bb525c316c2001004003c5d61782f13d552f3f47c8f51f3e71df8a74e9fe399b",
-    "publication": "91511cd9ca8f52eaefc7018db6a2110c85ba7c0e21440cad925dd1d2dab15fd6",
-    "baselines": "849e4fa1d7ba3864b62b95c2d3b122a71702e146052e580056a24f552f2de4f6",
-    "rates": "a7306e3f501a1675cc55f589cc162e21d236fd6215584b30f318519b21236cf1",
+    "courseCatalogs": "319bda2aaea1f2e238d91a3e4c5050d068e0ed9360470c4141564bc9555dbb03",
+    "models": "bd79da4e4db5c152d4c51406f35d74c50b279f02cc29313f52e9e2f785d15671",
+    "publication": "f29d659fe364fa02643a66e65381f292380c86aad53021c9a53b817d398c40f1",
+    "baselines": "a6e3842ea11843d74870496e03de03c8eb67a6bb9c9b11e2e7830992fe8d492a",
+    "rates": "fbc372400742b1f05999ed1f8ec55373ca16282f52529478f97884fb21358969",
     "assessment": "ac14cdc8e258aee79b3a9caca92b79109590e8ac81283dc9cf5646bc4d6995c6"
   }
 }
