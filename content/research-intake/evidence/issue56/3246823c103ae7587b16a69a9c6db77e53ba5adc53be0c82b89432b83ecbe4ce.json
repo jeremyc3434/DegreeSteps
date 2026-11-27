@@ -1,0 +1,707 @@
+{
+  "kind": "issue56-program-research",
+  "version": 1,
+  "issue": "https://github.com/jeremyc3434/DegreeSteps/issues/56",
+  "issueComment": "https://github.com/jeremyc3434/DegreeSteps/issues/56#issuecomment-7223806616",
+  "verifiedOn": "2026-11-27",
+  "researchMethod": "Independent official university/provider connector search and parsed open results; repository audit. All persisted connector results are labeled connector-rendered extractions, not origin HTML. Attempted direct network capture was blocked on permissions and cancelled; no origin capture is claimed.",
+  "sources": [
+    {
+      "id": "umass-tuition-fy2025-26",
+      "url": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+      "publisher": "University of Massachusetts Global",
+      "verifiedOn": "2026-11-27",
+      "catalogYear": "2025-2026",
+      "retrieval": "connector-open-rendered-text",
+      "receipt": null,
+      "notes": "The original connector open was read but not persisted. This entry is a curated research transcription, not an origin capture or proof of 2026\u20132027 rates.",
+      "reviewedFact": "The live page is headed 2025\u20132026 Tuition and directs readers to the catalog for the latest rates. Its MyPath table lists bachelor tuition $3,500 per 24-week billing period, 12 minimum units and $7,000 per 48-week year."
+    },
+    {
+      "id": "umass-bba-marketing",
+      "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-general-business-self-paced",
+      "publisher": "University of Massachusetts Global",
+      "verifiedOn": "2026-11-27",
+      "effectiveOn": null,
+      "retrieval": "connector-search-rendered-extraction",
+      "receipt": null,
+      "notes": "Effective date is unknown. The original connector result was read but not persisted. This is not proof that 90 ACE credits apply.",
+      "reviewedFact": "The self-paced General Business BBA page advertises 120 credits, $3,400 per six-month access period and up to 90 credits of previous college coursework."
+    },
+    {
+      "id": "umass-legacy-cbe-policies",
+      "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based/",
+      "publisher": "University of Massachusetts Global",
+      "verifiedOn": "2026-11-27",
+      "catalogYear": "2025-2026",
+      "retrieval": "connector-search-rendered-text",
+      "receipt": null,
+      "notes": "Current 2026\u20132027 consolidated policies were not independently retrieved. Do not update current policy based only on this legacy catalog.",
+      "reviewedFact": "Legacy 2025\u20132026 policy evaluates accredited coursework with B- or better against credit-hour courses and then competencies. It accepts ACE recommendations subject to degree and residence limits. Mastery transcript, no GPA and conversion record are described in the same legacy policy."
+    },
+    {
+      "id": "umass-legacy-cbe-degree",
+      "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based-degree-requirement/",
+      "publisher": "University of Massachusetts Global",
+      "verifiedOn": "2026-11-27",
+      "catalogYear": "2025-2026",
+      "retrieval": "connector-search-rendered-text",
+      "receipt": null,
+      "notes": "The source is explicitly 2025\u20132026. Current rules require confirmation. Do not confuse MyPath with credit-hour curricula.",
+      "reviewedFact": "Legacy 2025\u20132026 bachelor requirements include 30 equivalent residence credits and LBSC 320 and LBSC 321."
+    },
+    {
+      "id": "umass-legacy-catalog-fees",
+      "url": "https://catalog.umassglobal.edu/tuition-fees/tuition-fees.pdf",
+      "publisher": "University of Massachusetts Global",
+      "verifiedOn": "2026-11-27",
+      "catalogYear": "not-established-from-current-origin",
+      "retrieval": "connector-search-rendered-extraction",
+      "receipt": "program-receipts/program-evidence-1.json",
+      "notes": "Indexed publication age was about one year. Treat these fee amounts as unconfirmed for current-year billing.",
+      "reviewedFact": "The indexed catalog PDF lists a $210 MyPath technology fee per billing period and $150 conferral/processing fee. Current catalog-year applicability was not established."
+    },
+    {
+      "id": "umass-accreditation",
+      "url": "https://www.umassglobal.edu/about/accreditations",
+      "publisher": "University of Massachusetts Global",
+      "verifiedOn": "2026-11-27",
+      "retrieval": "connector-search-rendered-text",
+      "receipt": "program-receipts/program-evidence-1.json",
+      "reviewedFact": "The university states it is institutionally accredited by WASC Senior College and University Commission (WSCUC)."
+    },
+    {
+      "id": "purdue-tuition",
+      "url": "https://www.purdueglobal.edu/tuition-financial-aid/undergraduate-graduate-tuition-and-fees/",
+      "publisher": "Purdue University Global",
+      "verifiedOn": "2026-11-27",
+      "effectiveOn": null,
+      "retrieval": "connector-search-rendered-extraction",
+      "receipt": null,
+      "notes": "The original connector result was read but not persisted. $2,845 is computed as $2,500 plus $345; other applicable course fees are not included.",
+      "reviewedFact": "The university lists ExcelTrack BSBA tuition of $2,500 per term plus the undergraduate ExcelTrack resource fee of $345 per term. It also lists independent Professional Studies at $195 per month, $100 per ASK and $2,226 for the bachelor capstone, in addition to monthly tuition."
+    },
+    {
+      "id": "purdue-professional-studies-current",
+      "url": "https://catalog.purdueglobal.edu/undergraduate/multidisciplinary-professional-studies/professional-studies-bs/",
+      "publisher": "Purdue University Global",
+      "verifiedOn": "2026-11-27",
+      "catalogYear": "2026-2027",
+      "effectiveOn": "2026-07-01",
+      "retrieval": "connector-search-rendered-text",
+      "receipt": "program-receipts/program-evidence-1.json",
+      "notes": "The retained native connector result includes the full parsed degree plan and closure wording, tutorial and assessment-attempt rules. It is not origin HTML.",
+      "reviewedFact": "The 2026\u20132027 catalog states the independent model no longer accepts enrollments or reentries effective July 1, 2026. It retains requirements for continuing students, including a final six-quarter-credit PR499 capstone."
+    },
+    {
+      "id": "purdue-prior-learning",
+      "url": "https://catalog.purdueglobal.edu/policy-information/prior-learning/",
+      "publisher": "Purdue University Global",
+      "verifiedOn": "2026-11-27",
+      "effectiveOn": null,
+      "retrieval": "connector-search-rendered-text",
+      "receipt": "program-receipts/program-evidence-purdue-narrow-0.json",
+      "notes": "The retained connector result includes case-by-case review, capstone exclusion and the 75% cap. This does not establish 135 applicable ACE quarter credits.",
+      "reviewedFact": "The university caps combined externally assessed prior learning at 75% of undergraduate credential credits; capstones cannot be fulfilled by prior learning. Equivalence, official documentation and other program restrictions apply."
+    },
+    {
+      "id": "purdue-bsba-current",
+      "url": "https://catalog.purdueglobal.edu/undergraduate/business-information-technology/business-administration-bs/",
+      "publisher": "Purdue University Global",
+      "verifiedOn": "2026-11-27",
+      "catalogYear": "2026-2027",
+      "retrieval": "connector-search-rendered-text",
+      "receipt": "program-receipts/program-evidence-purdue-2.json",
+      "notes": "The retained connector result includes exact course identifiers and native quarter-credit quantities. Prerequisite and module sequencing ledger is incomplete.",
+      "reviewedFact": "The catalog BSBA degree plan totals 180 quarter credits: core 45, major 83 and open electives 52. MT499 is the six-quarter-credit capstone."
+    },
+    {
+      "id": "purdue-exceltrack-program",
+      "url": "https://www.purdueglobal.edu/degree-programs/business/exceltrack-bachelor-business-administration/",
+      "publisher": "Purdue University Global",
+      "verifiedOn": "2026-11-27",
+      "retrieval": "connector-open-rendered-text",
+      "receipt": null,
+      "notes": "The initial rendered open result was read but not persisted. Assessment and proctoring classification remain unknown.",
+      "reviewedFact": "The official ExcelTrack BSBA page describes 174 single-credit courses plus a six-quarter-credit capstone, totaling 180 quarter credits."
+    },
+    {
+      "id": "purdue-exceltrack-terms",
+      "url": "https://www.purdueglobal.edu/degree-programs/business/",
+      "publisher": "Purdue University Global",
+      "verifiedOn": "2026-11-27",
+      "retrieval": "connector-search-rendered-text",
+      "receipt": "program-receipts/program-evidence-purdue-2.json",
+      "reviewedFact": "The business-program directory identifies 10-week terms on the ExcelTrack BSBA card."
+    },
+    {
+      "id": "purdue-grades",
+      "url": "https://catalog.purdueglobal.edu/policy-information/academic-standards/grades-marks/",
+      "publisher": "Purdue University Global",
+      "verifiedOn": "2026-11-27",
+      "catalogYear": "2026-2027",
+      "retrieval": "connector-search-rendered-text",
+      "receipt": "program-receipts/program-evidence-purdue-narrow-1.json",
+      "notes": "Do not assume the 45-quarter-credit remainder outside the external prior-learning ceiling must consist entirely of conventional taught classes.",
+      "reviewedFact": "The current catalog says internal assessment credit marked AC contributes to university residency. Module grades use A/B/F thresholds; conventional undergraduate courses use a different grading table."
+    },
+    {
+      "id": "purdue-accreditation",
+      "url": "https://catalog.purdueglobal.edu/policy-information/university-information/accreditation-approvals-memberships/",
+      "publisher": "Purdue University Global",
+      "verifiedOn": "2026-11-27",
+      "catalogYear": "2026-2027",
+      "retrieval": "connector-search-rendered-text",
+      "receipt": "program-receipts/program-evidence-purdue-narrow-1.json",
+      "reviewedFact": "The university states that Purdue Global is institutionally accredited by the Higher Learning Commission, recognized by the U.S. Department of Education."
+    }
+  ],
+  "findings": [
+    {
+      "verifiedOn": "2026-11-27",
+      "classification": "BOTH",
+      "newPolicyChange": false,
+      "applicableTransferAtLeast50PercentVerified": false,
+      "courseEquivalencies": [],
+      "recommendationEligible": false,
+      "nextReviewOn": "2026-12-11",
+      "id": "umass-mypath-bba-cost-transfer",
+      "title": "UMass Global MyPath BBA current price and applicability need catalog reconciliation",
+      "schoolId": "umass-global",
+      "programId": "umass-mypath-bba",
+      "scope": {
+        "award": "Bachelor of Business Administration",
+        "modality": "MyPath competency-based online",
+        "creditSystem": "semester-equivalent",
+        "degreeCredits": 120
+      },
+      "status": "partially-verified-current-source-conflict",
+      "facts": [
+        "The currently live university tuition page labels its schedule 2025\u20132026. It quotes $3,500 per 24-week undergraduate MyPath billing period, a minimum of 12 units per billing period and $7,000 per 48-week CBE academic year, and explicitly directs readers to the academic catalog for the latest rates.",
+        "The official general-business self-paced marketing page still advertises $3,400 per six-month access period, 120 credits and up to 90 previous college transfer credits. The effective date of the difference was not established. Twenty-four weeks must not be silently equated with six calendar months.",
+        "University accreditation page confirms WSCUC institutional accreditation.",
+        "The 2025\u20132026 legacy MyPath catalog requires a minimum of 30 equivalent credits in university residence including LBSC 320 and LBSC 321; accredited transfer coursework must first match credit-hour courses and then competencies, with B- or better. It accepts ACE recommendations subject to degree and residency limits. The newer 2026\u20132027 consolidated policies were present in repository source references but were not independently retrieved during this audit.",
+        "The legacy catalog states M/mastery grades, no university-calculated GPA and a credit-hour conversion record on request. It does not justify a claim of traditional letter grades.",
+        "Provider-published Sophia equivalencies already exist in the school kit. They are not a verified MyPath competency map. Existing six credit-hour degree models use different curricula and must not receive MyPath subscription rules."
+      ],
+      "costs": [
+        {
+          "amount": 3500,
+          "currency": "USD",
+          "basis": "24-week billing period",
+          "scope": "Undergraduate MyPath civilian tuition",
+          "academicYear": "2025-2026",
+          "status": "published-historical-year-live-table",
+          "feesIncluded": false
+        },
+        {
+          "amount": 3400,
+          "currency": "USD",
+          "basis": "six-month access",
+          "scope": "BBA general-business self-paced marketing",
+          "academicYear": null,
+          "status": "live-source-conflict",
+          "feesIncluded": null
+        }
+      ],
+      "transfer": {
+        "institutionalMaximumCredits": 90,
+        "creditUnit": "semester-equivalent",
+        "scope": "Advertised prior college coursework, subject to BBA applicability",
+        "aceMaximumCredits": null,
+        "residencyCredits": 30,
+        "residencyCatalogYear": "2025-2026",
+        "currentCatalogConfirmed": false
+      },
+      "assessment": {
+        "selfPaced": true,
+        "proctoring": "not-verified",
+        "note": "No official current program-specific guarantee of non-proctored BBA assessment found."
+      },
+      "sources": [
+        "umass-tuition-fy2025-26",
+        "umass-bba-marketing",
+        "umass-legacy-cbe-policies",
+        "umass-legacy-cbe-degree",
+        "umass-legacy-catalog-fees",
+        "umass-accreditation"
+      ],
+      "blockers": [
+        "Current 2026\u20132027 catalog tuition and fee schedule not independently retrieved.",
+        "Current consolidated MyPath policy and residency rules not independently verified.",
+        "No 60+ applicable semester-equivalent credit MyPath competency allocation verified; no independent numeric ACE cap.",
+        "No current course-specific assessment/proctoring evidence."
+      ],
+      "proposedAction": "Keep the published FY2025\u201326 quote and $3,400 marketing discrepancy explicit; current-rate confidence unknown. Preserve historical data and current credit-hour mappings; do not promote a new MyPath degree plan by title matching."
+    },
+    {
+      "verifiedOn": "2026-11-27",
+      "classification": "BOTH",
+      "newPolicyChange": false,
+      "applicableTransferAtLeast50PercentVerified": false,
+      "courseEquivalencies": [],
+      "recommendationEligible": false,
+      "nextReviewOn": "2026-12-11",
+      "id": "purdue-exceltrack-bsba",
+      "title": "Purdue Global ExcelTrack BSBA term cost and native quarter-credit requirements",
+      "schoolId": "purdue-global",
+      "programId": null,
+      "status": "verified-cost-and-curriculum-held-applicability",
+      "scope": {
+        "award": "Bachelor of Science in Business Administration",
+        "modality": "ExcelTrack online",
+        "degreeCredits": 180,
+        "creditUnit": "quarter",
+        "termWeeks": 10
+      },
+      "accreditation": {
+        "accreditor": "Higher Learning Commission",
+        "institutional": true,
+        "sourceId": "purdue-accreditation"
+      },
+      "costs": [
+        {
+          "amount": 2500,
+          "currency": "USD",
+          "basis": "10-week term",
+          "type": "tuition",
+          "scope": "ExcelTrack BSBA"
+        },
+        {
+          "amount": 345,
+          "currency": "USD",
+          "basis": "term",
+          "type": "resource-fee",
+          "scope": "Undergraduate ExcelTrack"
+        },
+        {
+          "amount": 2845,
+          "currency": "USD",
+          "basis": "term",
+          "type": "computed-tuition-plus-resource-fee",
+          "calculation": "2500 + 345",
+          "exclusions": "Other course-specific fees and personal costs not independently verified"
+        }
+      ],
+      "facts": [
+        "Official BSBA marketing states 174 single-credit courses plus a six-quarter-credit capstone, totaling 180 quarter credits.",
+        "The catalog degree plan totals 45 core, 83 major and 52 open-elective quarter credits. MT499 is the six-quarter-credit capstone.",
+        "General prior-learning rules permit at most 75% externally assessed undergraduate prior learning and exclude program capstones. For this 180-quarter-credit degree that is a computed ceiling of 135 quarter credits, leaving at least 45 quarter credits outside the externally assessed category. It is not a guarantee of 135 applicable ACE quarter credits.",
+        "Internal Purdue Assessment of Skills and Knowledge credits marked AC can count as residency. Do not describe all 45 remaining credits as conventional taught courses.",
+        "The existing Sophia school kit uses original-source semester quantities and receiving quarter-credit awards. A 4.5-quarter-credit award must not be inflated to match a native five-quarter-credit course."
+      ],
+      "transfer": {
+        "overallMaximumPercent": 75,
+        "computedMaximumQuarterCredits": 135,
+        "externallyAssessedCategory": true,
+        "aceMaximumCredits": null,
+        "applicabilityStatus": "case-by-case, not allocated",
+        "residencyRemainderQuarterCredits": 45,
+        "residencyRemainderBasis": "Calculated from external prior-learning ceiling; internally assessed credits may count"
+      },
+      "assessment": {
+        "traditionalCapstone": true,
+        "capstoneQuarterCredits": 6,
+        "proctoring": "not-verified",
+        "nativeModuleGrading": "A/B/F thresholds in current catalog"
+      },
+      "sources": [
+        "purdue-tuition",
+        "purdue-prior-learning",
+        "purdue-bsba-current",
+        "purdue-exceltrack-program",
+        "purdue-exceltrack-terms",
+        "purdue-grades",
+        "purdue-accreditation"
+      ],
+      "blockers": [
+        "No complete 90+ applicable quarter-credit external credit allocation established.",
+        "No program-specific guaranteed ACE maximum or complete assessment/proctoring matrix.",
+        "Native course prerequisite and module sequencing ledger not fully extracted; no new degree model recommended."
+      ],
+      "proposedAction": "Use verified cost/quarter-credit facts in editorial. Root audit found no listed Purdue degree to withdraw. Keep new academic pathway held until exact degree-applicable award balances and requirements are supported."
+    },
+    {
+      "verifiedOn": "2026-11-27",
+      "classification": "BOTH",
+      "newPolicyChange": false,
+      "applicableTransferAtLeast50PercentVerified": false,
+      "courseEquivalencies": [],
+      "recommendationEligible": false,
+      "nextReviewOn": "2026-12-11",
+      "id": "purdue-professional-studies-independent",
+      "title": "Professional Studies independent subscription closed to new enrollments and reentries",
+      "schoolId": "purdue-global",
+      "status": "verified-closed-new-enrollment",
+      "changeType": "newly-discovered-policy-effective-earlier",
+      "policyEffectiveOn": "2026-07-01",
+      "scope": {
+        "award": "Bachelor of Science in Professional Studies",
+        "modality": "Independent CustomTrack subscription model",
+        "degreeCredits": 180,
+        "creditUnit": "quarter",
+        "catalogYear": "2026-2027"
+      },
+      "facts": [
+        "The current 2026\u20132027 catalog states: Effective July 1, 2026, the independent model will no longer be accepting enrollments or reentries.",
+        "Published independent-model prices remain $195 per month plus $100 for each Assessment of Skills and Knowledge and $2,226 for the bachelor PR499 capstone. Capstone tuition is billed in addition to the monthly subscription during enrollment in the course.",
+        "A term-based Professional Studies version also exists; independent subscription prices must not be attached to that version.",
+        "The BSPr requires 180 quarter credits and a final traditional six-quarter-credit PR499 capstone. Four professional competency tutorials are required; ASK attempts are capped at two per assessment; the independent model requires 10 quarter credits each 12 months.",
+        "The catalog allows requirements other than the capstone to be fulfilled via prior learning, subject to applicable university rules. This wording does not override the generic externally assessed cap or prove degree applicability."
+      ],
+      "costs": [
+        {
+          "amount": 195,
+          "currency": "USD",
+          "basis": "month",
+          "type": "independent subscription",
+          "eligibility": "Continuing eligible independent-model students; closed to new enrollments and reentries effective 2026-07-01"
+        },
+        {
+          "amount": 100,
+          "currency": "USD",
+          "basis": "each ASK taken",
+          "type": "assessment"
+        },
+        {
+          "amount": 2226,
+          "currency": "USD",
+          "basis": "PR499 bachelor capstone",
+          "type": "additional capstone tuition",
+          "monthlyTuitionAlsoCharged": true
+        }
+      ],
+      "sources": [
+        "purdue-professional-studies-current",
+        "purdue-tuition",
+        "purdue-prior-learning",
+        "purdue-grades",
+        "purdue-accreditation"
+      ],
+      "blockers": [
+        "Continuing-student individual eligibility requires the university's decision.",
+        "No academic mappings were created; new-student independent pathway must remain unavailable."
+      ],
+      "proposedAction": "Lead editorial with closure and scope subscription cost to eligible continuers. Preserve historical student records. No current program-catalog Purdue entry exists to remove."
+    },
+    {
+      "verifiedOn": "2026-11-27",
+      "classification": "WATCH/NO ACTION",
+      "newPolicyChange": false,
+      "applicableTransferAtLeast50PercentVerified": false,
+      "courseEquivalencies": [],
+      "recommendationEligible": false,
+      "nextReviewOn": "2026-12-11",
+      "id": "south-college-cbe-transfer-conflict",
+      "schoolId": "south-college",
+      "title": "South College generic transfer pages conflict; graduate CBE cannot inherit undergraduate caps",
+      "status": "verified-conflict-watch",
+      "facts": [
+        "The official transfer-information page states a 75% ceiling for credits earned at other institutions; the official academics page states 60%.",
+        "The transfer-information page explicitly says Sophia Learning and StraighterLine courses are not accepted. A generic college-course cap cannot be represented as an ACE allowance.",
+        "Graduate policies are set by associated program faculty. Existing CBE inventory contains graduate degrees, so neither undergraduate figure establishes a graduate CBE allowance."
+      ],
+      "sources": [
+        {
+          "url": "https://www.south.edu/academics/transfer-information/",
+          "receipt": "program-receipts/program-evidence-p2-open-0.json"
+        },
+        {
+          "url": "https://www.south.edu/academics/",
+          "receipt": "program-receipts/program-evidence-p2-open-0.json"
+        }
+      ],
+      "blockers": [
+        "Effective date and controlling undergraduate catalog policy unresolved.",
+        "Exact graduate CBE program transfer limits, applicable credit and assessment constraints unresolved.",
+        "Accreditation not independently checked in this subtask, so no recommendation."
+      ],
+      "proposedAction": "Retain conflict in watchlist; do not set a universal CBE cap."
+    },
+    {
+      "verifiedOn": "2026-11-27",
+      "classification": "WATCH/NO ACTION",
+      "newPolicyChange": false,
+      "applicableTransferAtLeast50PercentVerified": false,
+      "courseEquivalencies": [],
+      "recommendationEligible": false,
+      "nextReviewOn": "2026-12-11",
+      "id": "california-baptist-online-price-transfer",
+      "schoolId": "california-baptist",
+      "programId": "cbu-business-administration-management-ba-online",
+      "title": "CBU online $541/unit and 100-unit advertising require residency reconciliation",
+      "status": "partially-verified-watch",
+      "facts": [
+        "The online BA Business Administration (Management) page advertises $541 plus fees per unit, 48 major units, eight-week sessions and a 16-month estimate conditional on prior general education and electives.",
+        "Multiple current online program FAQs advertise a maximum of 100 transferred units. The repository's already retained online undergraduate transfer policy instead requires 36 CBU residence units including 30 upper-division units.",
+        "The 48-unit major listing is not the total bachelor's degree. No 100-unit applicable bachelor allocation, current catalog reconciliation or ACE policy was established."
+      ],
+      "costs": [
+        {
+          "amount": 541,
+          "currency": "USD",
+          "basis": "unit",
+          "feesIncluded": false,
+          "scope": "Online BA Business Administration (Management), current academic year unspecified by page"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://calbaptist.edu/academics/programs/online-bachelor-of-arts-business-administration-management/",
+          "receipt": "program-receipts/program-evidence-p2-open-0.json"
+        },
+        {
+          "url": "https://calbaptist.edu/admissions-aid/online/transfer",
+          "retrieval": "Repository prior capture referenced; not independently reopened"
+        }
+      ],
+      "blockers": [
+        "100-unit advertisement versus university residency requirements unresolved.",
+        "Institutional accreditation and 50% applicable transfer not independently verified in this subtask.",
+        "Current all-in fees, exact total curriculum and ACE applicability unresolved."
+      ],
+      "proposedAction": "Record scoped published cost and conflict; preserve existing case-by-case policy and held maps."
+    },
+    {
+      "verifiedOn": "2026-11-27",
+      "classification": "WATCH/NO ACTION",
+      "newPolicyChange": false,
+      "applicableTransferAtLeast50PercentVerified": false,
+      "courseEquivalencies": [],
+      "recommendationEligible": false,
+      "nextReviewOn": "2026-12-11",
+      "id": "uw-flex-bsba-subscription",
+      "schoolId": "uw-flexible-option",
+      "title": "UW-Parkside Flexible Option BSBA $2,250 per 12-week subscription",
+      "status": "verified-price-partial-eligibility",
+      "scope": {
+        "award": "Bachelor of Science in Business Administration",
+        "awardingInstitution": "University of Wisconsin-Parkside",
+        "format": "UW Flexible Option online"
+      },
+      "costs": [
+        {
+          "amount": 2250,
+          "currency": "USD",
+          "basis": "12-week subscription",
+          "scope": "UW-Parkside Flexible Option BSBA",
+          "feesIncluded": null
+        }
+      ],
+      "facts": [
+        "The business program page identifies UW-Parkside as awarding institution and a project-based self-paced online curriculum.",
+        "The BSBA page quotes $2,250 per subscription; the official BSBA questionnaire and business program guide explicitly identify a 12-week subscription. Other programs differ: the noncredit Substance Use Disorders certificate uses 24 weeks.",
+        "No universal UW Flexible transfer allowance or 50% applicable BSBA course ledger was verified."
+      ],
+      "sources": [
+        {
+          "url": "https://flex.wisconsin.edu/degrees-programs/bachelor-science-business-administration/",
+          "receipt": "program-receipts/program-evidence-p2-open-0.json"
+        },
+        {
+          "url": "https://flex.wisconsin.edu/bsba-program-questionnaire/",
+          "receipt": "program-receipts/program-evidence-p2-1.json"
+        },
+        {
+          "url": "https://flex.wisconsin.edu/wp-content/uploads/program-guide/business-programs-guide.pdf",
+          "receipt": "program-receipts/program-evidence-p2-1.json"
+        }
+      ],
+      "blockers": [
+        "BSBA accreditation source, degree-specific residency/ACE capacity and applicable course allocation not independently verified.",
+        "Assessment/proctoring not fully verified."
+      ],
+      "proposedAction": "Watch scoped BSBA price; do not extrapolate to all Flexible programs or recommend a new degree plan."
+    },
+    {
+      "verifiedOn": "2026-11-27",
+      "classification": "WATCH/NO ACTION",
+      "newPolicyChange": false,
+      "applicableTransferAtLeast50PercentVerified": false,
+      "courseEquivalencies": [],
+      "recommendationEligible": false,
+      "nextReviewOn": "2026-12-11",
+      "id": "memphis-saylor",
+      "schoolId": "university-of-memphis",
+      "title": "Memphis/Saylor partnership does not establish a new mapped degree plan",
+      "status": "partnership-verified-applicability-held",
+      "facts": [
+        "Saylor's current partner directory lists the University of Memphis Project Finish Line degree-completion relationship, aimed at students within one academic year of graduation.",
+        "The university College of Arts and Sciences advising FAQ explicitly says Saylor and other alternative transfer sources do not count toward university residency. CAS major/minor residence requires regular letter-grade class enrollment (six major and three minor semester hours).",
+        "This is not evidence Saylor itself awards traditional university letter grades or that any specific 10\u201320 courses apply to a residential degree."
+      ],
+      "sources": [
+        {
+          "url": "https://www.saylor.org/partners/",
+          "receipt": "program-receipts/program-evidence-p2-open-1.json"
+        },
+        {
+          "url": "https://www.memphis.edu/cas/advising/advising-faqs-1.php",
+          "receipt": "program-receipts/program-evidence-p2-narrow-2.json"
+        }
+      ],
+      "blockers": [
+        "Current degree-specific eligibility and 10\u201320 course mappings unresolved.",
+        "Institutional accreditation and at least 50% applicable degree transfer not independently checked here."
+      ],
+      "proposedAction": "Watch relationship; no degree or course mapping publication."
+    },
+    {
+      "verifiedOn": "2026-11-27",
+      "classification": "WATCH/NO ACTION",
+      "newPolicyChange": false,
+      "applicableTransferAtLeast50PercentVerified": false,
+      "courseEquivalencies": [],
+      "recommendationEligible": false,
+      "nextReviewOn": "2026-12-11",
+      "id": "national-university-sophia",
+      "schoolId": "national-university",
+      "title": "National University Sophia partnership is established; degree applicability still controls",
+      "status": "partnership-verified-applicability-held",
+      "facts": [
+        "NU's current Credit for Prior Learning page names Sophia Learning and StraighterLine as alternative course providers whose college-level courses may transfer.",
+        "NU's testing services page lists Sophia equivalencies. Generic partner status does not prove that 50% of a particular NU degree can be supplied by Sophia or establish a uniform ACE cap.",
+        "NU quarter-credit award quantities must retain their native unit and must not be silently equated with Sophia semester credits."
+      ],
+      "sources": [
+        {
+          "url": "https://www.nu.edu/credit-for-prior-learning-at-nu/",
+          "receipt": "program-receipts/program-evidence-p2-1.json"
+        },
+        {
+          "url": "https://www.nu.edu/student-services/testing-services/",
+          "receipt": "program-receipts/program-evidence-p2-1.json"
+        }
+      ],
+      "blockers": [
+        "No new exact degree-level course plan or current institutional accreditation verification in this subtask."
+      ],
+      "proposedAction": "No duplicate partnership feature needed; existing NU kit remains scoped and new degree applicability stays held."
+    },
+    {
+      "verifiedOn": "2026-11-27",
+      "classification": "WATCH/NO ACTION",
+      "newPolicyChange": false,
+      "applicableTransferAtLeast50PercentVerified": false,
+      "courseEquivalencies": [],
+      "recommendationEligible": false,
+      "nextReviewOn": "2026-12-11",
+      "id": "rmcad-sophia",
+      "schoolId": "rmcad",
+      "title": "RMCAD/Sophia partner table verified with program-dependent alternatives",
+      "status": "partnership-verified-applicability-held",
+      "facts": [
+        "The provider's RMCAD partner page says RMCAD teamed up with Sophia and provides a specific transfer table.",
+        "Examples include English Composition I to EN1110 and English Composition II to EN1111, each three provider credits; other rows offer several elective alternatives. These are provider-published matches and are not an additive degree allocation.",
+        "The page says Sophia courses are pass/fail and advises checking applicability with the school. It is not a traditional letter-grade online-to-campus route."
+      ],
+      "sources": [
+        {
+          "url": "https://rmcad.sophia.org/",
+          "receipt": "program-receipts/program-evidence-p2-narrow-0.json"
+        }
+      ],
+      "blockers": [
+        "RMCAD degree total, residence/ACE caps, institutional accreditation and at least50% applicable transfer not independently verified.",
+        "No 10\u201320 nonduplicative applicable course allocation established."
+      ],
+      "proposedAction": "Retain partnership evidence; no new mapped degree recommendation."
+    },
+    {
+      "verifiedOn": "2026-11-27",
+      "classification": "WATCH/NO ACTION",
+      "newPolicyChange": false,
+      "applicableTransferAtLeast50PercentVerified": false,
+      "courseEquivalencies": [],
+      "recommendationEligible": false,
+      "nextReviewOn": "2026-12-11",
+      "id": "wgu-degree-specific-ace",
+      "schoolId": "wgu",
+      "title": "WGU ACE restrictions are program-specific; no universal new rule established",
+      "status": "program-specific-evidence-only",
+      "facts": [
+        "Official WGU pathway pages explicitly identify a named program/catalog and provider. They state at least25% of undergraduate competency units must be completed through residency and courses may not satisfy multiple courses of study.",
+        "The May2026 Sophia BS Supply Chain and Operations Management preview shows55 potential transfer CUs of110required, but duplicate parser rows and preview status mean this is not a newly approved pathway ledger.",
+        "Other WGU pathways list different potential totals; no university-wide ban or uniform degree-level ACE limit was established. Graduate and undergraduate rules must remain separate.",
+        "WGU competency units are preserved as CUs; no silent credit-unit conversion is authorized."
+      ],
+      "sources": [
+        {
+          "url": "https://partners.wgu.edu/transfer-pathway-agreement-preview?collegeCode=BU&instId=796&uniqueId=BSSCOM7112",
+          "receipt": "program-receipts/program-evidence-p2-narrow-1.json"
+        },
+        {
+          "url": "https://partners.wgu.edu/transfer-pathway-agreement?collegeCode=IT&instId=796&programId=237&uniqueId=MSITUG7110",
+          "receipt": "program-receipts/program-evidence-p2-narrow-1.json"
+        }
+      ],
+      "blockers": [
+        "No specific alleged new restriction/effective date established.",
+        "Exact receiving-program table needs current source capture and applicability validation before modification."
+      ],
+      "proposedAction": "Keep existing exact program rules and historical valid awards; do not apply a generic restriction."
+    },
+    {
+      "verifiedOn": "2026-11-27",
+      "classification": "WATCH/NO ACTION",
+      "newPolicyChange": false,
+      "applicableTransferAtLeast50PercentVerified": false,
+      "courseEquivalencies": [],
+      "recommendationEligible": false,
+      "nextReviewOn": "2026-12-11",
+      "id": "online-to-residential-letter-grade-paths",
+      "title": "Online-to-residential 10\u201320 course and traditional letter-grade pathway exploration",
+      "status": "watch-no-complete-eligible-path",
+      "facts": [
+        "ASU Universal Learner primary evidence supplied by the baseline-provider research agent says posted courses appear on an official ASU transcript identically to on-campus/online courses. ENG101 is three hours of first-year composition; CAP150 is a three-hour elective.",
+        "The same agent verified admissions restrictions for currently admitted ASU degree-seeking students and minimum posting timelines; this is not an unrestricted accelerator for any enrolled student.",
+        "Neither that evidence nor this subtask establishes a destination-specific set of10\u201320 applicable courses, traditional A/B/C transcript proof for the proposed route, or at least50% applicable transfer capacity.",
+        "Provider pass/fail credit at Sophia/RMCAD and mastery transcripts at MyPath do not become traditional letter grades through a partnership."
+      ],
+      "sources": [
+        {
+          "url": "https://ulc.asu.edu/how-it-works/pricing/",
+          "retrieval": "Agent-provided primary evidence; see provider packet for retained receipt"
+        },
+        {
+          "url": "https://courses.ulc.asu.edu/english-composition-eng-101/",
+          "retrieval": "Agent-provided primary evidence"
+        },
+        {
+          "url": "https://courses.ea.asu.edu/career-pathways-cap-150/",
+          "retrieval": "Agent-provided primary evidence"
+        },
+        {
+          "url": "https://ea.asu.edu/help-center/faqs/",
+          "retrieval": "Agent-provided primary evidence"
+        }
+      ],
+      "blockers": [
+        "Exact residential destination, degree audit and10\u201320-course nonduplicative applicability ledger remain unresolved.",
+        "Do not create mappings by course-title similarity."
+      ],
+      "proposedAction": "Watch and preserve existing mappings; no new residential pathway published."
+    }
+  ],
+  "repositoryAudit": {
+    "worktree": "/workspace/improvements/degreesteps-weekly-research-issue56-2026-11-27",
+    "files": [
+      "content/research/cbe-schools.json",
+      "content/research/cbu-programs.json",
+      "content/pathway-kits/purdue-global/school.json",
+      "content/pathway-kits/umass-global/school.json"
+    ],
+    "notes": [
+      "Purdue kit currently contains provider evidence/equivalencies but no listed degree programs; no active Professional Studies subscription entry to remove.",
+      "MyPath five-program opportunity inventory is separate from six credit-hour UMass degree models. Do not apply MyPath costs/transfer rules to credit-hour models.",
+      "South CBE inventory contains graduate degrees; generic undergraduate caps cannot be used.",
+      "Existing CBU transfer caveat is more conservative than100-unit advertisement and should be preserved until reconciled."
+    ]
+  },
+  "canonicalMutationsMade": false,
+  "limitations": [
+    "Current 2026\u20132027 UMass catalog rates were not independently retrieved.",
+    "No new course mappings or recommended degree plan were created.",
+    "At least 50% applicable external credit was not established for any new degree recommendation."
+  ]
+}

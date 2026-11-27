@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 1,
+  "issue": 56,
+  "issueUrl": "https://github.com/jeremyc3434/DegreeSteps/issues/56",
+  "checkedOn": "2026-11-27",
+  "researcher": "issue56_umpi_maine",
+  "scope": "Independent official institution/provider source review for UMPI current policy and Maine applied 90-credit degrees. No canonical academic data, student records, or historic awards changed.",
+  "captureBoundary": {
+    "primaryHtmlOrPdfBytesDownloaded": false,
+    "directDownloadAttempt": "urllib.request to UMPI CPL page failed with Operation not permitted; subsequent additional-network-permissions call was interrupted without a response. No source bytes are claimed from that attempt.",
+    "retainedReceipts": [
+      "umpi-maine-issue-native-receipt.json",
+      "umpi-maine-comments-native-receipt.json",
+      "umpi-maine-initial-search-native-receipt.json",
+      "umpi-maine-core-native-receipt.json"
+    ],
+    "retainedReceiptMeaning": "Exact JSON serializations of available connector results. Native web results are extracts, not full original HTML/PDF downloads. Hashes refer only to retained receipt/report bytes, never to inaccessible source bytes.",
+    "otherObservedSources": "Official pages and the handbook below were opened successfully through the web connector. Their relevant extracts were observed during this review; the complete native response was not retained in session state. Those rows explicitly state observed-extract-not-retained. Editorial receipts independently retain some Maine/accreditation extracts.",
+    "currentCatalogAccess": "UMPI root and Applied Psychology catoid=12/poid=2036 returned HTTP 403 via web connector. UMFK Applied Business catoid=15/poid=2082 returned HTTP 403. No current catalog policy was inferred.",
+    "noInstitutionContactSent": true,
+    "forumsUsedAsEvidence": false
+  },
+  "existingAudit": {
+    "repository": "/workspace/improvements/degreesteps-weekly-research-issue56-2026-11-27",
+    "filesReviewed": [
+      "content/reviews/umpi-alternative-credit-policy-review-2026-11-17.json",
+      "docs/umpi-degree-sources.md",
+      "content/public-content.json"
+    ],
+    "existingPolicy": "The November 17 review already documented UMPI's published combined bachelor CPL limit of 30 and distinguished it from the overall 90/120 outside-credit ceiling. It also explicitly left exemptions, adoption date, and cohort grandfathering unresolved.",
+    "existingCurriculumBoundary": "The UMPI BLS Management route was already blocked pending a catalog-specific executable model. This review does not establish that an exact route or all Sophia major placements can be released."
+  },
+  "sources": [
+    {
+      "id": "umpi-tuition-2026-27",
+      "url": "https://www.umpi.edu/yourpace/tuition/",
+      "publisher": "University of Maine at Presque Isle",
+      "title": "YourPace Tuition & Fees",
+      "retrievedOn": "2026-11-27",
+      "effectivePeriod": "Academic Year 2026–2027",
+      "publicationDate": null,
+      "quote": "$1800",
+      "quoteContext": "Under YourPace Undergraduate and Academic Year 2026–2027; displayed unit is Per 8 week session.",
+      "captureStatus": "retained-native-extract",
+      "receipt": "umpi-maine-core-native-receipt.json",
+      "sourceContentHash": null
+    },
+    {
+      "id": "umpi-faq",
+      "url": "https://www.umpi.edu/yourpace/faqs/",
+      "publisher": "University of Maine at Presque Isle",
+      "title": "YourPace FAQs",
+      "retrievedOn": "2026-11-27",
+      "effectivePeriod": null,
+      "publicationDate": null,
+      "quote": "There is no set limit to the number of credits you can transfer into UMPI.",
+      "captureStatus": "retained-native-extract",
+      "receipt": "umpi-maine-core-native-receipt.json",
+      "sourceContentHash": null
+    },
+    {
+      "id": "umpi-ace",
+      "url": "https://www.umpi.edu/academics/credit-for-prior-learning/ace/",
+      "publisher": "University of Maine at Presque Isle",
+      "title": "Earn College Credit with UMPI’s ACE Program",
+      "retrievedOn": "2026-11-27",
+      "effectivePeriod": null,
+      "publicationDate": null,
+      "quote": "An official ACE transcript must be submitted to the Office of Student Records for PLA consideration.",
+      "captureStatus": "retained-native-extract",
+      "receipt": "umpi-maine-core-native-receipt.json",
+      "sourceContentHash": null
+    },
+    {
+      "id": "umpi-cpl",
+      "url": "https://www.umpi.edu/academics/credit-for-prior-learning/",
+      "publisher": "University of Maine at Presque Isle",
+      "title": "Credit for Prior Learning (CPL) Options",
+      "retrievedOn": "2026-11-27",
+      "effectivePeriod": null,
+      "publicationDate": null,
+      "quote": "Students in Bachelor’s degree programs may earn a maximum of 30 credits.",
+      "quoteLocation": "How the Credit for Prior Learning Process Works, item 2",
+      "captureStatus": "observed-extract-not-retained",
+      "sourceContentHash": null
+    },
+    {
+      "id": "umpi-cpl-process",
+      "url": "https://www.umpi.edu/academics/credit-for-prior-learning/how-it-works/",
+      "publisher": "University of Maine at Presque Isle",
+      "title": "How it Works",
+      "retrievedOn": "2026-11-27",
+      "effectivePeriod": null,
+      "publicationDate": null,
+      "quote": "Students in Bachelor’s degree programs may earn a maximum of 30 credits.",
+      "captureStatus": "observed-extract-not-retained",
+      "sourceContentHash": null
+    },
+    {
+      "id": "umpi-handbook",
+      "url": "https://www.umpi.edu/yourpace/wp-content/uploads/sites/73/2025/11/YourPace-Student-Handbook.pdf",
+      "publisher": "University of Maine at Presque Isle",
+      "title": "YourPace Student Handbook",
+      "retrievedOn": "2026-11-27",
+      "effectivePeriod": "2025–2026 printed edition, as identified in existing November 17 review; no 2026–2027 replacement located",
+      "publicationDate": null,
+      "urlUploadPeriod": "2025-11",
+      "quote": "Your final grade for the course is based solely on your performance in the final assessment.",
+      "quoteLocation": "Printed page 51 / PDF page 50 (zero-based)",
+      "captureStatus": "observed-native-pdf-extract-not-retained",
+      "pageCount": 70,
+      "sourceContentHash": null,
+      "dateCaution": "Upload path is not an adoption date. The assessment grade scale explicitly says version For Fall 1 2025, as of September 2, 2025. Do not describe all handbook rules as a newly effective November 2026 policy."
+    },
+    {
+      "id": "sophia-umpi-partner",
+      "url": "https://umpi.sophia.org/",
+      "publisher": "Sophia Learning",
+      "title": "University of Maine at Presque Isle Transfer Courses from Sophia",
+      "retrievedOn": "2026-11-27",
+      "effectivePeriod": null,
+      "publicationDate": null,
+      "quote": "Please see your Advisor to review the course chart below for the right courses that will help you complete your degree.",
+      "captureStatus": "retained-native-extract",
+      "receipt": "umpi-maine-core-native-receipt.json",
+      "sourceContentHash": null
+    },
+    {
+      "id": "maine-90-announcement",
+      "url": "https://www.maine.edu/blog/2025/07/14/university-of-maine-system-to-lead-state-in-accelerating-adult-degree-completion-with-new-applied-90-credit-bachelors-programs/",
+      "publisher": "University of Maine System",
+      "title": "University of Maine System to lead state in accelerating adult degree completion with new applied 90-credit bachelor’s programs",
+      "retrievedOn": "2026-11-27",
+      "publicationDate": "2025-07-14",
+      "effectivePeriod": "Update says three approved by NECHE November 2025, active Fall 2026; date of web update not printed in observed extract",
+      "quote": "they must earn at least 30 credits through the UMS university that will confer their degree.",
+      "quoteLocation": "Adult degree completer pilot safeguards",
+      "captureStatus": "observed-extract-not-retained",
+      "independentEditorialReceipt": "editorial-school-supplement-receipt.json",
+      "sourceContentHash": null
+    },
+    {
+      "id": "umpi-applied-psychology",
+      "url": "https://www.umpi.edu/yourpace/academic_programs/psychology/",
+      "publisher": "University of Maine at Presque Isle",
+      "title": "YourPace Psychology",
+      "retrievedOn": "2026-11-27",
+      "effectivePeriod": null,
+      "publicationDate": null,
+      "quote": "Some employers and graduate programs may not accept applicants or candidates with an undergraduate degree of fewer than 120 credits.",
+      "captureStatus": "observed-extract-not-retained",
+      "independentEditorialReceipt": "editorial-school-open-receipt.json",
+      "sourceContentHash": null
+    },
+    {
+      "id": "umfk-applied-business",
+      "url": "https://online.umfk.edu/business/applied-business-management/",
+      "publisher": "University of Maine at Fort Kent",
+      "title": "Applied Bachelor of Science Business Management (90 credits)",
+      "retrievedOn": "2026-11-27",
+      "effectivePeriod": null,
+      "publicationDate": null,
+      "quote": "Students must complete 30 credits at UMFK to be awarded their Applied Bachelor of Science degree.",
+      "captureStatus": "observed-extract-not-retained",
+      "independentEditorialReceipt": "editorial-school-open-receipt.json",
+      "sourceContentHash": null
+    },
+    {
+      "id": "uma-applied-pa",
+      "url": "https://www.uma.edu/academics/programs/public-administration/abs/",
+      "publisher": "University of Maine at Augusta",
+      "title": "Applied Bachelor of Science in Public Administration (90-Credit)",
+      "retrievedOn": "2026-11-27",
+      "effectivePeriod": null,
+      "publicationDate": null,
+      "quote": "It has been at least two years since earning the most recent credits",
+      "quoteLocation": "Program Requirements",
+      "captureStatus": "observed-extract-not-retained",
+      "independentEditorialReceipt": "editorial-school-open-receipt.json",
+      "sourceContentHash": null
+    },
+    {
+      "id": "uma-applied-pa-curriculum",
+      "url": "https://www.uma.edu/academics/programs/public-administration/abs/curriculum/",
+      "publisher": "University of Maine at Augusta",
+      "title": "Curriculum",
+      "retrievedOn": "2026-11-27",
+      "effectivePeriod": null,
+      "publicationDate": null,
+      "quote": "with at least 30 credits earned at UMA.",
+      "captureStatus": "observed-extract-not-retained",
+      "sourceContentHash": null
+    },
+    {
+      "id": "umpi-current-catalog-blocked",
+      "url": "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=2036",
+      "publisher": "University of Maine at Presque Isle",
+      "retrievedOn": "2026-11-27",
+      "captureStatus": "blocked-http-403",
+      "sourceContentHash": null
+    },
+    {
+      "id": "umfk-current-catalog-blocked",
+      "url": "https://catalog.umfk.edu/preview_program.php?catoid=15&poid=2082&returnto=999",
+      "publisher": "University of Maine at Fort Kent",
+      "retrievedOn": "2026-11-27",
+      "captureStatus": "blocked-http-403",
+      "sourceContentHash": null
+    }
+  ],
+  "findings": [
+    {
+      "id": "umpi-current-tuition",
+      "priority": "P1",
+      "classification": "BOTH",
+      "status": "verified",
+      "novelty": "Reverified current AY2026–2027 rate; not dated as a new November policy",
+      "sourceIds": [
+        "umpi-tuition-2026-27"
+      ],
+      "facts": [
+        "Undergraduate YourPace tuition is USD 1,800 per eight-week session for AY2026–2027.",
+        "One, two, and three paid sessions produce tuition scenarios of $1,800, $3,600, and $5,400, excluding any other applicable charges, outside credit costs and aid; no completion guarantee.",
+        "The same tuition page still advertises a $10,200-or-less degree example. Six sessions at the current rate are $10,800, so the older example should not be adopted as current arithmetic."
+      ]
+    },
+    {
+      "id": "umpi-transfer-vs-cpl",
+      "priority": "P0",
+      "classification": "BOTH",
+      "status": "verified-published-policy-cohort-exception-unverified",
+      "novelty": "Previously documented November17; no newly adopted policy date established",
+      "sourceIds": [
+        "umpi-faq",
+        "umpi-cpl",
+        "umpi-cpl-process",
+        "umpi-handbook",
+        "umpi-ace"
+      ],
+      "facts": [
+        "No fixed number limits incoming transfer records; course applicability is program-specific.",
+        "Bachelor residency is at least 30 credits through UMPI, including at least 12 in the major; at least 9 of those 12 are at 300 level or above.",
+        "For a 120-credit degree, 30-credit residency implies at most 90 outside applicable credits; it is not a promise of 90 ACE credits.",
+        "Current generic CPL page includes ACE-recommended learning from non-accredited training organizations among CPL methods and caps combined bachelor CPL at 30 credits. Process page and linked handbook also state 30.",
+        "The ACE page directs official ACE transcripts through CPL/PLA evaluation. A published named Sophia equivalent does not itself override aggregate caps or guarantee degree placement."
+      ],
+      "notEstablished": [
+        "Whether UMPI administers any approved Sophia/Study.com course equivalency outside the published combined CPL30 limit for a specific YourPace cohort.",
+        "A formally adopted current-cohort exception, new effective date, or automatic grandfathering rule."
+      ]
+    },
+    {
+      "id": "umpi-dec28-major-rumor",
+      "priority": "P0",
+      "classification": "WATCH/NO ACTION",
+      "status": "unverified",
+      "novelty": "Reported possible policy transition; no primary dated text established",
+      "sourceIds": [
+        "umpi-ace",
+        "sophia-umpi-partner",
+        "umpi-handbook",
+        "umpi-current-catalog-blocked"
+      ],
+      "claimLeads": [
+        "ACE cannot satisfy major requirements after a transition.",
+        "December 28, 2026 cutoff.",
+        "Automatic grandfathering for prior enrollees or awards submitted before cutoff."
+      ],
+      "observedBoundary": "No dated December28 policy or blanket ACE-to-major prohibition was located in the opened official ACE, CPL, FAQ, or linked handbook sources. Exact catalog was inaccessible. Forums are leads only.",
+      "action": "Do not invent the cutoff, impose a blanket major prohibition, reopen historic student awards, or change student's saved progress. Keep current degree-placement and cohort exceptions unresolved until an authoritative university document identifies the exact scope."
+    },
+    {
+      "id": "umpi-assessments",
+      "priority": "P1",
+      "classification": "CONTENT",
+      "status": "verified-limited-to-published-handbook",
+      "novelty": "Older published rules reverified",
+      "sourceIds": [
+        "umpi-handbook",
+        "umpi-faq"
+      ],
+      "facts": [
+        "Milestones may include assignments, quizzes, and activities; proficiency unlocks the final assessment. The final assessment determines course grade, with an optional draft for feedback.",
+        "Passing requires Proficient level; handbook grade scale identifies 3.0/80% as the minimum and maps passing proficiency to letter grades.",
+        "Undergraduates normally start with two courses and may have four active at once; submitting a final permits a request for another. Courses must be completed within the session.",
+        "FAQ requires webcam and microphone for recorded presentations, voiceovers and video assignments. It does not establish a universal no-proctoring guarantee."
+      ],
+      "notEstablished": [
+        "Course-specific current business syllabus, final-assessment format, live/recorded obligations, or universal absence of proctoring."
+      ]
+    },
+    {
+      "id": "maine-three-90-programs",
+      "priority": "P1",
+      "classification": "CONTENT",
+      "status": "verified-program-framework-not-executable-pathway",
+      "novelty": "Official announcement updated from July2025 proposals; three approvals November2025 active Fall2026",
+      "sourceIds": [
+        "maine-90-announcement"
+      ],
+      "facts": [
+        "Current official update identifies exactly three NECHE-approved programs active Fall2026: UMA Applied Public Administration, UMFK Applied Business Management, UMPI Applied Psychology.",
+        "Initial July2025 announcement proposed five pilots. Applied College Studies and Applied Liberal Studies must not be presented as available based solely on that proposal.",
+        "System framework restricts enrollment to adult degree completers with prior credit after at least two years away; current program-specific pages refine eligibility.",
+        "At least 30 credits must come from the conferring campus. For a 90-credit award, arithmetic allows at most 60 applicable outside credits (66.7%), not automatic 60 ACE credits."
+      ],
+      "notEstablished": [
+        "Current course-by-course executable transfer mappings for these three exact awards.",
+        "A universally applicable ACE allowance or guaranteed graduate-school/employer acceptance."
+      ]
+    },
+    {
+      "id": "umpi-applied-psychology90",
+      "priority": "P1",
+      "classification": "CONTENT",
+      "status": "verified-program-facts",
+      "sourceIds": [
+        "umpi-applied-psychology",
+        "maine-90-announcement"
+      ],
+      "facts": [
+        "Applied BA Psychology is designed for adult completers returning after a two-year pause with prior college credit or CPL.",
+        "Curriculum is 40 general-education credits, 45 psychology/core credits and at least 5 elective credits; at least 30 awarded by UMPI, including substantial advanced major work.",
+        "University warns some employers/graduate programs require 120 credits, and the program does not directly lead to clinical psychology licensure or counseling credentials.",
+        "No-loss transition to the 120-credit Psychology BA is described; federal aid may not be available after earning the 90-credit degree then returning for 120."
+      ],
+      "action": "Retain as editorial opportunity and program discovery only; do not manufacture applicable Sophia/ACE placements."
+    },
+    {
+      "id": "umfk-applied-business90",
+      "priority": "P1",
+      "classification": "CONTENT",
+      "status": "verified-program-facts",
+      "sourceIds": [
+        "umfk-applied-business",
+        "maine-90-announcement"
+      ],
+      "facts": [
+        "Official page titles award Applied Bachelor of Science in Business Management (90 credits); system announcement names subject Applied Business Management.",
+        "Admission requires GPA2.0, official transcripts, at least30 completed college credits and two-year education gap OR transfer from a community college entered as an adult degree completer.",
+        "30 UMFK credits required. Curriculum has36 general-education plus54 business credits and eliminates electives.",
+        "Courses are seven-week asynchronous, with six starts per academic year. This is not a self-paced flat-subscription claim.",
+        "Transparency disclosure warns some employers/graduate programs may reject fewer than120 credits; UMFK describes its own master's pathway subject to all graduate admission requirements and no-loss transition to120-credit BS."
+      ],
+      "action": "Use exact award and eligibility terms in editorial; hold executable template until full curriculum/assessment and applicable transfer origins are verified."
+    },
+    {
+      "id": "uma-applied-pa90",
+      "priority": "P1",
+      "classification": "CONTENT",
+      "status": "verified-program-facts-with-pricing-discrepancy",
+      "sourceIds": [
+        "uma-applied-pa",
+        "uma-applied-pa-curriculum",
+        "maine-90-announcement"
+      ],
+      "facts": [
+        "Applied BS Public Administration (90-Credit) page requires minimum two years relevant work experience OR prior college credit OR CPL evaluations; at least two years since most recent credits; work-experience credit requires CPL portfolio; standard undergraduate admission and2.0GPA apply.",
+        "At least30 credits at UMA; every completed credit carries into UMA's full121-credit Public Administration degree.",
+        "Program can be entirely online; some HyFlex courses allow in-person, live online, or independent scheduling. No universal self-paced or nonproctored guarantee established.",
+        "Page shows resident tuition328/credit, out-of-state784/credit and advertised total39,360. The total equals120×328, not90×328; do not publish it as a reconciled90-credit total."
+      ],
+      "action": "Use admission review boundary because the page's experience/credit alternatives differ from the broad original framework; do not invent a universal age or prior-credit minimum. Obtain exact degree-specific fee/tuition estimate before a cost comparison."
+    }
+  ],
+  "proposedChanges": [
+    {
+      "area": "Canonical UMPI policy",
+      "change": "Keep the already published 30CPL combined rule distinct from30residency and90/120 outside ceiling; refresh verification date/source only if root chooses and retains date/exception uncertainty.",
+      "historicalHandling": "No retroactive invalidation or rewriting awarded course records."
+    },
+    {
+      "area": "Maine program discovery",
+      "change": "Keep three precise applied90 programs as discovery/editorial findings, not currently verified executable templates. Record adult-completer eligibility and >=50% arithmetic applicable capacity with actual applicability unresolved."
+    },
+    {
+      "area": "Public content",
+      "change": "Current YourPace session costs and UMPIvsMyPath comparison may use1800/8weeks with actual completion assumptions; Maine90 guide must carry employer/graduate and121-credit UMA continuation caveats."
+    },
+    {
+      "area": "Watchlist",
+      "change": "Keep December28 transition, major restriction and grandfathering unresolved until dated registrar/catalog authority. Recheck within7days due possible deadline claim; never treat forum submission dates as institutional policy."
+    }
+  ],
+  "editorialReview": {
+    "reviewedFile": "content/public-content.json",
+    "outcome": "Current drafted Maine90 article matches observed source facts, including no-loss121-credit UMA continuation and max60/90 arithmetic. UMFK appliedBS title is supported by official program page. UMA alternatives require careful OR wording with separate2-year credit-gap condition.",
+    "accreditationBoundary": "Official UMS updated announcement states NECHE approval of the three applied programs in November2025. UMPI FAQ says YourPace accredited by NECHE. Editorial agent independently retained official institutional accreditation receipts; use those for the UMPIvsMyPath institutional accreditation sentence.",
+    "assessmentGuidance": "Do not call all UMPI courses exam-free or guarantee non-proctoring from silence; describe milestones/finals and media assignments only."
+  },
+  "tests": "JSON parsing and receipt SHA-256 verification only. No canonical code mutations or new behavioral tests were needed for this source packet.",
+  "followUpReviewOn": "2026-12-04"
+}

@@ -25,8 +25,15 @@ test('upcoming and approval-pending programs never become current degree choices
 });
 
 test('subscription periods and program-specific per-credit pricing are not conflated',()=>{
- assert.equal(program('umass-mypath-bba').effectivePricing.amount,3500);assert.equal(program('umass-mypath-bba').effectivePricing.period,'24 weeks');
- assert.equal(program('umass-mypath-mba').effectivePricing.amount,4030);
+ const mypath=program('umass-mypath-bba').effectivePricing;
+ assert.equal(mypath.amount,null,'An older academic-year quote cannot become a verified current tuition rate');
+ assert.equal(mypath.reviewStatus,'current-year-not-verified');
+ assert.equal(mypath.period,'24 weeks');
+ assert(mypath.historicalQuotes.some(quote=>quote.amount===3500&&quote.academicYear==='2025-2026'&&quote.period==='24 weeks'));
+ assert(mypath.historicalQuotes.some(quote=>quote.amount===3400&&quote.academicYear===null&&quote.period==='six months'));
+ const graduatePrice=program('umass-mypath-mba').effectivePricing;
+ assert.equal(graduatePrice.amount,null);
+ assert(graduatePrice.historicalQuotes.some(quote=>quote.amount===4030&&quote.checkedOn==='2026-11-03'&&quote.academicYear===null));
  assert.equal(program('phoenix-cb-mba').effectivePricing.model,'per-credit');assert.equal(program('phoenix-cb-mba').effectivePricing.amount,300);
  assert(opportunities.programs.filter(p=>p.schoolId==='university-of-phoenix'&&p.id.startsWith('phoenix-cb-')).every(p=>p.blockWeeks===16));
  assert.equal(program('phoenix-da-bs-information-technology').effectivePricing.model,'subscription');assert.equal(program('phoenix-da-bs-information-technology').effectivePricing.period,'12 weeks');
@@ -52,7 +59,7 @@ test('institutional transfer and alternative recommendations remain separate at 
 
 test('merged planner routes retain discovery facts without acquiring made-up course maps',()=>{
  const before=JSON.stringify(base),merged=Catalog.merge(base,directory),route=merged.pathways.find(p=>p.id==='umass-mypath-mba');
- assert.equal(JSON.stringify(base),before);assert.equal(route.paceModel,'competency-subscription');assert.equal(route.effectivePricing.amount,4030);assert(Array.isArray(route.prerequisites));assert.equal(route.courseMapStatus,'not-mapped');assert.equal(route.modelId,undefined);
+ assert.equal(JSON.stringify(base),before);assert.equal(route.paceModel,'competency-subscription');assert.equal(route.effectivePricing.amount,null);assert(route.effectivePricing.historicalQuotes.some(quote=>quote.amount===4030&&quote.checkedOn==='2026-11-03'));assert(Array.isArray(route.prerequisites));assert.equal(route.courseMapStatus,'not-mapped');assert.equal(route.modelId,undefined);
  assert.equal(merged.programDirectory.schools.length,opportunities.schools.length);assert.equal(Catalog.modelFiles.length,4);
  const variants=Catalog.merge({pathways:[]},{programs:[{id:'fixed-mba',school:'Example',title:'MBA',level:'master',modalities:['online'],paceModel:'course-term',catalogCollection:'opportunity-expansion',url:'https://example.edu/mba'},{id:'paced-mba',school:'Example',title:'MBA',level:'master',modalities:['online'],paceModel:'competency-subscription',catalogCollection:'opportunity-expansion',url:'https://example.edu/cbe-mba'}]});assert.equal(variants.pathways.length,2);
 });

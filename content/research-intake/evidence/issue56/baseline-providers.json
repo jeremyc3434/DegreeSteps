@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 1,
+  "issue": 56,
+  "scope": "Sophia, Study.com, Saylor Direct Credit, ASU Universal Learner Courses provider baseline research",
+  "verifiedOn": "2026-11-27",
+  "researchType": "independent_primary_source_verification",
+  "canonicalEditsMade": false,
+  "sourcePolicy": "Only primary provider sources support findings; search results used for discovery and raw retrieval receipts retained. Web tool result statuses are not origin HTTP status codes. No renewal, transfer equivalence, or absence-of-assessment is inferred.",
+  "audit": {
+    "path": "content/discovery/course-assessment-reviews.json",
+    "observed": "Existing Sophia no-proctor/identity, Study no-proctor/identity, and Saylor proctored-credit sources already checked 2026-11-24 and align with this fresh review. No assessment-baseline correction is required merely because this intake rediscovers them.",
+    "limits": "Only targeted assessment and provider files were audited; parent owns complete pricing/architecture audit."
+  },
+  "sources": [
+    {
+      "id": "sophia-billing-conflict",
+      "url": "https://app.sophia.org/tutorials/account-and-billing",
+      "title": "Account and Billing Tutorial",
+      "retrieval": "baseline11",
+      "publishedOn": null,
+      "effectiveOn": null,
+      "quote": "12-month membership for $599"
+    },
+    {
+      "id": "asu-faq",
+      "url": "https://ea.asu.edu/help-center/faqs/",
+      "title": "Frequently asked questions",
+      "retrieval": "baseline13",
+      "publishedOn": null,
+      "effectiveOn": null,
+      "quote": "Admitted, degree-seeking ASU students cannot register for Earned Admission."
+    },
+    {
+      "id": "sophia-pricing",
+      "url": "https://www.sophia.org/plans-and-pricing/",
+      "title": "Plans & Pricing",
+      "retrieval": "baseline1",
+      "publishedOn": null,
+      "effectiveOn": null,
+      "quote": "Prices shown exclude applicable tax. Tax is calculated at checkout."
+    },
+    {
+      "id": "sophia-no-proctor",
+      "url": "https://www.sophia.org/blog/higher-education/online-learning-grading-timelines/",
+      "title": "Grading Timelines in Online Learning: What You Need to Know",
+      "retrieval": "baseline3",
+      "publishedOn": "2026-01-15",
+      "effectiveOn": null,
+      "quote": "Sophia Learning has no proctored exams. All assessments are open book"
+    },
+    {
+      "id": "sophia-id",
+      "url": "https://app.sophia.org/tutorials/verification-methods",
+      "title": "Verification Methods",
+      "retrieval": "baseline9",
+      "publishedOn": null,
+      "effectiveOn": null,
+      "quote": "You may be prompted to provide an ID for verification through Jumio."
+    },
+    {
+      "id": "sophia-rigor",
+      "url": "https://www.sophia.org/content/dam/sophia/pdf/Sophia-Course-Rigor-FAQ.pdf",
+      "title": "Sophia Course Rigor FAQ",
+      "retrieval": "baseline9",
+      "publishedOn": "2024",
+      "effectiveOn": null,
+      "quote": "Each Touchstone has a project-based deliverable that is evaluated by expert graders."
+    },
+    {
+      "id": "study-pricing",
+      "url": "https://study.com/college/pricing.html",
+      "title": "Study.com College Saver plans",
+      "retrieval": "baseline1",
+      "publishedOn": null,
+      "effectiveOn": null,
+      "quote": "There's no monthly limit on the number of credit-eligible courses you can complete."
+    },
+    {
+      "id": "study-exams",
+      "url": "https://study.com/support/solutions/articles/11000130921-what-are-study-com-s-exam-policies-for-college-credit-courses-",
+      "title": "What are Study.com's exam policies for college credit courses?",
+      "retrieval": "baseline4",
+      "updatedOn": "2026-08-25",
+      "effectiveOn": null,
+      "quote": "All final exams are open-book and unproctored"
+    },
+    {
+      "id": "study-id",
+      "url": "https://study.com/support/solutions/articles/11000130197-non-proctored-college-saver-and-college-saver-pro-final-exams-faqs",
+      "title": "Non-Proctored College Saver and College Saver Pro Final Exams: FAQs",
+      "retrieval": "baseline4",
+      "updatedOn": "2026-08-25",
+      "effectiveOn": null,
+      "quote": "Study.com requires identity verification before each College Saver and College Saver Pro final exam"
+    },
+    {
+      "id": "saylor-faq",
+      "url": "https://support.saylor.org/hc/en-us/articles/23597374410900-FAQ-Saylor-Direct-Credit",
+      "title": "FAQ – Saylor Direct Credit",
+      "retrieval": "baseline3",
+      "updatedOn": "2026-11-18T19:41",
+      "effectiveOn": null,
+      "quote": "SmarterProctoring charges $5 USD for each exam proctoring session."
+    },
+    {
+      "id": "saylor-materials",
+      "url": "https://support.saylor.org/hc/en-us/articles/205651098-Allowed-materials-on-proctored-credit-exams",
+      "title": "Allowed materials on proctored credit exams",
+      "retrieval": "baseline5",
+      "updatedOn": "2024-06-14T17:25",
+      "effectiveOn": null,
+      "quote": "These exams are closed-book and closed-notes"
+    },
+    {
+      "id": "asu-price",
+      "url": "https://ea.asu.edu/how-it-works/pricing/",
+      "title": "Pricing | Earned Admission",
+      "retrieval": "baseline1",
+      "publishedOn": null,
+      "effectiveOn": null,
+      "quote": "Total per course: $425"
+    },
+    {
+      "id": "asu-ulc-price",
+      "url": "https://ulc.asu.edu/how-it-works/pricing/",
+      "requestedUrl": "https://ulc.asu.edu/how-to-enroll/pricing/",
+      "title": "Pricing | ASU Universal Learner Courses",
+      "retrieval": "baseline9",
+      "publishedOn": null,
+      "effectiveOn": null,
+      "quote": "you have up to one year to decide if you want to add the credits."
+    },
+    {
+      "id": "asu-proctor",
+      "url": "https://ea.asu.edu/help-center/proctoring/",
+      "title": "Proctoring | Earned Admission",
+      "retrieval": "baseline4",
+      "publishedOn": null,
+      "effectiveOn": null,
+      "quote": "Why do some courses have proctored exams or quizzes?"
+    },
+    {
+      "id": "asu-eng101",
+      "url": "https://courses.ulc.asu.edu/english-composition-eng-101/",
+      "title": "ENG 101 - First-Year Composition",
+      "retrieval": "baseline8",
+      "publishedOn": null,
+      "effectiveOn": null,
+      "quote": "you will draft and revise four major projects"
+    },
+    {
+      "id": "asu-cap150",
+      "url": "https://courses.ea.asu.edu/career-pathways-cap-150/",
+      "title": "CAP 150 - Career Pathways: Exploring Your Future",
+      "retrieval": "baseline5",
+      "publishedOn": null,
+      "effectiveOn": null,
+      "quote": "On-demand"
+    }
+  ],
+  "findings": [
+    {
+      "id": "issue56-sophia-baseline",
+      "classification": "BOTH",
+      "priority": "P1",
+      "status": "monthly_and_four_month_verified_annual_official_source_conflict",
+      "studentUsefulness": "Budget by active membership duration and course assessment workload; verify destination acceptance before paying.",
+      "novelty": "Reverified older information; not a new policy change.",
+      "sources": [
+        "sophia-pricing",
+        "sophia-billing-conflict",
+        "sophia-no-proctor",
+        "sophia-id",
+        "sophia-rigor"
+      ],
+      "costs": {
+        "currency": "USD",
+        "plans": [
+          {
+            "amount": 99,
+            "months": 1,
+            "autoRenew": true
+          },
+          {
+            "amount": 299,
+            "months": 4,
+            "autoRenew": true
+          },
+          {
+            "advertisedAmount": 799,
+            "billingTutorialAmount": 599,
+            "status": "official_source_conflict_verify_checkout",
+            "months": 12,
+            "autoRenew": true
+          }
+        ],
+        "tax": "Applicable tax excluded; computed at checkout.",
+        "assumptions": "Membership duration determines total cost; do not quote a fixed $99 per course. Unfinished work may require another renewal. Annual pricing remains unresolved: public pricing advertises $799 while the currently readable official billing tutorial says $599; retain existing conflict warning and verify checkout."
+      },
+      "assessment": {
+        "proctored": false,
+        "openBook": true,
+        "identity": "TypingDNA; SMS alternative after unsuccessful typing attempts; possible Jumio government-issued ID/selfie verification.",
+        "exceptions": "Some courses include expert-graded written or project Touchstones; science lab courses may use Labster activities. No no-assignment claim is supported.",
+        "passing": "Pricing page requires all Challenge questions attempted, final Milestone completed, and overall 70% average across assessment categories if applicable."
+      },
+      "implementation": "Preserve current dist/data/credit-sources.json annual price conflict note, which this fresh check independently confirms. Refresh evidence date if publishing; retain no-proctor with identity/workload caveats. Existing matching assessment metadata needs no semantic change.",
+      "nextReviewOn": "2027-02-27"
+    },
+    {
+      "id": "issue56-study-baseline",
+      "classification": "BOTH",
+      "priority": "P1",
+      "status": "verified_existing_baseline",
+      "studentUsefulness": "Compare library eligibility and concurrent course limits rather than outdated exam caps.",
+      "novelty": "Reverified current plans; effective price-change date not established.",
+      "sources": [
+        "study-pricing",
+        "study-exams",
+        "study-id"
+      ],
+      "costs": {
+        "currency": "USD",
+        "plans": [
+          {
+            "name": "College Saver",
+            "amount": 95,
+            "period": "month",
+            "courseLibrary": "85+ general education courses",
+            "simultaneousEnrollment": 2
+          },
+          {
+            "name": "College Saver Pro",
+            "amount": 235,
+            "period": "month",
+            "courseLibrary": "235+ total courses, including 150+ premium/upper-division",
+            "simultaneousEnrollment": 3
+          }
+        ],
+        "monthlyCompletionCap": null,
+        "examFee": 0,
+        "examRetakeFee": 0,
+        "assumptions": "Unlimited monthly completions and included exam attempts apply to current College Saver/Pro policies. Do not apply obsolete two-exam/$70-extra-exam model."
+      },
+      "assessment": {
+        "proctored": false,
+        "openBook": true,
+        "attempts": 3,
+        "minimumRetakeWaitDays": 3,
+        "identity": "Before each final: TypingDNA or Veriff government-issued ID/selfie verification. A camera-enabled device may be needed. Finals require desktop/laptop.",
+        "exceptions": "Final policy says all finals; individual courses may also include projects requiring manual grading. No course with a proctoring exception was established in current official policy.",
+        "timing": "Exam results usually same day; project work or abnormalities may delay final course result."
+      },
+      "implementation": "Use current plan names and monthly completion limits. Existing assessment metadata agrees; check calculators for outdated exam caps before changing canonical pricing.",
+      "nextReviewOn": "2027-02-27"
+    },
+    {
+      "id": "issue56-saylor-baseline",
+      "classification": "BOTH",
+      "priority": "P1",
+      "status": "verified_with_qualified_fee_scope",
+      "studentUsefulness": "A very low-cost credit exam still requires proctoring and a valid ACE window.",
+      "novelty": "Reverified fee; FAQ visibly updated 2026-11-18.",
+      "sources": [
+        "saylor-faq",
+        "saylor-materials"
+      ],
+      "costs": {
+        "currency": "USD",
+        "courseTuition": 0,
+        "transcriptFee": 0,
+        "proctoringSession": 5,
+        "scope": "Required SmarterProctoring is described for most ACE Recommended Credit courses. Do not universalize without course verification.",
+        "assumptions": "$5 is per exam proctoring session/attempt. Retakes increase cost."
+      },
+      "assessment": {
+        "proctored": true,
+        "creditRequirement": "Pass the separate ACE Recommended Credit / Saylor Direct Credit Final Exam. Certificate exam does not confer ACE recommendation.",
+        "openBook": false,
+        "openNotes": false,
+        "attempts": 3,
+        "minimumRetakeWaitDays": 14,
+        "allowedAll": "Blank paper, pen/pencil, physical or on-screen calculator.",
+        "courseMaterialExceptions": {
+          "BUS105": "Financial calculator",
+          "BUS202": "Financial calculator",
+          "BUS204": "Statistical tables",
+          "CHEM101": "Chemistry formulas sheet",
+          "MA005": "Calculus formulas sheet",
+          "MA121": "Statistical tables",
+          "PHYS101": "Physics formulas sheet",
+          "PHYS102": "Physics formulas sheet and basic integrals table"
+        },
+        "limits": "Specific exceptions to $5 'most' qualifier were not identified. Live credit course list returned no readable lines; don't infer full current available inventory."
+      },
+      "implementation": "Keep provider out of no-proctor classifications. Preserve any already-earned historically valid course credit when availability windows end.",
+      "nextReviewOn": "2026-12-27"
+    },
+    {
+      "id": "issue56-asu-ulc-baseline",
+      "classification": "BOTH",
+      "priority": "P1",
+      "status": "pricing_verified_assessment_leads_partially_verified",
+      "studentUsefulness": "Credit is university-issued; distinguish $25 course access from full $425 transcripted credit cost.",
+      "novelty": "Reverified older pricing; no effective price-change date established.",
+      "sources": [
+        "asu-price",
+        "asu-ulc-price",
+        "asu-proctor",
+        "asu-eng101",
+        "asu-cap150",
+        "asu-faq"
+      ],
+      "costs": {
+        "currency": "USD",
+        "enrollmentPerCourse": 25,
+        "optionalCreditConversionPerCourse": 400,
+        "totalIfTranscriptedPerCourse": 425,
+        "creditDecisionWindow": "Up to one year after becoming eligible, per ULC pricing page",
+        "federalAid": false,
+        "applicationFee": "Separate if applying to ASU; amount not established here.",
+        "assumptions": "$425 is successful course enrollment plus optional transcript posting. Retakes or a separate ASU application can add costs."
+      },
+      "transcript": "Official ASU credit after successful completion and conversion payment; course pages state it appears identically to enrolled-ASU coursework, with attendance/completion session dates.",
+      "eligibility": "Admitted degree-seeking ASU students cannot register; FAQ describes possible eligibility after deferral or seven terms without active enrollment. Academic disqualification restrictions apply. Identity verified before the course with live photo and approved ID.",
+      "minimumCreditPostingTime": "FAQ: on-demand 3/4-credit courses post no sooner than 6 weeks after enrollment; 2-credit courses after 4 weeks and 1-credit courses after 2 weeks. On-demand coursework has a one-year completion window.",
+      "assessment": {
+        "providerDefault": "Course-specific: ASU says some courses proctor exams/quizzes using software monitoring webcam and screen; instructor syllabus controls.",
+        "ENG101": {
+          "credits": 3,
+          "cost": 425,
+          "format": "On-demand, 8 or 12 weeks; page lists next session 2027-01-12.",
+          "verified": "Official course description includes four major writing projects and other writing/reflective work.",
+          "notVerified": "Current complete grading and explicit no-proctor claim. Published syllabus PDF retrieval failed with tool-reported 500; no assertion of absent exams."
+        },
+        "CAP150": {
+          "credits": 3,
+          "cost": 425,
+          "format": "On-demand",
+          "verified": "Official page describes self-assessment, goals, resume/CV, cover letter, thank-you documents and interviewing skills.",
+          "notVerified": "Complete grade weighting and explicit no-proctor claim. Official syllabus linked at SimpleSyllabus j9xz9vm8t returned zero readable lines."
+        }
+      },
+      "implementation": "Price may be refreshed if stale; do not publish ENG101/CAP150 as verified proctor-free or change course assessment flags until current syllabus can be read.",
+      "nextReviewOn": "2026-12-11"
+    }
+  ],
+  "unresolved": [
+    "Sophia annual pricing remains conflicting between two current official pages: public pricing $799 versus billing tutorial $599. Confirm checkout before asserting a single annual price.",
+    "ASU current ENG101/CAP150 complete assessment requirements require readable current syllabi.",
+    "Saylor current $5 FAQ qualifies most ACE courses; no named fee exceptions found.",
+    "No primary-source external destination equivalencies were researched or promoted in this baseline subtask."
+  ],
+  "retrievalArtifacts": "captures/baseline-provider-tool-receipts.json",
+  "limitations": [
+    "Raw web-tool snippets may be partial or based on crawler extraction; they are receipts of exactly what was returned, not a claim that the full original was downloaded.",
+    "No canonical data, source statuses, maps, or product publication state changed."
+  ]
+}

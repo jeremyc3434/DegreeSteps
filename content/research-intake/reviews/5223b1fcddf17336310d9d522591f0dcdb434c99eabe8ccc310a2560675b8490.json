@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "kind": "research-review",
+  "publicationAllowed": false,
+  "findingId": "finding-a71f338c2ed1781436f8604f68af117e680588c896c8f2d537d8e1362c335fff",
+  "revision": 1,
+  "previousReviewHash": null,
+  "sourceRevisions": [
+    "fa28c6d352a806b388a0bf35a2b39b8496caaf7afdb26cef97b2ba8f3bea3721"
+  ],
+  "reviewer": "DegreeSteps Issue56 primary-source and editorial review",
+  "reviewedOn": "2026-11-27",
+  "verifiedOn": null,
+  "announcedOn": null,
+  "effectiveOn": null,
+  "followUpOn": null,
+  "triage": "WATCH",
+  "status": "no-action",
+  "changeKind": "unknown",
+  "summary": "The editorial scope instruction has been implemented in the permanent intake schema, source-bound review history, receiving workflow and durable research run instructions. It is context, not a factual policy claim or an additional article opportunity.",
+  "evidence": [],
+  "receiptPaths": [],
+  "facts": {
+    "scope": {
+      "institution": null,
+      "program": null,
+      "level": null,
+      "modality": null,
+      "catalog": null
+    },
+    "costs": [],
+    "accreditation": [],
+    "transfer": {
+      "overallCap": null,
+      "aceCap": null,
+      "nccrsCap": null,
+      "residency": null,
+      "majorResidency": null,
+      "totalCredits": null
+    },
+    "aceRecommendations": [],
+    "equivalencies": [],
+    "assessments": []
+  },
+  "product": {
+    "status": "not-needed",
+    "paths": [
+      "scripts/research-intake.mjs",
+      ".github/workflows/research-intake.yml",
+      "docs/weekly-research-intake.md"
+    ],
+    "notes": "Concrete pipeline implemented with targeted regression tests; no production deployment or CMS publication."
+  },
+  "editorial": {
+    "status": "not-needed",
+    "proposedUrls": [],
+    "publishedUrls": [],
+    "existingUrls": [],
+    "title": null,
+    "metaDescription": null,
+    "canonicalUrl": null,
+    "internalLinks": [],
+    "structuredData": null,
+    "sitemap": null,
+    "studentUsefulness": "Make useful, sourced content concrete and reviewable alongside product research.",
+    "novelty": "Editorial review is now explicitly part of the weekly intake.",
+    "searchIntent": "Workflow context; no student-facing search page needed.",
+    "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+    "urgency": "Verify links, generated metadata and source dates in the PR; publish only through approved release.",
+    "overlapNotes": "The existing public-site system already provides canonical metadata, article schema and sitemap generation.",
+    "evidenceIds": [],
+    "metrics": null
+  }
+}

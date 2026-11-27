@@ -1,0 +1,301 @@
+{
+  "schemaVersion": 1,
+  "kind": "research-review",
+  "publicationAllowed": false,
+  "findingId": "finding-16befdf2a89b9423f9abf2a3b754611063fbbeaf3d79fbb5d3f4e5a55209ebb8",
+  "revision": 2,
+  "previousReviewHash": "6a03df9213c9bc2a1a12f6003d92c94ebd2c092832502de3b4bbef3b43af6870",
+  "sourceRevisions": [
+    "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+  ],
+  "reviewer": "DegreeSteps Issue56 scoped source enrichment",
+  "reviewedOn": "2026-11-27",
+  "verifiedOn": null,
+  "announcedOn": null,
+  "effectiveOn": null,
+  "followUpOn": "2026-12-04",
+  "triage": "WATCH",
+  "status": "watch",
+  "changeKind": "unknown",
+  "summary": "P 2 contains partly verified component facts, with no eligible new degree recommendation. South College official pages conflict at 60%/75%, and transfer information excludes Sophia/StraighterLine; graduate CBE cannot inherit generic undergraduate caps. CBU advertises 541 USD perunit plus fees but 100 transfer-unit marketing conflicts with residence evidence. UW-Parkside BSBA advertises 2250 USD per 12 weeks. Memphis/Saylor, NU/Sophia and RMCAD/Sophia relationships do not prove a degree allocation; pass/fail credit is not traditional letter grading. WGU restrictions remain program-specific. Exact catalog reconciliation, accreditation and at least 50% actual applicable credit remain unverified; retain WATCH and add no speculative mappings.",
+  "evidence": [
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "cbu-advertised-unit-price",
+      "url": "https://calbaptist.edu/academics/programs/online-bachelor-of-arts-business-administration-management/",
+      "title": "CBU online BA Business Administration Management cost",
+      "kind": "university",
+      "quote": "$541 +fees Cost Per Unit",
+      "excerptKind": "retained-native-connector-extract"
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "uw-bsba-curated-subscription",
+      "url": "https://flex.wisconsin.edu/degrees-programs/bachelor-science-business-administration/",
+      "title": "UW-Parkside Flexible Option BSBA subscription",
+      "kind": "university",
+      "quote": "Curated observed-source transcription (not a verbatim origin quote): the BSBA page quotes $2,250 per subscription; official program questionnaire/guide identifies12weeks.",
+      "excerptKind": "curated-research-transcription"
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "watch-south-college-cbe-transfer-conflict-0",
+      "url": "https://www.south.edu/academics/transfer-information/",
+      "title": "South College generic transfer pages conflict; graduate CBE cannot inherit undergraduate caps",
+      "kind": "university",
+      "quote": "Curated observed-source summary (not a verbatim origin quote): The official transfer-information page states a 75% ceiling for credits earned at other institutions; the official academics page states 60%. The transfer-information page explicitly says Sophia Learning and StraighterLine courses are not accepted. A generic college-course cap cannot be represented as an ACE allowance. Graduate policies are set by associated program faculty. Existing CBE inventory contains graduate degrees, so neither undergraduate figure establishes a graduate CBE allowance.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "Native connector result retained with the final program packet."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "watch-south-college-cbe-transfer-conflict-1",
+      "url": "https://www.south.edu/academics/",
+      "title": "South College generic transfer pages conflict; graduate CBE cannot inherit undergraduate caps",
+      "kind": "university",
+      "quote": "Curated observed-source summary (not a verbatim origin quote): The official transfer-information page states a 75% ceiling for credits earned at other institutions; the official academics page states 60%. The transfer-information page explicitly says Sophia Learning and StraighterLine courses are not accepted. A generic college-course cap cannot be represented as an ACE allowance. Graduate policies are set by associated program faculty. Existing CBE inventory contains graduate degrees, so neither undergraduate figure establishes a graduate CBE allowance.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "Native connector result retained with the final program packet."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "watch-california-baptist-online-price-transfer-0",
+      "url": "https://calbaptist.edu/academics/programs/online-bachelor-of-arts-business-administration-management/",
+      "title": "CBU online $541/unit and 100-unit advertising require residency reconciliation",
+      "kind": "university",
+      "quote": "Curated observed-source summary (not a verbatim origin quote): The online BA Business Administration (Management) page advertises $541 plus fees per unit, 48 major units, eight-week sessions and a 16-month estimate conditional on prior general education and electives. Multiple current online program FAQs advertise a maximum of 100 transferred units. The repository's already retained online undergraduate transfer policy instead requires 36 CBU residence units including 30 upper-division units. The 48-unit major listing is not the total bachelor's degree. No 100-unit applicable bachelor allocation, current catalog reconciliation or ACE policy was established.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "Native connector result retained with the final program packet."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "watch-california-baptist-online-price-transfer-1",
+      "url": "https://calbaptist.edu/admissions-aid/online/transfer",
+      "title": "CBU online $541/unit and 100-unit advertising require residency reconciliation",
+      "kind": "university",
+      "quote": "Curated observed-source summary (not a verbatim origin quote): The online BA Business Administration (Management) page advertises $541 plus fees per unit, 48 major units, eight-week sessions and a 16-month estimate conditional on prior general education and electives. Multiple current online program FAQs advertise a maximum of 100 transferred units. The repository's already retained online undergraduate transfer policy instead requires 36 CBU residence units including 30 upper-division units. The 48-unit major listing is not the total bachelor's degree. No 100-unit applicable bachelor allocation, current catalog reconciliation or ACE policy was established.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "Prior repository evidence or agent observation as labeled in the curated packet; no new origin capture claimed."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "watch-uw-flex-bsba-subscription-0",
+      "url": "https://flex.wisconsin.edu/degrees-programs/bachelor-science-business-administration/",
+      "title": "UW-Parkside Flexible Option BSBA $2,250 per 12-week subscription",
+      "kind": "university",
+      "quote": "Curated observed-source summary (not a verbatim origin quote): The business program page identifies UW-Parkside as awarding institution and a project-based self-paced online curriculum. The BSBA page quotes $2,250 per subscription; the official BSBA questionnaire and business program guide explicitly identify a 12-week subscription. Other programs differ: the noncredit Substance Use Disorders certificate uses 24 weeks. No universal UW Flexible transfer allowance or 50% applicable BSBA course ledger was verified.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "Native connector result retained with the final program packet."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "watch-uw-flex-bsba-subscription-1",
+      "url": "https://flex.wisconsin.edu/bsba-program-questionnaire/",
+      "title": "UW-Parkside Flexible Option BSBA $2,250 per 12-week subscription",
+      "kind": "university",
+      "quote": "Curated observed-source summary (not a verbatim origin quote): The business program page identifies UW-Parkside as awarding institution and a project-based self-paced online curriculum. The BSBA page quotes $2,250 per subscription; the official BSBA questionnaire and business program guide explicitly identify a 12-week subscription. Other programs differ: the noncredit Substance Use Disorders certificate uses 24 weeks. No universal UW Flexible transfer allowance or 50% applicable BSBA course ledger was verified.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "Native connector result retained with the final program packet."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "watch-uw-flex-bsba-subscription-2",
+      "url": "https://flex.wisconsin.edu/wp-content/uploads/program-guide/business-programs-guide.pdf",
+      "title": "UW-Parkside Flexible Option BSBA $2,250 per 12-week subscription",
+      "kind": "university",
+      "quote": "Curated observed-source summary (not a verbatim origin quote): The business program page identifies UW-Parkside as awarding institution and a project-based self-paced online curriculum. The BSBA page quotes $2,250 per subscription; the official BSBA questionnaire and business program guide explicitly identify a 12-week subscription. Other programs differ: the noncredit Substance Use Disorders certificate uses 24 weeks. No universal UW Flexible transfer allowance or 50% applicable BSBA course ledger was verified.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "Native connector result retained with the final program packet."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "watch-memphis-saylor-0",
+      "url": "https://www.saylor.org/partners/",
+      "title": "Memphis/Saylor partnership does not establish a new mapped degree plan",
+      "kind": "provider",
+      "quote": "Curated observed-source summary (not a verbatim origin quote): Saylor's current partner directory lists the University of Memphis Project Finish Line degree-completion relationship, aimed at students within one academic year of graduation. The university College of Arts and Sciences advising FAQ explicitly says Saylor and other alternative transfer sources do not count toward university residency. CAS major/minor residence requires regular letter-grade class enrollment (six major and three minor semester hours). This is not evidence Saylor itself awards traditional university letter grades or that any specific 10–20 courses apply to a residential degree.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "Native connector result retained with the final program packet."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "watch-memphis-saylor-1",
+      "url": "https://www.memphis.edu/cas/advising/advising-faqs-1.php",
+      "title": "Memphis/Saylor partnership does not establish a new mapped degree plan",
+      "kind": "university",
+      "quote": "Curated observed-source summary (not a verbatim origin quote): Saylor's current partner directory lists the University of Memphis Project Finish Line degree-completion relationship, aimed at students within one academic year of graduation. The university College of Arts and Sciences advising FAQ explicitly says Saylor and other alternative transfer sources do not count toward university residency. CAS major/minor residence requires regular letter-grade class enrollment (six major and three minor semester hours). This is not evidence Saylor itself awards traditional university letter grades or that any specific 10–20 courses apply to a residential degree.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "Native connector result retained with the final program packet."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "watch-national-university-sophia-0",
+      "url": "https://www.nu.edu/credit-for-prior-learning-at-nu/",
+      "title": "National University Sophia partnership is established; degree applicability still controls",
+      "kind": "university",
+      "quote": "Curated observed-source summary (not a verbatim origin quote): NU's current Credit for Prior Learning page names Sophia Learning and StraighterLine as alternative course providers whose college-level courses may transfer. NU's testing services page lists Sophia equivalencies. Generic partner status does not prove that 50% of a particular NU degree can be supplied by Sophia or establish a uniform ACE cap. NU quarter-credit award quantities must retain their native unit and must not be silently equated with Sophia semester credits.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "Native connector result retained with the final program packet."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "watch-national-university-sophia-1",
+      "url": "https://www.nu.edu/student-services/testing-services/",
+      "title": "National University Sophia partnership is established; degree applicability still controls",
+      "kind": "university",
+      "quote": "Curated observed-source summary (not a verbatim origin quote): NU's current Credit for Prior Learning page names Sophia Learning and StraighterLine as alternative course providers whose college-level courses may transfer. NU's testing services page lists Sophia equivalencies. Generic partner status does not prove that 50% of a particular NU degree can be supplied by Sophia or establish a uniform ACE cap. NU quarter-credit award quantities must retain their native unit and must not be silently equated with Sophia semester credits.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "Native connector result retained with the final program packet."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "watch-rmcad-sophia-0",
+      "url": "https://rmcad.sophia.org/",
+      "title": "RMCAD/Sophia partner table verified with program-dependent alternatives",
+      "kind": "provider",
+      "quote": "Curated observed-source summary (not a verbatim origin quote): The provider's RMCAD partner page says RMCAD teamed up with Sophia and provides a specific transfer table. Examples include English Composition I to EN1110 and English Composition II to EN1111, each three provider credits; other rows offer several elective alternatives. These are provider-published matches and are not an additive degree allocation. The page says Sophia courses are pass/fail and advises checking applicability with the school. It is not a traditional letter-grade online-to-campus route.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "Native connector result retained with the final program packet."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "watch-wgu-degree-specific-ace-0",
+      "url": "https://partners.wgu.edu/transfer-pathway-agreement-preview?collegeCode=BU&instId=796&uniqueId=BSSCOM7112",
+      "title": "WGU ACE restrictions are program-specific; no universal new rule established",
+      "kind": "university",
+      "quote": "Curated observed-source summary (not a verbatim origin quote): Official WGU pathway pages explicitly identify a named program/catalog and provider. They state at least25% of undergraduate competency units must be completed through residency and courses may not satisfy multiple courses of study. The May2026 Sophia BS Supply Chain and Operations Management preview shows55 potential transfer CUs of110required, but duplicate parser rows and preview status mean this is not a newly approved pathway ledger. Other WGU pathways list different potential totals; no university-wide ban or uniform degree-level ACE limit was established. Graduate and undergraduate rules must remain separate. WGU competency units are preserved as CUs; no silent credit-unit conversion is authorized.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "Native connector result retained with the final program packet."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "watch-wgu-degree-specific-ace-1",
+      "url": "https://partners.wgu.edu/transfer-pathway-agreement?collegeCode=IT&instId=796&programId=237&uniqueId=MSITUG7110",
+      "title": "WGU ACE restrictions are program-specific; no universal new rule established",
+      "kind": "university",
+      "quote": "Curated observed-source summary (not a verbatim origin quote): Official WGU pathway pages explicitly identify a named program/catalog and provider. They state at least25% of undergraduate competency units must be completed through residency and courses may not satisfy multiple courses of study. The May2026 Sophia BS Supply Chain and Operations Management preview shows55 potential transfer CUs of110required, but duplicate parser rows and preview status mean this is not a newly approved pathway ledger. Other WGU pathways list different potential totals; no university-wide ban or uniform degree-level ACE limit was established. Graduate and undergraduate rules must remain separate. WGU competency units are preserved as CUs; no silent credit-unit conversion is authorized.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "Native connector result retained with the final program packet."
+    }
+  ],
+  "receiptPaths": [
+    "content/research-intake/evidence/issue56/0903f5911d0b13f174e5377a9158c21dc4607ae5bd23db8550d432f4f2c860b8.json",
+    "content/research-intake/evidence/issue56/0d2c30defe5e192973eedd7a917106912a65e89599073de8870ac55aaf24e9a6.json",
+    "content/research-intake/evidence/issue56/225b99230d0f450cf37033f0e9e29d121235f170dd07aaf2c2051ea239c546dc.json",
+    "content/research-intake/evidence/issue56/3246823c103ae7587b16a69a9c6db77e53ba5adc53be0c82b89432b83ecbe4ce.json",
+    "content/research-intake/evidence/issue56/46425eaeb397e714b3cb364e3b3b2a8db4783b4d09bed95187d4a97c436adc43.json",
+    "content/research-intake/evidence/issue56/4f0bc4e9756e094ddc641e7036f66db34d0b00d67b07a5faec8a53374b36b7c4.json",
+    "content/research-intake/evidence/issue56/51d1944439b6f21b00747316d75c46a645c3f7e30b0f197708e1ad7a22a2acf7.json",
+    "content/research-intake/evidence/issue56/67a811f6fa2e58836496fb19f83f58e6293d0cc96d2e66e7711bfd7eebe7a72b.json",
+    "content/research-intake/evidence/issue56/9f67f08e23968b2052adecc541af929a069266aff0ff1bb9e5dd17aad8961aa0.json",
+    "content/research-intake/evidence/issue56/a1a33f1e593a58d65ea6cbb6c55980b3fe0e2624cdd975c1337dd20306024b0f.json",
+    "content/research-intake/evidence/issue56/d0f24095ef92c6ea2a579b056afb3374003468f43f179ef0f581ecf748c8b7b8.json",
+    "content/research-intake/evidence/issue56/f5c131e66a2df9e66ea169e5299c653a1fa9318a6fd788c6a3af44583e900af7.json"
+  ],
+  "facts": {
+    "scope": {
+      "institution": null,
+      "program": null,
+      "level": null,
+      "modality": null,
+      "catalog": null
+    },
+    "costs": [
+      {
+        "amount": 541,
+        "currency": "USD",
+        "unit": "unit",
+        "scope": "CBU online BA Business Administration Management advertised price",
+        "assumptions": "Academic year not independently established; major 48 units is not the total degree;100 transfer-unit marketing versus 36 residence requirement remains unreconciled.",
+        "evidenceIds": [
+          "cbu-advertised-unit-price"
+        ],
+        "includes": [],
+        "excludes": [
+          "additional fees"
+        ]
+      },
+      {
+        "amount": 2250,
+        "currency": "USD",
+        "unit": "12-week subscription",
+        "scope": "UW-Parkside Flexible Option BSBA only",
+        "assumptions": "Do not generalize to all Flexible Option programs; accreditation, actual applicable transfer and assessment matrix not independently established in this subtask.",
+        "evidenceIds": [
+          "uw-bsba-curated-subscription"
+        ],
+        "includes": [],
+        "excludes": []
+      }
+    ],
+    "accreditation": [],
+    "transfer": {
+      "overallCap": null,
+      "aceCap": null,
+      "nccrsCap": null,
+      "residency": null,
+      "majorResidency": null,
+      "totalCredits": null
+    },
+    "aceRecommendations": [],
+    "equivalencies": [],
+    "assessments": []
+  },
+  "product": {
+    "status": "not-needed",
+    "paths": [],
+    "notes": "No unsupported academic policy, receiving equivalency or historical student-record change is authorized by this finding."
+  },
+  "editorial": {
+    "status": "blocked",
+    "proposedUrls": [],
+    "publishedUrls": [],
+    "existingUrls": [],
+    "title": null,
+    "metaDescription": null,
+    "canonicalUrl": null,
+    "internalLinks": [],
+    "structuredData": null,
+    "sitemap": null,
+    "studentUsefulness": "Avoid recommending a transfer ceiling, subscription price or partnership without program-specific evidence.",
+    "novelty": "Several published costs and partnerships were reverified, but source conflicts and degree-specific eligibility remain unresolved. Existing partnership evidence is not a new policy or an executable plan.",
+    "searchIntent": "Program-specific transfer capacity, tuition and receiving equivalencies for the named watchlist schools.",
+    "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+    "urgency": "No urgency inferred from an unverified claim.",
+    "overlapNotes": "Existing school resources can receive a dated update after evidence resolves each lead.",
+    "evidenceIds": [],
+    "metrics": null
+  }
+}

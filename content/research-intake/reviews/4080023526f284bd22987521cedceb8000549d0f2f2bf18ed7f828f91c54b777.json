@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "kind": "research-review",
+  "publicationAllowed": false,
+  "findingId": "finding-6e496a5e251f3581aadb16cace106375e3b67065fbbd4b80f0e7121f38fab417",
+  "revision": 2,
+  "previousReviewHash": "164da04c86c7c2b54491c8f5013334b77cc3d2f5d10cc165b6f9d89e25cbf669",
+  "sourceRevisions": [
+    "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+  ],
+  "reviewer": "DegreeSteps Issue56 scoped source enrichment",
+  "reviewedOn": "2026-11-27",
+  "verifiedOn": "2026-11-27",
+  "announcedOn": null,
+  "effectiveOn": null,
+  "followUpOn": "2026-12-04",
+  "triage": "BOTH",
+  "status": "researching",
+  "changeKind": "correction",
+  "summary": "Implemented a concrete public pricing-confidence correction: current MyPath AA/BBA/BSIT amounts are unknown rather than mislabeled 2026–27 prices. Preserve FY 2025–26 $3500/24 weeks and undated $3400/six-month BBA marketing as separate scoped observations. The legacy 2025–26 catalog—not independently verified current 2026–27 policy—describes 30 equivalent residence credits, B− transfer review, mastery/no-GPA transcripts and conversion records. Current numeric caps and MyPath competency equivalencies remain unpromoted. Comparison content and the product metadata correction are ready for review; maps/assessment research remains blocked.",
+  "evidence": [
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "mypath-table",
+      "title": "UMass Global live tuition table, headed2025–26",
+      "url": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+      "quote": "Bachelor's Degree | $3,500 | 12 | $7,000",
+      "kind": "university"
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "umass-accreditation",
+      "title": "UMass Global institutional accreditation",
+      "url": "https://www.umassglobal.edu/about/accreditations",
+      "quote": "University of Massachusetts Global is institutionally accredited by the WASC Senior College and University Commission (WSCUC)",
+      "kind": "university"
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "mypath-legacy-transfer-scope",
+      "title": "UMass Global legacy2025–26 competency-based catalog",
+      "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based/",
+      "quote": "Coursework, with a minimum of B- or better from institutionally accredited institutions",
+      "kind": "university"
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "enriched-umass-bba-marketing",
+      "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-general-business-self-paced",
+      "title": "umass-bba-marketing",
+      "kind": "university",
+      "quote": "Curated observed-source transcription (not a verbatim origin quote): The self-paced General Business BBA page advertises 120 credits, $3,400 per six-month access period and up to 90 credits of previous college coursework.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "The observation is preserved in the curated packet; the initial native response was not retained. No origin body hash claimed."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "enriched-umass-legacy-cbe-policies",
+      "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based/",
+      "title": "umass-legacy-cbe-policies",
+      "kind": "university",
+      "quote": "Curated observed-source transcription (not a verbatim origin quote): Legacy 2025–2026 policy evaluates accredited coursework with B- or better against credit-hour courses and then competencies. It accepts ACE recommendations subject to degree and residence limits. Mastery transcript, no GPA and conversion record are described in the same legacy policy.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "The observation is preserved in the curated packet; the initial native response was not retained. No origin body hash claimed."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "enriched-umass-legacy-cbe-degree",
+      "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based-degree-requirement/",
+      "title": "umass-legacy-cbe-degree",
+      "kind": "university",
+      "quote": "Curated observed-source transcription (not a verbatim origin quote): Legacy 2025–2026 bachelor requirements include 30 equivalent residence credits and LBSC 320 and LBSC 321.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "The observation is preserved in the curated packet; the initial native response was not retained. No origin body hash claimed."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "enriched-umass-tuition-fy2025-26",
+      "url": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+      "title": "umass-tuition-fy2025-26",
+      "kind": "university",
+      "quote": "Curated observed-source transcription (not a verbatim origin quote): The live page is headed 2025–2026 Tuition and directs readers to the catalog for the latest rates. Its MyPath table lists bachelor tuition $3,500 per 24-week billing period, 12 minimum units and $7,000 per 48-week year.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "The observation is preserved in the curated packet; the initial native response was not retained. No origin body hash claimed."
+    },
+    {
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null,
+      "id": "enriched-umass-legacy-catalog-fees",
+      "url": "https://catalog.umassglobal.edu/tuition-fees/tuition-fees.pdf",
+      "title": "umass-legacy-catalog-fees",
+      "kind": "university",
+      "quote": "Curated observed-source transcription (not a verbatim origin quote): The indexed catalog PDF lists a $210 MyPath technology fee per billing period and $150 conferral/processing fee. Current catalog-year applicability was not established.",
+      "excerptKind": "curated-research-transcription",
+      "receiptNote": "The native connector response is retained separately; this sentence is the researcher’s scoped transcription."
+    }
+  ],
+  "receiptPaths": [
+    "content/research-intake/evidence/issue56/0903f5911d0b13f174e5377a9158c21dc4607ae5bd23db8550d432f4f2c860b8.json",
+    "content/research-intake/evidence/issue56/0d2c30defe5e192973eedd7a917106912a65e89599073de8870ac55aaf24e9a6.json",
+    "content/research-intake/evidence/issue56/225b99230d0f450cf37033f0e9e29d121235f170dd07aaf2c2051ea239c546dc.json",
+    "content/research-intake/evidence/issue56/3246823c103ae7587b16a69a9c6db77e53ba5adc53be0c82b89432b83ecbe4ce.json",
+    "content/research-intake/evidence/issue56/46425eaeb397e714b3cb364e3b3b2a8db4783b4d09bed95187d4a97c436adc43.json",
+    "content/research-intake/evidence/issue56/4f0bc4e9756e094ddc641e7036f66db34d0b00d67b07a5faec8a53374b36b7c4.json",
+    "content/research-intake/evidence/issue56/51d1944439b6f21b00747316d75c46a645c3f7e30b0f197708e1ad7a22a2acf7.json",
+    "content/research-intake/evidence/issue56/67a811f6fa2e58836496fb19f83f58e6293d0cc96d2e66e7711bfd7eebe7a72b.json",
+    "content/research-intake/evidence/issue56/9f67f08e23968b2052adecc541af929a069266aff0ff1bb9e5dd17aad8961aa0.json",
+    "content/research-intake/evidence/issue56/a1a33f1e593a58d65ea6cbb6c55980b3fe0e2624cdd975c1337dd20306024b0f.json",
+    "content/research-intake/evidence/issue56/d0f24095ef92c6ea2a579b056afb3374003468f43f179ef0f581ecf748c8b7b8.json",
+    "content/research-intake/evidence/issue56/editorial-accreditation-open-receipt.json",
+    "content/research-intake/evidence/issue56/editorial-school-open-receipt.json",
+    "content/research-intake/evidence/issue56/f5c131e66a2df9e66ea169e5299c653a1fa9318a6fd788c6a3af44583e900af7.json"
+  ],
+  "facts": {
+    "scope": {
+      "institution": "University of Massachusetts Global",
+      "program": "MyPath Bachelor of Business Administration",
+      "level": "bachelor",
+      "modality": "online competency-based MyPath",
+      "catalog": "Live tuition table headed 2025–26; do not relabel current academic-year price"
+    },
+    "costs": [
+      {
+        "amount": 3500,
+        "currency": "USD",
+        "unit": "24-week billing period",
+        "scope": "Advertised MyPath bachelor tuition table headed 2025–26",
+        "assumptions": "Observed source-dated $3,500 scenario; conflicting $3,400 BBA marketing and actual enrollment price unresolved. This is not a verified 2026–27 binding quote.",
+        "includes": [
+          "published tuition billing unit"
+        ],
+        "excludes": [
+          "unverified fees",
+          "additional billing periods"
+        ],
+        "evidenceIds": [
+          "mypath-table"
+        ]
+      },
+      {
+        "amount": 3400,
+        "currency": "USD",
+        "unit": "six calendar months of access",
+        "scope": "Undated live BBA general-business MyPath marketing offer",
+        "assumptions": "Conflicts with the live FY 2025–26 table quoting 3500 per 24 weeks. Effective date and current 2026–27 enrollment quote are unverified; do not equate 24 weeks with six calendar months.",
+        "evidenceIds": [
+          "enriched-umass-bba-marketing"
+        ],
+        "includes": [],
+        "excludes": [
+          "unverified current fees",
+          "additional access periods"
+        ]
+      }
+    ],
+    "accreditation": [
+      {
+        "institution": "University of Massachusetts Global",
+        "accreditor": "WASC Senior College and University Commission (WSCUC)",
+        "status": "Institutional accreditation stated by the university; see retained official source.",
+        "evidenceIds": [
+          "umass-accreditation"
+        ]
+      }
+    ],
+    "transfer": {
+      "overallCap": null,
+      "aceCap": null,
+      "nccrsCap": null,
+      "residency": null,
+      "majorResidency": null,
+      "totalCredits": null
+    },
+    "aceRecommendations": [],
+    "equivalencies": [],
+    "assessments": []
+  },
+  "product": {
+    "status": "review-ready",
+    "paths": [
+      "content/research/cbe-schools.json",
+      "dist/data/program-catalog.json",
+      "dist/data/opportunity-catalog.json"
+    ],
+    "notes": "Public MyPath opportunity pricing now leaves current-year amount unknown, preserving the source-dated FY 2025–26 $3500/24-week historical quote and undated BBA $3400/six-month marketing conflict separately. Current consolidated catalog, numeric ACE cap, exact applicable competency map and current proctoring remain blocked. Six credit-hour academic models and historical student data are unchanged."
+  },
+  "editorial": {
+    "status": "review-ready",
+    "proposedUrls": [
+      "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/"
+    ],
+    "publishedUrls": [],
+    "existingUrls": [],
+    "title": "UMPI YourPace vs UMass Global MyPath: business-degree costs and transfer",
+    "metaDescription": "Compare UMPI’s 2026–27 business tuition with UMass Global’s live 2025–26 MyPath sources, transfer and transcript rules, and unresolved current pricing.",
+    "canonicalUrl": "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+    "internalLinks": [
+      "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+      "https://degreesteps.com/blog/what-a-75-percent-transfer-limit-means/",
+      "https://degreesteps.com/compare-plans.html?from=courses",
+      "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+      "https://degreesteps.com/import-courses.html"
+    ],
+    "structuredData": true,
+    "sitemap": true,
+    "studentUsefulness": "Prevent a budget based on mismatched billing units or a program requirement inferred from a headline transfer cap.",
+    "novelty": "Official-source price disagreement remains live; the tuition table and retrieved legacy competency-policy catalog pages are labelled2025–26. No current2026–27 rate, rule adoption date or universal proctoring policy inferred.",
+    "searchIntent": "UMass Global MyPath BBA cost, residency and transcript compared with UMPI YourPace.",
+    "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+    "urgency": "Resolve source discrepancies and individual evaluation before enrollment.",
+    "overlapNotes": "The new comparison answers a specific choice beyond existing subscription advice.",
+    "evidenceIds": [
+      "mypath-legacy-transfer-scope",
+      "mypath-table",
+      "umass-accreditation"
+    ],
+    "metrics": null
+  }
+}

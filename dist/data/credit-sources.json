@@ -131,7 +131,7 @@
           "url": "https://clep.collegeboard.org/clep-exams/introductory-business-law"
         },
         {
-          "title": "2026\u201327 exam fee confirmation",
+          "title": "2026–27 exam fee confirmation",
           "url": "https://clep.collegeboard.org/for-high-schools/state-funding"
         },
         {
@@ -170,7 +170,7 @@
       "creditBasis": "Credit examinations with individual recommended credit amounts and levels; the receiving university decides the award.",
       "summary": "Credit-by-examination options. Five exact exam-form matches are documented for Liberty online undergraduate requirements; coverage for other exams and schools remains DegreeSteps research.",
       "pace": "Prepare independently and schedule an appointment; current policy includes a 30-day retest interval.",
-      "priceNote": "Published exam fee: $100 per distinct exam, plus testing-center administration charges. Military funding or reimbursement depends on the student\u2019s own eligibility and program rules.",
+      "priceNote": "Published exam fee: $100 per distinct exam, plus testing-center administration charges. Military funding or reimbursement depends on the student’s own eligibility and program rules.",
       "assessmentNote": "Test-center or remote ProProctor delivery where offered. Public Speaking includes a speech and is not available remotely.",
       "url": "https://getcollegecredit.com/",
       "evidence": [
@@ -312,7 +312,7 @@
       "kind": "institutional-course",
       "creditBasis": "Arizona State University academic credit after successful completion and optional credit purchase.",
       "summary": "Current offer. Institutional coursework can complement alternative-credit plans. Admitted degree-seeking ASU students are not eligible for this route.",
-      "pace": "Asynchronous sessions or on-demand courses. On-demand minimums depend on credits: six weeks for three/four credits, four weeks for two, two weeks for one.",
+      "pace": "On-demand and session-based courses differ. The official FAQ gives minimum on-demand credit-posting times: six weeks for 3–4 credits, four weeks for 2 credits, and two weeks for 1 credit. These are posting minimums, not guaranteed completion times.",
       "priceNote": "Official pricing lists $25 enrollment plus an optional $400 credit-conversion payment per course ($425 if converted).",
       "assessmentNote": "Assessment and proctoring vary by course; required proctored assessments use Honorlock. Check prerequisites and release schedules.",
       "url": "https://ulc.asu.edu/",
@@ -328,9 +328,15 @@
         {
           "title": "Proctoring requirements",
           "url": "https://ulc.asu.edu/help-center/proctoring/"
+        },
+        {
+          "title": "ASU Earned Admission official FAQ: minimum on-demand enrollment before credit eligibility",
+          "url": "https://ea.asu.edu/faq/",
+          "checkedOn": "2026-11-27"
         }
       ],
-      "mappingStatus": "catalog-only"
+      "mappingStatus": "catalog-only",
+      "checkedOn": "2026-11-27"
     },
     {
       "id": "outlier",
@@ -359,7 +365,7 @@
       "name": "Google Career Certificates through Coursera",
       "kind": "credential-bundle",
       "creditBasis": "ACE recommendations for designated completed certificates and versions, not every Google course or Coursera subscription.",
-      "summary": "Current offer. IT, data, business and other certificate bundles can be considered for transfer. Some current ACE records end November 30, 2026; check renewal and the intended completion date.",
+      "summary": "Self-paced certificate bundles may support transfer when the college accepts the exact learning. Three reviewed ACE versions have completion windows ending November 30, 2026; a successor window has not been verified.",
       "pace": "Self-paced. Google estimates several months of part-time work; labs, projects and prior knowledge affect effort.",
       "priceNote": "Google advertises $49/month in the US/Canada; region, subscription choice and program inclusion can change the amount. Verify checkout.",
       "assessmentNote": "Credential-specific quizzes, labs and projects. Complete the required full credential and obtain the appropriate official record; no universal proctoring claim is made.",
@@ -372,9 +378,64 @@
         {
           "title": "Current Google ACE recommendation catalog",
           "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=3fdb1492-e04f-e911-a97b-000d3a363c81"
+        },
+        {
+          "title": "GOOG-0009 official ACE version 2",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3a353ed3-14d2-f011-bbd3-000d3a329ecb&oid=3fdb1492-e04f-e911-a97b-000d3a363c81&org=Google",
+          "checkedOn": "2026-11-27"
+        },
+        {
+          "title": "GOOG-0007 official ACE version 2",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=10353ed3-14d2-f011-bbd3-000d3a329ecb&oid=3fdb1492-e04f-e911-a97b-000d3a363c81&org=Google",
+          "checkedOn": "2026-11-27"
+        },
+        {
+          "title": "GOOG-0008 official ACE version 2",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=1f353ed3-14d2-f011-bbd3-000d3a329ecb&oid=3fdb1492-e04f-e911-a97b-000d3a363c81&org=Google",
+          "checkedOn": "2026-11-27"
         }
       ],
-      "mappingStatus": "catalog-only"
+      "mappingStatus": "catalog-only",
+      "checkedOn": "2026-11-27",
+      "recommendationReview": {
+        "checkedOn": "2026-11-27",
+        "followUpOn": "2026-12-01",
+        "renewalStatus": "not-verified",
+        "renewalNote": "The listed periods end November 30, 2026. A renewed recommendation for a later completion has not been verified; these dates are not extended by assumption.",
+        "historicalNote": "Previously completed learning and university-awarded credits remain intact. Match older learning to its actual version; do not replace an older award with the latest recommendation total.",
+        "records": [
+          {
+            "aceId": "GOOG-0009",
+            "title": "Google Advanced Data Analytics Professional Certificate",
+            "version": 2,
+            "sourceCredits": 10,
+            "sourceCreditSystem": "semester",
+            "recommendationStart": "2025-12-01",
+            "recommendationEnd": "2026-11-30",
+            "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3a353ed3-14d2-f011-bbd3-000d3a329ecb&oid=3fdb1492-e04f-e911-a97b-000d3a363c81&org=Google"
+          },
+          {
+            "aceId": "GOOG-0007",
+            "title": "Google Cybersecurity Professional Certificate",
+            "version": 2,
+            "sourceCredits": 10,
+            "sourceCreditSystem": "semester",
+            "recommendationStart": "2025-12-01",
+            "recommendationEnd": "2026-11-30",
+            "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=10353ed3-14d2-f011-bbd3-000d3a329ecb&oid=3fdb1492-e04f-e911-a97b-000d3a363c81&org=Google"
+          },
+          {
+            "aceId": "GOOG-0008",
+            "title": "Google Business Intelligence Professional Certificate",
+            "version": 2,
+            "sourceCredits": 7,
+            "sourceCreditSystem": "semester",
+            "recommendationStart": "2025-12-01",
+            "recommendationEnd": "2026-11-30",
+            "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=1f353ed3-14d2-f011-bbd3-000d3a329ecb&oid=3fdb1492-e04f-e911-a97b-000d3a363c81&org=Google"
+          }
+        ]
+      }
     },
     {
       "id": "coursera-certificates",
@@ -402,7 +463,7 @@
       "id": "actfl",
       "name": "ACTFL language proficiency assessments through LTI",
       "kind": "language-assessment",
-      "creditBasis": "Proficiency-dependent ACE recommendations for designated language/test combinations; current ACTFL window is June 1, 2024\u2013May 31, 2027.",
+      "creditBasis": "Proficiency-dependent ACE recommendations for designated language/test combinations; current ACTFL window is June 1, 2024–May 31, 2027.",
       "summary": "Current assessment route. Existing language skills may support lower- or upper-level recommendations; actual university awards and duplication rules require separate checks.",
       "pace": "Scheduled assessment; preparation depends on existing language proficiency and the skill being tested.",
       "priceNote": "Prices vary by assessment, language and delivery. No blanket test price or credit total is assumed.",
@@ -735,7 +796,7 @@
       "name": "Portage Learning",
       "kind": "institutional-partner",
       "status": "current-offer",
-      "creditBasis": "College credit through Geneva College or Bushnell University. The transcript issuer depends on the student\u2019s state of residence when registering.",
+      "creditBasis": "College credit through Geneva College or Bushnell University. The transcript issuer depends on the student’s state of residence when registering.",
       "summary": "Online science labs, healthcare prerequisites and general education courses with a college-issued transcript.",
       "pace": "Open enrollment and self-directed study. The microbiology syllabus sets a 28-day minimum and 48 hours between module or final exams; grading adds time.",
       "priceNote": "Published general tuition is $230 USD per credit, including required learning materials, transcript, application and technology fees. Payment is due at enrollment.",
@@ -865,7 +926,7 @@
       "status": "current-offer",
       "creditBasis": "ACE recommends three lower-division semester hours in quantitative reasoning for the CSM certificate, through November 30, 2027.",
       "summary": "One inexpensive quantitative-reasoning course. It can fill a math or elective requirement where the receiving college accepts this exact certificate.",
-      "pace": "Self-paced. Provider estimates 10\u201360+ study hours; the ACE exhibit allows up to 120 hours. Completion depends on mastery.",
+      "pace": "Self-paced. Provider estimates 10–60+ study hours; the ACE exhibit allows up to 120 hours. Completion depends on mastery.",
       "priceNote": "The CSM course costs $54 USD. Optional personal coaching costs an additional $115 USD.",
       "assessmentNote": "A mastery-based certificate is required. The ACE exhibit lists a minimum passing score of 100; quantitative reasoning is distinct from college algebra or statistics.",
       "url": "https://www.smilabs.org/products/collegecredit",
@@ -938,7 +999,7 @@
           "checkedOn": "2026-11-17"
         },
         {
-          "title": "Archived Liberty equivalency guide \u2014 July 2022",
+          "title": "Archived Liberty equivalency guide — July 2022",
           "url": "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLC-Transfer-Equivalency-Guide-Finalized-7.7.22.pdf",
           "checkedOn": "2026-11-17"
         },
@@ -978,6 +1039,52 @@
         }
       ],
       "assessmentCheckedOn": "2026-11-24"
+    },
+    {
+      "id": "wgu-single-courses",
+      "name": "WGU Single Courses",
+      "kind": "institutional-course",
+      "status": "current-offer",
+      "checkedOn": "2026-11-27",
+      "creditBasis": "Completed courses can appear on an official WGU transcript. Exact credit units and course codes follow the course syllabus. External receiving-course equivalencies are not established by matching titles or removing a code suffix.",
+      "summary": "Individual university courses without admission to a full degree. Discounted prices, recurring extensions and assessments vary by course; an outside college decides how a completed course applies.",
+      "pace": "Self-paced within a two- or three-month initial access period, depending on the course. Continued access is billed automatically unless cancelled; assessment deadlines and eligibility vary.",
+      "priceNote": "WGU advertises discounted $25 single courses and $49 bundles, while its November 2026 catalog lists standard single-course prices of $750–$1,000. Exact discount eligibility is unresolved. Most extensions are $99/month; the PACA + IT & Tech bundle extension is $199/month. Federal financial aid is unavailable.",
+      "assessmentNote": "Applied Algebra (C957A) and Organizational Behavior (C715A) require proctored exams. The retrieved English Composition I syllabus describes four papers; Introduction to Communication (D268A) describes three final projects. Assessment examples are course-specific; there is no universal no-proctor claim.",
+      "url": "https://www.wgu.edu/single-courses.html",
+      "evidence": [
+        {
+          "title": "WGU Single Courses: advertised offers, extensions and official transcript",
+          "url": "https://www.wgu.edu/single-courses.html",
+          "checkedOn": "2026-11-27"
+        },
+        {
+          "title": "WGU November 2026 institutional catalog: standard single-course prices, printed page 51",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf",
+          "checkedOn": "2026-11-27"
+        },
+        {
+          "title": "Applied Algebra official standalone syllabus",
+          "url": "https://academyproduct.s3.us-east-2.amazonaws.com/Algebra_C957A/PDF/C957A_Applied_Algebra_Syllabus.html",
+          "checkedOn": "2026-11-27"
+        },
+        {
+          "title": "Organizational Behavior official standalone syllabus",
+          "url": "https://academyproduct.s3.us-east-2.amazonaws.com/OrgB_C715A/PDF/C715A_v2_Organizational_Behavior_Syllabus.html",
+          "checkedOn": "2026-11-27"
+        },
+        {
+          "title": "English Composition I official standalone syllabus",
+          "url": "https://academyproduct.s3.us-east-2.amazonaws.com/English_ENG101/PDF/ENG__v3_English_Composition_I_Syllabus.html",
+          "checkedOn": "2026-11-27"
+        },
+        {
+          "title": "Introduction to Communication: Connecting with Others official standalone syllabus",
+          "url": "https://academyproduct.s3.us-east-2.amazonaws.com/IntroCommConnectingOthers_D268A/PDF/D268A_Introduction_Communication_Connecting_Others_Syllabus.html",
+          "checkedOn": "2026-11-27"
+        }
+      ],
+      "mappingStatus": "catalog-only"
     }
   ]
 }

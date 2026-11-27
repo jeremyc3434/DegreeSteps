@@ -1,0 +1,48 @@
+name: Editorial browser QA
+on:
+  pull_request:
+    paths:
+      - 'content/public-content.json'
+      - 'content/issue56-editorial-inventory.json'
+      - 'dist/data/credit-sources.json'
+      - 'scripts/build-public-site.mjs'
+      - 'scripts/provider-research-facts.mjs'
+      - 'issue56-public-browser.test.cjs'
+      - '.github/workflows/editorial-browser.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: editorial-browser-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  public-pages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - name: Install isolated browser test dependency
+        run: npm install --prefix "$RUNNER_TEMP/degreesteps-browser" --ignore-scripts --no-audit --no-fund playwright@1.62.1
+      - name: Check desktop and phone journeys
+        env:
+          NODE_PATH: ${{ runner.temp }}/degreesteps-browser/node_modules
+        run: |
+          export CHROMIUM_PATH="$(command -v google-chrome)"
+          test -n "$CHROMIUM_PATH"
+          node issue56-public-browser.test.cjs
+      - name: Save public screenshots
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: editorial-public-browser
+          path: outputs/issue56/browser
+          if-no-files-found: ignore
+          retention-days: 14

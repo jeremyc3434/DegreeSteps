@@ -29,7 +29,7 @@
         "amount": null,
         "currency": "USD",
         "period": "6 months",
-        "notes": "Flat six-month CBE tuition is confirmed. An indexed 2025\u20132026 schedule quotes $7,000 but its linked PDF was inaccessible; leave the current numeric amount unverified. Nursing and other fees may apply.",
+        "notes": "Flat six-month CBE tuition is confirmed. An indexed 2025–2026 schedule quotes $7,000 but its linked PDF was inaccessible; leave the current numeric amount unverified. Nursing and other fees may apply.",
         "sourceUrl": "https://www.south.edu/location/cbe-competency-based-education/"
       },
       "transferPolicy": {
@@ -74,7 +74,7 @@
         },
         {
           "id": "south-tuition-indexed",
-          "title": "2025\u20132026 tuition schedule, indexed but download unavailable",
+          "title": "2025–2026 tuition schedule, indexed but download unavailable",
           "url": "https://cdn.south.edu/wp-content/uploads/2026/05/26tuition-Online-Programs-Rev.-March-2026_a11y.pdf"
         }
       ],
@@ -368,8 +368,16 @@
         "amount": null,
         "currency": "USD",
         "period": "24 weeks",
-        "notes": "$3,500 undergraduate and $4,030 graduate civilian tuition per 24-week billing period. Active-duty military per-credit billing differs; use a program-level rate.",
-        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+        "notes": "The live undergraduate tuition table is explicitly labeled 2025–2026 ($3,500 per 24 weeks); BBA marketing separately quotes $3,400 per six-month access. Current academic-year tuition and the effective date of the difference are not established. Retain prior graduate quotes separately; no universal current rate is asserted.",
+        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+        "undergraduateQuoteReview": {
+          "checkedOn": "2026-11-27",
+          "status": "current-year-not-verified",
+          "tuitionTableAcademicYear": "2025-2026",
+          "marketingAcademicYear": null,
+          "effectiveOn": null,
+          "followUpOn": "2026-12-11"
+        }
       },
       "transferPolicy": {
         "institutional": {
@@ -404,7 +412,8 @@
         {
           "id": "umass-tuition",
           "title": "Tuition and billing-period rates",
-          "url": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+          "url": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+          "checkedOn": "2026-11-27"
         },
         {
           "id": "umass-prior-learning",
@@ -414,7 +423,8 @@
         {
           "id": "umass-bba",
           "title": "MyPath BBA degree details",
-          "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced"
+          "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+          "checkedOn": "2026-11-27"
         },
         {
           "id": "umass-mba",
@@ -448,11 +458,23 @@
           ],
           "pricing": {
             "model": "subscription",
-            "amount": 3500,
+            "amount": null,
             "currency": "USD",
             "period": "24 weeks",
-            "notes": "Undergraduate civilian MyPath subscription; minimum 12 units per billing period. Do not treat the directory card's '/Credit' label as per-credit tuition.",
-            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+            "notes": "The live tuition table labels its $3,500 per 24-week undergraduate quote as 2025–2026. Current-year tuition has not been independently verified. Historical quotes are retained; no current total degree price is asserted.",
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "reviewStatus": "current-year-not-verified",
+            "checkedOn": "2026-11-27",
+            "historicalQuotes": [
+              {
+                "amount": 3500,
+                "currency": "USD",
+                "period": "24 weeks",
+                "academicYear": "2025-2026",
+                "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+                "checkedOn": "2026-11-27"
+              }
+            ]
           },
           "creditUnit": "semester",
           "status": "available"
@@ -474,11 +496,32 @@
           ],
           "pricing": {
             "model": "subscription",
-            "amount": 3500,
+            "amount": null,
             "currency": "USD",
             "period": "24 weeks",
-            "notes": "Undergraduate civilian MyPath subscription; minimum 12 units per billing period. Do not treat the directory card's '/Credit' label as per-credit tuition.",
-            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+            "notes": "The live tuition table labels its $3,500 per 24-week undergraduate quote as 2025–2026. Current-year tuition has not been independently verified. The BBA page separately quotes $3,400 per six-month access; no effective date is established. Historical quotes are retained; no current total degree price is asserted.",
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "reviewStatus": "current-year-not-verified",
+            "checkedOn": "2026-11-27",
+            "historicalQuotes": [
+              {
+                "amount": 3500,
+                "currency": "USD",
+                "period": "24 weeks",
+                "academicYear": "2025-2026",
+                "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+                "checkedOn": "2026-11-27"
+              },
+              {
+                "amount": 3400,
+                "currency": "USD",
+                "period": "six months",
+                "academicYear": null,
+                "sourceUrl": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+                "checkedOn": "2026-11-27",
+                "status": "conflicting-undated-marketing-quote"
+              }
+            ]
           },
           "transferPolicy": {
             "maximumCredits": 90,
@@ -507,11 +550,23 @@
           ],
           "pricing": {
             "model": "subscription",
-            "amount": 3500,
+            "amount": null,
             "currency": "USD",
             "period": "24 weeks",
-            "notes": "Undergraduate civilian MyPath subscription; minimum 12 units per billing period. Do not treat the directory card's '/Credit' label as per-credit tuition.",
-            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+            "notes": "The live tuition table labels its $3,500 per 24-week undergraduate quote as 2025–2026. Current-year tuition has not been independently verified. Historical quotes are retained; no current total degree price is asserted.",
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "reviewStatus": "current-year-not-verified",
+            "checkedOn": "2026-11-27",
+            "historicalQuotes": [
+              {
+                "amount": 3500,
+                "currency": "USD",
+                "period": "24 weeks",
+                "academicYear": "2025-2026",
+                "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+                "checkedOn": "2026-11-27"
+              }
+            ]
           },
           "creditUnit": "semester",
           "status": "available"
@@ -535,11 +590,24 @@
           ],
           "pricing": {
             "model": "subscription",
-            "amount": 4030,
+            "amount": null,
             "currency": "USD",
             "period": "24 weeks",
-            "notes": "Graduate civilian MyPath subscription; minimum 9 units per billing period.",
-            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+            "notes": "The earlier directory recorded $4,030 per 24-week graduate MyPath period. That quote and its original review date are preserved; a current academic-year rate has not been independently reverified.",
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "reviewStatus": "current-year-not-verified",
+            "checkedOn": "2026-11-27",
+            "historicalQuotes": [
+              {
+                "amount": 4030,
+                "currency": "USD",
+                "period": "24 weeks",
+                "academicYear": null,
+                "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+                "checkedOn": "2026-11-03",
+                "status": "prior-record-not-currently-reverified"
+              }
+            ]
           },
           "transferPolicy": {
             "maximumCredits": 12,
@@ -571,11 +639,24 @@
           ],
           "pricing": {
             "model": "subscription",
-            "amount": 4030,
+            "amount": null,
             "currency": "USD",
             "period": "24 weeks",
-            "notes": "Graduate civilian MyPath subscription; minimum 9 units per billing period.",
-            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+            "notes": "The earlier directory recorded $4,030 per 24-week graduate MyPath period. That quote and its original review date are preserved; a current academic-year rate has not been independently reverified.",
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "reviewStatus": "current-year-not-verified",
+            "checkedOn": "2026-11-27",
+            "historicalQuotes": [
+              {
+                "amount": 4030,
+                "currency": "USD",
+                "period": "24 weeks",
+                "academicYear": null,
+                "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+                "checkedOn": "2026-11-03",
+                "status": "prior-record-not-currently-reverified"
+              }
+            ]
           },
           "creditUnit": "semester",
           "status": "available"
@@ -685,7 +766,7 @@
             "Three years of experience in a business environment within the past ten years."
           ],
           "notes": [
-            "University lists estimated program tuition of $9,900 ($300 \u00d7 33 credits).",
+            "University lists estimated program tuition of $9,900 ($300 × 33 credits).",
             "CBE master's transfer credit is excluded by the university master's FAQ."
           ],
           "status": "available",
@@ -695,7 +776,7 @@
             "amount": 300,
             "currency": "USD",
             "period": "credit",
-            "notes": "Credit-based CBE; 3\u20134 courses scheduled in 16-week blocks. Faster completion does not convert this to unlimited subscription tuition.",
+            "notes": "Credit-based CBE; 3–4 courses scheduled in 16-week blocks. Faster completion does not convert this to unlimited subscription tuition.",
             "sourceUrl": "https://www.phoenix.edu/online-business-degrees/mba-competency-based-degree.html"
           },
           "blockWeeks": 16
@@ -717,7 +798,7 @@
             "Three years of experience in an IT/business environment within the past ten years."
           ],
           "notes": [
-            "University lists estimated program tuition of $10,800 ($300 \u00d7 36 credits).",
+            "University lists estimated program tuition of $10,800 ($300 × 36 credits).",
             "CBE master's transfer credit is excluded by the university master's FAQ."
           ],
           "status": "available",
@@ -727,7 +808,7 @@
             "amount": 300,
             "currency": "USD",
             "period": "credit",
-            "notes": "Credit-based CBE; 3\u20134 courses scheduled in 16-week blocks. Faster completion does not convert this to unlimited subscription tuition.",
+            "notes": "Credit-based CBE; 3–4 courses scheduled in 16-week blocks. Faster completion does not convert this to unlimited subscription tuition.",
             "sourceUrl": "https://www.phoenix.edu/online-information-technology-degrees/information-systems-competency-based-degree.html"
           },
           "blockWeeks": 16
@@ -749,7 +830,7 @@
             "Three years of leadership or management experience in a healthcare environment within the past ten years."
           ],
           "notes": [
-            "University lists estimated program tuition of $10,800 ($300 \u00d7 36 credits).",
+            "University lists estimated program tuition of $10,800 ($300 × 36 credits).",
             "CBE master's transfer credit is excluded by the university master's FAQ."
           ],
           "status": "available",
@@ -759,7 +840,7 @@
             "amount": 300,
             "currency": "USD",
             "period": "credit",
-            "notes": "Credit-based CBE; 3\u20134 courses scheduled in 16-week blocks. Faster completion does not convert this to unlimited subscription tuition.",
+            "notes": "Credit-based CBE; 3–4 courses scheduled in 16-week blocks. Faster completion does not convert this to unlimited subscription tuition.",
             "sourceUrl": "https://www.phoenix.edu/online-healthcare-degrees/health-administration-competency-based-masters.html"
           },
           "blockWeeks": 16
@@ -784,7 +865,7 @@
           "notes": [
             "87 credits awarded for eligible RN/ADN background, leaving 33 credits; this is a conditional nursing block, not 87 free electives.",
             "Includes 90 direct-care in-person clinical hours in approved settings.",
-            "University example: $300 \u00d7 33 credits = $9,900 tuition, no resource fees; additional clinical/state requirements may apply."
+            "University example: $300 × 33 credits = $9,900 tuition, no resource fees; additional clinical/state requirements may apply."
           ],
           "status": "available",
           "creditUnit": "semester",
@@ -793,7 +874,7 @@
             "amount": 300,
             "currency": "USD",
             "period": "credit",
-            "notes": "Credit-based CBE; 3\u20134 courses scheduled in 16-week blocks. Faster completion does not convert this to unlimited subscription tuition.",
+            "notes": "Credit-based CBE; 3–4 courses scheduled in 16-week blocks. Faster completion does not convert this to unlimited subscription tuition.",
             "sourceUrl": "https://www.phoenix.edu/online-nursing-degrees/rn-to-bsn-competency-based-bachelors.html"
           },
           "blockWeeks": 16
@@ -1498,7 +1579,7 @@
       "programs": [
         {
           "id": "winthrop-elevate-bps-health-informatics",
-          "title": "Bachelor of Professional Studies \u2014 Health Informatics",
+          "title": "Bachelor of Professional Studies — Health Informatics",
           "level": "bachelor",
           "modalities": [
             "online"
@@ -1534,7 +1615,7 @@
         },
         {
           "id": "winthrop-elevate-bps-organizational-leadership",
-          "title": "Bachelor of Professional Studies \u2014 Organizational Leadership",
+          "title": "Bachelor of Professional Studies — Organizational Leadership",
           "level": "bachelor",
           "modalities": [
             "online"
@@ -1570,7 +1651,7 @@
         },
         {
           "id": "winthrop-elevate-bps-organizational-operations",
-          "title": "Bachelor of Professional Studies \u2014 Organizational Operations",
+          "title": "Bachelor of Professional Studies — Organizational Operations",
           "level": "bachelor",
           "modalities": [
             "online"
@@ -1606,7 +1687,7 @@
         },
         {
           "id": "winthrop-elevate-bps-community-health-services",
-          "title": "Bachelor of Professional Studies \u2014 Community and Health Services",
+          "title": "Bachelor of Professional Studies — Community and Health Services",
           "level": "bachelor",
           "modalities": [
             "online"

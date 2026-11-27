@@ -1,0 +1,69 @@
+name: Receive weekly research intake
+
+# Receiving creates an inert review artifact. The recurring Codex run imports,
+# researches and proposes a tested PR; this workflow cannot publish or commit.
+on:
+  issues:
+    types: [opened, edited, reopened, labeled]
+  issue_comment:
+    types: [created, edited]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Weekly research intake issue number
+        required: true
+        default: '56'
+        type: string
+
+permissions:
+  contents: read
+  issues: read
+
+concurrency:
+  group: research-intake-${{ github.event.issue.number || inputs.issue_number || 'manual' }}
+  cancel-in-progress: false
+
+jobs:
+  receive:
+    if: >-
+      github.repository == 'jeremyc3434/DegreeSteps' &&
+      !github.event.issue.pull_request &&
+      (github.event_name == 'workflow_dispatch' ||
+      github.event.issue.number == 56 ||
+      startsWith(github.event.issue.title, 'Weekly research intake') ||
+      contains(github.event.issue.labels.*.name, 'weekly-research') ||
+      contains(github.event.issue.body, '<!-- degreesteps-research-intake:v1 -->'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out trusted main
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Use Node.js 24
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+      - name: Receive the issue and every comment as data
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        # GITHUB_EVENT_PATH is a runner-owned file. No issue text or manual
+        # input is interpolated into shell, paths, code or command arguments.
+        run: node scripts/research-intake.mjs receive --event "$GITHUB_EVENT_PATH"
+      - name: Verify ledger and summarize counts
+        run: |
+          node scripts/research-intake.mjs check
+          node --input-type=module <<'JS'
+          import {readFileSync,appendFileSync} from 'node:fs';
+          const data=JSON.parse(readFileSync('content/research-intake/findings.json','utf8'));
+          if(data.publicationAllowed!==false)throw Error('Intake may not publish.');
+          appendFileSync(process.env.GITHUB_STEP_SUMMARY,`## Research intake\n\n${data.submissionRevisions} immutable submission revisions; ${data.findings.length} deduplicated findings.\n\nArtifact only. Verification, product changes, editorial changes and release approval remain separate.\n`);
+          JS
+      - name: Keep the inert intake ledger for the next research run
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: research-intake-${{ github.run_id }}
+          retention-days: 45
+          if-no-files-found: error
+          path: content/research-intake/
