@@ -1,0 +1,2584 @@
+{
+  "schemaVersion": 1,
+  "publicationAllowed": false,
+  "repository": "jeremyc3434/DegreeSteps",
+  "submissionRevisions": 2,
+  "reviewRevisions": 19,
+  "findings": [
+    {
+      "claim": "South College CBE conflicting 60%/75% policies; California Baptist advertised 100 units and $541/unit; UW Flexible Option reported $2,250/subscription; Memphis/Saylor; National University and RMCAD Sophia partnerships; WGU degree-level ACE restrictions. Verify before publishing.",
+      "section": "P2 watchlist",
+      "kind": "lead",
+      "id": "finding-16befdf2a89b9423f9abf2a3b754611063fbbeaf3d79fbb5d3f4e5a55209ebb8",
+      "sourceUrls": [],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        }
+      ],
+      "reviewHash": "cace17bcfba608ead2ad947fbfefa4c9ff1d7e45201c5fd06e63d05def24aa61",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-16befdf2a89b9423f9abf2a3b754611063fbbeaf3d79fbb5d3f4e5a55209ebb8",
+        "revision": 2,
+        "previousReviewHash": "6a03df9213c9bc2a1a12f6003d92c94ebd2c092832502de3b4bbef3b43af6870",
+        "sourceRevisions": [
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+        ],
+        "reviewer": "DegreeSteps Issue56 scoped source enrichment",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": null,
+        "announcedOn": null,
+        "effectiveOn": null,
+        "followUpOn": "2026-12-04",
+        "triage": "WATCH",
+        "status": "watch",
+        "changeKind": "unknown",
+        "summary": "P 2 contains partly verified component facts, with no eligible new degree recommendation. South College official pages conflict at 60%/75%, and transfer information excludes Sophia/StraighterLine; graduate CBE cannot inherit generic undergraduate caps. CBU advertises 541 USD perunit plus fees but 100 transfer-unit marketing conflicts with residence evidence. UW-Parkside BSBA advertises 2250 USD per 12 weeks. Memphis/Saylor, NU/Sophia and RMCAD/Sophia relationships do not prove a degree allocation; pass/fail credit is not traditional letter grading. WGU restrictions remain program-specific. Exact catalog reconciliation, accreditation and at least 50% actual applicable credit remain unverified; retain WATCH and add no speculative mappings.",
+        "evidence": [
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "cbu-advertised-unit-price",
+            "url": "https://calbaptist.edu/academics/programs/online-bachelor-of-arts-business-administration-management/",
+            "title": "CBU online BA Business Administration Management cost",
+            "kind": "university",
+            "quote": "$541 +fees Cost Per Unit",
+            "excerptKind": "retained-native-connector-extract"
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "uw-bsba-curated-subscription",
+            "url": "https://flex.wisconsin.edu/degrees-programs/bachelor-science-business-administration/",
+            "title": "UW-Parkside Flexible Option BSBA subscription",
+            "kind": "university",
+            "quote": "Curated observed-source transcription (not a verbatim origin quote): the BSBA page quotes $2,250 per subscription; official program questionnaire/guide identifies12weeks.",
+            "excerptKind": "curated-research-transcription"
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "watch-south-college-cbe-transfer-conflict-0",
+            "url": "https://www.south.edu/academics/transfer-information/",
+            "title": "South College generic transfer pages conflict; graduate CBE cannot inherit undergraduate caps",
+            "kind": "university",
+            "quote": "Curated observed-source summary (not a verbatim origin quote): The official transfer-information page states a 75% ceiling for credits earned at other institutions; the official academics page states 60%. The transfer-information page explicitly says Sophia Learning and StraighterLine courses are not accepted. A generic college-course cap cannot be represented as an ACE allowance. Graduate policies are set by associated program faculty. Existing CBE inventory contains graduate degrees, so neither undergraduate figure establishes a graduate CBE allowance.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "Native connector result retained with the final program packet."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "watch-south-college-cbe-transfer-conflict-1",
+            "url": "https://www.south.edu/academics/",
+            "title": "South College generic transfer pages conflict; graduate CBE cannot inherit undergraduate caps",
+            "kind": "university",
+            "quote": "Curated observed-source summary (not a verbatim origin quote): The official transfer-information page states a 75% ceiling for credits earned at other institutions; the official academics page states 60%. The transfer-information page explicitly says Sophia Learning and StraighterLine courses are not accepted. A generic college-course cap cannot be represented as an ACE allowance. Graduate policies are set by associated program faculty. Existing CBE inventory contains graduate degrees, so neither undergraduate figure establishes a graduate CBE allowance.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "Native connector result retained with the final program packet."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "watch-california-baptist-online-price-transfer-0",
+            "url": "https://calbaptist.edu/academics/programs/online-bachelor-of-arts-business-administration-management/",
+            "title": "CBU online $541/unit and 100-unit advertising require residency reconciliation",
+            "kind": "university",
+            "quote": "Curated observed-source summary (not a verbatim origin quote): The online BA Business Administration (Management) page advertises $541 plus fees per unit, 48 major units, eight-week sessions and a 16-month estimate conditional on prior general education and electives. Multiple current online program FAQs advertise a maximum of 100 transferred units. The repository's already retained online undergraduate transfer policy instead requires 36 CBU residence units including 30 upper-division units. The 48-unit major listing is not the total bachelor's degree. No 100-unit applicable bachelor allocation, current catalog reconciliation or ACE policy was established.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "Native connector result retained with the final program packet."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "watch-california-baptist-online-price-transfer-1",
+            "url": "https://calbaptist.edu/admissions-aid/online/transfer",
+            "title": "CBU online $541/unit and 100-unit advertising require residency reconciliation",
+            "kind": "university",
+            "quote": "Curated observed-source summary (not a verbatim origin quote): The online BA Business Administration (Management) page advertises $541 plus fees per unit, 48 major units, eight-week sessions and a 16-month estimate conditional on prior general education and electives. Multiple current online program FAQs advertise a maximum of 100 transferred units. The repository's already retained online undergraduate transfer policy instead requires 36 CBU residence units including 30 upper-division units. The 48-unit major listing is not the total bachelor's degree. No 100-unit applicable bachelor allocation, current catalog reconciliation or ACE policy was established.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "Prior repository evidence or agent observation as labeled in the curated packet; no new origin capture claimed."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "watch-uw-flex-bsba-subscription-0",
+            "url": "https://flex.wisconsin.edu/degrees-programs/bachelor-science-business-administration/",
+            "title": "UW-Parkside Flexible Option BSBA $2,250 per 12-week subscription",
+            "kind": "university",
+            "quote": "Curated observed-source summary (not a verbatim origin quote): The business program page identifies UW-Parkside as awarding institution and a project-based self-paced online curriculum. The BSBA page quotes $2,250 per subscription; the official BSBA questionnaire and business program guide explicitly identify a 12-week subscription. Other programs differ: the noncredit Substance Use Disorders certificate uses 24 weeks. No universal UW Flexible transfer allowance or 50% applicable BSBA course ledger was verified.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "Native connector result retained with the final program packet."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "watch-uw-flex-bsba-subscription-1",
+            "url": "https://flex.wisconsin.edu/bsba-program-questionnaire/",
+            "title": "UW-Parkside Flexible Option BSBA $2,250 per 12-week subscription",
+            "kind": "university",
+            "quote": "Curated observed-source summary (not a verbatim origin quote): The business program page identifies UW-Parkside as awarding institution and a project-based self-paced online curriculum. The BSBA page quotes $2,250 per subscription; the official BSBA questionnaire and business program guide explicitly identify a 12-week subscription. Other programs differ: the noncredit Substance Use Disorders certificate uses 24 weeks. No universal UW Flexible transfer allowance or 50% applicable BSBA course ledger was verified.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "Native connector result retained with the final program packet."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "watch-uw-flex-bsba-subscription-2",
+            "url": "https://flex.wisconsin.edu/wp-content/uploads/program-guide/business-programs-guide.pdf",
+            "title": "UW-Parkside Flexible Option BSBA $2,250 per 12-week subscription",
+            "kind": "university",
+            "quote": "Curated observed-source summary (not a verbatim origin quote): The business program page identifies UW-Parkside as awarding institution and a project-based self-paced online curriculum. The BSBA page quotes $2,250 per subscription; the official BSBA questionnaire and business program guide explicitly identify a 12-week subscription. Other programs differ: the noncredit Substance Use Disorders certificate uses 24 weeks. No universal UW Flexible transfer allowance or 50% applicable BSBA course ledger was verified.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "Native connector result retained with the final program packet."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "watch-memphis-saylor-0",
+            "url": "https://www.saylor.org/partners/",
+            "title": "Memphis/Saylor partnership does not establish a new mapped degree plan",
+            "kind": "provider",
+            "quote": "Curated observed-source summary (not a verbatim origin quote): Saylor's current partner directory lists the University of Memphis Project Finish Line degree-completion relationship, aimed at students within one academic year of graduation. The university College of Arts and Sciences advising FAQ explicitly says Saylor and other alternative transfer sources do not count toward university residency. CAS major/minor residence requires regular letter-grade class enrollment (six major and three minor semester hours). This is not evidence Saylor itself awards traditional university letter grades or that any specific 10–20 courses apply to a residential degree.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "Native connector result retained with the final program packet."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "watch-memphis-saylor-1",
+            "url": "https://www.memphis.edu/cas/advising/advising-faqs-1.php",
+            "title": "Memphis/Saylor partnership does not establish a new mapped degree plan",
+            "kind": "university",
+            "quote": "Curated observed-source summary (not a verbatim origin quote): Saylor's current partner directory lists the University of Memphis Project Finish Line degree-completion relationship, aimed at students within one academic year of graduation. The university College of Arts and Sciences advising FAQ explicitly says Saylor and other alternative transfer sources do not count toward university residency. CAS major/minor residence requires regular letter-grade class enrollment (six major and three minor semester hours). This is not evidence Saylor itself awards traditional university letter grades or that any specific 10–20 courses apply to a residential degree.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "Native connector result retained with the final program packet."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "watch-national-university-sophia-0",
+            "url": "https://www.nu.edu/credit-for-prior-learning-at-nu/",
+            "title": "National University Sophia partnership is established; degree applicability still controls",
+            "kind": "university",
+            "quote": "Curated observed-source summary (not a verbatim origin quote): NU's current Credit for Prior Learning page names Sophia Learning and StraighterLine as alternative course providers whose college-level courses may transfer. NU's testing services page lists Sophia equivalencies. Generic partner status does not prove that 50% of a particular NU degree can be supplied by Sophia or establish a uniform ACE cap. NU quarter-credit award quantities must retain their native unit and must not be silently equated with Sophia semester credits.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "Native connector result retained with the final program packet."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "watch-national-university-sophia-1",
+            "url": "https://www.nu.edu/student-services/testing-services/",
+            "title": "National University Sophia partnership is established; degree applicability still controls",
+            "kind": "university",
+            "quote": "Curated observed-source summary (not a verbatim origin quote): NU's current Credit for Prior Learning page names Sophia Learning and StraighterLine as alternative course providers whose college-level courses may transfer. NU's testing services page lists Sophia equivalencies. Generic partner status does not prove that 50% of a particular NU degree can be supplied by Sophia or establish a uniform ACE cap. NU quarter-credit award quantities must retain their native unit and must not be silently equated with Sophia semester credits.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "Native connector result retained with the final program packet."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "watch-rmcad-sophia-0",
+            "url": "https://rmcad.sophia.org/",
+            "title": "RMCAD/Sophia partner table verified with program-dependent alternatives",
+            "kind": "provider",
+            "quote": "Curated observed-source summary (not a verbatim origin quote): The provider's RMCAD partner page says RMCAD teamed up with Sophia and provides a specific transfer table. Examples include English Composition I to EN1110 and English Composition II to EN1111, each three provider credits; other rows offer several elective alternatives. These are provider-published matches and are not an additive degree allocation. The page says Sophia courses are pass/fail and advises checking applicability with the school. It is not a traditional letter-grade online-to-campus route.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "Native connector result retained with the final program packet."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "watch-wgu-degree-specific-ace-0",
+            "url": "https://partners.wgu.edu/transfer-pathway-agreement-preview?collegeCode=BU&instId=796&uniqueId=BSSCOM7112",
+            "title": "WGU ACE restrictions are program-specific; no universal new rule established",
+            "kind": "university",
+            "quote": "Curated observed-source summary (not a verbatim origin quote): Official WGU pathway pages explicitly identify a named program/catalog and provider. They state at least25% of undergraduate competency units must be completed through residency and courses may not satisfy multiple courses of study. The May2026 Sophia BS Supply Chain and Operations Management preview shows55 potential transfer CUs of110required, but duplicate parser rows and preview status mean this is not a newly approved pathway ledger. Other WGU pathways list different potential totals; no university-wide ban or uniform degree-level ACE limit was established. Graduate and undergraduate rules must remain separate. WGU competency units are preserved as CUs; no silent credit-unit conversion is authorized.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "Native connector result retained with the final program packet."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "watch-wgu-degree-specific-ace-1",
+            "url": "https://partners.wgu.edu/transfer-pathway-agreement?collegeCode=IT&instId=796&programId=237&uniqueId=MSITUG7110",
+            "title": "WGU ACE restrictions are program-specific; no universal new rule established",
+            "kind": "university",
+            "quote": "Curated observed-source summary (not a verbatim origin quote): Official WGU pathway pages explicitly identify a named program/catalog and provider. They state at least25% of undergraduate competency units must be completed through residency and courses may not satisfy multiple courses of study. The May2026 Sophia BS Supply Chain and Operations Management preview shows55 potential transfer CUs of110required, but duplicate parser rows and preview status mean this is not a newly approved pathway ledger. Other WGU pathways list different potential totals; no university-wide ban or uniform degree-level ACE limit was established. Graduate and undergraduate rules must remain separate. WGU competency units are preserved as CUs; no silent credit-unit conversion is authorized.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "Native connector result retained with the final program packet."
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue56/0903f5911d0b13f174e5377a9158c21dc4607ae5bd23db8550d432f4f2c860b8.json",
+          "content/research-intake/evidence/issue56/0d2c30defe5e192973eedd7a917106912a65e89599073de8870ac55aaf24e9a6.json",
+          "content/research-intake/evidence/issue56/225b99230d0f450cf37033f0e9e29d121235f170dd07aaf2c2051ea239c546dc.json",
+          "content/research-intake/evidence/issue56/3246823c103ae7587b16a69a9c6db77e53ba5adc53be0c82b89432b83ecbe4ce.json",
+          "content/research-intake/evidence/issue56/46425eaeb397e714b3cb364e3b3b2a8db4783b4d09bed95187d4a97c436adc43.json",
+          "content/research-intake/evidence/issue56/4f0bc4e9756e094ddc641e7036f66db34d0b00d67b07a5faec8a53374b36b7c4.json",
+          "content/research-intake/evidence/issue56/51d1944439b6f21b00747316d75c46a645c3f7e30b0f197708e1ad7a22a2acf7.json",
+          "content/research-intake/evidence/issue56/67a811f6fa2e58836496fb19f83f58e6293d0cc96d2e66e7711bfd7eebe7a72b.json",
+          "content/research-intake/evidence/issue56/9f67f08e23968b2052adecc541af929a069266aff0ff1bb9e5dd17aad8961aa0.json",
+          "content/research-intake/evidence/issue56/a1a33f1e593a58d65ea6cbb6c55980b3fe0e2624cdd975c1337dd20306024b0f.json",
+          "content/research-intake/evidence/issue56/d0f24095ef92c6ea2a579b056afb3374003468f43f179ef0f581ecf748c8b7b8.json",
+          "content/research-intake/evidence/issue56/f5c131e66a2df9e66ea169e5299c653a1fa9318a6fd788c6a3af44583e900af7.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": null,
+            "program": null,
+            "level": null,
+            "modality": null,
+            "catalog": null
+          },
+          "costs": [
+            {
+              "amount": 541,
+              "currency": "USD",
+              "unit": "unit",
+              "scope": "CBU online BA Business Administration Management advertised price",
+              "assumptions": "Academic year not independently established; major 48 units is not the total degree;100 transfer-unit marketing versus 36 residence requirement remains unreconciled.",
+              "evidenceIds": [
+                "cbu-advertised-unit-price"
+              ],
+              "includes": [],
+              "excludes": [
+                "additional fees"
+              ]
+            },
+            {
+              "amount": 2250,
+              "currency": "USD",
+              "unit": "12-week subscription",
+              "scope": "UW-Parkside Flexible Option BSBA only",
+              "assumptions": "Do not generalize to all Flexible Option programs; accreditation, actual applicable transfer and assessment matrix not independently established in this subtask.",
+              "evidenceIds": [
+                "uw-bsba-curated-subscription"
+              ],
+              "includes": [],
+              "excludes": []
+            }
+          ],
+          "accreditation": [],
+          "transfer": {
+            "overallCap": null,
+            "aceCap": null,
+            "nccrsCap": null,
+            "residency": null,
+            "majorResidency": null,
+            "totalCredits": null
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": []
+        },
+        "product": {
+          "status": "not-needed",
+          "paths": [],
+          "notes": "No unsupported academic policy, receiving equivalency or historical student-record change is authorized by this finding."
+        },
+        "editorial": {
+          "status": "blocked",
+          "proposedUrls": [],
+          "publishedUrls": [],
+          "existingUrls": [],
+          "title": null,
+          "metaDescription": null,
+          "canonicalUrl": null,
+          "internalLinks": [],
+          "structuredData": null,
+          "sitemap": null,
+          "studentUsefulness": "Avoid recommending a transfer ceiling, subscription price or partnership without program-specific evidence.",
+          "novelty": "Several published costs and partnerships were reverified, but source conflicts and degree-specific eligibility remain unresolved. Existing partnership evidence is not a new policy or an executable plan.",
+          "searchIntent": "Program-specific transfer capacity, tuition and receiving equivalencies for the named watchlist schools.",
+          "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+          "urgency": "No urgency inferred from an unverified claim.",
+          "overlapNotes": "Existing school resources can receive a dated update after evidence resolves each lead.",
+          "evidenceIds": [],
+          "metrics": null
+        }
+      }
+    },
+    {
+      "claim": "WGU single courses: reported $25 initial course, $49 bundles, $99 extension subscription; verify transcript, proctoring and 10–20 course destination mappings. https://www.wgu.edu/single-courses.html",
+      "section": "P1",
+      "kind": "lead",
+      "id": "finding-25555de90e773e4b3a9c31eb4920503d3218b715aff3777db5dbc5bbc7a6f0d2",
+      "sourceUrls": [
+        "https://www.wgu.edu/single-courses.html"
+      ],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        }
+      ],
+      "reviewHash": "7468bff2970dfb43121d1a41fc9653a63d2d93103238ad3ad48bc474f28763a1",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-25555de90e773e4b3a9c31eb4920503d3218b715aff3777db5dbc5bbc7a6f0d2",
+        "revision": 1,
+        "previousReviewHash": null,
+        "sourceRevisions": [
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+        ],
+        "reviewer": "DegreeSteps Issue56 primary-source and editorial review",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": "2026-11-27",
+        "announcedOn": null,
+        "effectiveOn": null,
+        "followUpOn": "2026-12-04",
+        "triage": "BOTH",
+        "status": "ready-for-review",
+        "changeKind": "newly-discovered-existing-policy",
+        "summary": "Write a purchase-decision article with conditional discount arithmetic, catalog conflict, transcript boundaries and syllabus-specific assessments; hold receiving mappings. Remaining blockers: No independently verified external 10–20-course receiving map; no product receiving equivalencies added. Discounted-offer eligibility and catalog-price reconciliation require checkout or official policy confirmation. Content is prepared for PR review; no production publication or indexing is claimed.",
+        "evidence": [
+          {
+            "id": "wgu-discount",
+            "title": "WGU single-course current offer",
+            "url": "https://www.wgu.edu/single-courses.html",
+            "quote": "We offer our courses at a heavily discounted rate to give you a low-cost start option.",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "wgu-catalog-standard-price",
+            "title": "WGU November 2026 institutional catalog, printed page 51",
+            "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf",
+            "quote": "Single courses cost $750 - $1,000 for two to three months of access, depending on the course.",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue56/provider-captures/wgu-catalog-and-maine-blockers.json",
+          "content/research-intake/evidence/issue56/provider-captures/wgu-current-prices-assessment.json",
+          "content/research-intake/evidence/issue56/provider-captures/wgu-linked-syllabi.json",
+          "content/research-intake/evidence/issue56/providers.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": "Western Governors University",
+            "program": "Single Courses and selected bundles",
+            "level": "primarily undergraduate; exact product eligibility controls",
+            "modality": "online",
+            "catalog": "November2026 institutional catalog and current marketing page"
+          },
+          "costs": [
+            {
+              "amount": 25,
+              "currency": "USD",
+              "unit": "initial single course",
+              "scope": "Conditional current advertised discounted offer; most single courses",
+              "assumptions": "Discount eligibility and checkout price must be confirmed; official November catalog lists different standard pricing. Initial access is course-specific2–3 months.",
+              "includes": [
+                "advertised initial access",
+                "e-textbooks"
+              ],
+              "excludes": [
+                "automatic monthly extensions",
+                "unverified product-specific extras"
+              ],
+              "evidenceIds": [
+                "wgu-discount"
+              ]
+            },
+            {
+              "amount": 49,
+              "currency": "USD",
+              "unit": "initial two-course bundle",
+              "scope": "Selected advertised discounted bundles",
+              "assumptions": "Selected bundles only; this does not apply to every WGU product or establish eligibility.",
+              "includes": [],
+              "excludes": [],
+              "evidenceIds": [
+                "wgu-discount"
+              ]
+            },
+            {
+              "amount": 99,
+              "currency": "USD",
+              "unit": "month of extension",
+              "scope": "Standard single-course automatic extension after initial access",
+              "assumptions": "Cancel timing and exact product control cost; PACA/IT bundle has a distinct advertised $199 monthly extension and is excluded from this $99 scope.",
+              "includes": [],
+              "excludes": [],
+              "evidenceIds": [
+                "wgu-discount"
+              ]
+            }
+          ],
+          "accreditation": [],
+          "transfer": {
+            "overallCap": null,
+            "aceCap": null,
+            "nccrsCap": null,
+            "residency": null,
+            "majorResidency": null,
+            "totalCredits": null
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": []
+        },
+        "product": {
+          "status": "review-ready",
+          "paths": [
+            "dist/data/credit-sources.json",
+            "scripts/provider-research-facts.mjs",
+            "scripts/provider-research-facts.test.mjs"
+          ],
+          "notes": "Public WGU Single Courses provider profile explains advertised price versus catalog conflict, automatic standard extension, institutional transcript origin and assessment examples. No 10–20 external receiving map was proven or fabricated; degree-course codes and historical student progress remain unchanged."
+        },
+        "editorial": {
+          "status": "review-ready",
+          "proposedUrls": [
+            "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/"
+          ],
+          "publishedUrls": [],
+          "existingUrls": [],
+          "title": "WGU single courses: what the $25 price includes and when costs rise",
+          "metaDescription": "Understand WGU’s single-course introductory prices, automatic monthly extensions, transcript rules and course-specific exams and projects before enrolling.",
+          "canonicalUrl": "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+          "internalLinks": [
+            "https://degreesteps.com/blog/college-wont-accept-sophia-university-credit-options/",
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+            "https://degreesteps.com/credit-sources/wgu-single-courses/",
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/import-courses.html"
+          ],
+          "structuredData": true,
+          "sitemap": true,
+          "studentUsefulness": "Expose automatic extension costs and eligibility uncertainty before a student buys an apparently $25 requirement.",
+          "novelty": "Current marketing and current institutional catalog disagree on price scope; exact discounted eligibility remains unresolved.",
+          "searchIntent": "What does a WGU $25 single course really cost and will another college accept it?",
+          "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+          "urgency": "Recheck discounted eligibility and catalog/marketing reconciliation before applying a price to a student purchase.",
+          "overlapNotes": "Existing WGU Business Management article covers Sophia/Study.com incoming credit, not standalone WGU purchases; existing institutional-credit article stays general.",
+          "evidenceIds": [
+            "wgu-discount",
+            "wgu-catalog-standard-price"
+          ],
+          "metrics": null
+        }
+      }
+    },
+    {
+      "claim": "UMPI YourPace business: reported $1,800/8 weeks, 90/120 transfer; verify current policy and assessment requirements. https://www.umpi.edu/yourpace/tuition/",
+      "section": "P1",
+      "kind": "lead",
+      "id": "finding-6dea1840f1f9c32ff24988fda551350b31e30c32e2ffe5cade86c90370cd378d",
+      "sourceUrls": [
+        "https://www.umpi.edu/yourpace/tuition/"
+      ],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        }
+      ],
+      "reviewHash": "fe4231e064c735a98e03bb8158d7aba0bb5aaa9f09ca3b9870c8dd550afc365f",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-6dea1840f1f9c32ff24988fda551350b31e30c32e2ffe5cade86c90370cd378d",
+        "revision": 2,
+        "previousReviewHash": "0713d0fc8db4da154af33167e1be65d83b71c5502fdf71e7838d57be27d0c045",
+        "sourceRevisions": [
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+        ],
+        "reviewer": "DegreeSteps Issue56 scoped source enrichment",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": "2026-11-27",
+        "announcedOn": null,
+        "effectiveOn": null,
+        "followUpOn": "2026-12-04",
+        "triage": "BOTH",
+        "status": "researching",
+        "changeKind": "confirmation",
+        "summary": "Current AY 2026–27 undergraduate tuition is 1800 USD per 8-week session. Current FAQ confirms 30 institutional residency,12 major and 9 upper-level major credits. The already documented general combined CPL 30 rule stays separate from the conditional 90/120 outside ceiling; no new policy adoption date or cohort exception was established. The comparison article is prepared for review. Exact business curriculum, receiving placements and course-specific assessments remain blocked; no historical student awards were changed.",
+        "evidence": [
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "umpi-undergrad-session",
+            "title": "UMPI AY2026–27 YourPace tuition",
+            "url": "https://www.umpi.edu/yourpace/tuition/",
+            "quote": "$1800\n\nPer 8 week session",
+            "kind": "university"
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "umpi-accreditation",
+            "title": "UMPI accreditation",
+            "url": "https://www.umpi.edu/about/accreditation/",
+            "quote": "UMPI is accredited by the New England Commission of Higher Education (NECHE)",
+            "kind": "university"
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "umpi-combined-cpl-limit",
+            "title": "UMPI currently published CPL limit",
+            "url": "https://www.umpi.edu/academics/credit-for-prior-learning/",
+            "quote": "Students in Bachelor’s degree programs may earn a maximum of 30 credits.",
+            "kind": "university"
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-umpi-faq",
+            "url": "https://www.umpi.edu/yourpace/faqs/",
+            "title": "YourPace FAQs",
+            "kind": "university",
+            "quote": "There is no set limit to the number of credits you can transfer into UMPI.",
+            "excerptKind": "retained-native-extract",
+            "receiptNote": "Native connector extraction retained; no origin HTTP body hash claimed."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-umpi-cpl",
+            "url": "https://www.umpi.edu/academics/credit-for-prior-learning/",
+            "title": "Credit for Prior Learning (CPL) Options",
+            "kind": "university",
+            "quote": "Students in Bachelor’s degree programs may earn a maximum of 30 credits.",
+            "excerptKind": "observed-extract-not-retained",
+            "receiptNote": "Observed extract was transcribed in the retained curated packet; no full native source response or origin bytes claimed."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-umpi-ace",
+            "url": "https://www.umpi.edu/academics/credit-for-prior-learning/ace/",
+            "title": "Earn College Credit with UMPI’s ACE Program",
+            "kind": "university",
+            "quote": "An official ACE transcript must be submitted to the Office of Student Records for PLA consideration.",
+            "excerptKind": "retained-native-extract",
+            "receiptNote": "Native connector extraction retained; no origin HTTP body hash claimed."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "umpi-faq-residency-exact",
+            "url": "https://www.umpi.edu/yourpace/faqs/",
+            "title": "YourPace FAQ baccalaureate residency",
+            "kind": "university",
+            "quote": "Four-year degree programs (baccalaureate): Students must complete at least 30 credit hours through UMPI. At least 12 of these credits must be in the major, and at least 9 of those 12 credits must be at the upper level (300-level or above).",
+            "excerptKind": "retained-native-connector-extract"
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-umpi-handbook",
+            "url": "https://www.umpi.edu/yourpace/wp-content/uploads/sites/73/2025/11/YourPace-Student-Handbook.pdf",
+            "title": "YourPace Student Handbook",
+            "kind": "university",
+            "quote": "Your final grade for the course is based solely on your performance in the final assessment.",
+            "excerptKind": "observed-native-pdf-extract-not-retained",
+            "receiptNote": "Observed extract was transcribed in the retained curated packet; no full native source response or origin bytes claimed."
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue56/248d40121413b9c015772d7cf633ef212a483b328daeb854fff5531d165e91bd.json",
+          "content/research-intake/evidence/issue56/65db57766c83e5e2d9e8a262516ed7daa71c6db11a4b58ccdfe0a79ef552a442.json",
+          "content/research-intake/evidence/issue56/7abab939dea429504ad5e5498b8434682c416e6917f43014cb56fc6287195791.json",
+          "content/research-intake/evidence/issue56/86ce03fcfebe30d26a1fbca58bba15e117b3ef8916205d2902c52801df8e0244.json",
+          "content/research-intake/evidence/issue56/8f40fa063bc127c9300b40fa593a1a2473941a1e2710175c4c6be150253b178f.json",
+          "content/research-intake/evidence/issue56/c6ab38efc17c88c9cbe6b6753d905b7f6251bbf693c6be547667bc5db3ca67f9.json",
+          "content/research-intake/evidence/issue56/editorial-accreditation-open-receipt.json",
+          "content/research-intake/evidence/issue56/editorial-school-open-receipt.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": "University of Maine at Presque Isle",
+            "program": "YourPace undergraduate; business-specific applicability still requires exact degree ledger",
+            "level": "bachelor",
+            "modality": "online YourPace",
+            "catalog": "AY2026–27 tuition"
+          },
+          "costs": [
+            {
+              "amount": 1800,
+              "currency": "USD",
+              "unit": "8-week paid undergraduate session",
+              "scope": "UMPI YourPace AY 2026–27 undergraduate tuition",
+              "assumptions": "Number of sessions is a student scenario, not a completion estimate; graduate and other formats differ.",
+              "includes": [
+                "tuition for one 8-week paid session"
+              ],
+              "excludes": [
+                "additional paid sessions",
+                "unverified incidental charges"
+              ],
+              "evidenceIds": [
+                "umpi-undergrad-session"
+              ]
+            }
+          ],
+          "accreditation": [
+            {
+              "institution": "University of Maine at Presque Isle",
+              "accreditor": "New England Commission of Higher Education (NECHE)",
+              "status": "Institutional accreditation stated by the university; see retained official source.",
+              "evidenceIds": [
+                "umpi-accreditation"
+              ]
+            }
+          ],
+          "transfer": {
+            "overallCap": {
+              "credits": 90,
+              "creditSystem": "semester",
+              "scope": "Conditional arithmetic for a 120-credit degree with at least 30 UMPI credits: at most 90 outside applicable credits. FAQ sets no fixed limit on incoming transfer records; this does not establish 90 ACE credits or an exact degree allocation.",
+              "evidenceIds": [
+                "enriched-umpi-faq",
+                "umpi-faq-residency-exact"
+              ]
+            },
+            "aceCap": null,
+            "nccrsCap": null,
+            "residency": {
+              "credits": 30,
+              "creditSystem": "semester",
+              "scope": "Published UMPI baccalaureate minimum; not a maximum on university coursework.",
+              "evidenceIds": [
+                "umpi-faq-residency-exact"
+              ]
+            },
+            "majorResidency": {
+              "credits": 12,
+              "creditSystem": "semester",
+              "scope": "At least 12 major credits through UMPI, including at least 9 of those 12 at 300-level or above. Exact business-program placement remains unverified.",
+              "evidenceIds": [
+                "umpi-faq-residency-exact"
+              ]
+            },
+            "totalCredits": null,
+            "combinedCplCap": {
+              "credits": 30,
+              "creditSystem": "semester",
+              "scope": "Published general bachelor combined CPL category, including ACE-recommended training; already documented November 17. Adoption date and any approved cohort-specific exceptions remain unknown. This is not a separately established ACE-only cap.",
+              "evidenceIds": [
+                "enriched-umpi-cpl",
+                "enriched-umpi-ace"
+              ]
+            }
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": [
+            {
+              "name": "YourPace final assessments",
+              "scope": "Published 2025–26 handbook; current exact business syllabi and universal proctoring status not established",
+              "method": "Milestones prepare for a final assessment; the published handbook says the final assessment alone determines course grade. Recorded/media assignments may occur. No universal exam-free or proctor-free claim.",
+              "proctored": null,
+              "evidenceIds": [
+                "enriched-umpi-handbook",
+                "enriched-umpi-faq"
+              ]
+            }
+          ]
+        },
+        "product": {
+          "status": "blocked",
+          "paths": [],
+          "notes": "Verified tuition/residency can inform comparison content. A complete current YourPace business curriculum and 10–20 source-backed receiving placements are not established by tuition or generic transfer headlines; existing canonical kits and student records remain unchanged."
+        },
+        "editorial": {
+          "status": "review-ready",
+          "proposedUrls": [
+            "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/"
+          ],
+          "publishedUrls": [],
+          "existingUrls": [],
+          "title": "UMPI YourPace vs UMass Global MyPath: business-degree costs and transfer",
+          "metaDescription": "Compare UMPI’s 2026–27 business tuition with UMass Global’s live 2025–26 MyPath sources, transfer and transcript rules, and unresolved current pricing.",
+          "canonicalUrl": "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+          "internalLinks": [
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+            "https://degreesteps.com/blog/what-a-75-percent-transfer-limit-means/",
+            "https://degreesteps.com/compare-plans.html?from=courses",
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+            "https://degreesteps.com/import-courses.html"
+          ],
+          "structuredData": true,
+          "sitemap": true,
+          "studentUsefulness": "Help an adult business student compare the cost of actual paid sessions and applicable prior learning.",
+          "novelty": "Current tuition and residency rechecked; the reported future ACE restriction is not established.",
+          "searchIntent": "UMPI YourPace versus UMass Global MyPath for a transfer-heavy business degree.",
+          "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+          "urgency": "Resolve source discrepancies and individual evaluation before enrollment.",
+          "overlapNotes": "No existing direct comparison; general subscription and institutional-credit articles link to the detailed new comparison.",
+          "evidenceIds": [
+            "umpi-accreditation",
+            "umpi-combined-cpl-limit",
+            "umpi-undergrad-session"
+          ],
+          "metrics": null
+        }
+      }
+    },
+    {
+      "claim": "UMass Global MyPath BBA: reported $3,500/6 months, 90/120 transfer; verify $3,400 vs $3,500 discrepancy, ACE and residency, proctoring; map courses. https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced and https://umassglobal.sophia.org/",
+      "section": "P1",
+      "kind": "lead",
+      "id": "finding-6e496a5e251f3581aadb16cace106375e3b67065fbbd4b80f0e7121f38fab417",
+      "sourceUrls": [
+        "https://umassglobal.sophia.org/",
+        "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced"
+      ],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        }
+      ],
+      "reviewHash": "a05b4e9ca299524c2a6b9c63b1c6e366f808bfe0a1b12d68534aba998081ce5a",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-6e496a5e251f3581aadb16cace106375e3b67065fbbd4b80f0e7121f38fab417",
+        "revision": 3,
+        "previousReviewHash": "4080023526f284bd22987521cedceb8000549d0f2f2bf18ed7f828f91c54b777",
+        "sourceRevisions": [
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+        ],
+        "reviewer": "DegreeSteps final cross-surface pricing consistency review",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": "2026-11-27",
+        "announcedOn": null,
+        "effectiveOn": null,
+        "followUpOn": "2026-12-04",
+        "triage": "BOTH",
+        "status": "researching",
+        "changeKind": "correction",
+        "summary": "Implemented a concrete public pricing-confidence correction: current MyPath AA/BBA/BSIT amounts are unknown rather than mislabeled 2026–27 prices. Preserve FY 2025–26 $3500/24 weeks and undated $3400/six-month BBA marketing as separate scoped observations. The legacy 2025–26 catalog—not independently verified current 2026–27 policy—describes 30 equivalent residence credits, B− transfer review, mastery/no-GPA transcripts and conversion records. Current numeric caps and MyPath competency equivalencies remain unpromoted. Comparison content and the product metadata correction are ready for review; maps/assessment research remains blocked. School insights and the AI research-reference packet now carry the same scoped price conflict, avoiding the earlier $3,500/six-month conflation. Prior graduate $4,030 quotes keep their original November 3 review dates and unknown academic year; they are not current verified prices.",
+        "evidence": [
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "mypath-table",
+            "title": "UMass Global live tuition table, headed2025–26",
+            "url": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "quote": "Bachelor's Degree | $3,500 | 12 | $7,000",
+            "kind": "university"
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "umass-accreditation",
+            "title": "UMass Global institutional accreditation",
+            "url": "https://www.umassglobal.edu/about/accreditations",
+            "quote": "University of Massachusetts Global is institutionally accredited by the WASC Senior College and University Commission (WSCUC)",
+            "kind": "university"
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "mypath-legacy-transfer-scope",
+            "title": "UMass Global legacy2025–26 competency-based catalog",
+            "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based/",
+            "quote": "Coursework, with a minimum of B- or better from institutionally accredited institutions",
+            "kind": "university"
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-umass-bba-marketing",
+            "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-general-business-self-paced",
+            "title": "umass-bba-marketing",
+            "kind": "university",
+            "quote": "Curated observed-source transcription (not a verbatim origin quote): The self-paced General Business BBA page advertises 120 credits, $3,400 per six-month access period and up to 90 credits of previous college coursework.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "The observation is preserved in the curated packet; the initial native response was not retained. No origin body hash claimed."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-umass-legacy-cbe-policies",
+            "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based/",
+            "title": "umass-legacy-cbe-policies",
+            "kind": "university",
+            "quote": "Curated observed-source transcription (not a verbatim origin quote): Legacy 2025–2026 policy evaluates accredited coursework with B- or better against credit-hour courses and then competencies. It accepts ACE recommendations subject to degree and residence limits. Mastery transcript, no GPA and conversion record are described in the same legacy policy.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "The observation is preserved in the curated packet; the initial native response was not retained. No origin body hash claimed."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-umass-legacy-cbe-degree",
+            "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based-degree-requirement/",
+            "title": "umass-legacy-cbe-degree",
+            "kind": "university",
+            "quote": "Curated observed-source transcription (not a verbatim origin quote): Legacy 2025–2026 bachelor requirements include 30 equivalent residence credits and LBSC 320 and LBSC 321.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "The observation is preserved in the curated packet; the initial native response was not retained. No origin body hash claimed."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-umass-tuition-fy2025-26",
+            "url": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "title": "umass-tuition-fy2025-26",
+            "kind": "university",
+            "quote": "Curated observed-source transcription (not a verbatim origin quote): The live page is headed 2025–2026 Tuition and directs readers to the catalog for the latest rates. Its MyPath table lists bachelor tuition $3,500 per 24-week billing period, 12 minimum units and $7,000 per 48-week year.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "The observation is preserved in the curated packet; the initial native response was not retained. No origin body hash claimed."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-umass-legacy-catalog-fees",
+            "url": "https://catalog.umassglobal.edu/tuition-fees/tuition-fees.pdf",
+            "title": "umass-legacy-catalog-fees",
+            "kind": "university",
+            "quote": "Curated observed-source transcription (not a verbatim origin quote): The indexed catalog PDF lists a $210 MyPath technology fee per billing period and $150 conferral/processing fee. Current catalog-year applicability was not established.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "The native connector response is retained separately; this sentence is the researcher’s scoped transcription."
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue56/0903f5911d0b13f174e5377a9158c21dc4607ae5bd23db8550d432f4f2c860b8.json",
+          "content/research-intake/evidence/issue56/0d2c30defe5e192973eedd7a917106912a65e89599073de8870ac55aaf24e9a6.json",
+          "content/research-intake/evidence/issue56/225b99230d0f450cf37033f0e9e29d121235f170dd07aaf2c2051ea239c546dc.json",
+          "content/research-intake/evidence/issue56/3246823c103ae7587b16a69a9c6db77e53ba5adc53be0c82b89432b83ecbe4ce.json",
+          "content/research-intake/evidence/issue56/46425eaeb397e714b3cb364e3b3b2a8db4783b4d09bed95187d4a97c436adc43.json",
+          "content/research-intake/evidence/issue56/4f0bc4e9756e094ddc641e7036f66db34d0b00d67b07a5faec8a53374b36b7c4.json",
+          "content/research-intake/evidence/issue56/51d1944439b6f21b00747316d75c46a645c3f7e30b0f197708e1ad7a22a2acf7.json",
+          "content/research-intake/evidence/issue56/67a811f6fa2e58836496fb19f83f58e6293d0cc96d2e66e7711bfd7eebe7a72b.json",
+          "content/research-intake/evidence/issue56/9f67f08e23968b2052adecc541af929a069266aff0ff1bb9e5dd17aad8961aa0.json",
+          "content/research-intake/evidence/issue56/a1a33f1e593a58d65ea6cbb6c55980b3fe0e2624cdd975c1337dd20306024b0f.json",
+          "content/research-intake/evidence/issue56/d0f24095ef92c6ea2a579b056afb3374003468f43f179ef0f581ecf748c8b7b8.json",
+          "content/research-intake/evidence/issue56/editorial-accreditation-open-receipt.json",
+          "content/research-intake/evidence/issue56/editorial-school-open-receipt.json",
+          "content/research-intake/evidence/issue56/f5c131e66a2df9e66ea169e5299c653a1fa9318a6fd788c6a3af44583e900af7.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": "University of Massachusetts Global",
+            "program": "MyPath Bachelor of Business Administration",
+            "level": "bachelor",
+            "modality": "online competency-based MyPath",
+            "catalog": "Live tuition table headed 2025–26; do not relabel current academic-year price"
+          },
+          "costs": [
+            {
+              "amount": 3500,
+              "currency": "USD",
+              "unit": "24-week billing period",
+              "scope": "Advertised MyPath bachelor tuition table headed 2025–26",
+              "assumptions": "Observed source-dated $3,500 scenario; conflicting $3,400 BBA marketing and actual enrollment price unresolved. This is not a verified 2026–27 binding quote.",
+              "includes": [
+                "published tuition billing unit"
+              ],
+              "excludes": [
+                "unverified fees",
+                "additional billing periods"
+              ],
+              "evidenceIds": [
+                "mypath-table"
+              ]
+            },
+            {
+              "amount": 3400,
+              "currency": "USD",
+              "unit": "six calendar months of access",
+              "scope": "Undated live BBA general-business MyPath marketing offer",
+              "assumptions": "Conflicts with the live FY 2025–26 table quoting 3500 per 24 weeks. Effective date and current 2026–27 enrollment quote are unverified; do not equate 24 weeks with six calendar months.",
+              "evidenceIds": [
+                "enriched-umass-bba-marketing"
+              ],
+              "includes": [],
+              "excludes": [
+                "unverified current fees",
+                "additional access periods"
+              ]
+            }
+          ],
+          "accreditation": [
+            {
+              "institution": "University of Massachusetts Global",
+              "accreditor": "WASC Senior College and University Commission (WSCUC)",
+              "status": "Institutional accreditation stated by the university; see retained official source.",
+              "evidenceIds": [
+                "umass-accreditation"
+              ]
+            }
+          ],
+          "transfer": {
+            "overallCap": null,
+            "aceCap": null,
+            "nccrsCap": null,
+            "residency": null,
+            "majorResidency": null,
+            "totalCredits": null
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": []
+        },
+        "product": {
+          "status": "review-ready",
+          "paths": [
+            "content/research/cbe-schools.json",
+            "dist/data/program-catalog.json",
+            "dist/data/opportunity-catalog.json",
+            "content/school-insights.json",
+            "dist/data/school-insights.json",
+            "content/research-references/cbe-graduate.json",
+            "dist/data/research-references.json"
+          ],
+          "notes": "Public MyPath opportunity pricing now leaves current-year amount unknown, preserving the source-dated FY 2025–26 $3500/24-week historical quote and undated BBA $3400/six-month marketing conflict separately. Current consolidated catalog, numeric ACE cap, exact applicable competency map and current proctoring remain blocked. Six credit-hour academic models and historical student data are unchanged. The same correction applies to school summaries and research-reference cautions. Graduate current rates remain unverified, with older quotes preserved separately."
+        },
+        "editorial": {
+          "status": "review-ready",
+          "proposedUrls": [
+            "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/"
+          ],
+          "publishedUrls": [],
+          "existingUrls": [],
+          "title": "UMPI YourPace vs UMass Global MyPath: business-degree costs and transfer",
+          "metaDescription": "Compare UMPI’s 2026–27 business tuition with UMass Global’s live 2025–26 MyPath sources, transfer and transcript rules, and unresolved current pricing.",
+          "canonicalUrl": "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+          "internalLinks": [
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+            "https://degreesteps.com/blog/what-a-75-percent-transfer-limit-means/",
+            "https://degreesteps.com/compare-plans.html?from=courses",
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+            "https://degreesteps.com/import-courses.html"
+          ],
+          "structuredData": true,
+          "sitemap": true,
+          "studentUsefulness": "Prevent a budget based on mismatched billing units or a program requirement inferred from a headline transfer cap.",
+          "novelty": "Official-source price disagreement remains live; the tuition table and retrieved legacy competency-policy catalog pages are labelled2025–26. No current2026–27 rate, rule adoption date or universal proctoring policy inferred.",
+          "searchIntent": "UMass Global MyPath BBA cost, residency and transcript compared with UMPI YourPace.",
+          "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+          "urgency": "Resolve source discrepancies and individual evaluation before enrollment.",
+          "overlapNotes": "The new comparison answers a specific choice beyond existing subscription advice.",
+          "evidenceIds": [
+            "mypath-legacy-transfer-scope",
+            "mypath-table",
+            "umass-accreditation"
+          ],
+          "metrics": null
+        }
+      }
+    },
+    {
+      "claim": "Investigate 90-credit applied bachelor's degrees in Maine (UMPI psychology, UMFK business, UMA public administration); verify eligibility, transfer, accreditation and graduate-school implications. https://www.maine.edu/blog/2025/07/14/university-of-maine-system-to-lead-state-in-accelerating-adult-degree-completion-with-new-applied-90-credit-bachelors-programs/",
+      "section": "P1",
+      "kind": "lead",
+      "id": "finding-73416f60a5ad8a8b0c1f9216cf2eace2ef777916ccf204afe9b24b15c289e4e0",
+      "sourceUrls": [
+        "https://www.maine.edu/blog/2025/07/14/university-of-maine-system-to-lead-state-in-accelerating-adult-degree-completion-with-new-applied-90-credit-bachelors-programs/"
+      ],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        }
+      ],
+      "reviewHash": "a37179c602009f03e1d58b54b0d69e08f7deeed0776f63447b7f667b5a2900d2",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-73416f60a5ad8a8b0c1f9216cf2eace2ef777916ccf204afe9b24b15c289e4e0",
+        "revision": 2,
+        "previousReviewHash": "b12fa19aecf9bb0a484c7dcc4427df16bac1ea27f549d6e1440c1e4d6721f246",
+        "sourceRevisions": [
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+        ],
+        "reviewer": "DegreeSteps Issue56 scoped source enrichment",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": "2026-11-27",
+        "announcedOn": "2025-07-14",
+        "effectiveOn": null,
+        "followUpOn": "2026-12-27",
+        "triage": "CONTENT",
+        "status": "ready-for-review",
+        "changeKind": "newly-discovered-existing-policy",
+        "summary": "Exactly three applied 90-credit degrees were approved in November 2025 and are active Fall 2026: UMA Public Administration, UMFK Business Management and UMPI Psychology. At least 30 credits must be through the conferring campus;60/90 outside capacity is arithmetic, not a promise of 60 ACE credits. Adult-completer and two-year-gap conditions vary by program; UMA has distinct alternatives. Some employers/graduate programs may reject fewer than 120 credits; licensure and graduate admission are not guaranteed. UMA continuation is 121 credits. The article is ready for review; no executable course map or newly eligible degree recommendation is published.",
+        "evidence": [
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "maine-active-three",
+            "title": "Maine System updated applied-degree announcement",
+            "url": "https://www.maine.edu/blog/2025/07/14/university-of-maine-system-to-lead-state-in-accelerating-adult-degree-completion-with-new-applied-90-credit-bachelors-programs/",
+            "quote": "These programs are active for Fall 2026",
+            "kind": "university"
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "maine-residency",
+            "title": "Maine System applied-degree residency framework",
+            "url": "https://www.maine.edu/blog/2025/07/14/university-of-maine-system-to-lead-state-in-accelerating-adult-degree-completion-with-new-applied-90-credit-bachelors-programs/",
+            "quote": "they must earn at least 30 credits through the UMS university that will confer their degree.",
+            "kind": "university"
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-maine-90-announcement",
+            "url": "https://www.maine.edu/blog/2025/07/14/university-of-maine-system-to-lead-state-in-accelerating-adult-degree-completion-with-new-applied-90-credit-bachelors-programs/",
+            "title": "University of Maine System to lead state in accelerating adult degree completion with new applied 90-credit bachelor’s programs",
+            "kind": "university",
+            "quote": "they must earn at least 30 credits through the UMS university that will confer their degree.",
+            "excerptKind": "observed-extract-not-retained",
+            "receiptNote": "Observed extract was transcribed in the retained curated packet; no full native source response or origin bytes claimed."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-umpi-applied-psychology",
+            "url": "https://www.umpi.edu/yourpace/academic_programs/psychology/",
+            "title": "YourPace Psychology",
+            "kind": "university",
+            "quote": "Some employers and graduate programs may not accept applicants or candidates with an undergraduate degree of fewer than 120 credits.",
+            "excerptKind": "observed-extract-not-retained",
+            "receiptNote": "Observed extract was transcribed in the retained curated packet; no full native source response or origin bytes claimed."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-umfk-applied-business",
+            "url": "https://online.umfk.edu/business/applied-business-management/",
+            "title": "Applied Bachelor of Science Business Management (90 credits)",
+            "kind": "university",
+            "quote": "Students must complete 30 credits at UMFK to be awarded their Applied Bachelor of Science degree.",
+            "excerptKind": "observed-extract-not-retained",
+            "receiptNote": "Observed extract was transcribed in the retained curated packet; no full native source response or origin bytes claimed."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-uma-applied-pa",
+            "url": "https://www.uma.edu/academics/programs/public-administration/abs/",
+            "title": "Applied Bachelor of Science in Public Administration (90-Credit)",
+            "kind": "university",
+            "quote": "It has been at least two years since earning the most recent credits",
+            "excerptKind": "observed-extract-not-retained",
+            "receiptNote": "Observed extract was transcribed in the retained curated packet; no full native source response or origin bytes claimed."
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue56/248d40121413b9c015772d7cf633ef212a483b328daeb854fff5531d165e91bd.json",
+          "content/research-intake/evidence/issue56/65db57766c83e5e2d9e8a262516ed7daa71c6db11a4b58ccdfe0a79ef552a442.json",
+          "content/research-intake/evidence/issue56/7abab939dea429504ad5e5498b8434682c416e6917f43014cb56fc6287195791.json",
+          "content/research-intake/evidence/issue56/86ce03fcfebe30d26a1fbca58bba15e117b3ef8916205d2902c52801df8e0244.json",
+          "content/research-intake/evidence/issue56/8f40fa063bc127c9300b40fa593a1a2473941a1e2710175c4c6be150253b178f.json",
+          "content/research-intake/evidence/issue56/c6ab38efc17c88c9cbe6b6753d905b7f6251bbf693c6be547667bc5db3ca67f9.json",
+          "content/research-intake/evidence/issue56/editorial-school-supplement-receipt.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": "University of Maine System pilot universities: UMPI, UMFK and UMA",
+            "program": "Three applied 90-credit bachelor pilots; individual program details remain scoped",
+            "level": "bachelor",
+            "modality": "Program-specific; do not infer every pilot uses YourPace",
+            "catalog": "System announcement updated to state active Fall 2026"
+          },
+          "costs": [],
+          "accreditation": [],
+          "transfer": {
+            "overallCap": {
+              "credits": 60,
+              "creditSystem": "semester",
+              "scope": "Computed upper outside-credit ceiling:90 total minus 30 conferring-campus credits =60(66.7%). This is not an independently verified ACE allowance or applicable course ledger.",
+              "evidenceIds": [
+                "enriched-maine-90-announcement"
+              ]
+            },
+            "aceCap": null,
+            "nccrsCap": null,
+            "residency": {
+              "credits": 30,
+              "creditSystem": "semester",
+              "scope": "At least 30 credits at the conferring UMS campus under the applied-degree pilot framework.",
+              "evidenceIds": [
+                "enriched-maine-90-announcement",
+                "enriched-umfk-applied-business"
+              ]
+            },
+            "majorResidency": null,
+            "totalCredits": {
+              "credits": 90,
+              "creditSystem": "semester",
+              "scope": "Three specifically approved applied bachelor pilots; program/campus and adult-completer eligibility still control.",
+              "evidenceIds": [
+                "enriched-maine-90-announcement"
+              ]
+            }
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": []
+        },
+        "product": {
+          "status": "not-needed",
+          "paths": [],
+          "notes": "Content explains verified pilot availability and limitations. No fully mapped 90-credit executable curriculum is promoted; admission, actual degree applicability, graduate-school and licensure decisions remain program/receiving-institution specific."
+        },
+        "editorial": {
+          "status": "review-ready",
+          "proposedUrls": [
+            "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/"
+          ],
+          "publishedUrls": [],
+          "existingUrls": [],
+          "title": "Maine’s 90-credit applied bachelor’s degrees: who they fit and what to check",
+          "metaDescription": "Compare Maine’s three approved 90-credit applied bachelor’s programs, adult-completer eligibility, transfer limits, costs and graduate-school questions.",
+          "canonicalUrl": "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+          "internalLinks": [
+            "https://degreesteps.com/blog/do-old-college-credits-still-count/",
+            "https://degreesteps.com/blog/what-a-75-percent-transfer-limit-means/",
+            "https://degreesteps.com/compare-plans.html?from=courses",
+            "https://degreesteps.com/guides/degree-audit-and-what-if/",
+            "https://degreesteps.com/import-courses.html"
+          ],
+          "structuredData": true,
+          "sitemap": true,
+          "studentUsefulness": "Show who qualifies and how a shorter award may affect later study and funding.",
+          "novelty": "Current pages confirm three active programs; an earlier broader proposal is not treated as five available degrees.",
+          "searchIntent": "Which Maine 90-credit bachelor’s degrees are available and will they qualify for graduate school?",
+          "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+          "urgency": "Resolve source discrepancies and individual evaluation before enrollment.",
+          "overlapNotes": "Existing percentage-transfer and adult-credit articles do not explain these distinctive awards.",
+          "evidenceIds": [
+            "maine-active-three",
+            "maine-residency"
+          ],
+          "metrics": null
+        }
+      }
+    },
+    {
+      "claim": "## Scope expansion: research → product + editorial/SEO\nFor every weekly finding classify as PRODUCT, CONTENT, BOTH, or WATCH/NO ACTION. Evaluate student usefulness, novelty, evidence, search intent, relevance to debt-free degrees, urgency and existing content overlap. Do not invent search volumes or keyword difficulty. Audit existing content and architecture before creating anything. For verified editorial opportunities, actually write or update substantive articles/guides/comparisons, not just a list of ideas. Include official citations, last verified date, accurate costs with assumptions, transfer and accreditation caveats, descriptive title/meta, canonical URL, appropriate internal links to verified pathways/tools, and applicable structured data/sitemap updates using existing conventions. Avoid thin or duplicative content, sensational claims, fake author expertise and publishing rumors as facts. Update existing pages when preferable; preserve URLs or redirects. Examples to independently verify: 90-credit bachelor's degrees; UMPI ACE policy changes; WGU $25 course eligibility and total costs; UMPI vs UMass MyPath; Purdue subscription pricing; Google certificate ACE validity; non-proctored college credit options. Content-only findings need not force product changes. BOTH findings should coordinate article and pathway releases so links and claims agree. Prepare actual content and product changes in a tested PR; publish via the established approved release workflow after verification and review, not by bypassing deployment safeguards. Track proposed/published URLs, status, evidence, and follow-up review dates. If Search Console/analytics are available, measure impressions, clicks, indexing and pathway engagement; do not fabricate metrics. Include this editorial triage in the permanent research intake workflow.",
+      "section": "Context / unstructured submission",
+      "kind": "context",
+      "id": "finding-a71f338c2ed1781436f8604f68af117e680588c896c8f2d537d8e1362c335fff",
+      "sourceUrls": [],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:comment-7223806616",
+          "revision": "fa28c6d352a806b388a0bf35a2b39b8496caaf7afdb26cef97b2ba8f3bea3721",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56#issuecomment-7223806616"
+        }
+      ],
+      "reviewHash": "5223b1fcddf17336310d9d522591f0dcdb434c99eabe8ccc310a2560675b8490",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-a71f338c2ed1781436f8604f68af117e680588c896c8f2d537d8e1362c335fff",
+        "revision": 1,
+        "previousReviewHash": null,
+        "sourceRevisions": [
+          "fa28c6d352a806b388a0bf35a2b39b8496caaf7afdb26cef97b2ba8f3bea3721"
+        ],
+        "reviewer": "DegreeSteps Issue56 primary-source and editorial review",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": null,
+        "announcedOn": null,
+        "effectiveOn": null,
+        "followUpOn": null,
+        "triage": "WATCH",
+        "status": "no-action",
+        "changeKind": "unknown",
+        "summary": "The editorial scope instruction has been implemented in the permanent intake schema, source-bound review history, receiving workflow and durable research run instructions. It is context, not a factual policy claim or an additional article opportunity.",
+        "evidence": [],
+        "receiptPaths": [],
+        "facts": {
+          "scope": {
+            "institution": null,
+            "program": null,
+            "level": null,
+            "modality": null,
+            "catalog": null
+          },
+          "costs": [],
+          "accreditation": [],
+          "transfer": {
+            "overallCap": null,
+            "aceCap": null,
+            "nccrsCap": null,
+            "residency": null,
+            "majorResidency": null,
+            "totalCredits": null
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": []
+        },
+        "product": {
+          "status": "not-needed",
+          "paths": [
+            "scripts/research-intake.mjs",
+            ".github/workflows/research-intake.yml",
+            "docs/weekly-research-intake.md"
+          ],
+          "notes": "Concrete pipeline implemented with targeted regression tests; no production deployment or CMS publication."
+        },
+        "editorial": {
+          "status": "not-needed",
+          "proposedUrls": [],
+          "publishedUrls": [],
+          "existingUrls": [],
+          "title": null,
+          "metaDescription": null,
+          "canonicalUrl": null,
+          "internalLinks": [],
+          "structuredData": null,
+          "sitemap": null,
+          "studentUsefulness": "Make useful, sourced content concrete and reviewable alongside product research.",
+          "novelty": "Editorial review is now explicitly part of the weekly intake.",
+          "searchIntent": "Workflow context; no student-facing search page needed.",
+          "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+          "urgency": "Verify links, generated metadata and source dates in the PR; publish only through approved release.",
+          "overlapNotes": "The existing public-site system already provides canonical metadata, article schema and sitemap generation.",
+          "evidenceIds": [],
+          "metrics": null
+        }
+      }
+    },
+    {
+      "claim": "Verify Google ACE renewal windows for GOOG-0009, GOOG-0007, GOOG-0008 (reported Nov 30 expiry); preserve valid historical awards. https://www.acenet.edu/National-Guide/",
+      "section": "P0",
+      "kind": "lead",
+      "id": "finding-c4224c6e66e6024360ed98233af8bd1825d7aa9abfe0edbcf7e361e4211d1b46",
+      "sourceUrls": [
+        "https://www.acenet.edu/National-Guide/"
+      ],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        }
+      ],
+      "reviewHash": "1fb22e9f49127c3f25304e251b9ea0ba1fc50ac76deba30cf6c98372f04c81af",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-c4224c6e66e6024360ed98233af8bd1825d7aa9abfe0edbcf7e361e4211d1b46",
+        "revision": 1,
+        "previousReviewHash": null,
+        "sourceRevisions": [
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+        ],
+        "reviewer": "DegreeSteps Issue56 primary-source and editorial review",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": "2026-11-27",
+        "announcedOn": null,
+        "effectiveOn": null,
+        "followUpOn": "2026-12-01",
+        "triage": "BOTH",
+        "status": "ready-for-review",
+        "changeKind": "confirmation",
+        "summary": "Update the existing ACE guide with a named, dated certificate-window case study; no separate expiry-news page. Content is prepared for PR review; no production publication or indexing is claimed.",
+        "evidence": [
+          {
+            "id": "google-current-window",
+            "title": "ACE Google organization listing",
+            "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=3fdb1492-e04f-e911-a97b-000d3a363c81",
+            "quote": "Course ACE ID: GOOG-0009 12/01/2025 to 11/30/2026 Recommended credits: 10",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "ace-date-policy",
+            "title": "ACE completion-date learner guidance",
+            "url": "https://acenationalguide.zendesk.com/hc/en-us/articles/21153004361371-What-if-I-completed-a-learning-experience-outside-of-the-start-and-end-dates-listed",
+            "quote": "If your learning experience was completed after the end date of a recommendation period",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "capturePath": null,
+            "contentHash": null,
+            "checkedOn": "2026-11-27",
+            "id": "ace-goog-0009",
+            "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=3fdb1492-e04f-e911-a97b-000d3a363c81",
+            "title": "Google Advanced Data Analytics Professional Certificate current ACE recommendation",
+            "kind": "provider",
+            "quote": "Course ACE ID: GOOG-0009 12/01/2025 to 11/30/2026 Recommended credits: 10 Read More"
+          },
+          {
+            "capturePath": null,
+            "contentHash": null,
+            "checkedOn": "2026-11-27",
+            "id": "ace-goog-0007",
+            "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=3fdb1492-e04f-e911-a97b-000d3a363c81",
+            "title": "Google Cybersecurity Professional Certificate current ACE recommendation",
+            "kind": "provider",
+            "quote": "Course ACE ID: GOOG-0007 12/01/2025 to 11/30/2026 Recommended credits: 10 Read More"
+          },
+          {
+            "capturePath": null,
+            "contentHash": null,
+            "checkedOn": "2026-11-27",
+            "id": "ace-goog-0008",
+            "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=3fdb1492-e04f-e911-a97b-000d3a363c81",
+            "title": "Google Business Intelligence Professional Certificate current ACE recommendation",
+            "kind": "provider",
+            "quote": "Course ACE ID: GOOG-0008 12/01/2025 to 11/30/2026 Recommended credits: 7 Read More"
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue56/provider-captures/google-registry.json",
+          "content/research-intake/evidence/issue56/provider-captures/google-versions.json",
+          "content/research-intake/evidence/issue56/provider-captures/wgu-index-ace-faq.json",
+          "content/research-intake/evidence/issue56/providers.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": null,
+            "program": "Google professional certificates; exact ACE version-specific recommendations",
+            "level": "undergraduate recommendation",
+            "modality": "online",
+            "catalog": "ACE current v2 records checked 2026-11-27"
+          },
+          "costs": [],
+          "accreditation": [],
+          "transfer": {
+            "overallCap": null,
+            "aceCap": null,
+            "nccrsCap": null,
+            "residency": null,
+            "majorResidency": null,
+            "totalCredits": null
+          },
+          "aceRecommendations": [
+            {
+              "provider": "Google",
+              "aceId": "GOOG-0009",
+              "version": "2",
+              "startsOn": "2025-12-01",
+              "endsOn": "2026-11-30",
+              "sourceCredits": 10,
+              "sourceCreditSystem": "semester",
+              "evidenceIds": [
+                "ace-goog-0009"
+              ]
+            },
+            {
+              "provider": "Google",
+              "aceId": "GOOG-0007",
+              "version": "2",
+              "startsOn": "2025-12-01",
+              "endsOn": "2026-11-30",
+              "sourceCredits": 10,
+              "sourceCreditSystem": "semester",
+              "evidenceIds": [
+                "ace-goog-0007"
+              ]
+            },
+            {
+              "provider": "Google",
+              "aceId": "GOOG-0008",
+              "version": "2",
+              "startsOn": "2025-12-01",
+              "endsOn": "2026-11-30",
+              "sourceCredits": 7,
+              "sourceCreditSystem": "semester",
+              "evidenceIds": [
+                "ace-goog-0008"
+              ]
+            }
+          ],
+          "equivalencies": [],
+          "assessments": []
+        },
+        "product": {
+          "status": "review-ready",
+          "paths": [
+            "dist/data/credit-sources.json",
+            "scripts/provider-research-facts.mjs",
+            "scripts/provider-research-facts.test.mjs"
+          ],
+          "notes": "Public Google provider information records the three independently observed ACE periods and preserves valid historical awards. No Google receiving maps, source-credit version upgrades, earned awards or historical student data changed. No successor after November 30 was verified; follow up December 1."
+        },
+        "editorial": {
+          "status": "review-ready",
+          "proposedUrls": [
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/"
+          ],
+          "publishedUrls": [],
+          "existingUrls": [
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/"
+          ],
+          "title": "ACE, NCCRS, and accreditation: what students need to check",
+          "metaDescription": "Understand credit recommendations, institutional accreditation, course identifiers, and the school-specific checks that make alternative-credit planning useful.",
+          "canonicalUrl": "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+          "internalLinks": [
+            "https://degreesteps.com/blog/community-transfer-evidence/",
+            "https://degreesteps.com/credit-sources/",
+            "https://degreesteps.com/credit-sources/google-certificates/",
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/guides/how-transfer-credit-works/"
+          ],
+          "structuredData": true,
+          "sitemap": true,
+          "studentUsefulness": "Prevent a planned completion from relying on an unverified future window and protect valid historical awards.",
+          "novelty": "Newly reverified current recommendation versions and upcoming end dates; no renewal or new receiving policy established.",
+          "searchIntent": "Does Google certificate ACE credit expire, and which completion dates qualify?",
+          "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+          "urgency": "Observed windows end November 30; a successor requires a fresh primary-source check.",
+          "overlapNotes": "The ACE/accreditation guide already explains versions and records; a section there answers the narrower current question without duplicating it.",
+          "evidenceIds": [
+            "google-current-window",
+            "ace-date-policy"
+          ],
+          "metrics": null
+        }
+      }
+    },
+    {
+      "claim": "Explore online-to-residential pathways with 10–20 applicable courses and traditional letter grades.",
+      "section": "P2 watchlist",
+      "kind": "lead",
+      "id": "finding-cfe1e99f87e47339f0e8c589f537d5bfb002889b0c418709cee85dc968d7d4b2",
+      "sourceUrls": [],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        }
+      ],
+      "reviewHash": "757e60374ebea4226c895c2eaea49380a86a614c58aeff8840ceaf8cdcdfd692",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-cfe1e99f87e47339f0e8c589f537d5bfb002889b0c418709cee85dc968d7d4b2",
+        "revision": 2,
+        "previousReviewHash": "716faae735c1720ba31535a3f4b5c15c7f05de3a1cc868861b9e3d75d9e25c37",
+        "sourceRevisions": [
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+        ],
+        "reviewer": "DegreeSteps Issue56 scoped source enrichment",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": null,
+        "announcedOn": null,
+        "effectiveOn": null,
+        "followUpOn": "2026-12-04",
+        "triage": "WATCH",
+        "status": "watch",
+        "changeKind": "unknown",
+        "summary": "No exact residential destination plus 10–20 nonduplicative applicable courses, traditional A/B/C transcript proof and at least 50% applicable transfer was established. ASU ULC institutional transcript and posting evidence is useful discovery, with admitted-student eligibility limits; it does not establish a residential degree map. Sophia pass/fail and MyPath mastery do not become letter grades through partnerships. Preserve existing mappings and student history; retain WATCH with no speculative new pathway.",
+        "evidence": [
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "asu-residential-eligibility-boundary",
+            "url": "https://ea.asu.edu/help-center/faqs/",
+            "title": "ASU Earned Admission eligibility boundary",
+            "kind": "university",
+            "quote": "Admitted, degree-seeking ASU students cannot register for Earned Admission.",
+            "excerptKind": "retained-native-connector-extract"
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue56/0903f5911d0b13f174e5377a9158c21dc4607ae5bd23db8550d432f4f2c860b8.json",
+          "content/research-intake/evidence/issue56/0d2c30defe5e192973eedd7a917106912a65e89599073de8870ac55aaf24e9a6.json",
+          "content/research-intake/evidence/issue56/225b99230d0f450cf37033f0e9e29d121235f170dd07aaf2c2051ea239c546dc.json",
+          "content/research-intake/evidence/issue56/3246823c103ae7587b16a69a9c6db77e53ba5adc53be0c82b89432b83ecbe4ce.json",
+          "content/research-intake/evidence/issue56/46425eaeb397e714b3cb364e3b3b2a8db4783b4d09bed95187d4a97c436adc43.json",
+          "content/research-intake/evidence/issue56/4f0bc4e9756e094ddc641e7036f66db34d0b00d67b07a5faec8a53374b36b7c4.json",
+          "content/research-intake/evidence/issue56/51d1944439b6f21b00747316d75c46a645c3f7e30b0f197708e1ad7a22a2acf7.json",
+          "content/research-intake/evidence/issue56/67a811f6fa2e58836496fb19f83f58e6293d0cc96d2e66e7711bfd7eebe7a72b.json",
+          "content/research-intake/evidence/issue56/9f67f08e23968b2052adecc541af929a069266aff0ff1bb9e5dd17aad8961aa0.json",
+          "content/research-intake/evidence/issue56/a1a33f1e593a58d65ea6cbb6c55980b3fe0e2624cdd975c1337dd20306024b0f.json",
+          "content/research-intake/evidence/issue56/baseline-providers.json",
+          "content/research-intake/evidence/issue56/captures/baseline-provider-tool-receipts.json",
+          "content/research-intake/evidence/issue56/d0f24095ef92c6ea2a579b056afb3374003468f43f179ef0f581ecf748c8b7b8.json",
+          "content/research-intake/evidence/issue56/f5c131e66a2df9e66ea169e5299c653a1fa9318a6fd788c6a3af44583e900af7.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": null,
+            "program": null,
+            "level": null,
+            "modality": null,
+            "catalog": null
+          },
+          "costs": [],
+          "accreditation": [],
+          "transfer": {
+            "overallCap": null,
+            "aceCap": null,
+            "nccrsCap": null,
+            "residency": null,
+            "majorResidency": null,
+            "totalCredits": null
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": []
+        },
+        "product": {
+          "status": "not-needed",
+          "paths": [],
+          "notes": "No unsupported academic policy, receiving equivalency or historical student-record change is authorized by this finding."
+        },
+        "editorial": {
+          "status": "blocked",
+          "proposedUrls": [],
+          "publishedUrls": [],
+          "existingUrls": [],
+          "title": null,
+          "metaDescription": null,
+          "canonicalUrl": null,
+          "internalLinks": [],
+          "structuredData": null,
+          "sitemap": null,
+          "studentUsefulness": "Keep institutional course identity, grade format and exact receiving placements tied to a desired residential degree.",
+          "novelty": "No newly verified 10–20-course destination map in this intake.",
+          "searchIntent": "Self-paced college courses with traditional grades that apply to a chosen residential degree.",
+          "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+          "urgency": "Verify exact receiving awards and grade treatment before new mappings.",
+          "overlapNotes": "Existing campus-transfer guide, institutional-credit article and published campus plans already cover the general decision.",
+          "evidenceIds": [],
+          "metrics": null
+        }
+      }
+    },
+    {
+      "claim": "Investigate reported UMPI ACE-to-major restrictions, possible December 28 transition and grandfathering; do not apply rumors retroactively. https://www.umpi.edu/academics/credit-for-prior-learning/ace/ and https://umpi.sophia.org/",
+      "section": "P0",
+      "kind": "lead",
+      "id": "finding-d1049739135f026e6e649c0cf01acab0d58cb56159d292a046ff0eb7cb22d668",
+      "sourceUrls": [
+        "https://umpi.sophia.org/",
+        "https://www.umpi.edu/academics/credit-for-prior-learning/ace/"
+      ],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        }
+      ],
+      "reviewHash": "cb5dc3dc29efad2c2dc3298da48331b96f736f745bd8319fc8a37d5089c81f32",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-d1049739135f026e6e649c0cf01acab0d58cb56159d292a046ff0eb7cb22d668",
+        "revision": 2,
+        "previousReviewHash": "a7e3d1231a03030ac8557c0e07e33333557c11eb25f7aa73f15bf4acde791734",
+        "sourceRevisions": [
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+        ],
+        "reviewer": "DegreeSteps Issue56 scoped source enrichment",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": null,
+        "announcedOn": null,
+        "effectiveOn": null,
+        "followUpOn": "2026-12-04",
+        "triage": "WATCH",
+        "status": "watch",
+        "changeKind": "unknown",
+        "summary": "The reported December 28 transition, blanket ACE-to-major restriction and automatic grandfathering remain unverified. The current published combined bachelor CPL 30 rule and FAQ residency were already documented in the November 17 review; newly reading them is not a newly adopted policy. Current catalogs returned connector-reported 403 and no current dated exception was established. Preserve existing student awards and progress; do not invent an effective date or retroactively impose a rumor.",
+        "evidence": [
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-umpi-faq",
+            "url": "https://www.umpi.edu/yourpace/faqs/",
+            "title": "YourPace FAQs",
+            "kind": "university",
+            "quote": "There is no set limit to the number of credits you can transfer into UMPI.",
+            "excerptKind": "retained-native-extract",
+            "receiptNote": "Native connector extraction retained; no origin HTTP body hash claimed."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-umpi-cpl",
+            "url": "https://www.umpi.edu/academics/credit-for-prior-learning/",
+            "title": "Credit for Prior Learning (CPL) Options",
+            "kind": "university",
+            "quote": "Students in Bachelor’s degree programs may earn a maximum of 30 credits.",
+            "excerptKind": "observed-extract-not-retained",
+            "receiptNote": "Observed extract was transcribed in the retained curated packet; no full native source response or origin bytes claimed."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-umpi-ace",
+            "url": "https://www.umpi.edu/academics/credit-for-prior-learning/ace/",
+            "title": "Earn College Credit with UMPI’s ACE Program",
+            "kind": "university",
+            "quote": "An official ACE transcript must be submitted to the Office of Student Records for PLA consideration.",
+            "excerptKind": "retained-native-extract",
+            "receiptNote": "Native connector extraction retained; no origin HTTP body hash claimed."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "umpi-faq-residency-exact",
+            "url": "https://www.umpi.edu/yourpace/faqs/",
+            "title": "YourPace FAQ baccalaureate residency",
+            "kind": "university",
+            "quote": "Four-year degree programs (baccalaureate): Students must complete at least 30 credit hours through UMPI. At least 12 of these credits must be in the major, and at least 9 of those 12 credits must be at the upper level (300-level or above).",
+            "excerptKind": "retained-native-connector-extract"
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue56/248d40121413b9c015772d7cf633ef212a483b328daeb854fff5531d165e91bd.json",
+          "content/research-intake/evidence/issue56/65db57766c83e5e2d9e8a262516ed7daa71c6db11a4b58ccdfe0a79ef552a442.json",
+          "content/research-intake/evidence/issue56/7abab939dea429504ad5e5498b8434682c416e6917f43014cb56fc6287195791.json",
+          "content/research-intake/evidence/issue56/86ce03fcfebe30d26a1fbca58bba15e117b3ef8916205d2902c52801df8e0244.json",
+          "content/research-intake/evidence/issue56/8f40fa063bc127c9300b40fa593a1a2473941a1e2710175c4c6be150253b178f.json",
+          "content/research-intake/evidence/issue56/c6ab38efc17c88c9cbe6b6753d905b7f6251bbf693c6be547667bc5db3ca67f9.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": null,
+            "program": null,
+            "level": null,
+            "modality": null,
+            "catalog": null
+          },
+          "costs": [],
+          "accreditation": [],
+          "transfer": {
+            "overallCap": {
+              "credits": 90,
+              "creditSystem": "semester",
+              "scope": "Conditional arithmetic for a 120-credit degree with at least 30 UMPI credits: at most 90 outside applicable credits. FAQ sets no fixed limit on incoming transfer records; this does not establish 90 ACE credits or an exact degree allocation.",
+              "evidenceIds": [
+                "enriched-umpi-faq",
+                "umpi-faq-residency-exact"
+              ]
+            },
+            "aceCap": null,
+            "nccrsCap": null,
+            "residency": {
+              "credits": 30,
+              "creditSystem": "semester",
+              "scope": "Published UMPI baccalaureate minimum; not a maximum on university coursework.",
+              "evidenceIds": [
+                "umpi-faq-residency-exact"
+              ]
+            },
+            "majorResidency": {
+              "credits": 12,
+              "creditSystem": "semester",
+              "scope": "At least 12 major credits through UMPI, including at least 9 of those 12 at 300-level or above. Exact business-program placement remains unverified.",
+              "evidenceIds": [
+                "umpi-faq-residency-exact"
+              ]
+            },
+            "totalCredits": null,
+            "combinedCplCap": {
+              "credits": 30,
+              "creditSystem": "semester",
+              "scope": "Published general bachelor combined CPL category, including ACE-recommended training; already documented November 17. Adoption date and any approved cohort-specific exceptions remain unknown. This is not a separately established ACE-only cap.",
+              "evidenceIds": [
+                "enriched-umpi-cpl",
+                "enriched-umpi-ace"
+              ]
+            }
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": []
+        },
+        "product": {
+          "status": "not-needed",
+          "paths": [],
+          "notes": "No unsupported academic policy, receiving equivalency or historical student-record change is authorized by this finding."
+        },
+        "editorial": {
+          "status": "blocked",
+          "proposedUrls": [],
+          "publishedUrls": [],
+          "existingUrls": [],
+          "title": null,
+          "metaDescription": null,
+          "canonicalUrl": null,
+          "internalLinks": [],
+          "structuredData": null,
+          "sitemap": null,
+          "studentUsefulness": "Protect existing students from retroactive changes inferred from rumors.",
+          "novelty": "No independently verified effective-date or grandfathering announcement.",
+          "searchIntent": "Does a new UMPI ACE restriction apply to my degree or catalog?",
+          "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+          "urgency": "Obtain cohort-specific official confirmation before any policy change.",
+          "overlapNotes": "Use a future dated update in the existing comparison or ACE guide only after official evidence; no rumor article.",
+          "evidenceIds": [],
+          "metrics": null
+        }
+      }
+    },
+    {
+      "claim": "Purdue Global ExcelTrack BSBA: reported $2,845/term incl resource fee, 135/180 quarter credits transfer, traditional capstone. Professional Studies lead: $195/month, $100 assessment, $2,226 capstone. Verify all costs, transfer and assessments. https://www.purdueglobal.edu/tuition-financial-aid/undergraduate-graduate-tuition-and-fees/ and https://catalog.purdueglobal.edu/policy-information/prior-learning/",
+      "section": "P1",
+      "kind": "lead",
+      "id": "finding-d45f5a7347db8e46df33859b79d71d3bb7a500c83e01156984c0296eb5d6c0c6",
+      "sourceUrls": [
+        "https://catalog.purdueglobal.edu/policy-information/prior-learning/",
+        "https://www.purdueglobal.edu/tuition-financial-aid/undergraduate-graduate-tuition-and-fees/"
+      ],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        }
+      ],
+      "reviewHash": "638266c887010dd1470795dc8a92527eb2fdbeb9932c1fc19a2ee2088b118db9",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-d45f5a7347db8e46df33859b79d71d3bb7a500c83e01156984c0296eb5d6c0c6",
+        "revision": 2,
+        "previousReviewHash": "63b7c29ee44d7062bb4606ede9ba925d65ecb8f6c7e4bf43dc882e545736afd3",
+        "sourceRevisions": [
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+        ],
+        "reviewer": "DegreeSteps Issue56 scoped source enrichment",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": "2026-11-27",
+        "announcedOn": null,
+        "effectiveOn": "2026-07-01",
+        "followUpOn": "2026-12-04",
+        "triage": "BOTH",
+        "status": "researching",
+        "changeKind": "newly-discovered-existing-policy",
+        "summary": "The published Professional Studies independent-model enrollment/reentry closure took effect July 1,2026; this is newly discovered older policy, not a November change. Continuing-eligible 195 monthly/100 ASK/2226 additional-capstone charges are separate from the term-based model. ExcelTrack BSBA uses native 180 quarter credits and 10-week terms;2500 tuition+345 resource fee=2845 per term. A 75% externally assessed ceiling computes to 135 quarter credits, not 135 applicable ACE credits; internalAC assessments may count toward the 45-credit remainder. Article ready; complete applicability, prerequisite/module sequence and assessment maps remain blocked. No historical awards were changed.",
+        "evidence": [
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "purdue-independent-closure",
+            "title": "Purdue Global 2026–27 Professional Studies catalog",
+            "url": "https://catalog.purdueglobal.edu/undergraduate/multidisciplinary-professional-studies/professional-studies-bs/",
+            "quote": "Effective July 1, 2026, the independent model will no longer be accepting enrollments or reentries.",
+            "kind": "university"
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-purdue-tuition",
+            "url": "https://www.purdueglobal.edu/tuition-financial-aid/undergraduate-graduate-tuition-and-fees/",
+            "title": "purdue-tuition",
+            "kind": "university",
+            "quote": "Curated observed-source transcription (not a verbatim origin quote): The university lists ExcelTrack BSBA tuition of $2,500 per term plus the undergraduate ExcelTrack resource fee of $345 per term. It also lists independent Professional Studies at $195 per month, $100 per ASK and $2,226 for the bachelor capstone, in addition to monthly tuition.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "The observation is preserved in the curated packet; the initial native response was not retained. No origin body hash claimed."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-purdue-prior-learning",
+            "url": "https://catalog.purdueglobal.edu/policy-information/prior-learning/",
+            "title": "purdue-prior-learning",
+            "kind": "university",
+            "quote": "Curated observed-source transcription (not a verbatim origin quote): The university caps combined externally assessed prior learning at 75% of undergraduate credential credits; capstones cannot be fulfilled by prior learning. Equivalence, official documentation and other program restrictions apply.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "The native connector response is retained separately; this sentence is the researcher’s scoped transcription."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-purdue-bsba-current",
+            "url": "https://catalog.purdueglobal.edu/undergraduate/business-information-technology/business-administration-bs/",
+            "title": "purdue-bsba-current",
+            "kind": "university",
+            "quote": "Curated observed-source transcription (not a verbatim origin quote): The catalog BSBA degree plan totals 180 quarter credits: core 45, major 83 and open electives 52. MT499 is the six-quarter-credit capstone.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "The native connector response is retained separately; this sentence is the researcher’s scoped transcription."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-purdue-grades",
+            "url": "https://catalog.purdueglobal.edu/policy-information/academic-standards/grades-marks/",
+            "title": "purdue-grades",
+            "kind": "university",
+            "quote": "Curated observed-source transcription (not a verbatim origin quote): The current catalog says internal assessment credit marked AC contributes to university residency. Module grades use A/B/F thresholds; conventional undergraduate courses use a different grading table.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "The native connector response is retained separately; this sentence is the researcher’s scoped transcription."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-purdue-accreditation",
+            "url": "https://catalog.purdueglobal.edu/policy-information/university-information/accreditation-approvals-memberships/",
+            "title": "purdue-accreditation",
+            "kind": "university",
+            "quote": "Curated observed-source transcription (not a verbatim origin quote): The university states that Purdue Global is institutionally accredited by the Higher Learning Commission, recognized by the U.S. Department of Education.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "The native connector response is retained separately; this sentence is the researcher’s scoped transcription."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-purdue-professional-studies-current",
+            "url": "https://catalog.purdueglobal.edu/undergraduate/multidisciplinary-professional-studies/professional-studies-bs/",
+            "title": "purdue-professional-studies-current",
+            "kind": "university",
+            "quote": "Curated observed-source transcription (not a verbatim origin quote): The 2026–2027 catalog states the independent model no longer accepts enrollments or reentries effective July 1, 2026. It retains requirements for continuing students, including a final six-quarter-credit PR499 capstone.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "The native connector response is retained separately; this sentence is the researcher’s scoped transcription."
+          },
+          {
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null,
+            "id": "enriched-purdue-exceltrack-terms",
+            "url": "https://www.purdueglobal.edu/degree-programs/business/",
+            "title": "purdue-exceltrack-terms",
+            "kind": "university",
+            "quote": "Curated observed-source transcription (not a verbatim origin quote): The business-program directory identifies 10-week terms on the ExcelTrack BSBA card.",
+            "excerptKind": "curated-research-transcription",
+            "receiptNote": "The native connector response is retained separately; this sentence is the researcher’s scoped transcription."
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue56/0903f5911d0b13f174e5377a9158c21dc4607ae5bd23db8550d432f4f2c860b8.json",
+          "content/research-intake/evidence/issue56/0d2c30defe5e192973eedd7a917106912a65e89599073de8870ac55aaf24e9a6.json",
+          "content/research-intake/evidence/issue56/225b99230d0f450cf37033f0e9e29d121235f170dd07aaf2c2051ea239c546dc.json",
+          "content/research-intake/evidence/issue56/3246823c103ae7587b16a69a9c6db77e53ba5adc53be0c82b89432b83ecbe4ce.json",
+          "content/research-intake/evidence/issue56/46425eaeb397e714b3cb364e3b3b2a8db4783b4d09bed95187d4a97c436adc43.json",
+          "content/research-intake/evidence/issue56/4f0bc4e9756e094ddc641e7036f66db34d0b00d67b07a5faec8a53374b36b7c4.json",
+          "content/research-intake/evidence/issue56/51d1944439b6f21b00747316d75c46a645c3f7e30b0f197708e1ad7a22a2acf7.json",
+          "content/research-intake/evidence/issue56/67a811f6fa2e58836496fb19f83f58e6293d0cc96d2e66e7711bfd7eebe7a72b.json",
+          "content/research-intake/evidence/issue56/9f67f08e23968b2052adecc541af929a069266aff0ff1bb9e5dd17aad8961aa0.json",
+          "content/research-intake/evidence/issue56/a1a33f1e593a58d65ea6cbb6c55980b3fe0e2624cdd975c1337dd20306024b0f.json",
+          "content/research-intake/evidence/issue56/d0f24095ef92c6ea2a579b056afb3374003468f43f179ef0f581ecf748c8b7b8.json",
+          "content/research-intake/evidence/issue56/editorial-purdue-search-receipt.json",
+          "content/research-intake/evidence/issue56/f5c131e66a2df9e66ea169e5299c653a1fa9318a6fd788c6a3af44583e900af7.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": "Purdue University Global",
+            "program": "ExcelTrack BSBA and separately legacy Professional Studies independent model",
+            "level": "bachelor",
+            "modality": "Distinct online competency-based/independent models",
+            "catalog": "2026–27 catalog"
+          },
+          "costs": [
+            {
+              "amount": 2500,
+              "currency": "USD",
+              "unit": "10-week term",
+              "scope": "ExcelTrack BSBA published tuition",
+              "assumptions": "Term count is a scenario; no completion speed guaranteed.",
+              "evidenceIds": [
+                "enriched-purdue-tuition",
+                "enriched-purdue-exceltrack-terms"
+              ],
+              "includes": [
+                "published term tuition"
+              ],
+              "excludes": [
+                "345 resource fee",
+                "other unverified charges"
+              ]
+            },
+            {
+              "amount": 345,
+              "currency": "USD",
+              "unit": "term",
+              "scope": "Undergraduate ExcelTrack resource fee",
+              "assumptions": "Separate mandatory resource fee per published tuition observations.",
+              "evidenceIds": [
+                "enriched-purdue-tuition"
+              ],
+              "includes": [],
+              "excludes": []
+            },
+            {
+              "amount": 2845,
+              "currency": "USD",
+              "unit": "10-week term",
+              "scope": "Computed ExcelTrack BSBA tuition plus resource fee",
+              "assumptions": "2500+345=2845; other course-specific/personal charges are not independently established.",
+              "evidenceIds": [
+                "enriched-purdue-tuition",
+                "enriched-purdue-exceltrack-terms"
+              ],
+              "includes": [
+                "2500 tuition",
+                "345 resource fee"
+              ],
+              "excludes": [
+                "other unverified charges"
+              ]
+            },
+            {
+              "amount": 195,
+              "currency": "USD",
+              "unit": "month",
+              "scope": "Legacy independent Professional Studies; eligible continuing students only",
+              "assumptions": "Closed to new enrollments and reentries effective 2026-07-01. Do not apply to the separate term-based model.",
+              "evidenceIds": [
+                "enriched-purdue-tuition",
+                "enriched-purdue-professional-studies-current"
+              ],
+              "includes": [],
+              "excludes": [
+                "ASK charges",
+                "PR499 capstone tuition"
+              ]
+            },
+            {
+              "amount": 100,
+              "currency": "USD",
+              "unit": "ASK assessment taken",
+              "scope": "Legacy independent Professional Studies assessment charge",
+              "assumptions": "Individual continuing-student eligibility and course-specific assessment rules apply.",
+              "evidenceIds": [
+                "enriched-purdue-tuition",
+                "enriched-purdue-professional-studies-current"
+              ],
+              "includes": [],
+              "excludes": []
+            },
+            {
+              "amount": 2226,
+              "currency": "USD",
+              "unit": "PR499 bachelor capstone",
+              "scope": "Legacy independent Professional Studies additional capstone tuition",
+              "assumptions": "Monthly subscription also continues during capstone enrollment; not a new-student offer.",
+              "evidenceIds": [
+                "enriched-purdue-tuition",
+                "enriched-purdue-professional-studies-current"
+              ],
+              "includes": [],
+              "excludes": [
+                "concurrent monthly subscription"
+              ]
+            }
+          ],
+          "accreditation": [
+            {
+              "institution": "Purdue University Global",
+              "accreditor": "Higher Learning Commission",
+              "status": "Institutional accreditation stated in current university catalog; no new eligible degree recommendation inferred.",
+              "evidenceIds": [
+                "enriched-purdue-accreditation"
+              ]
+            }
+          ],
+          "transfer": {
+            "overallCap": null,
+            "aceCap": null,
+            "nccrsCap": null,
+            "residency": {
+              "credits": 45,
+              "creditSystem": "quarter",
+              "scope": "Computed remainder outside the externally assessed category (180−135). Internal ASK credits markedAC may count toward residency; do not call all 45 conventional taught courses.",
+              "evidenceIds": [
+                "enriched-purdue-prior-learning",
+                "enriched-purdue-bsba-current",
+                "enriched-purdue-grades"
+              ]
+            },
+            "majorResidency": null,
+            "totalCredits": {
+              "credits": 180,
+              "creditSystem": "quarter",
+              "scope": "ExcelTrack BSBA 2026–27 catalog degree total; native quarter units retained.",
+              "evidenceIds": [
+                "enriched-purdue-bsba-current"
+              ]
+            },
+            "externallyAssessedCap": {
+              "credits": 135,
+              "creditSystem": "quarter",
+              "scope": "Computed 75% externally assessed undergraduate prior-learning ceiling for 180-quarter BSBA. This is a category ceiling, not a guaranteed applicable ACE award or proof of 135 usable quarter credits.",
+              "evidenceIds": [
+                "enriched-purdue-prior-learning",
+                "enriched-purdue-bsba-current"
+              ]
+            }
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": [
+            {
+              "name": "ExcelTrack BSBA MT499 capstone",
+              "scope": "Current BSBA 180-quarter degree; capstone is 6 quarter credits",
+              "method": "Traditional capstone remains; prior learning cannot fulfill program capstones. Proctoring matrix is not established.",
+              "proctored": null,
+              "evidenceIds": [
+                "enriched-purdue-bsba-current",
+                "enriched-purdue-prior-learning"
+              ]
+            },
+            {
+              "name": "Professional Studies PR499 and ASK",
+              "scope": "Current 2026–27 catalog for the legacy independent model; continuers only",
+              "method": "Final traditional 6-quarter capstone; four professional competency tutorials, at most two ASK attempts per assessment and 10 quarter credits per 12 months progression. Do not infer a universal proctoring rule.",
+              "proctored": null,
+              "evidenceIds": [
+                "enriched-purdue-professional-studies-current"
+              ]
+            }
+          ]
+        },
+        "product": {
+          "status": "blocked",
+          "paths": [],
+          "notes": "Editorial comparison documents the preexisting July 1, 2026 independent-model enrollment/reentry closure. Full ExcelTrack/Professional Studies receiving curricula, applicability and grandfathered-student tuition are not changed by a new guide. Retain all existing student history and keep legacy offers out of new-enrollment recommendations."
+        },
+        "editorial": {
+          "status": "review-ready",
+          "proposedUrls": [
+            "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/"
+          ],
+          "publishedUrls": [],
+          "existingUrls": [],
+          "title": "Purdue Global subscriptions: ExcelTrack costs and the closed $195 enrollment option",
+          "metaDescription": "Compare ExcelTrack BSBA tuition with the legacy Professional Studies monthly model, including resource fees, capstones, transfer units and enrollment restrictions.",
+          "canonicalUrl": "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+          "internalLinks": [
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+            "https://degreesteps.com/blog/what-a-75-percent-transfer-limit-means/",
+            "https://degreesteps.com/compare-plans.html?from=courses",
+            "https://degreesteps.com/guides/finish-faster-without-wasting-credit/"
+          ],
+          "structuredData": true,
+          "sitemap": true,
+          "studentUsefulness": "Prevent a new student from planning around a closed $195 monthly option and show capstone/resource-fee costs.",
+          "novelty": "July 1, 2026 closure is newly discovered older information; no change is asserted to have begun on the verification date.",
+          "searchIntent": "Purdue Global $195 Professional Studies subscription availability versus ExcelTrack BSBA cost.",
+          "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+          "urgency": "Resolve source discrepancies and individual evaluation before enrollment.",
+          "overlapNotes": "Existing graduate-acceleration article covers different programs; subscription-planning article now links to this undergraduate decision.",
+          "evidenceIds": [
+            "purdue-independent-closure"
+          ],
+          "metrics": null
+        }
+      }
+    },
+    {
+      "claim": "Provider baseline leads: Sophia $99/mo, $299/4 months, $799/year; Study.com $95/$235 tiers non-proctored; Saylor $5 proctored exam; ASU $425 posted course, ENG101/CAP150 assignment-focused leads. Verify current costs and course-specific exceptions. https://www.sophia.org/ https://study.com/college/ https://www.saylor.org/credit https://ea.asu.edu/how-it-works/pricing/",
+      "section": "P1",
+      "kind": "lead",
+      "id": "finding-d4ed8381ef7ecc91f9c29eb76a6c271dce74d63b84d115ece202add2c11dd15d",
+      "sourceUrls": [
+        "https://ea.asu.edu/how-it-works/pricing/",
+        "https://study.com/college/",
+        "https://www.saylor.org/credit",
+        "https://www.sophia.org/"
+      ],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        }
+      ],
+      "reviewHash": "566a4cac4b842f02e02e1e379bbd6fc5a44a671834107b01fa4e5494ee1ee50f",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-d4ed8381ef7ecc91f9c29eb76a6c271dce74d63b84d115ece202add2c11dd15d",
+        "revision": 1,
+        "previousReviewHash": null,
+        "sourceRevisions": [
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+        ],
+        "reviewer": "DegreeSteps Issue56 primary-source and editorial review",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": "2026-11-27",
+        "announcedOn": null,
+        "effectiveOn": null,
+        "followUpOn": "2026-12-04",
+        "triage": "BOTH",
+        "status": "ready-for-review",
+        "changeKind": "confirmation",
+        "summary": "Update existing provider and subscription articles; no duplicate non-proctored listicle or unsupported ASU proctor-free claim. Content is prepared for PR review; no production publication or indexing is claimed.",
+        "evidence": [
+          {
+            "id": "sophia-billing-conflict",
+            "title": "Account and Billing Tutorial",
+            "url": "https://app.sophia.org/tutorials/account-and-billing",
+            "quote": "12-month membership for $599",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-faq",
+            "title": "Frequently asked questions",
+            "url": "https://ea.asu.edu/help-center/faqs/",
+            "quote": "Admitted, degree-seeking ASU students cannot register for Earned Admission.",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-pricing",
+            "title": "Plans & Pricing",
+            "url": "https://www.sophia.org/plans-and-pricing/",
+            "quote": "Prices shown exclude applicable tax. Tax is calculated at checkout.",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-no-proctor",
+            "title": "Grading Timelines in Online Learning: What You Need to Know",
+            "url": "https://www.sophia.org/blog/higher-education/online-learning-grading-timelines/",
+            "quote": "Sophia Learning has no proctored exams. All assessments are open book",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "study-pricing",
+            "title": "Study.com College Saver plans",
+            "url": "https://study.com/college/pricing.html",
+            "quote": "There's no monthly limit on the number of credit-eligible courses you can complete.",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "study-exams",
+            "title": "What are Study.com's exam policies for college credit courses?",
+            "url": "https://study.com/support/solutions/articles/11000130921-what-are-study-com-s-exam-policies-for-college-credit-courses-",
+            "quote": "All final exams are open-book and unproctored",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "study-id",
+            "title": "Non-Proctored College Saver and College Saver Pro Final Exams: FAQs",
+            "url": "https://study.com/support/solutions/articles/11000130197-non-proctored-college-saver-and-college-saver-pro-final-exams-faqs",
+            "quote": "Study.com requires identity verification before each College Saver and College Saver Pro final exam",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "saylor-faq",
+            "title": "FAQ – Saylor Direct Credit",
+            "url": "https://support.saylor.org/hc/en-us/articles/23597374410900-FAQ-Saylor-Direct-Credit",
+            "quote": "SmarterProctoring charges $5 USD for each exam proctoring session.",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-price",
+            "title": "Pricing | Earned Admission",
+            "url": "https://ea.asu.edu/how-it-works/pricing/",
+            "quote": "Total per course: $425",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "capturePath": null,
+            "contentHash": null,
+            "checkedOn": "2026-11-27",
+            "id": "sophia-id",
+            "url": "https://app.sophia.org/tutorials/verification-methods",
+            "title": "Verification Methods",
+            "kind": "provider",
+            "quote": "You may be prompted to provide an ID for verification through Jumio."
+          },
+          {
+            "capturePath": null,
+            "contentHash": null,
+            "checkedOn": "2026-11-27",
+            "id": "sophia-rigor",
+            "url": "https://www.sophia.org/content/dam/sophia/pdf/Sophia-Course-Rigor-FAQ.pdf",
+            "title": "Sophia Course Rigor FAQ",
+            "kind": "provider",
+            "quote": "Each Touchstone has a project-based deliverable that is evaluated by expert graders."
+          },
+          {
+            "capturePath": null,
+            "contentHash": null,
+            "checkedOn": "2026-11-27",
+            "id": "saylor-materials",
+            "url": "https://support.saylor.org/hc/en-us/articles/205651098-Allowed-materials-on-proctored-credit-exams",
+            "title": "Allowed materials on proctored credit exams",
+            "kind": "provider",
+            "quote": "These exams are closed-book and closed-notes"
+          },
+          {
+            "capturePath": null,
+            "contentHash": null,
+            "checkedOn": "2026-11-27",
+            "id": "asu-ulc-price",
+            "url": "https://ulc.asu.edu/how-it-works/pricing/",
+            "title": "Pricing | ASU Universal Learner Courses",
+            "kind": "provider",
+            "quote": "you have up to one year to decide if you want to add the credits."
+          },
+          {
+            "capturePath": null,
+            "contentHash": null,
+            "checkedOn": "2026-11-27",
+            "id": "asu-proctor",
+            "url": "https://ea.asu.edu/help-center/proctoring/",
+            "title": "Proctoring | Earned Admission",
+            "kind": "provider",
+            "quote": "Why do some courses have proctored exams or quizzes?"
+          },
+          {
+            "capturePath": null,
+            "contentHash": null,
+            "checkedOn": "2026-11-27",
+            "id": "asu-eng101",
+            "url": "https://courses.ulc.asu.edu/english-composition-eng-101/",
+            "title": "ENG 101 - First-Year Composition",
+            "kind": "provider",
+            "quote": "you will draft and revise four major projects"
+          },
+          {
+            "capturePath": null,
+            "contentHash": null,
+            "checkedOn": "2026-11-27",
+            "id": "asu-cap150",
+            "url": "https://courses.ea.asu.edu/career-pathways-cap-150/",
+            "title": "CAP 150 - Career Pathways: Exploring Your Future",
+            "kind": "provider",
+            "quote": "On-demand"
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue56/baseline-providers.json",
+          "content/research-intake/evidence/issue56/captures/baseline-provider-supplemental-receipts.json",
+          "content/research-intake/evidence/issue56/captures/baseline-provider-tool-receipts.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": null,
+            "program": null,
+            "level": null,
+            "modality": null,
+            "catalog": null
+          },
+          "costs": [
+            {
+              "amount": 99,
+              "currency": "USD",
+              "unit": "month",
+              "scope": "Sophia one-month membership",
+              "assumptions": "Auto-renewing duration determines spending; annual $799/$599 official-source conflict remains unresolved.",
+              "includes": [
+                "membership access"
+              ],
+              "excludes": [
+                "applicable tax",
+                "additional renewals"
+              ],
+              "evidenceIds": [
+                "sophia-pricing"
+              ]
+            },
+            {
+              "amount": 299,
+              "currency": "USD",
+              "unit": "4-month membership",
+              "scope": "Sophia four-month plan",
+              "assumptions": "Auto-renews every four months; annual plan price unresolved.",
+              "includes": [
+                "four-month membership"
+              ],
+              "excludes": [
+                "applicable tax",
+                "additional renewals"
+              ],
+              "evidenceIds": [
+                "sophia-pricing"
+              ]
+            },
+            {
+              "amount": 95,
+              "currency": "USD",
+              "unit": "month",
+              "scope": "Study.com College Saver general-education tier",
+              "assumptions": "85+ general-education course library, 2 simultaneous enrollments; premium/upper division availability differs. No obsolete monthly exam completion cap inferred.",
+              "includes": [],
+              "excludes": [],
+              "evidenceIds": [
+                "study-pricing"
+              ]
+            },
+            {
+              "amount": 235,
+              "currency": "USD",
+              "unit": "month",
+              "scope": "Study.com College Saver Pro",
+              "assumptions": "235+ total course library, 3 simultaneous enrollments; completion speed and receiving applicability remain individual.",
+              "includes": [],
+              "excludes": [],
+              "evidenceIds": [
+                "study-pricing"
+              ]
+            },
+            {
+              "amount": 5,
+              "currency": "USD",
+              "unit": "proctored exam session/attempt",
+              "scope": "Saylor Direct Credit; FAQ qualifies most ACE-recommended courses",
+              "assumptions": "Separate credit exam required; retakes cost additional sessions; verify exact course exceptions.",
+              "includes": [
+                "one SmarterProctoring session"
+              ],
+              "excludes": [
+                "additional attempts"
+              ],
+              "evidenceIds": [
+                "saylor-faq"
+              ]
+            },
+            {
+              "amount": 425,
+              "currency": "USD",
+              "unit": "successfully completed course with optional transcript posting",
+              "scope": "ASU Universal Learner/Earned Admission",
+              "assumptions": "$25 enrollment plus$400 optional credit conversion; retakes, separate applications and university acceptance are distinct.",
+              "includes": [
+                "$25 enrollment",
+                "$400 credit posting when eligible"
+              ],
+              "excludes": [
+                "retakes",
+                "separate application fees"
+              ],
+              "evidenceIds": [
+                "asu-price"
+              ]
+            }
+          ],
+          "accreditation": [],
+          "transfer": {
+            "overallCap": null,
+            "aceCap": null,
+            "nccrsCap": null,
+            "residency": null,
+            "majorResidency": null,
+            "totalCredits": null
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": [
+            {
+              "name": "Sophia assessments",
+              "scope": "Provider current assessment baseline; course-specific projects remain",
+              "method": "Open-book, unproctored assessments; identity checks and expert-graded Touchstones may apply.",
+              "proctored": false,
+              "evidenceIds": [
+                "sophia-no-proctor",
+                "sophia-id",
+                "sophia-rigor"
+              ]
+            },
+            {
+              "name": "Study.com College Saver/Pro finals",
+              "scope": "Current official final-exam policy",
+              "method": "Open-book, unproctored finals with identity verification before each final; projects may need manual grading.",
+              "proctored": false,
+              "evidenceIds": [
+                "study-exams",
+                "study-id"
+              ]
+            },
+            {
+              "name": "Saylor Direct Credit exams",
+              "scope": "Current ACE credit-bearing exam route; exact materials exceptions apply",
+              "method": "Proctored closed-book/closed-notes credit exam; a course certificate alone is not ACE-recommended credit.",
+              "proctored": true,
+              "evidenceIds": [
+                "saylor-faq",
+                "saylor-materials"
+              ]
+            },
+            {
+              "name": "ASU ULC assessments",
+              "scope": "Provider default; ENG101/CAP150 complete current syllabi remain unresolved",
+              "method": "Some courses use proctored exams/quizzes. Project-based course descriptions do not prove absence of proctoring.",
+              "proctored": null,
+              "evidenceIds": [
+                "asu-proctor",
+                "asu-eng101",
+                "asu-cap150"
+              ]
+            }
+          ]
+        },
+        "product": {
+          "status": "review-ready",
+          "paths": [
+            "dist/data/credit-sources.json",
+            "scripts/provider-research-facts.mjs",
+            "scripts/provider-research-facts.test.mjs"
+          ],
+          "notes": "Refresh only independently checked provider source dates and ASU minimum credit posting times 6/4/2 weeks. Preserve existing accurate Study/Saylor/Sophia assessment baselines and $235 Pro planner scope; retain Sophia annual $799/$599 conflict and unknown ASU ENG101/CAP150 proctor-free status. No external course equivalencies promoted."
+        },
+        "editorial": {
+          "status": "review-ready",
+          "proposedUrls": [
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/",
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/"
+          ],
+          "publishedUrls": [],
+          "existingUrls": [
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/",
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/"
+          ],
+          "title": "Sophia, Study.com, StraighterLine or CLEP: which fits?",
+          "metaDescription": "Choose eligible transfer courses around your degree, budget, pace and assessment preferences. Compare subscription courses, exams and university-issued credit.",
+          "canonicalUrl": "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+          "internalLinks": [
+            "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/",
+            "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+            "https://degreesteps.com/courses.html?tab=browse",
+            "https://degreesteps.com/degree-plans/wgu-business-management/",
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+            "https://degreesteps.com/portal.html?view=setup"
+          ],
+          "structuredData": true,
+          "sitemap": true,
+          "studentUsefulness": "Compare complete purchase structures, identity checks, assignments, proctored exams and credit-posting timing.",
+          "novelty": "Mostly newly reverified existing baselines, not a new assessment policy. Sophia annual-price conflict persists across two official pages.",
+          "searchIntent": "Which college-credit courses avoid proctored finals, and what does each credit product charge?",
+          "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+          "urgency": "Resolve Sophia annual checkout price before buying; recheck product terms after major catalog changes.",
+          "overlapNotes": "Existing source comparison and provider-order article already match this decision; update their evidence and practical details in place.",
+          "evidenceIds": [
+            "sophia-billing-conflict",
+            "asu-faq",
+            "sophia-pricing",
+            "sophia-no-proctor",
+            "study-pricing",
+            "study-exams",
+            "study-id",
+            "saylor-faq",
+            "asu-price"
+          ],
+          "metrics": null
+        }
+      }
+    }
+  ],
+  "revision": "5622bfa835e07ed3e4d7f18bc72e83e60c3b8681fd7b06e50fbfa39d315ac90f"
+}

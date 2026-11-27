@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "kind": "research-review",
+  "publicationAllowed": false,
+  "findingId": "finding-6dea1840f1f9c32ff24988fda551350b31e30c32e2ffe5cade86c90370cd378d",
+  "revision": 1,
+  "previousReviewHash": null,
+  "sourceRevisions": [
+    "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+  ],
+  "reviewer": "DegreeSteps Issue56 primary-source and editorial review",
+  "reviewedOn": "2026-11-27",
+  "verifiedOn": "2026-11-27",
+  "announcedOn": null,
+  "effectiveOn": null,
+  "followUpOn": "2026-12-04",
+  "triage": "BOTH",
+  "status": "researching",
+  "changeKind": "confirmation",
+  "summary": "Compare verified 2026–27 YourPace tuition, session units and residency with MyPath; keep program maps held until requirements and receiving placements are complete. Content is prepared for PR review; no production publication or indexing is claimed.",
+  "evidence": [
+    {
+      "id": "umpi-undergrad-session",
+      "title": "UMPI AY2026–27 YourPace tuition",
+      "url": "https://www.umpi.edu/yourpace/tuition/",
+      "quote": "$1800\n\nPer 8 week session",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umpi-accreditation",
+      "title": "UMPI accreditation",
+      "url": "https://www.umpi.edu/about/accreditation/",
+      "quote": "UMPI is accredited by the New England Commission of Higher Education (NECHE)",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null
+    }
+  ],
+  "receiptPaths": [
+    "content/research-intake/evidence/issue56/editorial-accreditation-open-receipt.json",
+    "content/research-intake/evidence/issue56/editorial-school-open-receipt.json"
+  ],
+  "facts": {
+    "scope": {
+      "institution": "University of Maine at Presque Isle",
+      "program": "YourPace undergraduate; business-specific applicability still requires exact degree ledger",
+      "level": "bachelor",
+      "modality": "online YourPace",
+      "catalog": "AY2026–27 tuition"
+    },
+    "costs": [
+      {
+        "amount": 1800,
+        "currency": "USD",
+        "unit": "8-week paid undergraduate session",
+        "scope": "UMPI YourPace AY2026–27 undergraduate tuition",
+        "assumptions": "Number of sessions is a student scenario, not a completion estimate; graduate and other formats differ.",
+        "includes": [
+          "tuition for one 8-week paid session"
+        ],
+        "excludes": [
+          "additional paid sessions",
+          "unverified incidental charges"
+        ],
+        "evidenceIds": [
+          "umpi-undergrad-session"
+        ]
+      }
+    ],
+    "accreditation": [
+      {
+        "institution": "University of Maine at Presque Isle",
+        "accreditor": "New England Commission of Higher Education (NECHE)",
+        "status": "Institutional accreditation stated by the university; see retained official source.",
+        "evidenceIds": [
+          "umpi-accreditation"
+        ]
+      }
+    ],
+    "transfer": {
+      "overallCap": null,
+      "aceCap": null,
+      "nccrsCap": null,
+      "residency": null,
+      "majorResidency": null,
+      "totalCredits": null
+    },
+    "aceRecommendations": [],
+    "equivalencies": [],
+    "assessments": []
+  },
+  "product": {
+    "status": "blocked",
+    "paths": [],
+    "notes": "Verified tuition/residency can inform comparison content. A complete current YourPace business curriculum and 10–20 source-backed receiving placements are not established by tuition or generic transfer headlines; existing canonical kits and student records remain unchanged."
+  },
+  "editorial": {
+    "status": "review-ready",
+    "proposedUrls": [
+      "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/"
+    ],
+    "publishedUrls": [],
+    "existingUrls": [],
+    "title": "UMPI YourPace vs UMass Global MyPath: business-degree costs and transfer",
+    "metaDescription": "Compare UMPI and UMass Global business options using current subscription units, residency, ACE questions, mastery transcripts and the live MyPath price discrepancy.",
+    "canonicalUrl": "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+    "internalLinks": [
+      "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+      "https://degreesteps.com/blog/what-a-75-percent-transfer-limit-means/",
+      "https://degreesteps.com/compare-plans.html?from=courses",
+      "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+      "https://degreesteps.com/import-courses.html"
+    ],
+    "structuredData": true,
+    "sitemap": true,
+    "studentUsefulness": "Help an adult business student compare the cost of actual paid sessions and applicable prior learning.",
+    "novelty": "Current tuition and residency rechecked; the reported future ACE restriction is not established.",
+    "searchIntent": "UMPI YourPace versus UMass Global MyPath for a transfer-heavy business degree.",
+    "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+    "urgency": "Resolve source discrepancies and individual evaluation before enrollment.",
+    "overlapNotes": "No existing direct comparison; general subscription and institutional-credit articles link to the detailed new comparison.",
+    "evidenceIds": [
+      "umpi-undergrad-session",
+      "umpi-accreditation"
+    ],
+    "metrics": null
+  }
+}

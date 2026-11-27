@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 1,
+  "issue": 56,
+  "scope": "Independent primary-source provider research; no canonical files changed by this researcher.",
+  "verifiedOn": "2026-11-27",
+  "authorRole": "issue56_providers",
+  "publicationAllowed": false,
+  "methodology": {
+    "primarySourceVerification": true,
+    "webReader": "mcp__codex_apps__search_service_web_run",
+    "rawOriginHttpCaptured": false,
+    "receiptHonesty": "Retained connector responses are rendered extractions. Crawl metadata is the reader's; not an origin HTTP receipt. Exact per-request time is null where not sampled. SHA256 in capture-manifest.json identifies retained JSON bytes, never origin HTML.",
+    "localNetworkAttempt": {
+      "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=3fdb1492-e04f-e911-a97b-000d3a363c81",
+      "outcome": "Python urllib URLError: [Errno 1] Operation not permitted; no successful origin HTTP fetch claimed.",
+      "date": "2026-11-27"
+    },
+    "noForumClaimsPromoted": true
+  },
+  "canonicalAudit": {
+    "baseCommit": "365566",
+    "filesReviewed": [
+      "dist/data/credit-sources.json",
+      "dist/planner.js",
+      "content/discovery/course-assessment-reviews.json",
+      "dist/provider-registry.js",
+      "content/research-batches/ace-inventory-2026-11-18.json",
+      "content/pathway-kits/umpi/undergraduate-public-receiving-review-2026-11-26.json"
+    ],
+    "observations": [
+      "Google GOOG-0007/-0008/-0009 are absent from active dist runtime provider/course data; they appear in staged inventory and reviewed receiving-row evidence only.",
+      "The UMPI receiving-review reports 9/6/9 receiving semester credits for GOOG-0007/-0008/-0009, with original source identity and quantity unreviewed. Keep these receiving awards separate from current ACE source recommendations 10/7/10.",
+      "Study.com $95/$235 tiers, unlimited monthly completions and two/three concurrent courses already appear in credit-sources.json. Planner $235 intentionally models College Saver Pro, avoiding a false $95 all-course assumption.",
+      "Saylor $5 proctored attempts and Sophia non-proctored policy are already represented. Sophia annual official-page conflict is already documented and remains unresolved."
+    ]
+  },
+  "findings": [
+    {
+      "id": "google-ace-windows-20261127",
+      "priority": "P0",
+      "classification": "CONTENT",
+      "status": "verified-current-window-renewal-watch",
+      "novelty": "Newly checked current registry and upcoming end date; no new policy or renewal announced by this finding.",
+      "studentUsefulness": "High: protects purchases based on an unsupported future completion window and protects completed learning from retroactive removal.",
+      "urgency": "Recommendation periods end 2026-11-30, three days after this review.",
+      "searchIntent": [
+        "Google certificate ACE credit expiration",
+        "Google cybersecurity college credit",
+        "Google ACE recommendation dates"
+      ],
+      "keywordsMetrics": null,
+      "canonicalUrls": [
+        "/guides/ace-nccrs-and-accreditation/"
+      ],
+      "followUpOn": "2026-12-01",
+      "sourceUrls": [
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=3fdb1492-e04f-e911-a97b-000d3a363c81",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=49ddc095-0bdc-ea11-a813-000d3a33232a"
+      ],
+      "capturePaths": [
+        "/outputs/issue56/source-research/provider-captures/google-registry.json",
+        "/outputs/issue56/source-research/provider-captures/google-versions.json",
+        "/outputs/issue56/source-research/provider-captures/wgu-index-ace-faq.json"
+      ],
+      "courses": [
+        {
+          "aceId": "GOOG-0009",
+          "title": "Google Advanced Data Analytics Professional Certificate",
+          "currentVersion": 2,
+          "recommendationStart": "2025-12-01",
+          "recommendationEnd": "2026-11-30",
+          "sourceCreditSystem": "semester",
+          "sourceCredits": 10,
+          "lowerDivisionSubjects": [
+            {
+              "subject": "Introduction to Data Science",
+              "credits": 6
+            },
+            {
+              "subject": "Introduction to Python",
+              "credits": 3
+            },
+            {
+              "subject": "Career Development",
+              "credits": 1
+            }
+          ],
+          "currentUrl": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3a353ed3-14d2-f011-bbd3-000d3a329ecb&oid=3fdb1492-e04f-e911-a97b-000d3a363c81&org=Google",
+          "historical": {
+            "version": 1,
+            "sourceCredits": 9,
+            "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=655347a9-f283-ee11-8179-00224805fa3a&oid=3fdb1492-e04f-e911-a97b-000d3a363c81&org=Google",
+            "recommendationStart": null,
+            "recommendationEnd": null,
+            "periodNotCapturedReason": "Version1 date selector not exposed by rendered reader."
+          }
+        },
+        {
+          "aceId": "GOOG-0007",
+          "title": "Google Cybersecurity Professional Certificate",
+          "currentVersion": 2,
+          "recommendationStart": "2025-12-01",
+          "recommendationEnd": "2026-11-30",
+          "sourceCreditSystem": "semester",
+          "sourceCredits": 10,
+          "lowerDivisionSubjects": [
+            {
+              "subject": "Introduction to Linux",
+              "credits": 3
+            },
+            {
+              "subject": "Attacks and Exploits",
+              "credits": 3
+            },
+            {
+              "subject": "Security Fundamentals",
+              "credits": 3
+            },
+            {
+              "subject": "Career Development",
+              "credits": 1
+            }
+          ],
+          "currentUrl": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=10353ed3-14d2-f011-bbd3-000d3a329ecb&oid=3fdb1492-e04f-e911-a97b-000d3a363c81&org=Google",
+          "historical": {
+            "version": 1,
+            "sourceCredits": 9,
+            "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=6b0f9c5f-ef83-ee11-8179-00224805fa3a&oid=3fdb1492-e04f-e911-a97b-000d3a363c81&org=Google",
+            "recommendationStart": null,
+            "recommendationEnd": null,
+            "periodNotCapturedReason": "Version1 date selector not exposed by rendered reader."
+          }
+        },
+        {
+          "aceId": "GOOG-0008",
+          "title": "Google Business Intelligence Professional Certificate",
+          "currentVersion": 2,
+          "recommendationStart": "2025-12-01",
+          "recommendationEnd": "2026-11-30",
+          "sourceCreditSystem": "semester",
+          "sourceCredits": 7,
+          "lowerDivisionSubjects": [
+            {
+              "subject": "Data Modeling and Decision Making",
+              "credits": 3
+            },
+            {
+              "subject": "Foundations of Business Intelligence",
+              "credits": 3
+            },
+            {
+              "subject": "Career Development",
+              "credits": 1
+            }
+          ],
+          "currentUrl": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=1f353ed3-14d2-f011-bbd3-000d3a329ecb&oid=3fdb1492-e04f-e911-a97b-000d3a363c81&org=Google",
+          "historical": {
+            "version": 1,
+            "sourceCredits": 6,
+            "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=1714a6ef-f183-ee11-8179-00224805fa3a&oid=3fdb1492-e04f-e911-a97b-000d3a363c81&org=Google",
+            "recommendationStart": null,
+            "recommendationEnd": null,
+            "periodNotCapturedReason": "Version1 date selector not exposed by rendered reader."
+          }
+        }
+      ],
+      "renewal": {
+        "verifiedSuccessor": null,
+        "noLaterPeriodFoundIn": "Current Google and Coursera organization listing rendered results as of this review.",
+        "notProven": "Absence from inspected pages is not proof of a cancellation or an eventual failure to renew.",
+        "recommendation": "Do not extend the end date or recommend a new learner rely on completion after 2026-11-30 until an official successor period is retrieved."
+      },
+      "historicalProtection": {
+        "preserveStudentRecords": true,
+        "preserveAwardedCredits": true,
+        "preserveVersionSpecificTotals": true,
+        "doNotUpgradeV1ToV2Automatically": true,
+        "reason": "ACE dates link a completion to its exact reviewed version; the current recommendation end date is not an automatic expiration date for valid completed learning or a university's posted award.",
+        "sources": [
+          {
+            "url": "https://acenationalguide.zendesk.com/hc/en-us/articles/21152957233307-Why-do-ACE-recommendations-have-start-and-end-dates",
+            "updatedOn": "2026-02-03",
+            "excerpt": "The dates ensure that the credit recommendation matches the exact version of the training you completed."
+          },
+          {
+            "url": "https://acenationalguide.zendesk.com/hc/en-us/articles/21153004361371-What-if-I-completed-a-learning-experience-outside-of-the-start-and-end-dates-listed",
+            "updatedOn": "2026-02-25",
+            "summary": "A completion outside recommendation dates is ineligible for the corresponding ACE badge/transcript; providers can renew with a gap."
+          }
+        ],
+        "receivingSchoolCaveat": "The university still decides acceptance, applicability, age-of-credit rules and the exact award. ACE source quantity is not a receiving award."
+      },
+      "productDisposition": "No active Google canonical provider rows require correction. Retain watch evidence; do not promote a new Google pathway from this time-limited finding."
+    },
+    {
+      "id": "wgu-single-courses-20261127",
+      "priority": "P1",
+      "classification": "CONTENT",
+      "status": "verified-advertised-offer-with-catalog-price-conflict",
+      "novelty": "Newly verified current marketing price, recurring charge, institutional transcript and course-specific assessment examples; exact discounted eligibility remains unresolved.",
+      "studentUsefulness": "High: explains recurring cost, non-ACE institutional issuer and required assessment hardware.",
+      "searchIntent": [
+        "WGU $25 courses cost",
+        "WGU single courses transfer",
+        "WGU single courses proctored"
+      ],
+      "keywordMetrics": null,
+      "followUpOn": "2026-12-04",
+      "sourceUrls": [
+        "https://www.wgu.edu/single-courses.html",
+        "https://www.wgu.edu/about/institutional-catalog.html",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf"
+      ],
+      "capturePaths": [
+        "/outputs/issue56/source-research/provider-captures/wgu-current-prices-assessment.json",
+        "/outputs/issue56/source-research/provider-captures/wgu-linked-syllabi.json",
+        "/outputs/issue56/source-research/provider-captures/wgu-english-and-eligibility-search.json",
+        "/outputs/issue56/source-research/provider-captures/wgu-catalog-and-maine-blockers.json"
+      ],
+      "advertisedPrice": {
+        "currency": "USD",
+        "mostSingleCourses": 25,
+        "twoCourseBundles": 49,
+        "included": "Initial course access and e-textbooks.",
+        "initialAccessMonths": "2–3, course-specific",
+        "monthlyExtension": 99,
+        "extensionTransition": "Automatic after initial term; page says cancel anytime.",
+        "exceptions": [
+          {
+            "product": "IT and Tech Fundamentals",
+            "initialPrice": 49,
+            "initialAccessMonths": 3
+          },
+          {
+            "product": "PACA + IT & Tech Fundamentals course bundle",
+            "monthlyExtension": 199
+          }
+        ],
+        "financialAid": "Federal financial aid unavailable.",
+        "arithmeticScenarios": [
+          {
+            "product": "Standard advertised $25 single course",
+            "extensionMonths": 0,
+            "knownPrice": 25
+          },
+          {
+            "product": "Standard advertised $25 single course",
+            "extensionMonths": 1,
+            "knownPrice": 124
+          },
+          {
+            "product": "Standard advertised $25 single course",
+            "extensionMonths": 2,
+            "knownPrice": 223
+          }
+        ],
+        "assumptions": "Advertised discount eligibility and current checkout confirmed, standard $99 extension product, no other charge quoted. Not a universal all-product total."
+      },
+      "catalogConflict": {
+        "edition": "November2026",
+        "catalogDated": "2026-10-27",
+        "printedPage": 51,
+        "standardSingleCourseRange": [
+          750,
+          1000
+        ],
+        "standardBundleRange": [
+          1500,
+          1750
+        ],
+        "currency": "USD",
+        "resolution": null,
+        "assessment": "Marketing page describes heavily discounted offerings, but retrieved sources do not establish the precise discount eligibility or conclusively resolve the standard/catalog versus advertised price difference."
+      },
+      "eligibility": {
+        "confirmed": "No admission to a full degree program required; undergraduate except marked courses and bachelor's degree generally not required.",
+        "exceptions": [
+          "Learners and Learning Science is marked bachelor's-degree students only.",
+          "Academic Readiness for Nursing links eligible-state conditions for B.S. Nursing Prelicensure admission."
+        ],
+        "unknown": [
+          "Exact minimum age or geography for discounted single-course enrollment",
+          "Any current lifetime two-course/bundle limit",
+          "Reimbursement or full-degree matriculation requirements for $25 discount"
+        ],
+        "policyUrl": "https://cm.wgu.edu/t5/Single-Course-Offerings-and/Single-Course-Offering-and-Professional-Certificate-Policies/ta-p/67524",
+        "policyRetrieval": "Web reader reported inaccessible; no eligibility claim inferred from forum references."
+      },
+      "transcript": {
+        "issuer": "Western Governors University",
+        "basis": "Official WGU transcript per current FAQ.",
+        "creditOrigin": "institutionally-taught-coursework",
+        "aceAssumption": false,
+        "externalTransfer": "Receiving institution determines equivalency.",
+        "gradePolicy": "FAQ says course passing equivalent to C or better; it does not promise traditional A–F transcript grades."
+      },
+      "assessmentExamples": [
+        {
+          "course": "Applied Algebra",
+          "standaloneCode": "C957A",
+          "competencyUnits": 3,
+          "assessment": "One final exam; syllabus explicitly states at least one proctored test.",
+          "proctoring": "required",
+          "hardware": "External webcam, microphone/speakers and Guardian browser.",
+          "prerequisite": "Syllabus advises Applied Probability and Statistics or equivalent first.",
+          "url": "https://academyproduct.s3.us-east-2.amazonaws.com/Algebra_C957A/PDF/C957A_Applied_Algebra_Syllabus.html"
+        },
+        {
+          "course": "Organizational Behavior",
+          "standaloneCode": "C715A",
+          "competencyUnits": 3,
+          "assessment": "One final exam; syllabus explicitly states at least one proctored test.",
+          "proctoring": "required",
+          "hardware": "External webcam, microphone/speakers and Guardian browser.",
+          "url": "https://academyproduct.s3.us-east-2.amazonaws.com/OrgB_C715A/PDF/C715A_v2_Organizational_Behavior_Syllabus.html"
+        },
+        {
+          "course": "English Composition I",
+          "standaloneCode": "ENG",
+          "providerPathCode": "ENG101",
+          "competencyUnits": 3,
+          "assessment": "Four papers; initial diagnostic and concluding progress assessment also described.",
+          "proctoring": "Not required by retrieved syllabus; no blanket guarantee outside this exact course/version.",
+          "url": "https://academyproduct.s3.us-east-2.amazonaws.com/English_ENG101/PDF/ENG__v3_English_Composition_I_Syllabus.html"
+        },
+        {
+          "course": "Introduction to Communication: Connecting with Others",
+          "standaloneCode": "D268A",
+          "competencyUnits": 3,
+          "assessment": "Three final projects.",
+          "proctoring": "Not required by retrieved syllabus; no blanket guarantee outside this exact course/version.",
+          "url": "https://academyproduct.s3.us-east-2.amazonaws.com/IntroCommConnectingOthers_D268A/PDF/D268A_Introduction_Communication_Connecting_Others_Syllabus.html"
+        }
+      ],
+      "mappings": {
+        "targetRequested": "10–20 exact applicable destination mappings",
+        "verifiedExternalMappingCount": 0,
+        "mappings": [],
+        "status": "WATCH/NO ACTION",
+        "reason": "Official current catalog says standalone codes differ from degree-course codes. Matching titles or stripping A does not prove equivalence. Public MaineStreet guest tool could not be retrieved; no external equivalency or degree applicability was independently verified.",
+        "officialGateway": "https://www.maine.edu/students/transfer/transfer-tools/",
+        "attempts": [
+          {
+            "url": "https://mainestreetcs.maine.edu/psp/CSPRDST/EMPLOYEE/SA/c/UM_SA.UM_TRNSFER_GUEST.GBL",
+            "outcome": "Web reader reported 500 redirect to idp.maine.edu SAML SSO; not accessible.",
+            "originHttpStatus": null
+          },
+          {
+            "url": "https://mainestreetcs.maine.edu/psp/CSPRDG/EMPLOYEE/SA/c/UM_SA.UM_TRNSFER_GUEST.GBL",
+            "outcome": "Reader redirected to cmd=login&errorPg=ckreq; page title 'An error has occurred.'",
+            "originHttpStatus": null
+          }
+        ]
+      },
+      "productDisposition": "Catalog-only discovery or editorial may explain verified facts. Do not create guessed receiving mappings or replace existing institutional course codes."
+    },
+    {
+      "id": "provider-baselines-20261127",
+      "priority": "P1",
+      "classification": "BOTH",
+      "status": "child-primary-research-report",
+      "report": "/outputs/issue56/source-research/baseline-providers.json",
+      "canonicalDisposition": "Refresh source dates only where supported; existing current Study/Saylor/Sophia assessment baselines need no forced product rewrite. Preserve annual-price conflict; keep $235 Pro planner baseline for full library.",
+      "followUpOn": "2026-12-04"
+    }
+  ]
+}

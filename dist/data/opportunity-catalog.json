@@ -9583,8 +9583,16 @@
         "amount": null,
         "currency": "USD",
         "period": "24 weeks",
-        "notes": "$3,500 undergraduate and $4,030 graduate civilian tuition per 24-week billing period. Active-duty military per-credit billing differs; use a program-level rate.",
-        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+        "notes": "The live undergraduate tuition table is explicitly labeled 2025–2026 ($3,500 per 24 weeks); BBA marketing separately quotes $3,400 per six-month access. Current academic-year tuition and the effective date of the difference are not established. Retain prior graduate quotes separately; no universal current rate is asserted.",
+        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+        "undergraduateQuoteReview": {
+          "checkedOn": "2026-11-27",
+          "status": "current-year-not-verified",
+          "tuitionTableAcademicYear": "2025-2026",
+          "marketingAcademicYear": null,
+          "effectiveOn": null,
+          "followUpOn": "2026-12-11"
+        }
       },
       "transferPolicy": {
         "institutional": {
@@ -9619,7 +9627,8 @@
         {
           "id": "opportunity-umass-global-umass-tuition",
           "title": "Tuition and billing-period rates",
-          "url": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+          "url": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+          "checkedOn": "2026-11-27"
         },
         {
           "id": "opportunity-umass-global-umass-prior-learning",
@@ -9629,7 +9638,8 @@
         {
           "id": "opportunity-umass-global-umass-bba",
           "title": "MyPath BBA degree details",
-          "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced"
+          "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+          "checkedOn": "2026-11-27"
         },
         {
           "id": "opportunity-umass-global-umass-mba",
@@ -64277,11 +64287,23 @@
       ],
       "pricing": {
         "model": "subscription",
-        "amount": 3500,
+        "amount": null,
         "currency": "USD",
         "period": "24 weeks",
-        "notes": "Undergraduate civilian MyPath subscription; minimum 12 units per billing period. Do not treat the directory card's '/Credit' label as per-credit tuition.",
-        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+        "notes": "The live tuition table labels its $3,500 per 24-week undergraduate quote as 2025–2026. Current-year tuition has not been independently verified. Historical quotes are retained; no current total degree price is asserted.",
+        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+        "reviewStatus": "current-year-not-verified",
+        "checkedOn": "2026-11-27",
+        "historicalQuotes": [
+          {
+            "amount": 3500,
+            "currency": "USD",
+            "period": "24 weeks",
+            "academicYear": "2025-2026",
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "checkedOn": "2026-11-27"
+          }
+        ]
       },
       "creditUnit": "semester",
       "status": "available",
@@ -64293,11 +64315,23 @@
       "checkedOn": "2026-11-03",
       "effectivePricing": {
         "model": "subscription",
-        "amount": 3500,
+        "amount": null,
         "currency": "USD",
         "period": "24 weeks",
-        "notes": "Undergraduate civilian MyPath subscription; minimum 12 units per billing period. Do not treat the directory card's '/Credit' label as per-credit tuition.",
-        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+        "notes": "The live tuition table labels its $3,500 per 24-week undergraduate quote as 2025–2026. Current-year tuition has not been independently verified. Historical quotes are retained; no current total degree price is asserted.",
+        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+        "reviewStatus": "current-year-not-verified",
+        "checkedOn": "2026-11-27",
+        "historicalQuotes": [
+          {
+            "amount": 3500,
+            "currency": "USD",
+            "period": "24 weeks",
+            "academicYear": "2025-2026",
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "checkedOn": "2026-11-27"
+          }
+        ]
       },
       "effectiveTransferPolicy": {
         "institutional": {
@@ -64336,11 +64370,32 @@
       ],
       "pricing": {
         "model": "subscription",
-        "amount": 3500,
+        "amount": null,
         "currency": "USD",
         "period": "24 weeks",
-        "notes": "Undergraduate civilian MyPath subscription; minimum 12 units per billing period. Do not treat the directory card's '/Credit' label as per-credit tuition.",
-        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+        "notes": "The live tuition table labels its $3,500 per 24-week undergraduate quote as 2025–2026. Current-year tuition has not been independently verified. The BBA page separately quotes $3,400 per six-month access; no effective date is established. Historical quotes are retained; no current total degree price is asserted.",
+        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+        "reviewStatus": "current-year-not-verified",
+        "checkedOn": "2026-11-27",
+        "historicalQuotes": [
+          {
+            "amount": 3500,
+            "currency": "USD",
+            "period": "24 weeks",
+            "academicYear": "2025-2026",
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "checkedOn": "2026-11-27"
+          },
+          {
+            "amount": 3400,
+            "currency": "USD",
+            "period": "six months",
+            "academicYear": null,
+            "sourceUrl": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+            "checkedOn": "2026-11-27",
+            "status": "conflicting-undated-marketing-quote"
+          }
+        ]
       },
       "transferPolicy": {
         "maximumCredits": 90,
@@ -64358,11 +64413,32 @@
       "checkedOn": "2026-11-03",
       "effectivePricing": {
         "model": "subscription",
-        "amount": 3500,
+        "amount": null,
         "currency": "USD",
         "period": "24 weeks",
-        "notes": "Undergraduate civilian MyPath subscription; minimum 12 units per billing period. Do not treat the directory card's '/Credit' label as per-credit tuition.",
-        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+        "notes": "The live tuition table labels its $3,500 per 24-week undergraduate quote as 2025–2026. Current-year tuition has not been independently verified. The BBA page separately quotes $3,400 per six-month access; no effective date is established. Historical quotes are retained; no current total degree price is asserted.",
+        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+        "reviewStatus": "current-year-not-verified",
+        "checkedOn": "2026-11-27",
+        "historicalQuotes": [
+          {
+            "amount": 3500,
+            "currency": "USD",
+            "period": "24 weeks",
+            "academicYear": "2025-2026",
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "checkedOn": "2026-11-27"
+          },
+          {
+            "amount": 3400,
+            "currency": "USD",
+            "period": "six months",
+            "academicYear": null,
+            "sourceUrl": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+            "checkedOn": "2026-11-27",
+            "status": "conflicting-undated-marketing-quote"
+          }
+        ]
       },
       "effectiveTransferPolicy": {
         "institutional": {
@@ -64401,11 +64477,23 @@
       ],
       "pricing": {
         "model": "subscription",
-        "amount": 3500,
+        "amount": null,
         "currency": "USD",
         "period": "24 weeks",
-        "notes": "Undergraduate civilian MyPath subscription; minimum 12 units per billing period. Do not treat the directory card's '/Credit' label as per-credit tuition.",
-        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+        "notes": "The live tuition table labels its $3,500 per 24-week undergraduate quote as 2025–2026. Current-year tuition has not been independently verified. Historical quotes are retained; no current total degree price is asserted.",
+        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+        "reviewStatus": "current-year-not-verified",
+        "checkedOn": "2026-11-27",
+        "historicalQuotes": [
+          {
+            "amount": 3500,
+            "currency": "USD",
+            "period": "24 weeks",
+            "academicYear": "2025-2026",
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "checkedOn": "2026-11-27"
+          }
+        ]
       },
       "creditUnit": "semester",
       "status": "available",
@@ -64417,11 +64505,23 @@
       "checkedOn": "2026-11-03",
       "effectivePricing": {
         "model": "subscription",
-        "amount": 3500,
+        "amount": null,
         "currency": "USD",
         "period": "24 weeks",
-        "notes": "Undergraduate civilian MyPath subscription; minimum 12 units per billing period. Do not treat the directory card's '/Credit' label as per-credit tuition.",
-        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+        "notes": "The live tuition table labels its $3,500 per 24-week undergraduate quote as 2025–2026. Current-year tuition has not been independently verified. Historical quotes are retained; no current total degree price is asserted.",
+        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+        "reviewStatus": "current-year-not-verified",
+        "checkedOn": "2026-11-27",
+        "historicalQuotes": [
+          {
+            "amount": 3500,
+            "currency": "USD",
+            "period": "24 weeks",
+            "academicYear": "2025-2026",
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "checkedOn": "2026-11-27"
+          }
+        ]
       },
       "effectiveTransferPolicy": {
         "institutional": {
@@ -64463,11 +64563,24 @@
       ],
       "pricing": {
         "model": "subscription",
-        "amount": 4030,
+        "amount": null,
         "currency": "USD",
         "period": "24 weeks",
-        "notes": "Graduate civilian MyPath subscription; minimum 9 units per billing period.",
-        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+        "notes": "The earlier directory recorded $4,030 per 24-week graduate MyPath period. That quote and its original review date are preserved; a current academic-year rate has not been independently reverified.",
+        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+        "reviewStatus": "current-year-not-verified",
+        "checkedOn": "2026-11-27",
+        "historicalQuotes": [
+          {
+            "amount": 4030,
+            "currency": "USD",
+            "period": "24 weeks",
+            "academicYear": null,
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "checkedOn": "2026-11-03",
+            "status": "prior-record-not-currently-reverified"
+          }
+        ]
       },
       "creditUnit": "semester",
       "status": "available",
@@ -64479,11 +64592,24 @@
       "checkedOn": "2026-11-03",
       "effectivePricing": {
         "model": "subscription",
-        "amount": 4030,
+        "amount": null,
         "currency": "USD",
         "period": "24 weeks",
-        "notes": "Graduate civilian MyPath subscription; minimum 9 units per billing period.",
-        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+        "notes": "The earlier directory recorded $4,030 per 24-week graduate MyPath period. That quote and its original review date are preserved; a current academic-year rate has not been independently reverified.",
+        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+        "reviewStatus": "current-year-not-verified",
+        "checkedOn": "2026-11-27",
+        "historicalQuotes": [
+          {
+            "amount": 4030,
+            "currency": "USD",
+            "period": "24 weeks",
+            "academicYear": null,
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "checkedOn": "2026-11-03",
+            "status": "prior-record-not-currently-reverified"
+          }
+        ]
       },
       "effectiveTransferPolicy": {
         "institutional": {
@@ -64527,11 +64653,24 @@
       ],
       "pricing": {
         "model": "subscription",
-        "amount": 4030,
+        "amount": null,
         "currency": "USD",
         "period": "24 weeks",
-        "notes": "Graduate civilian MyPath subscription; minimum 9 units per billing period.",
-        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+        "notes": "The earlier directory recorded $4,030 per 24-week graduate MyPath period. That quote and its original review date are preserved; a current academic-year rate has not been independently reverified.",
+        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+        "reviewStatus": "current-year-not-verified",
+        "checkedOn": "2026-11-27",
+        "historicalQuotes": [
+          {
+            "amount": 4030,
+            "currency": "USD",
+            "period": "24 weeks",
+            "academicYear": null,
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "checkedOn": "2026-11-03",
+            "status": "prior-record-not-currently-reverified"
+          }
+        ]
       },
       "transferPolicy": {
         "maximumCredits": 12,
@@ -64550,11 +64689,24 @@
       "checkedOn": "2026-11-03",
       "effectivePricing": {
         "model": "subscription",
-        "amount": 4030,
+        "amount": null,
         "currency": "USD",
         "period": "24 weeks",
-        "notes": "Graduate civilian MyPath subscription; minimum 9 units per billing period.",
-        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+        "notes": "The earlier directory recorded $4,030 per 24-week graduate MyPath period. That quote and its original review date are preserved; a current academic-year rate has not been independently reverified.",
+        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+        "reviewStatus": "current-year-not-verified",
+        "checkedOn": "2026-11-27",
+        "historicalQuotes": [
+          {
+            "amount": 4030,
+            "currency": "USD",
+            "period": "24 weeks",
+            "academicYear": null,
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+            "checkedOn": "2026-11-03",
+            "status": "prior-record-not-currently-reverified"
+          }
+        ]
       },
       "effectiveTransferPolicy": {
         "institutional": {
@@ -66843,9 +66995,10 @@
       "id": "opportunity-umass-global-umass-tuition",
       "title": "Tuition and billing-period rates",
       "url": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+      "checkedOn": "2026-11-27",
       "school": "University of Massachusetts Global",
       "schoolId": "umass-global",
-      "checkedAt": "2026-11-03",
+      "checkedAt": "2026-11-27",
       "catalogCollection": "opportunity-expansion",
       "scope": "Five self-paced degree programs listed on the official MyPath directory.",
       "programCount": 0
@@ -66865,9 +67018,10 @@
       "id": "opportunity-umass-global-umass-bba",
       "title": "MyPath BBA degree details",
       "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+      "checkedOn": "2026-11-27",
       "school": "University of Massachusetts Global",
       "schoolId": "umass-global",
-      "checkedAt": "2026-11-03",
+      "checkedAt": "2026-11-27",
       "catalogCollection": "opportunity-expansion",
       "scope": "Five self-paced degree programs listed on the official MyPath directory.",
       "programCount": 0

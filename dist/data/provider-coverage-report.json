@@ -1,6 +1,6 @@
 {
   "schemaRevision": "provider-coverage-v1",
-  "revision": "provider-coverage-v1:84ba9eaae897438ab64a2fdc353ff9b16f4722eb55431a0fe4cc17b273c9e498",
+  "revision": "provider-coverage-v1:3fea9fa6732fac8b6cd04b539a56072b13e36dc63bb6b4eddd11045eb39b471b",
   "registryRevision": "academic-v1:0c3a74f9c8a43a2f161c6bb2449b3bf1646076d01a7e8999fae9c0314868c09e",
   "asOf": "2026-11-27",
   "privateStudentRecordsIncluded": false,
@@ -17,10 +17,10 @@
     "assessment": "Current exact course-code or supported provider-policy evidence, using the existing assessment engine."
   },
   "summary": {
-    "directoryProviders": 31,
-    "observedProviders": 31,
+    "directoryProviders": 32,
+    "observedProviders": 32,
     "indexedProviders": 9,
-    "directoryOnlyProviders": 22,
+    "directoryOnlyProviders": 23,
     "providersWithReceivingClaims": 9,
     "providersWithInstitutionSourceBoundAwards": 6,
     "providersUsedInReadyBaselines": 4,
@@ -1306,14 +1306,56 @@
         "not-used-in-publication-ready-baseline",
         "no-current-provider-rate"
       ]
+    },
+    {
+      "id": "wgu-single-courses",
+      "name": "WGU Single Courses",
+      "directoryListed": true,
+      "directoryStatus": "current-offer",
+      "kind": "institutional-course",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
     }
   ],
   "inputFingerprints": {
-    "directory": "36259a33222e57936987fbbfa23e423bbeac5083f803d69974d898cb57b3eaa4",
+    "directory": "b635ddc2f7b710d51f5017218faca4d3cbaa864c8fe71fbbebf4f2445828c314",
     "courseCatalogs": "319bda2aaea1f2e238d91a3e4c5050d068e0ed9360470c4141564bc9555dbb03",
     "models": "bd79da4e4db5c152d4c51406f35d74c50b279f02cc29313f52e9e2f785d15671",
     "publication": "f29d659fe364fa02643a66e65381f292380c86aad53021c9a53b817d398c40f1",
-    "baselines": "c91f08e0c6cc6ceed824c620452a74a676dc8e80b846d5366911f41ed7939434",
+    "baselines": "d8d31191afd984b201fc99cd82306ee428ad262e73ac7cb37560ef105c51d7a8",
     "rates": "fbc372400742b1f05999ed1f8ec55373ca16282f52529478f97884fb21358969",
     "assessment": "ac14cdc8e258aee79b3a9caca92b79109590e8ac81283dc9cf5646bc4d6995c6"
   }

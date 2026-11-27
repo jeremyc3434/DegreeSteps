@@ -715,7 +715,9 @@ const searchContracts={
   "credit-sources/davar/index.html": "3f34d11467aa77dec8d3a9b9f5ef02c90a6b8883543c820b8045b393409b2c56",
   "credit-sources/dsst/index.html": "decee36ea67a0e72119f9c61e3f79c7b10422d10c134633b5c993c43081eac8b",
   "credit-sources/fema/index.html": "3766e84678be646303b70ad162f61425fcd0688b06fb741926d43e26ac888dcc",
-  "credit-sources/google-certificates/index.html": "748c04e0ec3747be1c34dbddb569be4d31a29beeccc1256300ad57bb46b503f1",
+  // Issue #56 deliberately corrects the ACE-window description. The canonical
+  // and title remain unchanged; every other retained search hash is preserved.
+  "credit-sources/google-certificates/index.html": "d6b63e921f5b75418dfa13592d4c515150e741097b9d3e3c3ef3f271dbf47515",
   "credit-sources/index.html": "b6480143855bb4cfd894836c25ab502eb9d1d4e08ffc7e881c9557c849a01040",
   "credit-sources/lawshelf/index.html": "f5724427bf4c335f79bd92e724fe708784260a0c0481410501450d303d105f5c",
   "credit-sources/microsoft-exams/index.html": "8fec47595e4c5a8af2eb84eb704006029687e73408a4018f46ef7067681da749",

@@ -1128,9 +1128,10 @@
           "currency": "USD",
           "unit": "24 weeks",
           "scope": "Selected UMass Global self-paced programs; exact degree rates vary",
-          "conditions": "$3,500 undergraduate and $4,030 graduate civilian tuition per 24-week billing period. Active-duty military per-credit billing differs; use a program-level rate.",
+          "conditions": "The live undergraduate table quotes $3,500 per 24 weeks for 2025–2026; BBA marketing separately quotes $3,400 per six-month access. A current academic-year rate and the effective date of the difference are not established.",
           "sourceIds": [
-            "umass-global-source-3"
+            "umass-global-source-3",
+            "umass-global-marketing-price-20261127"
           ]
         }
       ],
@@ -1176,8 +1177,8 @@
           "title": "Official self-paced tuition source",
           "url": "https://www.umassglobal.edu/tuition-and-aid/tuition",
           "kind": "official",
-          "checkedOn": "2026-11-03",
-          "reviewBasis": "Previously reviewed official source; original review date retained"
+          "checkedOn": "2026-11-27",
+          "reviewBasis": "Current source reviewed; the table is explicitly labeled 2025–2026, not a verified 2026–2027 rate."
         },
         {
           "id": "umass-global-source-4",
@@ -1194,6 +1195,14 @@
           "kind": "official",
           "checkedOn": "2026-11-03",
           "reviewBasis": "Previously reviewed official transfer policy; original review date retained"
+        },
+        {
+          "id": "umass-global-marketing-price-20261127",
+          "title": "Official BBA MyPath marketing quote, effective date not established",
+          "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+          "kind": "official",
+          "checkedOn": "2026-11-27",
+          "reviewBasis": "Current official marketing quote retained separately from the older academic-year tuition table."
         }
       ]
     },

@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "kind": "research-review",
+  "publicationAllowed": false,
+  "findingId": "finding-6e496a5e251f3581aadb16cace106375e3b67065fbbd4b80f0e7121f38fab417",
+  "revision": 1,
+  "previousReviewHash": null,
+  "sourceRevisions": [
+    "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+  ],
+  "reviewer": "DegreeSteps Issue56 primary-source and editorial review",
+  "reviewedOn": "2026-11-27",
+  "verifiedOn": "2026-11-27",
+  "announcedOn": null,
+  "effectiveOn": null,
+  "followUpOn": "2026-12-04",
+  "triage": "BOTH",
+  "status": "researching",
+  "changeKind": "confirmation",
+  "summary": "Publish the direct comparison with explicit $3,400/$3,500 official-source discrepancy, 24-week billing and mastery-transcript implications. Content is prepared for PR review; no production publication or indexing is claimed.",
+  "evidence": [
+    {
+      "id": "mypath-table",
+      "title": "UMass Global live tuition table, headed2025–26",
+      "url": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+      "quote": "Bachelor's Degree | $3,500 | 12 | $7,000",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umass-accreditation",
+      "title": "UMass Global institutional accreditation",
+      "url": "https://www.umassglobal.edu/about/accreditations",
+      "quote": "University of Massachusetts Global is institutionally accredited by the WASC Senior College and University Commission (WSCUC)",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null
+    }
+  ],
+  "receiptPaths": [
+    "content/research-intake/evidence/issue56/editorial-accreditation-open-receipt.json",
+    "content/research-intake/evidence/issue56/editorial-school-open-receipt.json"
+  ],
+  "facts": {
+    "scope": {
+      "institution": "University of Massachusetts Global",
+      "program": "MyPath Bachelor of Business Administration",
+      "level": "bachelor",
+      "modality": "online competency-based MyPath",
+      "catalog": "Live tuition table headed 2025–26; do not relabel current academic-year price"
+    },
+    "costs": [
+      {
+        "amount": 3500,
+        "currency": "USD",
+        "unit": "24-week billing period",
+        "scope": "Advertised MyPath bachelor tuition table headed 2025–26",
+        "assumptions": "Observed source-dated $3,500 scenario; conflicting $3,400 BBA marketing and actual enrollment price unresolved. This is not a verified 2026–27 binding quote.",
+        "includes": [
+          "published tuition billing unit"
+        ],
+        "excludes": [
+          "unverified fees",
+          "additional billing periods"
+        ],
+        "evidenceIds": [
+          "mypath-table"
+        ]
+      }
+    ],
+    "accreditation": [
+      {
+        "institution": "University of Massachusetts Global",
+        "accreditor": "WASC Senior College and University Commission (WSCUC)",
+        "status": "Institutional accreditation stated by the university; see retained official source.",
+        "evidenceIds": [
+          "umass-accreditation"
+        ]
+      }
+    ],
+    "transfer": {
+      "overallCap": null,
+      "aceCap": null,
+      "nccrsCap": null,
+      "residency": null,
+      "majorResidency": null,
+      "totalCredits": null
+    },
+    "aceRecommendations": [],
+    "equivalencies": [],
+    "assessments": []
+  },
+  "product": {
+    "status": "blocked",
+    "paths": [],
+    "notes": "Official live tuition table headed 2025–26 states $3,500 per 24-week billing period while BBA marketing states $3,400. Article presents dated scenarios, not a resolved 2026–27 price. Exact current enrollment price, ACE caps, proctoring and receiving-course maps remain unpromoted; preserve existing historical plan data."
+  },
+  "editorial": {
+    "status": "review-ready",
+    "proposedUrls": [
+      "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/"
+    ],
+    "publishedUrls": [],
+    "existingUrls": [],
+    "title": "UMPI YourPace vs UMass Global MyPath: business-degree costs and transfer",
+    "metaDescription": "Compare UMPI and UMass Global business options using current subscription units, residency, ACE questions, mastery transcripts and the live MyPath price discrepancy.",
+    "canonicalUrl": "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+    "internalLinks": [
+      "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+      "https://degreesteps.com/blog/what-a-75-percent-transfer-limit-means/",
+      "https://degreesteps.com/compare-plans.html?from=courses",
+      "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+      "https://degreesteps.com/import-courses.html"
+    ],
+    "structuredData": true,
+    "sitemap": true,
+    "studentUsefulness": "Prevent a budget based on mismatched billing units or a program requirement inferred from a headline transfer cap.",
+    "novelty": "Official-source price disagreement remains live; no price-change effective date or universal proctoring policy inferred.",
+    "searchIntent": "UMass Global MyPath BBA cost, residency and transcript compared with UMPI YourPace.",
+    "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+    "urgency": "Resolve source discrepancies and individual evaluation before enrollment.",
+    "overlapNotes": "The new comparison answers a specific choice beyond existing subscription advice.",
+    "evidenceIds": [
+      "mypath-table",
+      "umass-accreditation"
+    ],
+    "metrics": null
+  }
+}

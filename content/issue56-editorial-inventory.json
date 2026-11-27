@@ -1,0 +1,824 @@
+{
+  "schemaVersion": 1,
+  "issueUrl": "https://github.com/jeremyc3434/DegreeSteps/issues/56",
+  "scopeCommentUrl": "https://github.com/jeremyc3434/DegreeSteps/issues/56#issuecomment-7223806616",
+  "verifiedOn": "2026-11-27",
+  "publicationAllowed": false,
+  "sourceContentPath": "content/public-content.json",
+  "status": "PR content prepared; production publication and indexing not performed",
+  "audit": {
+    "existingArticleCount": 20,
+    "existingGuideCount": 8,
+    "existingBlogCount": 12,
+    "preservedExistingUrls": true,
+    "redirectsRequired": false,
+    "architecture": "Existing build-public-site.mjs generates /guides/ and /blog/ routes, canonical/OG metadata, Article or BlogPosting, organization byline, BreadcrumbList and dated sitemap entries. No builder change needed.",
+    "metricsStatus": "No Search Console or search-performance measurements supplied or used; no search volume or keyword difficulty invented."
+  },
+  "changedArticleSlugs": [
+    "ace-nccrs-and-accreditation",
+    "compare-transfer-credit-sources",
+    "plan-subscriptions-before-paying",
+    "sophia-study-com-straighterline-which-first",
+    "maine-90-credit-applied-bachelors-degrees",
+    "wgu-single-courses-prices-transfer-and-assessments",
+    "purdue-global-exceltrack-and-professional-studies-subscription-costs",
+    "umpi-yourpace-vs-umass-global-mypath-business"
+  ],
+  "newArticleSlugs": [
+    "maine-90-credit-applied-bachelors-degrees",
+    "wgu-single-courses-prices-transfer-and-assessments",
+    "purdue-global-exceltrack-and-professional-studies-subscription-costs",
+    "umpi-yourpace-vs-umass-global-mypath-business"
+  ],
+  "findings": [
+    {
+      "findingId": "finding-16befdf2a89b9423f9abf2a3b754611063fbbeaf3d79fbb5d3f4e5a55209ebb8",
+      "claim": "South College CBE conflicting 60%/75% policies; California Baptist advertised 100 units and $541/unit; UW Flexible Option reported $2,250/subscription; Memphis/Saylor; National University and RMCAD Sophia partnerships; WGU degree-level ACE restrictions. Verify before publishing.",
+      "classification": "WATCH",
+      "editorialStatus": "blocked",
+      "editorialDecision": "Retain watchlist for partially verified prices, source conflicts and established partnerships; do not create academic recommendations or thin partnership articles without program-specific applicability and current catalog reconciliation.",
+      "studentUsefulness": "Avoid recommending a transfer ceiling, subscription price or partnership without program-specific evidence.",
+      "novelty": "Several published costs and partnerships were reverified, but source conflicts and degree-specific eligibility remain unresolved. Existing partnership evidence is not a new policy or an executable plan.",
+      "searchIntent": "Program-specific transfer capacity, tuition and receiving equivalencies for the named watchlist schools.",
+      "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+      "urgency": "No urgency inferred from an unverified claim.",
+      "existingOverlap": "Existing school resources can receive a dated update after evidence resolves each lead.",
+      "verifiedOn": null,
+      "followUpOn": "2026-12-04",
+      "proposedUrls": [],
+      "publishedUrls": [],
+      "existingUrls": [],
+      "canonicalUrl": null,
+      "title": null,
+      "metaDescription": null,
+      "internalLinks": [],
+      "structuredData": null,
+      "sitemap": null,
+      "evidence": [],
+      "sourceUrls": [
+        "https://www.south.edu/academics/transfer-information/",
+        "https://www.south.edu/academics/",
+        "https://calbaptist.edu/academics/programs/online-bachelor-of-arts-business-administration-management/",
+        "https://calbaptist.edu/admissions-aid/online/transfer",
+        "https://flex.wisconsin.edu/degrees-programs/bachelor-science-business-administration/",
+        "https://flex.wisconsin.edu/bsba-program-questionnaire/",
+        "https://flex.wisconsin.edu/wp-content/uploads/program-guide/business-programs-guide.pdf",
+        "https://www.saylor.org/partners/",
+        "https://www.memphis.edu/cas/advising/advising-faqs-1.php",
+        "https://www.nu.edu/credit-for-prior-learning-at-nu/",
+        "https://www.nu.edu/student-services/testing-services/",
+        "https://rmcad.sophia.org/",
+        "https://partners.wgu.edu/transfer-pathway-agreement-preview?collegeCode=BU&instId=796&uniqueId=BSSCOM7112",
+        "https://partners.wgu.edu/transfer-pathway-agreement?collegeCode=IT&instId=796&programId=237&uniqueId=MSITUG7110"
+      ],
+      "researchCapturePaths": [
+        "content/research-intake/evidence/issue56/3246823c103ae7587b16a69a9c6db77e53ba5adc53be0c82b89432b83ecbe4ce.json"
+      ],
+      "blockers": [
+        "South College75%/60% source conflict; CBU100-unit marketing versus residency; UWBSBA applicability; exact partnership degree allocations and accreditation requirements remain unresolved. No verified new complete route."
+      ],
+      "metrics": null,
+      "prStatus": "watch",
+      "livePublicationStatus": "not-deployed-by-this-change"
+    },
+    {
+      "findingId": "finding-25555de90e773e4b3a9c31eb4920503d3218b715aff3777db5dbc5bbc7a6f0d2",
+      "claim": "WGU single courses: reported $25 initial course, $49 bundles, $99 extension subscription; verify transcript, proctoring and 10–20 course destination mappings. https://www.wgu.edu/single-courses.html",
+      "classification": "BOTH",
+      "editorialStatus": "review-ready",
+      "editorialDecision": "Write a purchase-decision article with conditional discount arithmetic, catalog conflict, transcript boundaries and syllabus-specific assessments; hold receiving mappings.",
+      "studentUsefulness": "Expose automatic extension costs and eligibility uncertainty before a student buys an apparently $25 requirement.",
+      "novelty": "Current marketing and current institutional catalog disagree on price scope; exact discounted eligibility remains unresolved.",
+      "searchIntent": "What does a WGU $25 single course really cost and will another college accept it?",
+      "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+      "urgency": "Recheck discounted eligibility and catalog/marketing reconciliation before applying a price to a student purchase.",
+      "existingOverlap": "Existing WGU Business Management article covers Sophia/Study.com incoming credit, not standalone WGU purchases; existing institutional-credit article stays general.",
+      "verifiedOn": "2026-11-27",
+      "followUpOn": "2026-12-04",
+      "proposedUrls": [
+        "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/"
+      ],
+      "publishedUrls": [],
+      "existingUrls": [],
+      "canonicalUrl": "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+      "title": "WGU single courses: what the $25 price includes and when costs rise",
+      "metaDescription": "Understand WGU’s single-course introductory prices, automatic monthly extensions, transcript rules and course-specific exams and projects before enrolling.",
+      "internalLinks": [
+        "https://degreesteps.com/import-courses.html",
+        "https://degreesteps.com/credit-sources/wgu-single-courses/",
+        "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+        "https://degreesteps.com/blog/college-wont-accept-sophia-university-credit-options/",
+        "https://degreesteps.com/guides/compare-transfer-credit-sources/"
+      ],
+      "structuredData": true,
+      "sitemap": true,
+      "evidence": [
+        {
+          "id": "wgu-discount",
+          "title": "WGU single-course current offer",
+          "url": "https://www.wgu.edu/single-courses.html",
+          "quote": "We offer our courses at a heavily discounted rate to give you a low-cost start option.",
+          "kind": "university",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        },
+        {
+          "id": "wgu-catalog-standard-price",
+          "title": "WGU November 2026 institutional catalog, printed page 51",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf",
+          "quote": "Single courses cost $750 - $1,000 for two to three months of access, depending on the course.",
+          "kind": "university",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        }
+      ],
+      "sourceUrls": [
+        "https://www.wgu.edu/single-courses.html",
+        "https://academyproduct.s3.us-east-2.amazonaws.com/Algebra_C957A/PDF/C957A_Applied_Algebra_Syllabus.html",
+        "https://academyproduct.s3.us-east-2.amazonaws.com/OrgB_C715A/PDF/C715A_v2_Organizational_Behavior_Syllabus.html",
+        "https://academyproduct.s3.us-east-2.amazonaws.com/English_ENG101/PDF/ENG__v3_English_Composition_I_Syllabus.html",
+        "https://academyproduct.s3.us-east-2.amazonaws.com/IntroCommConnectingOthers_D268A/PDF/D268A_Introduction_Communication_Connecting_Others_Syllabus.html",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf"
+      ],
+      "researchCapturePaths": [
+        "content/research-intake/evidence/issue56/providers.json",
+        "content/research-intake/evidence/issue56/provider-captures/wgu-current-prices-assessment.json",
+        "content/research-intake/evidence/issue56/provider-captures/wgu-catalog-and-maine-blockers.json",
+        "content/research-intake/evidence/issue56/provider-captures/wgu-linked-syllabi.json"
+      ],
+      "blockers": [
+        "No independently verified external 10–20-course receiving map; no product receiving equivalencies added.",
+        "Discounted-offer eligibility and catalog-price reconciliation require checkout or official policy confirmation."
+      ],
+      "metrics": null,
+      "prStatus": "prepared-for-review",
+      "livePublicationStatus": "not-deployed-by-this-change"
+    },
+    {
+      "findingId": "finding-6dea1840f1f9c32ff24988fda551350b31e30c32e2ffe5cade86c90370cd378d",
+      "claim": "UMPI YourPace business: reported $1,800/8 weeks, 90/120 transfer; verify current policy and assessment requirements. https://www.umpi.edu/yourpace/tuition/",
+      "classification": "BOTH",
+      "editorialStatus": "review-ready",
+      "editorialDecision": "Compare verified2026–27 tuition, overall transfer space,30-credit institutional residency and separately published30-credit combinedCPL limit; keep current degree maps and cohort exceptions held.",
+      "studentUsefulness": "Help an adult business student compare the cost of actual paid sessions and applicable prior learning.",
+      "novelty": "Current tuition and residency rechecked; the reported future ACE restriction is not established.",
+      "searchIntent": "UMPI YourPace versus UMass Global MyPath for a transfer-heavy business degree.",
+      "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+      "urgency": "Resolve source discrepancies and individual evaluation before enrollment.",
+      "existingOverlap": "No existing direct comparison; general subscription and institutional-credit articles link to the detailed new comparison.",
+      "verifiedOn": "2026-11-27",
+      "followUpOn": "2026-12-04",
+      "proposedUrls": [
+        "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/"
+      ],
+      "publishedUrls": [],
+      "existingUrls": [],
+      "canonicalUrl": "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+      "title": "UMPI YourPace vs UMass Global MyPath: business-degree costs and transfer",
+      "metaDescription": "Compare UMPI’s 2026–27 business tuition with UMass Global’s live 2025–26 MyPath sources, transfer and transcript rules, and unresolved current pricing.",
+      "internalLinks": [
+        "https://degreesteps.com/compare-plans.html?from=courses",
+        "https://degreesteps.com/import-courses.html",
+        "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+        "https://degreesteps.com/blog/what-a-75-percent-transfer-limit-means/",
+        "https://degreesteps.com/guides/ace-nccrs-and-accreditation/"
+      ],
+      "structuredData": true,
+      "sitemap": true,
+      "evidence": [
+        {
+          "id": "umpi-undergrad-session",
+          "title": "UMPI AY2026–27 YourPace tuition",
+          "url": "https://www.umpi.edu/yourpace/tuition/",
+          "quote": "$1800\n\nPer 8 week session",
+          "kind": "university",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        },
+        {
+          "id": "umpi-accreditation",
+          "title": "UMPI accreditation",
+          "url": "https://www.umpi.edu/about/accreditation/",
+          "quote": "UMPI is accredited by the New England Commission of Higher Education (NECHE)",
+          "kind": "university",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        },
+        {
+          "id": "umpi-combined-cpl-limit",
+          "title": "UMPI currently published CPL limit",
+          "url": "https://www.umpi.edu/academics/credit-for-prior-learning/",
+          "quote": "Students in Bachelor’s degree programs may earn a maximum of 30 credits.",
+          "kind": "university",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        }
+      ],
+      "sourceUrls": [
+        "https://www.umpi.edu/yourpace/tuition/",
+        "https://www.umpi.edu/yourpace/faqs/",
+        "https://www.umpi.edu/academics/credit-for-prior-learning/ace/",
+        "https://www.umpi.edu/academics/credit-for-prior-learning/",
+        "https://www.umpi.edu/yourpace/wp-content/uploads/sites/73/2025/11/YourPace-Student-Handbook.pdf",
+        "https://www.umpi.edu/about/accreditation/",
+        "https://www.umassglobal.edu/tuition-and-aid/tuition",
+        "https://www.umassglobal.edu/academic-programs/bba-business-administration-general-business-self-paced",
+        "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based-degree-requirement/",
+        "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based/",
+        "https://www.umassglobal.edu/about/accreditations"
+      ],
+      "researchCapturePaths": [
+        "content/research-intake/evidence/issue56/editorial-school-open-receipt.json",
+        "content/research-intake/evidence/issue56/editorial-accreditation-open-receipt.json",
+        "content/research-intake/evidence/issue56/248d40121413b9c015772d7cf633ef212a483b328daeb854fff5531d165e91bd.json"
+      ],
+      "blockers": [],
+      "metrics": null,
+      "prStatus": "prepared-for-review",
+      "livePublicationStatus": "not-deployed-by-this-change"
+    },
+    {
+      "findingId": "finding-6e496a5e251f3581aadb16cace106375e3b67065fbbd4b80f0e7121f38fab417",
+      "claim": "UMass Global MyPath BBA: reported $3,500/6 months, 90/120 transfer; verify $3,400 vs $3,500 discrepancy, ACE and residency, proctoring; map courses. https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced and https://umassglobal.sophia.org/",
+      "classification": "BOTH",
+      "editorialStatus": "review-ready",
+      "editorialDecision": "Publish the direct comparison with explicit $3,400/$3,500 live-source discrepancy, 24-week billing and 2025–26 source-year scope for tuition, transfer, residency and mastery-transcript policies. Require current catalog/cohort confirmation.",
+      "studentUsefulness": "Prevent a budget based on mismatched billing units or a program requirement inferred from a headline transfer cap.",
+      "novelty": "Official-source price disagreement remains live; the tuition table and retrieved legacy competency-policy catalog pages are labelled2025–26. No current2026–27 rate, rule adoption date or universal proctoring policy inferred.",
+      "searchIntent": "UMass Global MyPath BBA cost, residency and transcript compared with UMPI YourPace.",
+      "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+      "urgency": "Resolve source discrepancies and individual evaluation before enrollment.",
+      "existingOverlap": "The new comparison answers a specific choice beyond existing subscription advice.",
+      "verifiedOn": "2026-11-27",
+      "followUpOn": "2026-12-04",
+      "proposedUrls": [
+        "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/"
+      ],
+      "publishedUrls": [],
+      "existingUrls": [],
+      "canonicalUrl": "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+      "title": "UMPI YourPace vs UMass Global MyPath: business-degree costs and transfer",
+      "metaDescription": "Compare UMPI’s 2026–27 business tuition with UMass Global’s live 2025–26 MyPath sources, transfer and transcript rules, and unresolved current pricing.",
+      "internalLinks": [
+        "https://degreesteps.com/compare-plans.html?from=courses",
+        "https://degreesteps.com/import-courses.html",
+        "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+        "https://degreesteps.com/blog/what-a-75-percent-transfer-limit-means/",
+        "https://degreesteps.com/guides/ace-nccrs-and-accreditation/"
+      ],
+      "structuredData": true,
+      "sitemap": true,
+      "evidence": [
+        {
+          "id": "mypath-table",
+          "title": "UMass Global live tuition table, headed2025–26",
+          "url": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+          "quote": "Bachelor's Degree | $3,500 | 12 | $7,000",
+          "kind": "university",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        },
+        {
+          "id": "umass-accreditation",
+          "title": "UMass Global institutional accreditation",
+          "url": "https://www.umassglobal.edu/about/accreditations",
+          "quote": "University of Massachusetts Global is institutionally accredited by the WASC Senior College and University Commission (WSCUC)",
+          "kind": "university",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        },
+        {
+          "id": "mypath-legacy-transfer-scope",
+          "title": "UMass Global legacy2025–26 competency-based catalog",
+          "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based/",
+          "quote": "Coursework, with a minimum of B- or better from institutionally accredited institutions",
+          "kind": "university",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        }
+      ],
+      "sourceUrls": [
+        "https://www.umpi.edu/yourpace/tuition/",
+        "https://www.umpi.edu/yourpace/faqs/",
+        "https://www.umpi.edu/academics/credit-for-prior-learning/ace/",
+        "https://www.umpi.edu/academics/credit-for-prior-learning/",
+        "https://www.umpi.edu/yourpace/wp-content/uploads/sites/73/2025/11/YourPace-Student-Handbook.pdf",
+        "https://www.umpi.edu/about/accreditation/",
+        "https://www.umassglobal.edu/tuition-and-aid/tuition",
+        "https://www.umassglobal.edu/academic-programs/bba-business-administration-general-business-self-paced",
+        "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based-degree-requirement/",
+        "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based/",
+        "https://www.umassglobal.edu/about/accreditations"
+      ],
+      "researchCapturePaths": [
+        "content/research-intake/evidence/issue56/editorial-school-open-receipt.json",
+        "content/research-intake/evidence/issue56/editorial-accreditation-open-receipt.json",
+        "content/research-intake/evidence/issue56/3246823c103ae7587b16a69a9c6db77e53ba5adc53be0c82b89432b83ecbe4ce.json"
+      ],
+      "blockers": [
+        "Applicable2026–27 consolidated MyPath tuition, residency, transfer and transcript policy was not independently verified; published2025–26 excerpts are explicitly scoped."
+      ],
+      "metrics": null,
+      "prStatus": "prepared-for-review",
+      "livePublicationStatus": "not-deployed-by-this-change"
+    },
+    {
+      "findingId": "finding-73416f60a5ad8a8b0c1f9216cf2eace2ef777916ccf204afe9b24b15c289e4e0",
+      "claim": "Investigate 90-credit applied bachelor's degrees in Maine (UMPI psychology, UMFK business, UMA public administration); verify eligibility, transfer, accreditation and graduate-school implications. https://www.maine.edu/blog/2025/07/14/university-of-maine-system-to-lead-state-in-accelerating-adult-degree-completion-with-new-applied-90-credit-bachelors-programs/",
+      "classification": "CONTENT",
+      "editorialStatus": "review-ready",
+      "editorialDecision": "Write a substantive guide to three approved applied programs, admission, residence, graduate/employer caveats and longer-degree transitions; no executable degree model.",
+      "studentUsefulness": "Show who qualifies and how a shorter award may affect later study and funding.",
+      "novelty": "Current pages confirm three active programs; an earlier broader proposal is not treated as five available degrees.",
+      "searchIntent": "Which Maine 90-credit bachelor’s degrees are available and will they qualify for graduate school?",
+      "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+      "urgency": "Resolve source discrepancies and individual evaluation before enrollment.",
+      "existingOverlap": "Existing percentage-transfer and adult-credit articles do not explain these distinctive awards.",
+      "verifiedOn": "2026-11-27",
+      "followUpOn": "2026-12-27",
+      "proposedUrls": [
+        "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/"
+      ],
+      "publishedUrls": [],
+      "existingUrls": [],
+      "canonicalUrl": "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+      "title": "Maine’s 90-credit applied bachelor’s degrees: who they fit and what to check",
+      "metaDescription": "Compare Maine’s three approved 90-credit applied bachelor’s programs, adult-completer eligibility, transfer limits, costs and graduate-school questions.",
+      "internalLinks": [
+        "https://degreesteps.com/compare-plans.html?from=courses",
+        "https://degreesteps.com/import-courses.html",
+        "https://degreesteps.com/blog/what-a-75-percent-transfer-limit-means/",
+        "https://degreesteps.com/blog/do-old-college-credits-still-count/",
+        "https://degreesteps.com/guides/degree-audit-and-what-if/"
+      ],
+      "structuredData": true,
+      "sitemap": true,
+      "evidence": [
+        {
+          "id": "maine-active-three",
+          "title": "Maine System updated applied-degree announcement",
+          "url": "https://www.maine.edu/blog/2025/07/14/university-of-maine-system-to-lead-state-in-accelerating-adult-degree-completion-with-new-applied-90-credit-bachelors-programs/",
+          "quote": "These programs are active for Fall 2026",
+          "kind": "university",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        },
+        {
+          "id": "maine-residency",
+          "title": "Maine System applied-degree residency framework",
+          "url": "https://www.maine.edu/blog/2025/07/14/university-of-maine-system-to-lead-state-in-accelerating-adult-degree-completion-with-new-applied-90-credit-bachelors-programs/",
+          "quote": "they must earn at least 30 credits through the UMS university that will confer their degree.",
+          "kind": "university",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        }
+      ],
+      "sourceUrls": [
+        "https://www.maine.edu/blog/2025/07/14/university-of-maine-system-to-lead-state-in-accelerating-adult-degree-completion-with-new-applied-90-credit-bachelors-programs/",
+        "https://www.umpi.edu/yourpace/academic_programs/psychology/",
+        "https://online.umfk.edu/business/applied-business-management/",
+        "https://www.uma.edu/academics/programs/public-administration/abs/",
+        "https://www.umpi.edu/yourpace/tuition/"
+      ],
+      "researchCapturePaths": [
+        "content/research-intake/evidence/issue56/editorial-school-supplement-receipt.json",
+        "content/research-intake/evidence/issue56/248d40121413b9c015772d7cf633ef212a483b328daeb854fff5531d165e91bd.json"
+      ],
+      "blockers": [],
+      "metrics": null,
+      "prStatus": "prepared-for-review",
+      "livePublicationStatus": "not-deployed-by-this-change"
+    },
+    {
+      "findingId": "finding-a71f338c2ed1781436f8604f68af117e680588c896c8f2d537d8e1362c335fff",
+      "claim": "## Scope expansion: research → product + editorial/SEO\nFor every weekly finding classify as PRODUCT, CONTENT, BOTH, or WATCH/NO ACTION. Evaluate student usefulness, novelty, evidence, search intent, relevance to debt-free degrees, urgency and existing content overlap. Do not invent search volumes or keyword difficulty. Audit existing content and architecture before creating anything. For verified editorial opportunities, actually write or update substantive articles/guides/comparisons, not just a list of ideas. Include official citations, last verified date, accurate costs with assumptions, transfer and accreditation caveats, descriptive title/meta, canonical URL, appropriate internal links to verified pathways/tools, and applicable structured data/sitemap updates using existing conventions. Avoid thin or duplicative content, sensational claims, fake author expertise and publishing rumors as facts. Update existing pages when preferable; preserve URLs or redirects. Examples to independently verify: 90-credit bachelor's degrees; UMPI ACE policy changes; WGU $25 course eligibility and total costs; UMPI vs UMass MyPath; Purdue subscription pricing; Google certificate ACE validity; non-proctored college credit options. Content-only findings need not force product changes. BOTH findings should coordinate article and pathway releases so links and claims agree. Prepare actual content and product changes in a tested PR; publish via the established approved release workflow after verification and review, not by bypassing deployment safeguards. Track proposed/published URLs, status, evidence, and follow-up review dates. If Search Console/analytics are available, measure impressions, clicks, indexing and pathway engagement; do not fabricate metrics. Include this editorial triage in the permanent research intake workflow.",
+      "classification": "WATCH",
+      "editorialStatus": "not-needed",
+      "editorialDecision": "Implement these cross-cutting editorial requirements through the eight changed content items and this inventory; no standalone article about the workflow.",
+      "studentUsefulness": "Make useful, sourced content concrete and reviewable alongside product research.",
+      "novelty": "Editorial review is now explicitly part of the weekly intake.",
+      "searchIntent": "Workflow context; no student-facing search page needed.",
+      "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+      "urgency": "Verify links, generated metadata and source dates in the PR; publish only through approved release.",
+      "existingOverlap": "The existing public-site system already provides canonical metadata, article schema and sitemap generation.",
+      "verifiedOn": null,
+      "followUpOn": "2026-12-27",
+      "proposedUrls": [],
+      "publishedUrls": [],
+      "existingUrls": [],
+      "canonicalUrl": null,
+      "title": null,
+      "metaDescription": null,
+      "internalLinks": [],
+      "structuredData": null,
+      "sitemap": null,
+      "evidence": [],
+      "sourceUrls": [],
+      "researchCapturePaths": [],
+      "blockers": [],
+      "metrics": null,
+      "prStatus": "watch",
+      "livePublicationStatus": "not-deployed-by-this-change"
+    },
+    {
+      "findingId": "finding-c4224c6e66e6024360ed98233af8bd1825d7aa9abfe0edbcf7e361e4211d1b46",
+      "claim": "Verify Google ACE renewal windows for GOOG-0009, GOOG-0007, GOOG-0008 (reported Nov 30 expiry); preserve valid historical awards. https://www.acenet.edu/National-Guide/",
+      "classification": "BOTH",
+      "editorialStatus": "review-ready",
+      "editorialDecision": "Update the existing ACE guide with a named, dated certificate-window case study; no separate expiry-news page.",
+      "studentUsefulness": "Prevent a planned completion from relying on an unverified future window and protect valid historical awards.",
+      "novelty": "Newly reverified current recommendation versions and upcoming end dates; no renewal or new receiving policy established.",
+      "searchIntent": "Does Google certificate ACE credit expire, and which completion dates qualify?",
+      "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+      "urgency": "Observed windows end November 30; a successor requires a fresh primary-source check.",
+      "existingOverlap": "The ACE/accreditation guide already explains versions and records; a section there answers the narrower current question without duplicating it.",
+      "verifiedOn": "2026-11-27",
+      "followUpOn": "2026-12-01",
+      "proposedUrls": [
+        "https://degreesteps.com/guides/ace-nccrs-and-accreditation/"
+      ],
+      "publishedUrls": [],
+      "existingUrls": [
+        "https://degreesteps.com/guides/ace-nccrs-and-accreditation/"
+      ],
+      "canonicalUrl": "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+      "title": "ACE, NCCRS, and accreditation: what students need to check",
+      "metaDescription": "Understand credit recommendations, institutional accreditation, course identifiers, and the school-specific checks that make alternative-credit planning useful.",
+      "internalLinks": [
+        "https://degreesteps.com/credit-sources/",
+        "https://degreesteps.com/credit-sources/google-certificates/",
+        "https://degreesteps.com/guides/how-transfer-credit-works/",
+        "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+        "https://degreesteps.com/blog/community-transfer-evidence/"
+      ],
+      "structuredData": true,
+      "sitemap": true,
+      "evidence": [
+        {
+          "id": "google-current-window",
+          "title": "ACE Google organization listing",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=3fdb1492-e04f-e911-a97b-000d3a363c81",
+          "quote": "Course ACE ID: GOOG-0009 12/01/2025 to 11/30/2026 Recommended credits: 10",
+          "kind": "provider",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        },
+        {
+          "id": "ace-date-policy",
+          "title": "ACE completion-date learner guidance",
+          "url": "https://acenationalguide.zendesk.com/hc/en-us/articles/21153004361371-What-if-I-completed-a-learning-experience-outside-of-the-start-and-end-dates-listed",
+          "quote": "If your learning experience was completed after the end date of a recommendation period",
+          "kind": "provider",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        }
+      ],
+      "sourceUrls": [
+        "https://acenationalguide.zendesk.com/hc/en-us/articles/21152452077979-How-do-I-find-a-program-with-ACE-recommendations",
+        "https://www.nationalccrs.org/students/faq-students",
+        "https://www.ed.gov/laws-and-policy/higher-education-laws-and-policy/college-accreditation/accreditation-in-the-us",
+        "https://www.acenet.edu/Programs-Services/pages/credit-transcripts/request-transcripts.aspx",
+        "https://acenationalguide.zendesk.com/hc/en-us/articles/21174624843035-What-should-I-do-if-the-college-does-not-accept-my-ACE-recommendations",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=3fdb1492-e04f-e911-a97b-000d3a363c81",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3a353ed3-14d2-f011-bbd3-000d3a329ecb&oid=3fdb1492-e04f-e911-a97b-000d3a363c81&org=Google",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=10353ed3-14d2-f011-bbd3-000d3a329ecb&oid=3fdb1492-e04f-e911-a97b-000d3a363c81&org=Google",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=1f353ed3-14d2-f011-bbd3-000d3a329ecb&oid=3fdb1492-e04f-e911-a97b-000d3a363c81&org=Google",
+        "https://acenationalguide.zendesk.com/hc/en-us/articles/21152957233307-Why-do-ACE-recommendations-have-start-and-end-dates",
+        "https://acenationalguide.zendesk.com/hc/en-us/articles/21153004361371-What-if-I-completed-a-learning-experience-outside-of-the-start-and-end-dates-listed"
+      ],
+      "researchCapturePaths": [
+        "content/research-intake/evidence/issue56/provider-captures/google-registry.json",
+        "content/research-intake/evidence/issue56/provider-captures/google-versions.json",
+        "content/research-intake/evidence/issue56/provider-captures/wgu-index-ace-faq.json"
+      ],
+      "blockers": [],
+      "metrics": null,
+      "prStatus": "prepared-for-review",
+      "livePublicationStatus": "not-deployed-by-this-change"
+    },
+    {
+      "findingId": "finding-cfe1e99f87e47339f0e8c589f537d5bfb002889b0c418709cee85dc968d7d4b2",
+      "claim": "Explore online-to-residential pathways with 10–20 applicable courses and traditional letter grades.",
+      "classification": "WATCH",
+      "editorialStatus": "blocked",
+      "editorialDecision": "Preserve current published campus plans and guidance; do not manufacture a new 10–20-course letter-grade basket.",
+      "studentUsefulness": "Keep institutional course identity, grade format and exact receiving placements tied to a desired residential degree.",
+      "novelty": "No newly verified 10–20-course destination map in this intake.",
+      "searchIntent": "Self-paced college courses with traditional grades that apply to a chosen residential degree.",
+      "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+      "urgency": "Verify exact receiving awards and grade treatment before new mappings.",
+      "existingOverlap": "Existing campus-transfer guide, institutional-credit article and published campus plans already cover the general decision.",
+      "verifiedOn": null,
+      "followUpOn": "2026-12-04",
+      "proposedUrls": [],
+      "publishedUrls": [],
+      "existingUrls": [],
+      "canonicalUrl": null,
+      "title": null,
+      "metaDescription": null,
+      "internalLinks": [],
+      "structuredData": null,
+      "sitemap": null,
+      "evidence": [],
+      "sourceUrls": [
+        "https://ulc.asu.edu/how-it-works/pricing/",
+        "https://courses.ulc.asu.edu/english-composition-eng-101/",
+        "https://courses.ea.asu.edu/career-pathways-cap-150/",
+        "https://ea.asu.edu/help-center/faqs/"
+      ],
+      "researchCapturePaths": [
+        "content/research-intake/evidence/issue56/3246823c103ae7587b16a69a9c6db77e53ba5adc53be0c82b89432b83ecbe4ce.json"
+      ],
+      "blockers": [
+        "No complete newly verified destination basket or traditional-letter-grade promise."
+      ],
+      "metrics": null,
+      "prStatus": "watch",
+      "livePublicationStatus": "not-deployed-by-this-change"
+    },
+    {
+      "findingId": "finding-d1049739135f026e6e649c0cf01acab0d58cb56159d292a046ff0eb7cb22d668",
+      "claim": "Investigate reported UMPI ACE-to-major restrictions, possible December 28 transition and grandfathering; do not apply rumors retroactively. https://www.umpi.edu/academics/credit-for-prior-learning/ace/ and https://umpi.sophia.org/",
+      "classification": "WATCH",
+      "editorialStatus": "blocked",
+      "editorialDecision": "Do not publish the reported December 28 restriction or grandfathering as a confirmed policy; comparison explains only verified requirements.",
+      "studentUsefulness": "Protect existing students from retroactive changes inferred from rumors.",
+      "novelty": "No independently verified effective-date or grandfathering announcement.",
+      "searchIntent": "Does a new UMPI ACE restriction apply to my degree or catalog?",
+      "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+      "urgency": "Obtain cohort-specific official confirmation before any policy change.",
+      "existingOverlap": "Use a future dated update in the existing comparison or ACE guide only after official evidence; no rumor article.",
+      "verifiedOn": null,
+      "followUpOn": "2026-12-04",
+      "proposedUrls": [],
+      "publishedUrls": [],
+      "existingUrls": [],
+      "canonicalUrl": null,
+      "title": null,
+      "metaDescription": null,
+      "internalLinks": [],
+      "structuredData": null,
+      "sitemap": null,
+      "evidence": [],
+      "sourceUrls": [],
+      "researchCapturePaths": [],
+      "blockers": [
+        "No primary source establishes the reported December 28 transition or grandfathering."
+      ],
+      "metrics": null,
+      "prStatus": "watch",
+      "livePublicationStatus": "not-deployed-by-this-change"
+    },
+    {
+      "findingId": "finding-d45f5a7347db8e46df33859b79d71d3bb7a500c83e01156984c0296eb5d6c0c6",
+      "claim": "Purdue Global ExcelTrack BSBA: reported $2,845/term incl resource fee, 135/180 quarter credits transfer, traditional capstone. Professional Studies lead: $195/month, $100 assessment, $2,226 capstone. Verify all costs, transfer and assessments. https://www.purdueglobal.edu/tuition-financial-aid/undergraduate-graduate-tuition-and-fees/ and https://catalog.purdueglobal.edu/policy-information/prior-learning/",
+      "classification": "BOTH",
+      "editorialStatus": "review-ready",
+      "editorialDecision": "Write a comparison leading with the independent Professional Studies admission closure, then distinguish ExcelTrack term charges and quarter-credit requirements.",
+      "studentUsefulness": "Prevent a new student from planning around a closed $195 monthly option and show capstone/resource-fee costs.",
+      "novelty": "July 1, 2026 closure is newly discovered older information; no change is asserted to have begun on the verification date.",
+      "searchIntent": "Purdue Global $195 Professional Studies subscription availability versus ExcelTrack BSBA cost.",
+      "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+      "urgency": "Resolve source discrepancies and individual evaluation before enrollment.",
+      "existingOverlap": "Existing graduate-acceleration article covers different programs; subscription-planning article now links to this undergraduate decision.",
+      "verifiedOn": "2026-11-27",
+      "followUpOn": "2026-12-04",
+      "proposedUrls": [
+        "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/"
+      ],
+      "publishedUrls": [],
+      "existingUrls": [],
+      "canonicalUrl": "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+      "title": "Purdue Global subscriptions: ExcelTrack costs and the closed $195 enrollment option",
+      "metaDescription": "Compare ExcelTrack BSBA tuition with the legacy Professional Studies monthly model, including resource fees, capstones, transfer units and enrollment restrictions.",
+      "internalLinks": [
+        "https://degreesteps.com/compare-plans.html?from=courses",
+        "https://degreesteps.com/compare-plans.html?from=courses",
+        "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+        "https://degreesteps.com/blog/what-a-75-percent-transfer-limit-means/",
+        "https://degreesteps.com/guides/finish-faster-without-wasting-credit/"
+      ],
+      "structuredData": true,
+      "sitemap": true,
+      "evidence": [
+        {
+          "id": "purdue-independent-closure",
+          "title": "Purdue Global 2026–27 Professional Studies catalog",
+          "url": "https://catalog.purdueglobal.edu/undergraduate/multidisciplinary-professional-studies/professional-studies-bs/",
+          "quote": "Effective July 1, 2026, the independent model will no longer be accepting enrollments or reentries.",
+          "kind": "university",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        }
+      ],
+      "sourceUrls": [
+        "https://www.purdueglobal.edu/tuition-financial-aid/undergraduate-graduate-tuition-and-fees/",
+        "https://catalog.purdueglobal.edu/undergraduate/multidisciplinary-professional-studies/professional-studies-bs/",
+        "https://www.purdueglobal.edu/degree-programs/business/exceltrack-bachelor-business-administration/",
+        "https://www.purdueglobal.edu/degree-programs/business/",
+        "https://catalog.purdueglobal.edu/policy-information/prior-learning/",
+        "https://www.purdueglobal.edu/student-experience/personalized-learning",
+        "https://catalog.purdueglobal.edu/policy-information/university-information/accreditation-approvals-memberships/",
+        "https://catalog.purdueglobal.edu/policy-information/academic-standards/grades-marks/"
+      ],
+      "researchCapturePaths": [
+        "content/research-intake/evidence/issue56/editorial-purdue-search-receipt.json",
+        "content/research-intake/evidence/issue56/3246823c103ae7587b16a69a9c6db77e53ba5adc53be0c82b89432b83ecbe4ce.json"
+      ],
+      "blockers": [],
+      "metrics": null,
+      "prStatus": "prepared-for-review",
+      "livePublicationStatus": "not-deployed-by-this-change"
+    },
+    {
+      "findingId": "finding-d4ed8381ef7ecc91f9c29eb76a6c271dce74d63b84d115ece202add2c11dd15d",
+      "claim": "Provider baseline leads: Sophia $99/mo, $299/4 months, $799/year; Study.com $95/$235 tiers non-proctored; Saylor $5 proctored exam; ASU $425 posted course, ENG101/CAP150 assignment-focused leads. Verify current costs and course-specific exceptions. https://www.sophia.org/ https://study.com/college/ https://www.saylor.org/credit https://ea.asu.edu/how-it-works/pricing/",
+      "classification": "BOTH",
+      "editorialStatus": "review-ready",
+      "editorialDecision": "Update existing provider and subscription articles; no duplicate non-proctored listicle or unsupported ASU proctor-free claim.",
+      "studentUsefulness": "Compare complete purchase structures, identity checks, assignments, proctored exams and credit-posting timing.",
+      "novelty": "Mostly newly reverified existing baselines, not a new assessment policy. Sophia annual-price conflict persists across two official pages.",
+      "searchIntent": "Which college-credit courses avoid proctored finals, and what does each credit product charge?",
+      "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+      "urgency": "Resolve Sophia annual checkout price before buying; recheck product terms after major catalog changes.",
+      "existingOverlap": "Existing source comparison and provider-order article already match this decision; update their evidence and practical details in place.",
+      "verifiedOn": "2026-11-27",
+      "followUpOn": "2026-12-04",
+      "proposedUrls": [
+        "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+        "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/",
+        "https://degreesteps.com/blog/plan-subscriptions-before-paying/"
+      ],
+      "publishedUrls": [],
+      "existingUrls": [
+        "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+        "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/",
+        "https://degreesteps.com/blog/plan-subscriptions-before-paying/"
+      ],
+      "canonicalUrl": "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+      "title": "Sophia, Study.com, StraighterLine or CLEP: which fits?",
+      "metaDescription": "Choose eligible transfer courses around your degree, budget, pace and assessment preferences. Compare subscription courses, exams and university-issued credit.",
+      "internalLinks": [
+        "https://degreesteps.com/portal.html?view=setup",
+        "https://degreesteps.com/courses.html?tab=browse",
+        "https://degreesteps.com/courses.html?tab=browse",
+        "https://degreesteps.com/degree-plans/wgu-business-management/",
+        "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+        "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/",
+        "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/"
+      ],
+      "structuredData": true,
+      "sitemap": true,
+      "evidence": [
+        {
+          "id": "sophia-billing-conflict",
+          "title": "Account and Billing Tutorial",
+          "url": "https://app.sophia.org/tutorials/account-and-billing",
+          "quote": "12-month membership for $599",
+          "kind": "provider",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        },
+        {
+          "id": "asu-faq",
+          "title": "Frequently asked questions",
+          "url": "https://ea.asu.edu/help-center/faqs/",
+          "quote": "Admitted, degree-seeking ASU students cannot register for Earned Admission.",
+          "kind": "provider",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        },
+        {
+          "id": "sophia-pricing",
+          "title": "Plans & Pricing",
+          "url": "https://www.sophia.org/plans-and-pricing/",
+          "quote": "Prices shown exclude applicable tax. Tax is calculated at checkout.",
+          "kind": "provider",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        },
+        {
+          "id": "sophia-no-proctor",
+          "title": "Grading Timelines in Online Learning: What You Need to Know",
+          "url": "https://www.sophia.org/blog/higher-education/online-learning-grading-timelines/",
+          "quote": "Sophia Learning has no proctored exams. All assessments are open book",
+          "kind": "provider",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        },
+        {
+          "id": "study-pricing",
+          "title": "Study.com College Saver plans",
+          "url": "https://study.com/college/pricing.html",
+          "quote": "There's no monthly limit on the number of credit-eligible courses you can complete.",
+          "kind": "provider",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        },
+        {
+          "id": "study-exams",
+          "title": "What are Study.com's exam policies for college credit courses?",
+          "url": "https://study.com/support/solutions/articles/11000130921-what-are-study-com-s-exam-policies-for-college-credit-courses-",
+          "quote": "All final exams are open-book and unproctored",
+          "kind": "provider",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        },
+        {
+          "id": "study-id",
+          "title": "Non-Proctored College Saver and College Saver Pro Final Exams: FAQs",
+          "url": "https://study.com/support/solutions/articles/11000130197-non-proctored-college-saver-and-college-saver-pro-final-exams-faqs",
+          "quote": "Study.com requires identity verification before each College Saver and College Saver Pro final exam",
+          "kind": "provider",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        },
+        {
+          "id": "saylor-faq",
+          "title": "FAQ – Saylor Direct Credit",
+          "url": "https://support.saylor.org/hc/en-us/articles/23597374410900-FAQ-Saylor-Direct-Credit",
+          "quote": "SmarterProctoring charges $5 USD for each exam proctoring session.",
+          "kind": "provider",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        },
+        {
+          "id": "asu-price",
+          "title": "Pricing | Earned Admission",
+          "url": "https://ea.asu.edu/how-it-works/pricing/",
+          "quote": "Total per course: $425",
+          "kind": "provider",
+          "checkedOn": "2026-11-27",
+          "capturePath": null,
+          "contentHash": null
+        }
+      ],
+      "sourceUrls": [
+        "https://app.sophia.org/tutorials/course-transfer-and-transcripts",
+        "https://app.sophia.org/tutorials/account-and-billing",
+        "https://study.com/support/solutions/articles/1000167188-what-type-of-study-com-membership-do-i-need-to-earn-college-recommended-credit-",
+        "https://helpcenter.straighterline.com/hc/en-us/articles/47963029736083-Exams-How-to-Prepare-for-my-Final-Exam",
+        "https://clep.collegeboard.org/colleges-that-recognize-clep/understanding-colleges-clep-policies",
+        "https://helpdesk.modernstates.org/support/solutions/articles/151000214730-does-modern-states-send-clep-credits-to-my-college-or-university-",
+        "https://ulc.asu.edu/help-center/faqs/",
+        "https://www.tel-education.org/start-now/",
+        "https://study.com/support/solutions/articles/11000134404-does-study-com-s-college-saver-plan-allow-you-to-earn-college-credit-online-",
+        "https://support.saylor.org/hc/en-us/articles/23597374410900-FAQ-Saylor-Direct-Credit",
+        "https://www.coopersmithcc.net/about/",
+        "https://www.davaracademy.com/take-a-course.html",
+        "https://getcollegecredit.com/dsst-exams/",
+        "https://www.sophia.org/find-your-school/",
+        "https://www.sophia.org/plans-and-pricing/",
+        "https://www.sophia.org/blog/higher-education/online-learning-grading-timelines/",
+        "https://study.com/college/pricing.html",
+        "https://study.com/support/solutions/articles/11000130921-what-are-study-com-s-exam-policies-for-college-credit-courses-",
+        "https://study.com/support/solutions/articles/11000130197-non-proctored-college-saver-and-college-saver-pro-final-exams-faqs",
+        "https://ea.asu.edu/how-it-works/pricing/",
+        "https://ea.asu.edu/help-center/faqs/",
+        "https://www.wgu.edu/single-courses.html",
+        "https://academyproduct.s3.us-east-2.amazonaws.com/Algebra_C957A/PDF/C957A_Applied_Algebra_Syllabus.html",
+        "https://academyproduct.s3.us-east-2.amazonaws.com/OrgB_C715A/PDF/C715A_v2_Organizational_Behavior_Syllabus.html",
+        "https://academyproduct.s3.us-east-2.amazonaws.com/English_ENG101/PDF/ENG__v3_English_Composition_I_Syllabus.html",
+        "https://academyproduct.s3.us-east-2.amazonaws.com/IntroCommConnectingOthers_D268A/PDF/D268A_Introduction_Communication_Connecting_Others_Syllabus.html",
+        "https://www.straighterline.com/pricing",
+        "https://app.sophia.org/tutorials/academics-grading",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf",
+        "https://www.umpi.edu/yourpace/tuition/",
+        "https://www.umassglobal.edu/tuition-and-aid/tuition",
+        "https://www.umassglobal.edu/academic-programs/bba-business-administration-general-business-self-paced",
+        "https://catalog.purdueglobal.edu/undergraduate/multidisciplinary-professional-studies/professional-studies-bs/"
+      ],
+      "researchCapturePaths": [
+        "content/research-intake/evidence/issue56/baseline-providers.json",
+        "content/research-intake/evidence/issue56/captures/baseline-provider-tool-receipts.json",
+        "content/research-intake/evidence/issue56/captures/baseline-provider-supplemental-receipts.json"
+      ],
+      "blockers": [],
+      "metrics": null,
+      "prStatus": "prepared-for-review",
+      "livePublicationStatus": "not-deployed-by-this-change"
+    }
+  ]
+}
