@@ -12,9 +12,14 @@ const inventory = JSON.parse(await read('content/issue56-editorial-inventory.jso
 const pathFor = article => `/${article.type === 'guide' ? 'guides' : 'blog'}/${article.slug}/`;
 const body = slug => JSON.stringify(bySlug.get(slug)?.sections);
 
-test('Issue 56 editorial triage covers the intake without claiming a production publication or search metrics', async () => {
+test('Issue 56 editorial triage covers its own submissions without claiming publication or absorbing later intakes', async () => {
   const intake = JSON.parse(await read('content/research-intake/findings.json'));
-  assert.deepEqual(inventory.findings.map(row => row.findingId).sort(), intake.findings.map(row => row.id).sort());
+  const belongsToIssue56 = finding => finding.origins.some(origin => new URL(origin.url).pathname === '/jeremyc3434/DegreeSteps/issues/56');
+  const issueFindings = intake.findings.filter(belongsToIssue56);
+  assert.deepEqual(inventory.findings.map(row => row.findingId).sort(), issueFindings.map(row => row.id).sort());
+  for (const laterFinding of intake.findings.filter(finding => !belongsToIssue56(finding))) {
+    assert(!inventory.findings.some(row => row.findingId === laterFinding.id), 'A later submission must not be counted as Issue 56 coverage.');
+  }
   assert.equal(inventory.publicationAllowed, false);
   assert.equal(new Set(inventory.findings.map(row => row.findingId)).size, inventory.findings.length);
   for (const finding of inventory.findings) {

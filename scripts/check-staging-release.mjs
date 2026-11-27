@@ -13,9 +13,11 @@ const optional=[
  '/blog/wgu-single-courses-prices-transfer-and-assessments/',
  '/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/',
  '/blog/umpi-yourpace-vs-umass-global-mypath-business/',
+ '/blog/asu-universal-learner-vs-sophia/',
  '/credit-sources/google-certificates/',
  '/credit-sources/wgu-single-courses/',
- '/credit-sources/christian-leaders/'
+ '/credit-sources/christian-leaders/',
+ '/credit-sources/asu-ulc/'
 ];
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const fail=(code,details={})=>Object.assign(Error(code),{code,...details});

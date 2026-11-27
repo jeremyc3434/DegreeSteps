@@ -10,6 +10,7 @@ export const INTAKE_PATH='content/research-intake';
 const ROOT=resolve(import.meta.dirname,'..');
 const HASH=/^[a-f0-9]{64}$/;
 const FINDING=/^finding-[a-f0-9]{64}$/;
+const receiptPath=value=>typeof value==='string'&&/^content\/research-intake\/evidence\/[a-zA-Z0-9_./-]+\.json$/.test(value)&&!value.split('/').some(segment=>segment==='..'||segment==='.'||!segment);
 const list=value=>Array.isArray(value)?value:[];
 const unique=values=>[...new Set(values)].sort();
 const fail=message=>{throw Error(message);};
@@ -104,7 +105,7 @@ export function emptyReview(findingId){return{
  reviewer:'',reviewedOn:null,verifiedOn:null,announcedOn:null,effectiveOn:null,followUpOn:null,
  triage:'WATCH',status:'inbox',changeKind:'unknown',summary:'',evidence:[],receiptPaths:[],
  facts:{scope:{institution:null,program:null,level:null,modality:null,catalog:null},costs:[],accreditation:[],transfer:{overallCap:null,aceCap:null,nccrsCap:null,combinedCplCap:null,externallyAssessedCap:null,residency:null,majorResidency:null,totalCredits:null},aceRecommendations:[],equivalencies:[],assessments:[]},
- product:{status:'unassessed',paths:[],notes:''},
+ product:{status:'unassessed',paths:[],notes:''},release:null,
  editorial:{status:'unassessed',proposedUrls:[],publishedUrls:[],existingUrls:[],title:null,metaDescription:null,canonicalUrl:null,internalLinks:[],structuredData:null,sitemap:null,studentUsefulness:'',novelty:'',searchIntent:'',debtFreeRelevance:'',urgency:'',overlapNotes:'',evidenceIds:[],metrics:null}
 };}
 export function validateReview(review,{asOf=new Date().toISOString().slice(0,10)}={}){
@@ -122,7 +123,7 @@ export function validateReview(review,{asOf=new Date().toISOString().slice(0,10)
  enumeration(review.status,['inbox','researching','ready-for-review','implemented','no-action','watch','superseded'],'status');
  enumeration(review.changeKind,['unknown','new-policy','newly-discovered-existing-policy','confirmation','correction'],'change kind');
  nonempty(review.summary,'Review summary',8000);
- if(!Array.isArray(review.receiptPaths)||review.receiptPaths.some(path=>typeof path!=='string'||!/^content\/research-intake\/evidence\/[a-zA-Z0-9_./-]+\.json$/.test(path)||path.split('/').some(segment=>segment==='..'||segment==='.'||!segment)))fail('Native receipts must use safe repository evidence paths.');
+ if(!Array.isArray(review.receiptPaths)||review.receiptPaths.some(path=>!receiptPath(path)))fail('Native receipts must use safe repository evidence paths.');
  if(!Array.isArray(review.evidence)||review.evidence.length>100)fail('Use up to 100 evidence records.');
  const evidence=new Map();
  for(const item of review.evidence){
@@ -170,11 +171,44 @@ export function validateReview(review,{asOf=new Date().toISOString().slice(0,10)
   references(editorial.evidenceIds,{primary:true});
  }
  if(editorial.status==='published'&&!editorial.publishedUrls.length)fail('Published editorial work needs its actual URL.');
+ const release=review.release;
+ if(release!==undefined&&release!==null){
+  if(!object(release)||release.environment!=='production'||!/^([a-f0-9]{40})$/i.test(release.commitSha||''))fail('Release evidence needs the exact production commit.');
+  const github='https://github.com/'+REPOSITORY;
+  if(typeof release.pullRequestUrl!=='string'||!new RegExp('^'+github.replaceAll('.','\\.')+'/pull/[1-9][0-9]*$').test(release.pullRequestUrl)||typeof release.workflowRunUrl!=='string'||!new RegExp('^'+github.replaceAll('.','\\.')+'/actions/runs/[1-9][0-9]*$').test(release.workflowRunUrl))fail('Release evidence needs this repository’s actual PR and workflow run.');
+  day(release.verifiedOn);if(release.verifiedOn>review.reviewedOn)fail('Release verification cannot follow review.');nonempty(release.approval,'Release approval basis',2000);
+  if(!Array.isArray(release.verifiedUrls)||!release.verifiedUrls.length||unique(release.verifiedUrls).length!==release.verifiedUrls.length||release.verifiedUrls.some(url=>new URL(publicURL(url)).origin!=='https://degreesteps.com'))fail('Release verification needs actual DegreeSteps URLs.');
+  if(!Array.isArray(release.receiptPaths)||!release.receiptPaths.length||unique(release.receiptPaths).length!==release.receiptPaths.length||release.receiptPaths.some(path=>!receiptPath(path)))fail('Release evidence needs retained verification receipts.');
+ }
+ if(editorial.status==='published'&&(!release||editorial.publishedUrls.some(url=>!release.verifiedUrls.includes(url))))fail('Published editorial work needs approved production release evidence for every live URL.');
  if(review.status==='implemented'&&((['PRODUCT','BOTH'].includes(review.triage)&&product.status!=='implemented')||(['CONTENT','BOTH'].includes(review.triage)&&!['review-ready','published'].includes(editorial.status))))fail('Complete both required tracks before closing a finding.');
  return review;
 }
 async function files(folder){try{return(await readdir(folder,{withFileTypes:true})).filter(entry=>{if(entry.isSymbolicLink())fail('Intake symlinks are not supported.');return entry.isFile()&&entry.name.endsWith('.json');}).map(entry=>entry.name).sort();}catch(error){if(error.code==='ENOENT')return [];throw error;}}
 async function readJSON(path){const metadata=await lstat(path);if(metadata.isSymbolicLink()||!metadata.isFile())fail('Intake input must be a regular file without symlinks.');if(metadata.size>8*1024*1024)fail('JSON input exceeds eight MiB.');const bytes=await readFile(path);if(bytes.length>8*1024*1024)fail('JSON input exceeds eight MiB.');return JSON.parse(bytes);}
+async function receiptAncestors(root,path){
+ let directory=root;
+ for(const segment of path.split('/').slice(0,-1)){directory=join(directory,segment);const entry=await lstat(directory);if(entry.isSymbolicLink()||!entry.isDirectory())fail('Intake receipt ancestors must be directories without symlinks.');}
+}
+/** Byte integrity of retained JSON extractions, never a claim of origin HTTP
+ * authenticity, academic truth or independent approval of a release. */
+export async function validateRetainedReceipts(root=ROOT,paths=[]){
+ const base=join(root,INTAKE_PATH,'evidence'),retained=new Set();let folders;
+ try{await receiptAncestors(root,INTAKE_PATH+'/evidence/retention-manifest.json');folders=await readdir(base,{withFileTypes:true});}catch(error){if(error.code!=='ENOENT')throw error;folders=[];}
+ for(const folder of folders){
+  if(folder.isSymbolicLink())fail('Intake symlinks are not supported.');if(!folder.isDirectory())continue;
+  if(!/^issue[1-9][0-9]*$/.test(folder.name))fail('Invalid receipt issue directory.');
+  const prefix=INTAKE_PATH+'/evidence/'+folder.name+'/',manifest=await readJSON(join(root,prefix,'retention-manifest.json'));
+  if(manifest.schemaVersion!==1||manifest.issueNumber!==Number(folder.name.slice(5))||manifest.publicationAllowed!==false||!Array.isArray(manifest.files)||manifest.files.length>10000)fail('Invalid native receipt retention manifest.');
+  for(const item of manifest.files){
+   if(!receiptPath(item.retainedPath)||!item.retainedPath.startsWith(prefix)||retained.has(item.retainedPath)||!HASH.test(item.sha256)||!Number.isSafeInteger(item.bytes)||item.bytes<1||item.bytes>8*1024*1024)fail('Invalid retained receipt path, size or hash.');
+   await receiptAncestors(root,item.retainedPath);await readJSON(join(root,item.retainedPath));const bytes=await readFile(join(root,item.retainedPath));
+   if(bytes.length!==item.bytes||createHash('sha256').update(bytes).digest('hex')!==item.sha256)fail('Retained receipt bytes no longer match the manifest.');retained.add(item.retainedPath);
+  }
+ }
+ if(!Array.isArray(paths)||paths.some(path=>!receiptPath(path)||!retained.has(path)))fail('Every review receipt must exist in a verified retention manifest.');
+ return retained;
+}
 async function writeJSON(path,value,{immutable=false}={}){
  await mkdir(resolve(path,'..'),{recursive:true});const output=JSON.stringify(value,null,2)+'\n';
  if(immutable){try{await writeFile(path,output,{flag:'wx'});}catch(error){if(error.code!=='EEXIST')throw error;if(await readFile(path,'utf8')!==output)fail('Refusing to overwrite an immutable intake record.');}}
@@ -188,6 +222,7 @@ export async function loadLedger(root=ROOT,{asOf=new Date().toISOString().slice(
  const histories=new Map();
  for(const name of await files(join(base,'reviews'))){const record=validateReview(await readJSON(join(base,'reviews',name)),{asOf}),hash=digest(record);if(name!==hash+'.json')fail('Review filename must equal its hash.');if(!findings.has(record.findingId))fail('Review references an unknown finding.');const known=unique(findings.get(record.findingId).origins.map(origin=>origin.revision));if(record.sourceRevisions.some(revision=>!known.includes(revision)))fail('Review references an unknown source revision.');if(!histories.has(record.findingId))histories.set(record.findingId,[]);histories.get(record.findingId).push({record,hash});reviews.push(record);}
  for(const history of histories.values()){history.sort((a,b)=>a.record.revision-b.record.revision);for(let i=0;i<history.length;i++)if(history[i].record.revision!==i+1||history[i].record.previousReviewHash!==(i?history[i-1].hash:null))fail('Review history must be linear, complete and append-only.');}
+ await validateRetainedReceipts(root,reviews.flatMap(review=>[...review.receiptPaths,...list(review.release?.receiptPaths)]));
  const items=[...findings.values()].sort((a,b)=>a.id.localeCompare(b.id)).map(finding=>{const history=histories.get(finding.id)||[],current=history.at(-1),sourceRevisions=unique(finding.origins.map(origin=>origin.revision)),reviewCurrent=!!current&&sameSourceMeaning(current.record.sourceRevisions,sourceRevisions,semantics);return {...finding,origins:[...new Map(finding.origins.map(origin=>[stable(origin),origin])).values()].sort((a,b)=>stable(a).localeCompare(stable(b))),reviewHash:current?.hash||null,reviewCurrent,requiresReverification:!!current&&!reviewCurrent,review:current?.record||{...emptyReview(finding.id),sourceRevisions}};});
  const core={schemaVersion:1,publicationAllowed:false,repository:REPOSITORY,submissionRevisions:submissions.length,reviewRevisions:reviews.length,findings:items};
  return {...core,revision:digest(core)};
@@ -215,6 +250,7 @@ export async function appendReview(review,{root=ROOT,asOf}={}){
  if(review.sourceRevisions.some(revision=>!observed.includes(revision)))fail('Source revisions changed: reload the finding before reviewing.');
  const semantics=new Map(await Promise.all(observed.map(async revision=>[revision,semanticSubmissionRevision(await readJSON(join(root,INTAKE_PATH,'submissions',revision+'.json')))])));
  if(!sameSourceMeaning(review.sourceRevisions,observed,semantics))fail('Source revisions changed: reload the finding before reviewing.');
+ await validateRetainedReceipts(root,[...review.receiptPaths,...list(review.release?.receiptPaths)]);
  await writeJSON(join(root,INTAKE_PATH,'reviews',hash+'.json'),review,{immutable:true});return buildIndexes(root,{asOf});});
 }
 export async function retainReceipt(file,{root=ROOT,issueNumber,asOf=new Date().toISOString().slice(0,10),kind='connector-rendered-extraction'}={}){
@@ -223,6 +259,7 @@ export async function retainReceipt(file,{root=ROOT,issueNumber,asOf=new Date().
  const bytes=await readFile(source);if(bytes.length>8*1024*1024)fail('Native receipt exceeds eight MiB.');JSON.parse(bytes.toString('utf8'));
  const sha256=createHash('sha256').update(bytes).digest('hex'),prefix=INTAKE_PATH+'/evidence/issue'+issueNumber+'/',retainedPath=prefix+sha256+'.json';
  return withLock(root,async()=>{
+  await validateRetainedReceipts(root);
   const folder=join(root,prefix),manifestPath=join(folder,'retention-manifest.json');await mkdir(folder,{recursive:true});let manifest;
   try{manifest=await readJSON(manifestPath);}catch(error){if(error.code!=='ENOENT')throw error;manifest={schemaVersion:1,issueNumber,preservedOn:asOf,publicationAllowed:false,receiptPolicy:'Native connector extraction receipts are preserved intact. Hashes identify retained JSON bytes, not origin HTML. A connector extraction is not an origin HTTP response.',files:[]};}
   if(manifest.schemaVersion!==1||manifest.issueNumber!==issueNumber||manifest.publicationAllowed!==false||!Array.isArray(manifest.files)||manifest.files.length>10000)fail('Invalid native receipt retention manifest.');

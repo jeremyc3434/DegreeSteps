@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "publicationAllowed": false,
   "repository": "jeremyc3434/DegreeSteps",
-  "submissionRevisions": 4,
-  "reviewRevisions": 19,
+  "submissionRevisions": 8,
+  "reviewRevisions": 23,
   "findings": [
     {
       "claim": "South College CBE conflicting 60%/75% policies; California Baptist advertised 100 units and $541/unit; UW Flexible Option reported $2,250/subscription; Memphis/Saylor; National University and RMCAD Sophia partnerships; WGU degree-level ACE restrictions. Verify before publishing.",
@@ -12,6 +12,11 @@
       "id": "finding-16befdf2a89b9423f9abf2a3b754611063fbbeaf3d79fbb5d3f4e5a55209ebb8",
       "sourceUrls": [],
       "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        },
         {
           "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
           "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
@@ -339,6 +344,11 @@
       "origins": [
         {
           "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        },
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
           "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
           "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
         },
@@ -515,6 +525,11 @@
         "https://www.umpi.edu/yourpace/tuition/"
       ],
       "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        },
         {
           "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
           "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
@@ -792,6 +807,11 @@
       "origins": [
         {
           "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        },
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
           "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
           "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
         },
@@ -1044,6 +1064,259 @@
       }
     },
     {
+      "claim": "Test the unsupported inference that university-issued credit or a provider partnership guarantees acceptance into every degree. Reject the inference without exact receiving-school evidence; create no new receiving awards or readiness promotions. https://ea.asu.edu/help-center/faqs/",
+      "section": "Rejection control",
+      "kind": "lead",
+      "id": "finding-6e968d980b01f301efa00b27827666b18c90cfe9843edbabd4a01646deb5cee1",
+      "sourceUrls": [
+        "https://ea.asu.edu/help-center/faqs/"
+      ],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-61",
+          "revision": "758eb76ac994c0bcf367697d865f79fb208fb0945837e427ab872c951a4b2c8b",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/61"
+        }
+      ],
+      "reviewHash": "6d97c1c0eadc013c5c693a61bc73db2a8a666f3df05139a6c9402db4997968b1",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-6e968d980b01f301efa00b27827666b18c90cfe9843edbabd4a01646deb5cee1",
+        "revision": 1,
+        "previousReviewHash": null,
+        "sourceRevisions": [
+          "758eb76ac994c0bcf367697d865f79fb208fb0945837e427ab872c951a4b2c8b"
+        ],
+        "reviewer": "Codex independently verified weekly rehearsal",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": "2026-11-27",
+        "announcedOn": null,
+        "effectiveOn": null,
+        "followUpOn": "2026-12-04",
+        "triage": "WATCH",
+        "status": "no-action",
+        "changeKind": "confirmation",
+        "summary": "Negative-control test passed: official ASU guidance explicitly says receiving institutions set their own rules. University-issued credit and provider partnerships do not establish universal acceptance or exact degree applicability. No awards, curricula or student records changed.",
+        "evidence": [
+          {
+            "id": "asu-pricing",
+            "title": "ASU pricing: enrollment, optional credit purchase and federal-aid exclusion",
+            "url": "https://ulc.asu.edu/how-it-works/pricing/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Total per course: $425",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-conversion",
+            "title": "ASU credit conversion: required grade, one-year purchase window and transcript choice",
+            "url": "https://ulc.asu.edu/how-it-works/how-to-get-college-credit/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Complete your course with a final grade of C or better.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-faq",
+            "title": "ASU ULC FAQ: eligibility, course formats and up-to-14-business-day posting allowance",
+            "url": "https://ulc.asu.edu/help-center/faqs/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "it can take up to 14 business days",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-proctoring",
+            "title": "ASU proctoring: Honorlock, course filter and syllabus policies",
+            "url": "https://ulc.asu.edu/help-center/proctoring/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Use the “proctoring” filter in the course catalog",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-transfer",
+            "title": "ASU transfer guidance: receiving institution determines applicability",
+            "url": "https://ulc.asu.edu/asu-universal-pathways/transfer-credits/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Every college or university has its own rules about accepting credits",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-transcripts",
+            "title": "ASU registrar: official transcripts, Parchment delivery and $15 copy fee",
+            "url": "https://registrar.asu.edu/transcripts",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Official transcripts cost $15.00 per official transcript copy requested.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-ea-faq",
+            "title": "ASU Earned Admission FAQ: different statement of immediate transcript posting",
+            "url": "https://ea.asu.edu/help-center/faqs/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "they will immediately appear on your unofficial ASU transcript",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-timeline",
+            "title": "ASU on-demand timeline: minimum credit-eligibility periods",
+            "url": "https://asu.my.salesforce-sites.com/kb/articles/FAQ/On-Demand-Timeline-for-Credit-Conversion-and-Transcripts/?fs=RelatedArticle&l=en_US",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "3 and 4 credit on-demand courses",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-transfer-kb",
+            "title": "Asu Transfer Kb",
+            "url": "https://asu.my.salesforce-sites.com/kb/articles/FAQ/Will-my-college-or-university-accept-credits-earned-through-ASU-Universal-Learner-Courses/?fs=RelatedArticle&l=en_US",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "transfer credit policies vary by institution",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-pricing",
+            "title": "Sophia current pricing: monthly, four-month and advertised annual plans",
+            "url": "https://www.sophia.org/plans-and-pricing/",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "Automatically renews annually. $799",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-billing",
+            "title": "Sophia billing: renewal, concurrent courses and conflicting annual price",
+            "url": "https://app.sophia.org/tutorials/account-and-billing",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "12-month membership for $599",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-assessment",
+            "title": "Sophia grading guide, January 15, 2026: open-book and non-proctored assessments",
+            "url": "https://www.sophia.org/blog/higher-education/online-learning-grading-timelines/",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "Sophia Learning has no proctored exams. All assessments are open book",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-identity",
+            "title": "Sophia identity-verification methods",
+            "url": "https://app.sophia.org/tutorials/verification-methods",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "You may be prompted to provide an ID for verification through Jumio.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-transcript",
+            "title": "Sophia official transcript and ACE transcript routes",
+            "url": "https://app.sophia.org/tutorials/course-transfer-and-transcripts",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "You can send your ACE transcript via Credly.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-scope",
+            "title": "Sophia credit model and receiving-college decisions, August 20, 2026",
+            "url": "https://www.sophia.org/blog/sophia-experience/what-colleges-accept-sophia-courses/",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "Instead of awarding college credits directly",
+            "capturePath": null,
+            "contentHash": null
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue61/59d8c3315ce1bccab720946216237885cb5656cf2eb60c81a77f925ab4b10ef7.json",
+          "content/research-intake/evidence/issue61/d0dc3642c4a2ccf32216c45e378be1ddd6b31e2bc946cdf36c4d35b235b2cc6f.json",
+          "content/research-intake/evidence/issue61/257a30e316e33e9082bc39536709127b0782087615d72f102e3351c57dc33921.json",
+          "content/research-intake/evidence/issue61/33d58459995a0205b94cf3c6a3276eee48aab3272379c38a7e113ad4f606dd9f.json",
+          "content/research-intake/evidence/issue61/fba3db24e63f0dab118ac0de23a8aee455095d93a82d6474324b0821b84e7f6a.json",
+          "content/research-intake/evidence/issue61/5bf95bb166f43abbaf2e0f1b0d905d8948ea4eb367e82fcd9033a9b571da2a66.json",
+          "content/research-intake/evidence/issue61/4f99ad569a61d290122755cdf2ffe3f4299442db1b1550a8d4ca7c6e5bf8178e.json",
+          "content/research-intake/evidence/issue61/441059e851656c866dca5682ca4370ab92cb976d737a3e89a091847e66cda8a4.json",
+          "content/research-intake/evidence/issue61/8cec0a3e095403af9edca2ae613836ba591da6a9d7e1ad7ae7681a81c7923a76.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": null,
+            "program": null,
+            "level": null,
+            "modality": null,
+            "catalog": null
+          },
+          "costs": [],
+          "accreditation": [],
+          "transfer": {
+            "overallCap": null,
+            "aceCap": null,
+            "nccrsCap": null,
+            "combinedCplCap": null,
+            "externallyAssessedCap": null,
+            "residency": null,
+            "majorResidency": null,
+            "totalCredits": null
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": []
+        },
+        "product": {
+          "status": "not-needed",
+          "paths": [],
+          "notes": "No receiving award or readiness promotion. The negative control and editorial acceptance criteria are applied to the researched ASU product/article, not treated as independent policy evidence."
+        },
+        "release": null,
+        "editorial": {
+          "status": "not-needed",
+          "proposedUrls": [],
+          "publishedUrls": [],
+          "existingUrls": [],
+          "title": null,
+          "metaDescription": null,
+          "canonicalUrl": null,
+          "internalLinks": [],
+          "structuredData": null,
+          "sitemap": null,
+          "studentUsefulness": "",
+          "novelty": "",
+          "searchIntent": "",
+          "debtFreeRelevance": "",
+          "urgency": "",
+          "overlapNotes": "",
+          "evidenceIds": [],
+          "metrics": null
+        }
+      }
+    },
+    {
       "claim": "Investigate 90-credit applied bachelor's degrees in Maine (UMPI psychology, UMFK business, UMA public administration); verify eligibility, transfer, accreditation and graduate-school implications. https://www.maine.edu/blog/2025/07/14/university-of-maine-system-to-lead-state-in-accelerating-adult-degree-completion-with-new-applied-90-credit-bachelors-programs/",
       "section": "P1",
       "kind": "lead",
@@ -1052,6 +1325,11 @@
         "https://www.maine.edu/blog/2025/07/14/university-of-maine-system-to-lead-state-in-accelerating-adult-degree-completion-with-new-applied-90-credit-bachelors-programs/"
       ],
       "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        },
         {
           "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
           "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
@@ -1344,6 +1622,330 @@
       }
     },
     {
+      "claim": "Verify ASU Universal Learner upfront versus transcript-posting payments, grade and purchase deadlines, eligibility and minimum pacing; improve the source profile and create a substantive ASU Universal Learner versus Sophia comparison only if it adds a useful new student decision beyond existing content. https://ea.asu.edu/how-it-works/pricing/ https://ea.asu.edu/help-center/faqs/ https://www.sophia.org/plans-and-pricing/",
+      "section": "P1",
+      "kind": "lead",
+      "id": "finding-a7b5e158aad2d2117032374b682166e7d295c1caa1fce347b4b80283d1e6ef65",
+      "sourceUrls": [
+        "https://ea.asu.edu/help-center/faqs/",
+        "https://ea.asu.edu/how-it-works/pricing/",
+        "https://www.sophia.org/plans-and-pricing/"
+      ],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-61",
+          "revision": "758eb76ac994c0bcf367697d865f79fb208fb0945837e427ab872c951a4b2c8b",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/61"
+        }
+      ],
+      "reviewHash": "d4c536eaa4c17bd73f411b42611166a638fdab6329d50e6028bfdd5bf15f4cec",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-a7b5e158aad2d2117032374b682166e7d295c1caa1fce347b4b80283d1e6ef65",
+        "revision": 1,
+        "previousReviewHash": null,
+        "sourceRevisions": [
+          "758eb76ac994c0bcf367697d865f79fb208fb0945837e427ab872c951a4b2c8b"
+        ],
+        "reviewer": "Codex independently verified weekly rehearsal",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": "2026-11-27",
+        "announcedOn": null,
+        "effectiveOn": null,
+        "followUpOn": "2026-12-04",
+        "triage": "BOTH",
+        "status": "ready-for-review",
+        "changeKind": "newly-discovered-existing-policy",
+        "summary": "Verified official ASU Universal Learner and Sophia evidence; improve the ASU source profile and write a substantive original comparison answering transcript choice, actual purchase structure, realistic timing, assessment and receiving-degree applicability. Native connector extractions are retained, not represented as origin HTTP captures. Source conflicts stay explicit; no receiving map, award, degree-readiness or student record changes.",
+        "evidence": [
+          {
+            "id": "asu-pricing",
+            "title": "ASU pricing: enrollment, optional credit purchase and federal-aid exclusion",
+            "url": "https://ulc.asu.edu/how-it-works/pricing/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Total per course: $425",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-conversion",
+            "title": "ASU credit conversion: required grade, one-year purchase window and transcript choice",
+            "url": "https://ulc.asu.edu/how-it-works/how-to-get-college-credit/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Complete your course with a final grade of C or better.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-faq",
+            "title": "ASU ULC FAQ: eligibility, course formats and up-to-14-business-day posting allowance",
+            "url": "https://ulc.asu.edu/help-center/faqs/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "it can take up to 14 business days",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-proctoring",
+            "title": "ASU proctoring: Honorlock, course filter and syllabus policies",
+            "url": "https://ulc.asu.edu/help-center/proctoring/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Use the “proctoring” filter in the course catalog",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-transfer",
+            "title": "ASU transfer guidance: receiving institution determines applicability",
+            "url": "https://ulc.asu.edu/asu-universal-pathways/transfer-credits/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Every college or university has its own rules about accepting credits",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-transcripts",
+            "title": "ASU registrar: official transcripts, Parchment delivery and $15 copy fee",
+            "url": "https://registrar.asu.edu/transcripts",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Official transcripts cost $15.00 per official transcript copy requested.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-ea-faq",
+            "title": "ASU Earned Admission FAQ: different statement of immediate transcript posting",
+            "url": "https://ea.asu.edu/help-center/faqs/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "they will immediately appear on your unofficial ASU transcript",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-timeline",
+            "title": "ASU on-demand timeline: minimum credit-eligibility periods",
+            "url": "https://asu.my.salesforce-sites.com/kb/articles/FAQ/On-Demand-Timeline-for-Credit-Conversion-and-Transcripts/?fs=RelatedArticle&l=en_US",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "3 and 4 credit on-demand courses",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-transfer-kb",
+            "title": "Asu Transfer Kb",
+            "url": "https://asu.my.salesforce-sites.com/kb/articles/FAQ/Will-my-college-or-university-accept-credits-earned-through-ASU-Universal-Learner-Courses/?fs=RelatedArticle&l=en_US",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "transfer credit policies vary by institution",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-pricing",
+            "title": "Sophia current pricing: monthly, four-month and advertised annual plans",
+            "url": "https://www.sophia.org/plans-and-pricing/",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "Automatically renews annually. $799",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-billing",
+            "title": "Sophia billing: renewal, concurrent courses and conflicting annual price",
+            "url": "https://app.sophia.org/tutorials/account-and-billing",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "12-month membership for $599",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-assessment",
+            "title": "Sophia grading guide, January 15, 2026: open-book and non-proctored assessments",
+            "url": "https://www.sophia.org/blog/higher-education/online-learning-grading-timelines/",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "Sophia Learning has no proctored exams. All assessments are open book",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-identity",
+            "title": "Sophia identity-verification methods",
+            "url": "https://app.sophia.org/tutorials/verification-methods",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "You may be prompted to provide an ID for verification through Jumio.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-transcript",
+            "title": "Sophia official transcript and ACE transcript routes",
+            "url": "https://app.sophia.org/tutorials/course-transfer-and-transcripts",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "You can send your ACE transcript via Credly.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-scope",
+            "title": "Sophia credit model and receiving-college decisions, August 20, 2026",
+            "url": "https://www.sophia.org/blog/sophia-experience/what-colleges-accept-sophia-courses/",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "Instead of awarding college credits directly",
+            "capturePath": null,
+            "contentHash": null
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue61/59d8c3315ce1bccab720946216237885cb5656cf2eb60c81a77f925ab4b10ef7.json",
+          "content/research-intake/evidence/issue61/d0dc3642c4a2ccf32216c45e378be1ddd6b31e2bc946cdf36c4d35b235b2cc6f.json",
+          "content/research-intake/evidence/issue61/257a30e316e33e9082bc39536709127b0782087615d72f102e3351c57dc33921.json",
+          "content/research-intake/evidence/issue61/33d58459995a0205b94cf3c6a3276eee48aab3272379c38a7e113ad4f606dd9f.json",
+          "content/research-intake/evidence/issue61/fba3db24e63f0dab118ac0de23a8aee455095d93a82d6474324b0821b84e7f6a.json",
+          "content/research-intake/evidence/issue61/5bf95bb166f43abbaf2e0f1b0d905d8948ea4eb367e82fcd9033a9b571da2a66.json",
+          "content/research-intake/evidence/issue61/4f99ad569a61d290122755cdf2ffe3f4299442db1b1550a8d4ca7c6e5bf8178e.json",
+          "content/research-intake/evidence/issue61/441059e851656c866dca5682ca4370ab92cb976d737a3e89a091847e66cda8a4.json",
+          "content/research-intake/evidence/issue61/8cec0a3e095403af9edca2ae613836ba591da6a9d7e1ad7ae7681a81c7923a76.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": "Arizona State University",
+            "program": "Universal Learner Courses compared with Sophia Learning",
+            "level": "undergraduate source offerings",
+            "modality": "online; course-specific format",
+            "catalog": "Provider pages checked 2026-11-27; no new policy effective date established"
+          },
+          "costs": [
+            {
+              "amount": 425,
+              "currency": "USD",
+              "unit": "one successfully completed ASU Universal Learner course when optional credit is purchased",
+              "scope": "Current listed $25 enrollment plus $400 credit purchase",
+              "assumptions": "Required C or better; optional credit purchase within the published one-year window; no guarantee of receiving-school acceptance.",
+              "includes": [
+                "$25 enrollment",
+                "$400 optional credit purchase"
+              ],
+              "excludes": [
+                "$15 official transcript copy",
+                "retakes",
+                "other university costs"
+              ],
+              "evidenceIds": [
+                "asu-pricing",
+                "asu-conversion",
+                "asu-transcripts"
+              ]
+            }
+          ],
+          "accreditation": [],
+          "transfer": {
+            "overallCap": null,
+            "aceCap": null,
+            "nccrsCap": null,
+            "combinedCplCap": null,
+            "externallyAssessedCap": null,
+            "residency": null,
+            "majorResidency": null,
+            "totalCredits": null
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": [
+            {
+              "name": "ASU Universal Learner assessment",
+              "scope": "Course-specific catalog and syllabus; no all-course no-proctor claim",
+              "method": "Review the official proctoring filter and syllabus; some courses require proctored exams and identity checks.",
+              "proctored": null,
+              "evidenceIds": [
+                "asu-proctoring"
+              ]
+            },
+            {
+              "name": "Sophia course assessments",
+              "scope": "Provider assessment policy; identity checks remain separate",
+              "method": "Open-book, non-proctored assessments under the cited policy; identity verification can still apply.",
+              "proctored": false,
+              "evidenceIds": [
+                "sophia-assessment",
+                "sophia-identity"
+              ]
+            }
+          ]
+        },
+        "product": {
+          "status": "review-ready",
+          "paths": [
+            "dist/data/credit-sources.json",
+            "dist/credit-sources/asu-ulc/index.html"
+          ],
+          "notes": "Existing ASU source fields now distinguish enrollment and credit purchase, grade eligibility, transcript timing/cost, pacing, proctoring and receiving applicability. ASU remains catalog-only; no exact transfer awards are added."
+        },
+        "release": null,
+        "editorial": {
+          "status": "review-ready",
+          "proposedUrls": [
+            "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/"
+          ],
+          "publishedUrls": [],
+          "existingUrls": [
+            "https://degreesteps.com/blog/college-wont-accept-sophia-university-credit-options/"
+          ],
+          "title": "ASU Universal Learner vs. Sophia: cost, transcripts and timing",
+          "metaDescription": "Compare ASU Universal Learner and Sophia by actual course costs, transcript source, grade choice, assessment format and deadlines before choosing your next transfer course.",
+          "canonicalUrl": "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+          "internalLinks": [
+            "https://degreesteps.com/courses.html?tab=browse",
+            "https://degreesteps.com/credit-sources/asu-ulc/",
+            "https://degreesteps.com/blog/college-wont-accept-sophia-university-credit-options/"
+          ],
+          "structuredData": true,
+          "sitemap": true,
+          "studentUsefulness": "Choose a usable next course using full price, assessment needs, grade and transcript timing.",
+          "novelty": "New detailed ASU-versus-Sophia decision guide; earlier institutional-credit article contains only a short ASU overview.",
+          "searchIntent": "ASU Universal Learner vs Sophia cost, transcript, timing and transfer differences",
+          "debtFreeRelevance": "Compare applicable course baskets and payment risk before spending; no debt-free or receiving-credit guarantee.",
+          "urgency": "Current provider source timing differs and transcript deadlines affect enrollment.",
+          "overlapNotes": "Preserves all 24 existing articles and cross-links the institutional-credit overview instead of duplicating its generic provider survey.",
+          "evidenceIds": [
+            "asu-pricing",
+            "asu-conversion",
+            "asu-faq",
+            "asu-proctoring",
+            "asu-transfer",
+            "asu-transcripts",
+            "asu-ea-faq",
+            "asu-timeline",
+            "asu-transfer-kb",
+            "sophia-pricing",
+            "sophia-billing",
+            "sophia-assessment",
+            "sophia-identity",
+            "sophia-transcript",
+            "sophia-scope"
+          ],
+          "metrics": null
+        }
+      }
+    },
+    {
       "claim": "Verify Google ACE renewal windows for GOOG-0009, GOOG-0007, GOOG-0008 (reported Nov 30 expiry); preserve valid historical awards. https://www.acenet.edu/National-Guide/",
       "section": "P0",
       "kind": "lead",
@@ -1354,8 +1956,18 @@
       "origins": [
         {
           "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        },
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
           "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
           "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        },
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-61",
+          "revision": "758eb76ac994c0bcf367697d865f79fb208fb0945837e427ab872c951a4b2c8b",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/61"
         },
         {
           "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
@@ -1363,7 +1975,7 @@
           "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
         }
       ],
-      "reviewHash": "1fb22e9f49127c3f25304e251b9ea0ba1fc50ac76deba30cf6c98372f04c81af",
+      "reviewHash": "b89cdba413c6b71169f98608c3e5346e3961f5f7d5a8e29803bbd620bd35fbae",
       "reviewCurrent": true,
       "requiresReverification": false,
       "review": {
@@ -1371,12 +1983,14 @@
         "kind": "research-review",
         "publicationAllowed": false,
         "findingId": "finding-c4224c6e66e6024360ed98233af8bd1825d7aa9abfe0edbcf7e361e4211d1b46",
-        "revision": 1,
-        "previousReviewHash": null,
+        "revision": 2,
+        "previousReviewHash": "1fb22e9f49127c3f25304e251b9ea0ba1fc50ac76deba30cf6c98372f04c81af",
         "sourceRevisions": [
-          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b"
+          "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+          "758eb76ac994c0bcf367697d865f79fb208fb0945837e427ab872c951a4b2c8b",
+          "7d4dacd1df1f822e9aa6c6d7d28bbdb1b053f4fb148691438b6a61d0222c832f"
         ],
-        "reviewer": "DegreeSteps Issue56 primary-source and editorial review",
+        "reviewer": "Codex source-bound duplicate reconciliation",
         "reviewedOn": "2026-11-27",
         "verifiedOn": "2026-11-27",
         "announcedOn": null,
@@ -1385,7 +1999,7 @@
         "triage": "BOTH",
         "status": "ready-for-review",
         "changeKind": "confirmation",
-        "summary": "Update the existing ACE guide with a named, dated certificate-window case study; no separate expiry-news page. Content is prepared for PR review; no production publication or indexing is claimed.",
+        "summary": "Update the existing ACE guide with a named, dated certificate-window case study; no separate expiry-news page. Content is prepared for PR review; no production publication or indexing is claimed. Exact repeated lead from rehearsal issue #61 reconciled to this existing finding and retained same-day primary ACE evidence. No duplicate policy, article, receiving award, source-credit upgrade or historical student change is introduced; no successor after November 30 is asserted.",
         "evidence": [
           {
             "id": "google-current-window",
@@ -1442,7 +2056,8 @@
           "content/research-intake/evidence/issue56/provider-captures/google-registry.json",
           "content/research-intake/evidence/issue56/provider-captures/google-versions.json",
           "content/research-intake/evidence/issue56/provider-captures/wgu-index-ace-faq.json",
-          "content/research-intake/evidence/issue56/providers.json"
+          "content/research-intake/evidence/issue56/providers.json",
+          "content/research-intake/evidence/issue61/ca814ff6b17c599ec47b3d565b52ed4bb5facf8b89495fbfde58a87aa48c8383.json"
         ],
         "facts": {
           "scope": {
@@ -1554,6 +2169,11 @@
       "id": "finding-cfe1e99f87e47339f0e8c589f537d5bfb002889b0c418709cee85dc968d7d4b2",
       "sourceUrls": [],
       "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        },
         {
           "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
           "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
@@ -1676,6 +2296,11 @@
         "https://www.umpi.edu/academics/credit-for-prior-learning/ace/"
       ],
       "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        },
         {
           "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
           "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
@@ -1857,6 +2482,11 @@
         "https://www.purdueglobal.edu/tuition-financial-aid/undergraduate-graduate-tuition-and-fees/"
       ],
       "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        },
         {
           "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
           "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
@@ -2219,6 +2849,11 @@
         "https://www.sophia.org/"
       ],
       "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
+          "revision": "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/56"
+        },
         {
           "submissionKey": "jeremyc3434/DegreeSteps:issue-56",
           "revision": "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
@@ -2633,7 +3268,263 @@
           "metrics": null
         }
       }
+    },
+    {
+      "claim": "## Editorial acceptance criteria for this rehearsal\nThe comparison must explain the student's actual decision: upfront payment risk, when an official transcript exists, assessment format, pacing and exact degree applicability. Preserve existing articles and avoid a duplicate generic provider list. Do not promise universal transfer, a particular receiving award, or that every ASU course is unproctored. Retain citations and cost assumptions; test both the product source page and the actual generated article on desktop and phone.",
+      "section": "Context / unstructured submission",
+      "kind": "context",
+      "id": "finding-f6addaf0665341187399a1c4023bb09d8e9f5a2be990e2c4dec30a069577cc2f",
+      "sourceUrls": [],
+      "origins": [
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:comment-7228173416",
+          "revision": "4a60ebf7fc3b9f0445d92e59be753dc0a24024a9184fd0afbdddcaac46879a8f",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/61#issuecomment-7228173416"
+        },
+        {
+          "submissionKey": "jeremyc3434/DegreeSteps:comment-7228173416",
+          "revision": "c115c38fa6879215d46c48625e059162a1a75f286c1b61a63a7a84aa6fcb09ae",
+          "url": "https://github.com/jeremyc3434/DegreeSteps/issues/61#issuecomment-7228173416"
+        }
+      ],
+      "reviewHash": "d09db8db391e77c8f2661c2bd6b4f802b43a7c7f830b6d77a89cba755086c4af",
+      "reviewCurrent": true,
+      "requiresReverification": false,
+      "review": {
+        "schemaVersion": 1,
+        "kind": "research-review",
+        "publicationAllowed": false,
+        "findingId": "finding-f6addaf0665341187399a1c4023bb09d8e9f5a2be990e2c4dec30a069577cc2f",
+        "revision": 1,
+        "previousReviewHash": null,
+        "sourceRevisions": [
+          "4a60ebf7fc3b9f0445d92e59be753dc0a24024a9184fd0afbdddcaac46879a8f"
+        ],
+        "reviewer": "Codex independently verified weekly rehearsal",
+        "reviewedOn": "2026-11-27",
+        "verifiedOn": "2026-11-27",
+        "announcedOn": null,
+        "effectiveOn": null,
+        "followUpOn": "2026-12-04",
+        "triage": "WATCH",
+        "status": "no-action",
+        "changeKind": "confirmation",
+        "summary": "Full comment received and reviewed. Its student decision, citation, non-proctored scope and responsive-browser acceptance criteria are implemented in the ASU research/product/article and actual browser tests. This instruction is not a separate academic claim or duplicate article.",
+        "evidence": [
+          {
+            "id": "asu-pricing",
+            "title": "ASU pricing: enrollment, optional credit purchase and federal-aid exclusion",
+            "url": "https://ulc.asu.edu/how-it-works/pricing/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Total per course: $425",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-conversion",
+            "title": "ASU credit conversion: required grade, one-year purchase window and transcript choice",
+            "url": "https://ulc.asu.edu/how-it-works/how-to-get-college-credit/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Complete your course with a final grade of C or better.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-faq",
+            "title": "ASU ULC FAQ: eligibility, course formats and up-to-14-business-day posting allowance",
+            "url": "https://ulc.asu.edu/help-center/faqs/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "it can take up to 14 business days",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-proctoring",
+            "title": "ASU proctoring: Honorlock, course filter and syllabus policies",
+            "url": "https://ulc.asu.edu/help-center/proctoring/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Use the “proctoring” filter in the course catalog",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-transfer",
+            "title": "ASU transfer guidance: receiving institution determines applicability",
+            "url": "https://ulc.asu.edu/asu-universal-pathways/transfer-credits/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Every college or university has its own rules about accepting credits",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-transcripts",
+            "title": "ASU registrar: official transcripts, Parchment delivery and $15 copy fee",
+            "url": "https://registrar.asu.edu/transcripts",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "Official transcripts cost $15.00 per official transcript copy requested.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-ea-faq",
+            "title": "ASU Earned Admission FAQ: different statement of immediate transcript posting",
+            "url": "https://ea.asu.edu/help-center/faqs/",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "they will immediately appear on your unofficial ASU transcript",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-timeline",
+            "title": "ASU on-demand timeline: minimum credit-eligibility periods",
+            "url": "https://asu.my.salesforce-sites.com/kb/articles/FAQ/On-Demand-Timeline-for-Credit-Conversion-and-Transcripts/?fs=RelatedArticle&l=en_US",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "3 and 4 credit on-demand courses",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "asu-transfer-kb",
+            "title": "Asu Transfer Kb",
+            "url": "https://asu.my.salesforce-sites.com/kb/articles/FAQ/Will-my-college-or-university-accept-credits-earned-through-ASU-Universal-Learner-Courses/?fs=RelatedArticle&l=en_US",
+            "kind": "university",
+            "checkedOn": "2026-11-27",
+            "quote": "transfer credit policies vary by institution",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-pricing",
+            "title": "Sophia current pricing: monthly, four-month and advertised annual plans",
+            "url": "https://www.sophia.org/plans-and-pricing/",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "Automatically renews annually. $799",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-billing",
+            "title": "Sophia billing: renewal, concurrent courses and conflicting annual price",
+            "url": "https://app.sophia.org/tutorials/account-and-billing",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "12-month membership for $599",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-assessment",
+            "title": "Sophia grading guide, January 15, 2026: open-book and non-proctored assessments",
+            "url": "https://www.sophia.org/blog/higher-education/online-learning-grading-timelines/",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "Sophia Learning has no proctored exams. All assessments are open book",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-identity",
+            "title": "Sophia identity-verification methods",
+            "url": "https://app.sophia.org/tutorials/verification-methods",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "You may be prompted to provide an ID for verification through Jumio.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-transcript",
+            "title": "Sophia official transcript and ACE transcript routes",
+            "url": "https://app.sophia.org/tutorials/course-transfer-and-transcripts",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "You can send your ACE transcript via Credly.",
+            "capturePath": null,
+            "contentHash": null
+          },
+          {
+            "id": "sophia-scope",
+            "title": "Sophia credit model and receiving-college decisions, August 20, 2026",
+            "url": "https://www.sophia.org/blog/sophia-experience/what-colleges-accept-sophia-courses/",
+            "kind": "provider",
+            "checkedOn": "2026-11-27",
+            "quote": "Instead of awarding college credits directly",
+            "capturePath": null,
+            "contentHash": null
+          }
+        ],
+        "receiptPaths": [
+          "content/research-intake/evidence/issue61/59d8c3315ce1bccab720946216237885cb5656cf2eb60c81a77f925ab4b10ef7.json",
+          "content/research-intake/evidence/issue61/d0dc3642c4a2ccf32216c45e378be1ddd6b31e2bc946cdf36c4d35b235b2cc6f.json",
+          "content/research-intake/evidence/issue61/257a30e316e33e9082bc39536709127b0782087615d72f102e3351c57dc33921.json",
+          "content/research-intake/evidence/issue61/33d58459995a0205b94cf3c6a3276eee48aab3272379c38a7e113ad4f606dd9f.json",
+          "content/research-intake/evidence/issue61/fba3db24e63f0dab118ac0de23a8aee455095d93a82d6474324b0821b84e7f6a.json",
+          "content/research-intake/evidence/issue61/5bf95bb166f43abbaf2e0f1b0d905d8948ea4eb367e82fcd9033a9b571da2a66.json",
+          "content/research-intake/evidence/issue61/4f99ad569a61d290122755cdf2ffe3f4299442db1b1550a8d4ca7c6e5bf8178e.json",
+          "content/research-intake/evidence/issue61/441059e851656c866dca5682ca4370ab92cb976d737a3e89a091847e66cda8a4.json",
+          "content/research-intake/evidence/issue61/8cec0a3e095403af9edca2ae613836ba591da6a9d7e1ad7ae7681a81c7923a76.json"
+        ],
+        "facts": {
+          "scope": {
+            "institution": null,
+            "program": null,
+            "level": null,
+            "modality": null,
+            "catalog": null
+          },
+          "costs": [],
+          "accreditation": [],
+          "transfer": {
+            "overallCap": null,
+            "aceCap": null,
+            "nccrsCap": null,
+            "combinedCplCap": null,
+            "externallyAssessedCap": null,
+            "residency": null,
+            "majorResidency": null,
+            "totalCredits": null
+          },
+          "aceRecommendations": [],
+          "equivalencies": [],
+          "assessments": []
+        },
+        "product": {
+          "status": "not-needed",
+          "paths": [],
+          "notes": "No receiving award or readiness promotion. The negative control and editorial acceptance criteria are applied to the researched ASU product/article, not treated as independent policy evidence."
+        },
+        "release": null,
+        "editorial": {
+          "status": "not-needed",
+          "proposedUrls": [],
+          "publishedUrls": [],
+          "existingUrls": [],
+          "title": null,
+          "metaDescription": null,
+          "canonicalUrl": null,
+          "internalLinks": [],
+          "structuredData": null,
+          "sitemap": null,
+          "studentUsefulness": "",
+          "novelty": "",
+          "searchIntent": "",
+          "debtFreeRelevance": "",
+          "urgency": "",
+          "overlapNotes": "",
+          "evidenceIds": [],
+          "metrics": null
+        }
+      }
     }
   ],
-  "revision": "4a5ec843051c5a75ab10bfe491dff8c518fbce54fd99623e30c8390c0cea2aad"
+  "revision": "c248790802e46c78cf82849e1782485f5ac6e5f4dc64f8ec34f9925fda2bf457"
 }

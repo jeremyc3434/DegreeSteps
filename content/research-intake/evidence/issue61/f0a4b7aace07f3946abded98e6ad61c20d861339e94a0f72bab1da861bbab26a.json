@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "publicationAllowed": false,
+  "checkedOn": "2026-11-27",
+  "research": {
+    "automationId": "Automation_ff0e883f37888191a9b13b08bba41dd0",
+    "enabled": true,
+    "schedule": "BEGIN:VEVENT\nDTSTART;TZID=America/Los_Angeles:20261127T080000\nRRULE:FREQ=WEEKLY;BYDAY=FR\nEND:VEVENT",
+    "lastRecordedRun": {
+      "id": "0f3fa8a2-6000-8333-9cb6-37419ca298fc",
+      "status": "completed",
+      "scheduledFor": "2026-11-27T16:00:00Z",
+      "startedAt": "2026-11-27T16:24:14.695298Z",
+      "completedAt": "2026-11-27T16:26:03.869385Z",
+      "chatRef": {
+        "type": "chatgpt",
+        "id": "6b099b66-802c-83e8-8bf6-f4f3214e9ed4"
+      }
+    },
+    "resultRunId": "0f3fa8a2-6000-8333-9cb6-37419ca298fc",
+    "resultTruncated": true,
+    "scope": "A recorded completed research brief exists. Its earlier run does not prove that the later GitHub-delivery prompt revision ran."
+  },
+  "processor": {
+    "automationId": "Automation_20d77b6e3cc88191a16dfd27a8001e40",
+    "immediateRunAction": "run_now",
+    "result": "HTTP 404: Action not found, before action invocation",
+    "invocationStarted": false,
+    "unattendedExecutionConfirmed": false,
+    "interactiveRehearsalIssue": 61,
+    "savedPromptUpdated": true,
+    "scheduleChanged": false
+  },
+  "releasePolicy": "Current owner-requested rehearsal may use the existing controlled publication workflow after verification and tests. No future automatic production policy is enabled."
+}

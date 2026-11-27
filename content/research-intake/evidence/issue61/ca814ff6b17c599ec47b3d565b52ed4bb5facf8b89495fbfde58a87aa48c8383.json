@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "kind": "github-intake-rehearsal-receipt",
+  "publicationAllowed": false,
+  "checkedOn": "2026-11-27",
+  "issue": "https://github.com/jeremyc3434/DegreeSteps/issues/61",
+  "comment": "https://github.com/jeremyc3434/DegreeSteps/issues/61#issuecomment-7228173416",
+  "receiverRuns": [
+    {
+      "event": "issues",
+      "runId": 46068258935,
+      "conclusion": "success"
+    },
+    {
+      "event": "issue_comment",
+      "runId": 46068328114,
+      "conclusion": "success",
+      "artifactId": 15232175991,
+      "artifactDigest": "sha256:202f98c391ba8a18cf96bacc3b5c0714d96779f585e193a310df3483e66f5424",
+      "submissionRevisions": 6,
+      "reviewRevisions": 19,
+      "findings": 14
+    }
+  ],
+  "processor": {
+    "automationId": "Automation_20d77b6e3cc88191a16dfd27a8001e40",
+    "runNowInvoked": true,
+    "runNowResult": {
+      "content": [
+        {
+          "type": "text",
+          "text": "HTTP error prior to action invocation. HTTPException: 404: Action not found"
+        }
+      ],
+      "structuredContent": {
+        "error": "HTTP error prior to action invocation. HTTPException: 404: Action not found",
+        "error_code": "NOT_FOUND"
+      },
+      "isError": true
+    },
+    "scheduledExecutionProven": false,
+    "executionMode": "Owner-requested interactive execution of the saved processor prompt; actual GitHub receiving workflow and release actions tested separately."
+  },
+  "sourceBoundary": "Issue/comment snapshots are unverified research input. Artifact success proves receipt only, not academic truth or publication."
+}

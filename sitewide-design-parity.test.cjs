@@ -705,7 +705,8 @@ const searchContracts={
   "compare/index.html": "f969b14adc2dff46cd1f6da2bd7cca4933df8199bbeb27073919e456caa1c7b3",
   "credit-sources/actfl/index.html": "049b4f2e0fafc01c4246a77d470c4e76f7af6fa1b82ca8480092b594004dd513",
   "credit-sources/aleks/index.html": "970a932c70c2964ca3850cf8fe20939b6caa1f7b142812a7a890dcde01ba998e",
-  "credit-sources/asu-ulc/index.html": "cbb927f8ac95c195d255a3b580ce9f92eaa57b231c105ec2c8a0867c5db61c23",
+  // Reviewed ASU enrollment and credit-choice summary; canonical and title remain unchanged.
+  "credit-sources/asu-ulc/index.html": "17c488ccb02526fed9bcc7f35ce40907b35c4782110fecc050cb743254d8f178",
   // The reviewed LES admission/transcript distinction intentionally corrects this description.
   "credit-sources/christian-leaders/index.html": "c36c28e0f37bc9110eaac81b160122960ca6c3fcdd10febc64af15ab269842cd",
   "credit-sources/clep/index.html": "609e2f3a267139a58cc1b738c9001093fa757f7a55b9a1e07ab9f9150a188faf",
