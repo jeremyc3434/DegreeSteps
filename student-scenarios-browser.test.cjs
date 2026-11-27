@@ -12,6 +12,9 @@ const Library=require('./dist/course-library-engine.js');
 const Sheet=require('./dist/sheet-state.js');
 const Journey=require('./dist/journey-engine.js');
 const Programs=require('./dist/program-catalog.js');
+const Audit=require('./dist/audit-curriculum.js');
+const Baselines=require('./dist/requirements-baselines.js');
+const baselineData=Baselines.validateCatalog(require('./dist/data/requirements-baselines.json'));
 
 const ROOT=__dirname,DIST=path.join(ROOT,'dist'),KEY='degreepath-guide-v3';
 const OUTPUT=path.join(ROOT,'outputs/student-scenarios/browser');
@@ -91,22 +94,89 @@ function selectedBusiness(){
  let state=Journey.initialize(Sheet.selectPathway(Sheet.initialize(null,null,catalog),route),null,catalog);
  state.profile={...state.profile,goal:'career-growth',degreeLevel:'bachelor',field:'business',modality:'online',classroomImportance:'open',hasPrior:'none'};
  state.journey={...state.journey,completed:true,intakeCompleted:true,profileCompleted:true};
- return state;
+ // The real worksheet prepares provider defaults before saving checklist state.
+ // Capture the fixture baseline after that same public preparation step.
+ return Journey.buildDraft(state,catalog,[model]).state;
+}
+function normalizeFixture(state){
+ return Journey.buildDraft(Journey.initialize(copy(state),null,catalog),catalog,[model]).state;
+}
+function assertStableNormalization(state){
+ const next=normalizeFixture(state),again=normalizeFixture(next);
+ assert.deepEqual(next.scenarios,state.scenarios,'Prepared fixture scenarios survive initialization and plan preparation.');
+ assert.deepEqual(again.scenarios,next.scenarios,'Repeated plan preparation is idempotent.');
+ for(const value of [next,again]){
+  assert.deepEqual(targetIdentity(value),targetIdentity(state));
+  assert.equal(JSON.stringify(value.learning),JSON.stringify(state.learning),'Plan preparation must retain the exact original records.');
+  noReceivingAward(value);
+  if(state.selectedPathwayId)assert.deepEqual(quotedCosts(value),quotedCosts(state),'Repeated preparation must not change the fixture costs.');
+  else noTarget(value);
+ }
 }
 function preflightFixtures(){
  // Construct every private seed before launching Chrome, using the same public
  // APIs as the product. A bad fixture must not wait for a later browser journey.
- const blank=Library.initialize(null);noTarget(blank);noReceivingAward(blank);
+ const blank=normalizeFixture(Library.initialize(null));noTarget(blank);noReceivingAward(blank);assertStableNormalization(blank);
  const returning=Sheet.updateLearning(Library.initialize(null),{id:'synthetic-old-1999',provider:'Synthetic Regional College',code:'ENG 101',title:'English Composition I',credits:3,creditSystem:'semester',status:'earned',completedOn:'1999-05-14',grade:'B',evaluations:[],originalTranscriptTerm:'Spring 1999'});
  assert.equal(returning.learning.length,1);assert.equal(returning.learning[0].completedOn,'1999-05-14');assert.equal(returning.learning[0].credits,3);assert.equal(returning.learning[0].grade,'B');noTarget(returning);noReceivingAward(returning);
  const original=JSON.stringify(returning.learning[0]);
+ assertStableNormalization(returning);
+ const highSchool=copy(blank);highSchool.profile={...highSchool.profile,learnerStage:'high-school',hasPrior:'some'};assertStableNormalization(highSchool);
  const military=['active','veteran','dependent'].map(status=>{
   const initial=selectedBusiness(),identity=targetIdentity(initial),costs=quotedCosts(initial),scenarios=copy(initial.scenarios);
-  const contextOnly=copy(initial);contextOnly.profile={...contextOnly.profile,learnerStage:'returning',militaryStatus:status};
-  assert.deepEqual(quotedCosts(contextOnly),costs,'A fixture’s service context alone cannot create a discount.');assert.deepEqual(targetIdentity(contextOnly),identity);assert.deepEqual(contextOnly.learning,[]);noReceivingAward(contextOnly);
+  assertStableNormalization(initial);
+  const context=copy(initial);context.profile={...context.profile,learnerStage:'returning',militaryStatus:status};
+  const contextOnly=normalizeFixture(context);assertStableNormalization(contextOnly);
+  assert.deepEqual(quotedCosts(contextOnly),costs,'A fixture’s service context alone cannot create a discount.');assert.deepEqual(contextOnly.scenarios,scenarios);assert.deepEqual(targetIdentity(contextOnly),identity);assert.deepEqual(contextOnly.learning,[]);noReceivingAward(contextOnly);
   return {military:status,initial,identity,costs,scenarios};
  });
- return {blank,returning:{state:returning,original},military};
+ const baselineInitial=Sheet.updateLearning(selectedBusiness(),copy(returning.learning[0]));
+ baselineInitial.profile={...baselineInitial.profile,learnerStage:'enrolled',currentSchool:'University of Massachusetts Global',currentProgram:'Business Administration MyPath — enrolled 2024',planningIntent:'finish-current'};
+ assertStableNormalization(baselineInitial);
+ const baselineFixtures=['marketing','general-business'].map(emphasisId=>{
+  const initial=copy(baselineInitial),identity=targetIdentity(initial),learning=JSON.stringify(initial.learning),scenarios=copy(initial.scenarios);
+  const prepared=Baselines.prepareDraft(initial,baselineData,{catalogId:'2024-2025',emphasisId},Audit);
+  assert.deepEqual(targetIdentity(prepared.state),identity);assert.equal(JSON.stringify(prepared.state.learning),learning);assert.deepEqual(prepared.state.profile,initial.profile);assert.deepEqual(prepared.state.scenarios,scenarios);noReceivingAward(prepared.state);
+  assert.equal(prepared.rows.reduce((sum,row)=>sum+Number(row.credits),0),120);assert.equal(prepared.metadata.reviewedByStudent,false);assert.equal(prepared.metadata.baselineMode,'requirements-only');
+  const again=Baselines.prepareDraft(prepared.state,baselineData,{catalogId:'2024-2025',emphasisId},Audit);assert.equal(again.reused,true);assert.deepEqual(again.state,prepared.state);
+  let builtEntryId=null;
+  if(emphasisId==='marketing'){
+   assert.equal(prepared.rows.length,60);
+   const entry=Audit.create(prepared.rows,{...prepared.metadata,reviewedByStudent:true});
+   assert.equal(entry.model.totalCredits,120);assert(entry.model.requirements.every(row=>row.options.every(option=>option.provider==='University')),'A requirements baseline must not inherit outside-course awards.');
+   entry.model.auditProvenance.requirementsBaseline={id:prepared.metadata.baselineId,revision:Number(prepared.metadata.baselineRevision),hash:prepared.metadata.baselineHash,emphasisId,programId:prepared.metadata.programId,catalog:prepared.metadata.catalog,creditUnitLabel:prepared.metadata.creditUnitLabel,scope:'requirements-only'};
+   entry.model.learningFormat='competency-based';entry.model.coverageLabel='Catalog requirements adapted by the student · proposed plan';builtEntryId=entry.route.id;
+   const committed=Audit.commit(prepared.state,entry,{catalog});
+   assert.equal(committed.selectedPathwayId,builtEntryId);assert.equal(JSON.stringify(committed.learning),learning);noReceivingAward(committed);
+   const previous=committed.whatIf.snapshots.find(snapshot=>snapshot.pathwayId===identity.selectedPathwayId);assert(previous,'Explicitly building the new workspace must save the previous WGU target.');assert.equal(previous.targetIdentity.route.school,identity.school);assert.equal(previous.targetIdentity.route.title,identity.degree);assert.deepEqual(previous.settings,scenarios[model.id]);
+  }else{
+   const pool=prepared.rows.filter(row=>row.allocationRequired===true);assert.equal(pool.length,1);assert.equal(pool[0].credits,19);assert.equal(pool[0].code,'');assert.match(pool[0].title,/specific courses not selected/);assert.equal(prepared.baseline.requiresAllocation,true);
+  }
+  return {emphasisId,initial,identity,learning,scenarios,prepared};
+ });
+ return {blank,returning:{state:returning,original},military,baselines:baselineFixtures};
+}
+function baselinePreserved(state,fixture){
+ assert.deepEqual(targetIdentity(state),fixture.identity);assert.deepEqual(state.profile,fixture.initial.profile);assert.deepEqual(state.sheet,fixture.initial.sheet);assert.deepEqual(state.scenarios,fixture.scenarios);
+ assert.equal(JSON.stringify(state.learning),fixture.learning,'Loading catalog requirements must preserve the exact original 1999 record.');assert.equal(state.learning[0].completedOn,'1999-05-14');assert.deepEqual(state.customCurricula,fixture.initial.customCurricula);noReceivingAward(state);
+}
+function builtBaselinePreserved(state,fixture,builtId){
+ assert.equal(typeof builtId,'string');assert(builtId);assert.notEqual(builtId,fixture.identity.selectedPathwayId);assert.equal(state.selectedPathwayId,builtId);assert.equal(JSON.stringify(state.learning),fixture.learning);assert.equal(state.learning[0].completedOn,'1999-05-14');noReceivingAward(state);
+ const entry=state.customCurricula.find(value=>value.route.id===builtId);assert(entry,'Explicit Build creates the private requirements workspace.');assert.equal(entry.route.routeType,'student-audit');assert.equal(entry.route.school,fixture.prepared.metadata.school);assert.equal(entry.route.title,fixture.prepared.metadata.title);
+ assert.equal(entry.model.auditProvenance.requirementsBaseline.scope,'requirements-only');assert.equal(entry.model.auditProvenance.requirementsBaseline.emphasisId,'marketing');assert.equal(entry.model.auditProvenance.requirementsBaseline.creditUnitLabel,'catalog-equivalent credits');assert.equal(entry.model.totalCredits,120);assert(entry.model.requirements.every(row=>row.options.every(option=>option.provider==='University')),'The private plan must not acquire inherited outside-course awards.');
+ const previous=state.whatIf.snapshots.find(snapshot=>snapshot.pathwayId===fixture.identity.selectedPathwayId);assert(previous,'The previous WGU target remains available for comparison.');assert.equal(previous.targetIdentity.route.school,fixture.identity.school);assert.equal(previous.targetIdentity.route.title,fixture.identity.degree);assert.deepEqual(previous.settings,fixture.scenarios[model.id]);assert.deepEqual(state.scenarios[model.id],fixture.scenarios[model.id]);
+}
+async function loadBaseline(page,origin,fixture){
+ const query=new URLSearchParams({baseline:'umass-global-mypath-bba',school:fixture.initial.profile.currentSchool,degree:fixture.initial.profile.currentProgram});
+ await navigate(page,origin+'/degree-audit.html?'+query);await openDetails(page.locator('#audit-baseline'));
+ assert.equal(await page.locator('#audit-baseline-catalog').inputValue(),'','Enrollment in 2024 must not select a catalog.');assert.equal(await page.locator('#audit-baseline-emphasis').inputValue(),'','The current-program note must not select an emphasis.');
+ await page.locator('#audit-baseline-load').click();await page.locator('#audit-message:visible').waitFor();assert.match(await page.locator('#audit-message').innerText(),/Choose the catalog and BBA emphasis explicitly/);baselinePreserved(await stored(page),fixture);
+ await page.locator('#audit-baseline-catalog').selectOption('2024-2025');await page.locator('#audit-baseline-emphasis').selectOption(fixture.emphasisId);
+ const target=new URL(fixture.prepared.href,origin+'/').href;
+ const [response]=await Promise.all([page.waitForResponse(response=>response.url()===target&&response.request().isNavigationRequest()),page.locator('#audit-baseline-load').click()]);
+ assert.equal(response.status(),200);await page.waitForURL(target,{waitUntil:'domcontentloaded'});await page.locator('#audit-baseline-context:visible').waitFor();
+ assert.match(await page.locator('#audit-baseline-context').innerText(),/120 catalog-equivalent credits/);assert.match(await page.locator('#audit-baseline-context').innerText(),/no approved outside-course awards/);baselinePreserved(await stored(page),fixture);
+ return Audit.readDraft(await stored(page),fixture.prepared.context);
 }
 async function openDetails(locator){await locator.waitFor({state:'attached'});if(await locator.getAttribute('open')===null)await locator.locator(':scope > summary').click();}
 async function checklistTask(page,id){
@@ -121,7 +191,7 @@ async function checklistTask(page,id){
 
 (async()=>{
  const fixtures=preflightFixtures();
- console.log(JSON.stringify({fixturePreflight:'passed',originalRecordDate:fixtures.returning.state.learning[0].completedOn,militaryCostFixtures:fixtures.military.length,browserLaunched:false}));
+ console.log(JSON.stringify({fixturePreflight:'passed',originalRecordDate:fixtures.returning.state.learning[0].completedOn,militaryCostFixtures:fixtures.military.length,requirementsBaselineFixtures:fixtures.baselines.length,browserLaunched:false}));
  if(process.argv.includes('--fixtures-only'))return;
  const {chromium}=require('playwright');
  await fs.mkdir(OUTPUT,{recursive:true});
@@ -171,6 +241,7 @@ async function checklistTask(page,id){
     await completeProfile(page);
     let state=await stored(page);noTarget(state);assert.equal(state.profile.learnerStage,'enrolled');assert.equal(state.profile.currentSchool,'University of Massachusetts Global');assert.equal(state.profile.currentProgram,'Business Administration MyPath — enrolled 2024');assert.equal(state.profile.planningIntent,'finish-current');assert.deepEqual(state.learning,[]);noReceivingAward(state);
     const workspace=page.locator('[data-current-degree-workspace]');await workspace.waitFor();assert.match(await workspace.innerText(),/not a verified public degree template/i);
+    await workspace.locator('a[href="degree-audit.html?baseline=umass-global-mypath-bba"]').waitFor({state:'visible'});
     assert.equal(await page.locator('[data-degree-preview]').count(),0,'Finishing a current degree must not substitute another school’s template.');
     const next=workspace.locator('a.portal-primary'),href=new URL(await next.getAttribute('href'),origin);assert.equal(href.pathname,'/degree-audit.html');assert.equal(href.searchParams.get('school'),'University of Massachusetts Global');assert.equal(href.searchParams.get('degree'),'Business Administration MyPath — enrolled 2024');
     await clickLocal(page,next,origin);await page.locator('#audit-import-form').waitFor();
@@ -224,6 +295,41 @@ async function checklistTask(page,id){
      assert(Object.values(state.checklist.plans).some(plan=>plan.items['military-benefits']?.status==='done'),'The real checklist status survives reload.');
     });
    }
+   for(const fixture of fixtures.baselines){
+    await journey(device,viewport,'mypath-baseline-'+fixture.emphasisId,copy(fixture.initial),async page=>{
+     let draft=await loadBaseline(page,origin,fixture);assert(draft,'The explicitly selected requirements draft must be saved.');
+     assert.equal(draft.metadata.baselineMode,'requirements-only');assert.equal(draft.metadata.catalog,'2024-2025');assert.equal(draft.metadata.baselineEmphasisId,fixture.emphasisId);assert.equal(draft.metadata.reviewedByStudent,false);assert.equal(draft.rows.reduce((sum,row)=>sum+Number(row.credits),0),120);
+     await page.locator('#audit-save').click();assert.match(await page.locator('#audit-save-status').innerText(),/Saved on this device/);
+     await page.reload({waitUntil:'domcontentloaded'});await page.locator('#audit-baseline-context:visible').waitFor();baselinePreserved(await stored(page),fixture);
+     draft=Audit.readDraft(await stored(page),fixture.prepared.context);assert(draft);assert.equal(draft.rows.reduce((sum,row)=>sum+Number(row.credits),0),120);
+     if(fixture.emphasisId==='marketing'){
+      assert.equal(await page.locator('#audit-editor-rows .audit-editor-row').count(),60);assert(draft.rows.every(row=>String(row.code).trim()),'Marketing has named requirements rather than a fabricated elective allocation.');
+      const title=page.locator('#audit-import-form input[name="title"]'),canonicalTitle=await title.inputValue(),savedState=JSON.stringify(await stored(page));
+      const rowValues=()=>page.locator('#audit-editor-rows .audit-editor-row').evaluateAll(rows=>rows.map(row=>Object.fromEntries([...row.querySelectorAll('[data-field]')].map(input=>[input.dataset.field,input.type==='checkbox'?input.checked:input.value]))));
+      const originalRows=await rowValues();await title.fill(canonicalTitle+' (accidental edit)');
+      await page.locator('#audit-import-form button[type="submit"]').click();await page.locator('#audit-message:visible').waitFor();assert.match(await page.locator('#audit-message').innerText(),/degree details no longer match the selected catalog baseline/);assert.equal(await page.locator('#audit-review').isVisible(),false);
+      await page.locator('#audit-baseline-restore:visible').click();await page.waitForFunction(value=>document.querySelector('#audit-import-form input[name="title"]').value===value,canonicalTitle);
+      assert.equal(await page.locator('#audit-import-form input[name="programId"]').inputValue(),fixture.prepared.metadata.programId,'Restore must also recover the program identity cleared by a title edit.');
+      assert.deepEqual(await rowValues(),originalRows,'Restoring catalog identity must leave every edited requirement row unchanged.');assert.equal(JSON.stringify(await stored(page)),savedState,'Restore is an unsaved metadata correction, not a private-state rewrite.');assert.match(await page.locator('#audit-save-status').innerText(),/Catalog details restored/);assert.match(await page.locator('#audit-save-status').innerText(),/Save progress/);
+      await page.locator('#audit-save').click();assert.match(await page.locator('#audit-save-status').innerText(),/Saved on this device/);baselinePreserved(await stored(page),fixture);
+      await page.locator('#audit-import-form button[type="submit"]').click();await page.locator('#audit-review:visible').waitFor();
+      assert.equal((await page.locator('#audit-total').innerText()).trim(),'120');assert.equal(await page.locator('#audit-preview-rows tr').count(),60);assert.match(await page.locator('#audit-review-provenance').innerText(),/not a verified transfer template/);assert.equal(await page.locator('#audit-build').isDisabled(),true,'Building still requires the student’s explicit row review.');
+      baselinePreserved(await stored(page),fixture);
+      await page.locator('#audit-confirm').check();assert.equal(await page.locator('#audit-build').isEnabled(),true);
+      const planURL=origin+'/plan.html';const [response]=await Promise.all([page.waitForResponse(response=>response.url()===planURL&&response.request().isNavigationRequest()),page.locator('#audit-build').click()]);assert.equal(response.status(),200);await page.waitForURL(planURL,{waitUntil:'domcontentloaded'});await page.locator('tr.course-plan-row').first().waitFor();
+      assert.match(await page.locator('.sheet-review-status').filter({hasText:'Catalog requirements draft'}).innerText(),/Catalog requirements draft/);assert.match(await page.locator('main').innerText(),/catalog-equivalent credit/);
+      const builtState=await stored(page),builtId=builtState.selectedPathwayId;builtBaselinePreserved(builtState,fixture,builtId);
+      await page.reload({waitUntil:'domcontentloaded'});await page.locator('tr.course-plan-row').first().waitFor();assert.match(await page.locator('.sheet-review-status').filter({hasText:'Catalog requirements draft'}).innerText(),/Catalog requirements draft/);builtBaselinePreserved(await stored(page),fixture,builtId);
+     }else{
+      const pools=draft.rows.filter(row=>row.allocationRequired===true);assert.equal(pools.length,1);assert.equal(Number(pools[0].credits),19);assert.equal(pools[0].code,'');assert.match(pools[0].title,/specific courses not selected/);
+      assert.match(await page.locator('#audit-baseline-context').innerText(),/variable pool of 19 equivalent elective credits/);assert.match(await page.locator('#audit-baseline-context').innerText(),/not one course or a fixed number of courses/);
+      await page.locator('#audit-import-form button[type="submit"]').click();await page.locator('#audit-message:visible').waitFor();
+      const message=await page.locator('#audit-message').innerText();assert.match(message,/unresolved/);assert.match(message,/remove the elective-pool row/);assert.match(message,/actual named courses/);assert.match(message,/19 equivalent elective credits/);assert.match(message,/no course count is assumed/);
+      assert.equal(await page.locator('#audit-review').isVisible(),false);assert.equal(await page.locator('#audit-build').isDisabled(),true);baselinePreserved(await stored(page),fixture);
+      const savedPool=Audit.readDraft(await stored(page),fixture.prepared.context).rows.find(row=>row.allocationRequired===true);assert.equal(Number(savedPool.credits),19);assert.equal(savedPool.code,'','Blocked review must not manufacture a course to fill the variable pool.');
+     }
+    });
+   }
    for(const guide of guides){
     await journey(device,viewport,'guide-'+guide.slug,copy(fixtures.blank),async page=>{
      const url='/'+(guide.type==='guide'?'guides':'blog')+'/'+guide.slug+'/';await navigate(page,origin+url);
@@ -240,7 +346,7 @@ async function checklistTask(page,id){
     });
    }
   }
-  assert.equal(count,22);assert.deepEqual(pageErrors,[]);assert.deepEqual(privateWrites,[]);
-  console.log(JSON.stringify({syntheticStudentJourneys:12,guideReadabilityJourneys:8,schoolDiscoveryJourneys:2,totalJourneys:count,viewports:2,pageErrors:0,privateWrites:0,scope:'Synthetic current-enrollment context, old original-record preservation, high-school issuing-college guidance, and active/veteran/family benefits tasks; actual built guides and working local CTAs; no real-student approvals, account authentication, funding awards or institution outreach.'}));
+  assert.equal(count,26);assert.deepEqual(pageErrors,[]);assert.deepEqual(privateWrites,[]);
+  console.log(JSON.stringify({syntheticStudentJourneys:12,guideReadabilityJourneys:8,schoolDiscoveryJourneys:2,requirementsBaselineJourneys:4,totalJourneys:count,viewports:2,pageErrors:0,privateWrites:0,scope:'Synthetic current-enrollment context, old original-record preservation, high-school issuing-college guidance, active/veteran/family benefits tasks and explicitly chosen MyPath requirements drafts; actual built guides and working local CTAs; no real-student approvals, account authentication, funding awards or institution outreach.'}));
  }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}
 })().catch(error=>{console.error(error);process.exitCode=1;});
