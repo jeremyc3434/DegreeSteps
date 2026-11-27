@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "retrievedAt": "2026-11-27 19:57:40 UTC",
+  "method": "search_service_web_run",
+  "request": {
+    "system2_search_query": [
+      {
+        "q": "\"UPI\" Sociology",
+        "domains": [
+          "tesu.edu"
+        ]
+      },
+      {
+        "q": "\"UPIS-0005\"",
+        "domains": [
+          "tesu.edu"
+        ]
+      },
+      {
+        "q": "\"UPI Study\" \"SOC-1010\"",
+        "domains": [
+          "tesu.edu"
+        ]
+      },
+      {
+        "q": "\"approved credit\" \"UPI\"",
+        "domains": [
+          "tesu.edu"
+        ]
+      }
+    ],
+    "response_length": "long"
+  },
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Empty search results\nNo results were found for the provided queries"
+      }
+    ],
+    "isError": false
+  },
+  "originHttpStatus": null,
+  "note": "Native tool response preserved; extracted text/search results are not origin HTTP captures."
+}

@@ -5,9 +5,24 @@ on:
       - 'content/public-content.json'
       - 'content/issue56-editorial-inventory.json'
       - 'dist/data/credit-sources.json'
+      - 'dist/data/course-catalog.json'
+      - 'dist/courses.js'
+      - 'dist/courses.html'
+      - 'dist/courses.css'
+      - 'dist/course-library-engine.js'
+      - 'dist/sheet-state.js'
+      - 'dist/provider-registry.js'
+      - 'content/catalog/christian-leaders-course-identities-reviewed-2026-11-27.json'
+      - 'scripts/cli-course-catalog.mjs'
+      - 'scripts/build-community.mjs'
+      - 'scripts/import-course-catalog.py'
       - 'scripts/build-public-site.mjs'
       - 'scripts/provider-research-facts.mjs'
       - 'issue56-public-browser.test.cjs'
+      - 'shared-transfer-browser.test.cjs'
+      - 'test-support/offline-site.cjs'
+      - 'package.json'
+      - 'package-lock.json'
       - '.github/workflows/editorial-browser.yml'
   workflow_dispatch:
 permissions:
@@ -38,6 +53,7 @@ jobs:
           export CHROMIUM_PATH="$(command -v google-chrome)"
           test -n "$CHROMIUM_PATH"
           node issue56-public-browser.test.cjs
+          node shared-transfer-browser.test.cjs
       - name: Save public screenshots
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

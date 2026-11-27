@@ -971,12 +971,12 @@
       "kind": "institutional-course",
       "status": "candidate",
       "creditBasis": "CLI institution-issued transcript pathway. CLI discloses ABHE candidate, or pre-accreditation, status; this is separate from full accreditation or an ACE recommendation.",
-      "summary": "Free Christian-focused learning with a separate academic-transcript pathway. College admission or verification requirements apply to eligible credit records.",
+      "summary": "Free Christian-focused study with a separate college-credit route. Academic credit requires Leadership Excellence School admission and an academic transcript; free School of Christian Development study alone does not award college credit.",
       "pace": "Online and self-paced. Course, admissions and verification requirements determine when an eligible transcript can be issued.",
-      "priceNote": "Learning access is free. Outgoing transcript processing is $75 USD for students without a CLI degree or $30 USD for CLI graduates; additional pathway fees may apply.",
+      "priceNote": "Learning access is free. Official admissions sources quote $75 and $125 for different or unresolved routes. Outgoing transcripts cost $75 for non-degree completers or $30 for CLI graduates; additional fees may apply.",
       "assessmentNote": "Published course pages describe timed, open-note quizzes; some also include written reflections. Open-note does not establish an unmonitored assessment. Academic-transcript eligibility is separate from free course access.",
       "url": "https://www.christianleadersinstitute.org/christian-leaders-institute-course-catalogue/",
-      "checkedOn": "2026-11-17",
+      "checkedOn": "2026-11-27",
       "evidence": [
         {
           "title": "Free learning offer",
@@ -1007,6 +1007,31 @@
           "title": "Published course quiz format example",
           "url": "https://christianleaders.org/course/section.php?id=7683",
           "checkedOn": "2026-11-24"
+        },
+        {
+          "title": "Leadership Excellence School admissions",
+          "url": "https://www.christianleadersinstitute.org/admission/",
+          "checkedOn": "2026-11-27"
+        },
+        {
+          "title": "Current degree FAQ and jurisdiction restrictions",
+          "url": "https://www.christianleadersinstitute.org/degree-faq-expanded/",
+          "checkedOn": "2026-11-27"
+        },
+        {
+          "title": "Current original theology course offerings",
+          "url": "https://degrees.christianleaders.org/theology-courses/",
+          "checkedOn": "2026-11-27"
+        },
+        {
+          "title": "LES admission cost page — dated April 2026",
+          "url": "https://christianleaders.org/mod/page/view.php?id=57395",
+          "checkedOn": "2026-11-27"
+        },
+        {
+          "title": "ABHE candidate institution factsheet",
+          "url": "https://app.weaveeducation.com/publicFiles/institutionprofilepdfs/Christian_Leaders_Institute-ABHE_-_Association_for_Biblical_Higher_Education-97x6-Fact_Sheet.pdf?v=609225811",
+          "checkedOn": "2026-11-27"
         }
       ],
       "mappingStatus": "catalog-only",
@@ -1026,19 +1051,23 @@
         },
         {
           "id": "cli-academic-transcript",
-          "label": "CLI academic transcript pathway",
+          "label": "LES academic transcript pathway",
           "origin": "institutional",
           "basis": "institution-issued",
           "status": "candidate",
-          "issuer": "Christian Leaders Institute / historical Christian Leaders College",
-          "eligibility": "Leadership Excellence admission or Institute Verification pathway; processing fees apply. CLI holds ABHE candidate status. Receiving-school acceptance is specific to the exact course, version and degree shown in your plan.",
+          "issuer": "Christian Leaders Institute — eligible LES academic transcript",
+          "eligibility": "LES admission and actual academic transcript credit are required. Official admission-fee and excluded-jurisdiction lists conflict. Individual-course transfer is advertised, but formal non-degree access and personal admission are unresolved. Free CDS study or Institute Verification alone is not established as eligible college credit.",
           "sourceUrls": [
             "https://www.christianleadersinstitute.org/transfer-information/",
-            "https://help.christianleaders.org/helpdesk/accreditation-status"
+            "https://help.christianleaders.org/helpdesk/accreditation-status",
+            "https://www.christianleadersinstitute.org/admission/",
+            "https://www.christianleadersinstitute.org/degree-faq-expanded/"
           ]
         }
       ],
-      "assessmentCheckedOn": "2026-11-24"
+      "assessmentCheckedOn": "2026-11-24",
+      "originalCoursesCheckedOn": "2026-11-27",
+      "eligibilityStatus": "unresolved-official-source-conflicts"
     },
     {
       "id": "wgu-single-courses",

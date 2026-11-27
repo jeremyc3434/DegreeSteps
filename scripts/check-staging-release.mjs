@@ -7,14 +7,15 @@ import {pathToFileURL} from 'node:url';
 export const STAGING_ORIGIN='https://degreesteps-staging.degreesteps-d215df9a.workers.dev';
 const PUBLIC_ORIGIN='https://degreesteps.com',MAX_LOCAL_BYTES=16*1024*1024;
 const ROBOTS=Buffer.from('User-agent: *\nDisallow: /\n');
-const required=[['/','index.html'],['/brand.css','brand.css'],['/data/credit-sources.json','data/credit-sources.json'],['/data/program-catalog.json','data/program-catalog.json'],['/sitemap.xml','sitemap.xml']];
+const required=[['/','index.html'],['/brand.css','brand.css'],['/data/credit-sources.json','data/credit-sources.json'],['/data/program-catalog.json','data/program-catalog.json'],['/courses.html','courses.html'],['/courses.js','courses.js'],['/data/course-catalog.json','data/course-catalog.json'],['/sitemap.xml','sitemap.xml']];
 const optional=[
  '/blog/maine-90-credit-applied-bachelors-degrees/',
  '/blog/wgu-single-courses-prices-transfer-and-assessments/',
  '/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/',
  '/blog/umpi-yourpace-vs-umass-global-mypath-business/',
  '/credit-sources/google-certificates/',
- '/credit-sources/wgu-single-courses/'
+ '/credit-sources/wgu-single-courses/',
+ '/credit-sources/christian-leaders/'
 ];
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const fail=(code,details={})=>Object.assign(Error(code),{code,...details});

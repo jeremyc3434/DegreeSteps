@@ -1,0 +1,316 @@
+{
+  "kind": "shared-transfer-liberty-primary-research",
+  "version": 1,
+  "reviewedOn": "2026-11-27",
+  "scope": "Research-only current primary-source observations and retained snapshot audit for CLI/LES-to-Liberty religion planning. No student credit or automatic publication is authorized by this packet.",
+  "canonicalMutationsMade": false,
+  "studentCreditsAwarded": 0,
+  "method": {
+    "freshWebTransport": "Connected search-service parsed open/search results",
+    "freshOriginHttpStatus": null,
+    "currentCalculatorFreshFetch": "Web connector could not access API; retained 2026-11-24 primary university JSON audited locally instead",
+    "previousCatalog": "2026 October second-edition PDF direct connector retrieval failed. Existing curated research assertions are distinguished from independently readable primary evidence.",
+    "nativeReceiptDirectory": "outputs/shared-transfer/source-research/liberty-receipts/",
+    "eligibilityPacket": "outputs/shared-transfer/source-research/liberty-eligibility.json"
+  },
+  "actionableFindings": [
+    {
+      "id": "the101-source-quantity-vs-equivalent-requirement",
+      "status": "verified-source-quantity-and-credit-accounting-rule",
+      "grantReady": false,
+      "source": {
+        "code": "THE 101",
+        "title": "Christian Basics: Introduction to Christian Doctrine",
+        "providerLabelCredits": 3,
+        "creditSystem": "semester per CLI credit-hour policy; current course page labels credits",
+        "freshCourseUrl": "https://degrees.christianleaders.org/theology-courses/",
+        "freshReceipt": "outputs/shared-transfer/source-research/liberty-receipts/liberty-focused-valid.json"
+      },
+      "receiving": {
+        "code": "THEO 104",
+        "nativeRequirementCredits": 4,
+        "retainedCalculatorLow": 4,
+        "retainedCalculatorHigh": 4,
+        "calculatorObservationOn": "2026-11-24",
+        "snapshot": "content/transfer-awards/snapshots/liberty-cli-calculator-2026-11-24.json",
+        "snapshotSha256": "4fe1b9dba704f03d80aef7f02bba50d222d2db66223479f0a72c1c67640eec85",
+        "earnedTransferQuantityProvenByCalculator": false
+      },
+      "policy": {
+        "url": "https://www.liberty.edu/registrar/transfer-policies/undergraduates/",
+        "receipt": "outputs/shared-transfer/source-research/liberty-receipts/liberty-initial.json",
+        "observedOn": "2026-11-27",
+        "quotes": [
+          "Coursework must be at least 2/3rds the number of hours required by Liberty.",
+          "The 2/3 rule may create a shortage of credit hours (all coursework is met, but a total of 60 or 120 hours is not). Additional credit must be taken to meet the credit hour requirement."
+        ],
+        "interpretation": "A three-credit source meets the minimum quantity for a four-credit native requirement. The named course match still requires source/issuer/degree applicability, and satisfying the requirement does not authorize counting four earned credits."
+      },
+      "prerequisite": "The provider says Christian Leaders Connections must already have been taken.",
+      "requiredImplementation": "Keep original earned credits, native requirement fulfillment and remaining graduation-credit balance separate. Treat the one-hour deficit as a distinct degree-credit requirement; do not rewrite THE101 as four source credits.",
+      "remainingBlockers": [
+        "Exact eligible LES academic transcript and individual admission route.",
+        "Current jurisdiction and application-fee conflict.",
+        "Exact degree placement and full credit-balance allocation.",
+        "No authoritative calculator schema explaining whether CREDIT_HRS_LOW/HIGH are native requirement size or final student-awarded credits."
+      ]
+    },
+    {
+      "id": "bib201-bibl104-lead",
+      "status": "not-established",
+      "grantReady": false,
+      "sourceCode": "BIB 201",
+      "claimedReceivingCode": "BIBL 104",
+      "facts": [
+        "No BIB201 source row and no BIBL104 receiving row occurs in the complete retained 124-row CLI-Florida calculator snapshot.",
+        "Fresh searches of the official Christian Leaders provider domains returned no BIB201 course identity. The fresh Biblical Courses page lists BIB111,112,311,312,330,340,420,455,456 instead.",
+        "Search results for other institutions' BIB201 courses are not CLI evidence and were not reused."
+      ],
+      "receipt": "outputs/shared-transfer/source-research/liberty-receipts/liberty-bib201-extra.json",
+      "additionalReceipt": "outputs/shared-transfer/source-research/liberty-receipts/liberty-credit-unit-originals.json",
+      "requiredImplementation": "Do not create BIB201→BIBL104, rename another source, or infer a combined Old/New Testament equivalency by title.",
+      "remainingBlockers": [
+        "Actual original CLI course identity/version/quantity and university-authoritative named receiving match are both absent."
+      ]
+    },
+    {
+      "id": "one-hour-separate-graduation-credit",
+      "status": "two-source-backed-candidates-degree-allocation-pending",
+      "grantReady": false,
+      "scope": "Additional degree credit after satisfying a four-credit native course with a three-credit source; not added as credit earned by THE101.",
+      "candidates": [
+        {
+          "provider": "Sophia",
+          "aceId": "SOPH-0021",
+          "sourceCode": "BUS1200",
+          "title": "Developing Effective Teams",
+          "sourceSemesterCredits": 1,
+          "receivingCode": "SCOM 1XX",
+          "receivingSemesterCredits": 1,
+          "sourceUrl": "https://www.sophia.org/online-courses/career-success/developing-effective-teams/",
+          "currentCourseFacts": "Self-paced; pass/fail; three Challenges and one Milestone; overall score at least70%.",
+          "existingIdentityReview": "Version4 reviewed2026-11-18 in Liberty kit; not re-fetched from ACE in this subtask."
+        },
+        {
+          "provider": "Sophia",
+          "aceId": "SOPH-0041",
+          "sourceCode": "CS1003",
+          "title": "IT Career Exploration",
+          "sourceSemesterCredits": 1,
+          "receivingCode": "CSIS 1XX",
+          "receivingSemesterCredits": 1,
+          "sourceUrl": "https://www.sophia.org/online-courses/career-success/it-career-exploration/",
+          "currentCourseFacts": "Self-paced; pass/fail; three Challenges, one Milestone and one Touchstone; overall score at least70%.",
+          "existingIdentityReview": "Version3 reviewed2026-11-18 in Liberty kit; not re-fetched from ACE in this subtask."
+        }
+      ],
+      "receivingSource": {
+        "url": "https://www.liberty.edu/online/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+        "title": "Liberty University Transfer Equivalency Guide for Sophia Learning",
+        "displayedUpdatedOn": "November 2026",
+        "observedOn": "2026-11-27",
+        "receipt": "outputs/shared-transfer/source-research/liberty-receipts/liberty-sophia-guide-current.json"
+      },
+      "originalSourceReceipt": "outputs/shared-transfer/source-research/liberty-receipts/liberty-one-credit-sophia.json",
+      "requiredImplementation": "Choose one nonduplicating, exact-degree-applicable one-credit elective only if room remains in the degree's total, permitted elective pool and source caps. Retain prerequisite and identity/version conditions, and rerun the whole allocation. Do not count a course already used elsewhere.",
+      "remainingBlockers": [
+        "No new exact-degree allocation was authored or tested here.",
+        "Current original ACE version windows must remain bound to existing reviews or be separately renewed."
+      ]
+    },
+    {
+      "id": "cli-one-credit-options",
+      "status": "current-original-credits-verified-current-receiving-range-not-fixed",
+      "grantReady": false,
+      "candidates": [
+        {
+          "code": "MIN 237",
+          "title": "Influence Smart",
+          "providerCredits": 1,
+          "retainedCalculatorReceiving": "CLED2XX",
+          "calculatorLow": 0,
+          "calculatorHigh": 3,
+          "historical2022GuideCredits": 1
+        },
+        {
+          "code": "MIN 256",
+          "title": "Anger Management",
+          "providerCredits": 1,
+          "retainedCalculatorReceiving": "CHMN2XX",
+          "calculatorLow": 0,
+          "calculatorHigh": 3,
+          "historical2022GuideReceiving": "ELEC2XX",
+          "historical2022GuideCredits": 1
+        },
+        {
+          "code": "ENG 122",
+          "title": "College Writing Lab",
+          "providerCredits": 1,
+          "providerSourceBasis": "Previously retained provider catalog and current-indexed degree pages",
+          "retainedCalculatorReceiving": "ENGL1XX",
+          "calculatorLow": 0,
+          "calculatorHigh": 3,
+          "historical2022GuideCredits": 1
+        }
+      ],
+      "receipts": [
+        "outputs/shared-transfer/source-research/liberty-receipts/liberty-details-2.json",
+        "outputs/shared-transfer/source-research/liberty-receipts/liberty-bib201-extra.json",
+        "outputs/shared-transfer/source-research/liberty-receipts/liberty-other-originals.json"
+      ],
+      "requiredImplementation": "Do not turn a0–3 ranged receiving row into a guaranteed fixed one-credit award. Prefer the separately documented exact Sophia one-credit award for a bounded planner experiment until CLI's current exact award and LES eligibility are resolved."
+    },
+    {
+      "id": "historical-guide-current-calculator-differences",
+      "status": "verified-conflict-with-dates",
+      "grantReady": false,
+      "historicalGuide": {
+        "url": "https://www.liberty.edu/online/wp-content/uploads/Christian-Leaders-College-Transfer-Equivalency-Guide.pdf",
+        "displayedUpdatedOn": "July2022",
+        "freshlyReadOn": "2026-11-27",
+        "receipt": "outputs/shared-transfer/source-research/liberty-receipts/liberty-focused-valid.json"
+      },
+      "differences": [
+        {
+          "source": "THE101",
+          "historicalReceiving": "THEO1XX,3credits",
+          "retained2026Receiving": "THEO104;calculator field4"
+        },
+        {
+          "source": "THE210",
+          "historicalReceiving": "THEO2XX,4credits",
+          "retained2026Receiving": "THEO201;calculator field2"
+        },
+        {
+          "source": "THE310",
+          "historicalReceiving": "THEO3XX,4credits",
+          "retained2026Receiving": "THEO202;calculator field2"
+        },
+        {
+          "source": "BIB111",
+          "historicalReceiving": "BIBL105,3credits",
+          "retained2026Receiving": "BIBL105;calculator field2"
+        },
+        {
+          "source": "BIB112",
+          "historicalReceiving": "BIBL110,3credits",
+          "retained2026Receiving": "BIBL110;calculator field2"
+        },
+        {
+          "source": "MIN310",
+          "historicalReceiving": "EVAN101,3credits",
+          "retained2026Receiving": "EVAN101;calculator field2"
+        }
+      ],
+      "requiredImplementation": "Keep source quantities, historical awards and latest retained equivalency fields distinct. Do not choose the most generous figure or use a historical elective row as proof of today's named-course match."
+    },
+    {
+      "id": "other-fixed-religion-source-candidates",
+      "status": "bounded-candidates-original-quantity-and-retained-match",
+      "grantReady": false,
+      "facts": "These pairs have fresh original-provider course quantity evidence and a fixed named equivalent in the retained Nov24 university calculator. Each still needs eligible academic issuance, exact degree placement, source/received quantity handling and minimum grade. None is a personal credit award.",
+      "candidates": [
+        {
+          "source": "BIB111",
+          "sourceCredits": 3,
+          "receivingCode": "BIBL105",
+          "calculatorQuantity": 2
+        },
+        {
+          "source": "BIB112",
+          "sourceCredits": 3,
+          "receivingCode": "BIBL110",
+          "calculatorQuantity": 2
+        },
+        {
+          "source": "BIB311",
+          "sourceCredits": 4,
+          "prerequisite": "Old Testament Survey",
+          "receivingCode": "BIBL205",
+          "calculatorQuantity": 3
+        },
+        {
+          "source": "BIB312",
+          "sourceCredits": 4,
+          "prerequisite": "New Testament Survey",
+          "receivingCode": "BIBL210",
+          "calculatorQuantity": 3
+        },
+        {
+          "source": "BIB330",
+          "sourceCredits": 3,
+          "receivingCode": "BIBL473",
+          "calculatorQuantity": 3
+        },
+        {
+          "source": "BIB340",
+          "sourceCredits": 4,
+          "receivingCode": "BIBL314",
+          "calculatorQuantity": 3
+        },
+        {
+          "source": "BIB455",
+          "sourceCredits": 3,
+          "receivingCode": "BIBL364",
+          "calculatorQuantity": 3
+        },
+        {
+          "source": "BIB456",
+          "sourceCredits": 3,
+          "receivingCode": "BIBL425",
+          "calculatorQuantity": 3
+        },
+        {
+          "source": "THE315",
+          "sourceCredits": 3,
+          "receivingCode": "BIBL461",
+          "calculatorQuantity": 3
+        },
+        {
+          "source": "THE210",
+          "sourceCredits": 4,
+          "receivingCode": "THEO201",
+          "calculatorQuantity": 2
+        },
+        {
+          "source": "THE310",
+          "sourceCredits": 4,
+          "prerequisite": "THE210",
+          "receivingCode": "THEO202",
+          "calculatorQuantity": 2
+        },
+        {
+          "source": "MIN101",
+          "sourceCredits": 3,
+          "receivingCode": "CHMN201",
+          "calculatorQuantity": 3
+        },
+        {
+          "source": "MIN310",
+          "sourceCredits": 3,
+          "receivingCode": "EVAN101",
+          "calculatorQuantity": 2
+        },
+        {
+          "source": "MIN320",
+          "sourceCredits": 3,
+          "receivingCode": "CLED310",
+          "calculatorQuantity": 3
+        }
+      ],
+      "receipts": [
+        "outputs/shared-transfer/source-research/liberty-receipts/liberty-focused-valid.json",
+        "outputs/shared-transfer/source-research/liberty-receipts/liberty-other-originals.json",
+        "outputs/shared-transfer/source-research/liberty-receipts/liberty-credit-unit-originals.json"
+      ],
+      "priorityRecommendation": "Prefer equal-quantity pairs such as BIB330→BIBL473, BIB455→BIBL364, BIB456→BIBL425, THE315→BIBL461, MIN101→CHMN201 and MIN320→CLED310 only where the exact degree actually has an eligible requirement. Do not classify source level from the course number alone, assume upper-level applicability, or sum alternatives to claim maximum transfer."
+    }
+  ],
+  "sourceIntegrityNotes": [
+    "Fresh connector results are retained exactly; parsed source text is not origin HTTP capture.",
+    "The Nov24 calculator snapshot bytes hash to4fe1b9dba704f03d80aef7f02bba50d222d2db66223479f0a72c1c67640eec85; it has124rows. This local audit did not renew its retrieval date.",
+    "Fresh Liberty registrar policy requires C or higher and official transcripts directly from the issuing institution. Its separate pass-grade wording must remain scoped to that policy.",
+    "No evidence here establishes CLI/LES as regionally accredited. ABHE candidate/preaccreditation is not full accreditation; see eligibility packet.",
+    "No automatic university award, course substitution, waiver, admitted-student status or state eligibility is asserted."
+  ]
+}
