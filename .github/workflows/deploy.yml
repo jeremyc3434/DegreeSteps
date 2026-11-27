@@ -170,6 +170,10 @@ jobs:
           node scripts/build-community-starters.mjs --check
           npx --yes wrangler@4.164.0 d1 execute "$D1_NAME" --remote --config "$WRANGLER_CONFIG" --file content/community/starter-library.sql --yes
 
+      - name: Verify the deployed staging release
+        if: env.TARGET == 'staging'
+        run: node scripts/check-staging-release.mjs
+
       - name: Summary
         run: |
           {

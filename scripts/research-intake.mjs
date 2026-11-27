@@ -70,6 +70,17 @@ export function validateSubmission(record){
  if(stable(rebuilt)!==stable(record))fail('Submission hash or identity does not match immutable content.');
  return record;
 }
+/** Comparison only: retain the raw immutable revision and reviewer bindings.
+ * GitHub timestamps and intake routing labels do not change a source's meaning. */
+export function semanticSubmissionRevision(record){
+ validateSubmission(record);const {revision,...core}=record;
+ const {createdAt,updatedAt,intakeLabel,...source}=core.source;
+ return digest({...core,source});
+}
+function sameSourceMeaning(reviewed,observed,semantics){
+ const meanings=revisions=>unique(revisions.map(revision=>semantics.get(revision)||fail('Unknown immutable source revision.')));
+ return stable(meanings(reviewed))===stable(meanings(observed));
+}
 export function leadsFromSubmission(record){
  validateSubmission(record);let heading='',headings=[],found=[];
  for(const line of record.content.body.split(/\r?\n/)){
@@ -172,11 +183,12 @@ async function writeJSON(path,value,{immutable=false}={}){
 export async function loadLedger(root=ROOT,{asOf=new Date().toISOString().slice(0,10)}={}){
  const base=join(root,INTAKE_PATH),submissions=[],reviews=[];
  for(const name of await files(join(base,'submissions'))){const record=validateSubmission(await readJSON(join(base,'submissions',name)));if(name!==record.revision+'.json')fail('Submission filename must equal its revision.');submissions.push(record);}
+ const semantics=new Map(submissions.map(record=>[record.revision,semanticSubmissionRevision(record)]));
  const findings=new Map();for(const submission of submissions)for(const finding of leadsFromSubmission(submission)){if(findings.has(finding.id))findings.get(finding.id).origins.push(...finding.origins);else findings.set(finding.id,finding);}
  const histories=new Map();
  for(const name of await files(join(base,'reviews'))){const record=validateReview(await readJSON(join(base,'reviews',name)),{asOf}),hash=digest(record);if(name!==hash+'.json')fail('Review filename must equal its hash.');if(!findings.has(record.findingId))fail('Review references an unknown finding.');const known=unique(findings.get(record.findingId).origins.map(origin=>origin.revision));if(record.sourceRevisions.some(revision=>!known.includes(revision)))fail('Review references an unknown source revision.');if(!histories.has(record.findingId))histories.set(record.findingId,[]);histories.get(record.findingId).push({record,hash});reviews.push(record);}
  for(const history of histories.values()){history.sort((a,b)=>a.record.revision-b.record.revision);for(let i=0;i<history.length;i++)if(history[i].record.revision!==i+1||history[i].record.previousReviewHash!==(i?history[i-1].hash:null))fail('Review history must be linear, complete and append-only.');}
- const items=[...findings.values()].sort((a,b)=>a.id.localeCompare(b.id)).map(finding=>{const history=histories.get(finding.id)||[],current=history.at(-1),sourceRevisions=unique(finding.origins.map(origin=>origin.revision)),reviewCurrent=!!current&&stable(unique(current.record.sourceRevisions))===stable(sourceRevisions);return {...finding,origins:[...new Map(finding.origins.map(origin=>[stable(origin),origin])).values()].sort((a,b)=>stable(a).localeCompare(stable(b))),reviewHash:current?.hash||null,reviewCurrent,requiresReverification:!!current&&!reviewCurrent,review:current?.record||{...emptyReview(finding.id),sourceRevisions}};});
+ const items=[...findings.values()].sort((a,b)=>a.id.localeCompare(b.id)).map(finding=>{const history=histories.get(finding.id)||[],current=history.at(-1),sourceRevisions=unique(finding.origins.map(origin=>origin.revision)),reviewCurrent=!!current&&sameSourceMeaning(current.record.sourceRevisions,sourceRevisions,semantics);return {...finding,origins:[...new Map(finding.origins.map(origin=>[stable(origin),origin])).values()].sort((a,b)=>stable(a).localeCompare(stable(b))),reviewHash:current?.hash||null,reviewCurrent,requiresReverification:!!current&&!reviewCurrent,review:current?.record||{...emptyReview(finding.id),sourceRevisions}};});
  const core={schemaVersion:1,publicationAllowed:false,repository:REPOSITORY,submissionRevisions:submissions.length,reviewRevisions:reviews.length,findings:items};
  return {...core,revision:digest(core)};
 }
@@ -199,7 +211,10 @@ export async function appendReview(review,{root=ROOT,asOf}={}){
  validateReview(review,{asOf});return withLock(root,async()=>{const ledger=await loadLedger(root,{asOf}),finding=ledger.findings.find(item=>item.id===review.findingId);if(!finding)fail('Unknown finding.');
  const hash=digest(review);try{const old=await readJSON(join(root,INTAKE_PATH,'reviews',hash+'.json'));if(stable(old)===stable(review))return ledger;}catch(error){if(error.code!=='ENOENT')throw error;}
  if(review.revision!==(finding.reviewHash?finding.review.revision+1:1)||review.previousReviewHash!==finding.reviewHash)fail('Review changed: load the latest review revision before appending.');
- if(stable(unique(review.sourceRevisions))!==stable(unique(finding.origins.map(origin=>origin.revision))))fail('Source revisions changed: reload the finding before reviewing.');
+ const observed=unique(finding.origins.map(origin=>origin.revision));
+ if(review.sourceRevisions.some(revision=>!observed.includes(revision)))fail('Source revisions changed: reload the finding before reviewing.');
+ const semantics=new Map(await Promise.all(observed.map(async revision=>[revision,semanticSubmissionRevision(await readJSON(join(root,INTAKE_PATH,'submissions',revision+'.json')))])));
+ if(!sameSourceMeaning(review.sourceRevisions,observed,semantics))fail('Source revisions changed: reload the finding before reviewing.');
  await writeJSON(join(root,INTAKE_PATH,'reviews',hash+'.json'),review,{immutable:true});return buildIndexes(root,{asOf});});
 }
 export async function retainReceipt(file,{root=ROOT,issueNumber,asOf=new Date().toISOString().slice(0,10),kind='connector-rendered-extraction'}={}){
