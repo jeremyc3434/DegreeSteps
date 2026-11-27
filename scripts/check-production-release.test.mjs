@@ -14,7 +14,7 @@ async function fixture(t){
  for(const [route,body]of bodies){const file=join(root,route==='/'?'index.html':route);await mkdir(join(file,'..'),{recursive:true});await writeFile(file,body);}
  const calls=[],logs=[];
  const fetchImpl=async(url,options)=>{
-  assert.equal(new URL(url).origin,'https://degreesteps.com');assert.equal(PRODUCTION_ORIGIN,'https://degreesteps.com');assert.equal(options.method,'GET');assert.equal(options.redirect,'error');assert.equal(options.credentials,'omit');assert.equal(options.cache,'no-store');assert.equal(options.body,undefined);assert.deepEqual(Object.keys(options.headers),['Accept-Encoding']);
+  assert.equal(new URL(url).origin,'https://degreesteps.com');assert.equal(PRODUCTION_ORIGIN,'https://degreesteps.com');assert.equal(options.method,'GET');assert.equal(options.redirect,'error');assert.equal(options.credentials,'omit');assert.equal(options.cache,'no-store');assert.equal(options.body,undefined);assert.deepEqual(Object.keys(options.headers),['Accept-Encoding','User-Agent']);assert.equal(options.headers['User-Agent'],'DegreeSteps-Release-Verification/1.0 (+https://degreesteps.com)');
   const route=new URL(url).pathname;calls.push(route);assert(bodies.has(route),'Only fixed built public-asset routes are requested');return new Response(bodies.get(route),{headers:responseHeaders(route)});
  };
  return{root,bodies,calls,logs,options:{publicRoot:root,fetchImpl,log:entry=>logs.push(entry),attempts:1,retryDelayMs:0}};

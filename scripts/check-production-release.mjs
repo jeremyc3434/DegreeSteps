@@ -76,7 +76,7 @@ export async function checkProductionRelease({publicRoot=resolve(import.meta.dir
    try{
     const timeout=new Promise((_,reject)=>{timer=setTimeout(()=>{reject(fail('request-timeout'));controller.abort();},timeoutMs);});
     const received=(async()=>{
-     const response=await fetchImpl(PRODUCTION_ORIGIN+route,{method:'GET',redirect:'error',credentials:'omit',cache:'no-store',headers:{'Accept-Encoding':'identity'},signal:controller.signal});
+     const response=await fetchImpl(PRODUCTION_ORIGIN+route,{method:'GET',redirect:'error',credentials:'omit',cache:'no-store',headers:{'Accept-Encoding':'identity','User-Agent':'DegreeSteps-Release-Verification/1.0 (+https://degreesteps.com)'},signal:controller.signal});
      status=response.status;if(status!==200)throw fail('unexpected-status');
      const body=await boundedBody(response,limit);sha256=hash(body);publicIndexing(route,response.headers,body);
      const index=route==='/sitemap.xml'&&!body.equals(bytes)&&sitemapIndex(body);
