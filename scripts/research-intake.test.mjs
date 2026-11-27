@@ -124,13 +124,37 @@ test('an unchanged claim in edited source context reopens an otherwise processed
  await appendReview({...reviewFor(finding),status:'no-action'},{root,asOf:AS_OF});input.issue.body+='\nImportant new context requiring review.';input.issue.updated_at='2026-11-27T18:00:00Z';
  const updated=await importSnapshot(input,{root,asOf:AS_OF}),item=updated.findings.find(row=>row.id===finding.id);assert.equal(item.requiresReverification,true);assert.equal(item.reviewCurrent,false);
  const processed=JSON.parse(await readFile(join(root,INTAKE_PATH,'processed.json'),'utf8')),inbox=JSON.parse(await readFile(join(root,INTAKE_PATH,'inbox.json'),'utf8'));assert.ok(!processed.findingIds.includes(item.id));assert.ok(inbox.findingIds.includes(item.id));
+ input.issue.body=snapshot().issue.body;input.issue.updated_at='2026-11-27T19:00:00Z';const reverted=await importSnapshot(input,{root,asOf:AS_OF});assert.equal(reverted.findings.find(row=>row.id===finding.id).reviewCurrent,false,'Reverting the body must not hide an observed substantive context revision.');
 });
-test('metadata corrections preserve the claim and historical disposition without inventing a policy change',async t=>{
+test('timestamp and label corrections preserve reviewed meaning, raw history and exact reviewer bindings',async t=>{
  const root=await temp(t),input=snapshot(),ledger=await importSnapshot(input,{root,asOf:AS_OF}),finding=ledger.findings.find(item=>item.kind==='context');
  const saved={...reviewFor(finding),status:'no-action',changeKind:'newly-discovered-existing-policy'};await appendReview(saved,{root,asOf:AS_OF});
- input.comments[0].created_at='2026-11-27T16:01:00Z';input.comments[0].updated_at='2026-11-27T16:01:00Z';
+ const reviewPath=join(root,INTAKE_PATH,'reviews',digest(saved)+'.json'),reviewBytes=await readFile(reviewPath);input.issue.labels=[{name:'weekly-research'}];input.issue.updated_at='2026-11-27T19:21:51Z';input.comments[0].created_at='2026-11-27T16:01:00Z';input.comments[0].updated_at='2026-11-27T16:01:00Z';
  const updated=await importSnapshot(input,{root,asOf:AS_OF}),item=updated.findings.find(row=>row.id===finding.id);
- assert.equal(updated.findings.length,2);assert.equal(updated.submissionRevisions,3);assert.equal(item.origins.length,2);assert.equal(item.requiresReverification,true);assert.deepEqual(item.review,saved);assert.notEqual(item.review.changeKind,'new-policy');
+ assert.equal(updated.findings.length,2);assert.equal(updated.submissionRevisions,4);assert.equal(item.origins.length,2);assert.equal(item.reviewCurrent,true);assert.equal(item.requiresReverification,false);assert.deepEqual(item.review,saved);assert.deepEqual(await readFile(reviewPath),reviewBytes);assert.equal(updated.findings.find(row=>row.kind==='lead').reviewCurrent,false,'Metadata must not approve an unreviewed finding.');
+ assert.equal((await importSnapshot(input,{root,asOf:AS_OF})).revision,updated.revision);
+ const pending={...saved,revision:2,previousReviewHash:digest(saved),summary:'A draft bound before metadata repair still covers the exact same source meaning.'};const appended=await appendReview(pending,{root,asOf:AS_OF});assert.equal(appended.findings.find(row=>row.id===finding.id).reviewCurrent,true);assert.deepEqual(appended.findings.find(row=>row.id===finding.id).review.sourceRevisions,saved.sourceRevisions);
+});
+test('title, author and valid URL/provenance changes remain distinct from transport metadata',async t=>{
+ for(const change of ['title','author','provenance']){
+  const root=await temp(t),input=snapshot(),ledger=await importSnapshot(input,{root,asOf:AS_OF}),finding=ledger.findings.find(row=>row.kind==='lead');const saved=reviewFor(finding);await appendReview(saved,{root,asOf:AS_OF});
+  if(change==='title')input.issue.title+=' — changed program scope';
+  if(change==='author')input.issue.user.login='different-researcher';
+  if(change==='provenance'){input.issue.number=57;input.issue.html_url='https://github.com/'+REPOSITORY+'/issues/57';input.comments=[];input.issue.comments=0;}
+  const updated=await importSnapshot(input,{root,asOf:AS_OF}),item=updated.findings.find(row=>row.id===finding.id);assert.equal(item.reviewCurrent,false,change);assert.equal(item.requiresReverification,true,change);assert.deepEqual(item.review,saved);
+ }
+ const wrong=snapshot();wrong.issue.html_url='https://github.com/'+REPOSITORY+'/issues/57';assert.throws(()=>submissionsFromSnapshot(wrong),/does not match/);
+});
+test('a repeated claim from a new comment stales the old source binding and cannot inherit its approval',async t=>{
+ const root=await temp(t),input=snapshot(),ledger=await importSnapshot(input,{root,asOf:AS_OF}),finding=ledger.findings.find(row=>row.kind==='lead');const saved=reviewFor(finding);await appendReview(saved,{root,asOf:AS_OF});
+ input.comments.push({...input.comments[0],id:124,html_url:'https://github.com/'+REPOSITORY+'/issues/56#issuecomment-124',body:input.issue.body});input.issue.comments=2;
+ const updated=await importSnapshot(input,{root,asOf:AS_OF}),item=updated.findings.find(row=>row.id===finding.id);assert.equal(item.reviewCurrent,false);assert.equal(item.requiresReverification,true);assert.deepEqual(item.review,saved);assert.equal(item.origins.length,2);
+});
+test('unrelated new comments remain unreviewed and reviewing them cannot recertify an edited source',async t=>{
+ const root=await temp(t),input=snapshot(),ledger=await importSnapshot(input,{root,asOf:AS_OF}),finding=ledger.findings.find(row=>row.kind==='lead');await appendReview(reviewFor(finding),{root,asOf:AS_OF});
+ input.issue.body+='\nA meaningful eligibility restriction now needs review.';input.comments.push({...input.comments[0],id:124,html_url:'https://github.com/'+REPOSITORY+'/issues/56#issuecomment-124',body:'New unrelated editorial context requires its own triage.'});input.issue.comments=2;
+ const updated=await importSnapshot(input,{root,asOf:AS_OF}),comment=updated.findings.find(row=>row.claim===input.comments[1].body);assert.equal(comment.reviewCurrent,false);assert.equal(updated.findings.find(row=>row.id===finding.id).reviewCurrent,false);
+ const reviewedComment=await appendReview(reviewFor(comment),{root,asOf:AS_OF});assert.equal(reviewedComment.findings.find(row=>row.id===finding.id).reviewCurrent,false,'A different finding’s review is never a global context approval.');
 });
 test('native receipt retention preserves exact bytes, deduplicates replay and refuses changed retained bytes',async t=>{
  const root=await temp(t),source=join(root,'native-receipt.json'),raw='{\n  "body": "Untrusted source text stays JSON data. $(touch nowhere)"\n}\n';await writeFile(source,raw);
