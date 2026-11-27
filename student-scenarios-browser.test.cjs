@@ -45,8 +45,9 @@ const copy=value=>JSON.parse(JSON.stringify(value));
 const startingPoint='portal.html?view=preferences&from=quiz&purpose=career-growth&subject=business&level=bachelor&format=online&priority=balanced';
 const noOverflow=async page=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'The actual scenario must fit its viewport.');
 async function navigate(page,url){
- const response=await page.goto(url,{waitUntil:'networkidle'});
+ const response=await page.goto(url,{waitUntil:'domcontentloaded'});
  assert(response&&response.status()===200,'The requested next page must return an actual 200 response: '+url);
+ await page.locator('main').waitFor({state:'visible'});
  assert.doesNotMatch(await page.locator('body').innerText(),/^Not found$/,'The next page must contain the actual site.');
  return response;
 }
@@ -54,7 +55,11 @@ async function clickLocal(page,link,origin){
  const href=await link.getAttribute('href');assert(href,'The next action needs a real link.');
  const target=new URL(href,page.url());assert.equal(target.origin,origin,'Student next actions stay on the local built site.');
  const [response]=await Promise.all([page.waitForResponse(response=>response.url()===target.href&&response.request().isNavigationRequest()),link.click()]);
- await page.waitForLoadState('networkidle');assert.equal(response.status(),200,'The next action must load an actual built page.');assert.equal(page.url(),target.href);await noOverflow(page);
+ // Background fetches are not a readiness signal for the destination. Require
+ // its real navigation and visible content; callers then check the actual form,
+ // catalog, requirements or checklist control used by the student.
+ await page.waitForURL(target.href,{waitUntil:'domcontentloaded'});assert.equal(response.status(),200,'The next action must load an actual built page.');assert.equal(page.url(),target.href);
+ await page.locator('main').waitFor({state:'visible'});await page.locator('h1:visible').first().waitFor();await noOverflow(page);
 }
 async function openPrior(page,origin){
  await navigate(page,origin+'/'+startingPoint);
@@ -108,12 +113,19 @@ async function checklistTask(page,id){
   async function journey(device,viewport,name,seed,run){
    const context=await browser.newContext({viewport,reducedMotion:'reduce'});
    await context.route('**/*',route=>new URL(route.request().url()).origin===origin?route.continue():route.abort('blockedbyclient'));
-   await context.addInitScript(({key,state})=>{if(localStorage.getItem(key)===null)localStorage.setItem(key,JSON.stringify(state));},{key:KEY,state:seed});
+   await context.addInitScript(({key,state})=>{
+    // Use the real optional-measurement preference in these isolated fixtures.
+    // This leaves academic, course, checklist and private-write checks active.
+    localStorage.setItem('degreesteps-growth-choice-v1','off');
+    if(localStorage.getItem(key)===null)localStorage.setItem(key,JSON.stringify(state));
+   },{key:KEY,state:seed});
    const page=await context.newPage();page.setDefaultTimeout(20000);
+   const pendingRequests=new Map();
    page.on('pageerror',error=>pageErrors.push({device,name,message:error.message}));
-   page.on('request',request=>{if(!['GET','HEAD'].includes(request.method()))privateWrites.push({device,name,method:request.method(),url:request.url()});});
+   page.on('request',request=>{pendingRequests.set(request,{method:request.method(),url:request.url()});if(!['GET','HEAD'].includes(request.method()))privateWrites.push({device,name,method:request.method(),url:request.url()});});
+   page.on('requestfinished',request=>pendingRequests.delete(request));page.on('requestfailed',request=>pendingRequests.delete(request));
    try{await run(page);await noOverflow(page);await page.screenshot({path:path.join(OUTPUT,name+'-'+device+'.png'),fullPage:true});count++;console.log('PASS '+device+' '+name);}
-   catch(error){await page.screenshot({path:path.join(OUTPUT,name+'-'+device+'-failure.png'),fullPage:true}).catch(()=>{});throw error;}
+   catch(error){console.error(JSON.stringify({device,name,url:page.url(),pendingRequests:[...pendingRequests.values()].slice(0,12)}));await page.screenshot({path:path.join(OUTPUT,name+'-'+device+'-failure.png'),fullPage:true}).catch(()=>{});throw error;}
    finally{await context.close();}
   }
   for(const [device,viewport] of [['desktop',{width:1440,height:1000}],['phone',{width:390,height:844}]]){
@@ -132,7 +144,7 @@ async function checklistTask(page,id){
     await page.locator('select[name="planningIntent"]').selectOption('finish-current');
     await page.locator('select[name="prior"]').selectOption('some');
     const guidance=page.locator('#portal-learner-guidance');assert.match(await guidance.innerText(),/current|audit/i);
-    await page.reload({waitUntil:'networkidle'});
+    await page.reload({waitUntil:'domcontentloaded'});
     await page.locator('#portal-profile-form[data-profile-step="prior"]').waitFor();
     assert.equal(await page.locator('select[name="learnerStage"]').inputValue(),'enrolled','Uncommitted context survives a reload.');
     assert.equal(await page.locator('input[name="currentProgram"]').inputValue(),'Business Administration MyPath — enrolled 2024');
@@ -145,7 +157,7 @@ async function checklistTask(page,id){
     await clickLocal(page,next,origin);await page.locator('#audit-import-form').waitFor();
     assert.equal(await page.locator('#audit-import-form input[name="school"]').inputValue(),'University of Massachusetts Global');assert.equal(await page.locator('#audit-import-form input[name="title"]').inputValue(),'Business Administration MyPath — enrolled 2024');
     const accepted=await page.locator('#audit-file').getAttribute('accept');assert.match(accepted,/\.csv/,'Requirements workspace supports its stated spreadsheet format.');assert.doesNotMatch(accepted,/\.pdf/i,'The requirements workspace must not promise PDF parsing.');
-    await page.reload({waitUntil:'networkidle'});await page.locator('#audit-import-form').waitFor();state=await stored(page);noTarget(state);assert.equal(state.profile.currentSchool,'University of Massachusetts Global');assert.equal(state.profile.planningIntent,'finish-current');assert.deepEqual(state.learning,[]);
+    await page.reload({waitUntil:'domcontentloaded'});await page.locator('#audit-import-form').waitFor();state=await stored(page);noTarget(state);assert.equal(state.profile.currentSchool,'University of Massachusetts Global');assert.equal(state.profile.planningIntent,'finish-current');assert.deepEqual(state.learning,[]);
     await openPrior(page,origin);await clickLocal(page,page.locator('#portal-learner-guidance a[href="degree-audit.html"]'),origin);
     await page.locator('h1:visible').waitFor();state=await stored(page);noTarget(state);assert.equal(state.profile.currentProgram,'Business Administration MyPath — enrolled 2024');assert.deepEqual(state.learning,[]);
    });
@@ -157,21 +169,21 @@ async function checklistTask(page,id){
     await openPrior(page,origin);await page.locator('select[name="learnerStage"]').selectOption('returning');await page.locator('select[name="prior"]').selectOption('some');
     assert.match(await page.locator('#portal-learner-guidance').innerText(),/older college courses may still count/i);await unchanged();
     await completeProfile(page);await unchanged();assert.equal((await stored(page)).profile.learnerStage,'returning');
-    await page.reload({waitUntil:'networkidle'});await unchanged();
+    await page.reload({waitUntil:'domcontentloaded'});await page.locator('h1:visible').first().waitFor();await unchanged();
     await openPrior(page,origin);await clickLocal(page,page.locator('#portal-learner-guidance a[href="import-courses.html?from=portal"]'),origin);
     await page.locator('#import-files').waitFor({state:'attached'});await unchanged();
-    await page.reload({waitUntil:'networkidle'});await page.locator('#import-files').waitFor({state:'attached'});await unchanged();
+    await page.reload({waitUntil:'domcontentloaded'});await page.locator('#import-files').waitFor({state:'attached'});await unchanged();
    });
 
    await journey(device,viewport,'high-school-college-issuer',Library.initialize(null),async page=>{
     await openPrior(page,origin);await page.locator('select[name="learnerStage"]').selectOption('high-school');await page.locator('select[name="prior"]').selectOption('some');
     const guidance=page.locator('#portal-learner-guidance');assert.match(await guidance.innerText(),/college that issued/i);assert.match(await guidance.innerText(),/high.school report card/i);
     await completeProfile(page);let state=await stored(page);assert.equal(state.profile.learnerStage,'high-school');assert.deepEqual(state.learning,[]);noTarget(state);
-    await page.reload({waitUntil:'networkidle'});assert.equal((await stored(page)).profile.learnerStage,'high-school');
+    await page.reload({waitUntil:'domcontentloaded'});await page.locator('h1:visible').first().waitFor();assert.equal((await stored(page)).profile.learnerStage,'high-school');
     await openPrior(page,origin);await clickLocal(page,page.locator('#portal-learner-guidance a[href="courses.html?tab=browse"]'),origin);
     await page.locator('#courses-app').waitFor();await page.locator('#courses-results[aria-busy="false"]').waitFor();
     state=await stored(page);assert.deepEqual(state.learning,[],'High-school context does not invent dual-enrollment, AP or receiving credit.');noTarget(state);noReceivingAward(state);
-    await page.reload({waitUntil:'networkidle'});assert.equal((await stored(page)).profile.learnerStage,'high-school');assert.deepEqual((await stored(page)).learning,[]);
+    await page.reload({waitUntil:'domcontentloaded'});await page.locator('#courses-results[aria-busy="false"]').waitFor();assert.equal((await stored(page)).profile.learnerStage,'high-school');assert.deepEqual((await stored(page)).learning,[]);
    });
 
    for(const military of ['active','veteran','dependent']){
@@ -190,7 +202,7 @@ async function checklistTask(page,id){
      await page.locator('tr.course-plan-row').first().waitFor();task=await checklistTask(page,'military-benefits');
      await task.locator('[data-dc-check="military-benefits"]').check();
      await page.waitForFunction(key=>Object.values(JSON.parse(localStorage.getItem(key)).checklist.plans).some(plan=>plan.items['military-benefits']?.status==='done'),KEY);
-     await page.reload({waitUntil:'networkidle'});await page.locator('tr.course-plan-row').first().waitFor();
+     await page.reload({waitUntil:'domcontentloaded'});await page.locator('tr.course-plan-row').first().waitFor();
      state=await stored(page);assert.equal(state.profile.militaryStatus,military);assert.deepEqual(targetIdentity(state),identity);assert.deepEqual(state.learning,[]);assert.deepEqual(state.scenarios,scenarios);assert.deepEqual(quotedCosts(state),costs,'Completing a benefits task does not create funding or change provider charges.');noReceivingAward(state);
      assert(Object.values(state.checklist.plans).some(plan=>plan.items['military-benefits']?.status==='done'),'The real checklist status survives reload.');
     });
