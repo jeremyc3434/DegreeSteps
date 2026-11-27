@@ -73,7 +73,7 @@ class Refresh(unittest.TestCase):
         self.assertEqual(next(row["credits"] for row in result["courses"] if row["id"] == "retained-upi"), 1)
         self.assertFalse(any(row["provider"] == "Unresearched Provider" for row in result["courses"]))
         self.assertIn(self.old_source, result["sources"])
-        self.assertEqual([Path(call.args[0][1]).name for call in calls], ["reviewed-course-identities.mjs", "upi-course-catalog.mjs"])
+        self.assertEqual([Path(call.args[0][1]).name for call in calls], ["reviewed-course-identities.mjs", "upi-course-catalog.mjs", "cli-course-catalog.mjs"])
         manifest = json.loads((self.root / "content/catalog/course-sources.json").read_text())
         self.assertEqual(manifest["sources"], result["sources"])
 
@@ -83,6 +83,30 @@ class Refresh(unittest.TestCase):
             self.refresh(child=subprocess.CalledProcessError(1, ["node", "source-review"]))
         self.assertEqual(self.target.read_bytes(), original)
         self.assertFalse((self.root / "content/catalog/course-sources.json").exists())
+
+    def test_late_cli_failure_restores_catalog_and_retains_prior_source_manifest(self):
+        original = self.target.read_bytes()
+        manifest = self.root / "content/catalog/course-sources.json"
+        original_manifest = json.dumps({"version": 1, "sources": [self.old_source]}, indent=2).encode() + b"\n"
+        manifest.write_bytes(original_manifest)
+        visited = []
+
+        def adapter(command, check):
+            self.assertTrue(check)
+            name = Path(command[1]).name
+            visited.append(name)
+            # Earlier adapters can already have written their source facts.
+            interim = json.loads(self.target.read_text())
+            interim["partial_source_review"] = name
+            self.target.write_text(json.dumps(interim))
+            if name == "cli-course-catalog.mjs":
+                raise subprocess.CalledProcessError(1, command)
+
+        with self.assertRaises(subprocess.CalledProcessError):
+            self.refresh(child=adapter)
+        self.assertEqual(visited, ["reviewed-course-identities.mjs", "upi-course-catalog.mjs", "cli-course-catalog.mjs"])
+        self.assertEqual(self.target.read_bytes(), original)
+        self.assertEqual(manifest.read_bytes(), original_manifest)
 
     def test_identical_titles_do_not_erase_distinct_retained_source_records(self):
         second = {**copy.deepcopy(self.retained[0]), "id": "another-original-business", "mappingCode": "SDCM-OTHER", "credits": 4}
