@@ -33,14 +33,29 @@ test('an untouched returning draft opens the exact reviewed route with all exist
  assert.equal(unfixed.plan.totals.external,9,'The unpinned legacy draft uses the conditional maximum.');
  const {result,reads}=await recover(input);
  assert(result);assert.deepEqual(input.state,before,'Recovery is pure and never writes browser/account data.');
- assert.deepEqual({...result,scenarios:before.scenarios},before,'Only the reviewed scenario pins and their providers are added.');
+ assert.deepEqual({...result,scenarios:before.scenarios},before,'Only the reviewed starting hints and published-course preferences are added.');
+ assert.deepEqual(result.scenarios[input.model.id].optionSelections||{},{});assert.equal(result.scenarios[input.model.id].suggestedChoices.modelId,input.model.id);assert.equal(result.scenarios[input.model.id].suggestedChoices.reviewId,input.index.revision);assert.equal(result.scenarios[input.model.id].allowConditional,false);
  assert.deepEqual(result.sheet.notes,before.sheet.notes);assert.deepEqual(result.learning,[]);
  const draft=Journey.buildDraft(result,input.catalog,[input.model]);
  assert.equal(draft.plan.totals.external,6);assert.equal(draft.plan.totals.institutional,6);assert.equal(draft.plan.totals.confirmed,0);assert.equal(draft.plan.totals.reported,0);
  assert.equal(draft.plan.rows.find(row=>row.requirementId==='business').option.provider,'University');
  assert.equal(draft.plan.validation.academicCountsValid,true);assert.equal(draft.plan.validation.policyChecksComplete,true);
  assert.deepEqual(new Set(reads),new Set(['/planner.js','/course-assessment.js','/data/curriculum-registry.json','/data/curricula/baseline-fixture.json']));
- assert.equal((await recover({...input,state:result})).result,null,'Saved pins make initialization one-time only.');
+ assert.equal((await recover({...input,state:result})).result,null,'Saved starter provenance makes initialization one-time only.');
+});
+
+test('an automatic starter can use a newly published course while explicit and legacy choices stay locked',async()=>{
+ const input=fixture(),{result}=await recover(input);assert(result);const before=copy(result),future=copy(input.model),business=future.requirements.find(row=>row.id==='business');
+ business.options.find(option=>option.provider==='Study.com').evidence='published';
+ const draft=Journey.buildDraft(result,input.catalog,[future]);assert.equal(draft.plan.validation.valid,true);assert.equal(draft.plan.totals.external,9);assert.equal(draft.plan.rows.find(row=>row.requirementId==='business').option.provider,'Study.com');assert.deepEqual(result,before);assert.deepEqual(result.scenarios[future.id].optionSelections||{},{});
+ const selected=copy(result);selected.scenarios[future.id].optionSelections={business:'university-BUS-101'};const selectedBefore=copy(selected),locked=Journey.buildDraft(selected,input.catalog,[future]);assert.equal(locked.plan.totals.external,6);assert.equal(locked.plan.rows.find(row=>row.requirementId==='business').option.provider,'University');assert.deepEqual(selected,selectedBefore);
+ const legacy=copy(selected);delete legacy.scenarios[future.id].suggestedChoices;const legacyBefore=copy(legacy),retained=Journey.buildDraft(legacy,input.catalog,[future]);assert.equal(retained.plan.totals.external,6);assert.deepEqual(legacy,legacyBefore,'Existing scenarios without hint provenance are never unlocked');
+});
+
+test('starter hints cannot enable conditional courses, stale identities, or a disabled source',async()=>{
+ const input=fixture(),{result}=await recover(input);assert(result);const first=Journey.buildDraft(result,input.catalog,[input.model]);assert.equal(first.plan.totals.external,6);assert(first.plan.rows.every(row=>row.option.evidence==='published'));
+ const disabled=copy(result);disabled.scenarios[input.model.id].providers=[];const none=Journey.buildDraft(disabled,input.catalog,[input.model]);assert(none.plan.rows.every(row=>row.option.provider==='University'));assert.equal(none.plan.totals.external,0,'Hints do not override a student source preference');
+ const stale=copy(result);stale.scenarios[input.model.id].suggestedChoices.modelId='different-degree';const fallback=Journey.buildDraft(stale,input.catalog,[input.model]);assert.equal(fallback.plan.validation.valid,true);assert.equal(fallback.plan.setupIssues.length,0);assert.equal(fallback.plan.totals.external,6);
 });
 
 test('student records, explicit choices, preferences, imports, versions and progress are never migrated',async()=>{

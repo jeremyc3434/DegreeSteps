@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "id": "liberty-religion-maximization-research-2026-11-27",
+  "reviewedOn": "2026-11-27",
+  "scope": "Operator research and required planner capabilities; this packet does not approve student credit or change published course selections.",
+  "studentCreditsAwarded": 0,
+  "automaticPublication": false,
+  "sources": [
+    {
+      "id": "cli-current-catalog-index",
+      "url": "https://www.christianleadersinstitute.org/catalog/",
+      "retrieval": "HTTP 200; actual official page links the retained current academic catalog",
+      "sha256": "fb37c7b6dba8c8498de43518d6b6207d3b5054cd5f19e16b6a624373a77a2e07"
+    },
+    {
+      "id": "cli-academic-catalog-2026-second-edition",
+      "url": "https://cli-wp-uploads.s3.amazonaws.com/wp-content/uploads/2026/10/2026.CAT_.Christian-Leaders-InstituteFLsecond_edition.pdf",
+      "retrieval": "Full primary PDF, HTTP 200, extracted and independently reviewed",
+      "sha256": "e6808362c4a3472ca1bbd4b775d7f443c4b3d13ac616d27b1ce2fc6dde26bfdb",
+      "pages": [
+        19,
+        21,
+        24,
+        25,
+        35,
+        36,
+        48,
+        51,
+        80,
+        104,
+        115
+      ]
+    },
+    {
+      "id": "liberty-current-cli-calculator",
+      "url": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+      "retrieval": "Full public JSON, HTTP 200; all 124 rows equal the retained November24 snapshot",
+      "sha256": "4fe1b9dba704f03d80aef7f02bba50d222d2db66223479f0a72c1c67640eec85"
+    },
+    {
+      "id": "liberty-undergraduate-transfer-policy",
+      "url": "https://www.liberty.edu/registrar/transfer-policies/undergraduates/",
+      "basis": "Current receiving-university policy permits course fulfillment while graduation-credit shortages remain; equivalence is not extra earned credit."
+    }
+  ],
+  "originalCourses": [
+    {
+      "code": "BIB 111",
+      "semesterCredits": 3,
+      "collegeCreditIssuerRoute": "CLI Leadership Excellence School academic transcript",
+      "sourceId": "cli-academic-catalog-2026-second-edition",
+      "sourceLevel": "not-independently-classified"
+    },
+    {
+      "code": "BIB 112",
+      "semesterCredits": 3,
+      "collegeCreditIssuerRoute": "CLI Leadership Excellence School academic transcript",
+      "sourceId": "cli-academic-catalog-2026-second-edition",
+      "sourceLevel": "not-independently-classified"
+    },
+    {
+      "code": "MIN 310",
+      "semesterCredits": 3,
+      "collegeCreditIssuerRoute": "CLI Leadership Excellence School academic transcript",
+      "sourceId": "cli-academic-catalog-2026-second-edition",
+      "sourceLevel": "not-independently-classified"
+    },
+    {
+      "code": "THE 101",
+      "semesterCredits": 3,
+      "collegeCreditIssuerRoute": "CLI Leadership Excellence School academic transcript",
+      "sourceId": "cli-academic-catalog-2026-second-edition",
+      "sourceLevel": "not-independently-classified"
+    },
+    {
+      "code": "THE 210",
+      "semesterCredits": 4,
+      "collegeCreditIssuerRoute": "CLI Leadership Excellence School academic transcript",
+      "sourceId": "cli-academic-catalog-2026-second-edition",
+      "sourceLevel": "not-independently-classified"
+    },
+    {
+      "code": "THE 310",
+      "semesterCredits": 4,
+      "collegeCreditIssuerRoute": "CLI Leadership Excellence School academic transcript",
+      "sourceId": "cli-academic-catalog-2026-second-edition",
+      "sourceLevel": "not-independently-classified"
+    }
+  ],
+  "exactReceivingAwards": [
+    {
+      "sourceCode": "BIB 111",
+      "receivingCode": "BIBL 105",
+      "receivingCredits": 2,
+      "receivingUnit": "semester",
+      "sourceId": "liberty-current-cli-calculator",
+      "campusRequirementMatches": true
+    },
+    {
+      "sourceCode": "BIB 112",
+      "receivingCode": "BIBL 110",
+      "receivingCredits": 2,
+      "receivingUnit": "semester",
+      "sourceId": "liberty-current-cli-calculator",
+      "campusRequirementMatches": true
+    },
+    {
+      "sourceCode": "MIN 310",
+      "receivingCode": "EVAN 101",
+      "receivingCredits": 2,
+      "receivingUnit": "semester",
+      "sourceId": "liberty-current-cli-calculator",
+      "campusRequirementMatches": true
+    },
+    {
+      "sourceCode": "THE 101",
+      "receivingCode": "THEO 104",
+      "receivingCredits": 4,
+      "receivingUnit": "semester",
+      "sourceId": "liberty-current-cli-calculator",
+      "campusRequirementMatches": false
+    },
+    {
+      "sourceCode": "THE 210",
+      "receivingCode": "THEO 201",
+      "receivingCredits": 2,
+      "receivingUnit": "semester",
+      "sourceId": "liberty-current-cli-calculator",
+      "campusRequirementMatches": true
+    },
+    {
+      "sourceCode": "THE 310",
+      "receivingCode": "THEO 202",
+      "receivingCredits": 2,
+      "receivingUnit": "semester",
+      "sourceId": "liberty-current-cli-calculator",
+      "campusRequirementMatches": true
+    }
+  ],
+  "eligibility": {
+    "collegeCreditRequires": "LES admission and actual academic credit on the LES transcript; free CDS study and CDS verification alone are not assumed equivalent",
+    "excludedLESJurisdictions": [
+      "CT",
+      "DE",
+      "DC",
+      "IL",
+      "KS",
+      "KY",
+      "MI",
+      "MS",
+      "NV",
+      "NJ",
+      "NY",
+      "ND",
+      "OR",
+      "PR",
+      "RI",
+      "VA"
+    ],
+    "knownLESApplicationUSD": 75,
+    "knownNonGraduateTranscriptUSD": 75,
+    "fullCLIDegreeEnrollmentRequired": false,
+    "personalAdmissionGuaranteed": false,
+    "planningMinimumGrade": "C or better; current registrar wording is stricter than the separate general catalog C-minus statement",
+    "providerPrerequisites": {
+      "THE 101": [
+        "Christian Leaders Connections"
+      ],
+      "THE 310": [
+        "THE 210"
+      ]
+    },
+    "noProctorStatus": "not-established"
+  },
+  "requiredWork": [
+    {
+      "id": "cli-campus-eligible-academic-route",
+      "status": "primary-credit-quantity-and-mapping-evidence-reviewed",
+      "next": "Connect LES transcript/state/admission eligibility to the proposed course route; retain actual source and receiving quantities separately. Do not suggest an eligible LES route to a resident of an excluded jurisdiction."
+    },
+    {
+      "id": "cli-online-theo104-credit-deficit",
+      "status": "credit-accounting-capability-required",
+      "next": "A three-semester-credit THE101 course may fulfill a four-credit requirement but cannot silently create a fourth earned credit. Model the remaining graduation credit with a separately supported course."
+    },
+    {
+      "id": "liberty-published-transfer-threshold-waivers",
+      "status": "sequenced-waiver-and-replacement-credit-capability-required",
+      "next": "Apply exact program-specific 45/60 accepted-transfer-hour waiver conditions; distinguish planned from accepted credits; a waiver awards zero credit and replacement coursework must preserve degree total, upper level and residency."
+    },
+    {
+      "id": "cli-additional-fixed-religion-awards",
+      "status": "original-course-and-degree-placement-review-required",
+      "next": "The complete calculator has 27 fixed named religion/ministry awards, including 21 beyond the existing six. Review current original identities and exact degree placement; ranged or OR awards cannot become fixed course credit by inference."
+    }
+  ]
+}

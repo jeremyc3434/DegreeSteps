@@ -30,7 +30,7 @@ const json=async file=>JSON.parse(await fs.readFile(path.join(root,file),'utf8')
  const saved=page=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),KEY);
  try {
   const page=await open(seed()),current=await saved(page);
-  for(const row of baseline.rows)assert.equal(current.scenarios[model.id].optionSelections[row.requirementId],row.optionId);
+  assert.deepEqual(current.scenarios[model.id].optionSelections||{},{});for(const row of baseline.rows)assert.equal(current.scenarios[model.id].suggestedChoices.optionSelections[row.requirementId],row.optionId);
   const draft=Journey.buildDraft(current,catalog,models);assert.equal(draft.plan.totals.external,baseline.summary.transferCredits);assert.equal(draft.plan.totals.institutional,baseline.summary.universityCredits);assert.deepEqual(current.learning,[]);assert.equal(current.sheet.notes[model.id].private,'Private note stays with my plan');assert.equal(draft.plan.totals.reported,0);assert.equal(draft.plan.totals.confirmed,0);
   console.log('PASS returning untouched draft opens its exact published fallback before rendering');
   const explicit=seed(),chosen=baseline.baselineSelection.conditionalCandidate.rows.find(row=>row.optionId!==baseline.rows.find(item=>item.requirementId===row.requirementId)?.optionId);assert(chosen);explicit.scenarios[model.id]={optionSelections:{[chosen.requirementId]:chosen.optionId}};explicit.courseProgress={private:'in-progress'};

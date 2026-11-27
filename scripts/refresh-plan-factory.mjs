@@ -18,6 +18,7 @@ const scripts=[
   ['catalog-plan-identities.mjs',[]],
   ['provider-directory-discovery.mjs',[]],
   ['build-provider-coverage-report.mjs',[]],
+  ['build-transfer-maximization-report.mjs',['--fail-on-improvement']],
   ['build-research-priorities.mjs',[]],
   ['build-school-research-batch.mjs',[]],
   ['build-coach-index.mjs',[]]
