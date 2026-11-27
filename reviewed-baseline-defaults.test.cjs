@@ -114,6 +114,29 @@ test('a faster named fallback with unresolved course research cannot displace a 
  const explicit=Planner.generate(model,{...input,optionSelections:{writing:'university-writing'}});assert.equal(chosen(explicit).writing,'university-writing');assert(explicit.blockers.some(blocker=>blocker.code==='program_research'),'Explicit unresolved choices retain their source-review blocker');
 });
 
+test('automatic conditional alternatives cannot displace a published starter, while explicit choices and records stay intact',()=>{
+ const model=fixture();model.reviewedBaselineChoices.optionSelections={writing:'university-writing',elective:'university-elective'};
+ for(const requirement of model.requirements)for(const option of requirement.options)if(option.provider!=='University')option.evidence='conditional';
+ const before=JSON.stringify(model);
+ for(const priority of ['transfer','cost','speed']){
+  const plan=Planner.generate(model,{...input,priority,universityRate:100,timing:{externalWeeks:{Sophia:1},externalConcurrency:1,universityTermWeeks:16,universityCreditsPerTerm:9}});
+  assert.equal(plan.validation.valid,true);assert.equal(plan.readiness,'review-ready');assert.equal(plan.totals.external,0);
+  assert.equal(chosen(plan).writing,'university-writing');assert.equal(plan.blockers.length,0);
+ }
+ const explicit=Planner.generate(model,{...input,optionSelections:{writing:'other-writing'}});
+ assert.equal(chosen(explicit).writing,'other-writing');assert.equal(chosen(explicit).elective,'university-elective');assert.equal(explicit.totals.external,3);
+ assert(explicit.blockers.some(blocker=>blocker.code==='conditional_mapping'&&blocker.requirementId==='writing'));
+ assert.equal(explicit.setupIssues.length,0);
+ for(const status of ['reported','confirmed']){
+  const record={requirementId:'writing',optionId:'other-writing',sourceProvider:'Sophia',code:'SOPH-A',credits:3,creditSystem:'semester',status},snapshot=JSON.stringify(record);
+  const plan=Planner.generate(model,{...input,completed:[record]});
+  assert.equal(chosen(plan).writing,'other-writing');assert.equal(plan.rows.find(row=>row.requirementId==='writing').status,status);
+  assert.equal(chosen(plan).elective,'university-elective');assert.equal(plan.totals.external,3);
+  assert.equal(plan.validation.academicCountsValid,true);assert.equal(JSON.stringify(record),snapshot);
+ }
+ assert.equal(JSON.stringify(model),before);
+});
+
 test('receipt-derived suggestions seed a tie but remain optimizable and never become student locks',()=>{
  const model=fixture(),suggestedChoices=copy(model.reviewedBaselineChoices);delete model.reviewedBaselineChoices;
  const seeded=Planner.generate(model,{...input,suggestedChoices});assert.equal(chosen(seeded).writing,'reviewed-writing');assert.equal(chosen(seeded).elective,'reviewed-elective');

@@ -1218,17 +1218,25 @@
     // Eligibility is fixed for this generation. Preserve original option and
     // requirement identities: published IDs need not be unique in a draft.
     const eligibleOptions = new WeakMap();
-    const namedReviewedStarter = reviewedCandidate && reviewedCandidate.rows.every(row => !row.selectionRequired);
-    const reviewedResearchComplete = reviewedCandidate?.validation?.valid === true;
+    const personalRequirements = new Set([
+      ...Object.keys(input.optionSelections || {}),
+      ...(input.completed || []).filter(item => ['reported','confirmed'].includes(item.status)).map(item => item.requirementId)
+    ]);
+    const namedReviewedStarter = reviewedCandidate && reviewedCandidate.rows.every(row => personalRequirements.has(row.requirementId) || !row.selectionRequired);
+    const reviewedResearchComplete = reviewedCandidate && reviewedCandidate.validation.errors.every(issue => issue.requirementId && personalRequirements.has(issue.requirementId));
     const optionsForRequirement = requirement => {
       if (!eligibleOptions.has(requirement)) {
         // An unnamed placeholder is still available for incomplete drafts, but
         // cannot improve an executable reviewed route by omitting its course.
         // Likewise, a named fallback with an unresolved selected-course policy
         // cannot displace a source-complete route merely by appearing faster.
+        // Conditional evidence has its own validation blocker, separate from
+        // unresolvedItems. A personal choice retains its own blockers without
+        // making unrelated conditional options automatic recommendations.
         eligibleOptions.set(requirement, optionsFor(program, requirement, input).filter(option =>
-          (!namedReviewedStarter || !option.selectionRequired) &&
-          (!reviewedResearchComplete || !unresolvedItems(program,[makeRow(requirement,option,'planned',program,balance)]).errors.length)));
+          input.optionSelections?.[requirement.id] === option.id ||
+          ((!namedReviewedStarter || !option.selectionRequired) &&
+          (!reviewedResearchComplete || option.evidence === 'published' && !unresolvedItems(program,[makeRow(requirement,option,'planned',program,balance)]).errors.length))));
       }
       return eligibleOptions.get(requirement);
     };
