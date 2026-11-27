@@ -1,13 +1,13 @@
 /* Synthetic student-context journeys against the actual built site.
  * A read-only loopback server supplies local assets; there are no real students,
  * accounts, benefit awards, institution messages or receiving-credit decisions.
- * Run in CI with pinned Playwright 1.62.1 and CHROMIUM_PATH set to system Chrome. */
+ * Run in CI with pinned Playwright 1.62.1 and CHROMIUM_PATH set to system Chrome.
+ * --fixtures-only checks the real record/target/cost fixtures without a browser. */
 'use strict';
 const assert=require('node:assert/strict');
 const http=require('node:http');
 const fs=require('node:fs/promises');
 const path=require('node:path');
-const {chromium}=require('playwright');
 const Library=require('./dist/course-library-engine.js');
 const Sheet=require('./dist/sheet-state.js');
 const Journey=require('./dist/journey-engine.js');
@@ -93,6 +93,21 @@ function selectedBusiness(){
  state.journey={...state.journey,completed:true,intakeCompleted:true,profileCompleted:true};
  return state;
 }
+function preflightFixtures(){
+ // Construct every private seed before launching Chrome, using the same public
+ // APIs as the product. A bad fixture must not wait for a later browser journey.
+ const blank=Library.initialize(null);noTarget(blank);noReceivingAward(blank);
+ const returning=Sheet.updateLearning(Library.initialize(null),{id:'synthetic-old-1999',provider:'Synthetic Regional College',code:'ENG 101',title:'English Composition I',credits:3,creditSystem:'semester',status:'earned',completedOn:'1999-05-14',grade:'B',evaluations:[],originalTranscriptTerm:'Spring 1999'});
+ assert.equal(returning.learning.length,1);assert.equal(returning.learning[0].completedOn,'1999-05-14');assert.equal(returning.learning[0].credits,3);assert.equal(returning.learning[0].grade,'B');noTarget(returning);noReceivingAward(returning);
+ const original=JSON.stringify(returning.learning[0]);
+ const military=['active','veteran','dependent'].map(status=>{
+  const initial=selectedBusiness(),identity=targetIdentity(initial),costs=quotedCosts(initial),scenarios=copy(initial.scenarios);
+  const contextOnly=copy(initial);contextOnly.profile={...contextOnly.profile,learnerStage:'returning',militaryStatus:status};
+  assert.deepEqual(quotedCosts(contextOnly),costs,'A fixture’s service context alone cannot create a discount.');assert.deepEqual(targetIdentity(contextOnly),identity);assert.deepEqual(contextOnly.learning,[]);noReceivingAward(contextOnly);
+  return {military:status,initial,identity,costs,scenarios};
+ });
+ return {blank,returning:{state:returning,original},military};
+}
 async function openDetails(locator){await locator.waitFor({state:'attached'});if(await locator.getAttribute('open')===null)await locator.locator(':scope > summary').click();}
 async function checklistTask(page,id){
  await openDetails(page.locator('#sheet-task-panel'));
@@ -105,6 +120,10 @@ async function checklistTask(page,id){
 }
 
 (async()=>{
+ const fixtures=preflightFixtures();
+ console.log(JSON.stringify({fixturePreflight:'passed',originalRecordDate:fixtures.returning.state.learning[0].completedOn,militaryCostFixtures:fixtures.military.length,browserLaunched:false}));
+ if(process.argv.includes('--fixtures-only'))return;
+ const {chromium}=require('playwright');
  await fs.mkdir(OUTPUT,{recursive:true});
  const {server,origin}=await startStaticServer();let browser,count=0;
  const pageErrors=[],privateWrites=[];
@@ -129,13 +148,13 @@ async function checklistTask(page,id){
    finally{await context.close();}
   }
   for(const [device,viewport] of [['desktop',{width:1440,height:1000}],['phone',{width:390,height:844}]]){
-   await journey(device,viewport,'mypath-school-discovery',Library.initialize(null),async page=>{
+   await journey(device,viewport,'mypath-school-discovery',copy(fixtures.blank),async page=>{
     await navigate(page,origin+'/school.html');const entry=page.locator('[data-mypath-research]');await entry.waitFor();
     assert.match(await entry.innerText(),/complete MyPath transfer-course template is not available yet/i);
     await clickLocal(page,entry.locator('a[href="/guides/transfer-credit-after-enrolling/"]'),origin);
     assert.match(await page.locator('h1').innerText(),/Already in college/);const state=await stored(page);noTarget(state);noReceivingAward(state);assert.deepEqual(state.learning,[]);
    });
-   await journey(device,viewport,'enrolled-current-context',Library.initialize(null),async page=>{
+   await journey(device,viewport,'enrolled-current-context',copy(fixtures.blank),async page=>{
     await openPrior(page,origin);
     await page.locator('select[name="learnerStage"]').selectOption('enrolled');
     await page.locator('#portal-learner-enrolled').waitFor({state:'visible'});
@@ -162,10 +181,9 @@ async function checklistTask(page,id){
     await page.locator('h1:visible').waitFor();state=await stored(page);noTarget(state);assert.equal(state.profile.currentProgram,'Business Administration MyPath — enrolled 2024');assert.deepEqual(state.learning,[]);
    });
 
-   const old=Sheet.validateLearning({id:'synthetic-old-1999',provider:'Synthetic Regional College',code:'ENG 101',title:'English Composition I',credits:3,creditSystem:'semester',status:'earned',completedOn:'1999-05-14',grade:'B',evaluations:[],originalTranscriptTerm:'Spring 1999'});
-   const returning=Library.initialize(null);returning.learning=[old];const original=JSON.stringify(old);
+   const returning=copy(fixtures.returning.state),original=fixtures.returning.original;
    await journey(device,viewport,'returning-original-1999',returning,async page=>{
-    const unchanged=async()=>{const state=await stored(page);assert.equal(state.learning.length,1);assert.equal(JSON.stringify(state.learning[0]),original,'An old earned original record remains byte-identical throughout the journey.');noReceivingAward(state);noTarget(state);};
+    const unchanged=async()=>{const state=await stored(page);assert.equal(state.learning.length,1);assert.equal(state.learning[0].completedOn,'1999-05-14');assert.equal(JSON.stringify(state.learning[0]),original,'An old earned original record remains byte-identical throughout the journey.');noReceivingAward(state);noTarget(state);};
     await openPrior(page,origin);await page.locator('select[name="learnerStage"]').selectOption('returning');await page.locator('select[name="prior"]').selectOption('some');
     assert.match(await page.locator('#portal-learner-guidance').innerText(),/older college courses may still count/i);await unchanged();
     await completeProfile(page);await unchanged();assert.equal((await stored(page)).profile.learnerStage,'returning');
@@ -175,7 +193,7 @@ async function checklistTask(page,id){
     await page.reload({waitUntil:'domcontentloaded'});await page.locator('#import-files').waitFor({state:'attached'});await unchanged();
    });
 
-   await journey(device,viewport,'high-school-college-issuer',Library.initialize(null),async page=>{
+   await journey(device,viewport,'high-school-college-issuer',copy(fixtures.blank),async page=>{
     await openPrior(page,origin);await page.locator('select[name="learnerStage"]').selectOption('high-school');await page.locator('select[name="prior"]').selectOption('some');
     const guidance=page.locator('#portal-learner-guidance');assert.match(await guidance.innerText(),/college that issued/i);assert.match(await guidance.innerText(),/high.school report card/i);
     await completeProfile(page);let state=await stored(page);assert.equal(state.profile.learnerStage,'high-school');assert.deepEqual(state.learning,[]);noTarget(state);
@@ -186,8 +204,7 @@ async function checklistTask(page,id){
     await page.reload({waitUntil:'domcontentloaded'});await page.locator('#courses-results[aria-busy="false"]').waitFor();assert.equal((await stored(page)).profile.learnerStage,'high-school');assert.deepEqual((await stored(page)).learning,[]);
    });
 
-   for(const military of ['active','veteran','dependent']){
-    const initial=selectedBusiness(),identity=targetIdentity(initial),costs=quotedCosts(initial),scenarios=copy(initial.scenarios);
+   for(const {military,initial,identity,costs,scenarios} of fixtures.military){
     await journey(device,viewport,'military-'+military+'-benefits-task',initial,async page=>{
      await navigate(page,origin+'/portal.html?view=preferences');
      await page.locator('#portal-profile-form[data-profile-step="prior"]').waitFor();
@@ -208,7 +225,7 @@ async function checklistTask(page,id){
     });
    }
    for(const guide of guides){
-    await journey(device,viewport,'guide-'+guide.slug,Library.initialize(null),async page=>{
+    await journey(device,viewport,'guide-'+guide.slug,copy(fixtures.blank),async page=>{
      const url='/'+(guide.type==='guide'?'guides':'blog')+'/'+guide.slug+'/';await navigate(page,origin+url);
      assert.equal(await page.locator('h1:visible').count(),1);assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),'https://degreesteps.com'+url);
      const prose=guide.sections.flatMap(section=>section.paragraphs||[]).join(' ');assert(prose.trim().split(/\s+/).length>=350,'The guide must contain useful guidance beyond a thin interface description.');
