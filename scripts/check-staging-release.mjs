@@ -7,7 +7,7 @@ import {pathToFileURL} from 'node:url';
 export const STAGING_ORIGIN='https://degreesteps-staging.degreesteps-d215df9a.workers.dev';
 const PUBLIC_ORIGIN='https://degreesteps.com',MAX_LOCAL_BYTES=16*1024*1024;
 const ROBOTS=Buffer.from('User-agent: *\nDisallow: /\n');
-const required=[['/','index.html'],['/brand.css','brand.css'],['/data/credit-sources.json','data/credit-sources.json'],['/data/program-catalog.json','data/program-catalog.json'],['/courses.html','courses.html'],['/courses.js','courses.js'],['/data/course-catalog.json','data/course-catalog.json'],['/sitemap.xml','sitemap.xml']];
+const required=[['/','index.html'],['/brand.css','brand.css'],['/data/credit-sources.json','data/credit-sources.json'],['/data/program-catalog.json','data/program-catalog.json'],['/courses.html','courses.html'],['/courses.js','courses.js'],['/data/course-catalog.json','data/course-catalog.json'],['/portal.html','portal.html'],['/portal.js','portal.js'],['/guide-engine.js','guide-engine.js'],['/sheet-state.js','sheet-state.js'],['/student-checklist.js','student-checklist.js'],['/journey-engine.js','journey-engine.js'],['/school.js','school.js'],['/degree-audit.html','degree-audit.html'],['/degree-audit.js','degree-audit.js'],['/requirements-baselines.js','requirements-baselines.js'],['/data/requirements-baselines.json','data/requirements-baselines.json'],['/sheet.js','sheet.js'],['/sitemap.xml','sitemap.xml']];
 const optional=[
  '/blog/maine-90-credit-applied-bachelors-degrees/',
  '/blog/wgu-single-courses-prices-transfer-and-assessments/',
@@ -17,7 +17,11 @@ const optional=[
  '/credit-sources/google-certificates/',
  '/credit-sources/wgu-single-courses/',
  '/credit-sources/christian-leaders/',
- '/credit-sources/asu-ulc/'
+ '/credit-sources/asu-ulc/',
+ '/guides/transfer-credit-after-enrolling/',
+ '/guides/earn-college-credit-in-high-school/',
+ '/guides/military-credit-jst-ccaf/',
+ '/blog/do-old-college-credits-still-count/'
 ];
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const fail=(code,details={})=>Object.assign(Error(code),{code,...details});

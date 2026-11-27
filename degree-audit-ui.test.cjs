@@ -8,6 +8,8 @@ const html = fs.readFileSync(__dirname + '/dist/degree-audit.html', 'utf8');
 const source = fs.readFileSync(__dirname + '/dist/degree-audit.js', 'utf8');
 const auditSource = fs.readFileSync(__dirname + '/dist/audit-curriculum.js', 'utf8');
 const catalogSource = fs.readFileSync(__dirname + '/dist/program-catalog.js', 'utf8');
+const baselineSource = fs.readFileSync(__dirname + '/dist/requirements-baselines.js', 'utf8');
+const baselineCatalog = JSON.parse(fs.readFileSync(__dirname + '/content/catalog/umass-global-mypath-bba-requirements-2024-2025.json', 'utf8'));
 const clone = value => JSON.parse(JSON.stringify(value));
 const seed = () => ({version:3, profile:{school:'Example University', degree:'B.S. Biology', degreeLevel:'bachelor', pathwayId:'custom-target', modality:'any'}, selectedPathwayId:'custom-target', learning:[{id:'keep-course', title:'My earlier learning'}], sheet:{isExample:false, notes:{private:'Keep my note'}}, scenarios:{}, whatIf:{snapshots:[]}});
 const decode = value => String(value).replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
@@ -45,7 +47,7 @@ function element(tag = 'div', attributes = {}) {
   return el;
 }
 
-function mount({state = seed(), raw, query = '', quota = false, directory} = {}) {
+function mount({state = seed(), raw, query = '', quota = false, directory, baselineFailure = false, modelsForRoutes} = {}) {
   const ids = new Map();
   for (const match of html.matchAll(/<([a-z][\w-]*)\b([^>]*)>/gi)) {
     const at = attrs(match[2]);
@@ -66,19 +68,20 @@ function mount({state = seed(), raw, query = '', quota = false, directory} = {})
   const pending = new Promise((resolve, reject) => { resolveFetch = resolve; rejectFetch = reject; });
   const location = {search:query, href:'degree-audit.html' + query, pathname:'/degree-audit.html', hash:''};
   const sandbox = {
-    document:{getElementById:id => ids.get(id)}, location, URL, URLSearchParams, Blob, TextEncoder, crypto:require('node:crypto').webcrypto,
+    document:{getElementById:id => ids.get(id)}, location, URL, URLSearchParams, Blob, TextEncoder, AbortController, setTimeout, clearTimeout, crypto:require('node:crypto').webcrypto,
     FormData:class { constructor(value) { return Object.entries(value.elements).filter(([,field]) => !field.disabled).map(([name,field]) => [name,field.value]); } },
     localStorage:{getItem:key => key === KEY ? stored : null, setItem(key,value) { if (quota) throw Error('QuotaExceededError'); if (key === KEY) {stored = value; writes++;} }},
     CustomEvent:class { constructor(type,options) {this.type=type;this.detail=options?.detail;} },
     dispatchEvent(){}, addEventListener(){}, history:{replaceState(_state,_title,url) {const parsed = new URL(url,'https://example.test/');location.search = parsed.search; location.href = String(url);}},
-    fetch:() => pending,
+    fetch:url => url === 'data/requirements-baselines.json' ? Promise.resolve({ok:!baselineFailure,json:async () => vm.runInContext('JSON.parse',context)(JSON.stringify(baselineCatalog))}) : pending,
     DegreeSheet:{initialize:() => ({version:3,profile:{},learning:[],sheet:{isExample:false}})}, console
   };
   sandbox.window = sandbox;
   const context = vm.createContext(sandbox);
   vm.runInContext(catalogSource, context, {filename:'program-catalog.js'});
-  sandbox.DegreeProgramCatalog = {...sandbox.DegreeProgramCatalog, load:async value => value, loadIndex:async value => value, modelsForRoutes:async () => []};
+  sandbox.DegreeProgramCatalog = {...sandbox.DegreeProgramCatalog, load:async value => value, loadIndex:async value => value, modelsForRoutes:modelsForRoutes || (async () => [])};
   vm.runInContext(auditSource, context, {filename:'audit-curriculum.js'});
+  vm.runInContext(baselineSource, context, {filename:'requirements-baselines.js'});
   vm.runInContext(source, context, {filename:'degree-audit.js'});
   const ui = {
     ids, form, context, location,
@@ -87,6 +90,7 @@ function mount({state = seed(), raw, query = '', quota = false, directory} = {})
     async field(name,value) {form.elements[name].value = String(value); await form.emit('input',form.elements[name]);},
     async row(index,name,value) {const input = ids.get('audit-editor-rows').children[index].fields.find(input => input.dataset.field === name); assert(input, 'row field ' + name); if (input.type === 'checkbox') input.checked = value; else input.value = String(value); await form.emit('input',input);},
     async click(id) {await ids.get(id).emit('click');},
+    async chooseBaseline(catalogId,emphasisId) {ids.get('audit-baseline-catalog').value=catalogId;ids.get('audit-baseline-emphasis').value=emphasisId;await ids.get('audit-baseline-load').emit('click');},
     async review() {await form.emit('submit');},
     async confirm() {ids.get('audit-confirm').checked = true; await ids.get('audit-confirm').emit('change');},
     async settle(value = directory) {resolveFetch({ok:true,json:async () => value || {pathways:[]}}); await new Promise(resolve => setImmediate(resolve));},
@@ -104,6 +108,99 @@ async function completeRow(ui, title = 'Biology foundation') {
   await ui.field('totalCredits','3');
   await ui.field('sourceUrl','https://example.edu/biology');
 }
+
+test('MyPath catalog loading requires explicit catalog and emphasis without inferring either from enrollment context', async () => {
+  const state=seed();state.profile={...state.profile,learnerStage:'enrolled',currentSchool:'UMass Global',currentProgram:'Business MyPath — enrolled 2024'};
+  const ui=mount({state,query:'?baseline=umass-global-mypath-bba'});
+  assert.equal(ui.ids.get('audit-baseline').open,true);
+  assert.equal(ui.ids.get('audit-baseline-catalog').value,'');assert.equal(ui.ids.get('audit-baseline-emphasis').value,'');
+  await ui.chooseBaseline('2024-2025','');assert.match(ui.ids.get('audit-message').textContent,/Choose the catalog and BBA emphasis/);
+  assert.equal(ui.writes,0);assert.deepEqual(ui.saved,state);await ui.fail();
+});
+
+test('loading MyPath requirements saves an isolated draft and leaves the current target, original courses, notes and costs unchanged', async () => {
+  const state=seed();state.scenarios={'custom-target':{universityRate:250,fees:79}};state.learning[0].grade='B+';state.learning[0].credits=4;state.learning[0].creditSystem='quarter';state.learning[0].evaluations=[];
+  const ui=mount({state});await ui.chooseBaseline('2024-2025','marketing');
+  const saved=ui.saved;assert.equal(ui.writes,1);for(const key of ['profile','selectedPathwayId','learning','sheet','scenarios','whatIf'])assert.deepEqual(saved[key],state[key]);
+  const draft=saved.auditDrafts.drafts[0];assert.equal(draft.rows.length,60);assert.equal(draft.rows.reduce((sum,row)=>sum+row.credits,0),120);assert.equal(draft.metadata.baselineMode,'requirements-only');assert.equal(draft.metadata.creditUnitLabel,'catalog-equivalent credits');assert.equal(draft.metadata.reviewedByStudent,false);
+  const query=new URL(ui.location.href,'https://example.test/').search;
+  const resumed=mount({state:saved,query});await resumed.settle();
+  assert.equal(resumed.ids.get('audit-editor-rows').children.length,60);assert.equal(resumed.form.elements.baselineId.value,baselineCatalog.id);
+  assert.match(resumed.ids.get('audit-baseline-context').innerHTML,/no approved outside-course awards/);assert.match(resumed.ids.get('audit-baseline-context').innerHTML,/catalog-equivalent credits/);
+  await ui.fail();
+});
+
+test('unsaved requirements and failed catalog retrieval cannot be replaced by a MyPath baseline', async () => {
+  const ui=mount();await ui.row(0,'title','Keep this unsaved requirement');const before=ui.raw;
+  await ui.chooseBaseline('2024-2025','marketing');assert.match(ui.ids.get('audit-message').textContent,/Save your current requirements progress/);assert.equal(ui.raw,before);
+  assert.equal(ui.ids.get('audit-editor-rows').children[0].fields.find(field=>field.dataset.field==='title').value,'Keep this unsaved requirement');
+  const failed=mount({baselineFailure:true}),original=failed.raw;await failed.chooseBaseline('2024-2025','marketing');assert.match(failed.ids.get('audit-message').textContent,/unavailable/);assert.equal(failed.raw,original);assert.equal(failed.writes,0);
+  const quota=mount({quota:true}),quotaBefore=quota.raw;await quota.chooseBaseline('2024-2025','marketing');assert.match(quota.ids.get('audit-message').textContent,/could not be saved/);assert.equal(quota.raw,quotaBefore);
+  await Promise.all([ui.fail(),failed.fail(),quota.fail()]);
+});
+
+test('General Business keeps its variable 19-credit pool as a draft and cannot turn it into one planned course', async () => {
+  const first=mount();await first.chooseBaseline('2024-2025','general-business');
+  const ui=mount({state:first.saved,query:new URL(first.location.href,'https://example.test/').search});await ui.settle();
+  assert.equal(ui.ids.get('audit-editor-rows').children.length,52);
+  const draft=ui.saved.auditDrafts.drafts[0],pool=draft.rows.find(row=>row.allocationRequired);
+  assert.equal(pool.credits,19);assert.equal(pool.code,'');assert.match(ui.ids.get('audit-baseline-context').innerHTML,/not one course or a fixed number/);
+  await ui.review();assert.match(ui.ids.get('audit-message').textContent,/19 equivalent elective credits/);assert.equal(ui.ids.get('audit-review').hidden,true);assert.equal(ui.saved.customCurricula,undefined);assert.equal(ui.saved.selectedPathwayId,'custom-target');
+  await first.fail();
+});
+
+test('reviewed named MyPath requirements build only a private proposed university plan and never inherit other UMass mappings', async () => {
+  let inherited=0;const first=mount();await first.chooseBaseline('2024-2025','marketing');
+  const before=first.saved,ui=mount({state:before,query:new URL(first.location.href,'https://example.test/').search,modelsForRoutes:async()=>{inherited++;return[];}});
+  await ui.settle({pathways:[{id:'unrelated-umass',modelId:'unrelated-current-credit-hour',school:baselineCatalog.school}]});
+  await ui.click('audit-add-row'); // A spare empty editor row is not a requirement or an unresolved pool.
+  await ui.review();assert.equal(ui.ids.get('audit-review').hidden,false);assert.match(ui.ids.get('audit-degree-summary').textContent,/120 catalog-equivalent credits/);
+  assert.match(ui.ids.get('audit-review-provenance').textContent,/not a verified transfer template/);assert.deepEqual(ui.saved.learning,before.learning);assert.equal(ui.saved.selectedPathwayId,before.selectedPathwayId);
+  await ui.confirm();await ui.click('audit-build');assert.equal(ui.location.href,'plan.html');assert.equal(inherited,0);
+  const next=ui.saved,model=next.customCurricula[0].model;assert.equal(model.completeExecutablePathway,false);assert.equal(model.auditProvenance.independentlyVerified,false);assert.equal(model.auditProvenance.requirementsBaseline.hash,baselineCatalog.hash);assert.equal(model.learningFormat,'competency-based');
+  assert(model.requirements.every(row=>row.options.length===1&&row.options[0].provider==='University'&&row.options[0].evidence==='conditional'));
+  for(const key of ['learning','scenarios'])assert.deepEqual(next[key],before[key]);assert.deepEqual(next.sheet.notes,before.sheet.notes);assert(next.whatIf.snapshots.some(item=>item.pathwayId===before.selectedPathwayId||item.targetIdentity?.route?.id===before.selectedPathwayId));
+  const reopened=mount({state:next});await reopened.settle();assert.equal(reopened.form.elements.baselineHash.value,baselineCatalog.hash);assert.equal(reopened.ids.get('audit-editor-rows').children.length,61);
+  await first.fail();
+});
+
+test('a MyPath baseline cannot be relabeled as another level, format, catalog, source or program', async () => {
+  const first=mount();await first.chooseBaseline('2024-2025','marketing');
+  for(const [name,value] of [['level','master'],['modality','campus'],['catalog','2025-2026'],['sourceUrl','https://example.edu/other-degree'],['title','Different business degree'],['programId','unrelated-program']]){
+    const ui=mount({state:first.saved,query:new URL(first.location.href,'https://example.test/').search});await ui.settle();
+    await ui.field(name,value);await ui.review();assert.match(ui.ids.get('audit-message').textContent,/no longer match/);assert.equal(ui.ids.get('audit-baseline-restore').hidden,false);assert.equal(ui.ids.get('audit-review').hidden,true);assert.equal(ui.saved.customCurricula,undefined);assert.equal(ui.saved.selectedPathwayId,'custom-target');
+  }
+  await first.fail();
+});
+
+test('explicit catalog-detail restoration preserves edited requirements and private work, then saves and resumes normally', async () => {
+  const first=mount();await first.chooseBaseline('2024-2025','marketing');
+  const state=first.saved;state.auditDrafts.drafts[0].csv='Original spreadsheet reference retained with these rows';
+  const ui=mount({state,query:new URL(first.location.href,'https://example.test/').search});await ui.settle();
+  assert.match(ui.ids.get('audit-code-guidance').textContent,/exact course or competency code/);
+  await ui.row(1,'title','My edited requirement title');
+  const rowState=()=>ui.ids.get('audit-editor-rows').children.map(row=>row.fields.map(field=>({name:field.dataset.field,value:field.value,checked:field.checked})));
+  const editedRows=clone(rowState()),csv=ui.ids.get('audit-csv').value,savedBefore=ui.raw;
+  for(const [name,value] of [['school','Accidental school edit'],['title','Accidental degree edit'],['catalog','2025-2026'],['sourceUrl','https://example.edu/incorrect'],['level','master'],['modality','campus'],['creditSystem','quarter']])await ui.field(name,value);
+  await ui.review();assert.equal(ui.ids.get('audit-baseline-restore').hidden,false);assert.equal(ui.raw,savedBefore);
+  await ui.click('audit-baseline-restore');
+  assert.equal(ui.form.elements.school.value,baselineCatalog.school);assert.equal(ui.form.elements.title.value,baselineCatalog.program+' — Marketing');assert.equal(ui.form.elements.catalog.value,'2024-2025');assert.equal(ui.form.elements.level.value,'bachelor');assert.equal(ui.form.elements.modality.value,'online');assert.equal(ui.form.elements.creditSystem.value,'semester');assert.equal(ui.form.elements.sourceUrl.value,baselineCatalog.source.url);
+  assert.deepEqual(rowState(),editedRows);assert.equal(ui.ids.get('audit-csv').value,csv);assert.equal(ui.raw,savedBefore);assert.equal(ui.ids.get('audit-baseline-restore').hidden,true);assert.match(ui.ids.get('audit-save-status').textContent,/Save progress to keep this correction/);
+  await ui.chooseBaseline('2024-2025','general-business');assert.match(ui.ids.get('audit-message').textContent,/Save your current requirements/,'Restoration remains an unsaved edit until Save progress.');assert.equal(ui.raw,savedBefore);
+  await ui.click('audit-save');
+  assert.equal(ui.saved.auditDrafts.drafts[0].rows[1].title,'My edited requirement title');assert.equal(ui.saved.auditDrafts.drafts[0].csv,csv);assert.equal(ui.saved.auditDrafts.drafts[0].metadata.sourceUrl,baselineCatalog.source.url);
+  for(const key of ['profile','selectedPathwayId','learning','sheet','scenarios','whatIf'])assert.deepEqual(ui.saved[key],state[key]);
+  const resumed=mount({state:ui.saved,query:ui.location.search});await resumed.settle();await resumed.review();assert.equal(resumed.ids.get('audit-review').hidden,false);assert.equal(resumed.saved.customCurricula,undefined);
+  const manual=mount();assert.match(manual.ids.get('audit-code-guidance').textContent,/Course codes are optional/);await Promise.all([first.fail(),manual.fail()]);
+});
+
+test('catalog-detail restoration cannot replace an invalid baseline source marker', async () => {
+  const first=mount();await first.chooseBaseline('2024-2025','marketing');const invalid=first.saved;invalid.auditDrafts.drafts[0].metadata.baselineHash='0'.repeat(64);
+  const ui=mount({state:invalid,query:new URL(first.location.href,'https://example.test/').search});await ui.settle();const before=ui.raw;
+  await ui.review();assert.match(ui.ids.get('audit-message').textContent,/source reference does not match/);assert.equal(ui.ids.get('audit-baseline-restore').hidden,true);
+  await ui.click('audit-baseline-restore');assert.match(ui.ids.get('audit-message').textContent,/source reference does not match/);assert.equal(ui.raw,before);assert.equal(ui.writes,0);assert.equal(ui.saved.selectedPathwayId,'custom-target');
+  await first.fail();
+});
 
 test('ordinary rows add and remove without importing a spreadsheet', async () => {
   const ui = mount();

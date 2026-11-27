@@ -1,0 +1,296 @@
+{
+  "kind": "umass-global-mypath-enrolled-business-student-research",
+  "version": 1,
+  "reviewedOn": "2026-11-27",
+  "studentScenario": {
+    "school": "University of Massachusetts Global",
+    "programAsReported": "Business program - mypath",
+    "alreadyEnrolled": true,
+    "reportedTimeEnrolled": "approximately two years",
+    "completedCredits": null,
+    "catalogYear": null,
+    "emphasis": null,
+    "degreeWorksAuditAvailable": false,
+    "enrolledInYearAsReported": 2024,
+    "continuousEnrollmentEstablished": false,
+    "exactAdmissionTerm": null,
+    "catalogYearInference": "2024 enrollment alone does not establish 2024–25 catalog: exact start term, later catalog petitions and interruptions remain unknown."
+  },
+  "conclusion": {
+    "status": "specific-new-outside-course-permission-unresolved",
+    "answer": "Eligible outside learning may apply to MyPath, but the public evidence does not establish permission for this already-enrolled student to earn new external courses now. Obtain written MyPath coach/registrar confirmation of enrollment permission, exact remaining competency awards, grade proof and applicable limits before purchasing courses. This is a recommendation based on unresolved applicability, not a claim that a universal preapproval rule was found.",
+    "canPromiseFasterCompletion": false,
+    "canActivatePublicMyPathTransferPlanFromCurrentEvidence": false
+  },
+  "retrievalHonesty": {
+    "nativeReceipts": "Search/open/click connector results retained verbatim as JSON. These are rendered/indexed observations, not archived origin HTTP response bytes.",
+    "catalogLimit": "Direct catalog PDF/HTML opens returned connector-reported403, inaccessibility or JavaScript bot checks. Indexed catalog results exposed 2025–2026 text. No fresh2026–2027 catalog body was independently retrieved in this task.",
+    "local2026Evidence": "Existing repository source captures checked2026-11-26 are referenced with byte hashes; their text is not relabeled as newly retrieved primary evidence.",
+    "studentSpecificAssessment": "No transcript, private student data or DegreeWorks access was used."
+  },
+  "sources": [
+    {
+      "id": "cbe-policies-2025-2026-indexed",
+      "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based/",
+      "publisher": "University of Massachusetts Global",
+      "observedOn": "2026-11-27",
+      "catalogYear": "2025-2026",
+      "receiptPaths": [
+        "search-05-native.json",
+        "search-07-native.json",
+        "search-11-native.json"
+      ],
+      "facts": [
+        "Admission catalog controls degree requirements unless a later catalog is approved; other policies follow the catalog for each enrolled year.",
+        "Transfer evaluation first establishes credit-hour equivalence and then separately evaluates competency coverage.",
+        "MyPath articulated credit requires B- verification; mastery at UMass represents B or better.",
+        "ACE recommendations may be evaluated, subject to residency/program limits; other-credit opportunities do not satisfy residency."
+      ],
+      "shortQuote": "Students enrolled in a competency-based program cannot be enrolled in a credit-hour program or take credit hour courses due to financial aid requirements and restrictions.",
+      "quoteScope": "Dual Enrollment Policy; institution/external-provider scope and application to ACE noncollege training are not explicit."
+    },
+    {
+      "id": "cbe-degree-requirements-2025-2026-indexed",
+      "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based-degree-requirement/",
+      "publisher": "University of Massachusetts Global",
+      "catalogYear": "2025-2026",
+      "receiptPaths": [
+        "search-07-native.json"
+      ],
+      "facts": [
+        "Bachelor graduation requires mastery of all program competencies and30equivalent credits in residence, includingLBSC320andLBSC321; completion ofLBSC100is listed."
+      ],
+      "unverifiedForNew2026Cohort": true
+    },
+    {
+      "id": "bba-legacy-competency-ledger-indexed",
+      "url": "https://catalog.umassglobal.edu/business-professional-studies/bba-competency-based/bba-competency-based.pdf",
+      "publisher": "University of Massachusetts Global",
+      "catalogYear": "not independently established beyond indexed legacy catalog context",
+      "receiptPaths": [
+        "search-06-native.json",
+        "search-08-native.json",
+        "search-09-native.json"
+      ],
+      "facts": [
+        "Indexed legacy BBA lists17general-education competencies,34business-core competencies and7–9emphasis competencies.",
+        "Listed emphasis areas areGeneralBusiness,GISandDataAnalytics,InformationSystemsManagement,SupplyChainManagementandLogistics,ManagementandOrganizationalLeadership,andMarketing."
+      ],
+      "current2026LedgerVerified": false
+    },
+    {
+      "id": "live-self-paced-bba",
+      "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+      "publisher": "University of Massachusetts Global",
+      "receiptPaths": [
+        "open-02-native.json",
+        "open-03-native.json"
+      ],
+      "observedOn": "2026-11-27",
+      "catalogYear": null,
+      "facts": [
+        "Live self-paced BBA listing states120credits,33free-elective credits and up to90credits from previous college coursework.",
+        "Illustrative C-prefix courses includeACCC201,FINC305,MGTC308,MGTC406andMGTC450; these do not match all legacy competency identities.",
+        "Page markets3500USDper six-month access but states no academic-year scope."
+      ],
+      "supportsNewPostMatriculationCredit": false,
+      "supports90AceCredits": false,
+      "currentAcademicYearPrice": null
+    },
+    {
+      "id": "sophia-current-partner-table",
+      "url": "https://umassglobal.sophia.org/",
+      "publisher": "Sophia Learning",
+      "observedOn": "2026-11-27",
+      "receiptPaths": [
+        "open-07-native.json"
+      ],
+      "derivedTable": "sophia-partner-table-reviewed-2026-11-27.json",
+      "receivingRows": 79,
+      "facts": [
+        "The partner table publishes credit-hour U-code receiving awards.",
+        "It tells students to confirm degree applicability with their advisor before enrolling.",
+        "Sophia completion is pass/fail with an overall score of70%or above; this does not establish satisfaction of MyPathB-minus transcript verification."
+      ],
+      "myPathCompetencyCrosswalkProvided": false,
+      "currentlyEnrolledStudentPermissionProvided": false
+    },
+    {
+      "id": "live-university-cpl",
+      "url": "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning",
+      "publisher": "University of Massachusetts Global",
+      "receiptPaths": [
+        "open-05-native.json"
+      ],
+      "facts": [
+        "Eligible ACE recommendations and Sophia/Study.com coursework may be reviewed.",
+        "Actual applicability depends on documentation, program requirements and university policy; CPL is not guaranteed."
+      ],
+      "scope": "Broad university policy; no specific MyPath post-matriculation permission or numericACEcap."
+    },
+    {
+      "id": "live-admissions-guide-2026",
+      "url": "https://www.umassglobal.edu/blog-news/umass-global-application-process-step-step-guide",
+      "publisher": "University of Massachusetts Global",
+      "publishedOn": "2026-03-09",
+      "receiptPaths": [
+        "search-12-native.json"
+      ],
+      "facts": [
+        "Admissions article identifies B-minus or better for MyPath coursework from accredited institutions.",
+        "The assigned advisor and current education plan can be found usingDegreeWorks."
+      ],
+      "scope": "Admissions/returning-student guidance, not proof new external courses may be added during active MyPath enrollment."
+    },
+    {
+      "id": "mypath-support-faq",
+      "url": "https://solutions.umassglobal.edu/TDClient/248/Portal/KB/Article/17402/FAQ-General",
+      "publisher": "University of Massachusetts Global",
+      "receiptPaths": [
+        "search-01-native.json"
+      ],
+      "contacts": {
+        "myPathAcademicCoachEmail": "myacademiccoach@umassglobal.edu",
+        "myPathAcademicCoachPhone": "855-554-3325",
+        "myPathOneStopEmail": "onestopcbe@umassglobal.edu",
+        "myPathOneStopPhone": "855-236-4828"
+      },
+      "contacted": false
+    },
+    {
+      "id": "current2026-financial-aid-guide",
+      "url": "https://www.umassglobal.edu/sites/default/files/documents/financialaiddocuments/financialaidguide.pdf",
+      "publisher": "University of Massachusetts Global",
+      "academicYear": "2026-2027",
+      "receiptPaths": [
+        "search-16-native.json"
+      ],
+      "facts": [
+        "Current-year financial aid guide describes MyPath as non-term self-paced with48weeks and24undergraduate credits per financial aid academic year."
+      ],
+      "scope": "Shows continued official non-termMyPath description; does not establish new external course permission, exact BBAcurriculum, tuition or student-specific financial aid."
+    }
+  ],
+  "retainedRepositoryEvidence": [
+    {
+      "id": "existing2026-combined-policies",
+      "sourceUrl": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduatecredit-hourandmypathpolicies/undergraduatecredit-hourandmypathpolicies.pdf",
+      "checkedOnAsRecorded": "2026-11-26",
+      "path": "content/source-captures/baf4fdde7c7ba931.txt",
+      "sha256": "baf4fdde7c7ba93168a3e89601f632c24f357abcedd3ff6480651c4eaf55008b",
+      "bytes": 23821,
+      "currentPrimaryRetrievalClaimed": false,
+      "facts": [
+        "Text first directs MyPath students to2025–26competency policies, then describes a term-based MyPath modality and labels individual rules by modality.",
+        "General transfer policy applicable to both modalities states up to75%of required degree credits may be accepted and includesACEin the combined transfer categories, subject to program restrictions.",
+        "MyPath-only articulation retains the separate credit-hour-equivalence then competency-evaluation process; ACEtranscript must show required minimumgrade."
+      ],
+      "cohortApplicabilityUnresolved": true
+    },
+    {
+      "id": "existing2026-combined-degree-requirements",
+      "sourceUrl": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf",
+      "checkedOnAsRecorded": "2026-11-26",
+      "path": "content/source-captures/abecd4fa3d29ac6a.txt",
+      "sha256": "abecd4fa3d29ac6a66ac110c843264f848d736b1f37c1604bc39515e888367c4",
+      "bytes": 4483,
+      "currentPrimaryRetrievalClaimed": false,
+      "facts": [
+        "Retained title combinesCreditHourandMyPath; requires120total,36upper-division,30resident with18upper-divisionresident and12residentmajor credits, plus21upper-divisionmajor credits; requiredinstitutionalLBSC302/304differfromlegacyLBSC320/321."
+      ],
+      "cohortApplicabilityUnresolved": true
+    },
+    {
+      "id": "existing2026-credit-hour-bba",
+      "sourceUrl": "https://catalog.umassglobal.edu/business-professional-studies/business-administration-bba/business-administration-bba.pdf",
+      "checkedOnAsRecorded": "2026-11-26",
+      "path": "content/source-captures/0e31632ca4c62f76.txt",
+      "sha256": "0e31632ca4c62f7641d70d03e028210d667aef36907d473a0239b0c045477768",
+      "bytes": 2886,
+      "currentPrimaryRetrievalClaimed": false,
+      "facts": [
+        "Retained source is explicitly titledCREDITHOUR; requires60major credits with15GEoverlap,27standaloneGEand33freeelectives.",
+        "Do not relabel this source as a MyPath requirement ledger solely because live marketing shares similar course titles."
+      ],
+      "myPathLedgerEstablished": false
+    }
+  ],
+  "visibilityAudit": {
+    "whyMissing": "Public finder retains only publicationReady===true plans before building the school selector. UMass has zero publication-ready plans.",
+    "files": [
+      "dist/programs.js",
+      "scripts/public-plan-pages.mjs",
+      "content/research/cbe-schools.json",
+      "content/pathway-kits/umass-global/programs/bachelor-of-business-administration.json"
+    ],
+    "myPathDiscoveryPrograms": [
+      "AA General Business",
+      "Bachelor of Business Administration",
+      "BS Information Technology",
+      "MA Organizational Leadership",
+      "MBA"
+    ],
+    "discoveryProgramScope": "Existing source discovery records; only the liveBBApage was freshly opened here.",
+    "existingResearchModels": 6,
+    "existingModelMode": "Credit-hour/course-term, selfPaced:false; cannot substitute forMyPath.",
+    "bbaHeldReasons": [
+      "acceleration-not-established",
+      "conditional-award",
+      "mapping-evidence",
+      "open-course-choice"
+    ],
+    "appEditsMade": false
+  },
+  "genuineCompletePlanNextSteps": [
+    {
+      "needed": "Student catalog year, emphasis and currentDegreeWorksremaining requirements/residency record",
+      "why": "Separates already-satisfied credits from remaining requirements and distinguishes legacy direct-assessment MyPath from newer term-based material.",
+      "privateDataRequiredToUpload": false,
+      "note": "Student can supply a redacted requirement list or exact course/competency codes without name,studentID,SSN or account credentials."
+    },
+    {
+      "needed": "Exact official curriculum ledger for thatMyPathcohort, including credit values and institutional-only requirements",
+      "why": "Current public and indexed materials describe conflicting code systems and totals; do not fabricate requirements."
+    },
+    {
+      "needed": "Written university articulation matching the currentSophiaU-codeaward to exactMyPathcompetencies and numeric receivingcredit",
+      "why": "A generic partner table and same-title/C-prefix match do not establish competency awards. Legacy college-specific crosswalks are useful leads, not currentSophiaawardproof."
+    },
+    {
+      "needed": "WrittenMyPathpermission for newexternalACElearning while currentlyenrolled, acceptable gradeproof, combinedtransfer/ACEcaps and graduationprocessingdeadline",
+      "why": "Published policies do not establish the active-student timing rule; dual-enrollment wording is ambiguous and the current-sourcecohort transition is unresolved."
+    }
+  ],
+  "preservation": {
+    "noAcademicModelsModified": true,
+    "noStudentRecordsModified": true,
+    "noPublishedPlanActivated": true,
+    "noTuitionCurrentYearInvented": true,
+    "historical3500and3400QuotesRetained": true,
+    "noUnprovedUniversalTransferClaim": true
+  },
+  "cohort2024Followup": {
+    "officialFullCatalogUrl": "https://catalog.umassglobal.edu/pdf/University%20of%20Massachusetts%20Global%202024-2025%20Catalog.pdf",
+    "urlDiscovery": "Actual linked catalog URL retained by child in ledger-open-07-native.json; not an invented archive path.",
+    "contentRetrieved": false,
+    "blocker": "Official URL returned JavaScript verification or403 to research connector. Exact URL searches did not expose the full curriculum.",
+    "legacyNeighborEvidence": "Official2023–24 college-specific guides contain receiving credit-hour to competency relationships; they are not promoted to2024cohort rules orSophiaawards.",
+    "neededStudentFacts": [
+      "Actual catalog year or start term",
+      "BBA emphasis",
+      "CurrentDegreeWorks remaining requirements and institutional/residency credit total",
+      "Any enrollment interruption or move to a later catalog"
+    ],
+    "nativeReceiptPaths": [
+      "ledger-open-06-native.json",
+      "ledger-open-07-native.json",
+      "ledger-search-16-native.json"
+    ]
+  },
+  "suggestedWrittenUniversityQuestion": "I began the MyPath BBA in2024. My catalog year is[year] and emphasis is[name]. May I complete newSophia/ACEcourses while currently enrolled? Does the dual-enrollment restriction apply to these courses? Please approve the exact course/ACEID and version, remaining MyPath competency codes, receiving equivalent credits, minimum grade and acceptable transcript proof, transfer/ACElimits, residency exclusions and submission deadline before graduation. I can provide my currentDegreeWorks audit.",
+  "ledgerSupplement": {
+    "path": "outputs/student-scenarios/umass/ledger-research-packet.json",
+    "sha256": "d41e2ce8685ca15a92defd3aa3d57b99428136f11af20b49263cff20118a6abc",
+    "scope": "Frozen primary source URL identities, historical-only explicit receiving crosswalks and exact unresolved cohort ledger requirements."
+  }
+}

@@ -39,3 +39,18 @@ test('only exact confirmed Finance evaluations resolve currency tasks; malformed
 test('the business age rule is not imposed on the new B.A. Psychology',()=>{
  const f=fixture('tesu-psychology');f.state.learning=[earned(f,'PSY-3500')];const draft=f.build();assert.equal(draft.match.completed.length,1);assert.equal(tasks(draft).length,0);assert.equal(draft.plan.existingCreditReviewPending,undefined);
 });
+
+test('the existing source-bound business rule also protects General Management, HR and Marketing old-credit placements',()=>{
+ for(const [name,area] of [['tesu-bs-general-management','General Management'],['tesu-human-resources-organizational-management','Human Resources/Organizational Management'],['tesu-marketing','Marketing']]){
+  const f=fixture(name),row=f.model.requirements.find(row=>row.subgroup==='area-of-study');assert(row);
+  f.state.learning=[earned(f,row.code)];const original=JSON.stringify(f.state.learning),draft=f.build();
+  assert.equal(JSON.stringify(f.state.learning),original,'Original dates, grades, credit units and evaluations remain unchanged.');
+  assert.equal(tasks(draft).length,1,name);assert.equal(draft.plan.existingCreditReviewPending,true);
+  assert.match(draft.plan.validation.warnings.join(' '),/Existing TESU business coursework/);assert.doesNotMatch(draft.plan.validation.warnings.join(' '),/Existing TESU Accounting coursework/,'Another business degree must not be mislabeled as Accounting.');
+  assert(tasks(draft)[0].message.includes(area));assert.match(tasks(draft)[0].message,/up to 9 older credits may still apply/);
+  assert.match(tasks(draft)[0].message,/most recent TESU application date/);
+  const confirmed=fixture(name);confirmed.state.learning=[earned(confirmed,row.code,{confirmed:true})];assert.equal(tasks(confirmed.build()).length,0,'Exact university confirmation resolves the personal review.');
+  const malformed=fixture(name);malformed.state.learning=[earned(malformed,row.code)];malformed.model.existingCreditReview.groups[0].maxOlderCredits=12;
+  const blocked=malformed.build();assert.equal(tasks(blocked).length,0);assert(blocked.plan.validation.errors.some(error=>error.code==='program_research'&&error.message.includes(area)),'A changed policy bound cannot approve old placements.');
+ }
+});

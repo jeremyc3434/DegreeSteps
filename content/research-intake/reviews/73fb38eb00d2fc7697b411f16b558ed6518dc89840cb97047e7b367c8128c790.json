@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "kind": "research-review",
+  "publicationAllowed": false,
+  "findingId": "finding-25555de90e773e4b3a9c31eb4920503d3218b715aff3777db5dbc5bbc7a6f0d2",
+  "revision": 2,
+  "previousReviewHash": "7468bff2970dfb43121d1a41fc9653a63d2d93103238ad3ad48bc474f28763a1",
+  "sourceRevisions": [
+    "314bb232155416de001d88b756241f6fcab463f04ff7e338f9e964a085afbaf1",
+    "725f74f03cbe01aa3c94f8d46969d0e069f6e54fa3cf1df39a1b8ab4ea08603b",
+    "7d4dacd1df1f822e9aa6c6d7d28bbdb1b053f4fb148691438b6a61d0222c832f"
+  ],
+  "reviewer": "Codex actual approved production release verification",
+  "reviewedOn": "2026-11-27",
+  "verifiedOn": "2026-11-27",
+  "announcedOn": null,
+  "effectiveOn": null,
+  "followUpOn": "2026-12-04",
+  "triage": "BOTH",
+  "status": "ready-for-review",
+  "changeKind": "newly-discovered-existing-policy",
+  "summary": "Write a purchase-decision article with conditional discount arithmetic, catalog conflict, transcript boundaries and syllabus-specific assessments; hold receiving mappings. Remaining blockers: No independently verified external 10–20-course receiving map; no product receiving equivalencies added. Discounted-offer eligibility and catalog-price reconciliation require checkout or official policy confirmation. Content is prepared for PR review; no production publication or indexing is claimed. Product/editorial publication observed through the approved production run; exact URLs and bytes are retained. Existing unresolved degree mapping or current-policy research is not closed by this release.",
+  "evidence": [
+    {
+      "id": "wgu-discount",
+      "title": "WGU single-course current offer",
+      "url": "https://www.wgu.edu/single-courses.html",
+      "quote": "We offer our courses at a heavily discounted rate to give you a low-cost start option.",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "wgu-catalog-standard-price",
+      "title": "WGU November 2026 institutional catalog, printed page 51",
+      "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf",
+      "quote": "Single courses cost $750 - $1,000 for two to three months of access, depending on the course.",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "capturePath": null,
+      "contentHash": null
+    }
+  ],
+  "receiptPaths": [
+    "content/research-intake/evidence/issue56/provider-captures/wgu-catalog-and-maine-blockers.json",
+    "content/research-intake/evidence/issue56/provider-captures/wgu-current-prices-assessment.json",
+    "content/research-intake/evidence/issue56/provider-captures/wgu-linked-syllabi.json",
+    "content/research-intake/evidence/issue56/providers.json"
+  ],
+  "facts": {
+    "scope": {
+      "institution": "Western Governors University",
+      "program": "Single Courses and selected bundles",
+      "level": "primarily undergraduate; exact product eligibility controls",
+      "modality": "online",
+      "catalog": "November2026 institutional catalog and current marketing page"
+    },
+    "costs": [
+      {
+        "amount": 25,
+        "currency": "USD",
+        "unit": "initial single course",
+        "scope": "Conditional current advertised discounted offer; most single courses",
+        "assumptions": "Discount eligibility and checkout price must be confirmed; official November catalog lists different standard pricing. Initial access is course-specific2–3 months.",
+        "includes": [
+          "advertised initial access",
+          "e-textbooks"
+        ],
+        "excludes": [
+          "automatic monthly extensions",
+          "unverified product-specific extras"
+        ],
+        "evidenceIds": [
+          "wgu-discount"
+        ]
+      },
+      {
+        "amount": 49,
+        "currency": "USD",
+        "unit": "initial two-course bundle",
+        "scope": "Selected advertised discounted bundles",
+        "assumptions": "Selected bundles only; this does not apply to every WGU product or establish eligibility.",
+        "includes": [],
+        "excludes": [],
+        "evidenceIds": [
+          "wgu-discount"
+        ]
+      },
+      {
+        "amount": 99,
+        "currency": "USD",
+        "unit": "month of extension",
+        "scope": "Standard single-course automatic extension after initial access",
+        "assumptions": "Cancel timing and exact product control cost; PACA/IT bundle has a distinct advertised $199 monthly extension and is excluded from this $99 scope.",
+        "includes": [],
+        "excludes": [],
+        "evidenceIds": [
+          "wgu-discount"
+        ]
+      }
+    ],
+    "accreditation": [],
+    "transfer": {
+      "overallCap": null,
+      "aceCap": null,
+      "nccrsCap": null,
+      "residency": null,
+      "majorResidency": null,
+      "totalCredits": null
+    },
+    "aceRecommendations": [],
+    "equivalencies": [],
+    "assessments": []
+  },
+  "product": {
+    "status": "implemented",
+    "paths": [
+      "dist/data/credit-sources.json",
+      "scripts/provider-research-facts.mjs",
+      "scripts/provider-research-facts.test.mjs"
+    ],
+    "notes": "Public WGU Single Courses provider profile explains advertised price versus catalog conflict, automatic standard extension, institutional transcript origin and assessment examples. No 10–20 external receiving map was proven or fabricated; degree-course codes and historical student progress remain unchanged."
+  },
+  "editorial": {
+    "status": "published",
+    "proposedUrls": [
+      "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/"
+    ],
+    "publishedUrls": [
+      "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/"
+    ],
+    "existingUrls": [],
+    "title": "WGU single courses: what the $25 price includes and when costs rise",
+    "metaDescription": "Understand WGU’s single-course introductory prices, automatic monthly extensions, transcript rules and course-specific exams and projects before enrolling.",
+    "canonicalUrl": "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+    "internalLinks": [
+      "https://degreesteps.com/blog/college-wont-accept-sophia-university-credit-options/",
+      "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+      "https://degreesteps.com/credit-sources/wgu-single-courses/",
+      "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+      "https://degreesteps.com/import-courses.html"
+    ],
+    "structuredData": true,
+    "sitemap": true,
+    "studentUsefulness": "Expose automatic extension costs and eligibility uncertainty before a student buys an apparently $25 requirement.",
+    "novelty": "Current marketing and current institutional catalog disagree on price scope; exact discounted eligibility remains unresolved.",
+    "searchIntent": "What does a WGU $25 single course really cost and will another college accept it?",
+    "debtFreeRelevance": "Compare applicable existing credit and full remaining costs before paying for new learning. No debt-free outcome is promised.",
+    "urgency": "Recheck discounted eligibility and catalog/marketing reconciliation before applying a price to a student purchase.",
+    "overlapNotes": "Existing WGU Business Management article covers Sophia/Study.com incoming credit, not standalone WGU purchases; existing institutional-credit article stays general.",
+    "evidenceIds": [
+      "wgu-discount",
+      "wgu-catalog-standard-price"
+    ],
+    "metrics": null
+  },
+  "release": {
+    "environment": "production",
+    "commitSha": "9b29fd79e528d48419e64d8906ac9c377407fcf3",
+    "pullRequestUrl": "https://github.com/jeremyc3434/DegreeSteps/pull/62",
+    "workflowRunUrl": "https://github.com/jeremyc3434/DegreeSteps/actions/runs/46075109831",
+    "verifiedOn": "2026-11-27",
+    "approval": "The repository owner requested an end-to-end rehearsal through the approved publication process. Codex manually dispatched the existing workflow after exact-head core/browser checks and staging verification. Existing manual target, migration assertion and production configuration gates were retained; no future automatic production deployment was enabled.",
+    "verifiedUrls": [
+      "https://degreesteps.com/robots.txt",
+      "https://degreesteps.com/",
+      "https://degreesteps.com/brand.css",
+      "https://degreesteps.com/data/credit-sources.json",
+      "https://degreesteps.com/data/program-catalog.json",
+      "https://degreesteps.com/courses.html",
+      "https://degreesteps.com/courses.js",
+      "https://degreesteps.com/data/course-catalog.json",
+      "https://degreesteps.com/sitemap.xml",
+      "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+      "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+      "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+      "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+      "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+      "https://degreesteps.com/credit-sources/google-certificates/",
+      "https://degreesteps.com/credit-sources/wgu-single-courses/",
+      "https://degreesteps.com/credit-sources/christian-leaders/",
+      "https://degreesteps.com/credit-sources/asu-ulc/",
+      "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+      "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+      "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+      "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/"
+    ],
+    "receiptPaths": [
+      "content/research-intake/evidence/issue61/2be21364a6771deaa8068da1bf2ad4bb17cfeaa5a48cdde76433840c27f04e1f.json"
+    ]
+  }
+}

@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "kind": "research-review",
+  "publicationAllowed": false,
+  "findingId": "finding-a7b5e158aad2d2117032374b682166e7d295c1caa1fce347b4b80283d1e6ef65",
+  "revision": 2,
+  "previousReviewHash": "d4c536eaa4c17bd73f411b42611166a638fdab6329d50e6028bfdd5bf15f4cec",
+  "sourceRevisions": [
+    "758eb76ac994c0bcf367697d865f79fb208fb0945837e427ab872c951a4b2c8b"
+  ],
+  "reviewer": "Codex actual approved production release verification",
+  "reviewedOn": "2026-11-27",
+  "verifiedOn": "2026-11-27",
+  "announcedOn": null,
+  "effectiveOn": null,
+  "followUpOn": "2026-12-04",
+  "triage": "BOTH",
+  "status": "implemented",
+  "changeKind": "newly-discovered-existing-policy",
+  "summary": "Verified official ASU Universal Learner and Sophia evidence; improve the ASU source profile and write a substantive original comparison answering transcript choice, actual purchase structure, realistic timing, assessment and receiving-degree applicability. Native connector extractions are retained, not represented as origin HTTP captures. Source conflicts stay explicit; no receiving map, award, degree-readiness or student record changes. Product/editorial publication observed through the approved production run; exact URLs and bytes are retained. Existing unresolved degree mapping or current-policy research is not closed by this release.",
+  "evidence": [
+    {
+      "id": "asu-pricing",
+      "title": "ASU pricing: enrollment, optional credit purchase and federal-aid exclusion",
+      "url": "https://ulc.asu.edu/how-it-works/pricing/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Total per course: $425",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "asu-conversion",
+      "title": "ASU credit conversion: required grade, one-year purchase window and transcript choice",
+      "url": "https://ulc.asu.edu/how-it-works/how-to-get-college-credit/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Complete your course with a final grade of C or better.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "asu-faq",
+      "title": "ASU ULC FAQ: eligibility, course formats and up-to-14-business-day posting allowance",
+      "url": "https://ulc.asu.edu/help-center/faqs/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "it can take up to 14 business days",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "asu-proctoring",
+      "title": "ASU proctoring: Honorlock, course filter and syllabus policies",
+      "url": "https://ulc.asu.edu/help-center/proctoring/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Use the “proctoring” filter in the course catalog",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "asu-transfer",
+      "title": "ASU transfer guidance: receiving institution determines applicability",
+      "url": "https://ulc.asu.edu/asu-universal-pathways/transfer-credits/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Every college or university has its own rules about accepting credits",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "asu-transcripts",
+      "title": "ASU registrar: official transcripts, Parchment delivery and $15 copy fee",
+      "url": "https://registrar.asu.edu/transcripts",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Official transcripts cost $15.00 per official transcript copy requested.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "asu-ea-faq",
+      "title": "ASU Earned Admission FAQ: different statement of immediate transcript posting",
+      "url": "https://ea.asu.edu/help-center/faqs/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "they will immediately appear on your unofficial ASU transcript",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "asu-timeline",
+      "title": "ASU on-demand timeline: minimum credit-eligibility periods",
+      "url": "https://asu.my.salesforce-sites.com/kb/articles/FAQ/On-Demand-Timeline-for-Credit-Conversion-and-Transcripts/?fs=RelatedArticle&l=en_US",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "3 and 4 credit on-demand courses",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "asu-transfer-kb",
+      "title": "Asu Transfer Kb",
+      "url": "https://asu.my.salesforce-sites.com/kb/articles/FAQ/Will-my-college-or-university-accept-credits-earned-through-ASU-Universal-Learner-Courses/?fs=RelatedArticle&l=en_US",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "transfer credit policies vary by institution",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "sophia-pricing",
+      "title": "Sophia current pricing: monthly, four-month and advertised annual plans",
+      "url": "https://www.sophia.org/plans-and-pricing/",
+      "kind": "provider",
+      "checkedOn": "2026-11-27",
+      "quote": "Automatically renews annually. $799",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "sophia-billing",
+      "title": "Sophia billing: renewal, concurrent courses and conflicting annual price",
+      "url": "https://app.sophia.org/tutorials/account-and-billing",
+      "kind": "provider",
+      "checkedOn": "2026-11-27",
+      "quote": "12-month membership for $599",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "sophia-assessment",
+      "title": "Sophia grading guide, January 15, 2026: open-book and non-proctored assessments",
+      "url": "https://www.sophia.org/blog/higher-education/online-learning-grading-timelines/",
+      "kind": "provider",
+      "checkedOn": "2026-11-27",
+      "quote": "Sophia Learning has no proctored exams. All assessments are open book",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "sophia-identity",
+      "title": "Sophia identity-verification methods",
+      "url": "https://app.sophia.org/tutorials/verification-methods",
+      "kind": "provider",
+      "checkedOn": "2026-11-27",
+      "quote": "You may be prompted to provide an ID for verification through Jumio.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "sophia-transcript",
+      "title": "Sophia official transcript and ACE transcript routes",
+      "url": "https://app.sophia.org/tutorials/course-transfer-and-transcripts",
+      "kind": "provider",
+      "checkedOn": "2026-11-27",
+      "quote": "You can send your ACE transcript via Credly.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "sophia-scope",
+      "title": "Sophia credit model and receiving-college decisions, August 20, 2026",
+      "url": "https://www.sophia.org/blog/sophia-experience/what-colleges-accept-sophia-courses/",
+      "kind": "provider",
+      "checkedOn": "2026-11-27",
+      "quote": "Instead of awarding college credits directly",
+      "capturePath": null,
+      "contentHash": null
+    }
+  ],
+  "receiptPaths": [
+    "content/research-intake/evidence/issue61/59d8c3315ce1bccab720946216237885cb5656cf2eb60c81a77f925ab4b10ef7.json",
+    "content/research-intake/evidence/issue61/d0dc3642c4a2ccf32216c45e378be1ddd6b31e2bc946cdf36c4d35b235b2cc6f.json",
+    "content/research-intake/evidence/issue61/257a30e316e33e9082bc39536709127b0782087615d72f102e3351c57dc33921.json",
+    "content/research-intake/evidence/issue61/33d58459995a0205b94cf3c6a3276eee48aab3272379c38a7e113ad4f606dd9f.json",
+    "content/research-intake/evidence/issue61/fba3db24e63f0dab118ac0de23a8aee455095d93a82d6474324b0821b84e7f6a.json",
+    "content/research-intake/evidence/issue61/5bf95bb166f43abbaf2e0f1b0d905d8948ea4eb367e82fcd9033a9b571da2a66.json",
+    "content/research-intake/evidence/issue61/4f99ad569a61d290122755cdf2ffe3f4299442db1b1550a8d4ca7c6e5bf8178e.json",
+    "content/research-intake/evidence/issue61/441059e851656c866dca5682ca4370ab92cb976d737a3e89a091847e66cda8a4.json",
+    "content/research-intake/evidence/issue61/8cec0a3e095403af9edca2ae613836ba591da6a9d7e1ad7ae7681a81c7923a76.json"
+  ],
+  "facts": {
+    "scope": {
+      "institution": "Arizona State University",
+      "program": "Universal Learner Courses compared with Sophia Learning",
+      "level": "undergraduate source offerings",
+      "modality": "online; course-specific format",
+      "catalog": "Provider pages checked 2026-11-27; no new policy effective date established"
+    },
+    "costs": [
+      {
+        "amount": 425,
+        "currency": "USD",
+        "unit": "one successfully completed ASU Universal Learner course when optional credit is purchased",
+        "scope": "Current listed $25 enrollment plus $400 credit purchase",
+        "assumptions": "Required C or better; optional credit purchase within the published one-year window; no guarantee of receiving-school acceptance.",
+        "includes": [
+          "$25 enrollment",
+          "$400 optional credit purchase"
+        ],
+        "excludes": [
+          "$15 official transcript copy",
+          "retakes",
+          "other university costs"
+        ],
+        "evidenceIds": [
+          "asu-pricing",
+          "asu-conversion",
+          "asu-transcripts"
+        ]
+      }
+    ],
+    "accreditation": [],
+    "transfer": {
+      "overallCap": null,
+      "aceCap": null,
+      "nccrsCap": null,
+      "combinedCplCap": null,
+      "externallyAssessedCap": null,
+      "residency": null,
+      "majorResidency": null,
+      "totalCredits": null
+    },
+    "aceRecommendations": [],
+    "equivalencies": [],
+    "assessments": [
+      {
+        "name": "ASU Universal Learner assessment",
+        "scope": "Course-specific catalog and syllabus; no all-course no-proctor claim",
+        "method": "Review the official proctoring filter and syllabus; some courses require proctored exams and identity checks.",
+        "proctored": null,
+        "evidenceIds": [
+          "asu-proctoring"
+        ]
+      },
+      {
+        "name": "Sophia course assessments",
+        "scope": "Provider assessment policy; identity checks remain separate",
+        "method": "Open-book, non-proctored assessments under the cited policy; identity verification can still apply.",
+        "proctored": false,
+        "evidenceIds": [
+          "sophia-assessment",
+          "sophia-identity"
+        ]
+      }
+    ]
+  },
+  "product": {
+    "status": "implemented",
+    "paths": [
+      "dist/data/credit-sources.json",
+      "dist/credit-sources/asu-ulc/index.html"
+    ],
+    "notes": "Existing ASU source fields now distinguish enrollment and credit purchase, grade eligibility, transcript timing/cost, pacing, proctoring and receiving applicability. ASU remains catalog-only; no exact transfer awards are added."
+  },
+  "release": {
+    "environment": "production",
+    "commitSha": "9b29fd79e528d48419e64d8906ac9c377407fcf3",
+    "pullRequestUrl": "https://github.com/jeremyc3434/DegreeSteps/pull/62",
+    "workflowRunUrl": "https://github.com/jeremyc3434/DegreeSteps/actions/runs/46075109831",
+    "verifiedOn": "2026-11-27",
+    "approval": "The repository owner requested an end-to-end rehearsal through the approved publication process. Codex manually dispatched the existing workflow after exact-head core/browser checks and staging verification. Existing manual target, migration assertion and production configuration gates were retained; no future automatic production deployment was enabled.",
+    "verifiedUrls": [
+      "https://degreesteps.com/robots.txt",
+      "https://degreesteps.com/",
+      "https://degreesteps.com/brand.css",
+      "https://degreesteps.com/data/credit-sources.json",
+      "https://degreesteps.com/data/program-catalog.json",
+      "https://degreesteps.com/courses.html",
+      "https://degreesteps.com/courses.js",
+      "https://degreesteps.com/data/course-catalog.json",
+      "https://degreesteps.com/sitemap.xml",
+      "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+      "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+      "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+      "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+      "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+      "https://degreesteps.com/credit-sources/google-certificates/",
+      "https://degreesteps.com/credit-sources/wgu-single-courses/",
+      "https://degreesteps.com/credit-sources/christian-leaders/",
+      "https://degreesteps.com/credit-sources/asu-ulc/",
+      "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+      "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+      "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+      "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/"
+    ],
+    "receiptPaths": [
+      "content/research-intake/evidence/issue61/2be21364a6771deaa8068da1bf2ad4bb17cfeaa5a48cdde76433840c27f04e1f.json"
+    ]
+  },
+  "editorial": {
+    "status": "published",
+    "proposedUrls": [
+      "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/"
+    ],
+    "publishedUrls": [
+      "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/"
+    ],
+    "existingUrls": [
+      "https://degreesteps.com/blog/college-wont-accept-sophia-university-credit-options/"
+    ],
+    "title": "ASU Universal Learner vs. Sophia: cost, transcripts and timing",
+    "metaDescription": "Compare ASU Universal Learner and Sophia by actual course costs, transcript source, grade choice, assessment format and deadlines before choosing your next transfer course.",
+    "canonicalUrl": "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+    "internalLinks": [
+      "https://degreesteps.com/courses.html?tab=browse",
+      "https://degreesteps.com/credit-sources/asu-ulc/",
+      "https://degreesteps.com/blog/college-wont-accept-sophia-university-credit-options/"
+    ],
+    "structuredData": true,
+    "sitemap": true,
+    "studentUsefulness": "Choose a usable next course using full price, assessment needs, grade and transcript timing.",
+    "novelty": "New detailed ASU-versus-Sophia decision guide; earlier institutional-credit article contains only a short ASU overview.",
+    "searchIntent": "ASU Universal Learner vs Sophia cost, transcript, timing and transfer differences",
+    "debtFreeRelevance": "Compare applicable course baskets and payment risk before spending; no debt-free or receiving-credit guarantee.",
+    "urgency": "Current provider source timing differs and transcript deadlines affect enrollment.",
+    "overlapNotes": "Preserves all 24 existing articles and cross-links the institutional-credit overview instead of duplicating its generic provider survey.",
+    "evidenceIds": [
+      "asu-pricing",
+      "asu-conversion",
+      "asu-faq",
+      "asu-proctoring",
+      "asu-transfer",
+      "asu-transcripts",
+      "asu-ea-faq",
+      "asu-timeline",
+      "asu-transfer-kb",
+      "sophia-pricing",
+      "sophia-billing",
+      "sophia-assessment",
+      "sophia-identity",
+      "sophia-transcript",
+      "sophia-scope"
+    ],
+    "metrics": null
+  }
+}

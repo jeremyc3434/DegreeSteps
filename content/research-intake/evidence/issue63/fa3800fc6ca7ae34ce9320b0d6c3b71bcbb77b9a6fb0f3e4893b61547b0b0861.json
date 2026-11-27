@@ -1,0 +1,679 @@
+{
+  "schemaVersion": 1,
+  "id": "student-scenario-older-college-business-2026-11-27",
+  "checkedOn": "2026-11-27",
+  "scenario": {
+    "student": "User 2",
+    "factsProvided": {
+      "priorStudy": "About two years at a regionally accredited on-campus college",
+      "ageOfStudyYears": 25,
+      "goal": "Business bachelor's degree"
+    },
+    "unknown": [
+      "Original institution and accreditation at attendance",
+      "Exact earned courses, credits and semester/quarter units",
+      "Grades and completion dates",
+      "Whether any associate degree was actually awarded",
+      "Desired business concentration",
+      "Budget, available study time, location and licensure goal"
+    ],
+    "doNotInfer": [
+      "60 earned semester credits",
+      "An associate degree",
+      "Half the new degree already complete",
+      "Starting from zero",
+      "Guaranteed acceptance, remaining time or cost"
+    ]
+  },
+  "shortAnswer": "You should not assume you are starting over. Ask these universities to evaluate the original transcript against a current business degree before replacing any old courses. Older general education and eligible business coursework may still help, but subject-specific currency, grades, current degree requirements and residency decide the result.",
+  "sourceCreditVsReceivingAward": "An earned course remains part of the original academic record. Whether and where a receiving school awards credit is a separate current decision; an old catalog or unfinished degree plan is not a permanent promise of current degree applicability.",
+  "schoolPolicies": [
+    {
+      "id": "tesu",
+      "school": "Thomas Edison State University",
+      "scope": "Business bachelor's area of study; verify the selected BS/BSBA program's current structure.",
+      "generalAgeDisposition": "No blanket expiry for all college credit established. Current transfer policy explicitly says some programs have age rules for area-of-study courses.",
+      "businessCurrency": "At most 50 percent of area-of-study courses may be older than 10 years from the most current application date. The remaining area-of-study credits must be within 10 years. Business capstone credit must be no more than five years old; older capstone must be retaken.",
+      "grade": "Transfer policy requires at least C for composition and area of study. The chosen program may impose additional business-core rules.",
+      "residency": "Standard nonmilitary per-credit/full-time routes require 15 eligible TESU AC/OL/NU/GS/EP credits; an Edison Accelerate fee can waive that residency. Transfer policy separately requires SOS-1100 and the capstone at TESU.",
+      "catalogCurrency": "A lapse greater than three years or a degree change moves the student to the catalog effective at re-enrollment/change. This concerns graduation requirements, not erasing source credits.",
+      "sourceIds": [
+        "tesu-degree-requirements",
+        "tesu-transfer",
+        "tesu-residency",
+        "tesu-catalog-currency",
+        "tesu-returning"
+      ],
+      "specificStudentImplication": "Twenty-five-year-old general education should be evaluated separately from any business concentration courses; do not reject the whole transcript or promise all old major work."
+    },
+    {
+      "id": "wgu",
+      "school": "Western Governors University",
+      "scope": "BS Business Management, Catalog 05-2026, general transfer guidelines.",
+      "generalAgeDisposition": "The current guideline has course-specific limits, rather than a stated blanket five-year age limit on all college courses.",
+      "businessCurrency": "D388 Fundamentals of Spreadsheets and Data Presentations requires coursework within five years. C722 Project Management requires the course/certification within five years of the start date. Certain HR certifications require completion/renewal within five years. The partner guide separately names five-year limits for IT-specific courses and certifications.",
+      "grade": "General threshold C−; business courses require C or better.",
+      "residency": "At least 25 percent of required degree competency units, excluding capstone, at WGU under the guideline wording; nontransferable courses also remain.",
+      "catalogCurrency": "Evaluation is specific to current degree pathway; a change of degree requires reevaluation. WGU must receive official transcripts before first term; do not start and expect later transfer credit.",
+      "sourceIds": [
+        "wgu-business-management-guideline",
+        "wgu-business-partner-guide",
+        "wgu-transfer-general"
+      ],
+      "specificStudentImplication": "An old writing, history or eligible business course can still be considered; old spreadsheets/project management need particular review. Two years without an awarded degree cannot be treated as satisfied-by-degree."
+    },
+    {
+      "id": "liberty",
+      "school": "Liberty University",
+      "scope": "Undergraduate online transfer policy and undergraduate registrar course exceptions, separate from graduate business rules.",
+      "generalAgeDisposition": "Catalog states lifetime credit acceptance except courses whose content faculty determine changes significantly over time.",
+      "businessCurrency": "Undergraduate registrar sets a five-year limit for all upper-level ACCT courses and all CSIS/CSCN courses. Selected DIGI courses have ten-year limits. The business registrar page's graduate ten-year/doctoral seven-year rules do not apply wholesale to this bachelor's scenario.",
+      "grade": "Undergraduate registrar lists C or higher; catalog and registrar pass-grade language has qualifications that should be checked against the original transcript.",
+      "residency": "At least 25 percent of total degree and 25 percent of major through Liberty.",
+      "catalogCurrency": "Use the current chosen degree completion plan and exact equivalency dates; accepted elective credit might not fill a remaining degree slot. Foreign capstones do not replace Liberty capstones.",
+      "sourceIds": [
+        "liberty-undergrad-catalog",
+        "liberty-undergrad-registrar",
+        "liberty-transfer-faq",
+        "liberty-graduate-business-boundary"
+      ],
+      "specificStudentImplication": "Lower-division old general education and business deserve evaluation; do not generalize upper-level accounting or graduate rules to all credits."
+    },
+    {
+      "id": "umpi",
+      "school": "University of Maine at Presque Isle",
+      "scope": "YourPace BA Business Administration, current university transfer policy and FAQ.",
+      "generalAgeDisposition": "No explicit current blanket age exclusion or no-expiry promise verified; formal receiving review remains necessary.",
+      "businessCurrency": "No current business-specific accounting/IT age cutoff established in bounded research. Archived readmission clauses are not applied to this new external-transfer scenario.",
+      "grade": "C− or higher from an accepted accredited institution; P/S/CR must mean at least C−.",
+      "residency": "Current FAQ: at least 30 UMPI credits, including 12 major credits, at least 9 of those at 300 level or above.",
+      "catalogCurrency": "Receiving academic unit determines applicability to current degree/program requirements. An archive readmission condition is not silently imported into current external transfer policy.",
+      "sourceIds": [
+        "umpi-transfer",
+        "umpi-faq",
+        "umpi-business"
+      ],
+      "specificStudentImplication": "Request an actual evaluation of old general education and business courses. Do not replace them simply because they are old, or promise all will count."
+    },
+    {
+      "id": "umass-global",
+      "school": "University of Massachusetts Global",
+      "scope": "MyPath self-paced BBA; distinguish MyPath B− standard from general transfer-grade policies.",
+      "generalAgeDisposition": "Official March 9, 2026 application guide explicitly says undergraduate transfer credits have no time limit.",
+      "businessCurrency": "No separate current undergraduate BBA accounting/IT expiry established. Credits still need current course and competency equivalence and program applicability.",
+      "grade": "B− or better from institutionally accredited institutions for MyPath.",
+      "residency": "Current MyPath BBA requires 120 credits and advertises at most 90 transferable credits. The official indexed 2025–2026 competency-based catalog states 30 equivalent credits in residence including LBSC 320/321; keep this catalog year visible and confirm any later requirement change.",
+      "catalogCurrency": "Use a current program evaluation; no claim that a 25-year-old degree plan remains binding.",
+      "freshStartException": "Academic Fresh Start is elective at admission/readmission. It excludes all coursework 10 or more years old; excluded courses receive no credit and cannot satisfy prerequisites or degree requirements. Do not recommend it casually to a student hoping to reuse those credits.",
+      "sourceIds": [
+        "umass-age",
+        "umass-mypath-faq",
+        "umass-bba",
+        "umass-residency-2025-2026"
+      ],
+      "specificStudentImplication": "Potentially useful age policy if old grades are at least B− and the courses fill current MyPath competencies. A C-level old course may produce a different comparison with UMPI/TESU/Liberty."
+    }
+  ],
+  "sources": [
+    {
+      "id": "tesu-degree-requirements",
+      "kind": "university",
+      "title": "TESU current degree requirements: BS/BSBA course currency",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/degree-policies/degree-requirements/",
+      "checkedOn": "2026-11-27",
+      "quote": "The remaining area of study credits must be current",
+      "receiptPaths": [
+        "primary-03-native-web.json"
+      ],
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "tesu-transfer",
+      "kind": "university",
+      "title": "TESU current transfer-credit policy: grades, required courses and applicability",
+      "url": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/methods-of-learning-and-earning-credit/transfer-credit/",
+      "checkedOn": "2026-11-27",
+      "quote": "minimum grade of C for English composition courses and the area of study for all degrees",
+      "receiptPaths": [
+        "primary-09-native-web.json"
+      ],
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "tesu-residency",
+      "kind": "university",
+      "title": "TESU current residency requirements",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/enrollment/residency-requirements",
+      "checkedOn": "2026-11-27",
+      "quote": "This requirement may be waived by paying the",
+      "receiptPaths": [
+        "primary-09-native-web.json"
+      ],
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "tesu-catalog-currency",
+      "kind": "university",
+      "title": "TESU current catalog currency",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/degree-policies/catalog-currency",
+      "checkedOn": "2026-11-27",
+      "quote": "allow their enrollment to lapse for more than three years",
+      "receiptPaths": [
+        "primary-05-native-web.json"
+      ],
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "tesu-returning",
+      "kind": "university",
+      "title": "TESU returning from time off and readmission",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/degree-policies/returning-from-taking-time-off-and-readmission",
+      "checkedOn": "2026-11-27",
+      "quote": "return after 36 months from their last TESU course",
+      "receiptPaths": [
+        "primary-05-native-web.json"
+      ],
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "wgu-business-management-guideline",
+      "kind": "university",
+      "title": "WGU BS Business Management general transfer guideline, Catalog 05-2026",
+      "url": "https://partners.wgu.edu/general-transfer-guideline-bachelor-dynamic?collegeCode=BU&programId=240",
+      "checkedOn": "2026-11-27",
+      "quote": "Course/certification must be completed within 5 years of the student's start date.",
+      "receiptPaths": [
+        "primary-07-native-web.json"
+      ],
+      "retrieval": "Official search-indexed full guideline text returned in native tool result; direct opens returned no readable lines.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "wgu-business-partner-guide",
+      "kind": "university",
+      "title": "WGU business pathway partner guideline and IT-specific currency scope",
+      "url": "https://partners.wgu.edu/transfer-pathway-agreement?collegeCode=BU&instId=17&programId=240&uniqueId=BSMGT25073",
+      "checkedOn": "2026-11-27",
+      "quote": "All certifications and IT-specific courses must have been completed within the past five years",
+      "receiptPaths": [
+        "primary-07-native-web.json"
+      ],
+      "retrieval": "Official search-indexed guideline text; this is corroborating policy scope, not the student's source-college agreement.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "wgu-transfer-general",
+      "kind": "university",
+      "title": "WGU current transfer process and grade policy",
+      "url": "https://www.wgu.edu/admissions/transfers/transfer-to-wgu.html",
+      "checkedOn": "2026-11-27",
+      "quote": "Must have been awarded a grade of C- or better.",
+      "receiptPaths": [
+        "primary-05-native-web.json",
+        "primary-06-native-web.json"
+      ],
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "liberty-undergrad-catalog",
+      "kind": "university",
+      "title": "Liberty online undergraduate academic policies: lifetime acceptance with exceptions and residency",
+      "url": "https://catalog.liberty.edu/undergraduate/academic-support/academic-information-policies-online-program/",
+      "checkedOn": "2026-11-27",
+      "quote": "Liberty offers a lifetime acceptance of credit",
+      "receiptPaths": [
+        "primary-06-native-web.json"
+      ],
+      "retrieval": "Official search-indexed current catalog text returned. Two direct fetches timed out; no successful origin HTTP capture claimed.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "liberty-undergrad-registrar",
+      "kind": "university",
+      "title": "Liberty undergraduate registrar: exact accounting/computing age limits and grades",
+      "url": "https://www.liberty.edu/registrar/transfer-policies/undergraduates/",
+      "checkedOn": "2026-11-27",
+      "quote": "All upper-level ACCT courses",
+      "receiptPaths": [
+        "primary-07-native-web.json"
+      ],
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "liberty-transfer-faq",
+      "kind": "university",
+      "title": "Liberty online transfer FAQ: accepted electives and degree application",
+      "url": "https://www.liberty.edu/online/transfer-credit-faqs/",
+      "checkedOn": "2026-11-27",
+      "quote": "it did not match a specific class currently offered at Liberty",
+      "receiptPaths": [
+        "primary-04-native-web.json"
+      ],
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "liberty-graduate-business-boundary",
+      "kind": "university",
+      "title": "Liberty School of Business transfer page: graduate/doctoral scope",
+      "url": "https://www.liberty.edu/registrar/transfer-policies/business/",
+      "checkedOn": "2026-11-27",
+      "quote": "Age Limit: 10 years for graduate programs unless otherwise stated",
+      "receiptPaths": [
+        "primary-02-native-web.json"
+      ],
+      "scope": "Explicit exclusion from the bachelor's age-rule conclusion; inspected to avoid misapplication.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umpi-transfer",
+      "kind": "university",
+      "title": "UMPI current transfer-credit policy: accreditation, grades and program applicability",
+      "url": "https://www.umpi.edu/offices/student-records/transfer-credits/",
+      "checkedOn": "2026-11-27",
+      "quote": "courses must be successfully completed with a grade of C- or higher",
+      "receiptPaths": [
+        "child-02-native-web.json"
+      ],
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umpi-faq",
+      "kind": "university",
+      "title": "UMPI YourPace FAQ: degree and major residency",
+      "url": "https://www.umpi.edu/yourpace/faqs/",
+      "checkedOn": "2026-11-27",
+      "quote": "Students must complete at least 30 credit hours through UMPI.",
+      "receiptPaths": [
+        "child-02-native-web.json"
+      ],
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umpi-business",
+      "kind": "university",
+      "title": "UMPI current YourPace Business Administration program",
+      "url": "https://www.umpi.edu/yourpace/academic_programs/business-administration/",
+      "checkedOn": "2026-11-27",
+      "quote": "To earn your B.A. in Business Administration – Leadership, you need to complete 120 credit hours of coursework.",
+      "receiptPaths": [
+        "child-07-native-web.json"
+      ],
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umass-age",
+      "kind": "university",
+      "title": "UMass Global application guide: undergraduate age policy and MyPath grade requirement",
+      "url": "https://www.umassglobal.edu/blog-news/umass-global-application-process-step-step-guide",
+      "checkedOn": "2026-11-27",
+      "publishedOn": "2026-03-09",
+      "effectiveDate": null,
+      "quote": "For undergraduate students, there is no time limit to transfer credits.",
+      "receiptPaths": [
+        "child-04-native-web.json"
+      ],
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umass-mypath-faq",
+      "kind": "university",
+      "title": "UMass Global admissions FAQ: MyPath B−, competency applicability and Fresh Start forfeiture",
+      "url": "https://www.umassglobal.edu/admissions/admissions-faqs",
+      "checkedOn": "2026-11-27",
+      "quote": "Ignored coursework cannot be used to satisfy prerequisite or degree requirements",
+      "receiptPaths": [
+        "child-03-native-web.json"
+      ],
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umass-bba",
+      "kind": "university",
+      "title": "UMass Global current self-paced MyPath BBA: 120 credits, up to 90 transfer",
+      "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+      "checkedOn": "2026-11-27",
+      "quote": "transfer up to 90 credits from previous college coursework",
+      "receiptPaths": [
+        "child-06-native-web.json"
+      ],
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umass-residency-2025-2026",
+      "kind": "university",
+      "title": "UMass Global 2025–2026 competency-based degree catalog: bachelor residency",
+      "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based-degree-requirement/",
+      "checkedOn": "2026-11-27",
+      "catalogYear": "2025-2026",
+      "quote": "Minimum of 30 equivalent credits completed in residency",
+      "receiptPaths": [
+        "child-07-native-web.json"
+      ],
+      "retrieval": "Official indexed catalog text; direct catalog fetch reports 403. Do not label this a directly captured 2026–2027 catalog.",
+      "capturePath": null,
+      "contentHash": null
+    }
+  ],
+  "existingProductAudit": {
+    "article": {
+      "path": "content/public-content.json",
+      "slug": "do-old-college-credits-still-count",
+      "reviewedOn": "2026-11-19",
+      "finding": "Existing article correctly rejects a blanket expiry assumption, highlights course-specific WGU rules, preserves source credits and distinguishes approximate prior credits from applied degree credit.",
+      "usefulImprovement": "Update the existing old-credit article with a short five-school business comparison, explicit TESU/WGU/Liberty exceptions, MyPath B− and Fresh Start boundary, UMPI retrieval uncertainty, and the difference between original credits and a current catalog. No new duplicate article needed."
+    },
+    "importer": {
+      "path": "dist/record-import-engine.js",
+      "fields": [
+        "provider",
+        "institution",
+        "code",
+        "title",
+        "credits",
+        "creditSystem",
+        "status",
+        "completedOn",
+        "grade",
+        "score"
+      ],
+      "dateBehavior": "Exact dates retained; a printed year or term is preserved in original source metadata while completedOn stays blank. No date or credit quantity is guessed.",
+      "acceptanceBehavior": "Importing original learning is not a receiving-school transfer award."
+    },
+    "recencyEngine": {
+      "path": "dist/guide-engine.js",
+      "finding": "Source-bound course-specific recency rules use completedOn and preserve the original record; missing required dates cause review. Generic course-age comparison currently uses today's UTC date rather than a user-entered future start date.",
+      "limitation": "A student-facing estimate must not present the current-date recency check as an official start-date evaluation."
+    },
+    "tesuGroupedCurrency": {
+      "path": "dist/journey-engine.js",
+      "finding": "Application-date currency review is currently hard-scoped to TESU Accounting and Finance. It requests an individual review, rather than guessing the most recent application date.",
+      "potentialGap": "Review separately whether other TESU business models need source-bound currency groups. Do not reuse the 18-credit/9-older-credit structure blindly in another program."
+    }
+  },
+  "nextSteps": [
+    "Request the original official transcript and retain an unofficial copy for planning.",
+    "Record every actually earned course, grade, source credit unit and completion date; do not assume two years equals 60 semester credits.",
+    "Compare current business degree evaluations from a small shortlist before buying replacement general education.",
+    "Separate rejected age-limited major/prerequisite work from still-useful general education or electives.",
+    "Choose new courses only for remaining requirements after grade, recency and residency review.",
+    "At UMass Global, compare normal transfer evaluation before considering the optional Academic Fresh Start forfeiture."
+  ],
+  "disposition": {
+    "researchOnly": true,
+    "productEdits": false,
+    "contentEdits": false,
+    "receivingAwardsChanged": false,
+    "sourceRecordsChanged": false,
+    "guaranteedApplicableCredits": null,
+    "guaranteedRemainingTime": null
+  },
+  "retrieval": {
+    "transport": "mcp__codex_apps__search_service_web_run",
+    "originHttpStatus": null,
+    "retainedBytes": "Native tool result serialized as UTF-8 JSON, not raw origin body or headers.",
+    "limitations": [
+      "WGU partners pages returned zero readable lines on direct opening; official indexed full text was returned by search and retained.",
+      "Liberty current catalog direct opens timed out twice; official indexed catalog text was returned and retained.",
+      "TESU current catalog does not expose a calendar edition label in inspected pages; current URL and checked date are preserved without inventing a catalog year.",
+      "UMPI/UMass Global direct catalog pages reported tool 403; official university transfer/program pages were read directly. UMass residency catalog indexed text is specifically 2025–2026. UMPI current no-expiry statement was not established."
+    ],
+    "nativeReceiptCount": 16
+  },
+  "sourceEvidenceRows": [
+    {
+      "id": "tesu-degree-requirements",
+      "title": "TESU current degree requirements: BS/BSBA course currency",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/degree-policies/degree-requirements/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "The remaining area of study credits must be current",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "tesu-transfer",
+      "title": "TESU current transfer-credit policy: grades, required courses and applicability",
+      "url": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/methods-of-learning-and-earning-credit/transfer-credit/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "minimum grade of C for English composition courses and the area of study for all degrees",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "tesu-residency",
+      "title": "TESU current residency requirements",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/enrollment/residency-requirements",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "This requirement may be waived by paying the",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "tesu-catalog-currency",
+      "title": "TESU current catalog currency",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/degree-policies/catalog-currency",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "allow their enrollment to lapse for more than three years",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "tesu-returning",
+      "title": "TESU returning from time off and readmission",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/degree-policies/returning-from-taking-time-off-and-readmission",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "return after 36 months from their last TESU course",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "wgu-business-management-guideline",
+      "title": "WGU BS Business Management general transfer guideline, Catalog 05-2026",
+      "url": "https://partners.wgu.edu/general-transfer-guideline-bachelor-dynamic?collegeCode=BU&programId=240",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Course/certification must be completed within 5 years of the student's start date.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "wgu-business-partner-guide",
+      "title": "WGU business pathway partner guideline and IT-specific currency scope",
+      "url": "https://partners.wgu.edu/transfer-pathway-agreement?collegeCode=BU&instId=17&programId=240&uniqueId=BSMGT25073",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "All certifications and IT-specific courses must have been completed within the past five years",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "wgu-transfer-general",
+      "title": "WGU current transfer process and grade policy",
+      "url": "https://www.wgu.edu/admissions/transfers/transfer-to-wgu.html",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Must have been awarded a grade of C- or better.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "liberty-undergrad-catalog",
+      "title": "Liberty online undergraduate academic policies: lifetime acceptance with exceptions and residency",
+      "url": "https://catalog.liberty.edu/undergraduate/academic-support/academic-information-policies-online-program/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Liberty offers a lifetime acceptance of credit",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "liberty-undergrad-registrar",
+      "title": "Liberty undergraduate registrar: exact accounting/computing age limits and grades",
+      "url": "https://www.liberty.edu/registrar/transfer-policies/undergraduates/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "All upper-level ACCT courses",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "liberty-transfer-faq",
+      "title": "Liberty online transfer FAQ: accepted electives and degree application",
+      "url": "https://www.liberty.edu/online/transfer-credit-faqs/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "it did not match a specific class currently offered at Liberty",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "liberty-graduate-business-boundary",
+      "title": "Liberty School of Business transfer page: graduate/doctoral scope",
+      "url": "https://www.liberty.edu/registrar/transfer-policies/business/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Age Limit: 10 years for graduate programs unless otherwise stated",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umpi-transfer",
+      "title": "UMPI current transfer-credit policy: accreditation, grades and program applicability",
+      "url": "https://www.umpi.edu/offices/student-records/transfer-credits/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "courses must be successfully completed with a grade of C- or higher",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umpi-faq",
+      "title": "UMPI YourPace FAQ: degree and major residency",
+      "url": "https://www.umpi.edu/yourpace/faqs/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Students must complete at least 30 credit hours through UMPI.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umpi-business",
+      "title": "UMPI current YourPace Business Administration program",
+      "url": "https://www.umpi.edu/yourpace/academic_programs/business-administration/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "To earn your B.A. in Business Administration – Leadership, you need to complete 120 credit hours of coursework.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umass-age",
+      "title": "UMass Global application guide: undergraduate age policy and MyPath grade requirement",
+      "url": "https://www.umassglobal.edu/blog-news/umass-global-application-process-step-step-guide",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "For undergraduate students, there is no time limit to transfer credits.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umass-mypath-faq",
+      "title": "UMass Global admissions FAQ: MyPath B−, competency applicability and Fresh Start forfeiture",
+      "url": "https://www.umassglobal.edu/admissions/admissions-faqs",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Ignored coursework cannot be used to satisfy prerequisite or degree requirements",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umass-bba",
+      "title": "UMass Global current self-paced MyPath BBA: 120 credits, up to 90 transfer",
+      "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "transfer up to 90 credits from previous college coursework",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umass-residency-2025-2026",
+      "title": "UMass Global 2025–2026 competency-based degree catalog: bachelor residency",
+      "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-competency-based-degree-requirement/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Minimum of 30 equivalent credits completed in residency",
+      "capturePath": null,
+      "contentHash": null
+    }
+  ],
+  "childResearchPath": "outputs/student-scenarios/older-credits/child-facts.json",
+  "status": "research-complete-primary-facts; individual-transfer-evaluation-required",
+  "studentUsableComparison": [
+    {
+      "school": "Thomas Edison State University",
+      "age": "No blanket expiry for all college credit established. Current transfer policy explicitly says some programs have age rules for area-of-study courses.",
+      "mainBusinessException": "At most 50 percent of area-of-study courses may be older than 10 years from the most current application date. The remaining area-of-study credits must be within 10 years. Business capstone credit must be no more than five years old; older capstone must be retaken.",
+      "grade": "Transfer policy requires at least C for composition and area of study. The chosen program may impose additional business-core rules.",
+      "residency": "Standard nonmilitary per-credit/full-time routes require 15 eligible TESU AC/OL/NU/GS/EP credits; an Edison Accelerate fee can waive that residency. Transfer policy separately requires SOS-1100 and the capstone at TESU."
+    },
+    {
+      "school": "Western Governors University",
+      "age": "The current guideline has course-specific limits, rather than a stated blanket five-year age limit on all college courses.",
+      "mainBusinessException": "D388 Fundamentals of Spreadsheets and Data Presentations requires coursework within five years. C722 Project Management requires the course/certification within five years of the start date. Certain HR certifications require completion/renewal within five years. The partner guide separately names five-year limits for IT-specific courses and certifications.",
+      "grade": "General threshold C−; business courses require C or better.",
+      "residency": "At least 25 percent of required degree competency units, excluding capstone, at WGU under the guideline wording; nontransferable courses also remain."
+    },
+    {
+      "school": "Liberty University",
+      "age": "Catalog states lifetime credit acceptance except courses whose content faculty determine changes significantly over time.",
+      "mainBusinessException": "Undergraduate registrar sets a five-year limit for all upper-level ACCT courses and all CSIS/CSCN courses. Selected DIGI courses have ten-year limits. The business registrar page's graduate ten-year/doctoral seven-year rules do not apply wholesale to this bachelor's scenario.",
+      "grade": "Undergraduate registrar lists C or higher; catalog and registrar pass-grade language has qualifications that should be checked against the original transcript.",
+      "residency": "At least 25 percent of total degree and 25 percent of major through Liberty."
+    },
+    {
+      "school": "University of Maine at Presque Isle",
+      "age": "No explicit current blanket age exclusion or no-expiry promise verified; formal receiving review remains necessary.",
+      "mainBusinessException": "No current business-specific accounting/IT age cutoff established in bounded research. Archived readmission clauses are not applied to this new external-transfer scenario.",
+      "grade": "C− or higher from an accepted accredited institution; P/S/CR must mean at least C−.",
+      "residency": "Current FAQ: at least 30 UMPI credits, including 12 major credits, at least 9 of those at 300 level or above."
+    },
+    {
+      "school": "University of Massachusetts Global",
+      "age": "Official March 9, 2026 application guide explicitly says undergraduate transfer credits have no time limit.",
+      "mainBusinessException": "No separate current undergraduate BBA accounting/IT expiry established. Credits still need current course and competency equivalence and program applicability.",
+      "grade": "B− or better from institutionally accredited institutions for MyPath.",
+      "residency": "Current MyPath BBA requires 120 credits and advertises at most 90 transferable credits. The official indexed 2025–2026 competency-based catalog states 30 equivalent credits in residence including LBSC 320/321; keep this catalog year visible and confirm any later requirement change."
+    }
+  ],
+  "verification": {
+    "sourceExactQuotesMatched": true,
+    "primarySourceRows": 19,
+    "schools": 5,
+    "nativeReceipts": 16,
+    "codeAndContentAudit": "read-only",
+    "canonicalProductChanges": 0
+  }
+}

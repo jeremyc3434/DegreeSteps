@@ -1,0 +1,200 @@
+{
+  "kind": "umass-global-2024-2025-mypath-policy-scoped-extract",
+  "version": 1,
+  "reviewedOn": "2026-11-27",
+  "catalogYear": "2024-2025",
+  "sourceUrl": "https://catalog.umassglobal.edu/pdf/University%20of%20Massachusetts%20Global%202024-2025%20Catalog.pdf",
+  "sourcePdfPath": "outputs/student-scenarios/umass/catalog-2024-2025.pdf",
+  "sourcePdfSha256": "a43b249a19718b5dbafd4c5c61a8aeb780a97a190b5b88a50dddedd103b5e29c",
+  "extractor": "pdftotext -raw; exact physical pages selected locally",
+  "quoteWordCount": 127,
+  "quotes": [
+    {
+      "id": "dual-enrollment",
+      "physicalPage": 38,
+      "printedPage": 37,
+      "heading": "Dual Enrollment Policy",
+      "quote": "Students enrolled in a competency-based program cannot be enrolled in a credit-hour program or take credit hour courses due to financial aid requirements and restrictions.",
+      "typographyNormalization": "Unicode ligatures and line wrapping normalized; wording retained."
+    },
+    {
+      "id": "articulated-grade",
+      "physicalPage": 35,
+      "printedPage": 34,
+      "heading": "Other Credit Opportunities",
+      "quote": "University of Massachusetts Global MyPath programs require verification of B- or better for all articulated credit.",
+      "typographyNormalization": "Unicode ligatures and line wrapping normalized; wording retained."
+    },
+    {
+      "id": "ace-evaluation",
+      "physicalPage": 36,
+      "printedPage": 35,
+      "heading": "ACE Evaluated Trainings",
+      "quote": "University of Massachusetts Global accepts ACE recommendations for awarding academic credit.",
+      "typographyNormalization": "Unicode ligatures and line wrapping normalized; wording retained."
+    },
+    {
+      "id": "other-credit-nonresidency",
+      "physicalPage": 36,
+      "printedPage": 35,
+      "heading": "Other Credit Opportunities",
+      "quote": "Note that credit granted through “other credit opportunities” does not count toward University of Massachusetts Global residency requirements.",
+      "typographyNormalization": "Unicode ligatures and line wrapping normalized; wording retained."
+    },
+    {
+      "id": "ace-exempt-other-credit-cap",
+      "physicalPage": 23,
+      "printedPage": 22,
+      "heading": "Other Credit Opportunities continuation",
+      "quote": "The Other Credit Opportunities Policy does not apply to the following: Advanced Placement Examinations (AP), College Level Examination Program (CLEP), DANTES Subject Standardized Tests (DSST), International Baccalaureate Examinations (IB), Defense Language Proficiency Examinations (DLAT/DLPT), and ACE evaluated trainings.",
+      "quoteCrossesPreviousPage": true,
+      "typographyNormalization": "Unicode ligatures and line wrapping normalized; wording retained."
+    },
+    {
+      "id": "residency-minimum",
+      "physicalPage": 61,
+      "printedPage": 60,
+      "heading": "Undergraduate Competency-Based Degree Requirements / Bachelor Degrees",
+      "quote": "Minimum of 30 equivalent credits completed in residency at University of Massachusetts Global, including LBSC 320 and LBSC 321",
+      "typographyNormalization": "Unicode ligatures and line wrapping normalized; wording retained."
+    }
+  ],
+  "pageBackedFacts": [
+    {
+      "id": "catalog-assignment",
+      "physicalPages": [
+        34
+      ],
+      "printedPages": [
+        33
+      ],
+      "fact": "Program start date assigns the catalog. Degree requirements remain those of admission unless a later catalog is approved; other policies follow the current catalog for each enrolled year.",
+      "limit": "Historical2024policies are not automatically the current2026rules."
+    },
+    {
+      "id": "two-stage-articulation",
+      "physicalPages": [
+        35
+      ],
+      "printedPages": [
+        34
+      ],
+      "fact": "Regionally accredited coursework with B-minus or better is evaluated first against university credit-hour courses; the university then separately evaluates exact competency or GE breadth coverage.",
+      "automaticSophiaCompetencyAward": false
+    },
+    {
+      "id": "official-documents",
+      "physicalPages": [
+        35
+      ],
+      "printedPages": [
+        34
+      ],
+      "fact": "Other-credit awards depend on official documentation submitted to Student Services; coach consultation about degree applicability is encouraged.",
+      "universalWrittenPreapprovalRuleFound": false
+    },
+    {
+      "id": "other-credit-cap",
+      "physicalPages": [
+        22,
+        23
+      ],
+      "printedPages": [
+        21,
+        22
+      ],
+      "fact": "The general credit-hour Other Credit Opportunities section specifies25%of degree credits/30for120-credit bachelor degrees but explicitly exemptsACE and listed exams. The CBEsection has its own Other Credit Opportunities language. No30-creditACEcap is established.",
+      "aceNumericCapVerified": null,
+      "doNotApplyPortfolioCapToAce": true
+    },
+    {
+      "id": "ace-subject-to-program",
+      "physicalPages": [
+        36
+      ],
+      "printedPages": [
+        35
+      ],
+      "fact": "ACE recommendations include level and discipline but remain subject to residency and program limitations; acceptance of anACErecommendation does not establish the award for a particular requirement."
+    },
+    {
+      "id": "competency-residency",
+      "physicalPages": [
+        61
+      ],
+      "printedPages": [
+        60
+      ],
+      "fact": "CBE bachelor graduation requiresLBSC100, all program competencies mastered, and at least30equivalent resident credits includingLBSC320andLBSC321.",
+      "doNotInheritAdjacentCreditHourUpperDivisionRules": true
+    },
+    {
+      "id": "mastery-grade",
+      "physicalPages": [
+        37
+      ],
+      "printedPages": [
+        36
+      ],
+      "fact": "MyPath M means competency mastery at B or better/3.00equivalent; the university does not calculate a competency-programGPA."
+    },
+    {
+      "id": "new-credit-timing",
+      "physicalPages": [
+        34,
+        35,
+        36,
+        37,
+        38,
+        41
+      ],
+      "printedPages": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        40
+      ],
+      "fact": "No explicit blanket prohibition on post-matriculation transfer credits, no affirmative permission for new externalACEcourses while activelyenrolled and no universal transfer-submission deadline were located in the applicable undergradCBEsections.",
+      "interpretation": "The dual-enrollment sentence may matter, but does not explicitly identify whether external institutions or noncollegeACEproviders are within scope. Written university clarification is needed; neither blanketyes nor blanketno is established."
+    },
+    {
+      "id": "leave-coursework",
+      "physicalPages": [
+        36
+      ],
+      "printedPages": [
+        35
+      ],
+      "fact": "Students who take coursework during an absence must provide official transcripts before returning. This is not permission to take courses concurrently and is not advice to withdraw."
+    },
+    {
+      "id": "post-admission-portfolio",
+      "physicalPages": [
+        23
+      ],
+      "printedPages": [
+        22
+      ],
+      "fact": "The inherited general portfolio policy expressly requires matriculation; portfolio credit is capped30and excludesresidency. This shows a distinct post-admission credit mechanism but does not establishSophia/ACEtiming oreligibility."
+    },
+    {
+      "id": "transcript-and-conferral",
+      "physicalPages": [
+        41
+      ],
+      "printedPages": [
+        40
+      ],
+      "fact": "The academic record lists mastered competencies; a credit-hour conversion transcript can be requested. DegreeWorks100%completion flags conferral, followed by seven-day validation. Requiredoutsidecredits should be officially evaluated before a completion claim."
+    }
+  ],
+  "currentStudentAnswer": {
+    "status": "potentially-eligible-but-specific-permission-unresolved",
+    "answer": "The2024catalog confirms eligibleACEevaluation, with verifiedB-minus and exactMyPathcompetencyarticulation. It does not establish that a student may earn newSophiacourses while activelyenrolled. Get writtenMyPathcoach/registrar clarification of timing, gradeproof and exactremainingcompetencies before paying.",
+    "continuousEnrollmentNotAssumed": true,
+    "degreeCatalogYearNotInferredFromCalendarYearAlone": true
+  },
+  "academicModelsChanged": false
+}
