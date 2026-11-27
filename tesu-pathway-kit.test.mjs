@@ -31,11 +31,14 @@ test('compile(kit) preserves all five originally migrated TESU registry models w
   assert.equal(result.status,0,result.stderr||result.stdout);
 });
 
-test('the TESU kit verifies and publishes the five original plus three newly authored degree documents exactly',async()=>{
-  const result=await verifyKit(kit,{asOf:'2026-11-26'});
+test('the TESU kit preserves five original plus three historical documents and publishes two separately reviewed November27 degrees exactly',async()=>{
+  const result=await verifyKit(kit,{asOf:'2026-11-27'});
   assert.deepEqual(result.errors,[]);
   assert.equal(await runGuards(kit,doc),guards.length);assert.ok(guards.length>=9);
-  assert.deepEqual(documents.map(d=>d.path),[...files.map(name=>'content/curricula/'+name+'.json'),'content/curricula/tesu-human-resources-organizational-management.json','content/curricula/tesu-marketing.json','content/curricula/tesu-bs-general-management.json']);
+  const historicalPaths=[...files.map(name=>'content/curricula/'+name+'.json'),'content/curricula/tesu-human-resources-organizational-management.json','content/curricula/tesu-marketing.json','content/curricula/tesu-bs-general-management.json'],additionalPaths=['content/curricula/tesu-healthcare-management.json','content/curricula/tesu-computer-information-systems.json'];
+  assert.equal(historicalPaths.length,8);assert.deepEqual(documents.filter(document=>historicalPaths.includes(document.path)).map(document=>document.path),historicalPaths);assert.deepEqual(documents.map(d=>d.path),[...historicalPaths,...additionalPaths]);
+  const placementReview=await readJSON(resolve(dir,'course-placements-review-2026-11-27.json')),additionalIds=['curriculum-tesu-bs-healthcare-management','curriculum-tesu-bs-computer-information-systems'];assert.equal(placementReview.checkedOn,'2026-11-27');assert.deepEqual(placementReview.models.map(model=>model.modelId).sort(),[...additionalIds].sort());
+  for(const [index,id]of additionalIds.entries()){const program=kit.programs.find(program=>program.modelId===id),document=documents.find(document=>document.path===additionalPaths[index]);assert(program&&document);assert.equal(program.review.reviewedOn,'2026-11-27');assert.equal(program.modelFields.catalogIdentity.checkedOn,'2026-11-27');assert.equal(document.doc.models.length,1);assert.equal(document.doc.models[0].id,id);}
   for(const {path,doc:published}of documents){
     assert.equal(published.compiledBy,'pathway-factory',path);
     assert.equal(published.routes.length,1,path+' declares its degree route');
@@ -55,7 +58,7 @@ test('the migration tool still decomposes the current registry output into the c
   const migratedSlugs=new Set(fresh.programs.map(program=>program.slug)),roundtrip={...kit,school:fresh.school,equivalencies:fresh.equivalencies,providers:fresh.providers,programs:[...fresh.programs,...kit.programs.filter(program=>!migratedSlugs.has(program.slug))]};
   const rebuilt=compileKit(roundtrip).doc;
   assert.equal(rebuilt.models.length,doc.models.length);
-  assert.deepEqual(parity(doc.models,rebuilt.models),[],'Migration also preserves all three separately authored models, exact course evidence and saved option IDs');
+  assert.deepEqual(parity(doc.models,rebuilt.models),[],'Migration also preserves all five separately authored models, exact course evidence and saved option IDs');
   assert.equal(await runGuards(roundtrip,rebuilt),guards.length);
   for(const program of fresh.programs){
     const committed=kit.programs.find(p=>p.slug===program.slug),strip=p=>p.requirements.map(({optionRows,...r})=>r);
@@ -90,7 +93,7 @@ test('TESU-submitted equivalencies replace copied same-school Sophia awards with
   // A quote that is not in its capture is a hard verification error.
   const broken=clone(kit);broken.providers=kit.providers;broken.dir=kit.dir;
   broken.equivalencies.equivalencies.find(row=>row.authored).quotes[1].text='2026-2027 Thomas Edison State University 6 MAT-9999 Invented Course';
-  assert.ok((await verifyKit(broken,{asOf:'2026-11-26'})).errors.some(e=>e.code==='quote-not-found'));
+  assert.ok((await verifyKit(broken,{asOf:'2026-11-27'})).errors.some(e=>e.code==='quote-not-found'));
 });
 
 test('the retired importers still build exactly the ledger the kit publishes',async()=>{

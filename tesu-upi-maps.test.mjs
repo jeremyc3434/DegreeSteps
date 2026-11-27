@@ -14,6 +14,7 @@ const legacy=JSON.parse(await readFile('dist/data/tesu.json','utf8')),kit=await 
 const models=[...doc.models,applyTESUUPIReviewedMaps(legacy)],pairs=supportedUPIMappings();
 const originalModelIds=['tesu-general-management','curriculum-tesu-bsba-accounting','curriculum-tesu-bsba-finance','curriculum-tesu-ba-english','curriculum-tesu-ba-psychology','curriculum-tesu-ba-liberal-studies'];
 const newModelIds=['curriculum-tesu-bs-general-management','curriculum-tesu-bsba-human-resources-organizational-management','curriculum-tesu-bsba-marketing'];
+const additionalModelIds=['curriculum-tesu-bs-computer-information-systems','curriculum-tesu-bs-healthcare-management'];
 
 test('UPI legal issuer aliases stay consistent across library, import, saved identity and degree matching',()=>{
  const Library=require('./dist/course-library-engine.js'),Import=require('./dist/record-import-engine.js'),Sheet=require('./dist/sheet-state.js');
@@ -35,9 +36,12 @@ test('UPI TESU table is hash-bound provider evidence, distinct from exact curren
  const environment=upiTESUReview.mappings.find(m=>/Environmental Science/.test(m.providerLabel));assert(environment);assert.equal(pairs.some(p=>p.mapping.id===environment.id),false,'One original ACE credit cannot silently become three receiving credits from a provider assertion.');
 });
 
-test('the original six plus three new TESU ledgers retain conditional UPI choices with source, cap and placement evidence',async()=>{
- assert.equal(models.length,9);assert.deepEqual(models.map(model=>model.id).sort(),[...originalModelIds,...newModelIds].sort());await runGuards(kit,doc);
- for(const model of models){
+test('the original six plus three TESU ledgers retain conditional UPI choices while two November27 degrees stay outside the historical candidate scope',async()=>{
+ const historicalIds=new Set([...originalModelIds,...newModelIds]),historical=models.filter(model=>historicalIds.has(model.id)),additions=models.filter(model=>additionalModelIds.includes(model.id));
+ assert.equal(historical.length,9);assert.deepEqual(historical.map(model=>model.id).sort(),[...originalModelIds,...newModelIds].sort());assert.equal(additions.length,2);assert.deepEqual(models.map(model=>model.id).sort(),[...historicalIds,...additionalModelIds].sort());await runGuards(kit,doc);
+ const placementReview=JSON.parse(await readFile(kitsRoot+'/tesu/course-placements-review-2026-11-27.json','utf8'));assert.equal(placementReview.checkedOn,'2026-11-27');assert.deepEqual(placementReview.models.map(model=>model.modelId).sort(),[...additionalModelIds].sort());
+ for(const model of additions){assert.equal(model.catalogIdentity.checkedOn,'2026-11-27');assert.equal(model.requirements.flatMap(row=>row.options).filter(option=>option.provider==='UPI Study').length,0,'A new degree does not inherit the older provider-only placement review');assert.deepEqual(applyTESUUPIReviewedMaps(model),model,'The historical candidate helper does not silently expand its degree scope');const pair=pairs.find(pair=>model.requirements.some(row=>row.code===pair.mapping.receivingCode));assert(pair);const row=model.requirements.find(row=>row.code===pair.mapping.receivingCode);assert.equal(upiTESUOption(model,row,pair.mapping,pair.course),null,'A named receiving requirement alone does not add an unreviewed program to the candidate cohort');}
+ for(const model of historical){
   const options=model.requirements.flatMap(row=>row.options.filter(option=>option.provider==='UPI Study').map(option=>({row,option})));
   assert(options.length>0,model.id);assert(model.defaultProviders.includes('UPI Study'));
   assert.equal(model.totalCredits,120);assert.equal(model.requirements.reduce((sum,row)=>sum+row.credits,0),120);assert.equal(model.institutionMinCredits,15);assert.equal(model.alternativeMaxCredits,90);assert.equal(model.upperMinCredits,18);
@@ -53,7 +57,7 @@ test('the original six plus three new TESU ledgers retain conditional UPI choice
   const exactReceiving=new Set(model.requirements.filter(row=>!row.freeElective).map(row=>row.code));
   assert(options.filter(({row})=>row.freeElective).every(({option})=>!exactReceiving.has(option.receivingCode)),'Elective suggestions do not duplicate a course already named by this degree.');
  }
- assert.deepEqual((await verifyKit(kit,{asOf:'2026-11-26'})).errors,[]);
+ assert.deepEqual((await verifyKit(kit,{asOf:'2026-11-27'})).errors,[]);
  await writeTESUUPIKit({check:true});
 });
 

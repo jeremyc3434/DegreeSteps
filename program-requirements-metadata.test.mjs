@@ -144,6 +144,49 @@ test('MAOL current-map requirements bind captured graduate evidence and reject c
   assert.equal(JSON.stringify({reviewed,actual}),before);
 });
 
+test('new APU and Liberty editions receive exact, actionable course obligations from their reviewed primary sources',async()=>{
+  const registry=read('dist/data/curriculum-registry.json'),packets=await loadProgramRequirementReviews(new URL('./',import.meta.url).pathname);
+  const apu=read('content/discovery/apu-program-requirements.json');
+  assert.doesNotThrow(()=>validateProgramRequirementPacket(apu));
+  assert.equal(apu.reviews.length,3);
+  for(const source of apu.sources){
+    const body=readFileSync(new URL(source.capture,import.meta.url),'utf8');
+    assert.equal(createHash('sha256').update(body).digest('hex'),source.sha256);
+    assert.equal(source.kind,'university');assert.equal(source.checkedOn,'2026-11-27');
+    assert(body.replace(/\s+/g,' ').includes(source.quote.replace(/\s+/g,' ')),source.id+' retains the actual primary excerpt');
+  }
+  const expectedAPU=new Map([
+    ['curriculum-apus-associate-of-arts-in-business-administration-reviewed-2026',['apu-aa-business-applied-portfolio','apu-aa-business-finance-prerequisites']],
+    ['curriculum-apus-associate-of-arts-in-criminal-justice-reviewed-2026',['apu-aa-criminal-justice-final-seminar']],
+    ['curriculum-apus-associate-of-science-in-cybersecurity-reviewed-2026',['apu-as-cybersecurity-final-portfolio']]
+  ]);
+  const actualModel=id=>{const entry=registry.models.find(entry=>entry.id===id);return read('dist/'+entry.path).models.find(model=>model.id===id);};
+  for(const [id,expected]of expectedAPU){
+    const actual=actualModel(id),before=JSON.stringify(actual),facts=assembleProgramRequirements(actual,packets);
+    assert.equal(actual.school,'American Public University');assert.deepEqual(facts.map(fact=>fact.id),expected);
+    assert(facts.every(fact=>fact.scope==='course'&&fact.courseCodes.every(value=>actual.requirements.some(row=>code(row.code)===code(value)))));
+    assert.deepEqual(assembleProgramRequirements({...clone(actual),catalogYear:'2027-2028'},[apu]),[]);
+    assert.deepEqual(assembleProgramRequirements({...clone(actual),format:'Residential'},[apu]),[]);
+    assert.deepEqual(assembleProgramRequirements({...clone(actual),id:id.replace('-reviewed-2026','')},[apu]),[],'Legacy editions are not promoted by a new scoped annotation');
+    const stripped=clone(actual);stripped.requirements=stripped.requirements.filter(row=>!facts.flatMap(fact=>fact.courseCodes).some(value=>code(row.code)===code(value)));
+    assert.deepEqual(assembleProgramRequirements(stripped,[apu]),[],'A removed course cannot leave its registration obligations attached');
+    assert.equal(JSON.stringify(actual),before);
+  }
+  const criminal=assembleProgramRequirements(actualModel('curriculum-apus-associate-of-arts-in-criminal-justice-reviewed-2026'),[apu])[0];
+  assert.match(criminal.detail,/49 semester hours/);assert.match(criminal.detail,/last course/);
+  const cyber=assembleProgramRequirements(actualModel('curriculum-apus-associate-of-science-in-cybersecurity-reviewed-2026'),[apu])[0];
+  assert.match(cyber.detail,/57 hours/);assert.match(cyber.detail,/every other Information Systems Security course/);
+  const additions=read('test-support/fixtures/degree-expansion/nov27-complete-degree-cohort.json').cases.filter(entry=>entry.modelId.startsWith('curriculum-liberty-'));
+  assert.equal(additions.length,5);
+  for(const entry of additions){
+    const actual=actualModel(entry.modelId),facts=assembleProgramRequirements(actual,packets);
+    assert(facts.some(fact=>fact.id==='liberty-online-first-week-participation'));
+    const capstone=facts.find(fact=>fact.id==='liberty-psyc491-course-entry');
+    assert(capstone);assert.deepEqual(capstone.courseCodes,['PSYC 491']);assert.match(capstone.detail,/18 completed PSYC credits/);
+    assert.deepEqual(assembleProgramRequirements({...clone(actual),catalogYear:'2027-2028'},packets),[]);
+  }
+});
+
 test('the research loader keeps exact registered metadata separate from public plan eligibility and remains read-only',async()=>{
   const root=new URL('./',import.meta.url).pathname,packets=await loadProgramRequirementReviews(root);
   assert(Array.isArray(packets)&&packets.length>0);

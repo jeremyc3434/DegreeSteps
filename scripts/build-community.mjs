@@ -32,9 +32,11 @@ for(const script of ['tesu-business-programs.mjs','tesu-general-management-progr
 // checks cannot approve a draft or replace the publication assessment below.
 execFileSync(process.execPath,[resolve(root,'scripts/liberty-psychology-cognates-2026-11-27.mjs'),'--check','--apply-shared'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/liberty-psychology-cognate-rates-2026-11-27.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/liberty-psychology-cognates-fit-2026-11-27.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/liberty-business-source-freshness-2026-11-27.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/apus-associate-baselines-2026-11-27.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/phoenix-graduate-metadata.mjs'),'--check','--apply-rates'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/degree-expansion-links-2026-11-27.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/wgu-study-expansion.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/liberty-current-evidence.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-plan-estimate-rates.mjs'),'--check'],{cwd:root,stdio:'inherit'});

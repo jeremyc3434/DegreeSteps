@@ -8,7 +8,7 @@ import {readLibertyCLIReligionReview,validateLibertyCLIReligionAwards,applicable
 
 const read=async path=>JSON.parse(await readFile(new URL(path,import.meta.url),'utf8'));
 const review=await readLibertyCLIReligionReview(),raw=await read(review.calculatorRequest.sourceSnapshot),clone=structuredClone;
-const currentDataAsOf='2026-11-26';
+const currentDataAsOf='2026-11-27'; // The real business baseline now includes official sources captured on November 27.
 const awardIds=new Set(review.awards.map(award=>award.id));
 const scope={school:'Liberty University',level:'bachelor',catalogYear:'2026-2027',modality:'campus',creditSystem:'semester',receivingCode:'BIBL 105',credits:2};
 const fixture=(patch={})=>({id:'synthetic-religion',school:'Liberty University',level:'bachelor',catalogYear:'2026-2027',format:'Residential',creditSystem:'semester',totalCredits:2,institutionMinCredits:0,externalMaxCredits:2,defaultProviders:['Sophia'],sources:[{id:'synthetic-degree',url:'https://catalog.liberty.edu/undergraduate/'}],requirements:[{id:'bibl-105',code:'BIBL 105',credits:2,category:'general',options:[{id:'university-bibl-105',provider:'University',code:'BIBL 105',credits:2,creditSystem:'semester',evidence:'published',sourceIds:['synthetic-degree']}]}],...patch});

@@ -44,6 +44,17 @@ const interdisciplinaryAAAwards=new Set([
  'liberty-online-baseline-sdcm-0047-to-cstu-101'
 ]);
 const asOf='2026-11-24',programs=['history-bs-online','human-services-bs-online','psychology-addictions-online'];
+const newCognatePrograms=[
+ 'psychology-criminal-psychology-online',
+ 'psychology-developmental-psychology-online',
+ 'psychology-christian-counseling-online',
+ 'psychology-crisis-counseling-online',
+ 'psychology-military-resilience-online'
+];
+// These exact receiving awards gained separately reviewed degree placements on November 27.
+// All except Criminal Psychology use HIUS 222; the three nine-credit cognates also use ARTS 201/202.
+const cognateSharedReceivingCodes=new Set(['HIUS 221','ENGL 102','BUSI 302','BUSI 304','BUSI 311','BUSI 419','PSYC 380','PSYC 312','ENGL 101','COMS 101','ETHC 101','BIOL 102','PSYC 101','MATH 121','ARTS 209','PSYC 210','CSTU 101','PSYC 255','PSYC 430','PSYC 365']);
+const cognateProgramsForAward=row=>cognateSharedReceivingCodes.has(row.receivingCode)?newCognatePrograms:row.receivingCode==='HIUS 222'?newCognatePrograms.slice(1):['ARTS 201','ARTS 202'].includes(row.receivingCode)?newCognatePrograms.slice(2):[];
 const facts=new Map(documents.flatMap((d,index)=>d.courses.filter(c=>c.sourceCredits===3).map(c=>{
  const code=c.code||c.aceId,provider=c.provider||(code.startsWith('SOPH-')?'Sophia':'Study.com');
  return [provider+'|'+code,{...c,code,provider,checkedOn:c.identityCheckedOn||d.checkedOn,reviewId:d.id,reviewPath:paths[index],identitySourceIds:c.identitySourceIds||[c.aceSourceId,c.providerSourceId].filter(Boolean),recommendationPeriodSourceIds:c.recommendationPeriodSourceIds||[c.aceSourceId],activeOffering:c.activeOffering===true||d.providerOfferingObservations?.some(observation=>observation.url===c.providerCourseUrl),providerOfferingObservations:d.providerOfferingObservations||[]}];
@@ -96,8 +107,11 @@ test('reusable awards stay inside their reviewed programs, online format and cat
  const compiled=compileKit(kit).doc.models;
  assert.deepEqual(rows.filter(row=>row.scope.programs.includes('interdisciplinary-aa-online')).map(row=>row.id).sort(),[...interdisciplinaryAAAwards].sort());
  for(const row of rows){
-  const includesAssociate=interdisciplinaryAAAwards.has(row.id),reviewedPrograms=includesAssociate?[...programs,'interdisciplinary-aa-online']:programs;
-  assert.notEqual(row.scope.all,true);assert.deepEqual(row.scope.programs,reviewedPrograms);assert.deepEqual(row.scope.levels,includesAssociate?['bachelor','associate']:['bachelor']);assert.deepEqual(row.scope.modalities,['online']);assert.deepEqual(row.scope.catalogs,['2026–2027']);
+  const includesAssociate=interdisciplinaryAAAwards.has(row.id),legacyPrograms=includesAssociate?[...programs,'interdisciplinary-aa-online']:programs,newPrograms=cognateProgramsForAward(row),reviewedPrograms=[...legacyPrograms,...newPrograms];
+  assert.notEqual(row.scope.all,true);
+  assert.deepEqual(row.scope.programs.filter(slug=>!newCognatePrograms.includes(slug)),legacyPrograms,row.id+' retains its original reviewed program scope');
+  assert.deepEqual(row.scope.programs.filter(slug=>newCognatePrograms.includes(slug)),newPrograms,row.id+' gains only its exact November 27 placements');
+  assert.deepEqual(row.scope.programs,reviewedPrograms);assert.deepEqual(row.scope.levels,includesAssociate?['bachelor','associate']:['bachelor']);assert.deepEqual(row.scope.modalities,['online']);assert.deepEqual(row.scope.catalogs,['2026–2027']);
   for(const slug of reviewedPrograms){
    const p=kit.programs.find(p=>p.slug===slug),model=compiled.find(model=>model.id===p.modelId);
    assert(inScope(row,p,kit));assert.equal(p.level,slug==='interdisciplinary-aa-online'?'associate':'bachelor');assert.deepEqual(p.modalities,['online']);assert.equal(catalog(p.catalog),'2026-2027');

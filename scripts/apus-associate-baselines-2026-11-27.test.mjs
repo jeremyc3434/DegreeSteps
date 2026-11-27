@@ -11,6 +11,7 @@ import {loadKit} from './pathway-factory/lib.mjs';
 import {compileKit} from './pathway-factory/compile.mjs';
 import {verifyKit} from './pathway-factory/verify.mjs';
 import {assessPathwayQuality} from './pathway-quality.mjs';
+import {buildProgramFit} from './program-fit-metadata.mjs';
 import {REVIEW_PATH,validateAPUSReview,run} from './apus-associate-baselines-2026-11-27.mjs';
 
 const read=async path=>JSON.parse(await readFile(new URL('../'+path,import.meta.url),'utf8'));
@@ -111,4 +112,18 @@ test('published APU awards never escape to the unrevised bachelor programs or ot
  assert.equal(rows.length,14);for(const row of rows){assert.deepEqual(row.scope.programs,review.programs.map(program=>program.slug));assert.deepEqual(row.scope.levels,['associate']);assert.deepEqual(row.scope.catalogs,['2026-2027']);assert.equal(row.scope.all,undefined);}
  const bachelor=doc.models.find(model=>model.id==='curriculum-apus-bachelor-of-arts-in-management');assert(bachelor);assert.equal(bachelor.requirements.flatMap(row=>row.options).some(option=>option.mappingReviewId===review.id),false);
  for(const packet of review.programs)assert(kit.school.routes.some(route=>route.id===packet.route.id&&route.school==='American Public University'));
+});
+
+
+test('exact APU tuition stays visible while section dates alone leave within-term pacing unknown',async()=>{
+ for(const model of models){
+  const fit=buildProgramFit({model});assert.equal(fit.tuitionLabel,'$360 per credit');assert.equal(fit.billing,'per-credit');assert.equal(fit.selfPaced,null);assert.equal(fit.competencyBased,null);assert.equal(model.pacePolicy.selfPaced,null);
+  assert.equal(fit.sources.billing.url,review.pricing.source.url);assert.deepEqual(fit.sources.billing.sourceIds,[review.pricing.source.id]);
+  assert.equal(fit.sources.learning.checkedOn,review.checkedOn);assert.deepEqual(fit.sources.learning.sourceIds,model.pacePolicy.sourceIds);
+  assert.equal(model.pacePolicy.courseCodes.length,20);assert.deepEqual(model.pacePolicy.courseCodes,model.requirements.map(row=>row.code));
+  for(const [index,id]of model.pacePolicy.sourceIds.entries()){
+   const source=model.sources.find(source=>source.id===id);assert(source);const body=await readFile(source.capture,'utf8');
+   assert(body.includes('Course Code: '+model.pacePolicy.courseCodes[index]));assert(/Course Dates \d{2}\/\d{2}\/\d{4} - \d{2}\/\d{2}\/\d{4}/.test(body));assert(/Weeks \d+ Week session/.test(body));
+  }
+ }
 });

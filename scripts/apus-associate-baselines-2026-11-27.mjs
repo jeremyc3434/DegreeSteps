@@ -47,7 +47,7 @@ export async function validateAPUSReview(review,{base=root}={}){
  assert.equal(review.id,REVIEW_ID);assert.equal(review.checkedOn,date);
  assert.equal(review.scope.receivingInstitution,schoolName);assert.equal(review.scope.level,'associate');assert.equal(review.scope.creditSystem,'semester');
  assert.equal(review.programs.length,3);assert.equal(review.personalAwardsCreated,0);
- const sources=[review.finder,...review.programs.flatMap(program=>program.sources),...review.courses.map(course=>course.source)];
+ const sources=[review.finder,...review.programs.flatMap(program=>program.sources),...review.courses.map(course=>course.source),...(review.pricing?.source?[review.pricing.source]:[])];
  const texts=new Map();
  for(const source of sources){
   assert(source.capture?.startsWith('content/source-captures/'));const bytes=await readFile(resolve(base,source.capture));
@@ -55,6 +55,11 @@ export async function validateAPUSReview(review,{base=root}={}){
   const meta=JSON.parse(await readFile(resolve(base,source.capture.replace(/\.txt$/,'.json')),'utf8'));
   assert.equal(meta.sha256,source.sha256);assert.equal(meta.url,source.url);assert.equal(meta.status,200);
   assert(meta.fetchedAt.slice(0,10)<=date,'No invented future source observation');texts.set(source.id,bytes.toString('utf8'));
+ }
+ if(review.pricing){
+  const price=texts.get(review.pricing.source.id);
+  assert.equal(review.pricing.sourceTuitionRate,360);assert.equal(review.pricing.sourceGraduationFee,250);
+  assert(price.includes('$360\nPer Undergraduate Credit Standard Rate')&&price.includes('Graduation (Associate): $250'),'Exact standard undergraduate tuition and associate fee');
  }
  const finder=texts.get(review.finder.id);
  assert.equal(review.finder.url,'https://www.apu.apus.edu/transfer-credit/finder/');
@@ -65,6 +70,7 @@ export async function validateAPUSReview(review,{base=root}={}){
   assert(course.detailsQuote.includes('Course Code: '+course.code)&&course.detailsQuote.includes('Credit Hours: 3')&&course.detailsQuote.includes('Level: Undergraduate'));
   assert.equal(course.credits,3);assert.equal(course.creditSystem,'semester');assert(body.includes(course.creditQuote));
   assert(body.includes(course.code+' - '+course.title),'Exact university offering identity '+course.code);
+  assert(/Course Dates \d{2}\/\d{2}\/\d{4} - \d{2}\/\d{2}\/\d{4}/.test(body)&&/Weeks \d+ Week session/.test(body),'Exact named course uses published scheduled sections '+course.code);
  }
  for(const program of review.programs){
   const body=texts.get(program.sources[0].id);assert(body.includes('2026 - 2027 Catalog'));assert(body.includes(program.title));assert.equal(program.totalCredits,60);
@@ -169,7 +175,9 @@ export function reviewedAPUSInputs({review,school,equivalencies,programs,provide
   fields.rulesNotes=['The institution is American Public University, using its APU catalog and transfer finder; this review does not extend a decision to every school in the parent System.','The 45-credit total transfer limit is separate from the 30-credit nontraditional limit. Starting from zero with the reviewed alternatives selects 30 outside credits and 30 APU credits.','Named general-education and free-elective selections are complete starting choices from the published lists. They do not replace the broader catalog lists or create personal credit awards.','One original outside course is counted at most once; shared requirement credit is not duplicated.'];
   fields.curriculumSections=[{id:'apu-general-education',parentId:'general',title:'General education',requirementIds:selected.filter(row=>row.category==='general').map(row=>row.id),sourceId:catalog.id},{id:'apu-major-requirements',parentId:'major',title:'Major requirements',requirementIds:selected.filter(row=>row.category==='major').map(row=>row.id),sourceId:catalog.id},{id:'apu-final-program-requirement',parentId:'capstone',title:'Final program requirement',requirementIds:selected.filter(row=>row.category==='capstone').map(row=>row.id),sourceId:catalog.id},...(selected.some(row=>row.freeElective)?[{id:'apu-free-electives',parentId:'elective',title:'Free electives',requirementIds:selected.filter(row=>row.freeElective).map(row=>row.id),sourceId:catalog.id}]:[])];
   fields.prerequisiteReview={id:REVIEW_ID,checkedOn:date,sourceIds:selected.map(row=>sourceId(row.code)),noAdditionalUnaccountedCoursePrerequisitesFound:true,personalRegistrationEligibilityConfirmed:false};
-  if(review.pricing)fields.pricing={model:'per-credit',tuitionPerCredit:360,rate:360,degreeCredits:60,sourceIds:[review.pricing.source.id],sourceUrl:review.pricing.source.url,checkedOn:date,notes:'Standard undergraduate tuition before grants and aid; $250 associate graduation fee. Current published Opportunity, military and other grants are separate eligibility-based scenarios.'};
+  fields.paceModel='unknown';fields.paceSourceUrl=courses.get(selected[0].code).source.url;fields.paceSourceIds=selected.map(row=>courses.get(row.code).source.id);fields.paceCheckedOn=date;
+  fields.pacePolicy={status:'reviewed-section-dates-only',reviewId:REVIEW_ID,checkedOn:date,sourceIds:[...fields.paceSourceIds],courseCodes:selected.map(row=>row.code),selfPaced:null,basis:'Each named APU course has a retained official Course Schedule with start/end dates and a stated session length. Those section dates do not establish whether coursework is self-paced within the session. No current registration availability, fixed completion date, live attendance or competency-based status is asserted.'};
+  if(review.pricing)fields.pricing={model:'per-credit',amount:review.pricing.sourceTuitionRate,period:'credit',currency:'USD',tuitionPerCredit:360,rate:360,degreeCredits:60,sourceIds:[review.pricing.source.id],sourceUrl:review.pricing.source.url,checkedOn:date,notes:'Standard undergraduate tuition before grants and aid; $250 associate graduation fee. Current published Opportunity, military and other grants are separate eligibility-based scenarios.'};
   for(const route of [...school.routes,...school.publish.documents.flatMap(document=>document.routes||[])])if(program.routeIds.includes(route.id)){route.school=schoolName;route.checkedOn=date;}
   const route={...structuredClone(packet.route),school:schoolName,checkedOn:date};
   if(!school.routes.some(row=>row.id===route.id))school.routes.push(route);

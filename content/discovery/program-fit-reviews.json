@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedOn": "2026-11-26",
+  "checkedOn": "2026-11-27",
   "scope": "Exact reviewed program editions and delivery formats for discovery filters only. These records do not alter degree requirements, transfer awards, publication decisions, student progress or prices.",
   "reviews": [
     {
@@ -328,6 +328,84 @@
         "Asynchronous discussions have no specified login time, while standard online courses retain a week-by-week assignment schedule. No live class time, universal proctoring requirement, absence of exams, section availability or completion date is inferred.",
         "Exact e-Pack or alternative-format selections retain their own course-specific evidence; this school-wide standard-online classification does not replace it."
       ]
+    },
+    {
+      "id": "liberty-psychology-cognates-online-scheduled-reviewed-20261127",
+      "modelIds": [
+        "curriculum-liberty-psychology-criminal-psychology-online",
+        "curriculum-liberty-psychology-developmental-psychology-online",
+        "curriculum-liberty-psychology-christian-counseling-online",
+        "curriculum-liberty-psychology-crisis-counseling-online",
+        "curriculum-liberty-psychology-military-resilience-online"
+      ],
+      "catalogYear": "2026-2027",
+      "modality": "online",
+      "paceModel": "course-term",
+      "source": {
+        "id": "liberty-online-professor-deadlines-reviewed-2026-11-24",
+        "url": "https://www.liberty.edu/online/prospective-students-faqs/",
+        "title": "Liberty prospective online student FAQs: professor-set assignment deadlines",
+        "checkedOn": "2026-11-24",
+        "quote": "meet the deadlines specified by the professor for turning in assignments",
+        "reviewMethod": "Official primary page opened and the relevant FAQ passages inspected through the connected web research tool. No raw HTTP body capture or hash is claimed."
+      },
+      "supportingSources": [
+        {
+          "id": "liberty-online-course-structure-reviewed-2026-11-24",
+          "url": "https://catalog.liberty.edu/undergraduate/about-liberty/online-programs/",
+          "title": "Liberty 2026–2027 undergraduate catalog: online course structure",
+          "checkedOn": "2026-11-24",
+          "quote": "Some courses are delivered in a 14- to 17-week format (with one entry date per semester)",
+          "reviewMethod": "Official current 2026–2027 catalog page opened and the Structure section inspected through the connected web research tool."
+        },
+        {
+          "id": "liberty-online-weekly-deadlines-reviewed-2026-11-24",
+          "url": "https://www.liberty.edu/online/exclusions/",
+          "title": "Liberty online program exclusions: weekly assignments and variable attendance formats",
+          "checkedOn": "2026-11-24",
+          "quote": "you will likely have assignments due weekly",
+          "reviewMethod": "Official primary page opened and the No Set Login Times and delivery-format exceptions inspected through the connected web research tool."
+        }
+      ],
+      "programBindings": [
+        {
+          "modelId": "curriculum-liberty-psychology-criminal-psychology-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/criminal-psychology-online/",
+          "degreeCapture": "content/source-captures/336e28984fc1f071.txt",
+          "degreeSha256": "336e28984fc1f0710d4135ac0dd5e8fb5a98403b89dbf4239f3e7a00d051584f"
+        },
+        {
+          "modelId": "curriculum-liberty-psychology-developmental-psychology-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/developmental-psychology-online/",
+          "degreeCapture": "content/source-captures/bafb8fed48dfc489.txt",
+          "degreeSha256": "bafb8fed48dfc489e1eae93ab1fe96615b637fe6917cc021e11a55f4825df6d4"
+        },
+        {
+          "modelId": "curriculum-liberty-psychology-christian-counseling-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/christian-counseling-online/",
+          "degreeCapture": "content/source-captures/0ab2f75b23f970ef.txt",
+          "degreeSha256": "0ab2f75b23f970efe5474f7034f6ae5974eb1ed17c3a5171c7cce4804cf46b17"
+        },
+        {
+          "modelId": "curriculum-liberty-psychology-crisis-counseling-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/crisis-counseling-online/",
+          "degreeCapture": "content/source-captures/dcb21a8a64c611a1.txt",
+          "degreeSha256": "dcb21a8a64c611a11ed9523e761bd0fb28afdc97979b13a85087a96ffd2c3abd"
+        },
+        {
+          "modelId": "curriculum-liberty-psychology-military-resilience-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/military-resilience-online/",
+          "degreeCapture": "content/source-captures/a34620fa70452cc5.txt",
+          "degreeSha256": "a34620fa70452cc56b211795ed7609a4fa6856dfe32b4cc73930126cbc8e8c93"
+        }
+      ],
+      "notes": [
+        "This is a fixed course/term schedule classification, not a claim that every course has a live login time.",
+        "Online work can be completed at flexible times within professor deadlines; flexible daily access is not an open-ended, independently paced degree.",
+        "No competency-based status, absence of proctored assessments, guaranteed section availability or complete absence of attendance obligations is inferred.",
+        "The November 27 date records the new exact program/catalog/format bindings. Original November 24 primary policy review dates, quoted evidence and qualifications remain unchanged; no new policy retrieval is claimed."
+      ],
+      "reviewedOn": "2026-11-27"
     }
   ]
 }

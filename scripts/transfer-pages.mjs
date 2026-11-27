@@ -12,9 +12,18 @@ const Catalog=createRequire(import.meta.url)('../dist/program-catalog.js');
 const list=value=>Array.isArray(value)?value:[];
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const https=value=>{try{const url=new URL(value);return url.protocol==='https:'&&!url.username&&!url.password?url.href:'';}catch{return '';}};
-/** The page path for an outside course (shared with plan pages so they can link to it). */
-export const transferPath=(provider,code,title)=>'/transfer/'+slug(provider)+'/'+slug(code+'-'+title)+'/';
 export const slug=value=>String(value||'').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,80);
+// Published URLs belong to the provider/course identity, even when a newly reviewed
+// source spells its title differently. Keep exact academic titles outside this map.
+const publishedTransferSlugs=Object.freeze({
+ 'sophia|soph0022':'soph-0022-u-s-history-i',
+ 'sophia|soph0025':'soph-0025-u-s-history-ii'
+});
+/** The page path for an outside course (shared with plan pages so they can link to it). */
+export const transferPath=(provider,code,title)=>{
+ const providerSlug=slug(provider),identity=providerSlug+'|'+String(code||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+ return '/transfer/'+providerSlug+'/'+(publishedTransferSlugs[identity]||slug(code+'-'+title))+'/';
+};
 const unitLabel=(n,system)=>system==='competency-unit'?n+' CU'+(n===1?'':'s'):n+' '+(system==='quarter'?'quarter credit':'credit')+(n===1?'':'s');
 // Elective slots split into numbered allocations ("… · allocation 3") are one requirement for a reader.
 const baseTitle=title=>String(title||'').replace(/\s*[·-]\s*allocation\s+\d+\s*$/i,'');

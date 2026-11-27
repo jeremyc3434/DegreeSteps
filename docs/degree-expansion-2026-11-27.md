@@ -52,7 +52,11 @@ The next expansion should reuse these school families while concentrating resear
 - Liberty cohort tests: seven passed, including deterministic authoring, prior-program compiled parity, complete ledgers/prerequisite closure, exact placement scope, and all ten existing Liberty publication guards.
 - APU independent compilation: all three plans have 20 named rows, 60 credits, 30 published Sophia credits and 30 APU credits, with no academic validation errors even when conditional options are disabled. Original APU program inputs were independently compared with the previous release bytes.
 - Phoenix independent review: primary-source integrity, exact units and degree totals, admissions, capstone thresholds, financial-aid exclusion and pricing distinctions passed. Metadata validation covers the four exact model records.
-- Full reproducible application build passed. All 14 additions passed desktop and phone public-adoption flows (28 browser journeys); all 45 previously ready plans remain covered by the frozen release contract. Source safety checks reported no findings. Full core and retained browser checks are recorded in the pull request before publication.
+- Full reproducible application build passed. All 14 additions passed desktop and phone public-adoption flows (28 browser journeys), and the retained cohort passed 20 additional public-adoption journeys; all 45 previously ready plans remain covered by the frozen release contract. Source safety checks reported no findings. Full core and retained browser checks are recorded in the pull request before publication.
+
+The ten new Liberty, TESU and APU catalog URLs have exact model/format bindings, so pasting those links reuses the reviewed plan. Phoenix marketing degree links use their existing directory identities. General catalog PDF links remain ambiguous and are not assigned to one program. Existing Sophia U.S. History I/II public URL slugs are preserved despite harmless course-title variants.
+
+APU section dates establish session structure but do not independently prove whether work can be finished at any time within a session. Their within-term self-pacing classification stays unknown; this does not remove the sourced tuition or complete course plan.
 
 ## Holds and remaining limits
 

@@ -60,6 +60,6 @@ test('independent current guide reviews bind only the seven unchanged published 
 test('the actual business baseline closes documented research while keeping personal awards and prices separate',()=>{
  const require=createRequire(import.meta.url),Planner=require('./dist/planner.js'),baseline=JSON.parse(readFileSync(new URL('./dist/data/liberty.json',import.meta.url),'utf8'));
  const model=applyLibertyProviderIdentities(applyLibertyBaselineDuplicatePolicy(applyLibertyBaselineReceivingReview(baseline))),providers=[...new Set(model.requirements.flatMap(row=>row.options.map(option=>option.provider)))].filter(provider=>provider!=='University');
- const plan=Planner.generate(model,{providers,allowConditional:true,priority:'transfer',completed:[],optimizationNodeBudget:12000}),quality=assessPathwayQuality({model,plan,asOf:'2026-11-26'});
+ const plan=Planner.generate(model,{providers,allowConditional:true,priority:'transfer',completed:[],optimizationNodeBudget:12000}),quality=assessPathwayQuality({model,plan,asOf:'2026-11-27'});
  assert.equal(plan.validation.academicCountsValid,true);assert.equal(plan.validation.researchNotes.length,0);assert.equal(quality.status,'research-ready');assert.equal(quality.publication.ready,true);assert.equal(quality.metrics.feasibleOutsideCredits,83);assert.equal(quality.execution.awardedCreditsInBaseline,0);assert(quality.execution.personalTasks.some(task=>task.message.includes('duplicate-credit check')));assert.equal(quality.estimates.cost.status,'partial-estimate');
 });

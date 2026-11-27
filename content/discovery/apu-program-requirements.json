@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "apus-apu-course-busn299-2026-11-27",
+      "title": "APU BUSN299 course details, original university credits and registration text",
+      "url": "https://www.apu.apus.edu/course-schedule/details/?c=BUSN299",
+      "checked": "2026-11-27",
+      "kind": "university",
+      "roles": [
+        "university-course",
+        "prerequisite"
+      ],
+      "capture": "content/source-captures/e754e2d7348f9144.txt",
+      "sha256": "e754e2d7348f9144db9ef7d2255627d5daa1d551e4177b160545c680033731a3",
+      "checkedOn": "2026-11-27",
+      "quote": "Students will complete the course with an e-portfolio of their work"
+    },
+    {
+      "id": "apus-apu-course-finc201-2026-11-27",
+      "title": "APU FINC201 course details, original university credits and registration text",
+      "url": "https://www.apu.apus.edu/course-schedule/details/?c=FINC201",
+      "checked": "2026-11-27",
+      "kind": "university",
+      "roles": [
+        "university-course",
+        "prerequisite"
+      ],
+      "capture": "content/source-captures/0fd30f41a64c51a0.txt",
+      "sha256": "0fd30f41a64c51a0f245cadaab21bb327b90058dd64b68b553d02035b0a5685b",
+      "checkedOn": "2026-11-27",
+      "quote": "Proficiency in Microsoft Word® and Microsoft Excel® is required. (Prerequisites: ACCT100 or ACCT105)"
+    },
+    {
+      "id": "apus-apu-course-cmrj295-2026-11-27",
+      "title": "APU CMRJ295 course details, original university credits and registration text",
+      "url": "https://www.apu.apus.edu/course-schedule/details/?c=CMRJ295",
+      "checked": "2026-11-27",
+      "kind": "university",
+      "roles": [
+        "university-course",
+        "prerequisite"
+      ],
+      "capture": "content/source-captures/32f7bdcb5764824d.txt",
+      "sha256": "32f7bdcb5764824d1784409cf02cb4302e0e5ee5feeee846e9f01e320b65608d",
+      "checkedOn": "2026-11-27",
+      "quote": "Students must have completed at least 49 semester hours in their program."
+    },
+    {
+      "id": "apus-apu-course-issc298-2026-11-27",
+      "title": "APU ISSC298 course details, original university credits and registration text",
+      "url": "https://www.apu.apus.edu/course-schedule/details/?c=ISSC298",
+      "checked": "2026-11-27",
+      "kind": "university",
+      "roles": [
+        "university-course",
+        "prerequisite"
+      ],
+      "capture": "content/source-captures/0b8b69257272253d.txt",
+      "sha256": "0b8b69257272253d4adfbfac534a8ee3dbd285e4f92c89cfbb583475e484d615",
+      "checkedOn": "2026-11-27",
+      "quote": "(Prerequisite: Completion of a minimum of 57 hours towards the degree program)"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "apu-associate-business-administration-requirements-2026-11-27",
+      "modelIds": [
+        "curriculum-apus-associate-of-arts-in-business-administration-reviewed-2026"
+      ],
+      "catalogYear": "2026-2027",
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-apus-associate-of-arts-in-business-administration-reviewed-2026",
+          "degreeUrl": "https://catalog.apus.edu/apu/academic-programs/associate/associate-art--business-administration/"
+        }
+      ],
+      "facts": [
+        {
+          "id": "apu-aa-business-applied-portfolio",
+          "kind": "assessment",
+          "scope": "course",
+          "label": "Applied business portfolio",
+          "detail": "When taken at APU, BUSN299 includes a portfolio of your work and applied business projects. This is part of the proposed university coursework.",
+          "courseCodes": [
+            "BUSN299"
+          ],
+          "sourceIds": [
+            "apus-apu-course-busn299-2026-11-27"
+          ],
+          "prominent": false
+        },
+        {
+          "id": "apu-aa-business-finance-prerequisites",
+          "kind": "admission",
+          "scope": "course",
+          "type": "course-prerequisites",
+          "label": "Accounting before finance",
+          "detail": "APU FINC201 requires ACCT100 or ACCT105, plus proficiency in Microsoft Word and Excel. This starting plan uses ACCT105 for the accounting prerequisite; accepted prerequisite credit and course registration remain individual school decisions.",
+          "courseCodes": [
+            "FINC201"
+          ],
+          "sourceIds": [
+            "apus-apu-course-finc201-2026-11-27"
+          ],
+          "prominent": false
+        }
+      ]
+    },
+    {
+      "id": "apu-associate-criminal-justice-requirements-2026-11-27",
+      "modelIds": [
+        "curriculum-apus-associate-of-arts-in-criminal-justice-reviewed-2026"
+      ],
+      "catalogYear": "2026-2027",
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-apus-associate-of-arts-in-criminal-justice-reviewed-2026",
+          "degreeUrl": "https://catalog.apus.edu/apu/academic-programs/associate/associate-arts-criminal-justice/"
+        }
+      ],
+      "facts": [
+        {
+          "id": "apu-aa-criminal-justice-final-seminar",
+          "kind": "admission",
+          "scope": "course",
+          "type": "course-prerequisites",
+          "label": "Take the final seminar last",
+          "detail": "Take CMRJ295 after every other AA Criminal Justice course, with at least 49 semester hours completed in the program. APU explicitly identifies it as the last course; it includes an approved academic project or paper.",
+          "courseCodes": [
+            "CMRJ295"
+          ],
+          "sourceIds": [
+            "apus-apu-course-cmrj295-2026-11-27"
+          ],
+          "prominent": true
+        }
+      ]
+    },
+    {
+      "id": "apu-associate-cybersecurity-requirements-2026-11-27",
+      "modelIds": [
+        "curriculum-apus-associate-of-science-in-cybersecurity-reviewed-2026"
+      ],
+      "catalogYear": "2026-2027",
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-apus-associate-of-science-in-cybersecurity-reviewed-2026",
+          "degreeUrl": "https://catalog.apus.edu/apu/academic-programs/associate/associate-science-cybersecurity/"
+        }
+      ],
+      "facts": [
+        {
+          "id": "apu-as-cybersecurity-final-portfolio",
+          "kind": "admission",
+          "scope": "course",
+          "type": "course-prerequisites",
+          "label": "57 credits before the capstone",
+          "detail": "APU ISSC298 requires at least 57 hours toward the degree and completion of every other Information Systems Security course. In this 60-credit starting plan, that places the 3-credit capstone at the end.",
+          "courseCodes": [
+            "ISSC298"
+          ],
+          "sourceIds": [
+            "apus-apu-course-issc298-2026-11-27"
+          ],
+          "prominent": true
+        }
+      ]
+    }
+  ]
+}

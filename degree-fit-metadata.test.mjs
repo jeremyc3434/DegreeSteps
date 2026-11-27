@@ -66,10 +66,26 @@ test('all currently published degree editions receive independent, source-bound 
       assert.match(fit.paceLabel,/Self-paced/);
       assert.equal(fit.sources.learning.url,new URL(model.paceSourceUrl||route.paceSourceUrl||model.learningSourceUrl||route.learningSourceUrl||route.url||model.url).href);
       assert.equal(fit.learningReviewId,undefined,'Self-paced programs do not inherit a Liberty scheduled-course review');
+    }else if(model.paceModel==='self-paced'){
+      assert.equal(model.school,'University of Phoenix');assert.equal(fit.competencyBased,true);assert.equal(fit.selfPaced,true);assert.equal(fit.billing,'per-credit');
+      assert.equal(model.graduateCBEReview.id,'phoenix-graduate-cbe-primary-review-2026-11-27');
+      assert.equal(model.pacePolicy.selfPacedWithinTerm,true);assert.equal(model.pacePolicy.sessionWeeks,16);assert.equal(model.pacePolicy.maximumCoursesPerTerm,4);
+      assert.equal(fit.learningReviewId,undefined);assert.equal(fit.sources.learning.url,model.paceSourceUrl);assert.deepEqual(fit.sources.learning.sourceIds,model.pacePolicy.sourceIds);
+      assert.equal(fit.sources.learning.checkedOn,model.graduateCBEReview.checkedOn);
+      for(const id of fit.sources.learning.sourceIds){const source=model.sources.find(source=>source.id===id);assert(source&&source.capture&&source.sha256);const body=readFileSync(new URL(source.capture,import.meta.url));assert.equal(createHash('sha256').update(body).digest('hex'),source.sha256);}
     }else{
-      assert(['Liberty University','Thomas Edison State University'].includes(model.school),model.id+' has an independently reviewed course schedule');assert.equal(fit.selfPaced,false);
+      assert(['Liberty University','Thomas Edison State University','American Public University'].includes(model.school),model.id+' has an independently reviewed course schedule');assert.equal(fit.selfPaced,model.school==='American Public University'?null:false);
       assert.equal(fit.competencyBased,null,'A professor deadline is not evidence for or against CBE assessment');
-      assert.match(fit.paceLabel,/term schedule/);
+      if(model.school==='American Public University')assert.match(fit.paceLabel,/needs confirmation/);else assert.match(fit.paceLabel,/term schedule/);
+      if(model.school==='American Public University'){
+        const policy=model.pacePolicy;assert.equal(policy.status,'reviewed-section-dates-only');assert.equal(policy.selfPaced,null);assert.equal(fit.learningReviewId,undefined);
+        assert.equal(policy.reviewId,'apus-associate-reviewed-baselines-2026-11-27');assert.equal(fit.sources.learning.checkedOn,policy.checkedOn);assert.deepEqual(fit.sources.learning.sourceIds,policy.sourceIds);
+        assert.deepEqual(policy.courseCodes,model.requirements.map(row=>row.code));assert.equal(policy.sourceIds.length,model.requirements.length);assert.equal(fit.sources.learning.url,model.paceSourceUrl);
+        for(const [index,id]of policy.sourceIds.entries()){
+          const source=model.sources.find(source=>source.id===id);assert(source&&source.capture&&source.sha256);const body=readFileSync(new URL(source.capture,import.meta.url),'utf8');assert.equal(createHash('sha256').update(body).digest('hex'),source.sha256);
+          assert(body.includes('Course Code: '+policy.courseCodes[index]));assert(/Course Dates \d{2}\/\d{2}\/\d{4} - \d{2}\/\d{2}\/\d{4}/.test(body));assert(/Weeks \d+ Week session/.test(body));
+        }
+      }else{
       const review=reviews.reviews.find(row=>row.id===fit.learningReviewId);
       assert(review&&review.modelIds.includes(model.id));
       assert.equal(edition(review.catalogYear),fit.catalogYear);assert.equal(review.modality,fit.modality);
@@ -87,12 +103,17 @@ test('all currently published degree editions receive independent, source-bound 
         assert.match(body,/detailed week-by-week assignment schedule/i);
         assert(review.notes.some(note=>/e-Pack.*TECEP.*accelerated/i.test(note)),'The review does not classify every TESU credit method as scheduled coursework');
       }else assert.equal(model.school,'Liberty University');
+      }
     }
     return fit;
   });
   const competencyPrograms=[...fixtures.values()].filter(({model})=>model.paceModel==='competency-subscription').length;
   assert.equal(fits.filter(fit=>fit.competencyBased===true&&fit.selfPaced===true&&fit.billing==='subscription').length,competencyPrograms);
-  assert.equal(fits.filter(fit=>fit.selfPaced===false&&fit.competencyBased===null).length,fixtures.size-competencyPrograms);
+  const selfPacedPerCredit=[...fixtures.values()].filter(({model})=>model.paceModel==='self-paced').length;
+  assert.equal(fits.filter(fit=>fit.selfPaced===true&&fit.competencyBased===true&&fit.billing==='per-credit').length,selfPacedPerCredit);
+  const unknownWithinTerm=[...fixtures.values()].filter(({model})=>model.pacePolicy?.status==='reviewed-section-dates-only').length;
+  assert.equal(fits.filter(fit=>fit.selfPaced===null&&fit.competencyBased===null).length,unknownWithinTerm);
+  assert.equal(fits.filter(fit=>fit.selfPaced===false&&fit.competencyBased===null).length,fixtures.size-competencyPrograms-selfPacedPerCredit-unknownWithinTerm);
   for(const [billing,count] of expectedBillingCounts)assert.equal(fits.filter(fit=>fit.billing===billing).length,count,billing+' coverage matches the reviewed rate entries');
 });
 

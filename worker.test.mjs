@@ -257,14 +257,26 @@ test('the built connection boundary rejects redirects and cross-origin replaceme
  const crossOrigin=await f.call(connectionPath,{signedIn:true,method:'PUT',headers:{Origin:'https://other.example'},body:{apiKey:testConnectionKey,revision:1}});assert.equal(crossOrigin.status,403);assert.equal(redirects,1);assertNoConnectionSecret(await crossOrigin.json());done();
 });
 
-test('an unpublished Phoenix curriculum resolves its identity without presenting a ready plan',async t=>{
- const done=noNetwork(t),f=fixture(t),url='https://www.phoenix.edu/online-business-degrees/mba-competency-based-degree.html';
- const quality=JSON.parse(readFileSync(new URL('./dist/data/pathway-quality-report.json',import.meta.url),'utf8')).programs.find(item=>item.modelId==='curriculum-phoenix-cb-mba');assert.equal(quality.publication.ready,false);
- for(const value of [url,url+'?utm_source=student&ref=friend']){
-  const response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url:value}));assert.equal(response.status,200);const data=await response.json();assert.equal(data.matched,true);assert.equal(data.target.level,'master');assert.equal(data.target.modality,'online');assert.equal(data.target.catalogYear,'2026-2027');assert.equal(data.sourcePlan,undefined);assert.equal(data.existingPlan,undefined);
+test('new exact degree catalog links open complete plans and keep meaningful edition parameters separate',async t=>{
+ const done=noNetwork(t),cohort=JSON.parse(readFileSync(new URL('./test-support/fixtures/degree-expansion/nov27-complete-degree-cohort.json',import.meta.url),'utf8')).cases,aliases=JSON.parse(readFileSync(new URL('./dist/data/degree-link-aliases.json',import.meta.url),'utf8')).aliases;
+ const cases=cohort.filter(row=>!row.modelId.startsWith('curriculum-phoenix-'));assert.equal(cases.length,10);
+ for(const expected of cases){
+  const alias=aliases.find(row=>row.modelId===expected.modelId&&row.checkedOn==='2026-11-27');assert(alias,expected.modelId+' has an exact retained degree URL');
+  for(const value of [alias.url,alias.url+'?utm_source=student']){
+   const response=await worker.fetch(new Request(origin+'/api/catalog/degree-link?'+new URLSearchParams({url:value})),{},{});assert.equal(response.status,200);const data=await response.json();assert.equal(data.matched,true,expected.modelId);assert.equal(data.sourcePlan?.model?.id,expected.modelId);assert.equal(data.sourcePlan.qualityReady,true);assert.equal(data.sourcePlan.summary.totalCredits,expected.total);assert.equal(data.sourcePlan.summary.transferCredits,expected.outside);
+  }
+  const response=await worker.fetch(new Request(origin+'/api/catalog/degree-link?'+new URLSearchParams({url:alias.url+'?catalog=2025'})),{},{});const rejected=await response.json();assert.equal(rejected.sourcePlan,undefined,'A different requested edition cannot inherit the current exact link');
  }
- const requested=await f.call('/api/templates/requests',{signedIn:true,method:'POST',body:{url,startResearch:false}});assert.equal(requested.status,202);const draft=await requested.json();assert.equal(draft.template.status,'queued');assert.equal(draft.sourcePlan,undefined);assert.equal(draft.existingPlan,undefined);assert.equal(draft.configured,false);
- assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM degree_templates').get().n,1);assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);done();
+ done();
+});
+test('a reviewed Phoenix degree link opens its complete graduate plan without a research request',async t=>{
+ const done=noNetwork(t),f=fixture(t),url='https://www.phoenix.edu/online-business-degrees/mba-competency-based-degree.html';
+ const quality=JSON.parse(readFileSync(new URL('./dist/data/pathway-quality-report.json',import.meta.url),'utf8')).programs.find(item=>item.modelId==='curriculum-phoenix-cb-mba');assert.equal(quality.publication.ready,true);
+ for(const value of [url,url+'?utm_source=student&ref=friend']){
+  const response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url:value}));assert.equal(response.status,200);const data=await response.json();assert.equal(data.matched,true);assert.equal(data.target.level,'master');assert.equal(data.target.modality,'online');assert.equal(data.target.catalogYear,'2026-2027');assert.equal(data.sourcePlan.qualityReady,true);assert.equal(data.sourcePlan.model.id,'curriculum-phoenix-cb-mba');assert.equal(data.sourcePlan.model.requirements.length,11);assert.equal(data.sourcePlan.summary.totalCredits,33);assert.equal(data.sourcePlan.summary.transferCredits,0);assert.equal(data.sourcePlan.summary.universityCredits,33);
+ }
+ const requested=await f.call('/api/templates/requests',{signedIn:true,method:'POST',body:{url,startResearch:false}});assert.equal(requested.status,200);const result=await requested.json();assert.equal(result.reused,true);assert.equal(result.sourcePlan.model.id,'curriculum-phoenix-cb-mba');
+ assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM degree_templates').get().n,0);assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);done();
 });
 test('URL identity keeps meaningful catalog parameters and never selects one degree from a shared directory',async t=>{
  const done=noNetwork(t),f=fixture(t);

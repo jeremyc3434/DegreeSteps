@@ -7,7 +7,7 @@ const Estimate=require('../dist/plan-estimate-engine.js'),Cost=require('../dist/
 const read=path=>JSON.parse(readFileSync(new URL('../'+path,import.meta.url),'utf8'));
 const rates=read('content/estimates/plan-estimate-rates.json'),index=read('dist/data/plan-library-index.json');
 const capture=file=>readFileSync(new URL('../content/source-captures/'+file+'.txt',import.meta.url),'utf8').replace(/\s+/g,' ');
-const schools={'Strayer University':'strayer','Champlain College Online':'champlain','American Public University System':'apus','Bellevue University':'bellevue'};
+const schools={'Strayer University':'strayer','Champlain College Online':'champlain','American Public University System':'apus','American Public University':'apus-reviewed','Bellevue University':'bellevue'};
 
 test('every published Strayer, Champlain, APUS and Bellevue plan has exactly one reviewed estimate entry and a planning range',()=>{
   assert.equal(Estimate.assertRates(rates),rates);
@@ -17,6 +17,7 @@ test('every published Strayer, Champlain, APUS and Bellevue plan has exactly one
     const entries=rates.entries.filter(entry=>entry.modelIds.includes(plan.modelId));
     assert.equal(entries.length,1,plan.modelId);
     assert.ok(Object.hasOwn(schools,entries[0].school));
+    if(entries[0].school==='American Public University'){assert.match(plan.modelId,/-reviewed-2026$/);assert.equal(entries[0].id,'apu-reviewed-associates-2026');assert.equal(entries[0].degreeUnits,60);assert.equal(entries[0].creditSystem,'semester');}else if(entries[0].school==='American Public University System')assert(!plan.modelId.endsWith('-reviewed-2026'),'Legacy system profile cannot price the separate exact APU editions');
     assert.ok(plan.estimate&&plan.estimate.min>0&&plan.estimate.max>=plan.estimate.min&&!plan.estimate.partial,plan.modelId);
   }
 });
@@ -37,6 +38,7 @@ test('the rates and fees used are the ones printed on the captured school pages'
   for(const entry of by('Strayer University')){assert.equal(entry.tuition.rate,345.56);assert.equal(entry.feesPerTerm,65);assert.equal(entry.oneTimeFees,entry.degreeUnits>=180?150:0);assert.equal(entry.creditSystem,'quarter');}
   for(const entry of by('Champlain College Online')){assert.equal(entry.tuition.rate,342);assert.equal(entry.oneTimeFees,150);}
   for(const entry of by('American Public University System')){assert.equal(entry.tuition.rate,360);assert.equal(entry.oneTimeFees,entry.degreeUnits>=120?350:250);}
+  assert.equal(by('American Public University').length,1);for(const entry of by('American Public University')){assert.equal(entry.tuition.rate,360);assert.equal(entry.oneTimeFees,250);assert.equal(entry.degreeUnits,60);assert.equal(entry.modelIds.length,3);assert(entry.modelIds.every(id=>id.endsWith('-reviewed-2026')));}
   for(const entry of by('Bellevue University')){assert.equal(entry.tuition.rate,459);assert.equal(entry.feesPerTerm,300);assert.equal(entry.oneTimeFees,150);}
 });
 
