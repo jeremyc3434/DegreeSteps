@@ -2,7 +2,7 @@
 (function(root,factory){'use strict';const api=factory(root);if(typeof module==='object'&&module.exports)module.exports=api;else root.DegreeGrowth=api;}(typeof globalThis!=='undefined'?globalThis:this,function(root){
   'use strict';
   const CHOICE='degreesteps-growth-choice-v1';
-  const EVENTS=['landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed','finder_used','guided_started','guided_results','plan_built','credits_worth_used','transfer_page_view','provider_click','school_email','share_link_copied','school_inquiry','plan_review_request'];
+  const EVENTS=['landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed','finder_used','guided_started','guided_quiz_started','guided_results','plan_built','credits_worth_used','transfer_page_view','provider_click','school_email','share_link_copied','school_inquiry','plan_review_request'];
   const CONTEXTS=['home','article','provider','school','degree-plan','workspace','transfer'];
   const PROVIDERS=['Sophia','Study.com','StraighterLine','Saylor','CLEP','DSST','Christian Leaders Institute','other'];
   const ACTIONS=['open','copy'],INQUIRY_ACTIONS=['submitted'];

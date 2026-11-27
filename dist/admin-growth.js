@@ -6,7 +6,7 @@
   const number=value=>Number.isSafeInteger(value)&&value>=0?value:0;
   const format=value=>number(value).toLocaleString('en-US');
   const FUNNEL=[['landing_view','Landing (public page views)'],['plan_previewed','Plan previewed'],['plan_built','Plan built (worksheet opened from a plan)'],['account_plan_saved','Plan saved to account']];
-  const TOOLS=[['finder_used','Plan finder used'],['guided_started','Guided planner started'],['guided_results','Guided planner showed results'],['credits_worth_used','Credits-worth ranking computed'],['transfer_page_view','Transfer course pages viewed']];
+  const TOOLS=[['finder_used','Plan finder used'],['guided_quiz_started','Help me choose quiz opened'],['guided_started','Guided planner started'],['guided_results','Guided planner showed results'],['credits_worth_used','Credits-worth ranking computed'],['transfer_page_view','Transfer course pages viewed']];
   const PROVIDERS=['Sophia','Study.com','StraighterLine','Saylor','CLEP','DSST','Christian Leaders Institute','other'];
   const EMAILS=[['open','Opened in an email app'],['copy','Copied']];
   // Opt-in features (off by default). The table appears only once either has been used in the last 28 days.

@@ -22,3 +22,10 @@ test('the quiz results offer the deeper questions as an optional next step that 
  // Every portal question stays in the continuation.
  assert.match(portal,/const profileStepIds=\['purpose','prior','format','priority'\]/);
 });
+test('opening the quiz counts guided_quiz_started; starting the deeper questions keeps guided_started',()=>{
+ const js=read('dist/start.js'),portal=read('dist/portal.js'),admin=read('dist/admin-growth.js');
+ assert.match(js,/if\(step==='quiz'\)\{try\{window\.dispatchEvent\(new CustomEvent\('DegreeSteps:growth',\{detail:\{event:'guided_quiz_started',context:'workspace'\}\}\)\);/);
+ assert.match(portal,/function startQuizContinuation[\s\S]*?trackGrowth\('guided_started'\)/);
+ assert.doesNotMatch(portal,/location\.assign\(HELP_ME_CHOOSE\)[^\n]*trackGrowth|trackGrowth\([^)]*\);location\.assign\(HELP_ME_CHOOSE\)/,'the portal click is not double-counted');
+ assert.match(admin,/\['guided_quiz_started','Help me choose quiz opened'\]/);assert.match(admin,/\['guided_started','Guided planner started'\]/);
+});

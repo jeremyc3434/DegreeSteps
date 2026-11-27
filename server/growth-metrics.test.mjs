@@ -117,10 +117,38 @@ test('funnel v2 events accept only their fixed detail: a provider allowlist for 
  ])assert.equal((await send(f,body)).status,400,JSON.stringify(body));
  const providers=f.sqlite.prepare("SELECT detail FROM growth_daily_counts WHERE event='provider_click' ORDER BY detail").all().map(row=>row.detail);assert.equal(providers.length,8);
  const summary=await (await handleGrowthMetrics(request('/api/admin/growth-summary?days=28',{method:'GET'}),f.env,{now:f.now})).json();
- assert.equal(summary.events.length,19);assert.deepEqual(summary.events.slice(-2).map(row=>row.event),['alert_subscribed','alert_unsubscribed']);assert.equal(summary.events.find(row=>row.event==='provider_click').count,8);assert.equal(summary.events.find(row=>row.event==='school_email').count,2);
+ assert.equal(summary.events.length,20);assert.equal(summary.events.find(row=>row.event==='guided_quiz_started')?.count,0,'the dashboard summary lists the quiz counter');assert.deepEqual(summary.events.slice(-2).map(row=>row.event),['alert_subscribed','alert_unsubscribed']);assert.equal(summary.events.find(row=>row.event==='provider_click').count,8);assert.equal(summary.events.find(row=>row.event==='school_email').count,2);
  assert(summary.rows.some(row=>row.event==='school_email'&&row.detail==='copy'));assert.deepEqual(summary.dimensions.schoolEmailActions,['open','copy']);assert.equal(summary.dimensions.providers.length,8);
  // The database itself refuses details outside the fixed lists, even if a caller bypasses validation.
  assert.throws(()=>f.sqlite.prepare("INSERT INTO growth_daily_counts(day,event,context,plan_id,detail,count) VALUES('2026-11-19','school_inquiry','workspace','','jane@example.com',1)").run(),/CHECK/);
  assert.throws(()=>f.sqlite.prepare("INSERT INTO growth_daily_counts(day,event,context,plan_id,detail,count) VALUES('2026-11-19','provider_click','home','','student@example.com',1)").run(),/CHECK/);
  assert.throws(()=>f.sqlite.prepare("INSERT INTO growth_daily_counts(day,event,context,plan_id,detail,count) VALUES('2026-11-19','landing_view','home','Private Plan','',1)").run(),/CHECK/);
+});
+
+test('Help me choose has two separate counters: the quiz opening and the start of the deeper questions',async t=>{
+ const f=fixture(t);
+ assert.equal((await send(f,{event:'guided_quiz_started',context:'workspace'})).status,204);
+ assert.equal((await send(f,{event:'guided_started',context:'workspace'})).status,204);
+ assert.equal((await send(f,{event:'guided_quiz_started',context:'workspace',action:'open'})).status,400,'no detail is accepted');
+ const rows=f.sqlite.prepare("SELECT event,sum(count) AS n FROM growth_daily_counts WHERE event IN ('guided_quiz_started','guided_started') GROUP BY event ORDER BY event").all().map(row=>[row.event,Number(row.n)]);
+ assert.deepEqual(rows,[['guided_quiz_started',1],['guided_started',1]]);
+});
+
+test('migration 0020 keeps every existing counter and only adds the quiz event to the allowed list',async()=>{
+ const {DatabaseSync}=await import('node:sqlite');
+ const journal=JSON.parse(readFileSync(new URL('../drizzle/meta/_journal.json',import.meta.url),'utf8')).entries;
+ const at=journal.findIndex(entry=>entry.tag==='0020_guided_quiz_event');assert(at>0);
+ const db=new DatabaseSync(':memory:');
+ try{
+  db.exec('PRAGMA foreign_keys=ON');
+  for(const entry of journal.slice(0,at))db.exec(readFileSync(new URL('../drizzle/'+entry.tag+'.sql',import.meta.url),'utf8'));
+  assert.throws(()=>db.prepare("INSERT INTO growth_daily_counts(day,event,context,count) VALUES('2026-11-25','guided_quiz_started','workspace',1)").run(),/CHECK/,'before 0020 the quiz event is rejected');
+  const insert=db.prepare('INSERT INTO growth_daily_counts(day,event,context,plan_id,detail,count) VALUES(?,?,?,?,?,?)');
+  insert.run('2026-11-20','guided_started','workspace','','',6);insert.run('2026-11-21','provider_click','degree-plan','liberty-business-residential','Sophia',3);
+  const before=db.prepare('SELECT * FROM growth_daily_counts ORDER BY day,event').all();
+  db.exec(readFileSync(new URL('../drizzle/0020_guided_quiz_event.sql',import.meta.url),'utf8'));
+  assert.deepEqual(db.prepare('SELECT * FROM growth_daily_counts ORDER BY day,event').all(),before,'every existing counter is kept exactly');
+  insert.run('2026-11-26','guided_quiz_started','workspace','','',1);
+  assert.throws(()=>insert.run('2026-11-26','not_an_event','workspace','','',1),/CHECK/,'the allowed list still rejects anything else');
+ }finally{db.close();}
 });

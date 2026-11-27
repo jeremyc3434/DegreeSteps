@@ -46,6 +46,7 @@ test('pages without a plan never read the plan index, and an unreadable index ke
 test('funnel v2 events send only fixed details: an allowlisted provider for provider_click and open/copy for school_email',async()=>{
  const f=fixture({path:'/plan.html'});
  for(const event of['finder_used','guided_started','guided_results','credits_worth_used','share_link_copied'])assert.equal(f.api.track(event,'workspace'),true,event);
+ assert(f.api.events.includes('guided_quiz_started'),'the quiz opening is an allowed browser event');
  assert.equal(f.api.track('plan_built','workspace',{planId:'tesu-bsba-accounting'}),true);
  assert.equal(f.api.track('provider_click','workspace',{provider:'Sophia'}),true);assert.equal(f.api.track('provider_click','workspace',{provider:'sophia.org/course?ref=x'}),false);assert.equal(f.api.track('provider_click','workspace'),false);
  assert.equal(f.api.track('school_email','workspace',{action:'open'}),true);assert.equal(f.api.track('school_email','workspace',{action:'copy'}),true);assert.equal(f.api.track('school_email','workspace',{action:'send'}),false);assert.equal(f.api.track('school_email','workspace'),false);
