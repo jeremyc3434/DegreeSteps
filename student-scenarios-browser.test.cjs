@@ -195,27 +195,36 @@ async function checklistTask(page,id){
  if(process.argv.includes('--fixtures-only'))return;
  const {chromium}=require('playwright');
  await fs.mkdir(OUTPUT,{recursive:true});
- const {server,origin}=await startStaticServer();let browser,count=0;
- const pageErrors=[],privateWrites=[];
+ const {server,origin}=await startStaticServer();let browser,count=0,attempted=0;
+ const pageErrors=[],privateWrites=[],failures=[];
  try{
   browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});
   async function journey(device,viewport,name,seed,run){
-   const context=await browser.newContext({viewport,reducedMotion:'reduce'});
-   await context.route('**/*',route=>new URL(route.request().url()).origin===origin?route.continue():route.abort('blockedbyclient'));
-   await context.addInitScript(({key,state})=>{
-    // Use the real optional-measurement preference in these isolated fixtures.
-    // This leaves academic, course, checklist and private-write checks active.
-    localStorage.setItem('degreesteps-growth-choice-v1','off');
-    if(localStorage.getItem(key)===null)localStorage.setItem(key,JSON.stringify(state));
-   },{key:KEY,state:seed});
-   const page=await context.newPage();page.setDefaultTimeout(20000);
-   const pendingRequests=new Map();
-   page.on('pageerror',error=>pageErrors.push({device,name,message:error.message}));
-   page.on('request',request=>{pendingRequests.set(request,{method:request.method(),url:request.url()});if(!['GET','HEAD'].includes(request.method()))privateWrites.push({device,name,method:request.method(),url:request.url()});});
-   page.on('requestfinished',request=>pendingRequests.delete(request));page.on('requestfailed',request=>pendingRequests.delete(request));
-   try{await run(page);await noOverflow(page);await page.screenshot({path:path.join(OUTPUT,name+'-'+device+'.png'),fullPage:true});count++;console.log('PASS '+device+' '+name);}
-   catch(error){console.error(JSON.stringify({device,name,url:page.url(),pendingRequests:[...pendingRequests.values()].slice(0,12)}));await page.screenshot({path:path.join(OUTPUT,name+'-'+device+'-failure.png'),fullPage:true}).catch(()=>{});throw error;}
-   finally{await context.close();}
+   attempted++;
+   let context,page,succeeded=false;const pendingRequests=new Map();
+   async function recordFailure(error,phase){
+    succeeded=false;
+    const failure={device,name,phase,url:page?.url()||null,errorName:error.name,message:String(error.message).slice(0,1600),at:String(error.stack||'').split('\n').filter(line=>/^\s+at /.test(line)).slice(0,3),pendingRequests:[...pendingRequests.values()].slice(0,12)};
+    failures.push(failure);console.error(JSON.stringify(failure));
+    if(page)await page.screenshot({path:path.join(OUTPUT,name+'-'+device+'-failure.png'),fullPage:true}).catch(screenshotError=>{failure.screenshotError=String(screenshotError.message).slice(0,300);});
+   }
+   try{
+    context=await browser.newContext({viewport,reducedMotion:'reduce'});
+    await context.route('**/*',route=>new URL(route.request().url()).origin===origin?route.continue():route.abort('blockedbyclient'));
+    await context.addInitScript(({key,state})=>{
+     // Use the real optional-measurement preference in these isolated fixtures.
+     // This leaves academic, course, checklist and private-write checks active.
+     localStorage.setItem('degreesteps-growth-choice-v1','off');
+     if(localStorage.getItem(key)===null)localStorage.setItem(key,JSON.stringify(state));
+    },{key:KEY,state:seed});
+    page=await context.newPage();page.setDefaultTimeout(20000);
+    page.on('pageerror',error=>pageErrors.push({device,name,message:error.message}));
+    page.on('request',request=>{pendingRequests.set(request,{method:request.method(),url:request.url()});if(!['GET','HEAD'].includes(request.method()))privateWrites.push({device,name,method:request.method(),url:request.url()});});
+    page.on('requestfinished',request=>pendingRequests.delete(request));page.on('requestfailed',request=>pendingRequests.delete(request));
+    await run(page);await noOverflow(page);await page.screenshot({path:path.join(OUTPUT,name+'-'+device+'.png'),fullPage:true});succeeded=true;
+   }catch(error){await recordFailure(error,page?'journey':'setup');}
+   finally{if(context)try{await context.close();}catch(error){await recordFailure(error,'cleanup');}}
+   if(succeeded){count++;console.log('PASS '+device+' '+name);}else console.log('FAIL '+device+' '+name);
   }
   for(const [device,viewport] of [['desktop',{width:1440,height:1000}],['phone',{width:390,height:844}]]){
    await journey(device,viewport,'mypath-school-discovery',copy(fixtures.blank),async page=>{
@@ -336,7 +345,11 @@ async function checklistTask(page,id){
      assert.equal(await page.locator('h1:visible').count(),1);assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),'https://degreesteps.com'+url);
      const prose=guide.sections.flatMap(section=>section.paragraphs||[]).join(' ');assert(prose.trim().split(/\s+/).length>=350,'The guide must contain useful guidance beyond a thin interface description.');
      const text=await page.locator('main').innerText();assert((await page.locator('main .source-list a[href^="https://"]').count())>=4,'The guide retains multiple official source citations.');
-     if(guide.slug==='earn-college-credit-in-high-school')assert.match(text,/college.*transcript|transcript.*college/i);
+     if(guide.slug==='earn-college-credit-in-high-school'){
+      const asu=page.locator('main .article-comparison tbody tr').filter({hasText:'ASU Universal Learner'}),sophia=page.locator('main .article-comparison tbody tr').filter({hasText:'Sophia'});
+      assert.equal(await asu.count(),1);assert.match(await asu.locator('td').first().innerText(),/official ASU transcript/);assert.match(await asu.locator('td').first().innerText(),/optional credit purchase/);
+      assert.equal(await sophia.count(),1);assert.match(await sophia.locator('td').first().innerText(),/ACE credit recommendations/);assert.match(await sophia.locator('td').first().innerText(),/receiving colleges to evaluate/);
+     }
      else if(guide.slug==='military-credit-jst-ccaf'){assert.match(text,/JST/);assert.match(text,/CCAF/);assert.match(text,/eligib/i);}
      else if(guide.slug==='transfer-credit-after-enrolling'){assert.match(text,/2024/);assert.match(text,/B−/);assert.match(text,/does not automatically verify an uploaded PDF/);assert.match(text,/not.*blanket permission/i);}
      else{assert.match(text,/25 years/);assert.match(text,/most recent application/);assert.match(text,/Fresh Start/);}
@@ -346,7 +359,7 @@ async function checklistTask(page,id){
     });
    }
   }
-  assert.equal(count,26);assert.deepEqual(pageErrors,[]);assert.deepEqual(privateWrites,[]);
-  console.log(JSON.stringify({syntheticStudentJourneys:12,guideReadabilityJourneys:8,schoolDiscoveryJourneys:2,requirementsBaselineJourneys:4,totalJourneys:count,viewports:2,pageErrors:0,privateWrites:0,scope:'Synthetic current-enrollment context, old original-record preservation, high-school issuing-college guidance, active/veteran/family benefits tasks and explicitly chosen MyPath requirements drafts; actual built guides and working local CTAs; no real-student approvals, account authentication, funding awards or institution outreach.'}));
+  console.log(JSON.stringify({syntheticStudentJourneys:12,guideReadabilityJourneys:8,schoolDiscoveryJourneys:2,requirementsBaselineJourneys:4,totalJourneys:count,attemptedJourneys:attempted,failedJourneys:failures.length,viewports:2,pageErrors:pageErrors.length,privateWrites:privateWrites.length,scope:'Synthetic current-enrollment context, old original-record preservation, high-school issuing-college guidance, active/veteran/family benefits tasks and explicitly chosen MyPath requirements drafts; actual built guides and working local CTAs; no real-student approvals, account authentication, funding awards or institution outreach.'}));
+  assert.deepEqual({attempted,passed:count,failures,pageErrors,privateWrites},{attempted:26,passed:26,failures:[],pageErrors:[],privateWrites:[]},'All 26 independent journeys must pass with zero page errors or private writes.');
  }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}
 })().catch(error=>{console.error(error);process.exitCode=1;});
