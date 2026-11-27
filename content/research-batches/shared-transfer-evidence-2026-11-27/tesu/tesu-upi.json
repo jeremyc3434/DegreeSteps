@@ -1,0 +1,697 @@
+{
+  "schemaVersion": 1,
+  "kind": "shared-transfer-receiving-evidence-research",
+  "verifiedOn": "2026-11-27",
+  "researcher": "issue56_providers",
+  "canonicalEditsMade": false,
+  "publicationPromotionAllowed": false,
+  "individualCreditAwardsCreated": 0,
+  "target": {
+    "groupId": "identity-review-5eae6e3f58d1beec1f318078",
+    "provider": "UPI Study",
+    "providerCourseCode": "Sociology 110",
+    "providerAlias": "SOC 110",
+    "aceId": "UPIS-0005",
+    "version": 1,
+    "sourceCredits": 3,
+    "sourceCreditSystem": "semester",
+    "recommendationStart": "2024-09-01",
+    "recommendationEnd": "2027-08-31",
+    "receivingSchool": "Thomas Edison State University",
+    "claimedReceivingCode": "SOC-1010",
+    "claimedReceivingTitle": "Our Changing World: An Introduction to Sociology",
+    "claimedReceivingCredits": 3,
+    "claimedReceivingCreditSystem": "semester"
+  },
+  "decision": {
+    "status": "WATCH-primary-receiving-course-proof-not-retrieved",
+    "exactReceivingAwardVerified": false,
+    "providerApprovalVerified": true,
+    "originalIdentityVerified": true,
+    "originalRecommendationWindowVerified": true,
+    "targetCourseExistenceVerified": true,
+    "primaryUniversityRowLocated": false,
+    "newOutsideCreditImprovementVerified": 0,
+    "reason": "Current primary TESU sources establish UPI provider approval and reserve separate course equivalency and degree applicability decisions. No TESU-authored/hosted or university-submitted exact UPIS-0005 version1 to SOC-1010 receiving row was retrieved. Provider-published tables and claims are retained as leads only.",
+    "notProven": "This bounded public-source search does not prove the equivalency does not exist or that TESU will reject it. It also does not establish any private database/API contents."
+  },
+  "verifiedFacts": [
+    {
+      "id": "upi-original-ace-identity",
+      "scope": "Original learning identity and ACE recommendation only",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=UPI+Study&cid=af5a4af9-5a74-ef11-a671-00224808a070&oid=ef9a8446-5e28-ef11-840b-6045bd089f77",
+      "publisher": "American Council on Education",
+      "observed": {
+        "aceId": "UPIS-0005",
+        "version": 1,
+        "organizationId": "Sociology 110",
+        "level": "Lower-Division Baccalaureate",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "minimumPassingScore": 70
+      },
+      "currentReaderLimitation": "Recommendation-period dropdown exposes Select without option text. Current organization listing independently supplies dates; retained Nov25 raw exhibit contains selected option.",
+      "currentReceipt": "tesu-upi-receipts/main-04-ace-and-official-search.json",
+      "retainedCapture": {
+        "path": "content/source-captures/ea35566ca37a9ac7.txt",
+        "sha256": "ea35566ca37a9ac74ed91ffa7a6d80ce3be69bbba9486ed88c716104f6896a29",
+        "checkedOn": "2026-11-25",
+        "selectedPeriodLabel": "9/1/2024 - 8/31/2027",
+        "equivalencySection": "Retained raw server-rendered Equivalencies webpart is empty; current reader likewise contains no university equivalency rows."
+      }
+    },
+    {
+      "id": "upi-original-ace-period",
+      "scope": "Original recommendation period only",
+      "publisher": "American Council on Education",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=ef9a8446-5e28-ef11-840b-6045bd089f77",
+      "observed": {
+        "aceId": "UPIS-0005",
+        "recommendationStart": "2024-09-01",
+        "recommendationEnd": "2027-08-31",
+        "recommendedCredits": 3
+      },
+      "receipt": "tesu-upi-receipts/main-05-evaluation-ace-period.json"
+    },
+    {
+      "id": "tesu-provider-approval",
+      "scope": "Provider status only",
+      "publisher": "Thomas Edison State University",
+      "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+      "observed": "University Pathways International is in the Approved educational providers section.",
+      "doesNotEstablish": [
+        "SOC-1010 equivalency",
+        "Original ACE version linkage",
+        "Individual student award",
+        "Degree-specific applicability"
+      ],
+      "receipts": [
+        "tesu-upi-receipts/main-02-provider-policy.json",
+        "tesu-upi-receipts/child-03-official-pages.json"
+      ]
+    },
+    {
+      "id": "tesu-provider-course-separation",
+      "scope": "Current TESU educational provider review process",
+      "publisher": "Thomas Edison State University",
+      "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/educational-provider-review.php",
+      "observed": "After provider approval, syllabi are submitted for a separate TESU equivalency evaluation; decisions are communicated to the approved provider.",
+      "excerpt": "Being an “Approved Provider” does not guarantee 100% acceptance of courses or learning experiences by TESU.",
+      "receipt": "tesu-upi-receipts/main-02-provider-policy.json"
+    },
+    {
+      "id": "tesu-transfer-authority",
+      "scope": "Current noncollegiate transfer policy",
+      "publisher": "Thomas Edison State University",
+      "url": "https://www.tesu.edu/student-resources/transfer-credits/index.php",
+      "observed": "TESU generally accepts ACE/NCCRS recommendations while retaining authority over exact equivalency and application to a degree. Transfer evaluations use official documents for active applicants.",
+      "receipt": "tesu-upi-receipts/main-03-official-paths.json"
+    },
+    {
+      "id": "tesu-target-course",
+      "scope": "Receiving course existence and quantity only",
+      "publisher": "Thomas Edison State University",
+      "url": "https://www2.tesu.edu/ucourse.php?CourseCode=SOC-1010",
+      "observed": {
+        "code": "SOC-1010",
+        "title": "Our Changing World: An Introduction to Sociology",
+        "credits": 3,
+        "creditSystem": "semester"
+      },
+      "doesNotEstablish": "The TESU course page is not proof that UPI Sociology110 receives this course award.",
+      "receipt": "tesu-upi-receipts/child-06-myprogress-and-target-course.json"
+    },
+    {
+      "id": "tesu-personal-evaluation",
+      "scope": "Student-specific evaluation access",
+      "publisher": "Thomas Edison State University",
+      "url": "https://www.tesu.edu/admissions/evaluation.php",
+      "observed": "TESU describes personal transfer evaluations, evaluated-credit records and MyProgress through logged-in student services. These pages do not publish a public UPI receiving crosswalk.",
+      "receipts": [
+        "tesu-upi-receipts/main-05-evaluation-ace-period.json",
+        "tesu-upi-receipts/child-06-myprogress-and-target-course.json"
+      ]
+    }
+  ],
+  "providerClaimsExcludedFromReceivingProof": {
+    "url": "https://www.upistudy.com/pages/tesu",
+    "claimedDirectMap": "Sociology110 / Introduction to Sociology, 3 credits, to SOC-1010, 3 credits.",
+    "retainedProviderTable": "content/source-captures/tesu-upi-provider-map-2026-11-25-c3ff7527f9c8.txt",
+    "authority": "UPI Study provider-published claim; not a TESU-authored receiving award.",
+    "currentOfficialAgreementLink": {
+      "label": "View Official Agreement",
+      "actualDestination": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+      "scope": "Provider directory, not a signed exact-course equivalency agreement."
+    },
+    "currentPageReaderLimitation": "Interactive equivalency table rendered its shell/no row content in this reader; prior provider-only capture retains exact claim. This gap is separate from university authority.",
+    "receipts": [
+      "tesu-upi-receipts/main-02-provider-policy.json",
+      "tesu-upi-receipts/main-03-official-paths.json"
+    ]
+  },
+  "boundedResearch": {
+    "methods": [
+      "Retained exact source/course/provider review and current transfer-maximization group audit.",
+      "Targeted TESU, www2.tesu.edu and tesu.smartcatalogiq.com domain searches for UPI, full provider name, UPIS-0005, Sociology110 and SOC-1010; official API/public-table and PDF discovery.",
+      "Current official provider directory, provider review process and starter kit, transfer policy, academic credit FAQ, transfer-pathways and evaluation/MyProgress pages.",
+      "Public SelfService course search and TESU SOC-1010 course page.",
+      "Current ACE exact exhibit, current provider organization listing, and retained raw exact-exhibit body."
+    ],
+    "officialEntryPoints": [
+      {
+        "url": "https://www.tesu.edu/admissions/transfer-pathways/index.php",
+        "outcome": "Institutional pathway discovery; no exact public UPI Sociology receiving row retrieved."
+      },
+      {
+        "url": "https://selfservice.tesu.edu/student/Courses/Search?subjects=SOC",
+        "outcome": "Public reader returned generic application shell, not an evaluated UPI transfer table."
+      },
+      {
+        "url": "https://www.tesu.edu/admissions/evaluation.php",
+        "outcome": "Documents evaluated transfers and MyProgress in logged-in student services."
+      },
+      {
+        "url": "https://www.tesu.edu/admissions/faqs/academic-credit.php",
+        "outcome": "Describes articulation/transfer policy; no exact UPI row."
+      },
+      {
+        "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/educational-provider-review.php",
+        "outcome": "Separate course evaluation communicated to provider; no course-specific table."
+      },
+      {
+        "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=UPI+Study&cid=af5a4af9-5a74-ef11-a671-00224808a070&oid=ef9a8446-5e28-ef11-840b-6045bd089f77",
+        "outcome": "Source identity verified; no university equivalency row retrieved."
+      }
+    ],
+    "publicApiConclusion": "No documented public TESU UPI-equivalency API or CLI was located in the inspected official sources/search results. No guessed private API, credentials or student records were used.",
+    "shellNetwork": "Not used for web retrieval; known restricted proxy was not escalated.",
+    "outreach": "None.",
+    "receiptsDirectory": "content/research-batches/shared-transfer-evidence-2026-11-27/tesu/tesu-upi-receipts",
+    "receiptSemantics": "Full connector result objects retained as JSON. Hashes identify retained JSON bytes, not origin HTTP bodies. Origin status/headers are unknown unless a connector result explicitly reports its own error; no fabricated origin receipt."
+  },
+  "sevenExistingContexts": [
+    {
+      "modelId": "curriculum-tesu-ba-english",
+      "requirementId": "soc1010",
+      "optionId": "upi-upis-0005-to-soc-1010-provider-2026-11-25-soc1010",
+      "receivingCode": "SOC-1010",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "scope": {
+        "school": "Thomas Edison State University",
+        "catalog": "Current undergraduate catalog · checked November 18, 2026",
+        "format": "Online",
+        "level": "bachelor",
+        "creditSystem": "semester"
+      },
+      "reasonCodes": [
+        "conditional-mapping",
+        "constraint:conditional_mapping",
+        "research:conditional-award"
+      ]
+    },
+    {
+      "modelId": "curriculum-tesu-ba-liberal-studies",
+      "requirementId": "soc1010",
+      "optionId": "upi-upis-0005-to-soc-1010-provider-2026-11-25-soc1010",
+      "receivingCode": "SOC-1010",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "scope": {
+        "school": "Thomas Edison State University",
+        "catalog": "Current undergraduate catalog · checked November 18, 2026",
+        "format": "Online",
+        "level": "bachelor",
+        "creditSystem": "semester"
+      },
+      "reasonCodes": [
+        "conditional-mapping",
+        "constraint:conditional_mapping",
+        "research:conditional-award"
+      ]
+    },
+    {
+      "modelId": "curriculum-tesu-ba-psychology",
+      "requirementId": "soc1010",
+      "optionId": "upi-upis-0005-to-soc-1010-provider-2026-11-25-soc1010",
+      "receivingCode": "SOC-1010",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "scope": {
+        "school": "Thomas Edison State University",
+        "catalog": "Current undergraduate catalog · checked November 18, 2026",
+        "format": "Online",
+        "level": "bachelor",
+        "creditSystem": "semester"
+      },
+      "reasonCodes": [
+        "conditional-mapping",
+        "constraint:conditional_mapping",
+        "research:conditional-award"
+      ]
+    },
+    {
+      "modelId": "curriculum-tesu-bs-general-management",
+      "requirementId": "soc1010",
+      "optionId": "upi-upis-0005-to-soc-1010-provider-2026-11-25-soc1010",
+      "receivingCode": "SOC-1010",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "scope": {
+        "school": "Thomas Edison State University",
+        "catalog": "Current undergraduate catalog · checked November 18, 2026",
+        "format": "Online",
+        "level": "bachelor",
+        "creditSystem": "semester"
+      },
+      "reasonCodes": [
+        "conditional-mapping",
+        "constraint:conditional_mapping",
+        "research:conditional-award"
+      ]
+    },
+    {
+      "modelId": "curriculum-tesu-bsba-accounting",
+      "requirementId": "soc1010",
+      "optionId": "upi-upis-0005-to-soc-1010-provider-2026-11-25-soc1010",
+      "receivingCode": "SOC-1010",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "scope": {
+        "school": "Thomas Edison State University",
+        "catalog": "Current undergraduate catalog · checked November 18, 2026",
+        "format": "Online",
+        "level": "bachelor",
+        "creditSystem": "semester"
+      },
+      "reasonCodes": [
+        "conditional-mapping",
+        "constraint:conditional_mapping",
+        "research:conditional-award"
+      ]
+    },
+    {
+      "modelId": "curriculum-tesu-bsba-finance",
+      "requirementId": "soc1010",
+      "optionId": "upi-upis-0005-to-soc-1010-provider-2026-11-25-soc1010",
+      "receivingCode": "SOC-1010",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "scope": {
+        "school": "Thomas Edison State University",
+        "catalog": "Current undergraduate catalog · checked November 18, 2026",
+        "format": "Online",
+        "level": "bachelor",
+        "creditSystem": "semester"
+      },
+      "reasonCodes": [
+        "conditional-mapping",
+        "constraint:conditional_mapping",
+        "research:conditional-award"
+      ]
+    },
+    {
+      "modelId": "curriculum-tesu-bsba-human-resources-organizational-management",
+      "requirementId": "soc1010",
+      "optionId": "upi-upis-0005-to-soc-1010-provider-2026-11-25-soc1010",
+      "receivingCode": "SOC-1010",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "scope": {
+        "school": "Thomas Edison State University",
+        "catalog": "Current undergraduate catalog · checked November 18, 2026",
+        "format": "Online",
+        "level": "bachelor",
+        "creditSystem": "semester"
+      },
+      "reasonCodes": [
+        "conditional-mapping",
+        "constraint:conditional_mapping",
+        "research:conditional-award"
+      ]
+    }
+  ],
+  "otherTESUSharedAuthoritativeRows": {
+    "status": "retained-reuse-assets-already-implemented",
+    "scope": "Existing TESU institution-submitted equivalencies published by ACE; not newly fetched receiving awards in this packet.",
+    "sourceReview": "content/pathway-kits/tesu/course-specific-eligibility-review-2026-11-26.json",
+    "currentExactEligibilityClaims": 35,
+    "examples": [
+      {
+        "rowId": "sophia-soph-0015-to-enc-1010-tesu-2026-2027",
+        "provider": "Sophia",
+        "aceId": "SOPH-0015",
+        "version": 4,
+        "recommendationStart": "2024-04-01",
+        "recommendationEnd": "2027-03-31",
+        "receivingCode": "ENC-1010",
+        "receivingCredits": 3,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "receivingCreditSystem": "semester",
+        "uniqueKitModels": 10,
+        "kitPlacements": 10,
+        "modelIds": [
+          "curriculum-tesu-ba-english",
+          "curriculum-tesu-ba-liberal-studies",
+          "curriculum-tesu-ba-psychology",
+          "curriculum-tesu-bs-computer-information-systems",
+          "curriculum-tesu-bs-general-management",
+          "curriculum-tesu-bs-healthcare-management",
+          "curriculum-tesu-bsba-accounting",
+          "curriculum-tesu-bsba-finance",
+          "curriculum-tesu-bsba-human-resources-organizational-management",
+          "curriculum-tesu-bsba-marketing"
+        ],
+        "sourceCreditStatus": "verified",
+        "mappingResearchClosed": true,
+        "receivingProof": [
+          {
+            "sourceId": "sophia-soph-0015-ace-tesu-equivalency-2026-11-20",
+            "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=90281669-d25b-ee11-be6f-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+            "capture": "content/source-captures/11632c8a48430bbe.txt",
+            "hash": "11632c8a48430bbe235d6a452836a01f28aacdc3d6f80aa55298c3e7c674242f",
+            "kind": "ace",
+            "roles": [
+              "provider-identity",
+              "receiving-institution-submitted-equivalency"
+            ]
+          }
+        ],
+        "novelty": "Already implemented and identity-verified; no new improvement established.",
+        "retainedReceivingCaptureHashRechecked": true
+      },
+      {
+        "rowId": "sophia-soph-0030-to-enc-1020-tesu-2026-2027",
+        "provider": "Sophia",
+        "aceId": "SOPH-0030",
+        "version": 3,
+        "recommendationStart": "2025-11-01",
+        "recommendationEnd": "2028-10-31",
+        "receivingCode": "ENC-1020",
+        "receivingCredits": 3,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "receivingCreditSystem": "semester",
+        "uniqueKitModels": 10,
+        "kitPlacements": 10,
+        "modelIds": [
+          "curriculum-tesu-ba-english",
+          "curriculum-tesu-ba-liberal-studies",
+          "curriculum-tesu-ba-psychology",
+          "curriculum-tesu-bs-computer-information-systems",
+          "curriculum-tesu-bs-general-management",
+          "curriculum-tesu-bs-healthcare-management",
+          "curriculum-tesu-bsba-accounting",
+          "curriculum-tesu-bsba-finance",
+          "curriculum-tesu-bsba-human-resources-organizational-management",
+          "curriculum-tesu-bsba-marketing"
+        ],
+        "sourceCreditStatus": "verified",
+        "mappingResearchClosed": true,
+        "receivingProof": [
+          {
+            "sourceId": "sophia-soph-0030-ace-tesu-equivalency-2026-11-20",
+            "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=3c12d02f-fa71-f011-bec3-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+            "capture": "content/source-captures/274c2429d9f8b5a1.txt",
+            "hash": "274c2429d9f8b5a1110cc99eda259667c4b4a8e9819a06136d1144194f49416e",
+            "kind": "ace",
+            "roles": [
+              "provider-identity",
+              "receiving-institution-submitted-equivalency"
+            ]
+          }
+        ],
+        "novelty": "Already implemented and identity-verified; no new improvement established.",
+        "retainedReceivingCaptureHashRechecked": true
+      },
+      {
+        "rowId": "sophia-soph-0049-to-enc-1020-tesu-2026-2027",
+        "provider": "Sophia",
+        "aceId": "SOPH-0049",
+        "version": 2,
+        "recommendationStart": "2024-05-01",
+        "recommendationEnd": "2027-04-30",
+        "receivingCode": "ENC-1020",
+        "receivingCredits": 3,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "receivingCreditSystem": "semester",
+        "uniqueKitModels": 10,
+        "kitPlacements": 10,
+        "modelIds": [
+          "curriculum-tesu-ba-english",
+          "curriculum-tesu-ba-liberal-studies",
+          "curriculum-tesu-ba-psychology",
+          "curriculum-tesu-bs-computer-information-systems",
+          "curriculum-tesu-bs-general-management",
+          "curriculum-tesu-bs-healthcare-management",
+          "curriculum-tesu-bsba-accounting",
+          "curriculum-tesu-bsba-finance",
+          "curriculum-tesu-bsba-human-resources-organizational-management",
+          "curriculum-tesu-bsba-marketing"
+        ],
+        "sourceCreditStatus": "verified",
+        "mappingResearchClosed": true,
+        "receivingProof": [
+          {
+            "sourceId": "sophia-soph-0049-ace-tesu-equivalency-2026-11-20",
+            "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=d5d7e252-b58b-ee11-8179-00224805f697&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+            "capture": "content/source-captures/c71589879f43b509.txt",
+            "hash": "c71589879f43b509b9d15257f4973df7a8b524515ef8a185cdcef765f0d35c22",
+            "kind": "ace",
+            "roles": [
+              "provider-identity",
+              "receiving-institution-submitted-equivalency"
+            ]
+          }
+        ],
+        "novelty": "Already implemented and identity-verified; no new improvement established.",
+        "retainedReceivingCaptureHashRechecked": true
+      },
+      {
+        "rowId": "sophia-soph-0024-to-com-2090-tesu-2026-2027",
+        "provider": "Sophia",
+        "aceId": "SOPH-0024",
+        "version": 5,
+        "recommendationStart": "2026-08-01",
+        "recommendationEnd": "2029-07-31",
+        "receivingCode": "COM-2090",
+        "receivingCredits": 3,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "receivingCreditSystem": "semester",
+        "uniqueKitModels": 10,
+        "kitPlacements": 19,
+        "modelIds": [
+          "curriculum-tesu-ba-english",
+          "curriculum-tesu-ba-liberal-studies",
+          "curriculum-tesu-ba-psychology",
+          "curriculum-tesu-bs-computer-information-systems",
+          "curriculum-tesu-bs-general-management",
+          "curriculum-tesu-bs-healthcare-management",
+          "curriculum-tesu-bsba-accounting",
+          "curriculum-tesu-bsba-finance",
+          "curriculum-tesu-bsba-human-resources-organizational-management",
+          "curriculum-tesu-bsba-marketing"
+        ],
+        "sourceCreditStatus": "verified",
+        "mappingResearchClosed": true,
+        "receivingProof": [
+          {
+            "sourceId": "sophia-soph-0024-ace-tesu-equivalency-2026-11-20",
+            "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=00952ba0-0a23-f111-8341-000d3a3063b4&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+            "capture": "content/source-captures/fab9edb38527cfd3.txt",
+            "hash": "fab9edb38527cfd30462b5ba8d94d1cde2e5473943e10607a195e7ac3b2db821",
+            "kind": "ace",
+            "roles": [
+              "provider-identity",
+              "receiving-institution-submitted-equivalency"
+            ]
+          }
+        ],
+        "novelty": "Already implemented and identity-verified; no new improvement established.",
+        "retainedReceivingCaptureHashRechecked": true
+      },
+      {
+        "rowId": "sophia-soph-0001-to-mat-1210-tesu-2026-2027",
+        "provider": "Sophia",
+        "aceId": "SOPH-0001",
+        "version": 6,
+        "recommendationStart": "2025-05-01",
+        "recommendationEnd": "2028-04-30",
+        "receivingCode": "MAT-1210",
+        "receivingCredits": 3,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "receivingCreditSystem": "semester",
+        "uniqueKitModels": 10,
+        "kitPlacements": 21,
+        "modelIds": [
+          "curriculum-tesu-ba-english",
+          "curriculum-tesu-ba-liberal-studies",
+          "curriculum-tesu-ba-psychology",
+          "curriculum-tesu-bs-computer-information-systems",
+          "curriculum-tesu-bs-general-management",
+          "curriculum-tesu-bs-healthcare-management",
+          "curriculum-tesu-bsba-accounting",
+          "curriculum-tesu-bsba-finance",
+          "curriculum-tesu-bsba-human-resources-organizational-management",
+          "curriculum-tesu-bsba-marketing"
+        ],
+        "sourceCreditStatus": "verified",
+        "mappingResearchClosed": true,
+        "receivingProof": [
+          {
+            "sourceId": "sophia-soph-0001-ace-tesu-equivalency-2026-11-20",
+            "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=f56ec0dc-e1be-ef11-b8e8-000d3a3ad719&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+            "capture": "content/source-captures/d6cd86c61775dc37.txt",
+            "hash": "d6cd86c61775dc3796f842e9292ce8317915e84282a2abe2d7337192c7c5ddfc",
+            "kind": "ace",
+            "roles": [
+              "provider-identity",
+              "receiving-institution-submitted-equivalency"
+            ]
+          }
+        ],
+        "novelty": "Already implemented and identity-verified; no new improvement established.",
+        "retainedReceivingCaptureHashRechecked": true
+      },
+      {
+        "rowId": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
+        "provider": "Sophia",
+        "aceId": "SOPH-0065",
+        "version": 2,
+        "recommendationStart": "2025-10-01",
+        "recommendationEnd": "2028-09-30",
+        "receivingCode": "PHI-1300",
+        "receivingCredits": 3,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "receivingCreditSystem": "semester",
+        "uniqueKitModels": 10,
+        "kitPlacements": 28,
+        "modelIds": [
+          "curriculum-tesu-ba-english",
+          "curriculum-tesu-ba-liberal-studies",
+          "curriculum-tesu-ba-psychology",
+          "curriculum-tesu-bs-computer-information-systems",
+          "curriculum-tesu-bs-general-management",
+          "curriculum-tesu-bs-healthcare-management",
+          "curriculum-tesu-bsba-accounting",
+          "curriculum-tesu-bsba-finance",
+          "curriculum-tesu-bsba-human-resources-organizational-management",
+          "curriculum-tesu-bsba-marketing"
+        ],
+        "sourceCreditStatus": "verified",
+        "mappingResearchClosed": true,
+        "receivingProof": [
+          {
+            "sourceId": "sophia-soph-0065-ace-tesu-equivalency-2026-11-20",
+            "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+            "capture": "content/source-captures/056a0cf1940396e5.txt",
+            "hash": "056a0cf1940396e50eb833580e06127fcb6fa955eb936ca28f108a667b92bfe7",
+            "kind": "ace",
+            "roles": [
+              "provider-identity",
+              "receiving-institution-submitted-equivalency"
+            ]
+          }
+        ],
+        "novelty": "Already implemented and identity-verified; no new improvement established.",
+        "retainedReceivingCaptureHashRechecked": true
+      }
+    ],
+    "bridgeAssessment": "These shared awards already have verified original identity, source quantity, exact current recommendation period and receiving-course proof. A new source identity bridge is not the missing input. Do not claim their10-model reuse as a new credit improvement or as seven newly unlocked plans.",
+    "remainingReportGroups": "UPI groups still lack university-authoritative receiving proof; other broad TESU groups chiefly cite provisional provider eligibility, conditional/mismatched receiving scope, duplicate source or duplicate receiving-course constraints. Identity work alone cannot remove those conditions.",
+    "newSevenContextIdentityOnlyOpportunityEstablished": false
+  },
+  "implementationRecommendation": {
+    "now": "Keep the seven UPIS-0005 to SOC-1010 candidates conditional with provider-published provenance. Retain this blocked research packet and proof-access reasons. No canonical award promotion or changes to earned/historical credits.",
+    "requiredToPromote": [
+      "A current TESU-authored/hosted crosswalk or traceable university-issued exact course-equivalency decision naming UPI Sociology110 / UPIS-0005 version 1 and SOC-1010 with 3 semester credits, or an institution-submitted equivalency on the exact ACE exhibit.",
+      "Clear scope/catalog/effective dates and original-credit quantity; a different UPI version cannot inherit this award automatically.",
+      "Recheck program placement and run the existing allocation/factory/academic tests across all seven contexts; one receiving crosswalk does not create individual credit awards."
+    ],
+    "studentSpecificEvidenceLimit": "A student's official TESU evaluation could prove that student's award if authorized and available, but should not be generalized into a universal course agreement.",
+    "followUpTrigger": "A newly accessible primary university crosswalk/decision or exact ACE university-submitted row; no outreach or scheduled automation created."
+  },
+  "localAudit": {
+    "files": [
+      {
+        "path": "content/catalog/upi-course-identities-reviewed-2026-11-25.json",
+        "sha256": "06803f74331dbaafbe9eea2a6e62dbae28e5c80c023f19237057463ab7f65c98"
+      },
+      {
+        "path": "content/pathway-kits/providers/upi-study.json",
+        "sha256": "059fc2152f27e20ed70e5982b1dccf6e0e3138647df4a10600a34ae34b26030a"
+      },
+      {
+        "path": "content/pathway-kits/tesu/equivalencies.json",
+        "sha256": "ef3eb58a09ff2a94e7c323323d3e34be1e040a682b9540eb0d05aad8a909d3d1"
+      },
+      {
+        "path": "content/pathway-kits/tesu/course-specific-eligibility-review-2026-11-26.json",
+        "sha256": "c0637b8eb5d0692786352caa807ca3b8ac3f5d62a0d43356eea5b41191d903d6"
+      },
+      {
+        "path": "content/pathway-kits/tesu/course-placements-review-2026-11-27.json",
+        "sha256": "fe1744009422e7d3d9b94e0c6a47c2bfe3cf543e52e7c017f995c78ac2bd98bf"
+      },
+      {
+        "path": "content/pathway-kits/tesu/provider-review-2026-11-25.json",
+        "sha256": "19505b74023a9ffb77e9b5f60946ac9867e31fdb70679e43bf4bc9806f159489"
+      },
+      {
+        "path": "content/source-captures/tesu-upi-provider-map-2026-11-25-c3ff7527f9c8.txt",
+        "sha256": "c3ff7527f9c822f7ca0411013cabe37d798f4648e8f3966184c0e29e40cbbbff"
+      },
+      {
+        "path": "content/source-captures/ea35566ca37a9ac7.txt",
+        "sha256": "ea35566ca37a9ac74ed91ffa7a6d80ce3be69bbba9486ed88c716104f6896a29"
+      },
+      {
+        "path": "dist/data/transfer-maximization-report.json",
+        "sha256": "cef3b5fe9445f04e3c55cfa359bf3de504ed6f5126a612f019123c1080698431"
+      }
+    ],
+    "currentTransferMaximizationSummary": {
+      "publicationReadyModels": 59,
+      "validatedImprovementModels": 0,
+      "additionalOutsideCreditsAcrossAlternativePlans": 0
+    },
+    "sourceQuantityNotReceivingAward": true,
+    "sourceRecommendationWindowNotReceivingPolicyEffectiveDate": true
+  },
+  "disposition": {
+    "status": "watch",
+    "publicationPromotionAllowed": false,
+    "exactReceivingAwardVerified": false,
+    "universityProviderApprovalVerified": true,
+    "originalSourceIdentityVerified": true,
+    "sourceRecommendationCredits": 3,
+    "sourceRecommendationCreditSystem": "semester",
+    "candidateReceivingCredits": 3,
+    "candidateReceivingCreditSystem": "semester",
+    "originalIdentityIsNotUniversityAcceptance": true,
+    "universityCourseExistenceIsNotAcceptanceOfUPICourse": true,
+    "affectedContextCount": 7,
+    "affectedModelIds": [
+      "curriculum-tesu-ba-english",
+      "curriculum-tesu-ba-liberal-studies",
+      "curriculum-tesu-ba-psychology",
+      "curriculum-tesu-bs-general-management",
+      "curriculum-tesu-bsba-accounting",
+      "curriculum-tesu-bsba-finance",
+      "curriculum-tesu-bsba-human-resources-organizational-management"
+    ],
+    "specificOfficialLookupGaps": [
+      "No TESU-authored/hosted exact Sociology110 / UPIS-0005 version1 to SOC-1010 receiving row retrieved.",
+      "No university-submitted equivalent on the exact ACE exhibit retrieved; retained server-rendered equivalencies section is empty.",
+      "UPI View Official Agreement resolves to a provider-status directory, which is not a course crosswalk.",
+      "No documented public TESU UPI-equivalency API/CLI located; public SelfService course search is not a transfer-equivalency table.",
+      "MyProgress evaluated-credit records are student-specific authenticated records; no private records accessed."
+    ],
+    "action": "Preserve seven conditional candidates and historical records. No equivalency promotion or individual award."
+  }
+}

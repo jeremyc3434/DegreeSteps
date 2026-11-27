@@ -10,7 +10,7 @@ const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www
 const index='<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n<sitemap><loc>https://degreesteps.com/sitemap-site.xml</loc></sitemap>\n<sitemap><loc>https://degreesteps.com/sitemap-insights.xml</loc></sitemap>\n</sitemapindex>\n';
 async function fixture(t){
  const root=await mkdtemp(join(tmpdir(),'staging-release-'));t.after(()=>rm(root,{recursive:true,force:true}));
- const bodies=new Map([['/robots.txt','User-agent: *\nDisallow: /\n'],['/','<h1>Built release</h1>'],['/brand.css','body { color: black; }'],['/data/credit-sources.json','{"sources":[]}'],['/data/program-catalog.json','{"programs":[]}'],['/sitemap.xml',sitemap]]);
+ const bodies=new Map([['/robots.txt','User-agent: *\nDisallow: /\n'],['/','<h1>Built release</h1>'],['/brand.css','body { color: black; }'],['/data/credit-sources.json','{"sources":[]}'],['/data/program-catalog.json','{"programs":[]}'],['/courses.html','<h1>Find original courses</h1>'],['/courses.js','document.title="Original course browser";'],['/data/course-catalog.json','{"courses":[]}'],['/sitemap.xml',sitemap]]);
  for(const[route,body]of bodies){if(route==='/robots.txt')continue;const file=join(root,route==='/'?'index.html':route);await mkdir(join(file,'..'),{recursive:true});await writeFile(file,body);}
  const calls=[],logs=[];
  const fetchImpl=async(url,options)=>{
@@ -22,10 +22,10 @@ async function fixture(t){
 }
 
 test('staging proof compares built bytes with fixed anonymous GETs and includes present editorial assets',async t=>{
- const f=await fixture(t),route='/credit-sources/google-certificates/',body='<h1>A reviewed certificate source</h1>';
- await mkdir(join(f.root,route),{recursive:true});await writeFile(join(f.root,route,'index.html'),body);f.bodies.set(route,body);
- const results=await checkStagingRelease(f.options);assert.equal(results.length,7);assert.deepEqual(f.calls,[...f.bodies.keys()]);
- assert(results.every(item=>item.sha256===item.expectedSha256&&item.status===200));assert.equal(f.logs.length,7);
+ const f=await fixture(t);
+ for(const [route,body]of [['/credit-sources/google-certificates/','<h1>A reviewed certificate source</h1>'],['/credit-sources/christian-leaders/','<h1>CLI academic credit requires an eligible transcript route</h1>']]){await mkdir(join(f.root,route),{recursive:true});await writeFile(join(f.root,route,'index.html'),body);f.bodies.set(route,body);}
+ const results=await checkStagingRelease(f.options);assert.equal(results.length,11);assert.deepEqual(f.calls,[...f.bodies.keys()]);
+ assert(results.every(item=>item.sha256===item.expectedSha256&&item.status===200));assert.equal(f.logs.length,11);
  assert(!JSON.stringify(f.logs).includes('<h1>'));assert(!f.calls.some(path=>path.startsWith('/api/')));
 });
 test('a dynamic sitemap index verifies the fixed static shard without following returned URLs',async t=>{
@@ -45,7 +45,7 @@ test('a stale release retries within the bound and reports only route, status an
 test('a newly propagated release succeeds on a bounded retry',async t=>{
  const f=await fixture(t),fetchImpl=f.options.fetchImpl;let rootCalls=0;
  const result=await checkStagingRelease({...f.options,attempts:2,fetchImpl:async(url,options)=>{if(new URL(url).pathname==='/'&&rootCalls++===0)return new Response('stale',{headers});return fetchImpl(url,options);}});
- assert.equal(rootCalls,2);assert.equal(result.length,6);
+ assert.equal(rootCalls,2);assert.equal(result.length,9);
 });
 test('response bounds grow with a legitimate multi-megabyte built catalog',async t=>{
  const f=await fixture(t),body=JSON.stringify({programs:[],notes:'a'.repeat(4*1024*1024)});
@@ -73,6 +73,5 @@ test('the deadline aborts a stalled request and provider diagnostics are not log
  await assert.rejects(checkStagingRelease({...f.options,fetchImpl:async()=>{throw Error('secret provider diagnostic');}}),{code:'request-failed'});assert(!JSON.stringify(f.logs).includes('secret provider'));
 });
 test('a missing mandatory build artifact fails before any network request',async t=>{
- const f=await fixture(t);await rm(join(f.root,'data/program-catalog.json'));
- await assert.rejects(checkStagingRelease(f.options),{code:'built-asset-unavailable',route:'/data/program-catalog.json'});assert.deepEqual(f.calls,[]);
+ for(const route of ['/data/program-catalog.json','/courses.html','/courses.js','/data/course-catalog.json']){const f=await fixture(t);await rm(join(f.root,route));await assert.rejects(checkStagingRelease(f.options),{code:'built-asset-unavailable',route});assert.deepEqual(f.calls,[]);}
 });

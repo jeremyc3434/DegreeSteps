@@ -706,7 +706,8 @@ const searchContracts={
   "credit-sources/actfl/index.html": "049b4f2e0fafc01c4246a77d470c4e76f7af6fa1b82ca8480092b594004dd513",
   "credit-sources/aleks/index.html": "970a932c70c2964ca3850cf8fe20939b6caa1f7b142812a7a890dcde01ba998e",
   "credit-sources/asu-ulc/index.html": "cbb927f8ac95c195d255a3b580ce9f92eaa57b231c105ec2c8a0867c5db61c23",
-  "credit-sources/christian-leaders/index.html": "16ace115c2b380cb88521c8dd94a516436d7575123b8f11b323e0c41ec7c91b6",
+  // The reviewed LES admission/transcript distinction intentionally corrects this description.
+  "credit-sources/christian-leaders/index.html": "c36c28e0f37bc9110eaac81b160122960ca6c3fcdd10febc64af15ab269842cd",
   "credit-sources/clep/index.html": "609e2f3a267139a58cc1b738c9001093fa757f7a55b9a1e07ab9f9150a188faf",
   "credit-sources/coopersmith/index.html": "e7918a12104ad692c389a6f167e48c025667c473093af3c3e809646dd87f4b85",
   "credit-sources/coursera-certificates/index.html": "848c4eb0087cdb50a75e46dbf39cf111ce6d87cf8d1b4f38837b6c6565831e03",

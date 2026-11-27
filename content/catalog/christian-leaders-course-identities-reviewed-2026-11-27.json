@@ -1,0 +1,960 @@
+{
+  "kind": "christian-leaders-course-identities-reviewed",
+  "version": 1,
+  "id": "christian-leaders-course-identities-reviewed-2026-11-27",
+  "reviewedOn": "2026-11-27",
+  "provider": "Christian Leaders Institute",
+  "scope": "Fourteen current original CLI course offerings for an eligible LES academic transcript route; provider-only identities and quantities. No receiving award, earned student credit, full accreditation or admission eligibility is granted.",
+  "courseCount": 14,
+  "originalAcademicCreditRouteRequired": true,
+  "freeCdsStudyAwardsAcademicCredit": false,
+  "receivingAwardsPromoted": 0,
+  "publicationPromotionAllowed": false,
+  "studentCreditsAwarded": 0,
+  "academicUnitProof": {
+    "status": "live-official-semester-credit-policy-reviewed",
+    "creditSystem": "semester",
+    "sourceIds": [
+      "cli-academic-semester-credit-policy-live"
+    ],
+    "currentCatalogYear": null,
+    "limitation": "The live official policy explains semester-hour calculation and CDS-units versus LES-credits. Its catalog year is unidentified. The October 2026 PDF could not be independently retrieved in this subtask; no current PDF capture is claimed."
+  },
+  "eligibility": {
+    "status": "unresolved",
+    "exactLegalTranscriptIssuer": null,
+    "academicSchool": "Leadership Excellence School",
+    "academicTranscriptRequired": true,
+    "personalAdmissionGuaranteed": false,
+    "degreeCompletionRequired": false,
+    "formalDegreeEnrollmentRequired": null,
+    "feeConflict": {
+      "status": "current-official-source-conflict",
+      "amounts": [
+        {
+          "amount": 75,
+          "currency": "USD",
+          "scope": "LES admission fee",
+          "source": "cli-learning-costs",
+          "sourceLastModified": "2026-04-10",
+          "retrieval": "Official learning-platform page indexed by connector search; direct open403."
+        },
+        {
+          "amount": 125,
+          "currency": "USD",
+          "scope": "Application fee advertised in current degree marketing/FAQ",
+          "source": "cli-degree-faq",
+          "sourceLastModified": null
+        },
+        {
+          "amount": 75,
+          "currency": "USD",
+          "scope": "LES application in existing curated 2026 catalog review",
+          "source": "existing-curated-review",
+          "sourceLastModified": null
+        }
+      ],
+      "planningAmount": null
+    },
+    "transcriptFees": {
+      "nonDegreeCompleter": 75,
+      "degreeCompleter": 30,
+      "currency": "USD",
+      "basis": "transcript processing/verification fee to send to another institution",
+      "source": "cli-transfer",
+      "verifiedOn": "2026-11-27",
+      "additionalThirdPartyChargesVerified": false
+    },
+    "jurisdictionConflict": {
+      "status": "conflicting-official-source-lists-current-admission-not-guaranteed",
+      "currentLiveDegreeFaqExcluded": [
+        "CT",
+        "DE",
+        "DC",
+        "IL",
+        "KY",
+        "MI",
+        "NV",
+        "NJ",
+        "NY",
+        "ND",
+        "OR",
+        "RI",
+        "UT",
+        "VA",
+        "WY"
+      ],
+      "existingCurated2026CatalogExcluded": [
+        "CT",
+        "DE",
+        "DC",
+        "IL",
+        "KS",
+        "KY",
+        "MI",
+        "MS",
+        "NV",
+        "NJ",
+        "NY",
+        "ND",
+        "OR",
+        "PR",
+        "RI",
+        "VA"
+      ],
+      "onlyInCurrentLiveDegreeFaq": [
+        "UT",
+        "WY"
+      ],
+      "onlyInExistingCuratedCatalogReview": [
+        "KS",
+        "MS",
+        "PR"
+      ],
+      "sharedExcluded": [
+        "CT",
+        "DE",
+        "DC",
+        "IL",
+        "KY",
+        "MI",
+        "NV",
+        "NJ",
+        "NY",
+        "ND",
+        "OR",
+        "RI",
+        "VA"
+      ],
+      "effectiveDate": null,
+      "rule": "Do not select either list as definitively current or combine them into a newly invented exclusion policy. No positive eligibility inferred for a jurisdiction merely omitted from one source. Retain both source scopes and require provider's current LES eligibility determination before describing a route as available.",
+      "freeCdsStudy": "The live FAQ distinguishes free CDS/Alliance access from LES admission and credit eligibility for excluded jurisdictions.",
+      "sources": [
+        "cli-degree-faq",
+        "existing-curated-review"
+      ]
+    },
+    "regionalAccreditationEstablished": false,
+    "accreditation": {
+      "provider": "Christian Leaders Institute",
+      "school": "Leadership Excellence School (LES)",
+      "exactLegalIssuer": "Not independently established from an actual current transcript or the inaccessible 2026 catalog. Current provider pages identify Christian Leaders Institute with separate CDS and LES schools; do not collapse school/program labels into a legal transcript issuer.",
+      "status": "ABHE Candidate Institution / preaccredited, not full accreditation",
+      "regionalAccreditationEstablished": false,
+      "accreditorSource": "abhe-fact-sheet",
+      "accreditorDates": {
+        "candidateStatusGranted": 2024,
+        "lastReview": "2024-02-14",
+        "initialAccreditationGranted": null,
+        "factSheetRevised": "2025-03-26"
+      },
+      "caution": "ABHE candidacy does not establish regional institutional accreditation, ACE recommendation or Liberty's individual transfer approval. CLI is a potential credit source, not an eligible regionally accredited destination degree recommendation.",
+      "sources": [
+        "cli-faq",
+        "cli-accreditation-status",
+        "abhe-fact-sheet"
+      ]
+    },
+    "automaticAllInRouteCost": null,
+    "sourceIds": [
+      "cli-academic-route-live",
+      "cli-individual-credit-faq-live",
+      "cli-transcript-policy-live",
+      "cli-learning-platform-admission-fee",
+      "cli-abhe-candidate-fact-sheet"
+    ],
+    "requiredFollowup": [
+      "Obtain the actual current 2026 catalog PDF/text through the official public link and retain bytes and hash; compare LES admission, application fee and jurisdiction rules.",
+      "Establish the exact academic transcript issuer and whether non-degree LES academic admission is available for the student's jurisdiction.",
+      "Keep prospective CLI course choices conditional until route-specific eligibility is established; acceptance of a Liberty receiving mapping alone does not satisfy provider eligibility."
+    ]
+  },
+  "retention": {
+    "directory": "content/research-batches/shared-transfer-evidence-2026-11-27",
+    "manifestPath": "content/research-batches/shared-transfer-evidence-2026-11-27/manifest.json",
+    "manifestSha256": "41e712bfe2b7ff9064519d90b5f16cc0ebf7f1d2b39f8949137a1f620c880972",
+    "transport": "connector-rendered-extraction",
+    "originHttpCaptureClaimed": false,
+    "originalHistoricalReviewPath": "content/research-batches/liberty-religion-maximization-review-2026-11-27.json",
+    "historicalCalculator": {
+      "path": "content/transfer-awards/snapshots/liberty-cli-calculator-2026-11-24.json",
+      "observationOn": "2026-11-24",
+      "sha256": "4fe1b9dba704f03d80aef7f02bba50d222d2db66223479f0a72c1c67640eec85",
+      "freshApiRetrievalClaimed": false
+    }
+  },
+  "sources": [
+    {
+      "id": "cli-theology-course-offerings-live",
+      "kind": "provider",
+      "publisher": "Christian Leaders Institute",
+      "url": "https://degrees.christianleaders.org/theology-courses/",
+      "checkedOn": "2026-11-27",
+      "observationKind": "connector-rendered-extraction",
+      "nativeReceiptPath": "content/research-batches/shared-transfer-evidence-2026-11-27/liberty-receipts/liberty-focused-valid.json",
+      "nativeReceiptSha256": "ce755a6e475afc66f555094cdbee6865e484d8d8c50766fb723a0748840ec2aa",
+      "originHttpStatus": null,
+      "shortQuote": "THE 101 Christian Basics: Introduction to Christian Doctrine (3 credits)"
+    },
+    {
+      "id": "cli-biblical-course-offerings-live",
+      "kind": "provider",
+      "publisher": "Christian Leaders Institute",
+      "url": "https://degrees.christianleaders.org/biblical-courses/",
+      "checkedOn": "2026-11-27",
+      "observationKind": "connector-rendered-extraction",
+      "nativeReceiptPath": "content/research-batches/shared-transfer-evidence-2026-11-27/liberty-receipts/liberty-credit-unit-originals.json",
+      "nativeReceiptSha256": "50197c430a0f7a7949aa22d510ae6d82bdb6eb41da8088ce099d7ec8717b6b50",
+      "originHttpStatus": null,
+      "shortQuote": "BIB 111 Old Testament Survey (3 credits)"
+    },
+    {
+      "id": "cli-ministry-course-offerings-live",
+      "kind": "provider",
+      "publisher": "Christian Leaders Institute",
+      "url": "https://degrees.christianleaders.org/ministry-courses/",
+      "checkedOn": "2026-11-27",
+      "observationKind": "connector-rendered-extraction",
+      "nativeReceiptPath": "content/research-batches/shared-transfer-evidence-2026-11-27/liberty-receipts/liberty-other-originals.json",
+      "nativeReceiptSha256": "4c09bc8f395bafec73933a605f8ade2e002b271f0f696b1d88c90a3ed1ba8b1b",
+      "originHttpStatus": null,
+      "shortQuote": "MIN 101 Ministry Foundations (3 credits)"
+    },
+    {
+      "id": "cli-academic-semester-credit-policy-live",
+      "kind": "provider",
+      "publisher": "Christian Leaders Institute",
+      "url": "https://www.christianleadersinstitute.org/199562-2/",
+      "checkedOn": "2026-11-27",
+      "observationKind": "connector-rendered-extraction",
+      "nativeReceiptPath": "content/research-batches/shared-transfer-evidence-2026-11-27/liberty-receipts/liberty-credit-unit-originals.json",
+      "nativeReceiptSha256": "50197c430a0f7a7949aa22d510ae6d82bdb6eb41da8088ce099d7ec8717b6b50",
+      "originHttpStatus": null,
+      "shortQuote": "semester credit hour value that CLI will award",
+      "catalogYear": null,
+      "scope": "Live unversioned official academic-policy text; course credits are semester credit hours on the eligible academic route. This is not independent retrieval of the October 2026 PDF."
+    },
+    {
+      "id": "cli-academic-route-live",
+      "kind": "provider",
+      "publisher": "Christian Leaders Institute",
+      "url": "https://www.christianleadersinstitute.org/admission/",
+      "checkedOn": "2026-11-27",
+      "observationKind": "connector-rendered-extraction",
+      "nativeReceiptPath": "content/research-batches/shared-transfer-evidence-2026-11-27/liberty-eligibility-receipts/cli-eligibility-open-2.json",
+      "nativeReceiptSha256": "8e3f9526c31d20b67a1625a1b2ab56d143108b1a62cf225eef90bf0e0e537ea1",
+      "originHttpStatus": null,
+      "shortQuote": "Once this course is completed, you will be admitted to the college program (Leadership Excellence School)."
+    },
+    {
+      "id": "cli-individual-credit-faq-live",
+      "kind": "provider",
+      "publisher": "Christian Leaders Institute",
+      "url": "https://www.christianleadersinstitute.org/degree-faq-expanded/",
+      "checkedOn": "2026-11-27",
+      "observationKind": "connector-rendered-extraction",
+      "nativeReceiptPath": "content/research-batches/shared-transfer-evidence-2026-11-27/liberty-eligibility-receipts/cli-eligibility-open-3.json",
+      "nativeReceiptSha256": "26cc23be112a181a5fad345339feddbba5be69d1701064d226e5f28a06dcf952",
+      "originHttpStatus": null,
+      "shortQuote": "You can earn an associate degree, or individual credits with us, and then transfer into a program in your desired field."
+    },
+    {
+      "id": "cli-transcript-policy-live",
+      "kind": "provider",
+      "publisher": "Christian Leaders Institute",
+      "url": "https://www.christianleadersinstitute.org/transfer-information/",
+      "checkedOn": "2026-11-27",
+      "observationKind": "connector-rendered-extraction",
+      "nativeReceiptPath": "content/research-batches/shared-transfer-evidence-2026-11-27/liberty-eligibility-receipts/cli-eligibility-open-2.json",
+      "nativeReceiptSha256": "8e3f9526c31d20b67a1625a1b2ab56d143108b1a62cf225eef90bf0e0e537ea1",
+      "originHttpStatus": null,
+      "shortQuote": "The receiving institution determines the transfer of academic credits to that institution."
+    },
+    {
+      "id": "cli-learning-platform-admission-fee",
+      "kind": "provider",
+      "publisher": "Christian Leaders Institute",
+      "url": "https://christianleaders.org/mod/page/view.php?id=57395",
+      "checkedOn": "2026-11-27",
+      "observationKind": "connector-rendered-extraction",
+      "nativeReceiptPath": "content/research-batches/shared-transfer-evidence-2026-11-27/liberty-eligibility-receipts/cli-eligibility-search-2.json",
+      "nativeReceiptSha256": "1bf0937d229a4d2533d6a128b7a07c01e9c68d26d61f4704624247a7f0d250e8",
+      "originHttpStatus": null,
+      "shortQuote": "Leadership Excellence School Admission fee: $75",
+      "sourceLastModified": "2026-04-10",
+      "scope": "Indexed official learning-platform excerpt; direct open returned403 in retained receipt."
+    },
+    {
+      "id": "cli-abhe-candidate-fact-sheet",
+      "kind": "accreditor",
+      "publisher": "ABHE Commission on Accreditation",
+      "url": "https://app.weaveeducation.com/publicFiles/institutionprofilepdfs/Christian_Leaders_Institute-ABHE_-_Association_for_Biblical_Higher_Education-97x6-Fact_Sheet.pdf?v=609225811",
+      "checkedOn": "2026-11-27",
+      "observationKind": "connector-rendered-extraction",
+      "nativeReceiptPath": "content/research-batches/shared-transfer-evidence-2026-11-27/liberty-eligibility-receipts/cli-eligibility-search-2.json",
+      "nativeReceiptSha256": "1bf0937d229a4d2533d6a128b7a07c01e9c68d26d61f4704624247a7f0d250e8",
+      "originHttpStatus": null,
+      "shortQuote": "Current Status: Candidate Institution",
+      "sourceRevisedOn": "2025-03-26"
+    },
+    {
+      "id": "liberty-credit-shortage-policy-live",
+      "kind": "university",
+      "publisher": "Liberty University",
+      "url": "https://www.liberty.edu/registrar/transfer-policies/undergraduates/",
+      "checkedOn": "2026-11-27",
+      "observationKind": "connector-rendered-extraction",
+      "nativeReceiptPath": "content/research-batches/shared-transfer-evidence-2026-11-27/liberty-receipts/liberty-initial.json",
+      "nativeReceiptSha256": "c9a0251739d7f5aa55a7ffd188e22cfe0c32bc62553ba8ea287016a1f2f9db2f",
+      "originHttpStatus": null,
+      "shortQuote": "The 2/3 rule may create a shortage of credit hours",
+      "scope": "Credit fulfillment and graduation-hour accounting only; no receiving-award promotion."
+    },
+    {
+      "id": "cli-learning-costs",
+      "kind": "provider",
+      "publisher": "Christian Leaders Institute",
+      "url": "https://christianleaders.org/mod/page/view.php?id=57395",
+      "checkedOn": "2026-11-27",
+      "observationKind": "connector-rendered-extraction",
+      "nativeReceiptPath": "content/research-batches/shared-transfer-evidence-2026-11-27/liberty-eligibility-receipts/cli-eligibility-search-2.json",
+      "nativeReceiptSha256": "1bf0937d229a4d2533d6a128b7a07c01e9c68d26d61f4704624247a7f0d250e8",
+      "originHttpStatus": null,
+      "shortQuote": "Leadership Excellence School Admission fee: $75",
+      "sourceLastModified": "2026-04-10",
+      "scope": "Indexed official learning-platform excerpt; direct open returned403 in retained receipt.",
+      "sameObservationAs": "cli-learning-platform-admission-fee"
+    },
+    {
+      "id": "cli-degree-faq",
+      "kind": "provider",
+      "publisher": "Christian Leaders Institute",
+      "url": "https://www.christianleadersinstitute.org/degree-faq-expanded/",
+      "checkedOn": "2026-11-27",
+      "observationKind": "connector-rendered-extraction",
+      "nativeReceiptPath": "content/research-batches/shared-transfer-evidence-2026-11-27/liberty-eligibility-receipts/cli-eligibility-open-3.json",
+      "nativeReceiptSha256": "26cc23be112a181a5fad345339feddbba5be69d1701064d226e5f28a06dcf952",
+      "originHttpStatus": null,
+      "shortQuote": "You can earn an associate degree, or individual credits with us, and then transfer into a program in your desired field.",
+      "sameObservationAs": "cli-individual-credit-faq-live"
+    },
+    {
+      "id": "cli-transfer",
+      "kind": "provider",
+      "publisher": "Christian Leaders Institute",
+      "url": "https://www.christianleadersinstitute.org/transfer-information/",
+      "checkedOn": "2026-11-27",
+      "observationKind": "connector-rendered-extraction",
+      "nativeReceiptPath": "content/research-batches/shared-transfer-evidence-2026-11-27/liberty-eligibility-receipts/cli-eligibility-open-2.json",
+      "nativeReceiptSha256": "8e3f9526c31d20b67a1625a1b2ab56d143108b1a62cf225eef90bf0e0e537ea1",
+      "originHttpStatus": null,
+      "shortQuote": "The receiving institution determines the transfer of academic credits to that institution.",
+      "sameObservationAs": "cli-transcript-policy-live"
+    },
+    {
+      "id": "abhe-fact-sheet",
+      "kind": "accreditor",
+      "publisher": "ABHE Commission on Accreditation",
+      "url": "https://app.weaveeducation.com/publicFiles/institutionprofilepdfs/Christian_Leaders_Institute-ABHE_-_Association_for_Biblical_Higher_Education-97x6-Fact_Sheet.pdf?v=609225811",
+      "checkedOn": "2026-11-27",
+      "observationKind": "connector-rendered-extraction",
+      "nativeReceiptPath": "content/research-batches/shared-transfer-evidence-2026-11-27/liberty-eligibility-receipts/cli-eligibility-search-2.json",
+      "nativeReceiptSha256": "1bf0937d229a4d2533d6a128b7a07c01e9c68d26d61f4704624247a7f0d250e8",
+      "originHttpStatus": null,
+      "shortQuote": "Current Status: Candidate Institution",
+      "sourceRevisedOn": "2025-03-26",
+      "sameObservationAs": "cli-abhe-candidate-fact-sheet"
+    },
+    {
+      "id": "cli-faq",
+      "kind": "provider",
+      "publisher": "Christian Leaders Institute",
+      "url": "https://www.christianleadersinstitute.org/frequently-asked-questions/",
+      "checkedOn": "2026-11-27",
+      "observationKind": "connector-rendered-extraction",
+      "nativeReceiptPath": "content/research-batches/shared-transfer-evidence-2026-11-27/liberty-eligibility-receipts/cli-eligibility-open-2.json",
+      "nativeReceiptSha256": "8e3f9526c31d20b67a1625a1b2ab56d143108b1a62cf225eef90bf0e0e537ea1",
+      "originHttpStatus": null,
+      "shortQuote": "If you would like to learn about enrollment in the Leadership Excellence School (to earn college credit)"
+    },
+    {
+      "id": "cli-accreditation-status",
+      "kind": "provider",
+      "publisher": "Christian Leaders Institute",
+      "url": "https://www.christianleadersinstitute.org/accreditation-status/",
+      "checkedOn": "2026-11-27",
+      "observationKind": "connector-rendered-extraction",
+      "nativeReceiptPath": "content/research-batches/shared-transfer-evidence-2026-11-27/liberty-eligibility-receipts/cli-eligibility-search-2.json",
+      "nativeReceiptSha256": "1bf0937d229a4d2533d6a128b7a07c01e9c68d26d61f4704624247a7f0d250e8",
+      "originHttpStatus": null,
+      "shortQuote": "Candidate status is a pre-accreditation status granted to those institutions that meet the ABHE Conditions of Eligibility"
+    }
+  ],
+  "courses": [
+    {
+      "identityId": "cli-bib-111-academic-offering-reviewed-2026-11-27",
+      "code": "BIB 111",
+      "title": "Old Testament Survey",
+      "courseUrl": "https://degrees.christianleaders.org/biblical-courses/",
+      "provider": "Christian Leaders Institute",
+      "academicSchool": "Leadership Excellence School",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceQuantityScope": "Published college-level academic course offering for the eligible LES academic transcript route. This is not credit earned by free CDS study.",
+      "originalAcademicCreditRouteRequired": true,
+      "academicCreditRouteRequired": true,
+      "academicTranscriptRequired": true,
+      "freeCdsStudyAwardsAcademicCredit": false,
+      "sourceQuote": "BIB 111 Old Testament Survey (3 credits)",
+      "identitySourceIds": [
+        "cli-biblical-course-offerings-live"
+      ],
+      "unitProofSourceIds": [
+        "cli-academic-semester-credit-policy-live"
+      ],
+      "prerequisites": null,
+      "prerequisiteStatus": "not-established",
+      "sourceUpper": null,
+      "courseVersion": null,
+      "aceId": null,
+      "recommendationStart": null,
+      "recommendationEnd": null,
+      "reviewedOn": "2026-11-27",
+      "identityReviewStatus": "published-original-offering-reviewed",
+      "prospectiveCreditRouteStatus": "conditional-eligibility-unresolved",
+      "publicationPromotionAllowed": false,
+      "studentCreditAwarded": false,
+      "unitProofQuote": "semester credit hour value that CLI will award"
+    },
+    {
+      "identityId": "cli-bib-112-academic-offering-reviewed-2026-11-27",
+      "code": "BIB 112",
+      "title": "New Testament Survey",
+      "courseUrl": "https://degrees.christianleaders.org/biblical-courses/",
+      "provider": "Christian Leaders Institute",
+      "academicSchool": "Leadership Excellence School",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceQuantityScope": "Published college-level academic course offering for the eligible LES academic transcript route. This is not credit earned by free CDS study.",
+      "originalAcademicCreditRouteRequired": true,
+      "academicCreditRouteRequired": true,
+      "academicTranscriptRequired": true,
+      "freeCdsStudyAwardsAcademicCredit": false,
+      "sourceQuote": "BIB 112 New Testament Survey (3 credits)",
+      "identitySourceIds": [
+        "cli-biblical-course-offerings-live"
+      ],
+      "unitProofSourceIds": [
+        "cli-academic-semester-credit-policy-live"
+      ],
+      "prerequisites": null,
+      "prerequisiteStatus": "not-established",
+      "sourceUpper": null,
+      "courseVersion": null,
+      "aceId": null,
+      "recommendationStart": null,
+      "recommendationEnd": null,
+      "reviewedOn": "2026-11-27",
+      "identityReviewStatus": "published-original-offering-reviewed",
+      "prospectiveCreditRouteStatus": "conditional-eligibility-unresolved",
+      "publicationPromotionAllowed": false,
+      "studentCreditAwarded": false,
+      "unitProofQuote": "semester credit hour value that CLI will award"
+    },
+    {
+      "identityId": "cli-min-310-academic-offering-reviewed-2026-11-27",
+      "code": "MIN 310",
+      "title": "Evangelism: Presenting Grace",
+      "courseUrl": "https://degrees.christianleaders.org/ministry-courses/",
+      "provider": "Christian Leaders Institute",
+      "academicSchool": "Leadership Excellence School",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceQuantityScope": "Published college-level academic course offering for the eligible LES academic transcript route. This is not credit earned by free CDS study.",
+      "originalAcademicCreditRouteRequired": true,
+      "academicCreditRouteRequired": true,
+      "academicTranscriptRequired": true,
+      "freeCdsStudyAwardsAcademicCredit": false,
+      "sourceQuote": "MIN 310 Evangelism: Presenting Grace (3 credits)",
+      "identitySourceIds": [
+        "cli-ministry-course-offerings-live"
+      ],
+      "unitProofSourceIds": [
+        "cli-academic-semester-credit-policy-live"
+      ],
+      "prerequisites": null,
+      "prerequisiteStatus": "not-established",
+      "sourceUpper": null,
+      "courseVersion": null,
+      "aceId": null,
+      "recommendationStart": null,
+      "recommendationEnd": null,
+      "reviewedOn": "2026-11-27",
+      "identityReviewStatus": "published-original-offering-reviewed",
+      "prospectiveCreditRouteStatus": "conditional-eligibility-unresolved",
+      "publicationPromotionAllowed": false,
+      "studentCreditAwarded": false,
+      "unitProofQuote": "semester credit hour value that CLI will award"
+    },
+    {
+      "identityId": "cli-the-101-academic-offering-reviewed-2026-11-27",
+      "code": "THE 101",
+      "title": "Christian Basics: Introduction to Christian Doctrine",
+      "courseUrl": "https://degrees.christianleaders.org/theology-courses/",
+      "provider": "Christian Leaders Institute",
+      "academicSchool": "Leadership Excellence School",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceQuantityScope": "Published college-level academic course offering for the eligible LES academic transcript route. This is not credit earned by free CDS study.",
+      "originalAcademicCreditRouteRequired": true,
+      "academicCreditRouteRequired": true,
+      "academicTranscriptRequired": true,
+      "freeCdsStudyAwardsAcademicCredit": false,
+      "sourceQuote": "THE 101 Christian Basics: Introduction to Christian Doctrine (3 credits)",
+      "identitySourceIds": [
+        "cli-theology-course-offerings-live"
+      ],
+      "unitProofSourceIds": [
+        "cli-academic-semester-credit-policy-live"
+      ],
+      "prerequisites": [
+        {
+          "code": null,
+          "title": "Christian Leaders Connections",
+          "sourceId": "cli-theology-course-offerings-live",
+          "quote": "This course is for those who have already taken the Christian Leaders Connections course."
+        }
+      ],
+      "prerequisiteStatus": "specific-prerequisite-reviewed",
+      "sourceUpper": null,
+      "courseVersion": null,
+      "aceId": null,
+      "recommendationStart": null,
+      "recommendationEnd": null,
+      "reviewedOn": "2026-11-27",
+      "identityReviewStatus": "published-original-offering-reviewed",
+      "prospectiveCreditRouteStatus": "conditional-eligibility-unresolved",
+      "publicationPromotionAllowed": false,
+      "studentCreditAwarded": false,
+      "unitProofQuote": "semester credit hour value that CLI will award"
+    },
+    {
+      "identityId": "cli-the-210-academic-offering-reviewed-2026-11-27",
+      "code": "THE 210",
+      "title": "Theology I",
+      "courseUrl": "https://degrees.christianleaders.org/theology-courses/",
+      "provider": "Christian Leaders Institute",
+      "academicSchool": "Leadership Excellence School",
+      "sourceCredits": 4,
+      "sourceCreditSystem": "semester",
+      "sourceQuantityScope": "Published college-level academic course offering for the eligible LES academic transcript route. This is not credit earned by free CDS study.",
+      "originalAcademicCreditRouteRequired": true,
+      "academicCreditRouteRequired": true,
+      "academicTranscriptRequired": true,
+      "freeCdsStudyAwardsAcademicCredit": false,
+      "sourceQuote": "THE 210 Theology I (4 credits)",
+      "identitySourceIds": [
+        "cli-theology-course-offerings-live"
+      ],
+      "unitProofSourceIds": [
+        "cli-academic-semester-credit-policy-live"
+      ],
+      "prerequisites": null,
+      "prerequisiteStatus": "not-established",
+      "sourceUpper": null,
+      "courseVersion": null,
+      "aceId": null,
+      "recommendationStart": null,
+      "recommendationEnd": null,
+      "reviewedOn": "2026-11-27",
+      "identityReviewStatus": "published-original-offering-reviewed",
+      "prospectiveCreditRouteStatus": "conditional-eligibility-unresolved",
+      "publicationPromotionAllowed": false,
+      "studentCreditAwarded": false,
+      "unitProofQuote": "semester credit hour value that CLI will award"
+    },
+    {
+      "identityId": "cli-the-310-academic-offering-reviewed-2026-11-27",
+      "code": "THE 310",
+      "title": "Theology II",
+      "courseUrl": "https://degrees.christianleaders.org/theology-courses/",
+      "provider": "Christian Leaders Institute",
+      "academicSchool": "Leadership Excellence School",
+      "sourceCredits": 4,
+      "sourceCreditSystem": "semester",
+      "sourceQuantityScope": "Published college-level academic course offering for the eligible LES academic transcript route. This is not credit earned by free CDS study.",
+      "originalAcademicCreditRouteRequired": true,
+      "academicCreditRouteRequired": true,
+      "academicTranscriptRequired": true,
+      "freeCdsStudyAwardsAcademicCredit": false,
+      "sourceQuote": "THE 310 Theology II (4 credits)",
+      "identitySourceIds": [
+        "cli-theology-course-offerings-live"
+      ],
+      "unitProofSourceIds": [
+        "cli-academic-semester-credit-policy-live"
+      ],
+      "prerequisites": [
+        {
+          "code": "THE 210",
+          "title": "Theology I",
+          "sourceId": "cli-theology-course-offerings-live",
+          "quote": "You must take Theology I before you may take Theology II."
+        }
+      ],
+      "prerequisiteStatus": "specific-prerequisite-reviewed",
+      "sourceUpper": null,
+      "courseVersion": null,
+      "aceId": null,
+      "recommendationStart": null,
+      "recommendationEnd": null,
+      "reviewedOn": "2026-11-27",
+      "identityReviewStatus": "published-original-offering-reviewed",
+      "prospectiveCreditRouteStatus": "conditional-eligibility-unresolved",
+      "publicationPromotionAllowed": false,
+      "studentCreditAwarded": false,
+      "unitProofQuote": "semester credit hour value that CLI will award"
+    },
+    {
+      "identityId": "cli-bib-311-academic-offering-reviewed-2026-11-27",
+      "code": "BIB 311",
+      "title": "Biblical Interpretation I",
+      "courseUrl": "https://degrees.christianleaders.org/biblical-courses/",
+      "provider": "Christian Leaders Institute",
+      "academicSchool": "Leadership Excellence School",
+      "sourceCredits": 4,
+      "sourceCreditSystem": "semester",
+      "sourceQuantityScope": "Published college-level academic course offering for the eligible LES academic transcript route. This is not credit earned by free CDS study.",
+      "originalAcademicCreditRouteRequired": true,
+      "academicCreditRouteRequired": true,
+      "academicTranscriptRequired": true,
+      "freeCdsStudyAwardsAcademicCredit": false,
+      "sourceQuote": "BIB 311 Biblical Interpretation I (4 credits)",
+      "identitySourceIds": [
+        "cli-biblical-course-offerings-live"
+      ],
+      "unitProofSourceIds": [
+        "cli-academic-semester-credit-policy-live"
+      ],
+      "prerequisites": [
+        {
+          "code": "BIB 111",
+          "title": "Old Testament Survey",
+          "sourceId": "cli-biblical-course-offerings-live",
+          "quote": "You must complete Old Testament Survey before taking this course."
+        }
+      ],
+      "prerequisiteStatus": "specific-prerequisite-reviewed",
+      "sourceUpper": null,
+      "courseVersion": null,
+      "aceId": null,
+      "recommendationStart": null,
+      "recommendationEnd": null,
+      "reviewedOn": "2026-11-27",
+      "identityReviewStatus": "published-original-offering-reviewed",
+      "prospectiveCreditRouteStatus": "conditional-eligibility-unresolved",
+      "publicationPromotionAllowed": false,
+      "studentCreditAwarded": false,
+      "unitProofQuote": "semester credit hour value that CLI will award"
+    },
+    {
+      "identityId": "cli-bib-312-academic-offering-reviewed-2026-11-27",
+      "code": "BIB 312",
+      "title": "Biblical Interpretation II",
+      "courseUrl": "https://degrees.christianleaders.org/biblical-courses/",
+      "provider": "Christian Leaders Institute",
+      "academicSchool": "Leadership Excellence School",
+      "sourceCredits": 4,
+      "sourceCreditSystem": "semester",
+      "sourceQuantityScope": "Published college-level academic course offering for the eligible LES academic transcript route. This is not credit earned by free CDS study.",
+      "originalAcademicCreditRouteRequired": true,
+      "academicCreditRouteRequired": true,
+      "academicTranscriptRequired": true,
+      "freeCdsStudyAwardsAcademicCredit": false,
+      "sourceQuote": "BIB 312 Biblical Interpretation II (4 credits)",
+      "identitySourceIds": [
+        "cli-biblical-course-offerings-live"
+      ],
+      "unitProofSourceIds": [
+        "cli-academic-semester-credit-policy-live"
+      ],
+      "prerequisites": [
+        {
+          "code": "BIB 112",
+          "title": "New Testament Survey",
+          "sourceId": "cli-biblical-course-offerings-live",
+          "quote": "You must complete New Testament Survey before taking this course."
+        }
+      ],
+      "prerequisiteStatus": "specific-prerequisite-reviewed",
+      "sourceUpper": null,
+      "courseVersion": null,
+      "aceId": null,
+      "recommendationStart": null,
+      "recommendationEnd": null,
+      "reviewedOn": "2026-11-27",
+      "identityReviewStatus": "published-original-offering-reviewed",
+      "prospectiveCreditRouteStatus": "conditional-eligibility-unresolved",
+      "publicationPromotionAllowed": false,
+      "studentCreditAwarded": false,
+      "unitProofQuote": "semester credit hour value that CLI will award"
+    },
+    {
+      "identityId": "cli-bib-330-academic-offering-reviewed-2026-11-27",
+      "code": "BIB 330",
+      "title": "Old Testament Literature, History, and Theology",
+      "courseUrl": "https://degrees.christianleaders.org/biblical-courses/",
+      "provider": "Christian Leaders Institute",
+      "academicSchool": "Leadership Excellence School",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceQuantityScope": "Published college-level academic course offering for the eligible LES academic transcript route. This is not credit earned by free CDS study.",
+      "originalAcademicCreditRouteRequired": true,
+      "academicCreditRouteRequired": true,
+      "academicTranscriptRequired": true,
+      "freeCdsStudyAwardsAcademicCredit": false,
+      "sourceQuote": "BIB 330 Old Testament Literature, History, and Theology (3 credits)",
+      "identitySourceIds": [
+        "cli-biblical-course-offerings-live"
+      ],
+      "unitProofSourceIds": [
+        "cli-academic-semester-credit-policy-live"
+      ],
+      "prerequisites": null,
+      "prerequisiteStatus": "not-established",
+      "sourceUpper": null,
+      "courseVersion": null,
+      "aceId": null,
+      "recommendationStart": null,
+      "recommendationEnd": null,
+      "reviewedOn": "2026-11-27",
+      "identityReviewStatus": "published-original-offering-reviewed",
+      "prospectiveCreditRouteStatus": "conditional-eligibility-unresolved",
+      "publicationPromotionAllowed": false,
+      "studentCreditAwarded": false,
+      "unitProofQuote": "semester credit hour value that CLI will award"
+    },
+    {
+      "identityId": "cli-bib-340-academic-offering-reviewed-2026-11-27",
+      "code": "BIB 340",
+      "title": "Biblical Wisdom",
+      "courseUrl": "https://degrees.christianleaders.org/biblical-courses/",
+      "provider": "Christian Leaders Institute",
+      "academicSchool": "Leadership Excellence School",
+      "sourceCredits": 4,
+      "sourceCreditSystem": "semester",
+      "sourceQuantityScope": "Published college-level academic course offering for the eligible LES academic transcript route. This is not credit earned by free CDS study.",
+      "originalAcademicCreditRouteRequired": true,
+      "academicCreditRouteRequired": true,
+      "academicTranscriptRequired": true,
+      "freeCdsStudyAwardsAcademicCredit": false,
+      "sourceQuote": "BIB 340 Biblical Wisdom (4 credits)",
+      "identitySourceIds": [
+        "cli-biblical-course-offerings-live"
+      ],
+      "unitProofSourceIds": [
+        "cli-academic-semester-credit-policy-live"
+      ],
+      "prerequisites": null,
+      "prerequisiteStatus": "not-established",
+      "sourceUpper": null,
+      "courseVersion": null,
+      "aceId": null,
+      "recommendationStart": null,
+      "recommendationEnd": null,
+      "reviewedOn": "2026-11-27",
+      "identityReviewStatus": "published-original-offering-reviewed",
+      "prospectiveCreditRouteStatus": "conditional-eligibility-unresolved",
+      "publicationPromotionAllowed": false,
+      "studentCreditAwarded": false,
+      "unitProofQuote": "semester credit hour value that CLI will award"
+    },
+    {
+      "identityId": "cli-bib-455-academic-offering-reviewed-2026-11-27",
+      "code": "BIB 455",
+      "title": "The Book of Acts",
+      "courseUrl": "https://degrees.christianleaders.org/biblical-courses/",
+      "provider": "Christian Leaders Institute",
+      "academicSchool": "Leadership Excellence School",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceQuantityScope": "Published college-level academic course offering for the eligible LES academic transcript route. This is not credit earned by free CDS study.",
+      "originalAcademicCreditRouteRequired": true,
+      "academicCreditRouteRequired": true,
+      "academicTranscriptRequired": true,
+      "freeCdsStudyAwardsAcademicCredit": false,
+      "sourceQuote": "BIB 455 The Book of Acts (3 Credits)",
+      "identitySourceIds": [
+        "cli-biblical-course-offerings-live"
+      ],
+      "unitProofSourceIds": [
+        "cli-academic-semester-credit-policy-live"
+      ],
+      "prerequisites": null,
+      "prerequisiteStatus": "not-established",
+      "sourceUpper": null,
+      "courseVersion": null,
+      "aceId": null,
+      "recommendationStart": null,
+      "recommendationEnd": null,
+      "reviewedOn": "2026-11-27",
+      "identityReviewStatus": "published-original-offering-reviewed",
+      "prospectiveCreditRouteStatus": "conditional-eligibility-unresolved",
+      "publicationPromotionAllowed": false,
+      "studentCreditAwarded": false,
+      "unitProofQuote": "semester credit hour value that CLI will award"
+    },
+    {
+      "identityId": "cli-bib-456-academic-offering-reviewed-2026-11-27",
+      "code": "BIB 456",
+      "title": "Romans",
+      "courseUrl": "https://degrees.christianleaders.org/biblical-courses/",
+      "provider": "Christian Leaders Institute",
+      "academicSchool": "Leadership Excellence School",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceQuantityScope": "Published college-level academic course offering for the eligible LES academic transcript route. This is not credit earned by free CDS study.",
+      "originalAcademicCreditRouteRequired": true,
+      "academicCreditRouteRequired": true,
+      "academicTranscriptRequired": true,
+      "freeCdsStudyAwardsAcademicCredit": false,
+      "sourceQuote": "BIB 456 Romans\u00a0 (3 Credits)",
+      "identitySourceIds": [
+        "cli-biblical-course-offerings-live"
+      ],
+      "unitProofSourceIds": [
+        "cli-academic-semester-credit-policy-live"
+      ],
+      "prerequisites": null,
+      "prerequisiteStatus": "not-established",
+      "sourceUpper": null,
+      "courseVersion": null,
+      "aceId": null,
+      "recommendationStart": null,
+      "recommendationEnd": null,
+      "reviewedOn": "2026-11-27",
+      "identityReviewStatus": "published-original-offering-reviewed",
+      "prospectiveCreditRouteStatus": "conditional-eligibility-unresolved",
+      "publicationPromotionAllowed": false,
+      "studentCreditAwarded": false,
+      "unitProofQuote": "semester credit hour value that CLI will award"
+    },
+    {
+      "identityId": "cli-the-315-academic-offering-reviewed-2026-11-27",
+      "code": "THE 315",
+      "title": "Old Testament Theology",
+      "courseUrl": "https://degrees.christianleaders.org/theology-courses/",
+      "provider": "Christian Leaders Institute",
+      "academicSchool": "Leadership Excellence School",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceQuantityScope": "Published college-level academic course offering for the eligible LES academic transcript route. This is not credit earned by free CDS study.",
+      "originalAcademicCreditRouteRequired": true,
+      "academicCreditRouteRequired": true,
+      "academicTranscriptRequired": true,
+      "freeCdsStudyAwardsAcademicCredit": false,
+      "sourceQuote": "THE 315 Old Testament Theology (3 credits)",
+      "identitySourceIds": [
+        "cli-theology-course-offerings-live"
+      ],
+      "unitProofSourceIds": [
+        "cli-academic-semester-credit-policy-live"
+      ],
+      "prerequisites": null,
+      "prerequisiteStatus": "not-established",
+      "sourceUpper": null,
+      "courseVersion": null,
+      "aceId": null,
+      "recommendationStart": null,
+      "recommendationEnd": null,
+      "reviewedOn": "2026-11-27",
+      "identityReviewStatus": "published-original-offering-reviewed",
+      "prospectiveCreditRouteStatus": "conditional-eligibility-unresolved",
+      "publicationPromotionAllowed": false,
+      "studentCreditAwarded": false,
+      "unitProofQuote": "semester credit hour value that CLI will award"
+    },
+    {
+      "identityId": "cli-min-101-academic-offering-reviewed-2026-11-27",
+      "code": "MIN 101",
+      "title": "Ministry Foundations",
+      "courseUrl": "https://degrees.christianleaders.org/ministry-courses/",
+      "provider": "Christian Leaders Institute",
+      "academicSchool": "Leadership Excellence School",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceQuantityScope": "Published college-level academic course offering for the eligible LES academic transcript route. This is not credit earned by free CDS study.",
+      "originalAcademicCreditRouteRequired": true,
+      "academicCreditRouteRequired": true,
+      "academicTranscriptRequired": true,
+      "freeCdsStudyAwardsAcademicCredit": false,
+      "sourceQuote": "MIN 101 Ministry Foundations (3 credits)",
+      "identitySourceIds": [
+        "cli-ministry-course-offerings-live"
+      ],
+      "unitProofSourceIds": [
+        "cli-academic-semester-credit-policy-live"
+      ],
+      "prerequisites": null,
+      "prerequisiteStatus": "not-established",
+      "sourceUpper": null,
+      "courseVersion": null,
+      "aceId": null,
+      "recommendationStart": null,
+      "recommendationEnd": null,
+      "reviewedOn": "2026-11-27",
+      "identityReviewStatus": "published-original-offering-reviewed",
+      "prospectiveCreditRouteStatus": "conditional-eligibility-unresolved",
+      "publicationPromotionAllowed": false,
+      "studentCreditAwarded": false,
+      "unitProofQuote": "semester credit hour value that CLI will award"
+    }
+  ],
+  "receivingAccountingReview": {
+    "status": "separate-review-required-no-promotion",
+    "sourceCode": "THE 101",
+    "sourceCredits": 3,
+    "sourceCreditSystem": "semester",
+    "nativeEquivalentCode": "THEO 104",
+    "nativeRequirementCredits": 4,
+    "historicalCalculatorCreditLow": 4,
+    "historicalCalculatorCreditHigh": 4,
+    "calculatorFieldMeansEarnedCreditsEstablished": false,
+    "sourceIds": [
+      "cli-theology-course-offerings-live",
+      "liberty-credit-shortage-policy-live"
+    ],
+    "rule": "Never rewrite three original credits as four. A source may fulfill a native course while leaving a graduation-hour shortage. Separate earned credit from requirement fulfillment and verify a nonduplicating extra credit before changing a degree allocation.",
+    "automaticCreditBalanceOrReceivingAwardChangeAllowed": false
+  },
+  "unverifiedLeads": [
+    {
+      "sourceCode": "BIB 201",
+      "receivingCode": "BIBL 104",
+      "status": "not-established",
+      "reason": "No source BIB201 or receiving BIBL104 row exists in the retained124-row CLI calculator and no current official CLI course identity was found. Do not infer a match."
+    }
+  ],
+  "gaps": [
+    "Exact legal academic transcript issuer and formal nondegree LES admission route remain unresolved.",
+    "Official application fee and jurisdiction lists conflict.",
+    "Current October2026catalog PDF was not retrieved independently.",
+    "Course version identifiers and academic source level are unknown; no ACE recommendation IDs or periods are inferred.",
+    "Receiving awards and exact degree placements remain separate reviews."
+  ],
+  "manifestPath": "content/research-batches/shared-transfer-evidence-2026-11-27/manifest.json",
+  "manifestSha256": "41e712bfe2b7ff9064519d90b5f16cc0ebf7f1d2b39f8949137a1f620c880972",
+  "retainedPacketReferences": [
+    {
+      "id": "existing-curated-review",
+      "kind": "retained-research-packet",
+      "path": "content/research-batches/liberty-religion-maximization-review-2026-11-27.json",
+      "sha256": "d6475f96adf064014e942b59d4262cc7fe3c694314a6003043e750fbdf869575",
+      "reviewedOn": "2026-11-27",
+      "primaryEvidence": false,
+      "currentPrimaryRetrievalClaimed": false,
+      "scope": "Historical curated research reporting the October2026catalog fee and exclusions. This reference explains a source conflict and is not independent primary catalog verification, course identity proof or academic unit proof.",
+      "shortQuote": "knownLESApplicationUSD"
+    }
+  ]
+}

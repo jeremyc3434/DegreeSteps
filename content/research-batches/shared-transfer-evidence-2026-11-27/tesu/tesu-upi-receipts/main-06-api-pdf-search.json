@@ -1,0 +1,49 @@
+{
+  "observedAt": "2026-11-27 20:00:20 UTC",
+  "request": {
+    "system2_search_query": [
+      {
+        "q": "\"UPI\" \"equivalency\" \"api\"",
+        "domains": [
+          "tesu.edu",
+          "www2.tesu.edu"
+        ]
+      },
+      {
+        "q": "\"UPIS\" \"SOC\"",
+        "domains": [
+          "tesu.edu",
+          "www2.tesu.edu",
+          "tesu.smartcatalogiq.com"
+        ]
+      },
+      {
+        "q": "\"University Pathways International\" filetype:pdf",
+        "domains": [
+          "tesu.edu"
+        ]
+      },
+      {
+        "q": "\"Sociology 110\" filetype:pdf",
+        "domains": [
+          "tesu.edu"
+        ]
+      }
+    ],
+    "response_length": "long"
+  },
+  "tool": "mcp__codex_apps__search_service_web_run",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Approved Provider Directory | Thomas Edison State University (https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php)\n【turn858search0】 [wordlim: 200] Crawled: today;   * Theological Research Institute\n  * University Pathways International ...   * American Council on the Teaching of Foreign Languages Inc. ...   * Berlitz International Inc. ...   * Kaplan University School of Professional and Continuing Education\n\n# Approved Provider Directory\n\n## Methods of Earning Credit\n\nThe following entities have been Approved as educational providers by Thomas Edison State University:\n\n  * CIS Testing\n  * Distance Learning Systems\n  * edX\n  * Faith Builders Educational Programs\n  * Genesis University\n  * InstantCert\n  * LawShelf Educational Media\n  * National Society of Leadership and Success\n  * OnlineDegree.com\n  * SeeMore Impact Labs\n  * SmarterDegree\n  * Study.com\n  * Theological Research Institute\n  * University Pathways International\n\n\n The following entities have been Provisionally Approved – Review Pending as educational providers by Thomas Edison State University\n\n  * ALEKS Corporation (McGraw Hill)\n  * Align Degree Services LLC\n  * Alternative Credit Project Ecosystem\n  * American Council on the Teaching of Foreign Languages Inc.\n  * American Educational Institute\n  * American Institute For Chartered Property Casualty Underwriters/The Institutes\n  * American Military University — Part of The American Public University System\n  * Anthem Institute–Jersey City Art Instruction Schools Inc.\n  * Association for Hebraic Studies Institute\n  * Berlitz International Inc.\n  * Bisk Education\n  * Boston University\n  * Brick Computer Science Institute\n  * Calhoun MEBA Engineering School\n  * California College for Health Sciences\n  * Camphill Academy\n  * Catholic Distance University\n  * Center for Financial Training Atlantic & Central States Inc.\n  * Center for Financial Training, Northeastern, New York\n  * Center for Financial Training, Tri State\n  * Cheetah Learning\n  * Christopher Academy and Maitland Montessori School\n  * Cittone Institute-Computer Programming\n  * Coggins International\n  * College Board Advanced Placement (AP) Examinations\n  * College Board's College-Level Examination Program (CLEP)\n  * College for Financial Planning College for Professional Studies\n  * Computer Learning Center\n  * Coopersmith Career Consulting\n  * Cope Institute\n  * Corporate College Services Inc.\n  * Corporate Education Group\n  * Council for Adult and Experiential Learning\n  * Davar Academy\n  * Defense Acquisition University\n  * Defense Information School\n  * Defense Language Institute\n  * DPT Business School\n  * DSST by Prometric\n  * Eastwick College\n  * eCornell\n  * ECPI University\n  * Ed4Credit\n  * Foreign Service Institute\n  * GED Testing Service\n  * Global Knowledge, Training LLC\n  * Graduate School\n  * Harrison College\n  * HoHoKus Hackensack School of Business and Medical Science\n  * HoHoKus RETS — Nutley\n  * ICI University\n  * Institute for Certification of Computer Professionals\n  * Javaonline.org LLC\n  * JumpCourse\n  * Kaplan University Open Learning\n  * Kaplan University School of Professional and Continuing Education\n  * KATHERINE GIBBS\n  * Knowledge Elements Inc.\n  * Learning Counts\n  * Maalot Educational Network\n  * Mercaz Hatorah\n  * Metropolitan Technical Institute\n  * National Cryptologic School\n  * National Institute for Automotive Service Excellence\n  * National Paralegal College\n  * National Tax Training School\n  * New Horizons Computer Learning Centers — Anaheim, Ca.\n  * Northwest Procurement Institute Inc.\n  * Omega Institute\n  * PC AGE Career Institute\n  * Pearson\n  * Penn Foster College\n  * Perspective Study Program\n  * Pirchei Shoshanim\n  * Prism Career Institute\n  * Rechtschaffen Institute of Judaic Studies\n  * Sanford-Brown\n  * Saylor Academy\n  * Simi Valley Adult School and Career Institute\n  * SOPHIA Learning, LLC\n  * StraighterLine\n  * Synergistics Corporate Training LLC\n  * Test Drive College Online\n  * Texas A&M Engineering Extension Service\n  * Tor Academy\n  * Torah Accreditation Liaison\n  * TwentyEighty Strategy Execution Inc.\n  * University of Saint Thomas — Houston\n  * VCampus Corporation\n  * Verity College Education\n  * Western Civilization Foundation\n  * Yeshiva Learning Experience Inc.\n  * Yeshiva Shaarei Torah of Rockland\n  * Zaidner Institute — Ma'alot Yerushalayim"
+      }
+    ],
+    "isError": false
+  },
+  "receiptNote": "Bounded discovery query, not a claim that private or unpublished APIs do not exist. Rendered connector response; no origin HTTP status/headers/body.",
+  "originHttpStatus": null,
+  "originRawBodySha256": null,
+  "retentionNote": "Exact tool result object serialized to JSON for retention. This is not the origin HTTP wire body."
+}

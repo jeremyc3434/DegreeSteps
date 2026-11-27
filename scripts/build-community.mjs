@@ -18,6 +18,7 @@ execFileSync(process.execPath,[resolve(root,'scripts/clep-reviewed-provider-iden
 execFileSync(process.execPath,[resolve(root,'scripts/umpi-transfer-evidence.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/umpi-public-receiving.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/upi-course-catalog.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/cli-course-catalog.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/tesu-upi-maps.mjs'),'--check-kit'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/tesu-course-eligibility.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/tesu-course-placements.mjs'),'--check'],{cwd:root,stdio:'inherit'});

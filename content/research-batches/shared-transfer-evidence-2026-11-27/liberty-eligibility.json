@@ -1,0 +1,261 @@
+{
+  "kind": "shared-transfer-eligibility-findings",
+  "version": 1,
+  "verifiedOn": "2026-11-27",
+  "scope": "Christian Leaders Institute / Leadership Excellence School eligibility for prospective credit transferred to Liberty University. Findings only; no academic awards, student admission decisions or canonical mutations.",
+  "researchMethod": "Independent current official provider/accreditor connector searches and parsed open results, plus comparison with the existing curated review. No shell network. Six native connector result JSON files retained in liberty-eligibility-receipts/. These are connector-rendered extractions, not origin HTML.",
+  "existingReview": "content/research-batches/liberty-religion-maximization-review-2026-11-27.json",
+  "status": "conditional-eligibility-unresolved-source-conflicts",
+  "academicRoute": {
+    "finding": "Free School of Christian Development account creation does not establish LES admission or college credit.",
+    "currentAdmissionsSteps": [
+      "Create study account, initially admitted to School of Christian Development.",
+      "For LES college program admission, complete Leadership Excellence School Admissions & Degree Orientation.",
+      "Current admissions page lists fee payment, identity verification, updated profile, college-readiness evidence and letter of recommendation."
+    ],
+    "academicTranscriptRequirement": "The provider FAQ explicitly describes LES enrollment as the route to college credit. The existing review requires actual academic credit on the LES transcript; free CDS study or Institute Verification alone must not be silently treated as equivalent.",
+    "degreeCompletionRequired": false,
+    "degreeCompletionEvidence": "Current provider degree FAQ says students may earn individual credits and then transfer; its separate transcript policy prices a non-degree-completer transcript. This supports no CLI degree completion requirement. It does not remove LES admission and transcript requirements.",
+    "degreeEnrollmentRequired": "Not conclusively established. Current pages discuss LES college admission and degree orientation, while individual credits are available; whether formal enrollment in a full degree is required for the proposed non-degree transfer route must remain unknown.",
+    "personalAdmissionGuaranteed": false,
+    "sources": [
+      "cli-admission",
+      "cli-faq",
+      "cli-degree-faq",
+      "cli-transfer"
+    ]
+  },
+  "issuerAndAccreditation": {
+    "provider": "Christian Leaders Institute",
+    "school": "Leadership Excellence School (LES)",
+    "exactLegalIssuer": "Not independently established from an actual current transcript or the inaccessible 2026 catalog. Current provider pages identify Christian Leaders Institute with separate CDS and LES schools; do not collapse school/program labels into a legal transcript issuer.",
+    "status": "ABHE Candidate Institution / preaccredited, not full accreditation",
+    "regionalAccreditationEstablished": false,
+    "accreditorSource": "abhe-fact-sheet",
+    "accreditorDates": {
+      "candidateStatusGranted": 2024,
+      "lastReview": "2024-02-14",
+      "initialAccreditationGranted": null,
+      "factSheetRevised": "2025-03-26"
+    },
+    "caution": "ABHE candidacy does not establish regional institutional accreditation, ACE recommendation or Liberty's individual transfer approval. CLI is a potential credit source, not an eligible regionally accredited destination degree recommendation.",
+    "sources": [
+      "cli-faq",
+      "cli-accreditation-status",
+      "abhe-fact-sheet"
+    ]
+  },
+  "jurisdiction": {
+    "status": "conflicting-official-source-lists-current-admission-not-guaranteed",
+    "currentLiveDegreeFaqExcluded": [
+      "CT",
+      "DE",
+      "DC",
+      "IL",
+      "KY",
+      "MI",
+      "NV",
+      "NJ",
+      "NY",
+      "ND",
+      "OR",
+      "RI",
+      "UT",
+      "VA",
+      "WY"
+    ],
+    "existingCurated2026CatalogExcluded": [
+      "CT",
+      "DE",
+      "DC",
+      "IL",
+      "KS",
+      "KY",
+      "MI",
+      "MS",
+      "NV",
+      "NJ",
+      "NY",
+      "ND",
+      "OR",
+      "PR",
+      "RI",
+      "VA"
+    ],
+    "onlyInCurrentLiveDegreeFaq": [
+      "UT",
+      "WY"
+    ],
+    "onlyInExistingCuratedCatalogReview": [
+      "KS",
+      "MS",
+      "PR"
+    ],
+    "sharedExcluded": [
+      "CT",
+      "DE",
+      "DC",
+      "IL",
+      "KY",
+      "MI",
+      "NV",
+      "NJ",
+      "NY",
+      "ND",
+      "OR",
+      "RI",
+      "VA"
+    ],
+    "effectiveDate": null,
+    "rule": "Do not select either list as definitively current or combine them into a newly invented exclusion policy. No positive eligibility inferred for a jurisdiction merely omitted from one source. Retain both source scopes and require provider's current LES eligibility determination before describing a route as available.",
+    "freeCdsStudy": "The live FAQ distinguishes free CDS/Alliance access from LES admission and credit eligibility for excluded jurisdictions.",
+    "sources": [
+      "cli-degree-faq",
+      "existing-curated-review"
+    ]
+  },
+  "fees": {
+    "application": {
+      "status": "current-official-source-conflict",
+      "amounts": [
+        {
+          "amount": 75,
+          "currency": "USD",
+          "scope": "LES admission fee",
+          "source": "cli-learning-costs",
+          "sourceLastModified": "2026-04-10",
+          "retrieval": "Official learning-platform page indexed by connector search; direct open403."
+        },
+        {
+          "amount": 125,
+          "currency": "USD",
+          "scope": "Application fee advertised in current degree marketing/FAQ",
+          "source": "cli-degree-faq",
+          "sourceLastModified": null
+        },
+        {
+          "amount": 75,
+          "currency": "USD",
+          "scope": "LES application in existing curated 2026 catalog review",
+          "source": "existing-curated-review",
+          "sourceLastModified": null
+        }
+      ],
+      "planningAmount": null
+    },
+    "transcript": {
+      "nonDegreeCompleter": 75,
+      "degreeCompleter": 30,
+      "currency": "USD",
+      "basis": "transcript processing/verification fee to send to another institution",
+      "source": "cli-transfer",
+      "verifiedOn": "2026-11-27",
+      "additionalThirdPartyChargesVerified": false
+    },
+    "tuition": {
+      "courseTuitionAdvertisedZero": true,
+      "admissionAndAdministrativeFeesStillApply": true,
+      "source": "cli-degree-faq"
+    },
+    "degreeProgramPricing": "Not needed for the prospective individual-credit route. Current degree pages contain additional program pricing but no degree purchase requirement is inferred.",
+    "automaticAllInRouteCost": null,
+    "rule": "Do not advertise a fixed $150 total or a universal $75 application while the official application-fee sources conflict."
+  },
+  "assessment": {
+    "nonProctoredStatus": "not-established",
+    "note": "No course-specific assessment or proctoring guarantee independently verified. This eligibility packet does not change the assessment model."
+  },
+  "sources": [
+    {
+      "id": "cli-admission",
+      "url": "https://www.christianleadersinstitute.org/admission/",
+      "publisher": "Christian Leaders Institute",
+      "checkedOn": "2026-11-27",
+      "receipt": "liberty-eligibility-receipts/cli-eligibility-open-2.json",
+      "quote": "Once this course is completed, you will be admitted to the college program (Leadership Excellence School).",
+      "relevantLines": "29\u201344",
+      "scope": "Current public admissions instructions; individual eligibility and academic transcript not guaranteed."
+    },
+    {
+      "id": "cli-faq",
+      "url": "https://www.christianleadersinstitute.org/frequently-asked-questions/",
+      "publisher": "Christian Leaders Institute",
+      "checkedOn": "2026-11-27",
+      "receipt": "liberty-eligibility-receipts/cli-eligibility-open-2.json",
+      "reviewedFact": "Current FAQ identifies two schools, LES college-credit enrollment and ABHE candidacy.",
+      "relevantLines": "21\u201324,31\u201346"
+    },
+    {
+      "id": "cli-degree-faq",
+      "url": "https://www.christianleadersinstitute.org/degree-faq-expanded/",
+      "publisher": "Christian Leaders Institute",
+      "checkedOn": "2026-11-27",
+      "receipt": "liberty-eligibility-receipts/cli-eligibility-open-3.json",
+      "quote": "You can earn an associate degree, or individual credits with us, and then transfer into a program in your desired field.",
+      "relevantLines": "129\u2013139,263,290\u2013291,341,463\u2013465",
+      "reviewedFact": "Current page advertises $125 application, allows individual credits, describes LES acceptance for most partner routes and lists 15 excluded jurisdictions. Page has other contradictory/stale-looking prices internally; effective dates unknown."
+    },
+    {
+      "id": "cli-transfer",
+      "url": "https://www.christianleadersinstitute.org/transfer-information/",
+      "publisher": "Christian Leaders Institute",
+      "checkedOn": "2026-11-27",
+      "receipt": "liberty-eligibility-receipts/cli-eligibility-open-2.json",
+      "quote": "The receiving institution determines the transfer of academic credits to that institution.",
+      "relevantLines": "21\u201326",
+      "reviewedFact": "Current policy quotes $75 non-degree-completer transcript processing, $30 degree-completer transcript. Institute Verification is also mentioned for transcript procedures, which does not prove the Liberty academic route."
+    },
+    {
+      "id": "cli-learning-costs",
+      "url": "https://christianleaders.org/mod/page/view.php?id=57395",
+      "publisher": "Christian Leaders Institute",
+      "checkedOn": "2026-11-27",
+      "sourceLastModified": "2026-04-10",
+      "receipt": "liberty-eligibility-receipts/cli-eligibility-search-2.json",
+      "quote": "Leadership Excellence School Admission fee: $75",
+      "retrieval": "Native indexed search excerpt; direct open403 retained in open-4 receipt."
+    },
+    {
+      "id": "cli-accreditation-status",
+      "url": "https://www.christianleadersinstitute.org/accreditation-status/",
+      "publisher": "Christian Leaders Institute",
+      "checkedOn": "2026-11-27",
+      "receipt": "liberty-eligibility-receipts/cli-eligibility-search-2.json",
+      "reviewedFact": "Current page states ABHE candidacy/preaccreditation and links the accreditor directory. An undated October6\u20138visit announcement does not prove accreditation was granted.",
+      "relevantLines": "4\u201316"
+    },
+    {
+      "id": "abhe-fact-sheet",
+      "url": "https://app.weaveeducation.com/publicFiles/institutionprofilepdfs/Christian_Leaders_Institute-ABHE_-_Association_for_Biblical_Higher_Education-97x6-Fact_Sheet.pdf?v=609225811",
+      "publisher": "ABHE Commission on Accreditation",
+      "checkedOn": "2026-11-27",
+      "sourceRevisedOn": "2025-03-26",
+      "receipt": "liberty-eligibility-receipts/cli-eligibility-search-2.json",
+      "quote": "Current Status: Candidate Institution",
+      "reviewedFact": "The accreditor fact sheet lists candidate status granted in 2024; initial accreditation date is blank; no sanctions. This is primary accreditor evidence for candidacy, not full or regional accreditation."
+    },
+    {
+      "id": "existing-curated-review",
+      "path": "content/research-batches/liberty-religion-maximization-review-2026-11-27.json",
+      "kind": "prior-curated-research",
+      "checkedOn": "2026-11-27",
+      "scope": "Existing review claims the 2026 second-edition PDF was fully reviewed and lists a SHA-256, sixteen jurisdictions, $75 application and no full CLI degree enrollment requirement. Actual PDF/text was not found in this worktree and could not independently reopen through the connector; this is not current independent raw catalog verification."
+    },
+    {
+      "id": "catalog-retrieval-attempt",
+      "url": "https://cli-wp-uploads.s3.amazonaws.com/wp-content/uploads/2026/10/2026.CAT_.Christian-Leaders-InstituteFLsecond_edition.pdf",
+      "publisher": "Christian Leaders Institute",
+      "checkedOn": "2026-11-27",
+      "receipt": "liberty-eligibility-receipts/cli-eligibility-open-1.json",
+      "retrieval": "The connector could not access the PDF; the official catalog index returned no readable lines."
+    }
+  ],
+  "requiredFollowup": [
+    "Obtain the actual current 2026 catalog PDF/text through the official public link and retain bytes and hash; compare LES admission, application fee and jurisdiction rules.",
+    "Establish the exact academic transcript issuer and whether non-degree LES academic admission is available for the student's jurisdiction.",
+    "Keep prospective CLI course choices conditional until route-specific eligibility is established; acceptance of a Liberty receiving mapping alone does not satisfy provider eligibility."
+  ],
+  "canonicalMutationsMade": false,
+  "studentCreditsAwarded": 0,
+  "automaticApprovals": 0
+}

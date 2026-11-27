@@ -102,6 +102,7 @@ def main():
  try:
   subprocess.run(['node',str(ROOT/'scripts/reviewed-course-identities.mjs')],check=True)
   subprocess.run(['node',str(ROOT/'scripts/upi-course-catalog.mjs')],check=True)
+  subprocess.run(['node',str(ROOT/'scripts/cli-course-catalog.mjs')],check=True)
  except BaseException:
   # A changed identity or failed source review must retain the last usable
   # snapshot rather than leaving the partially refreshed directory installed.
