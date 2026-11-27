@@ -56,7 +56,7 @@ test('five prior TESU identities retain their exact rereview while only the thre
 
 test('every TESU contextual fact is source-backed, compact and scoped to the applicable school policy',async()=>{
  for(const source of packet.sources)await verifyCapture(source);
- const loaded=await loadProgramRequirementReviews();assert.equal(loaded.length,4);assert(loaded.some(value=>value.reviews.some(review=>review.id===packet.reviews[0].id)));
+ const loaded=await loadProgramRequirementReviews();assert.equal(loaded.length,5);assert(loaded.some(value=>value.reviews.some(review=>review.id===packet.reviews[0].id)));
  for(const model of models){
   const before=JSON.stringify(model),facts=assembleProgramRequirements(model,[packet]);assert.equal(facts.length,3,model.id);
   assert.deepEqual(new Set(facts.map(fact=>fact.kind)),new Set(['attendance','assessment']));

@@ -267,6 +267,67 @@
         "Asynchronous discussions have no specified login time, while standard online courses retain a week-by-week assignment schedule. No live class time, universal proctoring requirement, absence of exams, section availability or completion date is inferred.",
         "Exact e-Pack or alternative-format selections retain their own course-specific evidence; this school-wide standard-online classification does not replace it."
       ]
+    },
+    {
+      "id": "tesu-business-expansion-standard-online-scheduled-20261127",
+      "modelIds": [
+        "curriculum-tesu-bs-healthcare-management",
+        "curriculum-tesu-bs-computer-information-systems"
+      ],
+      "catalogYear": "Current undergraduate catalog · checked November 18, 2026",
+      "modality": "online",
+      "paceModel": "course-term",
+      "baselineFormat": "standard-online-coursework",
+      "source": {
+        "id": "tesu-standard-online-structure-20261126",
+        "kind": "university",
+        "url": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/methods-of-learning-and-earning-credit/about-online-courses/course-structure/",
+        "title": "TESU current undergraduate standard online-course structure and weekly assignment schedule",
+        "checkedOn": "2026-11-26",
+        "capture": "content/source-captures/db939c96242c2d1b.txt",
+        "sha256": "db939c96242c2d1b41ea107f0ce9cafa0434390c73c9f07a22e8e1a8586e3de7",
+        "sourceContentHash": "sha256:db939c96242c2d1b41ea107f0ce9cafa0434390c73c9f07a22e8e1a8586e3de7",
+        "quote": "each online course includes a detailed week-by-week assignment schedule",
+        "reviewMethod": "Opened the current primary catalog course-structure page and inspected the standard online-course schedule, asynchronous discussions and varied assessments. Verified the retained HTTP 200 body and sidecar against its SHA-256 hash."
+      },
+      "supportingSources": [
+        {
+          "id": "tesu-current-course-engagement-20261126",
+          "kind": "university",
+          "title": "TESU current undergraduate course engagement and course calendars",
+          "url": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/methods-of-learning-and-earning-credit/about-our-courses/",
+          "checkedOn": "2026-11-26",
+          "capture": "content/source-captures/09a3cf63e7e43a2c.txt",
+          "sha256": "09a3cf63e7e43a2cd7f3bf856e14d380f69c6a3089b646be5f8fc66db3fac644",
+          "quote": "Merely logging into or viewing courses does not constitute academic engagement."
+        },
+        {
+          "id": "tesu-accelerated-course-option-20261126",
+          "kind": "university",
+          "title": "TESU accelerated undergraduate course format as a separate option",
+          "url": "https://www.tesu.edu/degrees-programs/courses/accelerated-courses.php",
+          "checkedOn": "2026-11-26",
+          "capture": "content/source-captures/009d0a319f5eb5ef.txt",
+          "sha256": "009d0a319f5eb5efdd2a1e064db40a8cf4aa07c66b801755d8643a4f6b61e6a1",
+          "quote": "Accelerated courses do not have individual assignment due dates or late-penalty policies."
+        }
+      ],
+      "programBindings": [
+        {
+          "modelId": "curriculum-tesu-bs-healthcare-management",
+          "degreeUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-healthcare-management/"
+        },
+        {
+          "modelId": "curriculum-tesu-bs-computer-information-systems",
+          "degreeUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-computer-information-systems/"
+        }
+      ],
+      "notes": [
+        "This schedule classification describes the standard university online-coursework baseline for the exact listed degree editions only.",
+        "e-Pack, TECEP, prior learning assessment and accelerated sections are separate credit-earning options with different pacing; their availability is not inferred for every selected course.",
+        "Asynchronous discussions have no specified login time, while standard online courses retain a week-by-week assignment schedule. No live class time, universal proctoring requirement, absence of exams, section availability or completion date is inferred.",
+        "Exact e-Pack or alternative-format selections retain their own course-specific evidence; this school-wide standard-online classification does not replace it."
+      ]
     }
   ]
 }

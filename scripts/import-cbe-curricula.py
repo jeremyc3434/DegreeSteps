@@ -6,7 +6,9 @@ ceiling. The facts file contains only course identifiers, titles, credits and
 policy facts; programme descriptions are not reproduced.
 """
 import json
+import hashlib
 from pathlib import Path
+from phoenix_graduate_review import apply_graduate_review
 ROOT=Path(__file__).resolve().parents[1]
 CHECKED='2026-11-09'
 
@@ -40,6 +42,7 @@ def build():
         if p['routeId']=='phoenix-da-ms-psychology':
             notes.extend(['This is an educational psychology degree; it does not prepare students for psychologist licensure or certification.','The 2026–2027 catalog states that this Direct Assessment programme is not eligible for Title IV financial aid.'])
         models.append({'id':'curriculum-'+p['routeId'],'routeIds':[p['routeId']],'school':route['school'],'title':route['title'],'format':'Online','paceModel':route.get('paceModel'),'level':route['level'],'catalog':'2026–2027, November 1, 2026 updates','totalCredits':p['totalCredits'],'creditSystem':p['creditSystem'],'institutionMinCredits':p['totalCredits'],'externalMaxCredits':0,'alternativeMaxCredits':0,'upperMinCredits':0,'requirements':reqs,'sources':[source],'curriculumSections':groups,'coverage':'complete','completeExecutablePathway':True,'coverageLabel':'Complete required-course ledger from the current university catalog','rulesNotes':notes,'unresolved':['Confirm admission eligibility, catalog applicability and enrollment availability with the university.'],'obligations':[{'title':'Capstone credit prerequisite','notes':f"At least {p['capstoneMinimumCredits']} completed {'CUs' if p['creditSystem']=='competency-unit' else 'credits'} are required before {p['capstoneCode']}.",'sourceIds':[sid]}],'policyReview':[],'evidenceCheckedOn':CHECKED,'pricingNotes':p['pricingNotes'],'pricing':p['pricing'],'pacing':{'universityTermWeeks':12,'maximumCoursesPerTerm':4,'maximumUniversityCreditsPer12Months':39} if p['creditSystem']=='competency-unit' else {'universityTermWeeks':16,'maximumCoursesPerTerm':4}})
+        models[-1]=apply_graduate_review(models[-1],p)
     undergraduate=json.loads((ROOT/'content/curricula/snapshots/cbe/phoenix-da-undergraduate-facts.json').read_text())
     partner_source={'id':'phoenix-sophia-categories-2026-11','title':'Sophia University of Phoenix partner course/category table','url':undergraduate['partnerUrl'],'checked':CHECKED}
     unit_source={'id':'phoenix-da-cu-equivalence-2026-27','title':'Phoenix Direct Assessment competency-unit equivalence policy','url':undergraduate['catalogUrl']+'#page=453','checked':CHECKED}
@@ -83,7 +86,18 @@ def build():
         assert sum(r['credits'] for r in reqs)==120,p['routeId']
         groups.extend([{'id':key,'title':title,'parentId':'general','requirementIds':[r['id'] for r in reqs if r.get('allocationGroup')==key or (r['id']=='genda-201' and key=='humanities')],'sourceId':sid} for key,title,credits,category in p['generalEducation'] if category!='institutional'])
         groups.extend([{'id':key,'title':title,'parentId':'electives','requirementIds':[r['id'] for r in reqs if r.get('allocationGroup')==key],'sourceId':sid} for key,title,*_ in p['buckets']])
+        # Keep the existing held undergraduate provider identities stable; the
+        # generated public index can contain a different school's receiving URL.
+        for requirement in reqs:
+            for option in requirement['options']:
+                pin=undergraduate['preservedProviderIdentities'][option['code']]
+                option['url']=pin['url']
+                if 'codeAliases' in option: option['codeAliases']=pin['codeAliases']
         models.append({'id':'curriculum-'+p['routeId'],'routeIds':[p['routeId']],'school':route['school'],'title':route['title'],'format':'Online','paceModel':'competency-subscription','level':'bachelor','catalog':'2026–2027, November 1, 2026 updates','totalCredits':120,'creditSystem':'competency-unit','institutionMinCredits':p['requiredInstitutionCourses']+3,'upperMinCredits':p['upperMinCredits'],'externalMaxCredits':120-p['requiredInstitutionCourses']-3,'requirements':reqs,'sources':local_sources,'curriculumSections':groups,'coverage':'partial','completeExecutablePathway':False,'coverageLabel':'Complete 120-CU requirements ledger; department electives and proposed outside-course allocations still require approval','rulesNotes':['The required Direct Assessment course-of-study courses and GENDA 201 are kept at Phoenix in this baseline. This produces '+str(p['requiredInstitutionCourses']+3)+' CUs of named required Phoenix work; an exceptional entry-course waiver needs separate approval.','General education and elective slots represent the actual catalog credit-category allocations. Each three-CU row is an allocation slot, not an invented required course.','The Sophia partnership publishes education-category eligibility; each proposed placement remains conditional on Phoenix approval for the exact degree and learner.','The 2026–2027 catalog limits undergraduate Direct Assessment students to 48 UOPX CUs per 12-month period. This is not unlimited completion within a subscription.','GENDA 201 must be scheduled in the first term. The program is not eligible for Title IV financial aid.']+p['admissionNotes'],'unresolved':['Obtain approval for proposed category placements, current ACE recommendation windows, course order and any duplicate content.','Department-specific and upper-division elective choices remain to be selected; these gaps do not mean those credits must be purchased from Phoenix.','Confirm any separate combined noncollegiate-credit cap and individual catalog applicability before purchase.'],'policyReview':['The exact combined noncollegiate-credit ceiling and individual course/version approvals remain unverified.'],'creditConversions':[{'from':'semester','to':'competency-unit','ratio':1,'sourceIds':[unit_source['id']]}],'pacing':undergraduate['pacing'],'financialAid':{'federalAidEligible':False,'sourceUrl':source['url']},'pricing':{'model':'subscription','amount':2500,'period':'12 weeks','currency':'USD','sourceUrl':route['url']},'evidenceCheckedOn':CHECKED})
+    for model in models:
+        if model['id'] in undergraduate['preservedUndergraduateModelSha256']:
+            digest=hashlib.sha256(json.dumps(model,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest()
+            assert digest==undergraduate['preservedUndergraduateModelSha256'][model['id']], 'Graduate authoring must preserve the existing held undergraduate model: '+model['id']
     output={'version':1,'checkedOn':CHECKED,'sources':sources,'models':models,'coverage':{'scope':'Only individually researched CBE course ledgers with reconciled catalog totals are included.','omissions':json.loads((ROOT/'content/curricula/snapshots/cbe/research-gaps.json').read_text()) if (ROOT/'content/curricula/snapshots/cbe/research-gaps.json').exists() else []}}
     (ROOT/'content/curricula/cbe.json').write_text(json.dumps(output,indent=2,ensure_ascii=False)+'\n')
     print(json.dumps({'models':len(models),'requirements':sum(len(m['requirements']) for m in models),'complete':sum(m['coverage']=='complete' for m in models)}))

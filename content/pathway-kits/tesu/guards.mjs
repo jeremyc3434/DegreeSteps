@@ -18,6 +18,9 @@ const credits=(m,predicate)=>sum(m.requirements.filter(predicate));
 const model=(doc,id)=>doc.models.find(m=>m.id===id);
 const courseEligibilityReview=JSON.parse(readFileSync(new URL('./course-specific-eligibility-review-2026-11-26.json',import.meta.url),'utf8'));
 const coursePlacementReview=JSON.parse(readFileSync(new URL('./course-placements-review-2026-11-26.json',import.meta.url),'utf8'));
+const additionalPlacementReview=JSON.parse(readFileSync(new URL('./course-placements-review-2026-11-27.json',import.meta.url),'utf8'));
+const coursePlacementReviews=[coursePlacementReview,additionalPlacementReview];
+const reviewedPlacementFor=(m,id)=>coursePlacementReviews.some(review=>review.id===id&&review.models.some(scope=>scope.modelId===m.id));
 function reviewedCourseEligibility(m,o){
  const resolution=o.courseEligibilityResolution;if(!resolution)return false;
  const approved=courseEligibilityReview.claims.find(claim=>claim.provider===o.provider&&claim.providerCourseCode===o.code&&claim.receivingCode===o.receivingCode&&claim.courseVersion===o.courseVersion);
@@ -39,6 +42,8 @@ const ledgers={
   'curriculum-tesu-bsba-finance':{groups:{'business-core':42,'area-of-study':18,'free-electives':15},areaCodes:['FIN-3140','FIN-3340','FIN-3820','FIN-3210','FIN-3310','FDR-4400']},
   'curriculum-tesu-bsba-human-resources-organizational-management':{groups:{'business-core':42,'area-of-study':18,'free-electives':15},areaCodes:['MAN-3310','MAN-3110','PSY-3600','PSY-3630','SOC-3620','MAN-4250']},
   'curriculum-tesu-bsba-marketing':{groups:{'business-core':42,'area-of-study':18,'free-electives':15},areaCodes:['MKT-4110','MKT-4790','MKT-3060','MKT-3350','MKT-4410','MAN-4320']},
+  'curriculum-tesu-bs-computer-information-systems':{groups:{'business-core':42,'area-of-study':18,'free-electives':15},areaCodes:['COS-1160','CIS-3200','COS-2410','CIS-3110','CIS-3010','CIS-3510']},
+  'curriculum-tesu-bs-healthcare-management':{groups:{'business-core':42,'area-of-study':18,'free-electives':15},areaCodes:['HCM-3070','HCM-3080','HCM-3530','HCM-4040','HCM-4050','HCM-4060']},
   'curriculum-tesu-bs-general-management':{groups:{'business-core':42,'area-of-study':18,'free-electives':15},areaCodes:['MAN-3110','MAN-3310','FIN-3310','FIN-3340','MKT-4110','MKT-4790']},
   'curriculum-tesu-ba-english':{categories:{major:45},free:30,requiredEnglish:['LIT-2050','LIT-2060','LIT-2910','LIT-4600']},
   'curriculum-tesu-ba-psychology':{categories:{major:45},free:30},
@@ -129,7 +134,7 @@ function awardsFitTheirRequirement(doc){
 }
 /** Business course currency (importer rule): half the area of study within ten years, the capstone within five. */
 function businessCourseCurrency(doc){
-  for(const id of ['curriculum-tesu-bsba-accounting','curriculum-tesu-bsba-finance','curriculum-tesu-bsba-human-resources-organizational-management','curriculum-tesu-bsba-marketing','curriculum-tesu-bs-general-management']){
+  for(const id of ['curriculum-tesu-bsba-accounting','curriculum-tesu-bsba-finance','curriculum-tesu-bsba-human-resources-organizational-management','curriculum-tesu-bsba-marketing','curriculum-tesu-bs-general-management','curriculum-tesu-bs-computer-information-systems','curriculum-tesu-bs-healthcare-management']){
     const m=model(doc,id);if(!m)continue;
     const groups=list(m.existingCreditReview?.groups);
     const area=groups.find(g=>g.maxAgeYears===10),capstone=groups.find(g=>g.id==='business-capstone');
@@ -194,14 +199,15 @@ function schoolSubmittedMatchesAreExact(doc){
     assert.equal(e.schoolName,'Thomas Edison State University');assert.equal(e.catalogYear,'2026-2027',`${m.title} ${r.id}/${o.id}: the TESU 2026–2027 catalog`);
     assert.equal(e.individualApproval,false);assert.equal(e.receivingCode,o.receivingCode);assert.equal(e.credits,o.credits);
     assert.ok(cites(m,e.sourceIds),`${m.title} ${r.id}/${o.id}: the receiving match cites a model source`);
-    assert.ok(r.code===o.receivingCode||r.freeElective===true&&o.placementType==='elective'||r.liberalArtsAllocation===true&&o.coursePlacementReviewId===coursePlacementReview.id&&upiLiberalArtsPlacement(m,r,o)||r.category==='general'&&o.coursePlacementReviewId===coursePlacementReview.id&&o.degreePlacementEvidence?.placementType==='general-category',`${m.title} ${r.id}/${o.id}: ${o.receivingCode} is placed only in its own requirement, free elective or independently reviewed category allocation`);
+    assert.ok(r.code===o.receivingCode||r.freeElective===true&&o.placementType==='elective'||r.liberalArtsAllocation===true&&reviewedPlacementFor(m,o.coursePlacementReviewId)&&upiLiberalArtsPlacement(m,r,o)||r.category==='general'&&reviewedPlacementFor(m,o.coursePlacementReviewId)&&o.degreePlacementEvidence?.placementType==='general-category',`${m.title} ${r.id}/${o.id}: ${o.receivingCode} is placed only in its own requirement, free elective or independently reviewed category allocation`);
   }
 }
 /** Degree allocation is a separate reviewed claim: current primary degree proof, exact slot and university award, never residency. */
 function reviewedCurrentCoursePlacements(doc,kit){
  const rows=new Map(list(kit?.equivalencies?.equivalencies).map(row=>[row.id,row]));
  for(const m of doc.models){
-  const scope=coursePlacementReview.models.find(review=>review.modelId===m.id);assert.ok(scope,m.title+': this exact current degree is in the placement review');
+  const reviews=coursePlacementReviews.filter(review=>review.models.some(scope=>scope.modelId===m.id));assert.equal(reviews.length,1,m.title+': exactly one date-scoped placement review');
+  const coursePlacementReview=reviews[0],scope=coursePlacementReview.models.find(review=>review.modelId===m.id);assert.ok(scope,m.title+': this exact current degree is in the placement review');
   assert.equal(m.catalog,scope.catalog);assert.equal(m.institutionMinCredits,scope.institutionMinCredits);assert.equal(m.upperMinCredits,scope.upperMinCredits);assert.equal(m.alternativeMaxCredits,scope.alternativeMaxCredits);
   assert.equal(m.transferPolicyReview?.duplicatesCountOnce,true);assert.deepEqual(m.liberalArtsAllocation||null,scope.liberalArtsAllocation);
   assert.deepEqual(m.requirements.map(reviewedRequirementScope),scope.requirements,m.title+': reviewed degree capacity, disciplines, levels, quantities and source identities');
@@ -215,7 +221,7 @@ function reviewedCurrentCoursePlacements(doc,kit){
    assert.equal(r.institutionalOnly===true,false);assert.equal(o.creditOrigin,'alternative');
    const proof=o.degreePlacementEvidence;assert.ok(proof);assert.equal(proof.modelId,m.id);assert.equal(proof.requirementId,r.id);assert.equal(proof.receivingCode,o.receivingCode);assert.equal(proof.credits,o.credits);assert.equal(proof.creditSystem,o.creditSystem);assert.equal(proof.placementType,approved.placementType);assert.equal(proof.modality,'online');assert.deepEqual(proof.sourceIds,approved.sourceIds);
    assert.ok(cites(m,o.sourceIds)&&approved.sourceIds.every(id=>o.sourceIds.includes(id)));
-   for(const id of approved.primarySourceIds){const source=m.sources.find(source=>source.id===id),expected=coursePlacementReview.sources.find(source=>source.id===id);assert.ok(source&&expected);assert.equal(source.kind,'university');assert.equal(source.url,expected.url);assert.equal(source.capture,expected.capture);assert.equal(source.checked,coursePlacementReview.checkedOn);assert.equal(source.sha256,coursePlacementReview.sourceHashes[id]);assert.equal(source.sourceContentHash,coursePlacementReview.sourceHashes[id]);}
+   for(const id of approved.primarySourceIds){const source=m.sources.find(source=>source.id===id),expected=coursePlacementReview.sources.find(source=>source.id===id);assert.ok(source&&expected);assert.equal(source.kind,'university');assert.equal(source.url,expected.url);assert.equal(source.capture,expected.capture);assert.equal(source.checked,expected.checked);assert(source.checked<=coursePlacementReview.checkedOn,'A placement review cannot predate its retained source review');assert.equal(source.sha256,coursePlacementReview.sourceHashes[id]);assert.equal(source.sourceContentHash,coursePlacementReview.sourceHashes[id]);}
    if(approved.placementType==='elective'){assert.equal(r.freeElective,true);assert.equal(r.excludeAlreadyUsed,true);assert.equal(o.placementType,'elective');assert.equal(o.allocationType,'free-elective');}
    if(approved.placementType==='liberal-arts-area'){assert.equal(o.placementType,'major-elective');assert.equal(o.allocationType,'liberal-arts-area');assert.ok(upiLiberalArtsPlacement(m,r,o));}
    if(approved.placementType==='general-category'){assert.equal(o.placementType,'general-elective');assert.equal(o.allocationType,'general-category');assert.equal(r.category,'general');assert.ok(scope.scientificRequirementIds.includes(r.id)&&scope.scientificPermittedReceivingCodes.includes(o.receivingCode));assert.ok(approved.primarySourceIds.includes('tesu-liberal-taxonomy-placement-2026-11-26'));}

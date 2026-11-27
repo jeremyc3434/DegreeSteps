@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {loadKit,root,sourceIndex} from './scripts/pathway-factory/lib.mjs';
 import {compileKit,runGuards} from './scripts/pathway-factory/compile.mjs';
-import {applyTESUCourseEligibility,buildCourseResolution,groundedSource,reviewedRows} from './scripts/tesu-course-eligibility.mjs';
+import {applyTESUCourseEligibility,buildCourseResolution,groundedSource,reviewedRows,historicalTESUCourseEligibilityPrograms,TESU_COURSE_ELIGIBILITY_MODELS} from './scripts/tesu-course-eligibility.mjs';
 import {assertTESUPlacementInventory} from './test-support/tesu-placement-inventory.mjs';
 const read=async path=>JSON.parse(await readFile(root+'/'+path,'utf8'));
 const packet=await read('content/pathway-kits/tesu/course-specific-eligibility-review-2026-11-26.json');
@@ -23,10 +23,20 @@ test('35 exact course eligibility decisions retain original source dates, real h
  const review=await read('content/pathway-kits/tesu/provider-review-2026-11-25.json');assert.equal(review.checkedOn,'2026-11-25');assert(review.provisional.includes('Sophia'));assert(!review.approved.includes('Sophia'));
 });
 
-test('compiled eight-program scope resolves course awards while preserving the original five and independently reviewed candidates',async()=>{
- const kit=await loadKit(root+'/content/pathway-kits/tesu'),doc=compileKit(kit).doc;assert.equal(doc.models.length,8);assertTESUPlacementInventory(doc.models);assert.equal(await runGuards(kit,doc),15);
+test('historical eligibility consumers remain the original eight while new degrees receive separately dated placement reviews',async()=>{
+ const kit=await loadKit(root+'/content/pathway-kits/tesu'),historical=historicalTESUCourseEligibilityPrograms(kit.programs),scope=new Set(TESU_COURSE_ELIGIBILITY_MODELS);
+ assert.deepEqual(historical.map(program=>({modelId:program.modelId,catalog:program.catalog})),packet.models);
+ const additions=kit.programs.filter(program=>!scope.has(program.modelId));assert.deepEqual(additions.map(program=>program.modelId).sort(),['curriculum-tesu-bs-computer-information-systems','curriculum-tesu-bs-healthcare-management']);
+ const placements=await read('content/pathway-kits/tesu/course-placements-review-2026-11-27.json');assert.equal(placements.checkedOn,'2026-11-27');assert.deepEqual(placements.models.map(model=>model.modelId).sort(),additions.map(program=>program.modelId).sort());
+ for(const program of additions){assert.equal(program.review.reviewedOn,'2026-11-27');assert(!packet.models.some(model=>model.modelId===program.modelId));}
+ for(const mutate of [program=>{program.review.reviewedOn='2026-11-27';},program=>{program.modelFields.catalogIdentity.checkedOn='2026-11-27';},program=>{delete program.review.reviewedOn;}]){const changed=clone(kit.programs);mutate(changed.find(program=>scope.has(program.modelId)));assert.throws(()=>historicalTESUCourseEligibilityPrograms(changed));}
+ assert.throws(()=>historicalTESUCourseEligibilityPrograms(historical.slice(1)));
+});
+
+test('compiled historical eight-program scope resolves course awards while preserving the original five and independently reviewed candidates',async()=>{
+ const kit=await loadKit(root+'/content/pathway-kits/tesu'),doc=compileKit(kit).doc,scope=new Set(TESU_COURSE_ELIGIBILITY_MODELS),historical=doc.models.filter(model=>scope.has(model.id));assert.equal(historical.length,8);assertTESUPlacementInventory(historical);assert.equal(await runGuards(kit,doc),15);
  let resolved=0,heldUPI=0,heldSophia=0;
- for(const model of doc.models)for(const r of model.requirements)for(const o of r.options){
+ for(const model of historical)for(const r of model.requirements)for(const o of r.options){
   if(o.courseEligibilityResolution){resolved++;assert.equal(o.eligibilityReview.providerReviewPending,true);assert.equal(o.eligibilityReview.fullyApproved,false);assert.equal(o.mappingEvidence.individualApproval,false);assert.equal(o.courseEligibilityResolution.targetCatalog,model.catalog);assert.equal(o.sourceCreditStatus,'verified');if(o.evidence==='conditional')assert(r.freeElective||r.liberalArtsAllocation);}
   if(o.provider==='UPI Study'){heldUPI++;assert.equal(o.evidence,'conditional');assert.equal(o.mappingResearchClosed,false);assert.equal(o.courseEligibilityResolution,undefined);}
   if(o.provider==='Sophia'&&!o.courseEligibilityResolution){heldSophia++;assert.equal(o.evidence,'conditional');}
@@ -51,5 +61,5 @@ test('new course resolution requires actual university-submitted award authority
 });
 
 test('the exact eligibility authoring workflow is idempotent and check mode writes nothing',async()=>{
- const files=['content/pathway-kits/tesu/equivalencies.json','content/pathway-kits/tesu/school.json','content/pathway-kits/tesu/provider-review-2026-11-25.json','content/pathway-kits/tesu/course-specific-eligibility-review-2026-11-26.json'];const before=await Promise.all(files.map(file=>readFile(root+'/'+file,'utf8')));const report=await applyTESUCourseEligibility({check:true});assert.equal(report.exactClaims,35);assert.equal(report.providerApprovalStatusChanged,false);assert.deepEqual(await Promise.all(files.map(file=>readFile(root+'/'+file,'utf8'))),before);
+ const kit=await loadKit(root+'/content/pathway-kits/tesu'),files=['content/pathway-kits/tesu/equivalencies.json','content/pathway-kits/tesu/school.json','content/pathway-kits/tesu/provider-review-2026-11-25.json','content/pathway-kits/tesu/course-specific-eligibility-review-2026-11-26.json',...kit.programs.map(program=>'content/pathway-kits/tesu/programs/'+program.slug+'.json')];const before=await Promise.all(files.map(file=>readFile(root+'/'+file,'utf8')));const report=await applyTESUCourseEligibility({check:true});assert.equal(report.exactClaims,35);assert.equal(report.providerApprovalStatusChanged,false);assert.deepEqual(await Promise.all(files.map(file=>readFile(root+'/'+file,'utf8'))),before);
 });

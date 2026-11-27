@@ -6,7 +6,7 @@ import {loadKit,kitsRoot} from './scripts/pathway-factory/lib.mjs';
 import {compileKit,runGuards} from './scripts/pathway-factory/compile.mjs';
 import {providerReview,tesuProviderEligibility,applyTESUProviderReview} from './scripts/tesu-provider-review.mjs';
 import {hasReviewedCourseEligibility} from './scripts/pathway-quality.mjs';
-import {assertTESUPlacementInventory} from './test-support/tesu-placement-inventory.mjs';
+import {assertTESUExpandedPlacementInventory} from './test-support/tesu-placement-inventory.mjs';
 const kit=await loadKit(kitsRoot+'/tesu'),{doc}=compileKit(kit);
 const clone=x=>JSON.parse(JSON.stringify(x));
 
@@ -27,15 +27,16 @@ test('TESU current provider review binds an intact live capture and keeps Study.
  assert.equal(providerReview.publicationPromotionAllowed,false);
 });
 
-test('all eight TESU models preserve the original evidence and separate provider governance from exact receiving awards',async()=>{
- assert.equal(doc.models.length,8);assertTESUPlacementInventory(doc.models);await runGuards(kit,doc);
- let resolved=0,conditional=0;
+test('historical eight and new two TESU models preserve their dated evidence and separate provider governance from exact receiving awards',async()=>{
+ const cohorts=assertTESUExpandedPlacementInventory(doc.models);await runGuards(kit,doc);
+ let resolved=0,additionalResolved=0,conditional=0;
  for(const model of doc.models){
+  const isAddition=cohorts.additions.some(addition=>addition.id===model.id),asOf=isAddition?'2026-11-27':'2026-11-26';
   assert.ok(model.sources.some(s=>s.id===providerReview.source.id));
   assert.equal(model.providerEligibilityReview.checkedOn,'2026-11-25');
   for(const row of model.requirements)for(const option of row.options){
    if(option.provider==='University')continue;
-   if(option.courseEligibilityResolution){resolved++;assert.equal(option.evidence,'published');assert.equal(hasReviewedCourseEligibility(model,row,option,{asOf:'2026-11-26'}),true,'Independent exact course evidence resolves '+option.id);assert.equal(option.eligibilityReview.providerReviewPending,true);assert.equal(option.eligibilityReview.fullyApproved,false);}
+   if(option.courseEligibilityResolution){if(isAddition)additionalResolved++;else resolved++;assert.equal(option.evidence,'published');assert.equal(hasReviewedCourseEligibility(model,row,option,{asOf}),true,'Independent exact course evidence resolves '+option.id);assert.equal(option.eligibilityReview.providerReviewPending,true);assert.equal(option.eligibilityReview.fullyApproved,false);}
    else{conditional++;assert.equal(option.evidence,'conditional','Provider approval alone never promotes '+option.id);}
    assert.equal(option.eligibilityReview.individualApproval,false);
    assert.equal(option.eligibilityReview.fullyApproved,providerReview.approved.includes(option.provider));
@@ -43,7 +44,7 @@ test('all eight TESU models preserve the original evidence and separate provider
    assert.equal(Object.hasOwn(option.eligibilityReview,'eligibleToStart'),false);
   }
  }
- assert.equal(resolved,1297);assert(conditional>0);assert.equal(kit.equivalencies.equivalencies.filter(row=>row.authored&&row.extra?.courseEligibilityResolution).length,35);
+ assert.equal(resolved,1297);assert.equal(additionalResolved,202);assert(conditional>0);assert.equal(kit.equivalencies.equivalencies.filter(row=>row.authored&&row.extra?.courseEligibilityResolution).length,35);
 });
 
 test('provider-review application is idempotent and never invents source dates, receiving awards or quantities',()=>{

@@ -136,6 +136,55 @@
       },
       "checkedOn": "2026-11-26",
       "quote": "Total Credit Hours: 120"
+    },
+    {
+      "id": "tesu-bs-healthcare-management-current-2026-11-27",
+      "title": "B.S. in Healthcare Management — current primary degree curriculum",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-healthcare-management/",
+      "checked": "2026-11-27",
+      "capture": "content/source-captures/fdccee821a974d6d.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "degree-placement",
+        "program-policy"
+      ],
+      "captureFormat": "connected-web-rendered-extract",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/b746a4d4e1950ef92bf363efe65dd53daddc347d97ca8876b77e5468a3ec0073.json",
+        "sha256": "b746a4d4e1950ef92bf363efe65dd53daddc347d97ca8876b77e5468a3ec0073",
+        "citationRef": "turn716view0",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-healthcare-management/"
+      },
+      "sha256": "fdccee821a974d6d555222cd5a5760ce2ec560f24277f991dfffbe87e2fc28c3",
+      "sourceContentHash": "fdccee821a974d6d555222cd5a5760ce2ec560f24277f991dfffbe87e2fc28c3",
+      "checkedOn": "2026-11-27",
+      "quote": "Total Credit Hours: 120"
+    },
+    {
+      "id": "tesu-bs-computer-information-systems-current-2026-11-27",
+      "title": "B.S. in Computer Information Systems — current exact curriculum",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-computer-information-systems/",
+      "checked": "2026-11-27",
+      "capture": "content/source-captures/933c3904a0a0086e.txt",
+      "sha256": "933c3904a0a0086e9b66178cd5cceac16c8f0664046adab1ac84f29bf28b2190",
+      "sourceContentHash": "933c3904a0a0086e9b66178cd5cceac16c8f0664046adab1ac84f29bf28b2190",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn712view0",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/bf9f82afecc33259b2e784356c0c96bf497ab02c8b2aea8a575f095f60d8db28.json",
+        "sha256": "bf9f82afecc33259b2e784356c0c96bf497ab02c8b2aea8a575f095f60d8db28",
+        "citationRef": "turn712view0",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-computer-information-systems/"
+      },
+      "roles": [
+        "curriculum",
+        "degree-placement",
+        "program-policy"
+      ],
+      "checkedOn": "2026-11-27",
+      "quote": "Total Credit Hours: 120"
     }
   ],
   "reviews": [
@@ -599,6 +648,124 @@
         },
         {
           "id": "tesu-bs-general-management-accelerated-course-options-business-expansion-20261126",
+          "kind": "attendance",
+          "scope": "school-policy",
+          "label": "Four-week course options",
+          "detail": "TESU offers four-week accelerated sections for undergraduate learners as a separate course format. A specific course’s accelerated section and registration dates must be available; this standard online-course baseline does not assume those alternatives or promise a completion date.",
+          "sourceIds": [
+            "tesu-accelerated-course-option-20261126"
+          ],
+          "prominent": false,
+          "type": "accelerated-course-options"
+        }
+      ]
+    },
+    {
+      "id": "tesu-bs-healthcare-management-requirements-business-expansion-20261127",
+      "modelIds": [
+        "curriculum-tesu-bs-healthcare-management"
+      ],
+      "catalogIdentity": {
+        "kind": "reviewed-current-catalog",
+        "label": "Current undergraduate catalog · checked November 18, 2026",
+        "sourceId": "tesu-bs-healthcare-management-current-2026-11-27",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-healthcare-management/",
+        "checkedOn": "2026-11-27",
+        "sourceSha256": "fdccee821a974d6d555222cd5a5760ce2ec560f24277f991dfffbe87e2fc28c3"
+      },
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-tesu-bs-healthcare-management",
+          "degreeUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-healthcare-management/"
+        }
+      ],
+      "facts": [
+        {
+          "id": "tesu-bs-healthcare-management-online-participation-business-expansion-20261127",
+          "kind": "attendance",
+          "scope": "school-policy",
+          "label": "Online participation expected",
+          "detail": "Standard online university courses follow a course calendar and require academic participation. Access is flexible, but simply viewing a course does not satisfy engagement requirements. This does not establish a live meeting time for a particular course.",
+          "sourceIds": [
+            "tesu-current-course-engagement-20261126"
+          ],
+          "prominent": false,
+          "type": "online-participation"
+        },
+        {
+          "id": "tesu-bs-healthcare-management-assessment-formats-vary-business-expansion-20261127",
+          "kind": "assessment",
+          "scope": "school-policy",
+          "label": "Online assessment formats vary",
+          "detail": "Standard online university courses can use written assignments, discussions, proctored or nonproctored examinations, or other comprehensive assessments. The exact assessments for an individual university course are not classified here; this does not describe outside providers or every TESU credit-earning method.",
+          "sourceIds": [
+            "tesu-standard-online-assessments-20261126"
+          ],
+          "prominent": false,
+          "type": "assessment-formats-vary"
+        },
+        {
+          "id": "tesu-bs-healthcare-management-accelerated-course-options-business-expansion-20261127",
+          "kind": "attendance",
+          "scope": "school-policy",
+          "label": "Four-week course options",
+          "detail": "TESU offers four-week accelerated sections for undergraduate learners as a separate course format. A specific course’s accelerated section and registration dates must be available; this standard online-course baseline does not assume those alternatives or promise a completion date.",
+          "sourceIds": [
+            "tesu-accelerated-course-option-20261126"
+          ],
+          "prominent": false,
+          "type": "accelerated-course-options"
+        }
+      ]
+    },
+    {
+      "id": "tesu-bs-computer-information-systems-requirements-business-expansion-20261127",
+      "modelIds": [
+        "curriculum-tesu-bs-computer-information-systems"
+      ],
+      "catalogIdentity": {
+        "kind": "reviewed-current-catalog",
+        "label": "Current undergraduate catalog · checked November 18, 2026",
+        "sourceId": "tesu-bs-computer-information-systems-current-2026-11-27",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-computer-information-systems/",
+        "checkedOn": "2026-11-27",
+        "sourceSha256": "933c3904a0a0086e9b66178cd5cceac16c8f0664046adab1ac84f29bf28b2190"
+      },
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-tesu-bs-computer-information-systems",
+          "degreeUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-computer-information-systems/"
+        }
+      ],
+      "facts": [
+        {
+          "id": "tesu-bs-computer-information-systems-online-participation-business-expansion-20261127",
+          "kind": "attendance",
+          "scope": "school-policy",
+          "label": "Online participation expected",
+          "detail": "Standard online university courses follow a course calendar and require academic participation. Access is flexible, but simply viewing a course does not satisfy engagement requirements. This does not establish a live meeting time for a particular course.",
+          "sourceIds": [
+            "tesu-current-course-engagement-20261126"
+          ],
+          "prominent": false,
+          "type": "online-participation"
+        },
+        {
+          "id": "tesu-bs-computer-information-systems-assessment-formats-vary-business-expansion-20261127",
+          "kind": "assessment",
+          "scope": "school-policy",
+          "label": "Online assessment formats vary",
+          "detail": "Standard online university courses can use written assignments, discussions, proctored or nonproctored examinations, or other comprehensive assessments. The exact assessments for an individual university course are not classified here; this does not describe outside providers or every TESU credit-earning method.",
+          "sourceIds": [
+            "tesu-standard-online-assessments-20261126"
+          ],
+          "prominent": false,
+          "type": "assessment-formats-vary"
+        },
+        {
+          "id": "tesu-bs-computer-information-systems-accelerated-course-options-business-expansion-20261127",
           "kind": "attendance",
           "scope": "school-policy",
           "label": "Four-week course options",

@@ -9,6 +9,23 @@ import {periodOptions,optionCourseId} from './import-tesu-original-periods.mjs';
 import {decodeEntities} from './pathway-factory/capture.mjs';
 
 const REVIEW='tesu-exact-course-eligibility-2026-11-26',CHECKED='2026-11-26';
+// This is the consumer roster actually reviewed on November 26. Later degree
+// ledgers reuse the same exact course awards through their separately dated
+// placement reviews; replaying this writer must not backdate their curriculum
+// review or add them to a historical packet.
+export const TESU_COURSE_ELIGIBILITY_MODELS=Object.freeze([
+ 'ba-english','ba-liberal-studies','ba-psychology','bs-general-management',
+ 'bsba-accounting','bsba-finance','bsba-human-resources-organizational-management','bsba-marketing'
+].map(slug=>'curriculum-tesu-'+slug));
+export function historicalTESUCourseEligibilityPrograms(programs){
+ const ids=new Set(TESU_COURSE_ELIGIBILITY_MODELS),scoped=programs.filter(program=>ids.has(program.modelId));
+ assert.equal(scoped.length,ids.size,'Retain every independently reviewed November 26 degree consumer exactly once');
+ assert.equal(new Set(scoped.map(program=>program.modelId)).size,ids.size,'Historical degree consumers are unique');
+ for(const program of scoped)for(const [field,date]of [['curriculum review',program.review?.reviewedOn],['catalog identity',program.modelFields?.catalogIdentity?.checkedOn]]){
+  assert(/^20\d\d-\d\d-\d\d$/.test(date||'')&&date<=CHECKED,program.modelId+': the '+field+' must exist on the actual historical review date');
+ }
+ return scoped;
+}
 const TRANSCRIPT={id:'tesu-transcript-course-eligibility-2026-11-26',title:'TESU official transcript instructions distinguish source evaluation from university course awards',url:'https://www.tesu.edu/student-resources/transfer-credits/send-transcripts.php',checked:CHECKED,capture:'content/source-captures/3a196002fa16af8d.txt',kind:'university',roles:['transfer-policy','provider-policy']};
 const normalize=value=>String(value||'').replace(/[\u2018\u2019]/g,"'").replace(/\s+/g,' ').trim();
 const sha=value=>createHash('sha256').update(value).digest('hex');
@@ -65,7 +82,8 @@ export async function buildCourseResolution(row,{sources,catalog,transcript,poli
 
 export async function applyTESUCourseEligibility({check=false}={}){
  const kit=await loadKit(resolve(root,'content/pathway-kits/tesu')),school=kit.school,equivalencies=kit.equivalencies,providerPolicy=await read('content/pathway-kits/tesu/provider-review-2026-11-25.json');
- const catalog=kit.programs[0].catalog;assert(kit.programs.every(program=>program.catalog===catalog),'The reviewed five programs share the exact catalog identity');
+ const programs=historicalTESUCourseEligibilityPrograms(kit.programs);
+ const catalog=programs[0].catalog;assert(programs.every(program=>program.catalog===catalog),'The historically reviewed programs share the exact catalog identity');
  const index=sourceIndex(kit,kit.programs[0]),sources=new Map();
  const directory=await groundedSource({...providerPolicy.source,kind:'university',roles:['provider-policy']}),policy=await groundedSource({...providerPolicy.policySource,kind:'university',roles:['provider-policy']}),transcript=await groundedSource(TRANSCRIPT);
  for(const entry of [directory,policy,transcript])sources.set(entry.source.id,entry);
@@ -85,12 +103,12 @@ export async function applyTESUCourseEligibility({check=false}={}){
   if(at<0)school.sources.push(source);else school.sources[at]={...school.sources[at],...source};
   if(providerSourceIds.has(source.id)&&!(school.sourceOverrides||=[]).includes(source.id))school.sourceOverrides.push(source.id);
  }
- for(const program of kit.programs){const sourceIds=rows.flatMap(row=>[...row.sourceIds,...row.extra.courseEligibilityResolution.sourceIds]);program.modelSourceIds=[...new Set([...program.modelSourceIds,TRANSCRIPT.id,...sourceIds])];}
+ for(const program of programs){const sourceIds=rows.flatMap(row=>[...row.sourceIds,...row.extra.courseEligibilityResolution.sourceIds]);program.modelSourceIds=[...new Set([...program.modelSourceIds,TRANSCRIPT.id,...sourceIds])];}
  // Existing historical review dates and provider flags stay intact; this packet is a separate course-specific review.
  for(const source of [providerPolicy.source,providerPolicy.policySource]){const retained=sources.get(source.id).source;Object.assign(source,{sha256:retained.sha256,sourceContentHash:retained.sourceContentHash,kind:retained.kind,roles:retained.roles});}
- const packet={kind:'tesu-exact-course-eligibility-review',version:1,id:REVIEW,checkedOn:CHECKED,schoolName:'Thomas Edison State University',scope:'Current university-submitted receiving-course awards only. Provider approval remains provisional; this does not grant student enrollment permission, individual credit, universal provider acceptance or new degree placement.',providerApprovalStatusChanged:false,individualCreditAwards:0,models:kit.programs.map(p=>({modelId:p.modelId,catalog:p.catalog})),sources:[...sources.values()].map(entry=>entry.source),claims};
+ const packet={kind:'tesu-exact-course-eligibility-review',version:1,id:REVIEW,checkedOn:CHECKED,schoolName:'Thomas Edison State University',scope:'Current university-submitted receiving-course awards only. Provider approval remains provisional; this does not grant student enrollment permission, individual credit, universal provider acceptance or new degree placement.',providerApprovalStatusChanged:false,individualCreditAwards:0,models:programs.map(p=>({modelId:p.modelId,catalog:p.catalog})),sources:[...sources.values()].map(entry=>entry.source),claims};
  const serialize=value=>JSON.stringify(value,null,2)+'\n';
- const writes=[['content/pathway-kits/tesu/equivalencies.json',serialize(equivalencies)],['content/pathway-kits/tesu/school.json',serialize(school)],['content/pathway-kits/tesu/provider-review-2026-11-25.json',serialize(providerPolicy)],['content/pathway-kits/tesu/course-specific-eligibility-review-2026-11-26.json',serialize(packet)],...kit.programs.map(program=>{const {file,...authored}=program;return ['content/pathway-kits/tesu/programs/'+program.slug+'.json',serialize(authored)];})];
+ const writes=[['content/pathway-kits/tesu/equivalencies.json',serialize(equivalencies)],['content/pathway-kits/tesu/school.json',serialize(school)],['content/pathway-kits/tesu/provider-review-2026-11-25.json',serialize(providerPolicy)],['content/pathway-kits/tesu/course-specific-eligibility-review-2026-11-26.json',serialize(packet)],...programs.map(program=>{const {file,...authored}=program;return ['content/pathway-kits/tesu/programs/'+program.slug+'.json',serialize(authored)];})];
  for(const [path,text]of writes)if(check)assert.equal(await readFile(resolve(root,path),'utf8'),text,path+' is stale');else await writeFile(resolve(root,path),text);
  return {reviewId:REVIEW,exactClaims:claims.length,providerApprovalStatusChanged:false,individualCreditAwards:0,check};
 }

@@ -1,5 +1,5 @@
 import test from 'node:test';
-import {assertTESUPlacementInventory} from './test-support/tesu-placement-inventory.mjs';
+import {assertTESUExpandedPlacementInventory} from './test-support/tesu-placement-inventory.mjs';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {loadKit,kitsRoot} from './scripts/pathway-factory/lib.mjs';
@@ -57,10 +57,9 @@ test('joint declaration changes cannot substitute partial receiving codes or ano
  const changed=clone(option),partial=option.code.slice(0,-1);changed.code=changed.aceId=changed.mappingEvidence.providerCourseCode=changed.courseEligibilityResolution.providerCourseCode=partial;
  assert.equal(hasReviewedCourseEligibility(model,requirement,changed,{asOf}),false,'Exact printed ACE course identity also stays bounded');
 });
-test('all1297 scoped TESU placements retain the original996 and resolve after exact source field boundary checks',()=>{
- let count=0;
- for(const program of compiledModels)for(const row of program.requirements)for(const candidate of row.options)if(candidate.courseEligibilityResolution){count++;assert.equal(hasReviewedCourseEligibility(program,row,candidate,{asOf}),true,program.id+'/'+row.id+'/'+candidate.code);}
- assert.equal(count,1297);assertTESUPlacementInventory(compiledModels);
+test('1297 historical and202 additional TESU placements retain the original996 and resolve at their own review dates after exact source field boundary checks',()=>{
+ const cohorts=assertTESUExpandedPlacementInventory(compiledModels);
+ for(const [models,checkedOn,expected]of [[cohorts.historical,asOf,1297],[cohorts.additions,'2026-11-27',202]]){let count=0;for(const program of models)for(const row of program.requirements)for(const candidate of row.options)if(candidate.courseEligibilityResolution){count++;assert.equal(hasReviewedCourseEligibility(program,row,candidate,{asOf:checkedOn}),true,program.id+'/'+row.id+'/'+candidate.code);}assert.equal(count,expected);}
 });
 test('a full legitimate source quotation cannot bind an unrelated receiving credit quantity to the course row',()=>{
  const changed=clone(option),resolution=changed.courseEligibilityResolution,sourceId=resolution.receivingSourceIds[0],source=model.sources.find(source=>source.id===sourceId),body=readFileSync(new URL(source.capture,import.meta.url),'utf8');
