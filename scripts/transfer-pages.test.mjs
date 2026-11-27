@@ -41,4 +41,10 @@ test('a course page explains scope and never claims a personal award',()=>{
  const html=renderTransferCourse(courses[0]);
  assert.match(html,/Your school still evaluates your official records/);assert.match(html,/not itself a school award/);
  assert.match(html,/data-transfer-course=/);
+ // The not-an-award explanation sits directly under "Where it counts", before the first listed plan, and the column
+ // names published evidence rather than an award.
+ const qualifier=html.indexOf('data-transfer-qualifier'),table=html.indexOf('<table');
+ assert.ok(qualifier>0&&qualifier<table,'the qualifier comes before the table');
+ assert.match(html,/Published school guidance, not credit awarded to you\./);
+ assert.doesNotMatch(html,/Credit awarded/);assert.match(html,/<th scope="col">Credit in the school’s guide<\/th>/);assert.match(html,/data-label="Credit in the school’s guide"/);
 });
