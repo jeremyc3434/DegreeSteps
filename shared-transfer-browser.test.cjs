@@ -89,7 +89,7 @@ function noReceivingApproval(state){
     assert.match(await page.locator('[data-course-id="christianleadersinstitute-plan-bus310"] .course-row-credits').innerText(),/Unknown/,'Unreviewed business source quantities stay unknown.');
     await page.locator('#course-search').fill('THE');course=page.locator('[data-course-id="'+COURSE_ID+'"]');await assertSourceFacts(course);
     await course.locator('[data-course-details]').click();await assertAdmissionDetails(page);await page.screenshot({path:path.join(OUTPUT,'shared-transfer-admission-'+device+'.png'),fullPage:true});await closeDetails(page);
-    await page.locator('[data-course-save="'+COURSE_ID+'"]').click();
+    await course.locator('[data-course-save="'+COURSE_ID+'"]').click();
     await page.waitForFunction(({key,id})=>JSON.parse(localStorage.getItem(key))?.learning.some(record=>record.catalogCourseId===id),{key:KEY,id:COURSE_ID});
     const state=await stored(page),record=state.learning.find(item=>item.catalogCourseId===COURSE_ID);
     assert.equal(state.learning.length,1);assert.equal(record.code,source.code);assert.equal(record.catalogCourseId,COURSE_ID);assert.equal(record.credits,3);assert.equal(record.creditSystem,'semester');assert.equal(record.sourceUrl,source.url);assert.equal(record.status,'saved');assert.equal(record.completedOn,'');noReceivingApproval(state);
@@ -106,7 +106,7 @@ function noReceivingApproval(state){
     const unchanged=async()=>{const state=await stored(page);assert.equal(state.learning.length,1);assert.equal(JSON.stringify(state.learning[0]),original,'Loading current source facts must not migrate an earned personal record.');noReceivingApproval(state);};
     await page.locator('[data-record-id="'+legacy.id+'"]').waitFor();await unchanged();
     const course=await browseCLI(page);await assertSourceFacts(course);await course.locator('[data-course-details]').click();await assertAdmissionDetails(page);await closeDetails(page);await unchanged();
-    await page.locator('[data-course-save="'+COURSE_ID+'"]').click();await page.locator('#course-details-dialog[open]').waitFor();await unchanged();await closeDetails(page);
+    await course.locator('[data-course-save="'+COURSE_ID+'"]').click();await page.locator('#course-details-dialog[open]').waitFor();await unchanged();await closeDetails(page);
     await page.reload({waitUntil:'networkidle'});await ready(page);await unchanged();
     const row=page.locator('[data-record-id="'+legacy.id+'"]');await row.waitFor();assert.match(await row.locator('.course-row-credits').innerText(),/Unknown/);assert.equal(await row.locator('[data-course-status]').inputValue(),'earned');
    });
