@@ -10,7 +10,7 @@ const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www
 const index='<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n<sitemap><loc>https://degreesteps.com/sitemap-site.xml</loc></sitemap>\n<sitemap><loc>https://degreesteps.com/sitemap-insights.xml</loc></sitemap>\n</sitemapindex>\n';
 async function fixture(t){
  const root=await mkdtemp(join(tmpdir(),'staging-release-'));t.after(()=>rm(root,{recursive:true,force:true}));
- const bodies=new Map([['/robots.txt','User-agent: *\nDisallow: /\n'],['/','<h1>Built release</h1>'],['/brand.css','body { color: black; }'],['/data/credit-sources.json','{"sources":[]}'],['/data/program-catalog.json','{"programs":[]}'],['/courses.html','<h1>Find original courses</h1>'],['/courses.js','document.title="Original course browser";'],['/data/course-catalog.json','{"courses":[]}'],['/portal.html','<h1>Student portal</h1>'],['/portal.js','document.title="Student portal";'],['/guide-engine.js','const guideVersion=1;'],['/sheet-state.js','const sheetVersion=1;'],['/student-checklist.js','const checklistVersion=1;'],['/journey-engine.js','const journeyVersion=1;'],['/school.js','const schoolVersion=1;'],['/sitemap.xml',sitemap]]);
+ const bodies=new Map([['/robots.txt','User-agent: *\nDisallow: /\n'],['/','<h1>Built release</h1>'],['/brand.css','body { color: black; }'],['/data/credit-sources.json','{"sources":[]}'],['/data/program-catalog.json','{"programs":[]}'],['/courses.html','<h1>Find original courses</h1>'],['/courses.js','document.title="Original course browser";'],['/data/course-catalog.json','{"courses":[]}'],['/portal.html','<h1>Student portal</h1>'],['/portal.js','document.title="Student portal";'],['/guide-engine.js','const guideVersion=1;'],['/sheet-state.js','const sheetVersion=1;'],['/student-checklist.js','const checklistVersion=1;'],['/journey-engine.js','const journeyVersion=1;'],['/school.js','const schoolVersion=1;'],['/degree-audit.html','<h1>My degree requirements</h1>'],['/degree-audit.js','const requirementsEditorVersion=1;'],['/requirements-baselines.js','const requirementsBaselineVersion=1;'],['/data/requirements-baselines.json','{"baselines":[]}'],['/sheet.js','const sheetDisplayVersion=1;'],['/sitemap.xml',sitemap]]);
  for(const[route,body]of bodies){if(route==='/robots.txt')continue;const file=join(root,route==='/'?'index.html':route);await mkdir(join(file,'..'),{recursive:true});await writeFile(file,body);}
  const calls=[],logs=[];
  const fetchImpl=async(url,options)=>{
@@ -27,6 +27,14 @@ test('staging proof compares built bytes with fixed anonymous GETs and includes 
  const results=await checkStagingRelease(f.options);assert.equal(results.length,f.bodies.size);assert.deepEqual(f.calls,[...f.bodies.keys()]);
  assert(results.every(item=>item.sha256===item.expectedSha256&&item.status===200));assert.equal(f.logs.length,f.bodies.size);
  assert(!JSON.stringify(f.logs).includes('<h1>'));assert(!f.calls.some(path=>path.startsWith('/api/')));
+});
+test('requirements editor and baseline assets must match the deployed release and retain staging privacy',async t=>{
+ for(const route of ['/degree-audit.html','/degree-audit.js','/requirements-baselines.js','/data/requirements-baselines.json','/sheet.js']){
+  const stale=await fixture(t);stale.bodies.set(route,stale.bodies.get(route)+' stale');
+  await assert.rejects(checkStagingRelease(stale.options),{code:'release-bytes-mismatch',route});assert.equal(stale.calls.at(-1),route);
+  const privacy=await fixture(t),fetchImpl=privacy.options.fetchImpl;
+  await assert.rejects(checkStagingRelease({...privacy.options,fetchImpl:async(url,options)=>{const response=await fetchImpl(url,options);if(new URL(url).pathname===route)response.headers.delete('X-Robots-Tag');return response;}}),{code:'staging-privacy-headers',route});
+ }
 });
 test('a dynamic sitemap index verifies the fixed static shard without following returned URLs',async t=>{
  const f=await fixture(t);f.bodies.set('/sitemap.xml',index);f.bodies.set('/sitemap-site.xml',sitemap);
@@ -73,5 +81,5 @@ test('the deadline aborts a stalled request and provider diagnostics are not log
  await assert.rejects(checkStagingRelease({...f.options,fetchImpl:async()=>{throw Error('secret provider diagnostic');}}),{code:'request-failed'});assert(!JSON.stringify(f.logs).includes('secret provider'));
 });
 test('a missing mandatory build artifact fails before any network request',async t=>{
- for(const route of ['/data/program-catalog.json','/courses.html','/courses.js','/data/course-catalog.json','/portal.html','/portal.js','/guide-engine.js','/sheet-state.js','/student-checklist.js','/journey-engine.js','/school.js']){const f=await fixture(t);await rm(join(f.root,route));await assert.rejects(checkStagingRelease(f.options),{code:'built-asset-unavailable',route});assert.deepEqual(f.calls,[]);}
+ for(const route of ['/data/program-catalog.json','/courses.html','/courses.js','/data/course-catalog.json','/portal.html','/portal.js','/guide-engine.js','/sheet-state.js','/student-checklist.js','/journey-engine.js','/school.js','/degree-audit.html','/degree-audit.js','/requirements-baselines.js','/data/requirements-baselines.json','/sheet.js']){const f=await fixture(t);await rm(join(f.root,route));await assert.rejects(checkStagingRelease(f.options),{code:'built-asset-unavailable',route});assert.deepEqual(f.calls,[]);}
 });

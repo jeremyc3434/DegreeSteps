@@ -4,7 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
   <title>Your degree requirements — DegreeSteps</title>
   <link rel="stylesheet" href="app-shell.css"><link rel="stylesheet" href="degree-audit.css">
-  <script src="course-assessment.js" defer></script><script src="planner.js" defer></script><script src="/provider-registry.js" defer></script><script src="guide-engine.js" defer></script><script src="sheet-state.js" defer></script><script src="program-catalog.js" defer></script><script src="audit-curriculum.js" defer></script><script src="degree-audit.js" defer></script><script src="account-client.js" defer></script>
+  <script src="course-assessment.js" defer></script><script src="planner.js" defer></script><script src="/provider-registry.js" defer></script><script src="guide-engine.js" defer></script><script src="sheet-state.js" defer></script><script src="program-catalog.js" defer></script><script src="audit-curriculum.js" defer></script><script src="requirements-baselines.js" defer></script><script src="degree-audit.js" defer></script><script src="account-client.js" defer></script>
 <script src="/site-header.js" defer></script><script src="/app-shell.js" defer></script><link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" type="image/vnd.microsoft.icon"><link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png"><link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"><link rel="stylesheet" href="/ds-tokens.css"><link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/ds-components.css"><link rel="stylesheet" href="/workspace-design.css"><link rel="stylesheet" href="/discovery-design.css"><link rel="stylesheet" href="/plan-save.css"><link rel="stylesheet" href="/ds-overlays.css"><script src="/growth-metrics.js" defer></script><script src="/plan-save.js" defer></script></head>
 <body class="audit-import-page ds-experience ds-workspace-page ds-discovery-page">
   <header class="audit-top"><a href="plan.html" aria-label="DegreeSteps — My plan"><span class="ds-wordmark">Degree<span class="ds-wordmark-steps">Steps</span></span></a><a href="plan.html">Back to my plan</a></header>
@@ -13,7 +13,19 @@
     <div id="audit-message" role="alert" hidden></div>
     <p id="audit-directory-status" class="audit-private" role="status" hidden></p>
     <section id="audit-start">
+      <details id="audit-baseline" class="audit-card">
+        <summary>Start with UMass Global MyPath catalog requirements</summary>
+        <p>Load the reviewed requirements instead of entering each row. Choose the catalog and emphasis you want to review; enrollment in 2024 does not by itself establish your assigned catalog.</p>
+        <div class="audit-fields">
+          <label for="audit-baseline-catalog">Catalog to review<select id="audit-baseline-catalog"><option value="">Choose a catalog</option><option value="2024-2025">2024–25 · MyPath BBA</option></select></label>
+          <label for="audit-baseline-emphasis">BBA emphasis<select id="audit-baseline-emphasis"><option value="">Choose an emphasis</option><option value="general-business">General Business</option><option value="gis-and-data-analytics">GIS and Data Analytics</option><option value="information-systems-management">Information Systems Management</option><option value="management-and-organizational-leadership">Management and Organizational Leadership</option><option value="marketing">Marketing</option><option value="supply-chain-management-and-logistics">Supply Chain Management and Logistics</option></select></label>
+        </div>
+        <button id="audit-baseline-load" class="audit-secondary" type="button">Load these requirements</button>
+        <p id="audit-baseline-status" class="audit-private" role="status">Requirements only. This does not select your degree, apply completed credits or add outside-course awards.</p>
+      </details>
       <form id="audit-import-form" novalidate>
+        <input type="hidden" name="baselineId"><input type="hidden" name="baselineRevision"><input type="hidden" name="baselineHash"><input type="hidden" name="baselineMode"><input type="hidden" name="baselineEmphasisId"><input type="hidden" name="creditUnitLabel"><input type="hidden" name="learningFormat">
+        <section id="audit-baseline-context" class="audit-card" aria-live="polite" hidden></section>
         <div class="audit-card">
           <h2>1. Your degree</h2>
           <div class="audit-fields">
@@ -44,7 +56,7 @@
     <section id="audit-review" hidden>
       <div class="audit-card">
         <div class="audit-review-heading"><div><h2>Review your requirements</h2><p id="audit-degree-summary"></p></div><button type="button" id="audit-back" class="audit-secondary">Edit requirements</button></div>
-        <p class="audit-notice">These are student-provided requirements. The university still needs to confirm the catalog, credit rules, and transfer placements.</p>
+        <p id="audit-review-provenance" class="audit-notice">These are student-provided requirements. The university still needs to confirm the catalog, credit rules, and transfer placements.</p>
         <div class="audit-table-wrap"><table><thead><tr><th>Section</th><th>Course code</th><th>Requirement</th><th>Credits</th><th>At university</th></tr></thead><tbody id="audit-preview-rows"></tbody><tfoot><tr><th colspan="3">Total</th><td id="audit-total"></td><td></td></tr></tfoot></table></div>
         <label class="audit-confirm"><input type="checkbox" id="audit-confirm">I reviewed these rows and confirmed that their credit units and total match my degree audit.</label>
         <p class="audit-private">Your saved courses and private notes stay with you. Your current degree is kept as a previous plan when you switch.</p>
