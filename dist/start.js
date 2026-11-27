@@ -288,7 +288,9 @@ window.addEventListener('pageshow',event=>{if(event.persisted)refreshPersonal();
   if(requested&&!params.get('q'))filters.q=requested.title.slice(0,80);
   if(window.DegreeDiscoveryClient){try{personalController=window.DegreeDiscoveryClient.create({catalog});personalAvailable=personalController.hasCourses();personalEnabled=personalAvailable&&params.get('fit')!=='0';if(personalEnabled&&!params.has('sort'))filters.sort='fit';if(!personalAvailable&&filters.sort==='fit')filters.sort='cost';}catch{personalError='Your course collection could not be opened. Open My courses to continue.';}}
   if(chosen){openCredits(chosen);return;}
-  if(step==='quiz'){renderQuiz();document.title='1-minute quiz — DegreeSteps';show('quiz');return;}
+  // guided_quiz_started: Help me choose opened (the quiz), from the builder, programs or the portal. The deeper
+  // portal questions keep guided_started, which has always counted the start of those questions.
+  if(step==='quiz'){try{window.dispatchEvent(new CustomEvent('DegreeSteps:growth',{detail:{event:'guided_quiz_started',context:'workspace'}}));}catch{/* Measurement never blocks planning. */}renderQuiz();document.title='1-minute quiz — DegreeSteps';show('quiz');return;}
   $('start-q').value=filters.q;
   if(requested)$('start-error').textContent='That plan isn’t ready to build yet: one of the school’s rules for it still has to be confirmed. You can request it below.',$('start-error').hidden=false;
   else if(named&&!chosen)$('start-error').textContent='That degree plan isn’t available right now. Pick another below.',$('start-error').hidden=false;

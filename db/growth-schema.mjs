@@ -11,7 +11,7 @@ export const growthDailyCounts=sqliteTable('growth_daily_counts',{
 },t=>[
   primaryKey({columns:[t.day,t.event,t.context,t.planId,t.detail]}),
   check('growth_day_format',sql`length(${t.day})=10 AND ${t.day} GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'`),
-  check('growth_event_enum',sql`${t.event} IN ('landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed','finder_used','guided_started','guided_results','plan_built','credits_worth_used','transfer_page_view','provider_click','school_email','share_link_copied','school_inquiry','plan_review_request','alert_subscribed','alert_unsubscribed')`),
+  check('growth_event_enum',sql`${t.event} IN ('landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed','finder_used','guided_started','guided_quiz_started','guided_results','plan_built','credits_worth_used','transfer_page_view','provider_click','school_email','share_link_copied','school_inquiry','plan_review_request','alert_subscribed','alert_unsubscribed')`),
   check('growth_context_enum',sql`${t.context} IN ('home','article','provider','school','degree-plan','workspace','transfer','email')`),
   check('growth_plan_scope',sql`${t.planId}='' OR (length(${t.planId}) BETWEEN 1 AND 128 AND ${t.planId} NOT GLOB '*[^a-z0-9-]*')`),
   check('growth_detail_enum',sql`${t.detail} IN ('','Sophia','Study.com','StraighterLine','Saylor','CLEP','DSST','Christian Leaders Institute','other','open','copy','submitted','settings','link','one-click')`),

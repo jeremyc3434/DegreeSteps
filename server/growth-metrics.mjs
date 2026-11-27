@@ -1,7 +1,7 @@
 /** Anonymous aggregate event counters. This module never reads a student plan. */
 const DegreeGrowthMetrics=(()=>{
   'use strict';
-  const EVENTS=['landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed','finder_used','guided_started','guided_results','plan_built','credits_worth_used','transfer_page_view','provider_click','school_email','share_link_copied','school_inquiry','plan_review_request'];
+  const EVENTS=['landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed','finder_used','guided_started','guided_quiz_started','guided_results','plan_built','credits_worth_used','transfer_page_view','provider_click','school_email','share_link_copied','school_inquiry','plan_review_request'];
   // Recorded only by the server after a verified account action (email plan alerts); never accepted from browsers.
   const SERVER_EVENTS=['alert_subscribed','alert_unsubscribed'],ALL_EVENTS=[...EVENTS,...SERVER_EVENTS];
   const ALERT_UNSUBSCRIBE_METHODS=['settings','link','one-click'];
