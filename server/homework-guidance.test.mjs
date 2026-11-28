@@ -22,6 +22,12 @@ test('shared guidance is deterministic, homework-only synthetic material with ho
   assert.equal(HOMEWORK_PROMPT_REVIEW.version,HOMEWORK_PROMPT_VERSION);assert.equal(HOMEWORK_PROMPT_REVIEW.humanReviewClaimed,false);assert.equal(HOMEWORK_PROMPT_REVIEW.institutionalApprovalClaimed,false);assert.equal(HOMEWORK_PROMPT_REVIEW.exampleCount,5);
 });
 
+test('the revised prompt keeps matching provenance and heldout tasks outside the shared examples',()=>{
+  assert.equal(HOMEWORK_PROMPT_VERSION,'homework-v2-2026-11-28');assert.equal(HOMEWORK_PROMPT_REVIEW.version,HOMEWORK_PROMPT_VERSION);
+  assert.equal((HOMEWORK_SHARED_GUIDANCE.match(/Example \d —/g)||[]).length,5);
+  for(const item of HOMEWORK_EVALUATION_CASES)assert(!HOMEWORK_SHARED_GUIDANCE.includes(item.prompt),'heldout task must remain outside shared examples');
+});
+
 test('heldout and cache-probe expected values pass independent arithmetic checks',()=>{
   const [a,d,p]=HOMEWORK_EVALUATION_CASES;assert.equal(4*(2*a.expected.solution+1)-3,5*a.expected.solution+16);assert.equal(4*(2*a.expected.solution+1)-3,a.expected.checkedSide);
   assert.equal(750*12/100,d.expected.concentrateMl);assert.equal(750+250,d.expected.newTotalMl);assert.equal(100*d.expected.concentrateMl/d.expected.newTotalMl,d.expected.newPercent);

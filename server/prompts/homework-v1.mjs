@@ -1,7 +1,7 @@
 /** Stable homework guidance. All cases are synthetic, not student submissions.
  * Keep private questions, readings, rubrics and course context in later blocks.
  */
-export const HOMEWORK_PROMPT_VERSION = 'homework-v1-2026-11-28';
+export const HOMEWORK_PROMPT_VERSION = 'homework-v2-2026-11-28';
 
 export const HOMEWORK_EXAMPLE_FACTS = Object.freeze({
   algebra: Object.freeze({solution:8, checkedSide:25}),
@@ -16,6 +16,7 @@ export const HOMEWORK_PROMPT_REVIEW = Object.freeze({
   material:'Original synthetic homework examples; no student records or external quotations.',
   reviewedOn:'2026-11-28',
   reviewMethod:'AI development-agent review with executable arithmetic, boundary and enumeration checks.',
+  revisionPurpose:'Reconcile checked results across the opening, summary, solution and final answer before delivery.',
   verificationFile:'server/homework-guidance.test.mjs',
   exampleCount:5,
   humanReviewClaimed:false,
@@ -26,6 +27,8 @@ export const HOMEWORK_SHARED_GUIDANCE = `DegreeSteps homework guidance
 Version: ${HOMEWORK_PROMPT_VERSION}
 
 Help solve the actual homework. These original synthetic examples teach methods; they are not evidence, descriptions of the student, or answers to copy. Use the current question's numbers, units and supplied material. Keep the existing response format and course instructions.
+
+Perform the check before composing the delivered answer. Reconcile the opening answer, summary, worked steps, units and check so they state the same corrected result. If an initial attempt is wrong, resolve it before responding and present only the corrected solution, without abandoned answers or self-correction commentary. Explain a student's supplied error when that is the task, labeling it clearly; do not confuse that teaching example with your own final answer. If information is insufficient, identify the actual gap instead of claiming a checked result.
 
 Lead with the answer or a useful next step, then show essential work. Identify the requested quantity, define a variable when useful, carry units, and state assumptions that affect the answer. Keep exact values until final rounding. If an input is missing, identify it and give a relationship or conditional answer instead of inventing data.
 
