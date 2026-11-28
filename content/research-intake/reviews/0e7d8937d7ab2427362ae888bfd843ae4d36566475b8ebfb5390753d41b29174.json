@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "kind": "research-review",
+  "publicationAllowed": false,
+  "findingId": "finding-e0b0f605d053cc32da6f553a8fc0a5b8a4a2c244e768d581c0e6532c974fd881",
+  "revision": 2,
+  "previousReviewHash": "af26989aa2043f4fb1eaa66b8caf464c5f4e35716bd215c5979e6dc7469872b7",
+  "sourceRevisions": [
+    "6f740e4e99ed603a569888868b0aaca195794ef20ee3d2150bfb2c4c3bd6b511"
+  ],
+  "reviewer": "Codex independently verified student-scenario research",
+  "reviewedOn": "2026-11-28",
+  "verifiedOn": "2026-11-27",
+  "announcedOn": null,
+  "effectiveOn": null,
+  "followUpOn": "2026-12-04",
+  "triage": "BOTH",
+  "status": "implemented",
+  "changeKind": "newly-discovered-existing-policy",
+  "summary": "Replaced closed DANTES transcript guidance with current VA/CLEP sources, retained JST/CCAF and original award distinctions, and added a service/family benefits task. Published military-rate guidance is eligibility- and fee-specific; completing a task does not apply a discount, financial aid or academic credit. Older 2025–26 MyPath military pricing remains unasserted as current. Production delivery was observed on 2026-11-28 at commit 424814555ddd138a451a89fcda469f7029f36dae under the recorded approved release; matching deployed bytes were verified for the product assets and this editorial URL.",
+  "evidence": [
+    {
+      "id": "military-original-records",
+      "title": "military-original-records",
+      "url": "https://www.va.gov/resources/how-do-i-get-college-credits-for-my-military-service/",
+      "kind": "government",
+      "checkedOn": "2026-11-27",
+      "quote": "Each school then decides how many credits they’ll accept.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "liberty-military-undergrad",
+      "title": "liberty-military-undergrad",
+      "url": "https://www.liberty.edu/military/benefits/online-students/tuition-discount/",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "the tuition rate is $250 per credit hour",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "tesu-military-undergrad",
+      "title": "tesu-military-undergrad",
+      "url": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/military-veteran/index.php",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Military Tuition: $250 per credit",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "umass-military-modality-scope",
+      "title": "umass-military-modality-scope",
+      "url": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Active-Duty Military — Undergraduate Degree",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "wgu-military-part-time",
+      "title": "wgu-military-part-time",
+      "url": "https://www.wgu.edu/student-experience/military/part-time-options.html",
+      "kind": "university",
+      "checkedOn": "2026-11-27",
+      "quote": "Part-time is only available to service members utilizing Tuition Assistance.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "clep-dantes-funding",
+      "title": "clep-dantes-funding",
+      "url": "https://clep.collegeboard.org/clep-military-benefits",
+      "kind": "provider",
+      "checkedOn": "2026-11-27",
+      "quote": "DANTES will only provide funding once for each CLEP exam subject.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "clep-remote-proctor-fee",
+      "title": "clep-remote-proctor-fee",
+      "url": "https://clep.collegeboard.org/help-center/if-i-am-active-military-service-member-do-i-have-pay-exam-fee-take-clep-exam",
+      "kind": "provider",
+      "checkedOn": "2026-11-27",
+      "quote": "pays your exam fee and remote proctoring fee for the first exam attempt per test title.",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "dsst-dantes-eligibility",
+      "title": "dsst-dantes-eligibility",
+      "url": "https://www.prometric.com/exams/dantes/",
+      "kind": "provider",
+      "checkedOn": "2026-11-27",
+      "quote": "Personnel not funded by DANTES include the following:",
+      "capturePath": null,
+      "contentHash": null
+    },
+    {
+      "id": "au-abc-discovery",
+      "title": "au-abc-discovery",
+      "url": "https://www.airuniversity.af.edu/CCAF/Article-Display/Article/1819887/air-university-associate-to-baccalaureate-cooperative-au-abc/",
+      "kind": "government",
+      "checkedOn": "2026-11-27",
+      "quote": "Guarantees CCAF AAS graduates need no more than 60 semester hours",
+      "capturePath": null,
+      "contentHash": null
+    }
+  ],
+  "receiptPaths": [
+    "content/research-intake/evidence/issue63/3e26aed30792b10e3a6446321a0a49c1ed0e8b88d942e714ca554411ae0314ff.json",
+    "content/research-intake/evidence/issue63/e27d06d03aaae712abcc6fe64ff6ad014972e615ca18d3f6314eba31d233fb06.json",
+    "content/research-intake/evidence/issue63/ffde1e1601e00cdcfdcd9364b77ec179103a54d9f925d22944eec567e2b85994.json",
+    "content/research-intake/evidence/issue63/06bafd7a2337b5575a86d7ac3eeb5f4e2a2fd17f5f977ff33f404356b1cb4ff9.json",
+    "content/research-intake/evidence/issue63/dd1703c34a585888ebc7252c5ae4bdbf92e9f75bf676240060cdd21698923ad5.json",
+    "content/research-intake/evidence/issue63/1c9af7dd1f8b310ca28d7b5c83364d6fcd8b555609126418ff073a0cd51eea62.json",
+    "content/research-intake/evidence/issue63/df860d01b664508ae02fe375c21f150cb4296c2d59a92e7c5921995b9bf3eb40.json",
+    "content/research-intake/evidence/issue63/7c844322cd32043cd8dccbd35602924ce583672d8f1c7bab579eaef1c23f08a5.json",
+    "content/research-intake/evidence/issue63/777223761bb0ff93f80ff9efda7fb1a122b2fad11db53717a39bc142922a5a9c.json",
+    "content/research-intake/evidence/issue63/a14133b0631119869f96dabe3e008849cdc6dbdf6b49f489bb1bd84eb95b70d4.json",
+    "content/research-intake/evidence/issue63/009d72edbc5bc716219a83626395672d01e4cd7acf009db0a4b2e6a64b04a277.json",
+    "content/research-intake/evidence/issue63/97860a124cc4d716bb375c7734fe4201f13bb064a833a2c2ffbacb14ffaf1400.json",
+    "content/research-intake/evidence/issue63/10d3489e2c8b42306c59196e99ce9b5ef06ce482cde9d4ddfd51d04b773fb6e8.json",
+    "content/research-intake/evidence/issue63/bb331cd717e669372e342f1a71763c4b9389cd920a95f1997dc5b9c46d9f9cf3.json",
+    "content/research-intake/evidence/issue63/32064601df2957caa2fa3d06e78e1eb2bf42db86c1c2d6cfb34f9ccb112a74ed.json"
+  ],
+  "facts": {
+    "scope": {
+      "institution": null,
+      "program": "Service learning and eligibility-specific military undergraduate tuition",
+      "level": "bachelor",
+      "modality": "Rate-specific; Liberty quoted rate is online only",
+      "catalog": "Liberty 2026–27 and TESU August 2026 rate scopes; older UMass quotes not promoted"
+    },
+    "costs": [
+      {
+        "amount": 250,
+        "currency": "USD",
+        "unit": "semester credit hour",
+        "scope": "2026–2027 Academic Year; undergraduate online certificates/associate/bachelor degrees; eligible online undergraduate programs only",
+        "assumptions": "Eligibility must be verified by the university; this tuition quote is not a complete degree cost and is not applied automatically.",
+        "includes": [],
+        "excludes": [
+          "fees",
+          "books",
+          "outside course costs"
+        ],
+        "evidenceIds": [
+          "liberty-military-undergrad"
+        ]
+      },
+      {
+        "amount": 250,
+        "currency": "USD",
+        "unit": "credit",
+        "scope": "Rates approved2026-06-12; effective August2026 term; eligible non-nursing undergraduate military tuition",
+        "assumptions": "Eligibility must be verified by the university; this tuition quote is not a complete degree cost and is not applied automatically.",
+        "includes": [],
+        "excludes": [
+          "Edison Accelerate when applicable",
+          "graduation audit",
+          "books/materials",
+          "outside courses"
+        ],
+        "evidenceIds": [
+          "tesu-military-undergrad"
+        ]
+      }
+    ],
+    "accreditation": [],
+    "transfer": {
+      "overallCap": null,
+      "aceCap": null,
+      "nccrsCap": null,
+      "combinedCplCap": null,
+      "externallyAssessedCap": null,
+      "residency": null,
+      "majorResidency": null,
+      "totalCredits": null
+    },
+    "aceRecommendations": [],
+    "equivalencies": [],
+    "assessments": []
+  },
+  "product": {
+    "status": "implemented",
+    "paths": [
+      "dist/student-checklist.js",
+      "dist/portal.js"
+    ],
+    "notes": "The scoped product changes are implemented and their production assets were verified under the attached release receipt. Original learning, grades, dates, units, evaluations and costs are preserved; task completion does not create a credit award, discount or benefit."
+  },
+  "release": {
+    "environment": "production",
+    "commitSha": "424814555ddd138a451a89fcda469f7029f36dae",
+    "pullRequestUrl": "https://github.com/jeremyc3434/DegreeSteps/pull/64",
+    "workflowRunUrl": "https://github.com/jeremyc3434/DegreeSteps/actions/runs/46085229183",
+    "verifiedOn": "2026-11-28",
+    "approval": "The repository owner requested an end-to-end audit through the approved publication process and authorized continued student-flow improvements. Codex manually dispatched the existing guarded production workflow after exact-head core/browser checks, unchanged protected runtime/schema/configuration source, and 34 successful staging checks. Existing manual target, migration assertion and production configuration gates were retained; no future automatic production deployment was enabled.",
+    "verifiedUrls": [
+      "https://degreesteps.com/robots.txt",
+      "https://degreesteps.com/",
+      "https://degreesteps.com/brand.css",
+      "https://degreesteps.com/data/credit-sources.json",
+      "https://degreesteps.com/data/program-catalog.json",
+      "https://degreesteps.com/courses.html",
+      "https://degreesteps.com/courses.js",
+      "https://degreesteps.com/data/course-catalog.json",
+      "https://degreesteps.com/portal.html",
+      "https://degreesteps.com/portal.js",
+      "https://degreesteps.com/guide-engine.js",
+      "https://degreesteps.com/sheet-state.js",
+      "https://degreesteps.com/student-checklist.js",
+      "https://degreesteps.com/journey-engine.js",
+      "https://degreesteps.com/school.js",
+      "https://degreesteps.com/degree-audit.html",
+      "https://degreesteps.com/degree-audit.js",
+      "https://degreesteps.com/requirements-baselines.js",
+      "https://degreesteps.com/data/requirements-baselines.json",
+      "https://degreesteps.com/sheet.js",
+      "https://degreesteps.com/sitemap.xml",
+      "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+      "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+      "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+      "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+      "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+      "https://degreesteps.com/credit-sources/google-certificates/",
+      "https://degreesteps.com/credit-sources/wgu-single-courses/",
+      "https://degreesteps.com/credit-sources/christian-leaders/",
+      "https://degreesteps.com/credit-sources/asu-ulc/",
+      "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+      "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+      "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+      "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/",
+      "https://degreesteps.com/guides/transfer-credit-after-enrolling/",
+      "https://degreesteps.com/guides/earn-college-credit-in-high-school/",
+      "https://degreesteps.com/guides/military-credit-jst-ccaf/",
+      "https://degreesteps.com/blog/do-old-college-credits-still-count/"
+    ],
+    "receiptPaths": [
+      "content/research-intake/evidence/issue63/32064601df2957caa2fa3d06e78e1eb2bf42db86c1c2d6cfb34f9ccb112a74ed.json"
+    ]
+  },
+  "editorial": {
+    "status": "published",
+    "proposedUrls": [
+      "https://degreesteps.com/guides/military-credit-jst-ccaf/"
+    ],
+    "publishedUrls": [
+      "https://degreesteps.com/guides/military-credit-jst-ccaf/"
+    ],
+    "existingUrls": [
+      "https://degreesteps.com/guides/military-credit-jst-ccaf/"
+    ],
+    "title": "Military college credit: start with JST, CCAF, and the right questions",
+    "metaDescription": "A practical guide for service members and veterans to collect military education records, request evaluation, compare exams, and check program-specific funding.",
+    "canonicalUrl": "https://degreesteps.com/guides/military-credit-jst-ccaf/",
+    "internalLinks": [
+      "https://degreesteps.com/import-courses.html",
+      "https://degreesteps.com/courses.html?tab=browse"
+    ],
+    "structuredData": true,
+    "sitemap": true,
+    "studentUsefulness": "Turn this learner situation into a clear next action while preserving academic and financial boundaries.",
+    "novelty": "Verified scenario-specific product flow and substantive new or refreshed resource, not a generic school list.",
+    "searchIntent": "Military college credit: start with JST, CCAF, and the right questions",
+    "debtFreeRelevance": "Evaluate useful existing learning and applicable funding before paying for replacement or unapproved courses; no debt-free outcome is promised.",
+    "urgency": "Prevent unnecessary purchases, discarded old credit, mistaken high-school awards or unverified tuition assumptions.",
+    "overlapNotes": "Refresh the existing canonical guide/article and preserve its title and description.",
+    "evidenceIds": [
+      "military-original-records",
+      "liberty-military-undergrad",
+      "tesu-military-undergrad",
+      "umass-military-modality-scope",
+      "wgu-military-part-time",
+      "clep-dantes-funding",
+      "clep-remote-proctor-fee",
+      "dsst-dantes-eligibility",
+      "au-abc-discovery"
+    ],
+    "metrics": null
+  }
+}
