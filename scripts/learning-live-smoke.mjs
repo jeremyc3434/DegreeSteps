@@ -18,7 +18,7 @@ assert(typeof config.password==='string'&&config.password.length>=24);
 assert(/^sb-[a-f0-9-]{36}$/.test(config.expectedUserId));
 const reportPath=resolve(config.reportPath||'outputs/learning/live/receipt.json');
 assert(reportPath.startsWith(resolve('.')+'/outputs/')||reportPath.startsWith('/workspace/audits/'),'Reports must remain in the ignored QA workspace.');
-const report={kind:'degreesteps-learning-live-staging-check',startedAt:new Date().toISOString(),origin:ORIGIN,identity:'Ephemeral synthetic student',checks:[],providerCallsRequested:0,paidPurchases:0};
+const report={kind:'degreesteps-learning-live-staging-check',startedAt:new Date().toISOString(),origin:ORIGIN,identity:'Ephemeral synthetic student',checks:[],aiActionsRequested:0,paidPurchases:0};
 let cookies=new Map(),course=null,project=null,sample=null;
 async function api(path,{method='GET',body,timeout=240000}={}){
   assert(path.startsWith('/api/')&&!path.includes('://'));
@@ -43,10 +43,10 @@ try{
   const billing=await api('/api/learning/billing/status');assert.equal(billing.paymentsEnabled,false);record('Real checkout remains disabled');
   course=(await api('/api/learning/courses',{method:'POST',body:{title:'Operations management — synthetic live QA',provider:'DegreeSteps QA',syllabus:'Practice course. Learn to compare inventory policies, explain assumptions, support business recommendations with evidence and discuss limitations. This is an original synthetic exercise, not a live graded assessment.'}})).item;
   project=(await api('/api/learning/projects',{method:'POST',body:{courseId:course.id,kind:'writing',title:'Inventory recommendation — synthetic live QA',prompt:'Create an approximately 2,500-word working paper about choosing an inventory policy for a fictional small retailer with variable demand and unreliable supplier lead times. Compare economic order quantity, just-in-time and a reorder-point policy with safety stock. The retailer has five products and about 300 customer orders monthly; these are fictional case assumptions, not research findings. Develop a recommendation, explain quantitative inputs that would be needed, tradeoffs and limitations. Use real publicly available sources, cite their stable source IDs and do not invent studies, quotes, personal experience or calculations from missing data.',rubric:'Clear recommendation; accurate explanations of all three approaches; evidence and properly attributed sources; explicit case assumptions; limitations; readable organization; approximately 2,500 words.',studentNotes:'I recommend a reorder-point policy with safety stock while supplier lead times remain unreliable. My reasoning is that preventing stockouts matters more than minimizing every unit of inventory, but excessive stock also ties up cash. I would compare demand variation, holding costs, delivery times and the cost of lost sales before choosing reorder levels. I see just-in-time as more suitable if supplier reliability improves. The fictional case does not provide enough numeric inputs for a trustworthy optimized order quantity.',sources:[]}})).item;
-  const planRequest={revision:project.revision,action:'plan',requestId:randomUUID()};report.providerCallsRequested++;
+  const planRequest={revision:project.revision,action:'plan',requestId:randomUUID()};report.aiActionsRequested++;
   project=(await api('/api/learning/projects/'+project.id+'/run',{method:'POST',body:planRequest})).item;
   assert(project.artifact?.content&&project.artifact.questions?.length);record('Live research and a usable approach',{sources:project.artifact.sources?.length||0,targetedQuestions:project.artifact.questions.length});
-  const draftRequest={revision:project.revision,action:'draft',requestId:randomUUID()};report.providerCallsRequested++;
+  const draftRequest={revision:project.revision,action:'draft',requestId:randomUUID()};report.aiActionsRequested++;
   const draft=await api('/api/learning/projects/'+project.id+'/run',{method:'POST',body:draftRequest});project=draft.item;sample=project.artifact;
   assert(sample?.content);const wordCount=sample.content.trim().split(/\s+/).length;
   report.paper={wordCount,sources:sample.sources?.length||0,sourceCoverage:sample.sourceChecks?.coverage,unknownCitations:sample.sourceChecks?.unknownCitations||[],claimSupportVerified:sample.sourceChecks?.claimSupportVerified===true};
@@ -68,7 +68,7 @@ try{
       await api('/api/auth/logout',{method:'POST',body:{}});
     }finally{cookies=primaryCookies;}
   }
-  const study=(await api('/api/learning/projects',{method:'POST',body:{courseId:course.id,kind:'quiz',title:'Inventory practice — synthetic live QA',prompt:'Create five original multiple-choice practice questions about inventory policy tradeoffs, using the course context. Include explained answers.',studentNotes:'I want to check whether I can distinguish demand uncertainty, lead-time risk and holding costs.',sources:[]}})).item;report.providerCallsRequested++;
+  const study=(await api('/api/learning/projects',{method:'POST',body:{courseId:course.id,kind:'quiz',title:'Inventory practice — synthetic live QA',prompt:'Create five original multiple-choice practice questions about inventory policy tradeoffs, using the course context. Include explained answers.',studentNotes:'I want to check whether I can distinguish demand uncertainty, lead-time risk and holding costs.',sources:[]}})).item;report.aiActionsRequested++;
   const practice=(await api('/api/learning/projects/'+study.id+'/run',{method:'POST',body:{revision:study.revision,action:'quiz',requestId:randomUUID()}})).item;
   assert(practice.artifact.quiz?.length>=3);record('Live practice quiz returned structured questions',{questions:practice.artifact.quiz.length});
   report.finalUsage=(await api('/api/learning/status')).usage;

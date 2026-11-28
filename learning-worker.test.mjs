@@ -6,7 +6,8 @@ import { createTrustedDatabase } from './scripts/d1-snapshot.mjs';
 
 const origin = 'https://learning.synthetic.invalid';
 const uuid = '11111111-1111-4111-8111-111111111111';
-const access = 'verified-learning-access-not-a-real-token';
+const testToken=seconds=>'eyJhbGciOiJzeW50aGV0aWMifQ.'+Buffer.from(JSON.stringify({sub:uuid,exp:Math.floor(Date.now()/1000)+seconds})).toString('base64url')+'.synthetic-signature';
+const access = testToken(3600);
 const cookie = '__Host-degreepath_access=' + access;
 const compiled = readFileSync(new URL('./outputs/site/dist/server/index.js', import.meta.url), 'utf8');
 const workers = [
@@ -98,5 +99,24 @@ test('built Worker: migration read-only protection still covers new learning wri
   const response = await worker.fetch(call('/api/learning/courses', { method: 'POST', signedIn: true, body: { title: 'A course' } }), f.env, f.ctx);
   assert.equal(response.status, 503); privateResponse(response);
   assert.equal(f.calls.storage.length, 0); assert.equal(f.calls.ai.length, 0);
+});
+
+test('built Worker: long runs refresh near-expiry sessions and pass the fresh JWT to private storage', async t => {
+  const old=testToken(60),fresh=testToken(3600),authCalls=[],storageCalls=[];
+  const f=fixture(t,{ANTHROPIC_API_KEY:'synthetic-learning-key-not-real',PORTAL_AUTH_FETCH:async(url,options)=>{authCalls.push({url,options});if(new URL(url).pathname==='/auth/v1/token')return Response.json({access_token:fresh,refresh_token:'new-verified-refresh',expires_in:3600});return Response.json({id:uuid,email:'learner@example.invalid',email_confirmed_at:'2026-01-01T00:00:00Z'});},LEARNING_DATA_FETCH:async(url,options)=>{storageCalls.push({url,options});return Response.json([]);}});
+  const response=await worker.fetch(call('/api/learning/projects/22222222-2222-4222-8222-222222222222/run',{method:'POST',body:{revision:1,action:'study',requestId:'33333333-3333-4333-8333-333333333333'},headers:{Cookie:'__Host-degreepath_access='+old+'; __Host-degreepath_refresh=existing-refresh'}}),f.env,f.ctx);
+  assert.equal(response.status,404);assert.equal(authCalls.length,3);assert.equal(storageCalls.length,1);assert.equal(storageCalls[0].options.headers.Authorization,'Bearer '+fresh);assert.equal(f.calls.ai.length,0);assert(response.headers.getSetCookie().some(c=>c.includes('new-verified-refresh')));privateResponse(response);
+});
+
+test('built Worker: failed proactive refresh prevents private storage, reservations and paid AI dispatch', async t => {
+  const authCalls=[],f=fixture(t,{PORTAL_AUTH_FETCH:async(url,options)=>{authCalls.push({url,options});return new URL(url).pathname==='/auth/v1/token'?Response.json({error:'temporarily unavailable'},{status:503}):Response.json({id:uuid,email:'learner@example.invalid',email_confirmed_at:'2026-01-01T00:00:00Z'});}});
+  const response=await worker.fetch(call('/api/learning/projects/22222222-2222-4222-8222-222222222222/run',{method:'POST',body:{revision:1,action:'study',requestId:'33333333-3333-4333-8333-333333333333'},headers:{Cookie:'__Host-degreepath_access='+testToken(60)+'; __Host-degreepath_refresh=existing-refresh'}}),f.env,f.ctx);
+  assert.equal(response.status,503);assert.equal((await response.json()).code,'auth_unavailable');assert.equal(authCalls.length,2);assert.equal(f.calls.storage.length,0);assert.equal(f.calls.ai.length,0);assert.equal(f.calls.queries.length,0);assert.equal(response.headers.getSetCookie().length,0);privateResponse(response);
+});
+
+test('built Worker: ordinary course reads do not proactively rotate a valid short-lived session', async t => {
+  const authCalls=[],f=fixture(t,{PORTAL_AUTH_FETCH:async(url,options)=>{authCalls.push({url,options});return Response.json({id:uuid,email:'learner@example.invalid',email_confirmed_at:'2026-01-01T00:00:00Z'});},LEARNING_DATA_FETCH:async()=>Response.json([])});
+  const response=await worker.fetch(call('/api/learning/courses',{headers:{Cookie:'__Host-degreepath_access='+testToken(60)}}),f.env,f.ctx);
+  assert.equal(response.status,200);assert.equal(authCalls.length,1);assert.equal(response.headers.getSetCookie().length,0);assert.equal(f.calls.ai.length,0);privateResponse(response);
 });
 }

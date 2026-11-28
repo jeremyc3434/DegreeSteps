@@ -124,22 +124,38 @@ const DegreePathAuth = (() => {
     const result = await provider(env,config,'/user',{token});
     return {ok:result.ok,user:result.ok ? userIdentity(result.data) : null,status:result.status};
   }
-  async function resolvePortalIdentity(request, env) {
+  function hasMinimumValidity(token, seconds) {
+    if (seconds <= 0) return true;
+    // /user verifies identity first. These decoded claims are only a refresh
+    // hint; they never authenticate a user or grant an authorization role.
+    if (typeof token !== 'string') return false;
+    const parts = token.split('.');
+    if (parts.length !== 3) return false;
+    const claims = decode(parts[1]);
+    return typeof claims?.exp === 'number' && Number.isFinite(claims.exp) && claims.exp * 1000 - Date.now() >= seconds * 1000;
+  }
+  async function resolvePortalIdentity(request, env, {minValiditySeconds = 0} = {}) {
     const config = configuration(env);
     if (!config) return {configured:false,user:null,setCookies:[]};
+    const minimum = typeof minValiditySeconds === 'number' && Number.isFinite(minValiditySeconds) ? Math.min(3600,Math.max(0,minValiditySeconds)) : 0;
     const jar = cookies(request), access = jar[ACCESS], refresh = jar[REFRESH];
     if (!access && !refresh) return {configured:true,user:null,setCookies:[]};
     try {
+      let verifiedExistingUser = null;
       if (access) {
         const checked = await validateToken(env,config,access);
-        if (checked.user) return {configured:true,user:checked.user,setCookies:[],accessToken:access};
-        if (![401,403].includes(checked.status)) return {configured:true,user:null,setCookies:[],unavailable:true};
+        if (checked.user) {
+          if (hasMinimumValidity(access,minimum)) return {configured:true,user:checked.user,setCookies:[],accessToken:access};
+          verifiedExistingUser = checked.user;
+        } else if (![401,403].includes(checked.status)) return {configured:true,user:null,setCookies:[],unavailable:true};
       }
       if (!refresh) return {configured:true,user:null,setCookies:clearSession()};
       const rotated = await provider(env,config,'/token?grant_type=refresh_token',{method:'POST',body:{refresh_token:refresh}});
       if (!rotated.ok) {const unavailable=rotated.status >= 500 || rotated.status === 429;return {configured:true,user:null,setCookies:unavailable ? [] : clearSession(),...(unavailable ? {unavailable:true} : {})};}
       const checked = await validateToken(env,config,rotated.data?.access_token);
       if (!checked.user) {const unavailable=checked.status >= 500 || checked.status === 429;return {configured:true,user:null,setCookies:unavailable ? [] : clearSession(),...(unavailable ? {unavailable:true} : {})};}
+      if (verifiedExistingUser && checked.user.id !== verifiedExistingUser.id) return {configured:true,user:null,setCookies:clearSession()};
+      if (!hasMinimumValidity(rotated.data.access_token,minimum)) return {configured:true,user:null,setCookies:tokenCookies(rotated.data),unavailable:true};
       return {configured:true,user:checked.user,setCookies:tokenCookies(rotated.data),accessToken:rotated.data.access_token};
     } catch {return {configured:true,user:null,setCookies:[],unavailable:true};}
   }
@@ -266,4 +282,4 @@ const DegreePathAuth = (() => {
 })();
 
 export async function handleAuth(request, env) {return DegreePathAuth.handleAuth(request, env);}
-export async function resolvePortalIdentity(request, env) {return DegreePathAuth.resolvePortalIdentity(request, env);}
+export async function resolvePortalIdentity(request, env, options) {return DegreePathAuth.resolvePortalIdentity(request, env, options);}

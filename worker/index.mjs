@@ -39,8 +39,16 @@ async function learningResponse(request,env){
   if(migrationReadOnly(env))return migrationReadOnlyResponse(request);
   const learning=await loadLearningModule();
   if(path==='/api/learning/billing/webhook')return learning.handleLearningBilling(request,{...env,PORTAL_USER:null,PORTAL_USER_ACCESS_TOKEN:null,LEARNING_OWNER_AUTHORIZED:false});
-  const identity=await resolvePortalIdentity(request,env);
-  if(identity.unavailable)return privateJSON({error:'Sign-in is temporarily unavailable. Please try again.',code:'auth_unavailable'},503);
+  const longRun=request.method==='POST'&&/^\/api\/learning\/projects\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\/run$/i.test(path);
+  const identity=await resolvePortalIdentity(request,env,longRun?{minValiditySeconds:300}:undefined);
+  if(identity.unavailable){
+    const response=privateJSON({error:'Sign-in is temporarily unavailable. Please try again.',code:'auth_unavailable'},503);
+    // A verified rotation can still be too short for a long generation. Keep
+    // its new cookies so the old, already-rotated refresh token is not retried.
+    if(!identity.setCookies?.length)return response;
+    const headers=new Headers(response.headers);for(const cookie of identity.setCookies)headers.append('Set-Cookie',cookie);
+    return new Response(response.body,{status:response.status,headers});
+  }
   const learningEnv={...env,PORTAL_USER:identity.user,PORTAL_USER_ACCESS_TOKEN:identity.accessToken,PORTAL_AUTH_REQUIRED:true,PORTAL_AUTH_CONFIGURED:identity.configured,LEARNING_OWNER_AUTHORIZED:false};
   learningEnv.LEARNING_PROJECT_OWNED=async(userId,projectId)=>userId===identity.user?.id&&await learning.learningProjectOwned(learningEnv,projectId);
   if(path==='/api/learning/billing/owner-summary'){
