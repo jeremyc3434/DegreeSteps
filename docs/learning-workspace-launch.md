@@ -1,10 +1,10 @@
 # Learning workspace launch runbook
 
-Status: implementation and local acceptance are in progress on 2026-11-28. This document is an operator checklist, not evidence that the workspace is live, that payments work, or that a particular academic result is achievable. Keep learning and payment flags off until the corresponding checks below are recorded against the deployed revision.
+Status on 2026-11-28: implementation is complete in [PR #66](https://github.com/jeremyc3434/DegreeSteps/pull/66), reviewed remote head `00b7ff`. The source/client checks and nine Chromium flows passed; the local full build and Editorial checks passed. Core checks remain in progress. Staging is the next verification environment. Production learning and payments remain gated on the live checks below; passing fixtures does not establish live provider quality, cost, or payment readiness.
 
 ## Release boundary
 
-The checkout contains `/learn.html`, `dist/learn.js`, `dist/learning-client.js`, course-workspace navigation, the lazy Worker entry point `server/learning-workspace.mjs`, API implementation `server/learning.mjs`, source checks in `server/learning-sources.mjs`, and private-course/project/run schema in `db/postgres/learning.sql`. Billing integration and acceptance checks are still being assembled. Record their final flags, migration, and local test receipts below before enabling the feature. Existing Supabase sign-in and the existing server-side Claude account are reused; this release does not require provisioning another service.
+The release contains `/learn.html`, `dist/learn.js`, `dist/learning-client.js`, course-workspace navigation, the lazy Worker entry point `server/learning-workspace.mjs`, API implementation `server/learning.mjs`, source checks in `server/learning-sources.mjs`, and private-course/project/run schema in `db/postgres/learning.sql`. Billing and hosted Checkout are implemented in `server/learning-billing.mjs` and `server/learning-payments.mjs`. Existing Supabase sign-in and the existing server-side Claude account are reused; no additional service was provisioned for this implementation.
 
 | Implemented surface | Current scope |
 | --- | --- |
@@ -14,6 +14,7 @@ The checkout contains `/learn.html`, `dist/learn.js`, `dist/learning-client.js`,
 | Claude assistance | The backend uses `claude-sonnet-5-5` with structured output. Writing/presentation/discussion actions can perform a separate bounded research call with up to three web searches, then a generation call; previously found sources are reused when the relevant inputs are unchanged, unless more research is requested. Study actions produce explanations/practice materials. Every requested action, including research, contributes to its usage; a paper is not a single final-output call. |
 | Reviewable output | Escaped text rendering, practice cards/questions, sources, check findings, and next steps; download text, Markdown, or a project JSON backup. No native document or slide export. |
 | Recovery | Save/reopen, revision-aware updates, request identifiers, explicit saved-result check/retry UI, and visible unavailable/sign-in states. Backend and hosted recovery acceptance remain separately gated below. |
+| Billing | Server-owned project allowances, atomic usage reservations/settlement, confirmed versus estimated cost totals, one-time hosted Checkout, and verified receipt-driven grants/revocations. Payment configuration and live verification remain required. |
 
 This inventory describes the checked-in surfaces, not a claim that their live API dependencies have passed acceptance.
 
@@ -36,21 +37,34 @@ The implemented source checker compares supplied excerpts and, when requested, r
 
 | Check | Evidence | State |
 | --- | --- | --- |
-| Reviewed revision and deployment target | Record commit/build identifier and isolated staging host | Pending |
-| Implemented pages, APIs, flags, and migration | Record final source paths below | Pending |
+| Reviewed implementation | PR #66, remote head `00b7ff`; source/configuration inventory below | Complete |
 | Existing Supabase schema and database verification | Migration `20261128013204`; real rollback-only verification and security-advisor review detailed below | Passed on 2026-11-28 |
-| Local source/build checks | Exact commands and results below | Pending |
-| Authenticated browser acceptance | Real browser with synthetic accounts and controlled API responses | Pending |
-| Worker/API acceptance | Actual built Worker with controlled auth, storage, and provider fixtures | Pending |
-| Hosted two-account isolation and persistence | Staging receipts with synthetic data | Pending |
+| Local full build | `npm run build`, reported successful by the release operator | Passed |
+| GitHub source/client checks | `node --test --test-isolation=none server/learning*.test.mjs learning-client.test.cjs` — **91 passed** at the reviewed head | Passed |
+| GitHub Chromium acceptance | `node learning-workspace-browser.test.cjs` — **9 flows passed**, actual shipped UI with synthetic account/API responses | Passed |
+| Editorial checks | GitHub Editorial workflow — **56 passed** at the reviewed head | Passed |
+| Core/built-Worker regressions | GitHub Core workflow, including the built application boundary | In progress; no pass claimed |
+| D1 billing migration deployment | `drizzle/0021_learning_billing.sql` on the actual target | Pending receipt |
+| Hosted staging HTTP, sign-in, isolation and persistence | Two synthetic signed-in accounts on the deployed staging revision | Pending |
 | Real Claude response and complete usage accounting | Dated, bounded internal-pilot receipt | Pending |
 | Measured workload and cost benchmarks | Results table below, with provider usage reconciliation | Pending |
-| Payment checkout, webhook, and entitlement reconciliation | Real configured test environment; no placeholder success | Pending |
+| Real Stripe sandbox reconciliation | Configured test credentials, actual webhook delivery, checkout/grant/refund reconciliation | Pending |
 | Public commercial activation | All applicable launch gates passed | Blocked |
 
 Passing mocked/browser tests does not establish source accuracy, learning efficacy, paid-provider access, production capacity, or payment processing. Do not turn a pending row into a pass based on another row.
 
-Local receipt reported by the source-check implementer on 2026-11-28: `node --test --test-isolation=none --test-reporter=spec server/learning-sources.test.mjs` — **17 tests passed, 0 failed**. These controlled fixtures cover the source helper; they are not a build, production, web-wide plagiarism, or live-provider receipt.
+The GitHub receipts above were reported by the release operator. The nine browser flows cover signed-out access, student contributions and reload, same-ID recovery, terminal-failure/new-ID recovery, all project kinds, limited source coverage and exports, inert generated markup, confirmed deletion, and desktop/phone layout. Screenshots are stored in the `course-workspace-browser` CI artifact from `outputs/learning/browser`. The source suite includes deterministic storage, source, AI, billing, payment, and client checks. These passes do not substitute for the still-running Core workflow or real network/provider checks.
+
+### Staging versus production activation
+
+These are the required deployment settings, not a claim that either hosted environment has already been verified:
+
+| Environment | Learning | Pilot allowance | Payments | Gate |
+| --- | --- | --- | --- | --- |
+| Staging | `LEARNING_ENABLED=1` | `LEARNING_PILOT_ENABLED=1` | `LEARNING_PAYMENTS_ENABLED=0`, `LEARNING_STRIPE_MODE=test` | Finish Core checks, deploy the reviewed build/D1 migration, then perform bounded hosted verification. |
+| Production | `LEARNING_ENABLED=0` | `LEARNING_PILOT_ENABLED=0` | `LEARNING_PAYMENTS_ENABLED=0` | Keep off until hosted HTTP/isolation, real Claude accounting/quality, cost benchmarks, and the relevant commercial checks pass. |
+
+The pilot flag grants allowances to eligible signed-in accounts on its host; it does not restrict access to a named cohort. Keep test activity on staging, identify the internal participants, and monitor the shared budget. In `.github/workflows/deploy.yml`, GitHub environment variables override the learning flags, including explicit `0`; configure the intended environment and verify returned status after deployment. A dashboard-only flag change can be overwritten by the next deploy. For the first real Stripe sandbox check, temporarily enable payments **only on staging**, with matching test credentials and a working webhook, then return the flag to `0` unless continued testing is intentional.
 
 ### Applied database receipt
 
@@ -67,7 +81,7 @@ The security-advisor review found no new public-table RLS issues. Its remaining 
 3. Confirm that only the existing Supabase publishable key can reach public configuration. Claude and payment secrets remain server-side. A feature entitlement must be checked against the verified account identity; a client-supplied user ID or editable profile claim is not authorization.
 4. The existing-project schema application and real verification are recorded above; do not replay the non-idempotent schema merely to prepare a deployment. For another destination, review the canonical migration and `db/postgres/learning.sql`, apply through that project's authorized migration procedure, then run `db/postgres/verify-learning.sql` with an authorized operator and record the result. Its synthetic identities and writes roll back. Also verify new entitlements/usage through their own backend and test two signed-in synthetic accounts through HTTP, not just SQL or page links.
 5. Confirm the existing server-side Claude connection without replacing it or sending its value to the browser. Keep bounded live generation separate from connection verification. Check the account-level spending backstop and the workspace's request, token, and dollar controls before the internal pilot.
-6. Payment routes must fail closed if real credentials, verified webhook configuration, or product/price mapping are absent. A checkout return URL, a client-side flag, or a simulated success response must never grant a paid entitlement. Leave payments disabled for an unconfigured environment.
+6. Payment routes fail closed without the flag and matching key/mode/signing-secret configuration. Credential-format checks are not proof of a working connection. The server catalog owns prices; a checkout return URL or client-side success never grants an entitlement. Leave payments disabled until the real sandbox receipt passes.
 7. Record the exact build and deployment revision, migration receipt, flag values, and rollback version. Do not put credentials or student documents in this document, logs, or Git.
 
 ### Final configuration inventory
@@ -90,26 +104,33 @@ The reviewed Supabase schema/verification files are listed in the applied databa
 
 The code's model/cache/search rate card was checked by the release operator against the official [Anthropic pricing documentation](https://platform.claude.com/docs/en/about-claude/pricing) on 2026-11-28. Current Sonnet 5.5 cache hits are $0.10 per million tokens and Opus 5.5 hits are $0.20 (5% of their input rates). Do not substitute older-model cache assumptions. An application rate-card estimate still needs provider-console reconciliation and a dated receipt.
 
-Pending final implementation names: payment flag, Stripe secrets/environment mode, checkout/webhook routes and operational refund behavior. Replace that remaining inventory after reviewing `server/learning-payments.mjs`; setting a flag does not configure its dependencies.
+Payment configuration is implemented in `server/learning-payments.mjs`:
 
-## Acceptance before the internal pilot
+| Setting or route | Implemented contract |
+| --- | --- |
+| `LEARNING_PAYMENTS_ENABLED` | Exactly `1` is required; leave `0` for production and normal staging pilot use. Learning must also be enabled for its billing routes. |
+| `LEARNING_STRIPE_MODE` | `test` or `live`; must match the API-key prefix and every retrieved receipt's mode. Use `test` for sandbox verification. |
+| `LEARNING_STRIPE_SECRET_KEY` | Server secret; accepts the matching restricted or secret key. Prefer a restricted key whose required checkout/receipt permissions have been verified in the sandbox. Never put it in source or public configuration. |
+| `LEARNING_STRIPE_WEBHOOK_SECRET` | Server secret for the exact environment's webhook endpoint. Both Stripe secrets are supported by the deployment workflow's secret step. |
+| `LEARNING_PAYMENT_ORIGIN` | Optional reviewed HTTPS origin override. Otherwise return URLs use the allowlisted canonical/staging Worker host. Nonstandard hosts require explicit configuration; the override must also be wired into that deployment. |
+| `POST /api/learning/billing/checkout` | Signed-in, same-origin request with `X-Learning-Request: 1`; server-catalog offer and idempotent purchase UUID. Writing purchases require an owned project. Only an HTTPS `checkout.stripe.com` URL is returned. |
+| `POST /api/learning/billing/webhook` | Raw-body signature/timestamp verification, mode validation, and Stripe receipt re-fetch before granting or revoking units. A browser return never fulfills a purchase. |
 
-Use synthetic assignments and two separate test accounts. Do not submit real student work to a live provider for an infrastructure smoke test.
+The adapter uses Stripe API `2026-11-18.endive`. Configure delivery for `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `checkout.session.async_payment_failed`, `checkout.session.expired`, `charge.refunded`, `refund.updated`, `charge.dispute.created`, and `charge.dispute.funds_withdrawn`. Completed/async-success events grant only after the re-fetched session is paid and its amount, currency, owner, product, project, and order match. Duplicates do not replenish spent units. Failed/expired unpaid sessions do not grant access.
 
-- [ ] With all new flags unset, direct API calls cannot create a provider job or checkout; existing planning remains usable.
-- [ ] Signed-out users are asked to sign in. An expired session fails without losing unsaved text or granting anonymous access.
-- [ ] Account A can create, reopen, update, and delete its project; account B cannot list, read, edit, spend, or delete it, even using its known ID. Verify persistence after refresh and a fresh sign-in.
-- [ ] The workspace identifies the actual course/project context without claiming that the course's transfer or a student's final acceptance is guaranteed.
-- [ ] Supported inputs show clear size/type limits. Unsupported, oversized, empty, or malformed documents fail visibly without a paid generation or silent truncation.
-- [ ] Writing support and study responses remain reviewable by the student. The UI accurately identifies supported output formats and source-check scope.
-- [ ] A question and related clarification have an explicit, consistently enforced pack-consumption rule. Failed validation does not consume a question. Replaying a completed request returns its saved result without another provider call or allowance deduction.
-- [ ] A writing project has an explicit included-action/revision limit. A new project or a scope increase cannot silently spend another entitlement.
-- [ ] Source checks show which supplied sources or passages were checked. Missing evidence, unverified sources, and failed checks are distinguished from verified findings. No global originality or plagiarism-free assertion is displayed.
-- [ ] A slow request shows a recoverable state. Timeout, provider rejection, invalid model output, loss of connection, and storage failure do not report a completed result or start an invisible automatic paid retry.
-- [ ] Concurrent submissions and retried requests cannot bypass entitlements, double-charge a question, or launch unbounded generation. Confirm reconciliation when provider work may have completed but the client did not receive it.
-- [ ] Budget refusal is visible before another provider call. Missing provider usage is treated as unknown cost, not zero cost or free headroom.
-- [ ] Keyboard navigation, labels, errors, focus, and narrow-screen layout work on the implemented page. Generated text cannot inject executable markup or change instructions through source documents.
-- [ ] Sign-out and project deletion behave as described. Document what content, operational usage, and payment records are retained and why; do not imply deletion beyond implemented behavior.
+Any verified positive refund currently revokes the order's remaining units and projects activated from that order, including for a partial refund; a verified dispute event revokes the order as well. Saved work is retained, but further generation is blocked for revoked projects. The adapter receives these events; it does not initiate refunds. Confirm this scope against the published purchase/refund terms and test partial/full refunds before commercial activation.
+
+## Hosted staging acceptance still required
+
+The passed source/client suite establishes controlled identity/storage boundaries, validation, request/allowance accounting, conservative unknown-cost behavior, and payment-event handling. The passed Chromium flows establish the interface behavior listed in the release receipt. The real SQL receipt establishes the applied database boundaries. The remaining acceptance is specific to the deployed system:
+
+- [ ] Record the staging revision and D1 migration result; verify `/api/learning/status` and billing status reflect the intended flags without exposing secrets or private content. Confirm production learning/pilot/payment flags remain `0`.
+- [ ] Sign in through the existing Supabase flow with two synthetic accounts. Create/reopen/update/delete a project, refresh and sign in again, and prove account B cannot read/edit/spend account A's IDs through direct HTTP requests. Verify sign-out and whole-account deletion match the published retention copy.
+- [ ] Run a bounded synthetic assignment through the real Claude connection. Check persisted output, source provenance and claim support, reported usage, and provider-console reconciliation. Review actual PDF/text input and output downloads on the deployed page.
+- [ ] Exercise hosted recovery without an invisible paid retry: slow/failed request, duplicate submit, saved-result recovery, allowance exhaustion, and budget refusal. Separate confirmed costs from estimated/unreconciled outcomes.
+- [ ] Review real generated writing/study/quiz/flashcard/presentation/discussion results and keyboard/phone use. Preserve student review and assignment-policy constraints; a successful response does not establish accuracy, grades, transfer acceptance, or learning efficacy.
+
+Use synthetic assignments for infrastructure verification. Real volunteered student materials belong only in the explicitly scoped pilot, with no expansion beyond the configured budget.
 
 ### Payment acceptance, separately gated
 
@@ -158,7 +179,7 @@ Before widening sales, choose and record minimum contribution, maximum daily spe
 
 ## Internal pilot and promotion gate
 
-1. Keep public learning/payments disabled while recording local and hosted controlled-fixture results. Do not claim a restricted pilot exists unless the implementation actually enforces account-level access; a hidden page is not an allowlist.
+1. Keep production learning/pilot/payment flags at `0`. Use staging learning/pilot flags at `1` for the bounded verification described above, with payments `0` except during an intentional configured sandbox test. Do not claim account-restricted access: the pilot flag is host-wide and a hidden page is not an allowlist.
 2. Use a small named internal cohort with synthetic or explicitly volunteered materials. Record each person's start, purchased/test-granted units, actual work, cost, failures, support minutes, and willingness to purchase again. Distinguish test grants from revenue and paid purchases from stated interest.
 3. Observe the full project/pack lifecycle, including reopening, allowance exhaustion, deletion, and the documented refund/recovery path. Do not expose checkout until payment acceptance passes independently.
 4. Review the measured workload table and unresolved issues together. Record the launch decision, revision, cohort boundary, budget, named incident owner, and next review date. No public claim should exceed the verified scope.
@@ -168,6 +189,6 @@ Before widening sales, choose and record minimum contribution, maximum daily spe
 
 Immediately disable new learning/provider requests for cross-account access, uncontrolled spend, repeated unaccounted provider calls, or materially incorrect entitlement deductions. Disable checkout for incorrect pricing, unverifiable payment events, duplicate grants, or reconciliation failures. Preserve the request/payment IDs and operational evidence without copying student work into incident logs.
 
-Turn the relevant server flag off first, verify direct API calls are blocked, then remove public entry points. Keep existing private data and the previous compatible deployment available. An additive migration does not need destructive rollback merely to disable the feature. Reconcile uncertain provider calls and payment events before retrying; do not automatically repeat an operation that may already have incurred cost or granted credit.
+Turn the relevant server flag off first and verify direct API calls are blocked. These flags also gate the webhook, so record pending Stripe events and reconcile them before re-enabling payment processing. Keep existing private data and the previous compatible deployment available. An additive migration does not need destructive rollback merely to disable the feature. Reconcile uncertain provider calls and payment events before retrying; do not automatically repeat an operation that may already have incurred cost or granted credit.
 
 Record affected accounts, remaining allowances, corrective credits/refunds, responsible operator, and resolution. Re-enable only against a dated receipt showing that the specific failure and its duplicate/retry path now pass.

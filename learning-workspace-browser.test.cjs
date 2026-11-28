@@ -19,6 +19,10 @@ const itemFromPath = (items, pathname) => items.find(item => pathname.includes('
 async function check(name, fn) {
   await fn(); passed++; console.log('PASS ' + name);
 }
+async function screenshot(page, name) {
+  await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }));
+  await page.screenshot({ path: path.join(screenshotRoot, name), fullPage: true });
+}
 async function fixture({ signedIn = true, enabled = true, width = 1440, failFirstRun = false, terminalFailure = false, injectedContent = false } = {}) {
   const context = await browser.newContext({ viewport: { width, height: width < 600 ? 844 : 1100 }, acceptDownloads: true });
   contexts.push(context);
@@ -120,7 +124,7 @@ async function createProject(page, kind = 'writing') {
     await page.locator('[data-run-action="' + kind + '"]').click();
     await page.locator('#learning-result-content').filter({ hasText: kind === 'presentation' ? 'Slide 1' : 'Connect the course concept' }).waitFor();
   }
-  if (kind === 'writing') await page.screenshot({ path: path.join(screenshotRoot, 'degreesteps-learning-' + page.viewportSize().width + '.png'), fullPage: true });
+  if (kind === 'writing') await screenshot(page, 'degreesteps-learning-' + page.viewportSize().width + '.png');
 }
 
 (async () => {
@@ -247,12 +251,12 @@ async function createProject(page, kind = 'writing') {
         assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'horizontal overflow at ' + width);
         const sizes = await page.locator('#learning-main input,#learning-main textarea,#learning-main select').evaluateAll(nodes => nodes.filter(node => node.getClientRects().length).map(node => ({ id: node.id, size: parseFloat(getComputedStyle(node).fontSize) })));
         for (const value of sizes) assert(value.size >= 16, 'small field text: ' + JSON.stringify(value));
-        await page.screenshot({ path: path.join(screenshotRoot, 'degreesteps-learning-' + width + '.png'), fullPage: true });
+        await screenshot(page, 'degreesteps-learning-' + width + '.png');
       }
     });
 
     assert.deepEqual(errors, []);
     console.log('\n' + passed + ' learning workspace browser journeys passed. Synthetic APIs only; no live quality or cost certification.');
-  } catch (error) { console.error(error.stack || error); process.exitCode = 1; const page = contexts.at(-1)?.pages().at(-1); if (page) await page.screenshot({ path: path.join(screenshotRoot, 'degreesteps-learning-failure.png'), fullPage: true }).catch(() => {}); }
+  } catch (error) { console.error(error.stack || error); process.exitCode = 1; const page = contexts.at(-1)?.pages().at(-1); if (page) await screenshot(page, 'degreesteps-learning-failure.png').catch(() => {}); }
   finally { for (const context of contexts) await context.close().catch(() => {}); await browser?.close(); }
 })();
