@@ -41,27 +41,34 @@ const OperatorSnapshotApi=(()=>{
   function rowExpression(table){return'json_object('+table.columns.flatMap(column=>[literal(column.name),column.type==='integer'?'CAST('+identifier(column.name)+' AS TEXT)':identifier(column.name)]).join(',')+')';}
   function tableStats(table){
     const limit=table.name===AGGREGATE_TABLE?MAX_AGGREGATE_ROWS:MAX_ROWS;
-    const columns=table.columns.map((column,i)=>'c'+i),projection=table.columns.map((column,i)=>identifier(column.name)+' '+columns[i]);
+    const columns=table.columns.map((column,i)=>i<26?String.fromCharCode(97+i):'c'+i),projection=table.columns.map((column,i)=>identifier(column.name)+' '+columns[i]);
     const row='json_array('+table.columns.map((column,i)=>column.type==='integer'?'CAST('+columns[i]+' AS TEXT)':columns[i]).join(',')+')',keyBytes=table.columns.reduce((sum,column)=>sum+JSON.stringify(column.name).length+1,0);
-    const raw=columns.map(column=>'ifnull(length(CAST('+column+' AS BLOB)),0)').join('+');
+    // Concatenation treats each NULL as empty and uses the same decimal text
+    // conversion for integers as CAST(... AS BLOB). Measure the concatenated
+    // bytes once, preserving embedded NUL/UTF-8 bytes while keeping growing
+    // registries below D1's unchanged 100 KB statement limit.
+    const raw='length(CAST('+columns.map(column=>'ifnull('+column+",'')").join('||')+' AS BLOB))';
     const validTypes=table.columns.map((column,i)=>'typeof('+columns[i]+')IN(\'null\','+literal(column.type)+')').join(' AND ');
     const allowed='r<='+limit+' AND b<='+MAX_RAW_TABLE_BYTES+' AND t=0';
     // Array values have the same escaping/null encoding as the exported object.
     // Add each ASCII JSON key's exact quoted length plus ':' to recover the
     // object byte count. This avoids repeating long keys in the stats query.
-    // Short aliases keep 57 tables under D1's unchanged 100 KB statement limit.
-    return'(WITH b AS NOT MATERIALIZED (SELECT '+projection.join(',')+' FROM '+identifier(table.name)+' LIMIT '+(limit+1)+'),r AS (SELECT count(*) r,ifnull(sum('+raw+'),0) b,ifnull(sum(CASE WHEN '+validTypes+' THEN 0 ELSE 1 END),0) t FROM b),e AS NOT MATERIALIZED (SELECT length(CAST('+row+' AS BLOB))+'+keyBytes+' n FROM b) SELECT json_array(r,b,t,CASE WHEN '+allowed+' THEN (SELECT ifnull(sum(n),0) FROM e) ELSE NULL END,CASE WHEN '+allowed+' THEN (SELECT ifnull(max(n),0) FROM e) ELSE NULL END) FROM r)';
+    // Short aliases and a shared byte measurement keep the fixed registry
+    // within D1's statement bound without changing snapshot/data limits.
+    return'(WITH b AS NOT MATERIALIZED (SELECT '+projection.join(',')+' FROM '+identifier(table.name)+' LIMIT '+(limit+1)+'),r AS (SELECT count(*) r,ifnull(sum('+raw+'),0) b,ifnull(sum(CASE WHEN '+validTypes+' THEN 0 ELSE 1 END),0) t FROM b),e AS NOT MATERIALIZED (SELECT length(CAST('+row+' AS BLOB))+'+keyBytes+' n FROM b) SELECT CASE WHEN '+allowed+' THEN (SELECT json_array(r,b,t,ifnull(sum(n),0),ifnull(max(n),0)) FROM e) ELSE json_array(r,b,t,NULL,NULL) END FROM r)';
   }
   // D1 imposes a smaller compound-SELECT limit than local SQLite. A fixed JSON
   // registry and CASE subqueries avoid UNION terms while keeping one read batch.
+  // Array keys select fixed branches compactly; names still come from the same
+  // immutable registry and cannot be supplied by a request.
   const tableNames=literal(JSON.stringify(tables.map(table=>table.name)));
   const fields=['row_count','raw_bytes','bad_types','encoded_bytes','max_row_bytes'];
-  const statsSql='WITH snapshot_statistics AS MATERIALIZED (SELECT value AS name,CASE value '+tables.map(table=>'WHEN '+literal(table.name)+' THEN '+tableStats(table)).join(' ')+' END AS metadata_json FROM json_each('+tableNames+')),snapshot_stats AS (SELECT name,'+fields.map((field,i)=>'json_extract(metadata_json,'+literal('$['+i+']')+') AS '+field).join(',')+' FROM snapshot_statistics) ';
+  const statsSql='WITH snapshot_statistics AS MATERIALIZED (SELECT value AS name,CASE key '+tables.map((table,i)=>'WHEN '+i+' THEN '+tableStats(table)).join(' ')+' END AS metadata_json FROM json_each('+tableNames+')),snapshot_stats AS (SELECT name,'+fields.map((field,i)=>'json_extract(metadata_json,'+literal('$['+i+']')+') AS '+field).join(',')+' FROM snapshot_statistics) ';
   const aggregate=literal(AGGREGATE_TABLE),limitRows='CASE WHEN name='+aggregate+' THEN '+MAX_AGGREGATE_ROWS+' ELSE '+MAX_ROWS+' END',limitBytes='CASE WHEN name='+aggregate+' THEN '+MAX_AGGREGATE_BYTES+' ELSE '+MAX_TABLE_BYTES+' END';
   const valid='count(*)='+tables.length+' AND sum(CASE WHEN name='+aggregate+' THEN 0 ELSE row_count END)<='+MAX_TOTAL_ROWS+' AND sum(CASE WHEN name='+aggregate+' THEN row_count ELSE 0 END)<='+MAX_AGGREGATE_ROWS+' AND sum(CASE WHEN name='+aggregate+' THEN 0 ELSE COALESCE(encoded_bytes,'+(MAX_DATA_BYTES+1)+') END)<='+MAX_DATA_BYTES+' AND sum(CASE WHEN name='+aggregate+' THEN COALESCE(encoded_bytes,'+(MAX_AGGREGATE_BYTES+1)+') ELSE 0 END)<='+MAX_AGGREGATE_BYTES+' AND sum(CASE WHEN row_count>('+limitRows+') OR bad_types<>0 OR encoded_bytes IS NULL OR encoded_bytes>('+limitBytes+') OR max_row_bytes>'+MAX_ROW_BYTES+' THEN 1 ELSE 0 END)=0';
   const queries=[
     statsSql+'SELECT * FROM snapshot_stats ORDER BY name',
-    statsSql+', snapshot_allowed AS (SELECT CASE WHEN '+valid+' THEN 1 ELSE 0 END AS ok FROM snapshot_stats) SELECT registry.value AS table_name,packed.value AS row_json FROM json_each('+tableNames+') AS registry CROSS JOIN json_each(CASE WHEN (SELECT ok FROM snapshot_allowed)=1 THEN CASE registry.value '+tables.map(table=>'WHEN '+literal(table.name)+' THEN (SELECT json_group_array(json('+rowExpression(table)+')) FROM '+identifier(table.name)+')').join(' ')+' ELSE \'[]\' END ELSE \'[]\' END) AS packed',
+    statsSql+', snapshot_allowed AS (SELECT CASE WHEN '+valid+' THEN 1 ELSE 0 END AS ok FROM snapshot_stats) SELECT registry.value AS table_name,packed.value AS row_json FROM json_each('+tableNames+') AS registry CROSS JOIN json_each(CASE WHEN (SELECT ok FROM snapshot_allowed)=1 THEN CASE registry.key '+tables.map((table,i)=>'WHEN '+i+' THEN (SELECT json_group_array(json('+rowExpression(table)+')) FROM '+identifier(table.name)+')').join(' ')+' ELSE \'[]\' END ELSE \'[]\' END) AS packed',
     "SELECT type,name,tbl_name,sql FROM sqlite_master WHERE (type='table' AND name NOT GLOB 'sqlite_*' AND name NOT IN ('_cf_KV','_cf_METADATA','d1_migrations','__drizzle_migrations','__appgarden_migrations')) OR type='view' OR (type IN ('index','trigger') AND tbl_name IN ("+tables.map(table=>literal(table.name)).join(',')+')) ORDER BY type,name'
   ];
   function validateStats(rows){

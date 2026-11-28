@@ -80,3 +80,4 @@ export * from './owner-console-schema.mjs';
 export {ownerContentRecords,ownerContentVersions} from './owner-content-schema.mjs';
 export * from './owner-work-schema.mjs';
 export * from './owner-search-schema.mjs';
+export * from './learning-billing-schema.mjs';

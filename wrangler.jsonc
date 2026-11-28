@@ -10,7 +10,7 @@
   "build": {"command": "npm run build"},
   "base_dir": "outputs/cloudflare/runtime",
   "find_additional_modules": true,
-  "rules": [{"type": "ESModule", "globs": ["owner-business.mjs"], "fallthrough": true}],
+  "rules": [{"type": "ESModule", "globs": ["owner-business.mjs"], "fallthrough": true}, {"type": "ESModule", "globs": ["learning-workspace.mjs"], "fallthrough": true}],
   "limits": {"cpu_ms": 60000},
   "observability": {"enabled": true, "head_sampling_rate": 0.1},
   "assets": {
@@ -44,5 +44,5 @@
   },
   // Replays committed outbox messages after a failed send. This is inactive until deployed.
   "triggers": {"crons": ["*/2 * * * *"]},
-  "vars": {"PORTAL_STORAGE_BACKEND": "supabase", "OWNER_GSC_VERIFIED_AT": "1795640336037", "OWNER_CONSOLE_SUBJECT_SHA256": "abfda0af4bb396bea06c688c105a2e40c968ab870448b34b461500b517481123"}
+  "vars": {"LEARNING_ENABLED": "1", "LEARNING_PILOT_ENABLED": "1", "LEARNING_PAYMENTS_ENABLED": "0", "LEARNING_STRIPE_MODE": "test", "LEARNING_DAILY_USD_CAP": "10", "LEARNING_ACCOUNT_DAILY_USD_CAP": "4", "PORTAL_STORAGE_BACKEND": "supabase", "OWNER_GSC_VERIFIED_AT": "1795640336037", "OWNER_CONSOLE_SUBJECT_SHA256": "abfda0af4bb396bea06c688c105a2e40c968ab870448b34b461500b517481123"}
 }

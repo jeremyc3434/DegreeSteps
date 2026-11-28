@@ -111,6 +111,12 @@ jobs:
           COACH_ENABLED: ${{ vars.COACH_ENABLED }}
           COACH_DAILY_USD_CAP: ${{ vars.COACH_DAILY_USD_CAP }}
           COACH_MODEL: ${{ vars.COACH_MODEL }}
+          LEARNING_ENABLED: ${{ vars.LEARNING_ENABLED }}
+          LEARNING_PILOT_ENABLED: ${{ vars.LEARNING_PILOT_ENABLED }}
+          LEARNING_PAYMENTS_ENABLED: ${{ vars.LEARNING_PAYMENTS_ENABLED }}
+          LEARNING_DAILY_USD_CAP: ${{ vars.LEARNING_DAILY_USD_CAP }}
+          LEARNING_ACCOUNT_DAILY_USD_CAP: ${{ vars.LEARNING_ACCOUNT_DAILY_USD_CAP }}
+          LEARNING_STRIPE_MODE: ${{ vars.LEARNING_STRIPE_MODE }}
           EMAIL_FROM: ${{ vars.EMAIL_FROM }}
           EMAIL_DAILY_CAP: ${{ vars.EMAIL_DAILY_CAP }}
         run: |
@@ -118,8 +124,12 @@ jobs:
           for name in SCHOOL_INQUIRIES_ENABLED PLAN_REVIEW_ENABLED EMAIL_ALERTS_ENABLED COACH_ENABLED; do
             if [ "${!name}" = "1" ]; then flags+=(--var "$name:1"); fi
           done
+          # Explicit zero overrides the reviewed learning defaults as well as one.
+          for name in LEARNING_ENABLED LEARNING_PILOT_ENABLED LEARNING_PAYMENTS_ENABLED; do
+            if [ "${!name}" = "1" ] || [ "${!name}" = "0" ]; then flags+=(--var "$name:${!name}"); fi
+          done
           # Optional settings: passed only when set as GitHub environment variables.
-          for name in EMAIL_POSTAL_ADDRESS COACH_DAILY_USD_CAP COACH_MODEL EMAIL_FROM EMAIL_DAILY_CAP; do
+          for name in EMAIL_POSTAL_ADDRESS COACH_DAILY_USD_CAP COACH_MODEL EMAIL_FROM EMAIL_DAILY_CAP LEARNING_DAILY_USD_CAP LEARNING_ACCOUNT_DAILY_USD_CAP LEARNING_STRIPE_MODE; do
             if [ -n "${!name}" ]; then flags+=(--var "$name:${!name}"); fi
           done
           if [ "$EMAIL_ALERTS_ENABLED" = "1" ] && [ -z "$EMAIL_POSTAL_ADDRESS" ]; then
@@ -137,6 +147,18 @@ jobs:
           fi
           printf '%s' "$ANTHROPIC_API_KEY" | npx --yes wrangler@4.164.0 secret put ANTHROPIC_API_KEY --config "$WRANGLER_CONFIG" >/dev/null
           echo "ANTHROPIC_API_KEY updated on $WORKER_NAME."
+
+      - name: Set optional learning checkout secrets
+        env:
+          LEARNING_STRIPE_SECRET_KEY: ${{ secrets.LEARNING_STRIPE_SECRET_KEY }}
+          LEARNING_STRIPE_WEBHOOK_SECRET: ${{ secrets.LEARNING_STRIPE_WEBHOOK_SECRET }}
+        run: |
+          for name in LEARNING_STRIPE_SECRET_KEY LEARNING_STRIPE_WEBHOOK_SECRET; do
+            if [ -n "${!name}" ]; then
+              printf '%s' "${!name}" | npx --yes wrangler@4.164.0 secret put "$name" --config "$WRANGLER_CONFIG" >/dev/null
+              echo "$name updated on $WORKER_NAME."
+            fi
+          done
 
       - name: Set Resend API key secret
         env:

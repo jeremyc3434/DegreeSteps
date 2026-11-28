@@ -22,11 +22,41 @@ import { handleCoach, pruneCoach } from '../server/coach.mjs';
 import { handleLeads, pruneLeads, isLeadsPath } from '../server/leads.mjs';
 import { assets } from './assets.generated.mjs';
 import { loadOwnerModule } from './owner.generated.mjs';
+import { loadLearningModule } from './learning.generated.mjs';
 import {faviconLinks} from '../server/site-icons.mjs';
 
 let programCatalogSnapshot, curriculumRegistrySnapshot, degreeAliasSnapshot, basePathwaysSnapshot, resolvedPlanCatalogSnapshot, researchReferencesSnapshot, creditSourceDiscoverySnapshot;
 let academicCoverageSnapshot, baselineSnapshot;
 let coachDataSnapshot;
+
+// Course work is loaded only for its own routes. Identity always comes from the
+// verified account adapter; browser headers and caller-provided env identities
+// cannot select another student's private Supabase records.
+async function learningResponse(request,env){
+  const path=new URL(request.url).pathname;
+  const privateJSON=(value,status=200)=>Response.json(value,{status,headers:{'Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow','X-Content-Type-Options':'nosniff','Vary':'Cookie, Authorization'}});
+  if(env?.LEARNING_ENABLED!=='1')return path==='/api/learning/status'&&request.method==='GET'?privateJSON({enabled:false}):privateJSON({error:'Course help is not available on this host.'},404);
+  if(migrationReadOnly(env))return migrationReadOnlyResponse(request);
+  const learning=await loadLearningModule();
+  if(path==='/api/learning/billing/webhook')return learning.handleLearningBilling(request,{...env,PORTAL_USER:null,PORTAL_USER_ACCESS_TOKEN:null,LEARNING_OWNER_AUTHORIZED:false});
+  const identity=await resolvePortalIdentity(request,env);
+  if(identity.unavailable)return privateJSON({error:'Sign-in is temporarily unavailable. Please try again.',code:'auth_unavailable'},503);
+  const learningEnv={...env,PORTAL_USER:identity.user,PORTAL_USER_ACCESS_TOKEN:identity.accessToken,PORTAL_AUTH_REQUIRED:true,PORTAL_AUTH_CONFIGURED:identity.configured,LEARNING_OWNER_AUTHORIZED:false};
+  learningEnv.LEARNING_PROJECT_OWNED=async(userId,projectId)=>userId===identity.user?.id&&await learning.learningProjectOwned(learningEnv,projectId);
+  if(path==='/api/learning/billing/owner-summary'){
+    const business=await loadOwnerModule(),denied=await business.authorizeConsoleOwner(request,learningEnv);
+    if(denied)return denied;
+    learningEnv.LEARNING_OWNER_AUTHORIZED=true;
+  }
+  if(!path.startsWith('/api/learning/billing/')){
+    try{learningEnv.LEARNING_AI_CONFIGURED=(await resolveAIConnection(env,{includeKey:false})).configured;}catch{learningEnv.LEARNING_AI_CONFIGURED=false;}
+    learningEnv.LEARNING_RESOLVE_KEY=async()=>{const connection=await resolveAIConnection(env,{includeKey:true});return connection.apiKey||null;};
+  }
+  const response=path.startsWith('/api/learning/billing/')?await learning.handleLearningBilling(request,learningEnv):await learning.handleLearning(request,learningEnv);
+  if(!identity.setCookies?.length)return response;
+  const headers=new Headers(response.headers);for(const cookie of identity.setCookies)headers.append('Set-Cookie',cookie);
+  return new Response(response.body,{status:response.status,headers});
+}
 let alertPlanDataSnapshot;
 let academicEvidenceCache;
 // Public versioned build assets only. Never put account data or credentials in this cache.
@@ -423,6 +453,7 @@ export default {
     if(previewHost&&target.pathname==='/robots.txt'&&['GET','HEAD'].includes(request.method))return new Response(request.method==='HEAD'?null:'User-agent: *\nDisallow: /\n',{headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'public, max-age=60, must-revalidate','X-Robots-Tag':'noindex, nofollow'}});
     // GET handlers can also upsert profiles/rate records. During a final source
     // snapshot, pause the entire application API before identity or data access.
+    if(target.pathname==='/api/learning'||target.pathname.startsWith('/api/learning/'))return learningResponse(request,env);
     if(target.pathname==='/api/coach'||target.pathname.startsWith('/api/coach/')){
       if(env?.COACH_ENABLED!=='1')return handleCoach(request,{});
       if(migrationReadOnly(env))return migrationReadOnlyResponse(request);
@@ -529,7 +560,7 @@ export default {
     // The Plan review offer page exists only while PLAN_REVIEW_ENABLED is 1.
     const asset=path.startsWith('/plan-review/')&&env?.PLAN_REVIEW_ENABLED!=='1'?null:assets[path];
     if(!asset)return new Response('<!doctype html><html lang="en"><head>'+faviconLinks+'<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found — DegreeSteps</title><link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/brand.css"></head><body><main class="site-container" style="padding:80px 24px"><h1>Let’s find your next step.</h1><p>This page could not be found.</p><p><a href="/">DegreeSteps home</a> · <a href="/resources/">Student resources</a> · <a href="/portal.html">Build my plan</a></p></main></body></html>',{status:404,headers:{'Content-Type':'text/html; charset=utf-8','X-Robots-Tag':'noindex','Cache-Control':'no-store'}});
-    const privatePage=['/owner.html','/help.html','/portal.html','/plan.html','/account.html','/guided.html','/audit.html','/degree-audit.html','/compare-plans.html','/courses.html','/import-courses.html','/template-import.html','/request-plan.html','/admin.html','/coverage.html','/growth.html','/campuses.html','/ui-demo.html','/start.html'].includes(path);
+    const privatePage=['/learn.html','/owner.html','/help.html','/portal.html','/plan.html','/account.html','/guided.html','/audit.html','/degree-audit.html','/compare-plans.html','/courses.html','/import-courses.html','/template-import.html','/request-plan.html','/admin.html','/coverage.html','/growth.html','/campuses.html','/ui-demo.html','/start.html'].includes(path);
     if(asset.external){
       if(!env.ASSETS?.fetch)return new Response('Public assets are temporarily unavailable',{status:503,headers:{'Cache-Control':'no-store'}});
       const assetURL=new URL(request.url);assetURL.pathname=path;const delivered=await env.ASSETS.fetch(new Request(assetURL,{method:request.method,headers:request.headers}));

@@ -23,6 +23,12 @@ test('community sign-in retains only an allowed discussion-source filter',()=>{
  for(const source of ['all','students','starters'])assert.equal(Return.normalize('/community.html?tab=feed&source='+source+'&context=school%3Awgu',origin),'/community.html?tab=feed&source='+source+'&context=school%3Awgu');
  for(const source of ['https://evil.invalid','owner','../admin','starters%00'])assert.equal(Return.normalize('/community.html?tab=feed&source='+source,origin),'/community.html?tab=feed');
 });
+test('course workspace sign-in retains bounded navigation context and drops private assignment text',()=>{
+ const value='/learn.html?courseId=course_123&projectId=project_456&title=Business%20101&provider=Sophia&prompt=PRIVATE&notes=PRIVATE&next=https://evil.invalid';
+ assert.equal(Return.normalize(value,origin),'/learn.html?courseId=course_123&projectId=project_456&title=Business+101&provider=Sophia');
+ assert.equal(Return.normalize('/learn.html?projectId=../../other&title='+encodeURIComponent('x'.repeat(201)),origin),'/learn.html');
+ assert.equal(Return.resolve('?returnTo='+encodeURIComponent(value),storage(),origin),'/learn.html?courseId=course_123&projectId=project_456&title=Business+101&provider=Sophia');
+});
 test('recovery resumes its saved safe task but a plain account visit does not revive it',()=>{
  const s=storage({'student-request-draft':'keep this draft'}),now=1000;
  assert.equal(Return.resolve('?returnTo=request-plan.html',s,origin,now),'/request-plan.html');

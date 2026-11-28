@@ -21,6 +21,13 @@ function request(path,{method='GET',body,cookie,headers={}}={}) {
 const cookieJar=response=>response.headers.getSetCookie().map(value=>value.split(';')[0]).join('; ');
 async function call(env,path,options) {const response=await handleAuth(request(path,options),env);return {response,status:response.status,data:response.headers.get('Content-Type')?.includes('json')?await response.json():null};}
 
+test('course workspace login returns only safe navigation context, never assignment text',async()=>{
+ const {env}=fixture(c=>c.url.pathname==='/auth/v1/token'?answer(tokens):answer(verified));
+ const result=await call(env,'/api/auth/login',{method:'POST',body:{email:'student@example.com',password:'long-password',returnTo:'/learn.html?courseId=course_123&title=Business%20101&provider=Sophia&prompt=PRIVATE&notes=PRIVATE&next=https://evil.invalid'}});
+ assert.equal(result.status,200);
+ assert.equal(result.data.returnTo,'/learn.html?courseId=course_123&title=Business+101&provider=Sophia');
+});
+
 test('sign-in identity is available independently of saved-plan storage and never returns credentials',async()=>{
  const {env,calls}=fixture(c=>{assert.equal(c.url.pathname,'/auth/v1/user');return answer(verified);});
  env.DB={prepare(){throw Error('Identity must not access the plan database');}};
