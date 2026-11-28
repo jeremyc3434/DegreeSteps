@@ -35,9 +35,10 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci --ignore-scripts
-      - run: npm run build
-      - name: Check private course and billing boundaries
-        run: node --test --test-isolation=none learning-worker.test.mjs server/learning*.test.mjs
+      # The Core checks workflow builds and tests both Worker boundaries. This
+      # job exercises the actual committed UI without rebuilding the catalog.
+      - name: Check private storage, source and billing logic
+        run: node --test --test-isolation=none server/learning*.test.mjs learning-client.test.cjs
       - name: Install isolated browser test dependency
         run: npm install --prefix "$RUNNER_TEMP/degreesteps-browser" --ignore-scripts --no-audit --no-fund playwright@1.62.1
       - name: Check desktop and phone course workflows

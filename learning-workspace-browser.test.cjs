@@ -111,7 +111,7 @@ async function createProject(page, kind = 'writing') {
   await page.locator('#learning-project-form [name="kind"]').selectOption(kind);
   await page.locator('#learning-project-form [name="title"]').fill(kind === 'writing' ? 'Workplace policy recommendation' : 'Business concepts ' + kind);
   await page.locator('#learning-project-form [name="prompt"]').fill('Recommend a workplace policy. Compare an alternative and support the recommendation with the course reading.');
-  await page.locator('#learning-project-form details.learning-new-details summary').click();
+  if (!await page.locator('#learning-project-form details.learning-new-details').evaluate(details => details.open)) await page.locator('#learning-project-form details.learning-new-details summary').click();
   await page.locator('#learning-project-form [name="rubric"]').fill('Clear recommendation, supporting evidence, thoughtful counterargument.');
   await page.locator('#learning-project-form [name="studentNotes"]').fill('I favor flexible work because my team retained experienced colleagues when schedules became more flexible.');
   await page.locator('#learning-project-create').click();
