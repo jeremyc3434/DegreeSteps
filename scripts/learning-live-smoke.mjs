@@ -30,7 +30,7 @@ async function api(path,{method='GET',body,timeout=240000}={}){
     assert.match(response.headers.get('Cache-Control')||'',/no-store/);
     const text=await response.text();assert(Buffer.byteLength(text)<=2000000);
     let data;try{data=JSON.parse(text);}catch{throw Error('Non-JSON response at '+path);}
-    if(!response.ok)throw Object.assign(Error('Request failed at '+path+' ('+response.status+', '+String(data.code||'no_code')+')'),{status:response.status,code:data.code});
+    if(!response.ok)throw Object.assign(Error('Request failed at '+path+' ('+response.status+', '+String(data.code||'no_code')+')'),{status:response.status,code:data.code,...(typeof data.providerPhase==='string'?{providerPhase:data.providerPhase}:{}),...(typeof data.providerStopReason==='string'?{providerStopReason:data.providerStopReason}:{})});
     report.checks.push({path:path.replace(/[a-f0-9-]{36}/g,'[synthetic-id]'),method,status:response.status,durationMs:Date.now()-started});
     return data;
   }finally{clearTimeout(timer);}
@@ -55,6 +55,7 @@ try{
   record('Substantial working draft returned',{wordCount});
   const replay=await api('/api/learning/projects/'+project.id+'/run',{method:'POST',body:draftRequest});assert.equal(replay.replayed,true);record('Exact retry replays a saved result');
   const saved=(await api('/api/learning/projects/'+project.id)).item;assert.equal(saved.artifact.content,sample.content);record('Full draft survives a fresh private account read');
+  report.paperUsage=(await api('/api/learning/status')).usage;
   if(config.other){
     assert(/^learning-live-qa-[a-f0-9-]+@example\.invalid$/.test(config.other.email)&&config.other.email!==config.email);
     assert(typeof config.other.password==='string'&&config.other.password.length>=24);
@@ -72,8 +73,10 @@ try{
   const practice=(await api('/api/learning/projects/'+study.id+'/run',{method:'POST',body:{revision:study.revision,action:'quiz',requestId:randomUUID()}})).item;
   assert(practice.artifact.quiz?.length>=3);record('Live practice quiz returned structured questions',{questions:practice.artifact.quiz.length});
   report.finalUsage=(await api('/api/learning/status')).usage;
+  const beforeCost=report.initialUsage.dailySpend.costMicroUsd,paperCost=report.paperUsage.dailySpend.costMicroUsd,afterCost=report.finalUsage.dailySpend.costMicroUsd;
+  report.cost={currency:'USD',paperDeltaMicroUsd:paperCost-beforeCost,quizDeltaMicroUsd:afterCost-paperCost,totalDeltaMicroUsd:afterCost-beforeCost,basis:'Application rate card applied to provider-reported usage; provider-console invoice not reconciled',providerConsoleReconciled:false};
   report.passed=true;
-}catch(error){report.passed=false;report.failure={message:String(error.message),...(error.code?{code:error.code}:{})};process.exitCode=1;}
+}catch(error){report.passed=false;report.failure={message:String(error.message),...(error.code?{code:error.code}:{}),...(error.providerPhase?{providerPhase:error.providerPhase}:{}),...(error.providerStopReason?{providerStopReason:error.providerStopReason}:{})};process.exitCode=1;}
 finally{
   config.password='';
   if(config.other)config.other.password='';
