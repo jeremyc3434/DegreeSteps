@@ -40,10 +40,48 @@ test('private course and project CRUD preserve inputs, revisions and account own
 });
 test('writing plan runs real adapter research and synthesis with source provenance and useful questions',async t=>{
   const f=fixture(t),{project}=await f.create();const result=await f.run(project,'plan');assert.equal(result.status,200,JSON.stringify(result.body));assert.equal(result.body.item.status,'ready');assert.equal(f.provider.calls.length,2);
-  assert.equal(f.provider.calls[0].body.tools[0].max_uses,3);assert.equal(f.provider.calls[1].body.max_tokens,4000);
+  assert.equal(f.provider.calls[0].body.tools[0].max_uses,3);assert.equal(f.provider.calls[0].body.max_tokens,6000);assert.deepEqual(f.provider.calls[0].body.thinking,{type:'between_tools'});assert.equal(f.provider.calls[0].body.output_config.effort,'low');
+  assert.equal(f.provider.calls[1].body.max_tokens,8192);assert.deepEqual(f.provider.calls[1].body.thinking,{type:'adaptive'});assert.equal(f.provider.calls[1].body.output_config.effort,'medium');assert(f.provider.calls[1].body.output_config.format.schema);
   const context=JSON.parse(f.provider.calls[1].body.messages[0].content);assert.equal(context.assignment.studentNotes,project.studentNotes);assert.equal(context.course.syllabus,'The syllabus includes evidence-based recommendations.');assert(context.sources[0].excerpt.includes('practical example'));
   assert.equal(result.body.item.artifact.sources[0].url,'https://www.cdc.gov/example-study');assert.equal(result.body.item.artifact.sources[0].origin,'retrieved-page');assert.equal(result.body.item.artifact.sourceChecks.claimSupportVerified,false);assert.equal(result.body.item.artifact.sourceChecks.research.searches,1);assert(result.body.item.artifact.questions.length);
   assert.equal(result.headers.get('Cache-Control'),'private, no-store');assert.equal(result.headers.get('X-Robots-Tag'),'noindex, nofollow');assert(!JSON.stringify(result.body).includes('synthetic-learning-api-key'));
+});
+test('completed normalized research results survive truncated or paused narrative without another research call',async t=>{
+  for(const stop of['max_tokens','pause_turn']){
+    const f=fixture(t),{project}=await f.create();
+    f.provider.setOverride((url,options,body)=>body.tools?Response.json({stop_reason:stop,usage:{input_tokens:200,output_tokens:6000,server_tool_use:{web_search_requests:1}},content:[{type:'web_search_tool_result',tool_use_id:'actual-completed-result',content:[{type:'web_search_result',url:'https://www.cdc.gov/example-study?utm_source=ignored',title:'A returned primary source',encrypted_content:'opaque-provider-result'}]}]}):Response.json({stop_reason:'end_turn',usage:{input_tokens:1000,output_tokens:500},content:[{type:'text',text:JSON.stringify({summary:'A useful approach.',content:'Build the recommendation around the returned evidence [S1].',questions:[{id:'q1',question:'Which tradeoff matters most?',why:'Your decision shapes the recommendation.'}],checks:[],nextStep:'Explain your recommendation.',quiz:[],flashcards:[],slides:[]})}]}));
+    const result=await f.run(project,'plan');assert.equal(result.status,200,JSON.stringify(result.body));assert.equal(result.body.item.artifact.sources[0].url,'https://www.cdc.gov/example-study');assert.equal(f.provider.calls.length,2);assert.equal(f.provider.calls.filter(call=>call.body.tools).length,1);const receipt=f.DB.sqlite.prepare('SELECT status,estimated,output_tokens,searches FROM learning_billing_runs').get();assert.equal(receipt.status,'completed');assert.equal(receipt.estimated,0);assert.equal(receipt.output_tokens,6500);assert.equal(receipt.searches,1);
+  }
+});
+test('incomplete research without usable tool results fails with its actual safe phase and stop reason',async t=>{
+  for(const stop of['max_tokens','pause_turn']){
+    const f=fixture(t),{project}=await f.create();f.provider.setOverride(()=>Response.json({stop_reason:stop,usage:{input_tokens:200,output_tokens:6000},content:[{type:'thinking',thinking:'',signature:'provider-private-signature-not-for-clients'}]}));
+    const result=await f.run(project,'plan');assert.equal(result.status,502);assert.equal(result.body.code,'generation_incomplete');assert.equal(result.body.providerPhase,'research');assert.equal(result.body.providerStopReason,stop);assert.equal(f.provider.calls.length,1);assert.equal((await f.call('/projects/'+project.id)).body.item.artifact,null);assert(!JSON.stringify(result.body).includes('provider-private-signature'));assert.equal(f.DB.sqlite.prepare('SELECT estimated FROM learning_billing_runs').get().estimated,0);
+  }
+});
+test('completed research without new web results preserves valid student-provided evidence for synthesis',async t=>{
+  const f=fixture(t),source={id:'S4',url:'https://reading.university.edu/chapter-one',title:'Assigned course reading',excerpt:'Choose the method that supports the stated goal and explain the relevant tradeoff.'},{project}=await f.create('writing',{sources:[source]});
+  f.provider.setOverride((url,options,body)=>{
+    if(body.tools)return Response.json({stop_reason:'end_turn',usage:{input_tokens:200,output_tokens:100},content:[{type:'text',text:'Use the student-provided reading for this assignment.'}]});
+    const context=JSON.parse(body.messages[0].content);assert.equal(context.sources.length,1);assert.equal(context.sources[0].id,'S4');assert.equal(context.sources[0].url,source.url);assert.equal(context.sources[0].excerpt,source.excerpt);assert.equal(context.sources[0].origin,'student-provided');
+    return Response.json({stop_reason:'end_turn',usage:{input_tokens:1000,output_tokens:500},content:[{type:'text',text:JSON.stringify({summary:'Develop your recommendation from the assigned reading.',content:'Connect the stated goal to the method you recommend [S4].',questions:[{id:'q1',question:'Which tradeoff matters most in your case?',why:'Your decision shapes the argument.'}],checks:[],nextStep:'Explain the tradeoff using your own example.',quiz:[],flashcards:[],slides:[]})}]});
+  });
+  const result=await f.run(project,'plan');assert.equal(result.status,200,JSON.stringify(result.body));assert.equal(result.body.item.artifact.sources.length,1);assert.equal(result.body.item.artifact.sources[0].id,'S4');assert.equal(result.body.item.artifact.sources[0].origin,'student-provided');assert.equal(result.body.item.artifact.sourceChecks.research.returnedSources,0);assert.equal(result.body.item.artifact.sourceChecks.claimSupportVerified,false);assert.equal(f.provider.calls.length,2);
+});
+test('unsafe returned source URLs cannot turn incomplete research into a successful result',async t=>{
+  const f=fixture(t),{project}=await f.create();f.provider.setOverride(()=>Response.json({stop_reason:'max_tokens',usage:{input_tokens:100,output_tokens:6000,server_tool_use:{web_search_requests:1}},content:[{type:'web_search_tool_result',tool_use_id:'unsafe-source',content:[{type:'web_search_result',url:'https://127.0.0.1/private?token=never-repeat-this',title:'Not a usable public source'}]}]}));
+  const result=await f.run(project,'plan');assert.equal(result.status,502);assert.equal(result.body.providerPhase,'research');assert.equal(result.body.providerStopReason,'max_tokens');assert(!JSON.stringify(result.body).includes('never-repeat-this'));assert.equal(f.provider.calls.length,1);
+});
+test('final structured synthesis remains strict on paused or truncated output and preserves the previous result',async t=>{
+  for(const stop of['max_tokens','pause_turn']){
+    const f=fixture(t),{project}=await f.create('study');const first=await f.run(project,'study');assert.equal(first.status,200,JSON.stringify(first.body));
+    f.provider.setOverride(()=>Response.json({stop_reason:stop,usage:{input_tokens:100,output_tokens:8192},content:[{type:'text',text:JSON.stringify({summary:'Do not publish this.',content:'A syntactically complete but unfinished result.',questions:[],checks:[],nextStep:'Continue.',quiz:[],flashcards:[],slides:[]})}]}));
+    const result=await f.run(first.body.item,'study');assert.equal(result.status,502);assert.equal(result.body.code,'generation_incomplete');assert.equal(result.body.providerPhase,'synthesis');assert.equal(result.body.providerStopReason,stop);assert.equal((await f.call('/projects/'+project.id)).body.item.artifact.content,first.body.item.artifact.content);const receipt=f.DB.sqlite.prepare("SELECT estimated,actual_micro_usd,output_tokens FROM learning_billing_runs WHERE status='failed'").get();assert.equal(receipt.estimated,0);assert.equal(receipt.output_tokens,8192);assert(receipt.actual_micro_usd>0);
+  }
+});
+test('unknown provider stop values never echo arbitrary provider content in diagnostic extras',async t=>{
+  const f=fixture(t),{project}=await f.create('study');f.provider.setOverride(()=>Response.json({stop_reason:'private-provider-text-that-must-not-escape',usage:{input_tokens:100,output_tokens:20},content:[]}));
+  const result=await f.run(project,'study');assert.equal(result.status,502);assert.equal(result.body.providerPhase,'synthesis');assert.equal(result.body.providerStopReason,'unknown');assert(!JSON.stringify(result.body).includes('private-provider-text'));
 });
 test('writing draft requires actual student input without consuming paid AI usage',async t=>{
   const f=fixture(t),{project}=await f.create('writing',{studentNotes:''});const result=await f.run(project,'draft');assert.equal(result.status,400);assert.equal(result.body.code,'student_input_needed');assert.equal(f.provider.calls.length,0);
@@ -109,7 +147,7 @@ test('recent course context is private, bounded and distinguishes student notes 
   const context=JSON.parse(f.provider.calls.at(-1).body.messages[0].content);assert.equal(context.recentCourseContext.length,1);assert.equal(context.recentCourseContext[0].studentNotes,first.project.studentNotes);assert(context.recentCourseContext[0].previousAssistanceSummary);assert(!JSON.stringify(context).includes('Other account material'));assert(!JSON.stringify(context).includes('Another course must'));
 });
 test('quiz, flashcard and presentation actions return their actual structured deliverables',async t=>{
-  for(const kind of['quiz','flashcards','presentation']){const f=fixture(t),{project}=await f.create(kind);const result=await f.run(project,kind);assert.equal(result.status,200,JSON.stringify(result.body));assert(result.body.item.artifact[kind==='presentation'?'slides':kind].length);}
+  for(const kind of['quiz','flashcards','presentation']){const f=fixture(t),{project}=await f.create(kind);const result=await f.run(project,kind);assert.equal(result.status,200,JSON.stringify(result.body));assert(result.body.item.artifact[kind==='presentation'?'slides':kind].length);const request=f.provider.calls.at(-1).body;assert.equal(request.output_config.effort,'medium');assert.deepEqual(request.thinking,{type:'adaptive'});assert.equal(request.max_tokens,kind==='presentation'?16000:8192);}
 });
 test('workspace export returns full owned work and deletion requires the exact confirmation',async t=>{
   const f=fixture(t),{project}=await f.create('study');const result=await f.run(project,'study');assert.equal(result.status,200,JSON.stringify(result.body));const exported=await f.call('/export');assert.equal(exported.status,200);assert.equal(exported.body.projects[0].artifact.content,result.body.item.artifact.content);assert(exported.body.courses[0].syllabus);
