@@ -3,7 +3,7 @@
   "publicationAllowed": false,
   "repository": "jeremyc3434/DegreeSteps",
   "submissionRevisions": 9,
-  "reviewRevisions": 35,
+  "reviewRevisions": 39,
   "findings": [
     {
       "claim": "South College CBE conflicting 60%/75% policies; California Baptist advertised 100 units and $541/unit; UW Flexible Option reported $2,250/subscription; Memphis/Saylor; National University and RMCAD Sophia partnerships; WGU degree-level ACE restrictions. Verify before publishing.",
@@ -571,7 +571,7 @@
           "url": "https://github.com/jeremyc3434/DegreeSteps/issues/63"
         }
       ],
-      "reviewHash": "83eddda632423193f8f736c4cf3fc4fc778731a15ae6309c283956a6f1eaf5e1",
+      "reviewHash": "3ca747d56f39c40af9d2009e2ade4fea74b71a501efee0e6f52aa4264189a58c",
       "reviewCurrent": true,
       "requiresReverification": false,
       "review": {
@@ -579,21 +579,21 @@
         "kind": "research-review",
         "publicationAllowed": false,
         "findingId": "finding-5f6de6f2bfccaeb822aba66f2f271e648d990be68715df98ed8a73c0e13331ae",
-        "revision": 1,
-        "previousReviewHash": null,
+        "revision": 2,
+        "previousReviewHash": "83eddda632423193f8f736c4cf3fc4fc778731a15ae6309c283956a6f1eaf5e1",
         "sourceRevisions": [
           "6f740e4e99ed603a569888868b0aaca195794ef20ee3d2150bfb2c4c3bd6b511"
         ],
         "reviewer": "Codex independently verified student-scenario research",
-        "reviewedOn": "2026-11-27",
+        "reviewedOn": "2026-11-28",
         "verifiedOn": "2026-11-27",
         "announcedOn": null,
         "effectiveOn": null,
         "followUpOn": "2026-12-04",
         "triage": "BOTH",
-        "status": "ready-for-review",
+        "status": "implemented",
         "changeKind": "newly-discovered-existing-policy",
-        "summary": "Preserve original coursework and evaluate exact current requirements rather than inferring 60 applicable credits or a restart. Added source-specific business currency guidance, returning/upload-first context, and restored the existing source-bound TESU General Management/HR/Marketing age-review metadata to the runtime guard. Five targeted currency tests passed; no old record was removed or automatically approved.",
+        "summary": "Preserve original coursework and evaluate exact current requirements rather than inferring 60 applicable credits or a restart. Added source-specific business currency guidance, returning/upload-first context, and restored the existing source-bound TESU General Management/HR/Marketing age-review metadata to the runtime guard. Five targeted currency tests passed; no old record was removed or automatically approved. Production delivery was observed on 2026-11-28 at commit 424814555ddd138a451a89fcda469f7029f36dae under the recorded approved release; matching deployed bytes were verified for the product assets and this editorial URL.",
         "evidence": [
           {
             "id": "tesu-degree-requirements",
@@ -804,7 +804,8 @@
           "content/research-intake/evidence/issue63/721fb75d3239c012e4bca2eb1a520cb2e24f6c030c42b1cabd0301e74a54c6e1.json",
           "content/research-intake/evidence/issue63/15c6adca1118b0295a425ad5255b4b4dce8d1aa9d8cb09811126a9f725c54c06.json",
           "content/research-intake/evidence/issue63/e6f5365428b3818f702c5f3747c12bf29bcee72710447f958e3ce16bdaaa6363.json",
-          "content/research-intake/evidence/issue63/b6b0eeb57d3e9c5d54eeb4e955b95f4db382e13fc200cfc7e63229d7a3617aa3.json"
+          "content/research-intake/evidence/issue63/b6b0eeb57d3e9c5d54eeb4e955b95f4db382e13fc200cfc7e63229d7a3617aa3.json",
+          "content/research-intake/evidence/issue63/32064601df2957caa2fa3d06e78e1eb2bf42db86c1c2d6cfb34f9ccb112a74ed.json"
         ],
         "facts": {
           "scope": {
@@ -831,7 +832,7 @@
           "assessments": []
         },
         "product": {
-          "status": "review-ready",
+          "status": "implemented",
           "paths": [
             "dist/guide-engine.js",
             "dist/sheet-state.js",
@@ -839,15 +840,67 @@
             "dist/journey-engine.js",
             "tesu-finance-currency.test.cjs"
           ],
-          "notes": "Optional context and targeted guidance reuse existing architecture. Existing target identity, learning, grades, units, course dates, evaluations and costs are preserved. Full build/browser/CI release checks remain separate from this source review."
+          "notes": "The scoped product changes are implemented and their production assets were verified under the attached release receipt. Original learning, grades, dates, units, evaluations and costs are preserved; task completion does not create a credit award, discount or benefit."
         },
-        "release": null,
+        "release": {
+          "environment": "production",
+          "commitSha": "424814555ddd138a451a89fcda469f7029f36dae",
+          "pullRequestUrl": "https://github.com/jeremyc3434/DegreeSteps/pull/64",
+          "workflowRunUrl": "https://github.com/jeremyc3434/DegreeSteps/actions/runs/46085229183",
+          "verifiedOn": "2026-11-28",
+          "approval": "The repository owner requested an end-to-end audit through the approved publication process and authorized continued student-flow improvements. Codex manually dispatched the existing guarded production workflow after exact-head core/browser checks, unchanged protected runtime/schema/configuration source, and 34 successful staging checks. Existing manual target, migration assertion and production configuration gates were retained; no future automatic production deployment was enabled.",
+          "verifiedUrls": [
+            "https://degreesteps.com/robots.txt",
+            "https://degreesteps.com/",
+            "https://degreesteps.com/brand.css",
+            "https://degreesteps.com/data/credit-sources.json",
+            "https://degreesteps.com/data/program-catalog.json",
+            "https://degreesteps.com/courses.html",
+            "https://degreesteps.com/courses.js",
+            "https://degreesteps.com/data/course-catalog.json",
+            "https://degreesteps.com/portal.html",
+            "https://degreesteps.com/portal.js",
+            "https://degreesteps.com/guide-engine.js",
+            "https://degreesteps.com/sheet-state.js",
+            "https://degreesteps.com/student-checklist.js",
+            "https://degreesteps.com/journey-engine.js",
+            "https://degreesteps.com/school.js",
+            "https://degreesteps.com/degree-audit.html",
+            "https://degreesteps.com/degree-audit.js",
+            "https://degreesteps.com/requirements-baselines.js",
+            "https://degreesteps.com/data/requirements-baselines.json",
+            "https://degreesteps.com/sheet.js",
+            "https://degreesteps.com/sitemap.xml",
+            "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+            "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+            "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+            "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+            "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+            "https://degreesteps.com/credit-sources/google-certificates/",
+            "https://degreesteps.com/credit-sources/wgu-single-courses/",
+            "https://degreesteps.com/credit-sources/christian-leaders/",
+            "https://degreesteps.com/credit-sources/asu-ulc/",
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+            "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/",
+            "https://degreesteps.com/guides/transfer-credit-after-enrolling/",
+            "https://degreesteps.com/guides/earn-college-credit-in-high-school/",
+            "https://degreesteps.com/guides/military-credit-jst-ccaf/",
+            "https://degreesteps.com/blog/do-old-college-credits-still-count/"
+          ],
+          "receiptPaths": [
+            "content/research-intake/evidence/issue63/32064601df2957caa2fa3d06e78e1eb2bf42db86c1c2d6cfb34f9ccb112a74ed.json"
+          ]
+        },
         "editorial": {
-          "status": "review-ready",
+          "status": "published",
           "proposedUrls": [
             "https://degreesteps.com/blog/do-old-college-credits-still-count/"
           ],
-          "publishedUrls": [],
+          "publishedUrls": [
+            "https://degreesteps.com/blog/do-old-college-credits-still-count/"
+          ],
           "existingUrls": [
             "https://degreesteps.com/blog/do-old-college-credits-still-count/"
           ],
@@ -2033,7 +2086,7 @@
           "url": "https://github.com/jeremyc3434/DegreeSteps/issues/63"
         }
       ],
-      "reviewHash": "6ea56375ccac0f9131e45b8729268da4657732b521830c424e189c00f20ae1b7",
+      "reviewHash": "711c88dfd45c7177133868743bf4259bbc1e103f3fac70cd3896f7ab4edddfc5",
       "reviewCurrent": true,
       "requiresReverification": false,
       "review": {
@@ -2041,13 +2094,13 @@
         "kind": "research-review",
         "publicationAllowed": false,
         "findingId": "finding-89d3a4fc32f6eb50c62bb24cf3a5bb213a3ffa11000ade50148cb6d8244eb6ef",
-        "revision": 1,
-        "previousReviewHash": null,
+        "revision": 2,
+        "previousReviewHash": "6ea56375ccac0f9131e45b8729268da4657732b521830c424e189c00f20ae1b7",
         "sourceRevisions": [
           "6f740e4e99ed603a569888868b0aaca195794ef20ee3d2150bfb2c4c3bd6b511"
         ],
         "reviewer": "Codex independently verified student-scenario research",
-        "reviewedOn": "2026-11-27",
+        "reviewedOn": "2026-11-28",
         "verifiedOn": "2026-11-27",
         "announcedOn": null,
         "effectiveOn": null,
@@ -2055,7 +2108,7 @@
         "triage": "BOTH",
         "status": "researching",
         "changeKind": "newly-discovered-existing-policy",
-        "summary": "Verified the actual historical PDF and derived six complete 120-equivalent-credit requirement ledgers. New outside coursework while actively enrolled, grade proof and Sophia-to-competency awards remain unresolved individual/university questions. Current Sophia credit-hour awards are not promoted into legacy competency awards. The product supplies a current-degree requirements workspace, practical approval steps and guidance, not a false complete MyPath template.",
+        "summary": "Verified the actual historical PDF and derived six complete 120-equivalent-credit requirement ledgers. New outside coursework while actively enrolled, grade proof and Sophia-to-competency awards remain unresolved individual/university questions. Current Sophia credit-hour awards are not promoted into legacy competency awards. The product supplies a current-degree requirements workspace, practical approval steps and guidance, not a false complete MyPath template. Production delivery was observed on 2026-11-28 at commit 424814555ddd138a451a89fcda469f7029f36dae under the recorded approved release; matching deployed bytes were verified for the product assets and this editorial URL. The source-bound 2024–25 MyPath catalog chooser, six requirements baselines, variable General Business elective pool and explicit catalog-detail recovery are live. This finding remains open for the student’s actual assigned catalog and emphasis, new outside-course permission, grade proof and receiving awards; no complete optimized MyPath transfer template is claimed.",
         "evidence": [
           {
             "id": "umass2024-dual-enrollment",
@@ -2178,7 +2231,8 @@
           "content/research-intake/evidence/issue63/7ce83a0cf29cf50571d13b2b60fcf98c84528840e3086ae91e0158debdac3a49.json",
           "content/research-intake/evidence/issue63/b1ef2adb24aaee107de882ec7d90285f123af1fa49295a06dd975dff42d0f7ac.json",
           "content/research-intake/evidence/issue63/c6d28a972a723b8e48ed841340970845b4841781d184149dedd1e9f1ecb4e335.json",
-          "content/research-intake/evidence/issue63/073730f98125f9ca271fc7fe0b571b6e423271370d82ea2adf3b8e8c40a3614a.json"
+          "content/research-intake/evidence/issue63/073730f98125f9ca271fc7fe0b571b6e423271370d82ea2adf3b8e8c40a3614a.json",
+          "content/research-intake/evidence/issue63/32064601df2957caa2fa3d06e78e1eb2bf42db86c1c2d6cfb34f9ccb112a74ed.json"
         ],
         "facts": {
           "scope": {
@@ -2205,23 +2259,89 @@
           "assessments": []
         },
         "product": {
-          "status": "review-ready",
+          "status": "implemented",
           "paths": [
             "dist/guide-engine.js",
             "dist/sheet-state.js",
             "dist/portal.js",
             "dist/student-checklist.js",
-            "dist/school.js"
+            "dist/school.js",
+            "content/catalog/umass-global-mypath-bba-requirements-2024-2025.json",
+            "dist/data/requirements-baselines.json",
+            "dist/requirements-baselines.js",
+            "dist/degree-audit.html",
+            "dist/degree-audit.js",
+            "dist/sheet.js",
+            "scripts/build-public-site.mjs",
+            "requirements-baselines.test.cjs",
+            "degree-audit-ui.test.cjs",
+            "student-scenarios-browser.test.cjs",
+            "scripts/check-staging-release.mjs",
+            "scripts/check-staging-release.test.mjs",
+            "scripts/check-production-release.mjs",
+            "scripts/check-production-release.test.mjs"
           ],
-          "notes": "Optional context and targeted guidance reuse existing architecture. Existing target identity, learning, grades, units, course dates, evaluations and costs are preserved. Full build/browser/CI release checks remain separate from this source review."
+          "notes": "The scoped product changes are implemented and their production assets were verified under the attached release receipt. Original learning, grades, dates, units, evaluations and costs are preserved; task completion does not create a credit award, discount or benefit. The requirements-only baseline is separate from the public plan index. Loading saves an isolated draft; explicit review/commit preserves original records and prior target history. General Business’s 19-credit pool remains unallocated until actual named requirements are supplied. Baseline builds inherit no same-school transfer mappings. Individual catalog applicability, permission after enrollment and outside-course awards remain unresolved."
         },
-        "release": null,
+        "release": {
+          "environment": "production",
+          "commitSha": "424814555ddd138a451a89fcda469f7029f36dae",
+          "pullRequestUrl": "https://github.com/jeremyc3434/DegreeSteps/pull/64",
+          "workflowRunUrl": "https://github.com/jeremyc3434/DegreeSteps/actions/runs/46085229183",
+          "verifiedOn": "2026-11-28",
+          "approval": "The repository owner requested an end-to-end audit through the approved publication process and authorized continued student-flow improvements. Codex manually dispatched the existing guarded production workflow after exact-head core/browser checks, unchanged protected runtime/schema/configuration source, and 34 successful staging checks. Existing manual target, migration assertion and production configuration gates were retained; no future automatic production deployment was enabled.",
+          "verifiedUrls": [
+            "https://degreesteps.com/robots.txt",
+            "https://degreesteps.com/",
+            "https://degreesteps.com/brand.css",
+            "https://degreesteps.com/data/credit-sources.json",
+            "https://degreesteps.com/data/program-catalog.json",
+            "https://degreesteps.com/courses.html",
+            "https://degreesteps.com/courses.js",
+            "https://degreesteps.com/data/course-catalog.json",
+            "https://degreesteps.com/portal.html",
+            "https://degreesteps.com/portal.js",
+            "https://degreesteps.com/guide-engine.js",
+            "https://degreesteps.com/sheet-state.js",
+            "https://degreesteps.com/student-checklist.js",
+            "https://degreesteps.com/journey-engine.js",
+            "https://degreesteps.com/school.js",
+            "https://degreesteps.com/degree-audit.html",
+            "https://degreesteps.com/degree-audit.js",
+            "https://degreesteps.com/requirements-baselines.js",
+            "https://degreesteps.com/data/requirements-baselines.json",
+            "https://degreesteps.com/sheet.js",
+            "https://degreesteps.com/sitemap.xml",
+            "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+            "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+            "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+            "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+            "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+            "https://degreesteps.com/credit-sources/google-certificates/",
+            "https://degreesteps.com/credit-sources/wgu-single-courses/",
+            "https://degreesteps.com/credit-sources/christian-leaders/",
+            "https://degreesteps.com/credit-sources/asu-ulc/",
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+            "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/",
+            "https://degreesteps.com/guides/transfer-credit-after-enrolling/",
+            "https://degreesteps.com/guides/earn-college-credit-in-high-school/",
+            "https://degreesteps.com/guides/military-credit-jst-ccaf/",
+            "https://degreesteps.com/blog/do-old-college-credits-still-count/"
+          ],
+          "receiptPaths": [
+            "content/research-intake/evidence/issue63/32064601df2957caa2fa3d06e78e1eb2bf42db86c1c2d6cfb34f9ccb112a74ed.json"
+          ]
+        },
         "editorial": {
-          "status": "review-ready",
+          "status": "published",
           "proposedUrls": [
             "https://degreesteps.com/guides/transfer-credit-after-enrolling/"
           ],
-          "publishedUrls": [],
+          "publishedUrls": [
+            "https://degreesteps.com/guides/transfer-credit-after-enrolling/"
+          ],
           "existingUrls": [],
           "title": "Already in college? Check outside courses before you pay",
           "metaDescription": "Find out how to evaluate new transfer courses while already enrolled, keep older credit separate, and ask for approval against your remaining degree requirements.",
@@ -2722,7 +2842,7 @@
           "url": "https://github.com/jeremyc3434/DegreeSteps/issues/63"
         }
       ],
-      "reviewHash": "b1dba728fbfcb154fc11a9cae3004f8ca0d9d590b252030ab549ea4554ca7f7a",
+      "reviewHash": "ce71eb35f555ce772a21a281c3c6f1b78ab2af65540b22c4abe988fa7b5737db",
       "reviewCurrent": true,
       "requiresReverification": false,
       "review": {
@@ -2730,21 +2850,21 @@
         "kind": "research-review",
         "publicationAllowed": false,
         "findingId": "finding-bf2d3eafd48ef2d6aaebeeb423e3783df42f98593e6ed92346521b8408fe95a6",
-        "revision": 1,
-        "previousReviewHash": null,
+        "revision": 2,
+        "previousReviewHash": "b1dba728fbfcb154fc11a9cae3004f8ca0d9d590b252030ab549ea4554ca7f7a",
         "sourceRevisions": [
           "6f740e4e99ed603a569888868b0aaca195794ef20ee3d2150bfb2c4c3bd6b511"
         ],
         "reviewer": "Codex independently verified student-scenario research",
-        "reviewedOn": "2026-11-27",
+        "reviewedOn": "2026-11-28",
         "verifiedOn": "2026-11-27",
         "announcedOn": null,
         "effectiveOn": null,
         "followUpOn": "2026-12-04",
         "triage": "BOTH",
-        "status": "ready-for-review",
+        "status": "implemented",
         "changeKind": "newly-discovered-existing-policy",
-        "summary": "Separate university-issued college credit, ACE recommendations and high-school credit. Implemented optional high-school context, issuing-college record guidance, and a substantive sourced six-step guide with scoped ASU/Sophia eligibility, consent/ID, Florida funding and ASU-only first-year classification. No high-school report card is asserted to establish a receiving award.",
+        "summary": "Separate university-issued college credit, ACE recommendations and high-school credit. Implemented optional high-school context, issuing-college record guidance, and a substantive sourced six-step guide with scoped ASU/Sophia eligibility, consent/ID, Florida funding and ASU-only first-year classification. No high-school report card is asserted to establish a receiving award. Production delivery was observed on 2026-11-28 at commit 424814555ddd138a451a89fcda469f7029f36dae under the recorded approved release; matching deployed bytes were verified for the product assets and this editorial URL.",
         "evidence": [
           {
             "id": "asu-hs-access",
@@ -2831,7 +2951,8 @@
           "content/research-intake/evidence/issue63/009d72edbc5bc716219a83626395672d01e4cd7acf009db0a4b2e6a64b04a277.json",
           "content/research-intake/evidence/issue63/97860a124cc4d716bb375c7734fe4201f13bb064a833a2c2ffbacb14ffaf1400.json",
           "content/research-intake/evidence/issue63/10d3489e2c8b42306c59196e99ce9b5ef06ce482cde9d4ddfd51d04b773fb6e8.json",
-          "content/research-intake/evidence/issue63/bb331cd717e669372e342f1a71763c4b9389cd920a95f1997dc5b9c46d9f9cf3.json"
+          "content/research-intake/evidence/issue63/bb331cd717e669372e342f1a71763c4b9389cd920a95f1997dc5b9c46d9f9cf3.json",
+          "content/research-intake/evidence/issue63/32064601df2957caa2fa3d06e78e1eb2bf42db86c1c2d6cfb34f9ccb112a74ed.json"
         ],
         "facts": {
           "scope": {
@@ -2858,21 +2979,73 @@
           "assessments": []
         },
         "product": {
-          "status": "review-ready",
+          "status": "implemented",
           "paths": [
             "dist/guide-engine.js",
             "dist/sheet-state.js",
             "dist/portal.js"
           ],
-          "notes": "Optional context and targeted guidance reuse existing architecture. Existing target identity, learning, grades, units, course dates, evaluations and costs are preserved. Full build/browser/CI release checks remain separate from this source review."
+          "notes": "The scoped product changes are implemented and their production assets were verified under the attached release receipt. Original learning, grades, dates, units, evaluations and costs are preserved; task completion does not create a credit award, discount or benefit."
         },
-        "release": null,
+        "release": {
+          "environment": "production",
+          "commitSha": "424814555ddd138a451a89fcda469f7029f36dae",
+          "pullRequestUrl": "https://github.com/jeremyc3434/DegreeSteps/pull/64",
+          "workflowRunUrl": "https://github.com/jeremyc3434/DegreeSteps/actions/runs/46085229183",
+          "verifiedOn": "2026-11-28",
+          "approval": "The repository owner requested an end-to-end audit through the approved publication process and authorized continued student-flow improvements. Codex manually dispatched the existing guarded production workflow after exact-head core/browser checks, unchanged protected runtime/schema/configuration source, and 34 successful staging checks. Existing manual target, migration assertion and production configuration gates were retained; no future automatic production deployment was enabled.",
+          "verifiedUrls": [
+            "https://degreesteps.com/robots.txt",
+            "https://degreesteps.com/",
+            "https://degreesteps.com/brand.css",
+            "https://degreesteps.com/data/credit-sources.json",
+            "https://degreesteps.com/data/program-catalog.json",
+            "https://degreesteps.com/courses.html",
+            "https://degreesteps.com/courses.js",
+            "https://degreesteps.com/data/course-catalog.json",
+            "https://degreesteps.com/portal.html",
+            "https://degreesteps.com/portal.js",
+            "https://degreesteps.com/guide-engine.js",
+            "https://degreesteps.com/sheet-state.js",
+            "https://degreesteps.com/student-checklist.js",
+            "https://degreesteps.com/journey-engine.js",
+            "https://degreesteps.com/school.js",
+            "https://degreesteps.com/degree-audit.html",
+            "https://degreesteps.com/degree-audit.js",
+            "https://degreesteps.com/requirements-baselines.js",
+            "https://degreesteps.com/data/requirements-baselines.json",
+            "https://degreesteps.com/sheet.js",
+            "https://degreesteps.com/sitemap.xml",
+            "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+            "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+            "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+            "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+            "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+            "https://degreesteps.com/credit-sources/google-certificates/",
+            "https://degreesteps.com/credit-sources/wgu-single-courses/",
+            "https://degreesteps.com/credit-sources/christian-leaders/",
+            "https://degreesteps.com/credit-sources/asu-ulc/",
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+            "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/",
+            "https://degreesteps.com/guides/transfer-credit-after-enrolling/",
+            "https://degreesteps.com/guides/earn-college-credit-in-high-school/",
+            "https://degreesteps.com/guides/military-credit-jst-ccaf/",
+            "https://degreesteps.com/blog/do-old-college-credits-still-count/"
+          ],
+          "receiptPaths": [
+            "content/research-intake/evidence/issue63/32064601df2957caa2fa3d06e78e1eb2bf42db86c1c2d6cfb34f9ccb112a74ed.json"
+          ]
+        },
         "editorial": {
-          "status": "review-ready",
+          "status": "published",
           "proposedUrls": [
             "https://degreesteps.com/guides/earn-college-credit-in-high-school/"
           ],
-          "publishedUrls": [],
+          "publishedUrls": [
+            "https://degreesteps.com/guides/earn-college-credit-in-high-school/"
+          ],
           "existingUrls": [],
           "title": "Earn college credit in high school without wasting courses",
           "metaDescription": "Compare dual enrollment, ASU Universal Learner and Sophia. Plan around high-school approval, age rules, funding and the college degree you want.",
@@ -4360,7 +4533,7 @@
           "url": "https://github.com/jeremyc3434/DegreeSteps/issues/63"
         }
       ],
-      "reviewHash": "af26989aa2043f4fb1eaa66b8caf464c5f4e35716bd215c5979e6dc7469872b7",
+      "reviewHash": "0e7d8937d7ab2427362ae888bfd843ae4d36566475b8ebfb5390753d41b29174",
       "reviewCurrent": true,
       "requiresReverification": false,
       "review": {
@@ -4368,21 +4541,21 @@
         "kind": "research-review",
         "publicationAllowed": false,
         "findingId": "finding-e0b0f605d053cc32da6f553a8fc0a5b8a4a2c244e768d581c0e6532c974fd881",
-        "revision": 1,
-        "previousReviewHash": null,
+        "revision": 2,
+        "previousReviewHash": "af26989aa2043f4fb1eaa66b8caf464c5f4e35716bd215c5979e6dc7469872b7",
         "sourceRevisions": [
           "6f740e4e99ed603a569888868b0aaca195794ef20ee3d2150bfb2c4c3bd6b511"
         ],
         "reviewer": "Codex independently verified student-scenario research",
-        "reviewedOn": "2026-11-27",
+        "reviewedOn": "2026-11-28",
         "verifiedOn": "2026-11-27",
         "announcedOn": null,
         "effectiveOn": null,
         "followUpOn": "2026-12-04",
         "triage": "BOTH",
-        "status": "ready-for-review",
+        "status": "implemented",
         "changeKind": "newly-discovered-existing-policy",
-        "summary": "Replaced closed DANTES transcript guidance with current VA/CLEP sources, retained JST/CCAF and original award distinctions, and added a service/family benefits task. Published military-rate guidance is eligibility- and fee-specific; completing a task does not apply a discount, financial aid or academic credit. Older 2025–26 MyPath military pricing remains unasserted as current.",
+        "summary": "Replaced closed DANTES transcript guidance with current VA/CLEP sources, retained JST/CCAF and original award distinctions, and added a service/family benefits task. Published military-rate guidance is eligibility- and fee-specific; completing a task does not apply a discount, financial aid or academic credit. Older 2025–26 MyPath military pricing remains unasserted as current. Production delivery was observed on 2026-11-28 at commit 424814555ddd138a451a89fcda469f7029f36dae under the recorded approved release; matching deployed bytes were verified for the product assets and this editorial URL.",
         "evidence": [
           {
             "id": "military-original-records",
@@ -4489,7 +4662,8 @@
           "content/research-intake/evidence/issue63/009d72edbc5bc716219a83626395672d01e4cd7acf009db0a4b2e6a64b04a277.json",
           "content/research-intake/evidence/issue63/97860a124cc4d716bb375c7734fe4201f13bb064a833a2c2ffbacb14ffaf1400.json",
           "content/research-intake/evidence/issue63/10d3489e2c8b42306c59196e99ce9b5ef06ce482cde9d4ddfd51d04b773fb6e8.json",
-          "content/research-intake/evidence/issue63/bb331cd717e669372e342f1a71763c4b9389cd920a95f1997dc5b9c46d9f9cf3.json"
+          "content/research-intake/evidence/issue63/bb331cd717e669372e342f1a71763c4b9389cd920a95f1997dc5b9c46d9f9cf3.json",
+          "content/research-intake/evidence/issue63/32064601df2957caa2fa3d06e78e1eb2bf42db86c1c2d6cfb34f9ccb112a74ed.json"
         ],
         "facts": {
           "scope": {
@@ -4550,20 +4724,72 @@
           "assessments": []
         },
         "product": {
-          "status": "review-ready",
+          "status": "implemented",
           "paths": [
             "dist/student-checklist.js",
             "dist/portal.js"
           ],
-          "notes": "Optional context and targeted guidance reuse existing architecture. Existing target identity, learning, grades, units, course dates, evaluations and costs are preserved. Full build/browser/CI release checks remain separate from this source review."
+          "notes": "The scoped product changes are implemented and their production assets were verified under the attached release receipt. Original learning, grades, dates, units, evaluations and costs are preserved; task completion does not create a credit award, discount or benefit."
         },
-        "release": null,
+        "release": {
+          "environment": "production",
+          "commitSha": "424814555ddd138a451a89fcda469f7029f36dae",
+          "pullRequestUrl": "https://github.com/jeremyc3434/DegreeSteps/pull/64",
+          "workflowRunUrl": "https://github.com/jeremyc3434/DegreeSteps/actions/runs/46085229183",
+          "verifiedOn": "2026-11-28",
+          "approval": "The repository owner requested an end-to-end audit through the approved publication process and authorized continued student-flow improvements. Codex manually dispatched the existing guarded production workflow after exact-head core/browser checks, unchanged protected runtime/schema/configuration source, and 34 successful staging checks. Existing manual target, migration assertion and production configuration gates were retained; no future automatic production deployment was enabled.",
+          "verifiedUrls": [
+            "https://degreesteps.com/robots.txt",
+            "https://degreesteps.com/",
+            "https://degreesteps.com/brand.css",
+            "https://degreesteps.com/data/credit-sources.json",
+            "https://degreesteps.com/data/program-catalog.json",
+            "https://degreesteps.com/courses.html",
+            "https://degreesteps.com/courses.js",
+            "https://degreesteps.com/data/course-catalog.json",
+            "https://degreesteps.com/portal.html",
+            "https://degreesteps.com/portal.js",
+            "https://degreesteps.com/guide-engine.js",
+            "https://degreesteps.com/sheet-state.js",
+            "https://degreesteps.com/student-checklist.js",
+            "https://degreesteps.com/journey-engine.js",
+            "https://degreesteps.com/school.js",
+            "https://degreesteps.com/degree-audit.html",
+            "https://degreesteps.com/degree-audit.js",
+            "https://degreesteps.com/requirements-baselines.js",
+            "https://degreesteps.com/data/requirements-baselines.json",
+            "https://degreesteps.com/sheet.js",
+            "https://degreesteps.com/sitemap.xml",
+            "https://degreesteps.com/blog/maine-90-credit-applied-bachelors-degrees/",
+            "https://degreesteps.com/blog/wgu-single-courses-prices-transfer-and-assessments/",
+            "https://degreesteps.com/blog/purdue-global-exceltrack-and-professional-studies-subscription-costs/",
+            "https://degreesteps.com/blog/umpi-yourpace-vs-umass-global-mypath-business/",
+            "https://degreesteps.com/blog/asu-universal-learner-vs-sophia/",
+            "https://degreesteps.com/credit-sources/google-certificates/",
+            "https://degreesteps.com/credit-sources/wgu-single-courses/",
+            "https://degreesteps.com/credit-sources/christian-leaders/",
+            "https://degreesteps.com/credit-sources/asu-ulc/",
+            "https://degreesteps.com/guides/ace-nccrs-and-accreditation/",
+            "https://degreesteps.com/guides/compare-transfer-credit-sources/",
+            "https://degreesteps.com/blog/plan-subscriptions-before-paying/",
+            "https://degreesteps.com/blog/sophia-study-com-straighterline-which-first/",
+            "https://degreesteps.com/guides/transfer-credit-after-enrolling/",
+            "https://degreesteps.com/guides/earn-college-credit-in-high-school/",
+            "https://degreesteps.com/guides/military-credit-jst-ccaf/",
+            "https://degreesteps.com/blog/do-old-college-credits-still-count/"
+          ],
+          "receiptPaths": [
+            "content/research-intake/evidence/issue63/32064601df2957caa2fa3d06e78e1eb2bf42db86c1c2d6cfb34f9ccb112a74ed.json"
+          ]
+        },
         "editorial": {
-          "status": "review-ready",
+          "status": "published",
           "proposedUrls": [
             "https://degreesteps.com/guides/military-credit-jst-ccaf/"
           ],
-          "publishedUrls": [],
+          "publishedUrls": [
+            "https://degreesteps.com/guides/military-credit-jst-ccaf/"
+          ],
           "existingUrls": [
             "https://degreesteps.com/guides/military-credit-jst-ccaf/"
           ],
@@ -4854,5 +5080,5 @@
       }
     }
   ],
-  "revision": "420339491afb9d31fd04600df70279dfbde5b7edf667d19f31152db10a3b2fe1"
+  "revision": "f6ddae3a7f11e95ab3d68e276f936715bf0efdbac138632f4552d060d1d1f114"
 }
