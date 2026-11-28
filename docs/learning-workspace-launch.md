@@ -37,13 +37,14 @@ The implemented source checker compares supplied excerpts and, when requested, r
 
 | Check | Evidence | State |
 | --- | --- | --- |
-| Reviewed implementation | PR #66, remote head `00b7ff`; source/configuration inventory below | Complete |
+| Reviewed implementation | [PR #66](https://github.com/jeremyc3434/DegreeSteps/pull/66), reviewed application head `897b2f79`; final release receipts are maintained in that PR | Complete |
 | Existing Supabase schema and database verification | Migration `20261128013204`; real rollback-only verification and security-advisor review detailed below | Passed on 2026-11-28 |
 | Local full build | `npm run build`, reported successful by the release operator | Passed |
 | GitHub source/client checks | `node --test --test-isolation=none server/learning*.test.mjs learning-client.test.cjs` — **91 passed** at the reviewed head | Passed |
 | GitHub Chromium acceptance | `node learning-workspace-browser.test.cjs` — **9 flows passed**, actual shipped UI with synthetic account/API responses | Passed |
 | Editorial checks | GitHub Editorial workflow — **56 passed** at the reviewed head | Passed |
-| Core/built-Worker regressions | GitHub Core workflow, including the built application boundary | In progress; no pass claimed |
+| Built-Worker regressions | `node --test --test-isolation=none learning-worker.test.mjs` — **18 passed** after the final rebuild, across both deployment bundles | Passed |
+| Full Core regressions | All 420 test files ran at `897b2f79`; 419 passed and one outdated four-item navigation assertion failed. That test now checks all five destinations and passes all 10 local checks. A full rerun is required. | Final CI pending |
 | D1 billing migration deployment | `drizzle/0021_learning_billing.sql` on the actual target | Pending receipt |
 | Hosted staging HTTP, sign-in, isolation and persistence | Two synthetic signed-in accounts on the deployed staging revision | Pending |
 | Real Claude response and complete usage accounting | Dated, bounded internal-pilot receipt | Pending |
@@ -62,13 +63,13 @@ These are the required deployment settings, not a claim that either hosted envir
 | Environment | Learning | Pilot allowance | Payments | Gate |
 | --- | --- | --- | --- | --- |
 | Staging | `LEARNING_ENABLED=1` | `LEARNING_PILOT_ENABLED=1` | `LEARNING_PAYMENTS_ENABLED=0`, `LEARNING_STRIPE_MODE=test` | Finish Core checks, deploy the reviewed build/D1 migration, then perform bounded hosted verification. |
-| Production | `LEARNING_ENABLED=0` | `LEARNING_PILOT_ENABLED=0` | `LEARNING_PAYMENTS_ENABLED=0` | Keep off until hosted HTTP/isolation, real Claude accounting/quality, cost benchmarks, and the relevant commercial checks pass. |
+| Production | `LEARNING_ENABLED=0` | `LEARNING_PILOT_ENABLED=0` | `LEARNING_PAYMENTS_ENABLED=0` | Defaults off. Enable the free pilot only after Core, hosted HTTP/isolation, a real Claude quality check and bounded live cost accounting pass. Paid checkout additionally requires the full pricing benchmarks and real Stripe acceptance. |
 
 The pilot flag grants allowances to eligible signed-in accounts on its host; it does not restrict access to a named cohort. Keep test activity on staging, identify the internal participants, and monitor the shared budget. In `.github/workflows/deploy.yml`, GitHub environment variables override the learning flags, including explicit `0`; configure the intended environment and verify returned status after deployment. A dashboard-only flag change can be overwritten by the next deploy. For the first real Stripe sandbox check, temporarily enable payments **only on staging**, with matching test credentials and a working webhook, then return the flag to `0` unless continued testing is intentional.
 
 ### Long-request session reliability
 
-Generation requests require at least 300 seconds of remaining access-token lifetime before private storage or paid work begins. The existing Auth provider verifies the identity; decoded expiry is only a refresh hint. A proactive rotation must preserve that identity and provide sufficient lifetime. Failed rotation refuses the request before reserving usage or calling Claude. Ordinary course reads and existing sign-in routes retain their previous refresh behavior. The targeted Auth suite passed 32 checks, and the sign-in regression suite passed 6 checks including both plan and course-workspace return flows. Built-Worker refresh tests and final full CI retain their separate release gate.
+Generation requests require at least 300 seconds of remaining access-token lifetime before private storage or paid work begins. The existing Auth provider verifies the identity; decoded expiry is only a refresh hint. A proactive rotation must preserve that identity and provide sufficient lifetime. Failed rotation refuses the request before reserving usage or calling Claude. Ordinary course reads and existing sign-in routes retain their previous refresh behavior. The targeted Auth suite passed 32 checks, and the sign-in regression suite passed 6 checks including both plan and course-workspace return flows. All 18 rebuilt-Worker checks passed across the two deployment bundles, including proactive refresh, failed-refresh refusal before any spending, and unchanged ordinary reads. Final full CI retains its separate release gate.
 
 ### Applied database receipt
 
