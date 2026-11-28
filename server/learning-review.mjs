@@ -67,6 +67,20 @@ function specificModelCheck(check){
   return{label,detail};
 }
 
+function duplicatesEstablishedGap(check,flags,format){
+  const text=check.label+' '+check.detail;
+  const kinds=new Set(flags.map(flag=>flag.kind));
+  // Prefer the counted draft over a model's estimated whole-document length.
+  // A specific section-development issue can still add useful information.
+  if(kinds.has('word-count')&&!/\b(?:paragraph|introduction|conclusion|abstract|section)\b/i.test(text)&&/\b(?:word[- ]?(?:count|length|target|limit|minimum)|length|under[- ]?[\d,]+|underlength|below (?:the )?(?:target|minimum)|short(?:er|fall)?|more words)\b/i.test(text))return true;
+  const sourceGap=[...kinds].some(kind=>['research-evidence','source-evidence','requested-source-unreadable','unknown-citation','unknown-source-link'].includes(kind));
+  // Do not swallow a named reference, DOI, source ID or a claim-specific issue.
+  const concreteReference=/\bS[1-9]\d{0,3}\b|\b(?:doi|isbn)\b|https?:\/\/|\breference\s*(?:#?\d|entry|by|named)|\b[A-Z][a-z][A-Za-z’'-]+\s*\(?\s*(?:19|20)\d{2}\b|[“"][^”"\n]{6,}[”"]|\b(?:paragraph|section)\s+(?:\d|one|two|three|four|five)\b/i.test(text);
+  if(sourceGap&&!concreteReference&&/\bno\s+(?:(?:verified|external|reliable|linked|scholarly)\s+)*(?:sources?|references?|citations?|evidence|research)\b|\b(?:sources?|references?|citations?)\b.{0,45}\b(?:not (?:provided|available|included|supplied)|missing|absent|unavailable)\b|\buncited (?:general )?(?:claims?|concepts?|content)\b/i.test(text))return true;
+  if(format?.style==='unspecified'&&/\b(?:style|formatting|format|APA|MLA|Chicago)\b/i.test(text)&&/\b(?:unspecified|not specified|not provided|not given|not requested|no (?:citation )?style|no format|ask (?:the |your )?instructor)\b/i.test(text)&&!/\b(?:mixed|inconsistent|conflicting|conflict|incorrect|contradictory|misformatted|placeholder)\b/i.test(text))return true;
+  return false;
+}
+
 export function buildLearningReview({artifact={},project={},course={},format={},verifiedResourceIds=[],reviewedArtifact}={}){
   const flags=[],seen=new Set();
   const add=(kind,severity,message,nextAction,target='result',ids=[],suffix='')=>{
@@ -137,7 +151,7 @@ export function buildLearningReview({artifact={},project={},course={},format={},
       add('word-count','review','The draft has '+show(count)+' words; the '+requirement.source+' '+(requirement.approximate?'targets about ':requirement.kind==='target'?'asks for ':'requires ')+target+' words.','Expand the main draft by at least '+show(requirement.min-count)+' words to reach '+show(requirement.min)+'.','result',[],'short');}
     if(requirement.max!==null&&['maximum','range','exact'].includes(requirement.kind)&&count>requirement.max)add('word-count','review','The draft has '+show(count)+' words; the '+requirement.source+' sets a '+show(requirement.max)+'-word upper limit.','Shorten the main draft by at least '+show(count-requirement.max)+' words.','result',[],'long');
   }
-  for(const check of list(artifact.checks)){const specific=specificModelCheck(check);if(specific)add('human-judgment','review','Review note: '+specific.detail,'Address this specific point in the draft or add the missing information, then review it again.','result',[],hash(specific.label+'|'+specific.detail));}
+  for(const check of list(artifact.checks)){const specific=specificModelCheck(check);if(specific&&!duplicatesEstablishedGap(specific,flags,format))add('human-judgment','review','Review note: '+specific.detail,'Address this specific point in the draft or add the missing information, then review it again.','result',[],hash(specific.label+'|'+specific.detail));}
   const rank={blocking:0,input:1,review:2};flags.sort((a,b)=>rank[a.severity]-rank[b.severity]);
   const visible=flags.slice(0,MAX_FLAGS);
   return{status:visible.length?'needs-review':'ready-for-student-review',flags:visible,...(count!==null?{wordCount:count}:{}),...(requirement?{expectedWordCount:{min:requirement.min,max:requirement.max,source:requirement.source}}:{})};

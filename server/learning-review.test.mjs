@@ -153,3 +153,24 @@ test('approximate word targets tolerate five percent while hard limits remain st
   assert.equal(kind(review({artifact:draft(words(1162)),project}),'word-count').length,1);
   for(const prompt of['Write at least 2,500 words.','Write exactly 2,500 words.','Write 2,500–2,700 words.'])assert.equal(kind(review({artifact:draft(words(2490)),project:{prompt}}),'word-count').length,1,prompt);
 });
+
+test('known length and research gaps replace duplicate model warnings without asking for an unrequested style',()=>{
+  const artifact=draft(words(2222),{sources:[],sourceChecks:{research:{required:true,performed:true,retrievedSources:0}},checks:[
+    {label:'Approximate word count',status:'review',detail:'The draft is likely somewhat under the requested 2,500-word length and should be expanded.'},
+    {label:'External evidence',status:'missing',detail:'No sources [S#] were supplied, so these are uncited general concepts rather than verified research.'},
+    {label:'Citation style',status:'missing',detail:'No style was specified. Ask the instructor whether APA or MLA is required.'}
+  ]});
+  const result=review({artifact,project:{kind:'writing',prompt:'Write about 2,500 words using reliable sources.'},format:{style:'unspecified',profile:'neutral'}});
+  assert.equal(result.flags.length,2);assert.deepEqual(new Set(result.flags.map(flag=>flag.kind)),new Set(['research-evidence','word-count']));assert(!result.flags.some(flag=>/ask.*instructor|likely somewhat/i.test(flag.message)));
+});
+
+test('deduplication preserves substantive judgment and known bad reference claims',()=>{
+  const artifact=draft(words(2222),{sources:[],sourceChecks:{research:{required:true,performed:true,retrievedSources:0}},checks:[
+    {label:'Assumptions',status:'review',detail:'Paragraph three assumes constant demand despite the seasonal demand stated in the assignment.'},
+    {label:'Reference accuracy',status:'missing',detail:'Reference Smith (2024) is not among the established sources and its DOI has not been verified.'}
+  ]});
+  const result=review({artifact,project:{kind:'writing',prompt:'Write about 2,500 words using reliable sources.'},format:{style:'unspecified'}});
+  assert.equal(kind(result,'human-judgment').length,2);assert(result.flags.some(flag=>flag.message.includes('seasonal demand')));assert(result.flags.some(flag=>flag.message.includes('Smith (2024)')));
+  const required=review({artifact,project:{kind:'writing',prompt:'Describe your own experience.',studentNotes:''},format:{style:'conflict',needsClarification:true,conflicts:[{requested:[{style:'apa'},{style:'mla'}],overridden:false}]}});
+  assert.equal(kind(required,'format-conflict').length,1);assert.equal(kind(required,'personal-experience').length,1);
+});
