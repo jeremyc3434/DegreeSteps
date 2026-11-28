@@ -7,6 +7,8 @@ const path = require('node:path');
 const { chromium } = require('playwright');
 
 const root = __dirname, staticRoot = path.join(root, 'dist');
+const screenshotRoot = path.join(root, 'outputs', 'learning', 'browser');
+fs.mkdirSync(screenshotRoot, { recursive: true });
 const contexts = [], errors = [];
 let browser, passed = 0;
 const origin = 'https://learning.degreesteps.test';
@@ -118,7 +120,7 @@ async function createProject(page, kind = 'writing') {
     await page.locator('[data-run-action="' + kind + '"]').click();
     await page.locator('#learning-result-content').filter({ hasText: kind === 'presentation' ? 'Slide 1' : 'Connect the course concept' }).waitFor();
   }
-  if (kind === 'writing') await page.screenshot({ path: '/tmp/degreesteps-learning-' + page.viewportSize().width + '.png', fullPage: true });
+  if (kind === 'writing') await page.screenshot({ path: path.join(screenshotRoot, 'degreesteps-learning-' + page.viewportSize().width + '.png'), fullPage: true });
 }
 
 (async () => {
@@ -245,12 +247,12 @@ async function createProject(page, kind = 'writing') {
         assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'horizontal overflow at ' + width);
         const sizes = await page.locator('#learning-main input,#learning-main textarea,#learning-main select').evaluateAll(nodes => nodes.filter(node => node.getClientRects().length).map(node => ({ id: node.id, size: parseFloat(getComputedStyle(node).fontSize) })));
         for (const value of sizes) assert(value.size >= 16, 'small field text: ' + JSON.stringify(value));
-        await page.screenshot({ path: '/tmp/degreesteps-learning-' + width + '.png', fullPage: true });
+        await page.screenshot({ path: path.join(screenshotRoot, 'degreesteps-learning-' + width + '.png'), fullPage: true });
       }
     });
 
     assert.deepEqual(errors, []);
     console.log('\n' + passed + ' learning workspace browser journeys passed. Synthetic APIs only; no live quality or cost certification.');
-  } catch (error) { console.error(error.stack || error); process.exitCode = 1; const page = contexts.at(-1)?.pages().at(-1); if (page) await page.screenshot({ path: '/tmp/degreesteps-learning-failure.png', fullPage: true }).catch(() => {}); }
+  } catch (error) { console.error(error.stack || error); process.exitCode = 1; const page = contexts.at(-1)?.pages().at(-1); if (page) await page.screenshot({ path: path.join(screenshotRoot, 'degreesteps-learning-failure.png'), fullPage: true }).catch(() => {}); }
   finally { for (const context of contexts) await context.close().catch(() => {}); await browser?.close(); }
 })();
