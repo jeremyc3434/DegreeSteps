@@ -5,6 +5,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const { chromium } = require('playwright');
+const { unzipSync } = require('fflate');
 
 const root = __dirname, staticRoot = path.join(root, 'dist');
 const screenshotRoot = path.join(root, 'outputs', 'learning', 'browser');
@@ -23,13 +24,13 @@ async function screenshot(page, name) {
   await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }));
   await page.screenshot({ path: path.join(screenshotRoot, name), fullPage: true });
 }
-async function fixture({ signedIn = true, enabled = true, width = 1440, failFirstRun = false, terminalFailure = false, injectedContent = false } = {}) {
+async function fixture({ signedIn = true, enabled = true, width = 1440, failFirstRun = false, terminalFailure = false, injectedContent = false, delayFeedback = false, failFeedback = false, assignmentFormat = null, reviewFlags = [] } = {}) {
   const context = await browser.newContext({ viewport: { width, height: width < 600 ? 844 : 1100 }, acceptDownloads: true });
   contexts.push(context);
   const page = await context.newPage();
   page.setDefaultTimeout(8000);
   page.on('pageerror', error => errors.push(error.message));
-  const state = { writes: [], reads: [], courses: [], projects: [], runs: new Map(), runCalls: 0, modelCalls: 0, failFirstRun };
+  const state = { writes: [], reads: [], courses: [], projects: [], runs: new Map(), runCalls: 0, modelCalls: 0, failFirstRun, holdFeedback: delayFeedback, feedbackFailures: failFeedback ? 1 : 0 };
   await context.route('**/*', async route => {
     const request = route.request(), url = new URL(request.url());
     if (url.origin !== origin) return route.abort('blockedbyclient');
@@ -66,6 +67,15 @@ async function fixture({ signedIn = true, enabled = true, width = 1440, failFirs
       const item = { id: '10000000-0000-4000-8000-' + String(state.projects.length + 1).padStart(12, '0'), ...data, revision: 1, artifact: null, status: 'draft', createdAt: stamp, updatedAt: stamp };
       state.projects.push(item); return json({ item: copy(item) }, 201);
     }
+    const feedbackMatch=p.match(/^\/api\/learning\/projects\/([^/]+)\/history\/([^/]+)\/feedback$/);
+    if(feedbackMatch){
+      const run=state.runs.get(feedbackMatch[2]);
+      if(method!=='POST'||!run||run.item.id!==feedbackMatch[1]||run.runUsage?.workflow!=='learning-homework')return json({error:'Feedback result not found.'},404);
+      if(state.holdFeedback){state.holdFeedback=false;await new Promise(resolve=>{state.releaseFeedback=resolve;});}
+      if(state.feedbackFailures){state.feedbackFailures--;return json({error:'Feedback is temporarily unavailable.'},503);}
+      run.runUsage.feedback={rating:data.rating==='clear'?null:data.rating,reason:data.rating==='nothelpful'?data.reason:null};
+      return json({runUsage:copy(run.runUsage)});
+    }
     if (/^\/api\/learning\/projects\/[^/]+(?:\/run)?$/.test(p)) {
       const item = itemFromPath(state.projects, p);
       if (!item) return json({ error: 'Assignment not found.' }, 404);
@@ -78,20 +88,22 @@ async function fixture({ signedIn = true, enabled = true, width = 1440, failFirs
         const content = injectedContent ? '<img src=x onerror="window.__learningXss=true"><script>window.__learningXss=true</script>' : data.action === 'plan' ? 'Build a recommendation, compare the alternatives, and support your reasoning with the assigned reading.' : data.action === 'draft' ? 'The student recommends a flexible work policy because it can improve retention while preserving service quality. Evaluate the evidence and address the strongest objection.' : data.action === 'review' ? 'Your recommendation is clear. Support the retention claim with a specific source passage and explain its limitations.' : data.action === 'quiz' ? 'Question 1: What is the difference between revenue and profit?\nExplain your answer before checking it.' : data.action === 'flashcards' ? 'Front: Opportunity cost\nBack: The value of the next-best alternative you give up.' : data.action === 'presentation' ? 'Slide 1: Recommendation\nSlide 2: Evidence\nSpeaker notes: Explain how the evidence supports the recommendation.' : data.action === 'discussion' ? 'Connect the course concept to an example you can explain from your experience.' : 'Revenue is the amount earned from sales. Profit is what remains after subtracting expenses. Try a new example using these two ideas.';
         item.artifact = { summary: data.action === 'plan' ? 'Your assignment plan is ready.' : 'Your next course step is ready.', content, questions: data.action === 'plan' ? [{ id: 'q1', question: 'Which recommendation would you make, and why?', why: 'Your judgment determines the argument.' }] : [], sources: [{ id: 'S1', title: 'Assigned course reading', url: 'https://example.edu/reading' }], checks: [{ label: 'Source coverage', status: 'limited', detail: 'Compared with supplied source passages only. This is not a comprehensive plagiarism check.' }], nextStep: data.action === 'plan' ? 'Add your reasoning to build the draft.' : 'Explain the main idea in your own words.' };
         Object.assign(item.artifact, { action: data.action, sourceChecks: { coverage: 'Compared with supplied source passages only. This is not a comprehensive plagiarism check.', checkedSources: [{ id: 'S1', status: 'provided' }], overlaps: [], claimSupportVerified: false }, ...(data.action === 'quiz' ? { quiz: [{ question: 'What is profit?', choices: ['All sales revenue', 'Revenue minus expenses'], answerIndex: 1, explanation: 'Profit remains after expenses are subtracted from revenue.' }] } : {}), ...(data.action === 'flashcards' ? { flashcards: [{ front: 'Opportunity cost', back: 'The value of the next-best alternative you give up.' }] } : {}), ...(data.action === 'presentation' ? { slides: [{ title: 'Recommendation', bullets: ['Flexible schedules', 'Shared service hours'], speakerNotes: 'Explain how the evidence supports the recommendation.' }] } : {}) });
-        item.revision++; item.status = 'ready'; item.updatedAt = stamp + state.modelCalls;
-        const response = { item: copy(item), action: data.action, usage: { inputTokens: 400, outputTokens: 200 }, remaining: { writingProjects: 1, studyQuestions: 49 } };
+        if(assignmentFormat)item.artifact.assignmentFormat=copy(assignmentFormat);
+        if(reviewFlags.length)item.artifact.review={status:'needs-review',flags:copy(reviewFlags)};
+        item.revision++; item.status = 'ready'; item.updatedAt = stamp + state.modelCalls; item.lastRunId=data.requestId;
+        const response = { item: copy(item), action: data.action, runUsage:{requestId:data.requestId,workflow:item.kind==='study'&&data.action==='study'?'learning-homework':'learning-'+item.kind,feedback:{rating:null,reason:null},inputTokens:987654,cacheReadTokens:123456}, usage: { inputTokens: 400, outputTokens: 200 }, remaining: { writingProjects: 1, studyQuestions: 49 } };
         state.runs.set(data.requestId, response); return json(response);
       }
       if (method === 'PATCH') { if (data.revision !== item.revision) return json({ error: 'Refresh the saved assignment before continuing.', code: 'revision_conflict' }, 409); Object.assign(item, data, { revision: item.revision + 1 }); }
       if (method === 'DELETE') { state.projects = state.projects.filter(project => project !== item); return json({ deleted: true }); }
-      return json({ item: copy(item) });
+      return json({ item: copy(item),runUsage:copy(state.runs.get(item.lastRunId)?.runUsage||null) });
     }
     if (/^\/api\/learning\/projects\/[^/]+\/history(?:\/[^/]+)?$/.test(p)) {
       const project = itemFromPath(state.projects, p);
       if (!project) return json({ error: 'Assignment not found.' }, 404);
       const rows = [...state.runs].filter(([, run]) => run.item.id === project.id).map(([id, run]) => ({ id, projectId: project.id, action: run.action, status: 'completed', createdAt: stamp, updatedAt: stamp, artifact: run.item.artifact }));
       const id = p.split('/history/')[1];
-      return id ? json({ item: rows.find(row => row.id === id) }) : json({ items: rows.map(({ artifact, ...row }) => row) });
+      return id ? json({ item: rows.find(row => row.id === id),runUsage:copy(state.runs.get(id)?.runUsage||null) }) : json({ items: rows.map(({ artifact, ...row }) => row) });
     }
     if (p === '/api/growth/events') return json({ accepted: true });
     if (p === '/api/coach/status') return json({ enabled: false });
@@ -213,6 +225,52 @@ async function createProject(page, kind = 'writing') {
       }
     });
 
+    await check('homework feedback waits for the server and supports changing reasons, clearing, history and reload',async()=>{
+      const {page,state}=await fixture({delayFeedback:true});await createCourse(page);await createProject(page,'study');
+      const feedback=page.locator('#learning-feedback-current'),helpful=feedback.locator('[data-feedback-rating=helpful]'),notHelpful=feedback.locator('[data-feedback-rating=nothelpful]');
+      await feedback.waitFor();assert(!/987654|123456|cache.?read|input.?tokens/i.test(await feedback.innerText()));
+      await helpful.click();assert.equal(await helpful.getAttribute('aria-pressed'),'false');assert.equal(await feedback.getAttribute('aria-busy'),'true');assert.match(await feedback.innerText(),/Saving feedback/);
+      assert.equal(typeof state.releaseFeedback,'function');state.releaseFeedback();
+      await page.waitForFunction(()=>document.querySelector('#learning-feedback-current [data-feedback-rating=helpful]')?.getAttribute('aria-pressed')==='true');
+      await notHelpful.click();await feedback.locator('[data-feedback-reason]').waitFor();await feedback.locator('[data-feedback-reason]').selectOption('unclear_steps');
+      await page.waitForFunction(()=>document.querySelector('#learning-feedback-current [role=status]')?.textContent==='Feedback saved.');
+      const saved=state.runs.get(state.projects[0].lastRunId);assert.deepEqual(saved.runUsage.feedback,{rating:'nothelpful',reason:'unclear_steps'});
+      await feedback.locator('[data-feedback-rating=clear]').click();await page.waitForFunction(()=>document.querySelector('#learning-feedback-current [role=status]')?.textContent==='Feedback cleared.');assert.deepEqual(saved.runUsage.feedback,{rating:null,reason:null});
+      await helpful.click();await page.waitForFunction(()=>document.querySelector('#learning-feedback-current [data-feedback-rating=helpful]')?.getAttribute('aria-pressed')==='true');
+      await page.locator('#learning-history > summary').click();await page.locator('[data-open-history]').first().click();
+      const historic=page.locator('#learning-feedback-history');await historic.waitFor();assert.equal(await historic.locator('[data-feedback-rating=helpful]').getAttribute('aria-pressed'),'true');await historic.locator('[data-feedback-rating=clear]').click();
+      await page.waitForFunction(()=>document.querySelector('#learning-feedback-history [role=status]')?.textContent==='Feedback cleared.');await page.locator('#learning-history-dialog [data-close-dialog]').click();assert.equal(await helpful.getAttribute('aria-pressed'),'false');
+      await page.reload({waitUntil:'networkidle'});await page.locator('#learning-feedback-current').waitFor();assert.equal(await page.locator('#learning-feedback-current [data-feedback-rating=helpful]').getAttribute('aria-pressed'),'false');
+      const writes=state.writes.filter(row=>row.path.endsWith('/feedback'));assert(writes.length>=6);for(const write of writes){assert.deepEqual(Object.keys(write.body).sort(),['rating','reason']);assert.equal(write.headers['x-learning-request'],'1');assert(!JSON.stringify(write.body).includes('experienced colleagues'));}
+      await page.locator('#learning-back-projects').click();await createProject(page,'writing');assert.equal(await page.locator('#learning-feedback-current').count(),0,'Writing results do not display homework feedback');
+    });
+    await check('failed feedback keeps the previous rating and course work available',async()=>{
+      const {page,state}=await fixture({failFeedback:true});await createCourse(page);await createProject(page,'study');const originalNotes=state.projects[0].studentNotes,feedback=page.locator('#learning-feedback-current');
+      await feedback.locator('[data-feedback-rating=helpful]').click();await feedback.locator('[role=alert]').waitFor();assert.equal(await feedback.locator('[data-feedback-rating=helpful]').getAttribute('aria-pressed'),'false');assert.match(await feedback.innerText(),/wasn’t saved/);assert.equal(state.projects[0].studentNotes,originalNotes);
+      await feedback.locator('[data-feedback-rating=nothelpful]').click();await feedback.locator('[data-feedback-reason]').waitFor();assert.equal(state.runs.get(state.projects[0].lastRunId).runUsage.feedback.rating,'nothelpful');assert.equal(state.projects[0].studentNotes,originalNotes);
+    });
+
+    await check('specific review flags lead to existing editing controls without blocking the draft or export',async()=>{
+      const flags=[{id:'personal-example',kind:'student-input',severity:'input',message:'Your assignment asks for an example from your own experience.',nextAction:'Add your personal example',target:'notes'},{id:'source-passage',kind:'source-evidence',severity:'review',message:'The retention claim has no supplied supporting passage.',nextAction:'Add the supporting source passage',target:'sources'},{id:'assignment-format',kind:'format',severity:'review',message:'The assignment format has not been identified.',nextAction:'Review the document format',target:'format'},{id:'length',kind:'word-count',severity:'review',message:'This draft is shorter than the requested length.',nextAction:'Review the draft before expanding it',target:'result'}];
+      const {page,state}=await fixture({reviewFlags:flags});await createCourse(page);await createProject(page,'writing');
+      assert.equal(await page.locator('#learning-project-state').innerText(),'Needs your review');assert.equal(await page.locator('#learning-project-state').getAttribute('data-status'),'needs-review');assert.equal(await page.locator('#learning-review-current [data-review-flag]').count(),4);
+      await page.locator('#learning-review-current [data-review-target=notes]').click();assert.equal(await page.evaluate(()=>document.activeElement.id),'learning-project-notes');
+      await page.locator('#learning-review-current [data-review-target=sources]').click();assert.equal(await page.evaluate(()=>document.activeElement.id),'learning-project-add-source');assert(await page.locator('#learning-project-source-list').evaluate(node=>node.closest('details').open));
+      await page.locator('#learning-review-current [data-review-target=result]').click();assert.equal(await page.evaluate(()=>document.activeElement.id),'learning-result-content');
+      await page.locator('#learning-review-current [data-review-target=format]').click();await page.locator('#learning-word-dialog').waitFor();assert.equal(await page.evaluate(()=>document.activeElement.id),'learning-word-format');assert(await page.locator('#learning-word-download').isEnabled());assert.equal(await page.locator('#learning-review-word [data-review-flag]').count(),4);
+      await page.locator('#learning-word-dialog [data-close-dialog]').first().click();assert.match(await page.locator('#learning-result-content').innerText(),/Build a recommendation/);assert.equal(state.projects.length,1);
+      const clean=await fixture();await createCourse(clean.page);await createProject(clean.page,'study');assert.equal(await clean.page.locator('#learning-review-current').count(),0,'A result with no specific flags does not get a generic verification panel');
+    });
+
+    await check('assignment-format conflicts edit the instructions while citation-format flags prepare an actual draft repair',async()=>{
+      const flags=[{id:'format-conflict-instructions',kind:'format-conflict',severity:'input',message:'The assignment contains conflicting APA and MLA instructions.',nextAction:'Choose the instructor’s required format in the assignment details.',target:'format'},{id:'citation-format-labels',kind:'citation-format',severity:'review',message:'The body still uses internal source labels instead of APA in-text citations.',nextAction:'Format these citations from the actual source details.',target:'format'}];
+      const {page,state}=await fixture({reviewFlags:flags,assignmentFormat:{profile:'apa7',style:'apa',label:'APA 7'}});await createCourse(page);await createProject(page,'writing');
+      await page.locator('[data-review-flag=format-conflict-instructions] [data-review-target=format]').click();assert.equal(await page.evaluate(()=>document.activeElement.id),'learning-project-rubric');assert.equal(await page.locator('#learning-word-dialog').isVisible(),false,'Assignment conflicts must not open an export-only format selector');
+      await page.locator('#learning-project-rubric').fill('Use APA 7. Clear recommendation, supporting evidence, thoughtful counterargument.');await page.locator('#learning-save-notes').click();await page.waitForFunction(()=>document.getElementById('learning-status').textContent.includes('changes are saved'));
+      const calls=state.modelCalls;await page.locator('[data-review-flag=citation-format-labels] [data-review-target=format]').click();assert.equal(await page.evaluate(()=>document.activeElement.id),'learning-followup');const repair=await page.locator('#learning-followup').inputValue();assert.match(repair,/APA 7/);assert.match(repair,/established metadata/);assert.match(repair,/Preserve all exact quotations/);assert.match(repair,/Do not invent authors/);assert.equal(state.modelCalls,calls,'Preparing the repair request does not call AI automatically');assert.equal(await page.locator('#learning-word-dialog').isVisible(),false);
+      assert.equal(await page.locator('#learning-followup-submit').innerText(),'Update citations in my draft');await page.locator('#learning-followup-submit').click();await page.locator('#learning-result-content').filter({hasText:'The student recommends'}).waitFor();const request=state.writes.filter(row=>row.path.endsWith('/run')).at(-1);assert.equal(request.body.action,'draft','A repair must update the paper rather than generate another review report');assert.equal(request.body.message,repair);assert.equal(await page.locator('#learning-followup-submit').innerText(),'Continue with my question');
+    });
+
     await check('source coverage stays limited and exports contain the actual saved work', async () => {
       const { page } = await fixture(); await createCourse(page); await createProject(page);
       await page.locator('#learning-source-checks summary').click();
@@ -223,6 +281,24 @@ async function createProject(page, kind = 'writing') {
       const file = await download, filename = await file.path();
       assert.match(fs.readFileSync(filename, 'utf8'), /Build a recommendation/);
       assert.match(file.suggestedFilename(), /\.(?:txt|md)$/);
+    });
+
+    await check('Word export uses the saved paper after review and creates an editable document without changing the project',async()=>{
+      const {page,state}=await fixture({assignmentFormat:{profile:'apa7',label:'APA 7'}});await createCourse(page);await createProject(page,'writing');
+      await page.locator('[data-run-action=draft]').click();await page.locator('#learning-result-content').filter({hasText:'The student recommends'}).waitFor();
+      const draft=[...state.runs.values()].find(run=>run.action==='draft');draft.item.artifact.content+='\n\nExact quotation: “The original words stay unchanged.” [S1]';
+      await page.locator('[data-run-action=review]').click();await page.locator('#learning-result-content').filter({hasText:'Your recommendation is clear'}).waitFor();
+      const saved=copy(state.projects[0]),writeCount=state.writes.filter(row=>row.path.startsWith('/api/learning/')).length;
+      await page.locator('.learning-export-menu summary').click();await page.locator('#learning-export-word').click();await page.locator('#learning-word-dialog').waitFor();
+      assert.match(await page.locator('#learning-word-version').innerText(),/Paper draft/);assert.equal(await page.locator('#learning-word-format').inputValue(),'auto');
+      await page.locator('#learning-word-details > summary').click();assert.equal(await page.locator('#learning-word-instructor').inputValue(),'');assert.equal(await page.locator('#learning-word-date').inputValue(),'');
+      await page.locator('#learning-word-student-name').fill('Avery Smith');await page.locator('#learning-word-instructor').fill('Dr. Rivera');await page.locator('#learning-word-institution').fill('Example College');await page.locator('#learning-word-date').fill('November 28, 2026');
+      const downloading=page.waitForEvent('download');await page.locator('#learning-word-download').click();const file=await downloading,bytes=fs.readFileSync(await file.path()),zip=unzipSync(bytes);
+      assert.match(file.suggestedFilename(),/\.docx$/);assert.equal(bytes.subarray(0,2).toString(),'PK');assert(zip['[Content_Types].xml']);assert(zip['word/document.xml']);assert(zip['word/styles.xml']);
+      const xml=Buffer.from(zip['word/document.xml']).toString('utf8');assert.match(xml,/The student recommends/);assert.match(xml,/The original words stay unchanged/);assert.match(xml,/Avery Smith/);assert.match(xml,/Dr\. Rivera/);assert(!xml.includes('Your recommendation is clear'),'Review notes must not replace the paper');
+      assert.deepEqual(state.projects[0],saved);assert.equal(state.writes.filter(row=>row.path.startsWith('/api/learning/')).length,writeCount,'Export metadata stays local and does not invoke AI or save changes');
+      await page.locator('#learning-history > summary').click();await page.locator('[data-open-history="'+draft.item.lastRunId+'"]').click();await page.locator('#learning-history-word').click();await page.locator('#learning-word-dialog').waitFor();await page.locator('#learning-word-format').selectOption('mla9');assert.match(await page.locator('#learning-word-format-hint').innerText(),/MLA/i);
+      await page.locator('#learning-word-dialog [data-close-dialog]').first().click();await page.locator('#learning-history-dialog [data-close-dialog]').click();assert.match(await page.locator('#learning-result-content').innerText(),/Your recommendation is clear/);
     });
 
     await check('generated markup is displayed safely and cannot execute', async () => {

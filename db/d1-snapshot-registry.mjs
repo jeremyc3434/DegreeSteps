@@ -1564,6 +1564,46 @@ export const D1_SNAPSHOT_TABLES = Object.freeze([
       {
         "name": "settlement_id",
         "type": "text"
+      },
+      {
+        "name": "workflow",
+        "type": "text"
+      },
+      {
+        "name": "prompt_version",
+        "type": "text"
+      },
+      {
+        "name": "cache_mode",
+        "type": "text"
+      },
+      {
+        "name": "cache_status",
+        "type": "text"
+      },
+      {
+        "name": "prefix_tokens",
+        "type": "integer"
+      },
+      {
+        "name": "provider_duration_ms",
+        "type": "integer"
+      },
+      {
+        "name": "ttft_ms",
+        "type": "integer"
+      },
+      {
+        "name": "feedback_rating",
+        "type": "text"
+      },
+      {
+        "name": "feedback_reason",
+        "type": "text"
+      },
+      {
+        "name": "feedback_updated_at",
+        "type": "integer"
       }
     ]
   },
@@ -3788,7 +3828,7 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "type": "table",
     "name": "learning_billing_runs",
     "tbl_name": "learning_billing_runs",
-    "sql": "CREATE TABLE `learning_billing_runs` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`user_id` text NOT NULL,\n\t`project_id` text NOT NULL,\n\t`request_id` text NOT NULL,\n\t`action` text NOT NULL,\n\t`day` text NOT NULL,\n\t`month` text NOT NULL,\n\t`status` text NOT NULL,\n\t`first_charge` integer NOT NULL,\n\t`credit_source` text,\n\t`grant_order_id` text,\n\t`reserved_micro_usd` integer NOT NULL,\n\t`actual_micro_usd` integer DEFAULT 0 NOT NULL,\n\t`estimated` integer DEFAULT 0 NOT NULL,\n\t`model` text DEFAULT '' NOT NULL,\n\t`input_tokens` integer DEFAULT 0 NOT NULL,\n\t`output_tokens` integer DEFAULT 0 NOT NULL,\n\t`cache_write_tokens` integer DEFAULT 0 NOT NULL,\n\t`cache_read_tokens` integer DEFAULT 0 NOT NULL,\n\t`searches` integer DEFAULT 0 NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`settled_at` integer,\n\t`lease_until` integer NOT NULL,\n\t`settlement_id` text,\n\tCONSTRAINT \"learning_run_status\" CHECK(\"learning_billing_runs\".\"status\" IN ('reserved','completed','failed')),\n\tCONSTRAINT \"learning_run_cost\" CHECK(\"learning_billing_runs\".\"reserved_micro_usd\">=0 AND \"learning_billing_runs\".\"actual_micro_usd\">=0 AND \"learning_billing_runs\".\"first_charge\" IN (0,1) AND \"learning_billing_runs\".\"estimated\" IN (0,1))\n)"
+    "sql": "CREATE TABLE `learning_billing_runs` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`user_id` text NOT NULL,\n\t`project_id` text NOT NULL,\n\t`request_id` text NOT NULL,\n\t`action` text NOT NULL,\n\t`day` text NOT NULL,\n\t`month` text NOT NULL,\n\t`status` text NOT NULL,\n\t`first_charge` integer NOT NULL,\n\t`credit_source` text,\n\t`grant_order_id` text,\n\t`reserved_micro_usd` integer NOT NULL,\n\t`actual_micro_usd` integer DEFAULT 0 NOT NULL,\n\t`estimated` integer DEFAULT 0 NOT NULL,\n\t`model` text DEFAULT '' NOT NULL,\n\t`input_tokens` integer DEFAULT 0 NOT NULL,\n\t`output_tokens` integer DEFAULT 0 NOT NULL,\n\t`cache_write_tokens` integer DEFAULT 0 NOT NULL,\n\t`cache_read_tokens` integer DEFAULT 0 NOT NULL,\n\t`searches` integer DEFAULT 0 NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`settled_at` integer,\n\t`lease_until` integer NOT NULL,\n\t`settlement_id` text, `workflow` text DEFAULT 'legacy' NOT NULL, `prompt_version` text DEFAULT 'legacy' NOT NULL, `cache_mode` text DEFAULT 'unknown' NOT NULL, `cache_status` text DEFAULT 'unknown' NOT NULL, `prefix_tokens` integer, `provider_duration_ms` integer, `ttft_ms` integer, `feedback_rating` text, `feedback_reason` text, `feedback_updated_at` integer,\n\tCONSTRAINT \"learning_run_status\" CHECK(\"learning_billing_runs\".\"status\" IN ('reserved','completed','failed')),\n\tCONSTRAINT \"learning_run_cost\" CHECK(\"learning_billing_runs\".\"reserved_micro_usd\">=0 AND \"learning_billing_runs\".\"actual_micro_usd\">=0 AND \"learning_billing_runs\".\"first_charge\" IN (0,1) AND \"learning_billing_runs\".\"estimated\" IN (0,1))\n)"
   },
   {
     "type": "table",

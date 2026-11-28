@@ -21,6 +21,16 @@ on:
         type: choice
         options: [staging, production]
         default: staging
+      homework_examples:
+        description: Homework guidance (configured uses the reviewed environment defaults)
+        type: choice
+        options: [configured, enabled, disabled]
+        default: configured
+      homework_cache:
+        description: Native homework prompt caching (independent of guidance)
+        type: choice
+        options: [configured, enabled, disabled]
+        default: configured
       data_migration_verified:
         description: "Production only: I have verified the existing D1 data and encrypted-connection migration"
         type: boolean
@@ -117,6 +127,10 @@ jobs:
           LEARNING_DAILY_USD_CAP: ${{ vars.LEARNING_DAILY_USD_CAP }}
           LEARNING_ACCOUNT_DAILY_USD_CAP: ${{ vars.LEARNING_ACCOUNT_DAILY_USD_CAP }}
           LEARNING_STRIPE_MODE: ${{ vars.LEARNING_STRIPE_MODE }}
+          LEARNING_HOMEWORK_EXAMPLES_ENABLED: ${{ vars.LEARNING_HOMEWORK_EXAMPLES_ENABLED }}
+          LEARNING_HOMEWORK_CACHE_ENABLED: ${{ vars.LEARNING_HOMEWORK_CACHE_ENABLED }}
+          HOMEWORK_EXAMPLES_OVERRIDE: ${{ inputs.homework_examples }}
+          HOMEWORK_CACHE_OVERRIDE: ${{ inputs.homework_cache }}
           EMAIL_FROM: ${{ vars.EMAIL_FROM }}
           EMAIL_DAILY_CAP: ${{ vars.EMAIL_DAILY_CAP }}
         run: |
@@ -125,9 +139,18 @@ jobs:
             if [ "${!name}" = "1" ]; then flags+=(--var "$name:1"); fi
           done
           # Explicit zero overrides the reviewed learning defaults as well as one.
-          for name in LEARNING_ENABLED LEARNING_PILOT_ENABLED LEARNING_PAYMENTS_ENABLED; do
+          for name in LEARNING_ENABLED LEARNING_PILOT_ENABLED LEARNING_PAYMENTS_ENABLED LEARNING_HOMEWORK_EXAMPLES_ENABLED LEARNING_HOMEWORK_CACHE_ENABLED; do
             if [ "${!name}" = "1" ] || [ "${!name}" = "0" ]; then flags+=(--var "$name:${!name}"); fi
           done
+          # Owner-dispatched experimental/rollback controls never come from a student request.
+          case "$HOMEWORK_EXAMPLES_OVERRIDE" in
+            enabled) flags+=(--var "LEARNING_HOMEWORK_EXAMPLES_ENABLED:1") ;;
+            disabled) flags+=(--var "LEARNING_HOMEWORK_EXAMPLES_ENABLED:0") ;;
+          esac
+          case "$HOMEWORK_CACHE_OVERRIDE" in
+            enabled) flags+=(--var "LEARNING_HOMEWORK_CACHE_ENABLED:1") ;;
+            disabled) flags+=(--var "LEARNING_HOMEWORK_CACHE_ENABLED:0") ;;
+          esac
           # Optional settings: passed only when set as GitHub environment variables.
           for name in EMAIL_POSTAL_ADDRESS COACH_DAILY_USD_CAP COACH_MODEL EMAIL_FROM EMAIL_DAILY_CAP LEARNING_DAILY_USD_CAP LEARNING_ACCOUNT_DAILY_USD_CAP LEARNING_STRIPE_MODE; do
             if [ -n "${!name}" ]; then flags+=(--var "$name:${!name}"); fi

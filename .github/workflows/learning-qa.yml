@@ -3,6 +3,11 @@ on:
   pull_request:
     paths:
       - 'server/learning*.mjs'
+      - 'server/ai-prompt-cache*.mjs'
+      - 'server/assignment-format*.mjs'
+      - 'server/homework-guidance.test.mjs'
+      - 'server/prompts/**'
+      - 'test-support/homework-evaluation.mjs'
       - 'dist/learn*'
       - 'dist/app-shell.*'
       - 'dist/account-return.js'
@@ -38,7 +43,7 @@ jobs:
       # The Core checks workflow builds and tests both Worker boundaries. This
       # job exercises the actual committed UI without rebuilding the catalog.
       - name: Check private storage, source and billing logic
-        run: node --test --test-isolation=none server/learning*.test.mjs learning-client.test.cjs
+        run: node --test --test-isolation=none server/learning*.test.mjs server/ai-prompt-cache.test.mjs server/assignment-format.test.mjs server/homework-guidance.test.mjs learning-client.test.cjs learning-document-export.test.cjs
       - name: Install isolated browser test dependency
         run: npm install --prefix "$RUNNER_TEMP/degreesteps-browser" --ignore-scripts --no-audit --no-fund playwright@1.62.1
       - name: Check desktop and phone course workflows
