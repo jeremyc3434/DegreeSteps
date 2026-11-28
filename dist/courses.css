@@ -31,3 +31,9 @@ dialog{width:min(530px,calc(100% - 28px));max-height:86dvh;overflow:auto;padding
 }
 .course-edit-review{margin-top:16px;padding:14px;border:1px solid #ccd9eb;border-radius:9px;background:#f4f7fc}.course-edit-review p{margin:0 0 12px;color:#425c7d}.course-edit-review details{margin-top:14px}.course-edit-review summary{font-size:14px;font-weight:600;color:#344f73;cursor:pointer}.course-edit-review dl{margin:10px 0 0}.course-edit-review dl>div{display:grid;grid-template-columns:minmax(105px,1fr) minmax(0,1.7fr);gap:12px;padding:7px 0;border-top:1px solid #dfe6f1;font-size:14px;line-height:1.5}.course-edit-review dt{color:#637a98}.course-edit-review dd{margin:0;color:#294263;overflow-wrap:anywhere}.course-edit-review button:disabled{opacity:.55;cursor:default}.course-confirmation[hidden],.course-edit-review[hidden]{display:none}
 .course-dialog-actions button:disabled{opacity:.5;cursor:default}
+
+/* Active coursework links directly into the private learning workspace. */
+.course-row-personal .course-row-action{display:flex;flex-direction:column;align-items:stretch;gap:4px}
+.course-study-button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 10px;border:1px solid var(--ds-cobalt,#3458d4);border-radius:7px;color:var(--ds-cobalt,#3458d4);font-size:14px;font-weight:650;line-height:1.4;text-decoration:none;text-align:center}
+.course-study-button:hover{background:var(--ds-soft-blue,#edf1ff)}
+.course-study-button:focus-visible{outline:3px solid var(--ds-cobalt,#3458d4);outline-offset:3px}

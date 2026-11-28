@@ -3,6 +3,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
+import {runInNewContext} from 'node:vm';
+import AccountReturn from '../dist/account-return.js';
 const read=path=>readFileSync(new URL('../dist/'+path,import.meta.url),'utf8');
 
 test('app pages carry a slim footer with Privacy, Terms and Why DegreeSteps is free',()=>{
@@ -31,6 +33,27 @@ test('WGU requirements keep their exact competency units and unit names',()=>{
  assert.match(sheet,/The published residency rule requires at least '\+residency\+' '\+unitWord\(residency\)/);
  assert.doesNotMatch(portal,/' proposed transfer credits on this plan|' planned transfer credits'/);assert.doesNotMatch(sheet,/<span>planned transfer credits<\/span>|<span>degree credits<\/span>/);
 });
-test('the save sign-in wall leads with what a free account gives',()=>{
- assert.match(read('account.js'),/saving \? 'Save your plan to your free account so you can come back to it on any device\.'/);
+test('sign-in explains the requested plan or course workspace without uploading private work',async()=>{
+ async function renderSignIn(returnTo){
+  const nodes=new Map(['account-content','account-status','account-error'].map(id=>[id,{innerHTML:'',textContent:'',hidden:false,querySelector(){return null;}}]));
+  const calls=[],storage={getItem(){return null;},setItem(){},removeItem(){}};
+  const Account={
+   async auth(path){calls.push(path);return{configured:true,providers:['email','google']};},
+   async session(){calls.push('session');return{user:null};},
+   async api(path){calls.push('api:'+path);throw Error('Opening sign-in must not load private plans.');},
+   async uploadDraft(){calls.push('uploadDraft');throw Error('Opening sign-in must not upload private work.');}
+  };
+  const context={window:{DegreeAccount:Account,DegreeAccountReturn:AccountReturn,sessionStorage:storage},document:{getElementById:id=>nodes.get(id),addEventListener(){}},location:{origin:'https://degreesteps.test',pathname:'/account.html',search:'?returnTo='+encodeURIComponent(returnTo)},history:{replaceState(){}},URLSearchParams,URL,Date,console,setTimeout};
+  runInNewContext(read('account.js'),context,{filename:'account.js'});
+  for(let i=0;i<4;i++)await new Promise(resolve=>setImmediate(resolve));
+  assert.deepEqual(calls,['/status','session']);
+  return nodes.get('account-content').innerHTML;
+ }
+ const plan=await renderSignIn('/plan.html');
+ assert(plan.includes('<h1>Save your plan.</h1>'));
+ assert(plan.includes('<p class="account-lede">Save your plan to your free account so you can come back to it on any device.</p>'));
+ const course=await renderSignIn('/learn.html');
+ assert(course.includes('<h1>Open your course workspace.</h1>'));
+ assert(course.includes('<p class="account-lede">Sign in to work on assignments, study your courses and return to your saved work.</p>'));
+ assert(!course.includes('Save your plan to your free account'));
 });

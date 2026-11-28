@@ -155,7 +155,12 @@ const businessESM=(await bundleModules({...businessBuild,format:'esm'})).outputF
 const businessInline=(await bundleModules({...businessBuild,format:'iife',globalName:'OwnerBusinessModule'})).outputFiles[0].text;
 const managedOwnerLoader=businessInline+'\nasync function loadOwnerModule(){return OwnerBusinessModule;}\n';
 const nativeOwnerLoader='async function loadOwnerModule(){return import("./owner-business.mjs");}\n';
-const source=core+managedOwnerLoader+'const assets='+JSON.stringify(assets)+';\n'+handler;
+const learningBuild={entryPoints:[resolve(root,'server/learning-workspace.mjs')],bundle:true,platform:'browser',target:'es2022',write:false,legalComments:'none'};
+const learningESM=(await bundleModules({...learningBuild,format:'esm'})).outputFiles[0].text;
+const learningInline=(await bundleModules({...learningBuild,format:'iife',globalName:'LearningWorkspaceModule'})).outputFiles[0].text;
+const managedLearningLoader=learningInline+'\nasync function loadLearningModule(){return LearningWorkspaceModule;}\n';
+const nativeLearningLoader='async function loadLearningModule(){return import("./learning-workspace.mjs");}\n';
+const source=core+managedOwnerLoader+managedLearningLoader+'const assets='+JSON.stringify(assets)+';\n'+handler;
 await rm(output,{recursive:true,force:true});
 await mkdir(resolve(output,'dist/server'),{recursive:true});await mkdir(resolve(output,'.openai'),{recursive:true});
 await writeFile(resolve(output,'dist/server/index.js'),source);
@@ -168,10 +173,11 @@ await rm(cloudflareOutput,{recursive:true,force:true});await mkdir(cloudflareOut
 // The route is already the lookup key; duplicating it in every asset grows the
 // native Worker with the public catalog even though delivery only uses the key.
 const nativeAssets=Object.fromEntries(Object.entries(assets).map(([path,asset])=>[path,{type:asset.type,etag:asset.etag,external:true}]));
-const nativeSource=core+nativeOwnerLoader+'const assets='+JSON.stringify(nativeAssets)+';\n'+handler;
+const nativeSource=core+nativeOwnerLoader+nativeLearningLoader+'const assets='+JSON.stringify(nativeAssets)+';\n'+handler;
 await mkdir(resolve(cloudflareOutput,'runtime'),{recursive:true});
 await writeFile(resolve(cloudflareOutput,'runtime/worker.mjs'),nativeSource);
 await writeFile(resolve(cloudflareOutput,'runtime/owner-business.mjs'),businessESM);
+await writeFile(resolve(cloudflareOutput,'runtime/learning-workspace.mjs'),learningESM);
 await writeFile(resolve(cloudflareOutput,'runtime/staging.mjs'),(await readFile(resolve(root,'worker/staging.mjs'),'utf8')).replace("'../outputs/cloudflare/runtime/worker.mjs'","'./worker.mjs'"));
 await cp(resolve(root,'dist'),resolve(cloudflareOutput,'public'),{recursive:true});
 const module=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));

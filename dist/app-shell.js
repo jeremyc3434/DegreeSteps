@@ -5,7 +5,7 @@
   // The pages that change the one device draft (plan + My courses) all show the same account save action and status.
   const SAVE_PAGES = ['plan.html','portal.html','courses.html','compare-plans.html','import-courses.html','credits-worth.html','degree-audit.html'];
   const parameters = new URLSearchParams(location.search), task = parameters.get('task'), preferenceView = page === 'portal.html' && parameters.get('view') === 'preferences';
-  const labels = {'start.html':'Build my plan','guided.html':'Find my degree','degree-audit.html':'Build my own plan','programs.html':'Find a degree','credits-worth.html':'What are my credits worth?','campuses.html':'Find a campus','growth.html':'Activity overview','courses.html':'My courses','import-courses.html':'Add my courses','template-import.html':'Import a degree spreadsheet','compare-plans.html':'Compare plans','portal.html':preferenceView ? 'My preferences' : 'My plan','plan.html':task === 'credits' ? 'My courses' : 'My plan','library.html':'Explore','community.html':'Community','account.html':'My account','school.html':'School insights','request-plan.html':'Build from a degree link','admin.html':'Manage DegreeSteps','coverage.html':'Academic coverage','help.html':'Help & support'};
+  const labels = {'start.html':'Build my plan','guided.html':'Find my degree','degree-audit.html':'Build my own plan','programs.html':'Find a degree','credits-worth.html':'What are my credits worth?','campuses.html':'Find a campus','growth.html':'Activity overview','courses.html':'My courses','learn.html':'Course help','import-courses.html':'Add my courses','template-import.html':'Import a degree spreadsheet','compare-plans.html':'Compare plans','portal.html':preferenceView ? 'My preferences' : 'My plan','plan.html':task === 'credits' ? 'My courses' : 'My plan','library.html':'Explore','community.html':'Community','account.html':'My account','school.html':'School insights','request-plan.html':'Build from a degree link','admin.html':'Manage DegreeSteps','coverage.html':'Academic coverage','help.html':'Help & support'};
   if (!labels[page]) return;
   const paths = {
     plan:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/>',
@@ -20,10 +20,11 @@
   };
   const icon = name => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+paths[name]+'</svg>';
   const wordmark = '<span class="ds-wordmark">Degree<span class="ds-wordmark-steps">Steps</span></span>';
-  const active = preferenceView ? 'preferences' : page === 'help.html' ? 'help' : ['courses.html','import-courses.html'].includes(page) ? 'credits' : ['community.html','template-import.html'].includes(page) ? 'community' : ['programs.html','credits-worth.html','school.html','request-plan.html','campuses.html','guided.html'].includes(page) ? 'programs' : page === 'library.html' ? 'explore' : task === 'credits' ? 'credits' : page === 'account.html' ? 'account' : ['admin.html','growth.html','coverage.html'].includes(page) ? 'admin' : 'plan';
+  const active = page === 'learn.html' ? 'learning' : preferenceView ? 'preferences' : page === 'help.html' ? 'help' : ['courses.html','import-courses.html'].includes(page) ? 'credits' : ['community.html','template-import.html'].includes(page) ? 'community' : ['programs.html','credits-worth.html','school.html','request-plan.html','campuses.html','guided.html'].includes(page) ? 'programs' : page === 'library.html' ? 'explore' : task === 'credits' ? 'credits' : page === 'account.html' ? 'account' : ['admin.html','growth.html','coverage.html'].includes(page) ? 'admin' : 'plan';
   const links = [
     {id:'plan',title:'My plan',href:'plan.html',icon:'plan'},
     {id:'credits',title:'My courses',href:'courses.html?tab=mine',icon:'credits'},
+    {id:'learning',title:'Course help',href:'learn.html',icon:'plan'},
     {id:'programs',title:'Find a degree',href:'programs.html',icon:'explore'},
     {id:'community',title:'Community',href:'community.html?tab=feed',icon:'community'}
   ];
@@ -49,7 +50,7 @@
   };
   syncHeaderHeight();
   if (typeof ResizeObserver === 'function' && headerNode) new ResizeObserver(syncHeaderHeight).observe(headerNode);
-  // This is a disclosure, not a modal: the four primary destinations remain visible below the page.
+  // This is a disclosure, not a modal: the primary destinations remain visible below the page.
   const moreToggle = shell.querySelector('.dp-shell-more-toggle'), moreMenu = shell.querySelector('#dp-shell-more-menu');
   const setMoreOpen = open => {
     if (!moreToggle || !moreMenu) return;

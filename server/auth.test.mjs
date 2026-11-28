@@ -19,7 +19,15 @@ function request(path,{method='GET',body,cookie,headers={}}={}) {
  return new Request(origin+path,{method,headers:h,...(body===undefined?{}:{body:typeof body==='string'?body:JSON.stringify(body)})});
 }
 const cookieJar=response=>response.headers.getSetCookie().map(value=>value.split(';')[0]).join('; ');
+const expiringToken=seconds=>'eyJhbGciOiJzeW50aGV0aWMifQ.'+Buffer.from(JSON.stringify({sub:uuid,exp:Math.floor(Date.now()/1000)+seconds})).toString('base64url')+'.synthetic-signature';
 async function call(env,path,options) {const response=await handleAuth(request(path,options),env);return {response,status:response.status,data:response.headers.get('Content-Type')?.includes('json')?await response.json():null};}
+
+test('course workspace login returns only safe navigation context, never assignment text',async()=>{
+ const {env}=fixture(c=>c.url.pathname==='/auth/v1/token'?answer(tokens):answer(verified));
+ const result=await call(env,'/api/auth/login',{method:'POST',body:{email:'student@example.com',password:'long-password',returnTo:'/learn.html?courseId=course_123&title=Business%20101&provider=Sophia&prompt=PRIVATE&notes=PRIVATE&next=https://evil.invalid'}});
+ assert.equal(result.status,200);
+ assert.equal(result.data.returnTo,'/learn.html?courseId=course_123&title=Business+101&provider=Sophia');
+});
 
 test('sign-in identity is available independently of saved-plan storage and never returns credentials',async()=>{
  const {env,calls}=fixture(c=>{assert.equal(c.url.pathname,'/auth/v1/user');return answer(verified);});
@@ -40,6 +48,38 @@ test('independent sign-in checks rotate expired credentials and distinguish prov
  const unavailable=fixture(()=>answer({error:'temporary outage'},503));
  const failed=await call(unavailable.env,'/api/auth/session',{cookie:'__Host-degreepath_access=existing-access; __Host-degreepath_refresh=existing-refresh'});
  assert.equal(failed.status,503);assert.equal(failed.data.code,'auth_unavailable');assert.equal(failed.response.headers.getSetCookie().length,0);assert(!Object.hasOwn(failed.data,'user'));
+});
+
+test('long operations proactively rotate a verified near-expiry token before private work',async()=>{
+ const old=expiringToken(60),fresh=expiringToken(3600),{env,calls}=fixture(c=>c.url.pathname.endsWith('/token')?answer({...tokens,access_token:fresh}):answer(verified));
+ const identity=await resolvePortalIdentity(request('/api/learning/projects/synthetic/run',{cookie:'__Host-degreepath_access='+old+'; __Host-degreepath_refresh=still-valid-refresh'}),env,{minValiditySeconds:300});
+ assert.equal(identity.user.id,'sb-'+uuid);assert.equal(identity.accessToken,fresh);assert.equal(identity.setCookies.length,2);
+ assert.deepEqual(calls.map(c=>c.url.pathname),['/auth/v1/user','/auth/v1/token','/auth/v1/user']);assert.deepEqual(calls[1].body,{refresh_token:'still-valid-refresh'});assert.equal(calls[2].init.headers.Authorization,'Bearer '+fresh);
+});
+
+test('ordinary operations keep opaque or near-expiry verified sessions unchanged',async()=>{
+ for(const access of['ordinary-opaque-access',expiringToken(60)]){const {env,calls}=fixture(()=>answer(verified));const identity=await resolvePortalIdentity(request('/api/portal/plans',{cookie:'__Host-degreepath_access='+access}),env);assert.equal(identity.user.id,'sb-'+uuid);assert.equal(identity.accessToken,access);assert.deepEqual(identity.setCookies,[]);assert.equal(calls.length,1);}
+ const {env,calls}=fixture(()=>answer(verified));const fresh=expiringToken(3600);const identity=await resolvePortalIdentity(request('/api/learning/projects/synthetic/run',{cookie:'__Host-degreepath_access='+fresh}),env,{minValiditySeconds:300});assert.equal(identity.accessToken,fresh);assert.equal(calls.length,1);
+});
+
+test('long operations refresh unknown expiry and refuse paid work without refresh credentials',async()=>{
+ const fresh=expiringToken(3600),{env,calls}=fixture(c=>c.url.pathname.endsWith('/token')?answer({...tokens,access_token:fresh}):answer(verified));
+ const identity=await resolvePortalIdentity(request('/api/learning/projects/synthetic/run',{cookie:'__Host-degreepath_access=verified-opaque-access; __Host-degreepath_refresh=refresh'}),env,{minValiditySeconds:300});assert.equal(identity.accessToken,fresh);assert.equal(calls.length,3);
+ for(const access of['verified-opaque-access',expiringToken(60)]){const f=fixture(()=>answer(verified));const denied=await resolvePortalIdentity(request('/api/learning/projects/synthetic/run',{cookie:'__Host-degreepath_access='+access}),f.env,{minValiditySeconds:300});assert.equal(denied.user,null);assert(!denied.accessToken);assert(denied.setCookies.every(c=>c.includes('Max-Age=0')));assert.equal(f.calls.length,1);}
+});
+
+test('failed proactive refresh never falls back to the short-lived token',async()=>{
+ for(const status of[401,429,503]){const {env,calls}=fixture(c=>c.url.pathname.endsWith('/token')?answer({error:'provider-private-error'},status):answer(verified));const identity=await resolvePortalIdentity(request('/api/learning/projects/synthetic/run',{cookie:'__Host-degreepath_access='+expiringToken(60)+'; __Host-degreepath_refresh=refresh'}),env,{minValiditySeconds:300});assert.equal(identity.user,null);assert(!identity.accessToken);assert.equal(identity.unavailable,status===401?undefined:true);assert.equal(calls.length,2);assert.equal(identity.setCookies.length,status===401?3:0);assert(!JSON.stringify(identity).includes('provider-private-error'));}
+});
+
+test('a rotated token must have enough verified lifetime and its new cookies are retained',async()=>{
+ for(const fresh of[expiringToken(30),'provider-issued-opaque-rotated-token']){const {env,calls}=fixture(c=>c.url.pathname.endsWith('/token')?answer({...tokens,access_token:fresh,refresh_token:'new-refresh'}):answer(verified));const identity=await resolvePortalIdentity(request('/api/learning/projects/synthetic/run',{cookie:'__Host-degreepath_access='+expiringToken(60)+'; __Host-degreepath_refresh=old-refresh'}),env,{minValiditySeconds:300});assert.equal(identity.user,null);assert.equal(identity.unavailable,true);assert(!identity.accessToken);assert.equal(identity.setCookies.length,2);assert(identity.setCookies.some(c=>c.includes('new-refresh')));assert.equal(calls.length,3);}
+});
+
+test('proactive rotation cannot change the verified account or authenticate from decoded claims',async()=>{
+ const fresh=expiringToken(3600),other={...verified,id:'11111111-1111-4111-8111-111111111111'},f=fixture(c=>c.url.pathname.endsWith('/token')?answer({...tokens,access_token:fresh}):c.init.headers.Authorization==='Bearer '+fresh?answer(other):answer(verified));
+ const switched=await resolvePortalIdentity(request('/api/learning/projects/synthetic/run',{cookie:'__Host-degreepath_access='+expiringToken(60)+'; __Host-degreepath_refresh=other-account-refresh'}),f.env,{minValiditySeconds:300});assert.equal(switched.user,null);assert(!switched.accessToken);assert(switched.setCookies.every(c=>c.includes('Max-Age=0')));
+ const unverified=fixture(()=>answer({error:'invalid-signature'},401));const denied=await resolvePortalIdentity(request('/api/learning/projects/synthetic/run',{cookie:'__Host-degreepath_access='+fresh}),unverified.env,{minValiditySeconds:300});assert.equal(denied.user,null);assert(!denied.accessToken);assert.equal(unverified.calls.length,1);
 });
 
 test('missing or invalid configuration advertises no enabled accounts and never invents an identity',async()=>{

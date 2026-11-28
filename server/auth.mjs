@@ -4,7 +4,7 @@ const DegreePathAuth = (() => {
   const ACCESS = '__Host-degreepath_access', REFRESH = '__Host-degreepath_refresh';
   const FLOW = '__Host-degreepath_flow', RECOVERY = '__Host-degreepath_recovery';
   const PREFIX = '/api/auth/', MAX_BODY = 16384, UUID = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
-  const allowedReturn = new Set(['/account.html', '/portal.html', '/plan.html', '/request-plan.html', '/admin.html', '/coverage.html', '/growth.html', '/campuses.html', '/school.html', '/community.html', '/courses.html', '/programs.html', '/compare-plans.html', '/degree-audit.html', '/template-import.html', '/owner.html', '/help.html']);
+  const allowedReturn = new Set(['/account.html', '/portal.html', '/plan.html', '/request-plan.html', '/admin.html', '/coverage.html', '/growth.html', '/campuses.html', '/school.html', '/community.html', '/courses.html', '/programs.html', '/compare-plans.html', '/degree-audit.html', '/template-import.html', '/owner.html', '/help.html', '/learn.html']);
   class AuthError extends Error {constructor(status, message) {super(message); this.status = status;}}
   const error = (status, message) => {throw new AuthError(status, message);};
   function configuration(env) {
@@ -28,7 +28,7 @@ const DegreePathAuth = (() => {
   function redirect(path, cookies = []) {const h = responseHeaders(cookies); h.delete('Content-Type'); h.set('Location',path); return new Response(null,{status:303,headers:h});}
   function safeReturn(value) {
     if (typeof value !== 'string' || !value.startsWith('/') || value.startsWith('//') || /[\\\r\n]/.test(value)) return '/account.html';
-    try {const url = new URL(value,'https://local.invalid'); if (!allowedReturn.has(url.pathname)) return '/account.html'; if (url.pathname === '/school.html') {const query = new URLSearchParams(); const school = url.searchParams.get('school'), template = url.searchParams.get('template'); if (school && school.length <= 200) query.set('school',school); if (template && /^[A-Za-z0-9_-]{1,100}$/.test(template)) query.set('template',template); return url.pathname + (query.size ? '?' + query.toString() : '');} if (url.pathname === '/community.html') {const query=new URLSearchParams();for(const name of ['tab','source','post','template','context','school','level','format']){const value=url.searchParams.get(name);if(!value||value.length>200||/[\r\n\u0000]/.test(value))continue;if(name==='tab'&&!['feed','templates'].includes(value))continue;if(name==='source'&&!['all','students','starters'].includes(value))continue;if(['post','template'].includes(name)&&!/^[A-Za-z0-9_-]{1,120}$/.test(value))continue;if(name==='context'&&!/^(school|program|course|template|post):[A-Za-z0-9][A-Za-z0-9._:/-]{0,159}$/.test(value))continue;query.set(name,value);}return url.pathname+(query.size?'?'+query.toString():'');} return url.pathname;} catch {return '/account.html';}
+    try {const url = new URL(value,'https://local.invalid'); if (!allowedReturn.has(url.pathname)) return '/account.html'; if (url.pathname === '/learn.html') {const query=new URLSearchParams();for(const key of ['courseId','projectId','course','project','recordId']){const value=url.searchParams.get(key);if(value&&/^[A-Za-z0-9_-]{1,120}$/.test(value))query.set(key,value);}for(const key of ['title','provider']){const value=url.searchParams.get(key);if(value&&value.length<=200&&!/[\\\u0000-\u001f\u007f]/.test(value))query.set(key,value);}return url.pathname+(query.size?'?'+query.toString():'');} if (url.pathname === '/school.html') {const query = new URLSearchParams(); const school = url.searchParams.get('school'), template = url.searchParams.get('template'); if (school && school.length <= 200) query.set('school',school); if (template && /^[A-Za-z0-9_-]{1,100}$/.test(template)) query.set('template',template); return url.pathname + (query.size ? '?' + query.toString() : '');} if (url.pathname === '/community.html') {const query=new URLSearchParams();for(const name of ['tab','source','post','template','context','school','level','format']){const value=url.searchParams.get(name);if(!value||value.length>200||/[\r\n\u0000]/.test(value))continue;if(name==='tab'&&!['feed','templates'].includes(value))continue;if(name==='source'&&!['all','students','starters'].includes(value))continue;if(['post','template'].includes(name)&&!/^[A-Za-z0-9_-]{1,120}$/.test(value))continue;if(name==='context'&&!/^(school|program|course|template|post):[A-Za-z0-9][A-Za-z0-9._:/-]{0,159}$/.test(value))continue;query.set(name,value);}return url.pathname+(query.size?'?'+query.toString():'');} return url.pathname;} catch {return '/account.html';}
   }
   function cookies(request) {
     const result = {};
@@ -124,22 +124,38 @@ const DegreePathAuth = (() => {
     const result = await provider(env,config,'/user',{token});
     return {ok:result.ok,user:result.ok ? userIdentity(result.data) : null,status:result.status};
   }
-  async function resolvePortalIdentity(request, env) {
+  function hasMinimumValidity(token, seconds) {
+    if (seconds <= 0) return true;
+    // /user verifies identity first. These decoded claims are only a refresh
+    // hint; they never authenticate a user or grant an authorization role.
+    if (typeof token !== 'string') return false;
+    const parts = token.split('.');
+    if (parts.length !== 3) return false;
+    const claims = decode(parts[1]);
+    return typeof claims?.exp === 'number' && Number.isFinite(claims.exp) && claims.exp * 1000 - Date.now() >= seconds * 1000;
+  }
+  async function resolvePortalIdentity(request, env, {minValiditySeconds = 0} = {}) {
     const config = configuration(env);
     if (!config) return {configured:false,user:null,setCookies:[]};
+    const minimum = typeof minValiditySeconds === 'number' && Number.isFinite(minValiditySeconds) ? Math.min(3600,Math.max(0,minValiditySeconds)) : 0;
     const jar = cookies(request), access = jar[ACCESS], refresh = jar[REFRESH];
     if (!access && !refresh) return {configured:true,user:null,setCookies:[]};
     try {
+      let verifiedExistingUser = null;
       if (access) {
         const checked = await validateToken(env,config,access);
-        if (checked.user) return {configured:true,user:checked.user,setCookies:[],accessToken:access};
-        if (![401,403].includes(checked.status)) return {configured:true,user:null,setCookies:[],unavailable:true};
+        if (checked.user) {
+          if (hasMinimumValidity(access,minimum)) return {configured:true,user:checked.user,setCookies:[],accessToken:access};
+          verifiedExistingUser = checked.user;
+        } else if (![401,403].includes(checked.status)) return {configured:true,user:null,setCookies:[],unavailable:true};
       }
       if (!refresh) return {configured:true,user:null,setCookies:clearSession()};
       const rotated = await provider(env,config,'/token?grant_type=refresh_token',{method:'POST',body:{refresh_token:refresh}});
       if (!rotated.ok) {const unavailable=rotated.status >= 500 || rotated.status === 429;return {configured:true,user:null,setCookies:unavailable ? [] : clearSession(),...(unavailable ? {unavailable:true} : {})};}
       const checked = await validateToken(env,config,rotated.data?.access_token);
       if (!checked.user) {const unavailable=checked.status >= 500 || checked.status === 429;return {configured:true,user:null,setCookies:unavailable ? [] : clearSession(),...(unavailable ? {unavailable:true} : {})};}
+      if (verifiedExistingUser && checked.user.id !== verifiedExistingUser.id) return {configured:true,user:null,setCookies:clearSession()};
+      if (!hasMinimumValidity(rotated.data.access_token,minimum)) return {configured:true,user:null,setCookies:tokenCookies(rotated.data),unavailable:true};
       return {configured:true,user:checked.user,setCookies:tokenCookies(rotated.data),accessToken:rotated.data.access_token};
     } catch {return {configured:true,user:null,setCookies:[],unavailable:true};}
   }
@@ -266,4 +282,4 @@ const DegreePathAuth = (() => {
 })();
 
 export async function handleAuth(request, env) {return DegreePathAuth.handleAuth(request, env);}
-export async function resolvePortalIdentity(request, env) {return DegreePathAuth.resolvePortalIdentity(request, env);}
+export async function resolvePortalIdentity(request, env, options) {return DegreePathAuth.resolvePortalIdentity(request, env, options);}

@@ -1299,6 +1299,300 @@ export const D1_SNAPSHOT_TABLES = Object.freeze([
     ]
   },
   {
+    "name": "learning_billing_accounts",
+    "columns": [
+      {
+        "name": "user_id",
+        "type": "text"
+      },
+      {
+        "name": "month",
+        "type": "text"
+      },
+      {
+        "name": "writing_remaining",
+        "type": "integer"
+      },
+      {
+        "name": "study_remaining",
+        "type": "integer"
+      },
+      {
+        "name": "updated_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "learning_billing_days",
+    "columns": [
+      {
+        "name": "day",
+        "type": "text"
+      },
+      {
+        "name": "actual_micro_usd",
+        "type": "integer"
+      },
+      {
+        "name": "reserved_micro_usd",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "learning_billing_orders",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "user_id",
+        "type": "text"
+      },
+      {
+        "name": "product_id",
+        "type": "text"
+      },
+      {
+        "name": "project_id",
+        "type": "text"
+      },
+      {
+        "name": "request_id",
+        "type": "text"
+      },
+      {
+        "name": "bucket",
+        "type": "text"
+      },
+      {
+        "name": "price_cents",
+        "type": "integer"
+      },
+      {
+        "name": "currency",
+        "type": "text"
+      },
+      {
+        "name": "units",
+        "type": "integer"
+      },
+      {
+        "name": "units_remaining",
+        "type": "integer"
+      },
+      {
+        "name": "status",
+        "type": "text"
+      },
+      {
+        "name": "session_id",
+        "type": "text"
+      },
+      {
+        "name": "payment_intent_id",
+        "type": "text"
+      },
+      {
+        "name": "amount_refunded",
+        "type": "integer"
+      },
+      {
+        "name": "grant_event_id",
+        "type": "text"
+      },
+      {
+        "name": "refund_event_id",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      },
+      {
+        "name": "paid_at",
+        "type": "integer"
+      },
+      {
+        "name": "updated_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "learning_billing_projects",
+    "columns": [
+      {
+        "name": "project_id",
+        "type": "text"
+      },
+      {
+        "name": "user_id",
+        "type": "text"
+      },
+      {
+        "name": "bucket",
+        "type": "text"
+      },
+      {
+        "name": "state",
+        "type": "text"
+      },
+      {
+        "name": "credit_source",
+        "type": "text"
+      },
+      {
+        "name": "grant_order_id",
+        "type": "text"
+      },
+      {
+        "name": "credit_month",
+        "type": "text"
+      },
+      {
+        "name": "runs",
+        "type": "integer"
+      },
+      {
+        "name": "active_run_id",
+        "type": "text"
+      },
+      {
+        "name": "updated_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "learning_billing_runs",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "user_id",
+        "type": "text"
+      },
+      {
+        "name": "project_id",
+        "type": "text"
+      },
+      {
+        "name": "request_id",
+        "type": "text"
+      },
+      {
+        "name": "action",
+        "type": "text"
+      },
+      {
+        "name": "day",
+        "type": "text"
+      },
+      {
+        "name": "month",
+        "type": "text"
+      },
+      {
+        "name": "status",
+        "type": "text"
+      },
+      {
+        "name": "first_charge",
+        "type": "integer"
+      },
+      {
+        "name": "credit_source",
+        "type": "text"
+      },
+      {
+        "name": "grant_order_id",
+        "type": "text"
+      },
+      {
+        "name": "reserved_micro_usd",
+        "type": "integer"
+      },
+      {
+        "name": "actual_micro_usd",
+        "type": "integer"
+      },
+      {
+        "name": "estimated",
+        "type": "integer"
+      },
+      {
+        "name": "model",
+        "type": "text"
+      },
+      {
+        "name": "input_tokens",
+        "type": "integer"
+      },
+      {
+        "name": "output_tokens",
+        "type": "integer"
+      },
+      {
+        "name": "cache_write_tokens",
+        "type": "integer"
+      },
+      {
+        "name": "cache_read_tokens",
+        "type": "integer"
+      },
+      {
+        "name": "searches",
+        "type": "integer"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      },
+      {
+        "name": "settled_at",
+        "type": "integer"
+      },
+      {
+        "name": "lease_until",
+        "type": "integer"
+      },
+      {
+        "name": "settlement_id",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "name": "learning_billing_user_days",
+    "columns": [
+      {
+        "name": "user_id",
+        "type": "text"
+      },
+      {
+        "name": "day",
+        "type": "text"
+      },
+      {
+        "name": "actual_micro_usd",
+        "type": "integer"
+      },
+      {
+        "name": "reserved_micro_usd",
+        "type": "integer"
+      },
+      {
+        "name": "calls",
+        "type": "integer"
+      }
+    ]
+  },
+  {
     "name": "owner_content_records",
     "columns": [
       {
@@ -2550,6 +2844,54 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
   },
   {
     "type": "index",
+    "name": "learning_billing_project_owner",
+    "tbl_name": "learning_billing_projects",
+    "sql": "CREATE INDEX `learning_billing_project_owner` ON `learning_billing_projects` (`user_id`)"
+  },
+  {
+    "type": "index",
+    "name": "learning_order_credit",
+    "tbl_name": "learning_billing_orders",
+    "sql": "CREATE INDEX `learning_order_credit` ON `learning_billing_orders` (`user_id`,`status`,`bucket`,`created_at`)"
+  },
+  {
+    "type": "index",
+    "name": "learning_order_payment_intent",
+    "tbl_name": "learning_billing_orders",
+    "sql": "CREATE UNIQUE INDEX `learning_order_payment_intent` ON `learning_billing_orders` (`payment_intent_id`)"
+  },
+  {
+    "type": "index",
+    "name": "learning_order_request_owner",
+    "tbl_name": "learning_billing_orders",
+    "sql": "CREATE UNIQUE INDEX `learning_order_request_owner` ON `learning_billing_orders` (`user_id`,`request_id`)"
+  },
+  {
+    "type": "index",
+    "name": "learning_order_session",
+    "tbl_name": "learning_billing_orders",
+    "sql": "CREATE UNIQUE INDEX `learning_order_session` ON `learning_billing_orders` (`session_id`)"
+  },
+  {
+    "type": "index",
+    "name": "learning_run_day",
+    "tbl_name": "learning_billing_runs",
+    "sql": "CREATE INDEX `learning_run_day` ON `learning_billing_runs` (`day`,`status`)"
+  },
+  {
+    "type": "index",
+    "name": "learning_run_project",
+    "tbl_name": "learning_billing_runs",
+    "sql": "CREATE INDEX `learning_run_project` ON `learning_billing_runs` (`project_id`,`status`)"
+  },
+  {
+    "type": "index",
+    "name": "learning_run_request_owner",
+    "tbl_name": "learning_billing_runs",
+    "sql": "CREATE UNIQUE INDEX `learning_run_request_owner` ON `learning_billing_runs` (`user_id`,`request_id`)"
+  },
+  {
+    "type": "index",
     "name": "owner_content_list",
     "tbl_name": "owner_content_records",
     "sql": "CREATE INDEX `owner_content_list` ON `owner_content_records` (`type`,`status`,`updated_at`,`id`)"
@@ -2948,6 +3290,42 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "type": "index",
     "name": "sqlite_autoindex_lead_rate_limits_1",
     "tbl_name": "lead_rate_limits",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_learning_billing_accounts_1",
+    "tbl_name": "learning_billing_accounts",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_learning_billing_days_1",
+    "tbl_name": "learning_billing_days",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_learning_billing_orders_1",
+    "tbl_name": "learning_billing_orders",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_learning_billing_projects_1",
+    "tbl_name": "learning_billing_projects",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_learning_billing_runs_1",
+    "tbl_name": "learning_billing_runs",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_learning_billing_user_days_1",
+    "tbl_name": "learning_billing_user_days",
     "sql": null
   },
   {
@@ -3381,6 +3759,42 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "name": "lead_rate_limits",
     "tbl_name": "lead_rate_limits",
     "sql": "CREATE TABLE `lead_rate_limits` (\n\t`day` text NOT NULL,\n\t`visitor_hash` text NOT NULL,\n\t`kind` text NOT NULL,\n\t`count` integer DEFAULT 1 NOT NULL,\n\tPRIMARY KEY(`day`, `visitor_hash`, `kind`),\n\tCONSTRAINT \"lead_rate_day_format\" CHECK(length(\"lead_rate_limits\".\"day\")=10 AND \"lead_rate_limits\".\"day\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),\n\tCONSTRAINT \"lead_rate_hash_format\" CHECK(length(\"lead_rate_limits\".\"visitor_hash\")=64 AND \"lead_rate_limits\".\"visitor_hash\" NOT GLOB '*[^0-9a-f]*'),\n\tCONSTRAINT \"lead_rate_kind\" CHECK(\"lead_rate_limits\".\"kind\" IN ('school_inquiry','plan_review')),\n\tCONSTRAINT \"lead_rate_count_bounds\" CHECK(\"lead_rate_limits\".\"count\" BETWEEN 0 AND 1000)\n)"
+  },
+  {
+    "type": "table",
+    "name": "learning_billing_accounts",
+    "tbl_name": "learning_billing_accounts",
+    "sql": "CREATE TABLE `learning_billing_accounts` (\n\t`user_id` text PRIMARY KEY NOT NULL,\n\t`month` text NOT NULL,\n\t`writing_remaining` integer NOT NULL,\n\t`study_remaining` integer NOT NULL,\n\t`updated_at` integer NOT NULL,\n\tCONSTRAINT \"learning_account_units\" CHECK(\"learning_billing_accounts\".\"writing_remaining\">=0 AND \"learning_billing_accounts\".\"study_remaining\">=0)\n)"
+  },
+  {
+    "type": "table",
+    "name": "learning_billing_days",
+    "tbl_name": "learning_billing_days",
+    "sql": "CREATE TABLE `learning_billing_days` (\n\t`day` text PRIMARY KEY NOT NULL,\n\t`actual_micro_usd` integer DEFAULT 0 NOT NULL,\n\t`reserved_micro_usd` integer DEFAULT 0 NOT NULL,\n\tCONSTRAINT \"learning_day_spend\" CHECK(\"learning_billing_days\".\"actual_micro_usd\">=0 AND \"learning_billing_days\".\"reserved_micro_usd\">=0)\n)"
+  },
+  {
+    "type": "table",
+    "name": "learning_billing_orders",
+    "tbl_name": "learning_billing_orders",
+    "sql": "CREATE TABLE `learning_billing_orders` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`user_id` text NOT NULL,\n\t`product_id` text NOT NULL,\n\t`project_id` text,\n\t`request_id` text NOT NULL,\n\t`bucket` text NOT NULL,\n\t`price_cents` integer NOT NULL,\n\t`currency` text NOT NULL,\n\t`units` integer NOT NULL,\n\t`units_remaining` integer DEFAULT 0 NOT NULL,\n\t`status` text DEFAULT 'pending' NOT NULL,\n\t`session_id` text,\n\t`payment_intent_id` text,\n\t`amount_refunded` integer DEFAULT 0 NOT NULL,\n\t`grant_event_id` text,\n\t`refund_event_id` text,\n\t`created_at` integer NOT NULL,\n\t`paid_at` integer,\n\t`updated_at` integer NOT NULL,\n\tCONSTRAINT \"learning_order_state\" CHECK(\"learning_billing_orders\".\"status\" IN ('pending','paid','expired','refunded')),\n\tCONSTRAINT \"learning_order_money\" CHECK(\"learning_billing_orders\".\"price_cents\">0 AND \"learning_billing_orders\".\"units\">0 AND \"learning_billing_orders\".\"units_remaining\">=0 AND \"learning_billing_orders\".\"units_remaining\"<=\"learning_billing_orders\".\"units\" AND \"learning_billing_orders\".\"amount_refunded\">=0 AND \"learning_billing_orders\".\"amount_refunded\"<=\"learning_billing_orders\".\"price_cents\")\n)"
+  },
+  {
+    "type": "table",
+    "name": "learning_billing_projects",
+    "tbl_name": "learning_billing_projects",
+    "sql": "CREATE TABLE `learning_billing_projects` (\n\t`project_id` text PRIMARY KEY NOT NULL,\n\t`user_id` text NOT NULL,\n\t`bucket` text NOT NULL,\n\t`state` text DEFAULT 'new' NOT NULL,\n\t`credit_source` text,\n\t`grant_order_id` text,\n\t`credit_month` text,\n\t`runs` integer DEFAULT 0 NOT NULL,\n\t`active_run_id` text,\n\t`updated_at` integer NOT NULL,\n\tCONSTRAINT \"learning_project_bucket\" CHECK(\"learning_billing_projects\".\"bucket\" IN ('writing','study')),\n\tCONSTRAINT \"learning_project_state\" CHECK(\"learning_billing_projects\".\"state\" IN ('new','pending','active','revoked')),\n\tCONSTRAINT \"learning_project_runs\" CHECK(\"learning_billing_projects\".\"runs\">=0)\n)"
+  },
+  {
+    "type": "table",
+    "name": "learning_billing_runs",
+    "tbl_name": "learning_billing_runs",
+    "sql": "CREATE TABLE `learning_billing_runs` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`user_id` text NOT NULL,\n\t`project_id` text NOT NULL,\n\t`request_id` text NOT NULL,\n\t`action` text NOT NULL,\n\t`day` text NOT NULL,\n\t`month` text NOT NULL,\n\t`status` text NOT NULL,\n\t`first_charge` integer NOT NULL,\n\t`credit_source` text,\n\t`grant_order_id` text,\n\t`reserved_micro_usd` integer NOT NULL,\n\t`actual_micro_usd` integer DEFAULT 0 NOT NULL,\n\t`estimated` integer DEFAULT 0 NOT NULL,\n\t`model` text DEFAULT '' NOT NULL,\n\t`input_tokens` integer DEFAULT 0 NOT NULL,\n\t`output_tokens` integer DEFAULT 0 NOT NULL,\n\t`cache_write_tokens` integer DEFAULT 0 NOT NULL,\n\t`cache_read_tokens` integer DEFAULT 0 NOT NULL,\n\t`searches` integer DEFAULT 0 NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`settled_at` integer,\n\t`lease_until` integer NOT NULL,\n\t`settlement_id` text,\n\tCONSTRAINT \"learning_run_status\" CHECK(\"learning_billing_runs\".\"status\" IN ('reserved','completed','failed')),\n\tCONSTRAINT \"learning_run_cost\" CHECK(\"learning_billing_runs\".\"reserved_micro_usd\">=0 AND \"learning_billing_runs\".\"actual_micro_usd\">=0 AND \"learning_billing_runs\".\"first_charge\" IN (0,1) AND \"learning_billing_runs\".\"estimated\" IN (0,1))\n)"
+  },
+  {
+    "type": "table",
+    "name": "learning_billing_user_days",
+    "tbl_name": "learning_billing_user_days",
+    "sql": "CREATE TABLE `learning_billing_user_days` (\n\t`user_id` text NOT NULL,\n\t`day` text NOT NULL,\n\t`actual_micro_usd` integer DEFAULT 0 NOT NULL,\n\t`reserved_micro_usd` integer DEFAULT 0 NOT NULL,\n\t`calls` integer DEFAULT 0 NOT NULL,\n\tPRIMARY KEY(`user_id`, `day`),\n\tCONSTRAINT \"learning_user_day_spend\" CHECK(\"learning_billing_user_days\".\"actual_micro_usd\">=0 AND \"learning_billing_user_days\".\"reserved_micro_usd\">=0 AND \"learning_billing_user_days\".\"calls\">=0)\n)"
   },
   {
     "type": "table",

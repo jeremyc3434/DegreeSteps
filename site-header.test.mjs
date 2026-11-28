@@ -54,22 +54,22 @@ function shellMarkup({withHeader,search='',page='/plan.html'}){
  return shell.innerHTML;
 }
 
-test('the workspace has four persistent destinations, with preferences, resources and account always reachable',()=>{
+test('the workspace has five persistent destinations, with course help, preferences, resources and account reachable',()=>{
  const markup=shellMarkup({withHeader:true});
  assert.doesNotMatch(markup,/data-ds-header|dp-shell-subnav/,'the app has its own task header rather than stacked website navigation');
  for(const selector of ['dp-shell-nav','dp-shell-bottom']){
   const nav=markup.match(new RegExp('<nav class="'+selector+'"[^>]*>([\\s\\S]*?)<\\/nav>'))?.[1];assert(nav,selector);
-  assert.deepEqual([...nav.matchAll(/data-shell-nav="([a-z]+)"/g)].map(m=>m[1]),['plan','credits','programs','community']);
+  assert.deepEqual([...nav.matchAll(/data-shell-nav="([a-z]+)"/g)].map(m=>m[1]),['plan','credits','learning','programs','community']);
   assert.equal((nav.match(/aria-current="page"/g)||[]).length,1,'only the actual page is current');
  }
  const links=hrefs(markup);
- for(const target of ['plan.html','courses.html?tab=mine','programs.html','community.html?tab=feed','portal.html?view=preferences','compare-plans.html','account.html','library.html','/transfer/','/'])assert(links.has(target),'still linked: '+target);
+ for(const target of ['plan.html','courses.html?tab=mine','learn.html','programs.html','community.html?tab=feed','portal.html?view=preferences','compare-plans.html','account.html','library.html','/transfer/','/'])assert(links.has(target),'still linked: '+target);
  for(const hook of ['data-shell-account-label','data-shell-account-detail','dp-shell-avatar','dp-shell-save-account','dp-shell-save"','id="dp-shell-page-title"'])assert(markup.includes(hook),hook);
  assert.equal((markup.match(/id="dp-shell-page-title"/g)||[]).length,1);
  assert.equal((markup.match(/data-shell-account-label/g)||[]).length,1,'account identity has one source of presentation');
  assert.equal(shellMarkup({withHeader:false}),markup,'the app navigation works without a public header dependency');
  const css=read('dist/app-shell.css');assert.match(css,/--dp-bottom-nav-height:calc\(72px \+ env\(safe-area-inset-bottom/);
- assert.match(css,/\.dp-shell-bottom \{[^}]*grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
+ assert.match(css,/\.dp-shell-bottom \{[^}]*grid-template-columns:repeat\(5,minmax\(0,1fr\)\)/);
  assert.doesNotMatch(css,/is-onboarding[^}]*display:none/,'onboarding keeps a way back to the student workspace');
 });
 
