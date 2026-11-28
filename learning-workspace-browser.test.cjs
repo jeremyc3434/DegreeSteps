@@ -271,6 +271,24 @@ async function createProject(page, kind = 'writing') {
       assert.equal(await page.locator('#learning-followup-submit').innerText(),'Update citations in my draft');await page.locator('#learning-followup-submit').click();await page.locator('#learning-result-content').filter({hasText:'The student recommends'}).waitFor();const request=state.writes.filter(row=>row.path.endsWith('/run')).at(-1);assert.equal(request.body.action,'draft','A repair must update the paper rather than generate another review report');assert.equal(request.body.message,repair);assert.equal(await page.locator('#learning-followup-submit').innerText(),'Continue with my question');
     });
 
+    await check('unreadable-source and missing-evidence flags prepare explicit research retries without losing work',async()=>{
+      const flags=[{id:'research-evidence-empty',kind:'research-evidence',severity:'review',message:'No verified passages were retrieved for the required evidence.',nextAction:'Run research again using accessible sources.',target:'sources'},{id:'requested-source-unreadable-requested',kind:'requested-source-unreadable',severity:'review',message:'The requested reading did not return a readable source passage.',nextAction:'Retry research or replace the unreadable link.',target:'sources'},{id:'citation-metadata-s1',kind:'citation-metadata',severity:'review',message:'S1 is missing its publication date.',nextAction:'Supply the established source details.',target:'sources'}];
+      for(const kind of ['writing','study']){
+        const {page,state}=await fixture({reviewFlags:flags});await createCourse(page);await createProject(page,kind);
+        async function retry(flag,expected){
+          const calls=state.modelCalls,oldResults=new Map([...state.runs].map(([id,run])=>[id,run.item.artifact.content]));
+          await page.locator('[data-review-flag="'+flag+'"] [data-review-target=sources]').click();assert.equal(await page.evaluate(()=>document.activeElement.id),'learning-followup');assert.equal(await page.locator('#learning-followup-submit').innerText(),'Research sources again');assert.match(await page.locator('#learning-followup').inputValue(),/Do more research/);assert.equal(state.modelCalls,calls,'Selecting a research retry flag must not call AI automatically');assert.equal(await page.locator('#learning-review-current [data-review-flag]').count(),3);
+          await page.locator('#learning-followup-submit').click();await page.waitForFunction(()=>document.getElementById('learning-project-view').getAttribute('aria-busy')==='false'&&document.getElementById('learning-followup-submit').textContent==='Continue with my question');
+          const request=state.writes.filter(row=>row.path.endsWith('/run')).at(-1);assert.equal(request.body.action,expected);assert.match(request.body.message,/Do more research/);assert.match(request.body.message,/without claiming to have read/);assert.match(request.body.message,/Preserve useful reasoning, exact quotations/);
+          for(const [id,content]of oldResults)assert.equal(state.runs.get(id)?.item.artifact.content,content,'Earlier drafts and results must remain unchanged');assert.equal(await page.locator('#learning-review-current [data-review-flag]').count(),3,'Only server results may resolve review flags');assert(await page.locator('#learning-export-word').isEnabled());
+        }
+        await retry('research-evidence-empty',kind==='writing'?'plan':'study');
+        if(kind==='writing'){await page.locator('[data-run-action=draft]').click();await page.locator('#learning-result-content').filter({hasText:'The student recommends'}).waitFor();await retry('requested-source-unreadable-requested','draft');}
+        else{await page.locator('[data-run-action=quiz]').click();await page.locator('#learning-result-content').filter({hasText:'Question 1'}).waitFor();await retry('requested-source-unreadable-requested','quiz');await page.locator('[data-run-action=flashcards]').click();await page.locator('#learning-result-content').filter({hasText:'Opportunity cost'}).waitFor();await retry('research-evidence-empty','flashcards');}
+        await page.locator('[data-review-flag=citation-metadata-s1] [data-review-target=sources]').click();assert.equal(await page.evaluate(()=>document.activeElement.id),'learning-project-add-source','Missing citation metadata must retain the source-editing route');
+      }
+    });
+
     await check('source coverage stays limited and exports contain the actual saved work', async () => {
       const { page } = await fixture(); await createCourse(page); await createProject(page);
       await page.locator('#learning-source-checks summary').click();

@@ -81,12 +81,17 @@
       if(scope==='current'||flag.target==='format'){const action=document.createElement('button');action.type='button';action.className='learning-review-action';action.dataset.reviewTarget=flag.target;action.textContent=flag.nextAction;action.addEventListener('click',()=>{void reviewTarget(flag,artifact);});li.append(action);}else{const next=document.createElement('p');next.className='learning-review-next';next.textContent=flag.nextAction;li.append(next);}entries.append(li);}
     panel.append(entries);
   }
-  function resetFollowupIntent(){if(followupRepair?.projectId!==project?.id)followupRepair=null;$('learning-followup-submit').textContent=followupRepair?(project.kind==='writing'?'Update citations in my draft':'Update citations'):'Continue with my question';}
+  function resetFollowupIntent(){if(followupRepair?.projectId!==project?.id)followupRepair=null;$('learning-followup-submit').textContent=followupRepair?(followupRepair.label||(project.kind==='writing'?'Update citations in my draft':'Update citations')):'Continue with my question';}
   function leaveExportReview(){if($('learning-word-dialog').open)closeDialog($('learning-word-dialog'));if($('learning-history-dialog').open)closeDialog($('learning-history-dialog'));}
   async function reviewTarget(flag,artifact){
     if(busy||!project)return;const target=flag.target;
     if(flag.kind==='format-conflict'){
       leaveExportReview();const field=project.rubric?.trim()?$('learning-project-rubric'):$('learning-project-prompt');field.closest('details').open=true;field.focus({preventScroll:true});field.scrollIntoView({block:'center'});message('Edit the prompt or rubric to match the instructor’s required format, then save your changes.');return;
+    }
+    if(['research-evidence','requested-source-unreadable'].includes(flag.kind)){
+      const action=L.researchRetryAction(project.kind,artifact?.action);if(!action)return;leaveExportReview();
+      $('learning-followup').value='Do more research on the assignment’s required evidence using accessible public sources. Retry the supplied source links; if a requested source is unreadable, identify that specific link and find an accessible primary source without claiming to have read the unavailable material. Ground citations in retrieved passages and established source metadata. Work from the saved '+(action==='plan'?'outline':'draft or study material')+', not review notes. Preserve useful reasoning, exact quotations and unaffected text. Keep specific unresolved evidence gaps flagged.';
+      followupRepair={projectId:project.id,action,label:'Research sources again'};resetFollowupIntent();$('learning-followup').focus({preventScroll:true});$('learning-followup-form').scrollIntoView({block:'center'});message('Review the prepared request, then choose Research sources again. Your saved work stays available.');return;
     }
     if(flag.kind==='citation-format'){
       leaveExportReview();const format=artifact?.assignmentFormat||{},style=format.profile==='apa7'?'APA 7':format.profile==='mla9'?'MLA 9':format.style==='apa'?'APA':format.style==='mla'?'MLA':'the assignment’s required style';

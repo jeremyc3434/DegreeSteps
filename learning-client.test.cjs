@@ -135,3 +135,8 @@ test('review flags expose only bounded actionable checks and never invent generi
   assert.equal(Learning.reviewFlags({review:{flags:Array.from({length:20},()=>personal)}}).length,8);
   const artifact={content:'An actual saved paper with exact quotes. [S1]',review:{flags:[personal]}};Learning.reviewFlags(artifact);assert.equal(artifact.content,'An actual saved paper with exact quotes. [S1]');
 });
+
+test('research retry preserves the current assignment or study workflow',()=>{
+  for(const [kind,current,expected]of [['writing','plan','plan'],['writing','draft','draft'],['writing','review','draft'],['presentation','plan','plan'],['presentation','review','presentation'],['discussion','plan','plan'],['discussion','discussion','discussion'],['study','study','study'],['study','quiz','quiz'],['quiz','flashcards','flashcards'],['flashcards','quiz','quiz'],['quiz','plan','quiz']])assert.equal(Learning.researchRetryAction(kind,current),expected,kind+'/'+current);
+  assert.equal(Learning.researchRetryAction('unknown','review'),null);
+});
